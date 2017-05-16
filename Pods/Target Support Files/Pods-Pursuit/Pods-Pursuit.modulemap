@@ -1,0 +1,6 @@
+framework module Pods_Pursuit {
+  umbrella header "Pods-Pursuit-umbrella.h"
+
+  export *
+  module * { export * }
+}

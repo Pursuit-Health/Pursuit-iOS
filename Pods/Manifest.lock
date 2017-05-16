@@ -1,0 +1,25 @@
+PODS:
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
+  - ESTabBarController-swift (2.4)
+  - Fabric (1.6.11)
+  - HMSegmentedControl (1.5.3)
+  - KVNProgress (2.3.1)
+
+DEPENDENCIES:
+  - Crashlytics
+  - ESTabBarController-swift
+  - Fabric
+  - HMSegmentedControl
+  - KVNProgress
+
+SPEC CHECKSUMS:
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  ESTabBarController-swift: af496895039ba10ae60bf825473c45f23fc5c8b6
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
+  KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+
+PODFILE CHECKSUM: 94006aea95956fb4f9721990bfcec5e49cdc7d7e
+
+COCOAPODS: 1.2.0
