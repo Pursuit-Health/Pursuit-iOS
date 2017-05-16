@@ -8,12 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F830C1E850E4100ABA24C /* AppDelegate.swift */; };
-		5B1F830F1E850E4100ABA24C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F830E1E850E4100ABA24C /* ViewController.swift */; };
-		5B1F83121E850E4100ABA24C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83101E850E4100ABA24C /* Main.storyboard */; };
+		5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83101E850E4100ABA24C /* ClientMain.storyboard */; };
 		5B1F83141E850E4100ABA24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83131E850E4100ABA24C /* Assets.xcassets */; };
 		5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */; };
 		5B1F83221E850E4100ABA24C /* PursuitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F83211E850E4100ABA24C /* PursuitTests.swift */; };
 		5B1F832D1E850E4100ABA24C /* PursuitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F832C1E850E4100ABA24C /* PursuitUITests.swift */; };
+		5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */; };
+		5BA7305A1EC7BF0700C87C0C /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */; };
+		5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */; };
+		5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */; };
+		5BE0D04A1EC5893D00B11C50 /* PursuitNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0D0491EC5893D00B11C50 /* PursuitNC.swift */; };
+		5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1B71EB314F9005B35CD /* Login.storyboard */; };
+		5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BD1EB31611005B35CD /* Transitions.swift */; };
+		5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BF1EB31651005B35CD /* LoginVC.swift */; };
+		5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */; };
+		5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C51EB3196A005B35CD /* SignInCell.swift */; };
+		5BE3A1CC1EB3196A005B35CD /* SignInCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C61EB3196A005B35CD /* SignInCell.xib */; };
+		5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C71EB3196A005B35CD /* SignUpCell.swift */; };
+		5BE3A1CE1EB3196A005B35CD /* SignUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */; };
+		5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C91EB3196A005B35CD /* ForgotPasswordCell.swift */; };
+		5BE3A1D01EB3196A005B35CD /* ForgotPasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1CA1EB3196A005B35CD /* ForgotPasswordCell.xib */; };
+		5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D21EB319E5005B35CD /* DezappTextField.swift */; };
+		5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */; };
+		5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D41EB319E5005B35CD /* DezappButton.swift */; };
+		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
+		E8820409961751A2FF0697AF /* Pods_Pursuit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CFCF4946A25E5C6B6E0D7FF /* Pods_PursuitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PursuitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F83091E850E4100ABA24C /* Pursuit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pursuit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F830C1E850E4100ABA24C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B1F830E1E850E4100ABA24C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5B1F83111E850E4100ABA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5B1F83111E850E4100ABA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClientMain.storyboard; sourceTree = "<group>"; };
 		5B1F83131E850E4100ABA24C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B1F83161E850E4100ABA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B1F83181E850E4100ABA24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +66,29 @@
 		5B1F83281E850E4100ABA24C /* PursuitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PursuitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F832C1E850E4100ABA24C /* PursuitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PursuitUITests.swift; sourceTree = "<group>"; };
 		5B1F832E1E850E4100ABA24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
+		5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTBC.swift; sourceTree = "<group>"; };
+		5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerMain.storyboard; sourceTree = "<group>"; };
+		5BE0D0491EC5893D00B11C50 /* PursuitNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNC.swift; sourceTree = "<group>"; };
+		5BE3A1B71EB314F9005B35CD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		5BE3A1BD1EB31611005B35CD /* Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
+		5BE3A1BF1EB31651005B35CD /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExt.swift; sourceTree = "<group>"; };
+		5BE3A1C51EB3196A005B35CD /* SignInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInCell.swift; sourceTree = "<group>"; };
+		5BE3A1C61EB3196A005B35CD /* SignInCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInCell.xib; sourceTree = "<group>"; };
+		5BE3A1C71EB3196A005B35CD /* SignUpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCell.swift; sourceTree = "<group>"; };
+		5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpCell.xib; sourceTree = "<group>"; };
+		5BE3A1C91EB3196A005B35CD /* ForgotPasswordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCell.swift; sourceTree = "<group>"; };
+		5BE3A1CA1EB3196A005B35CD /* ForgotPasswordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordCell.xib; sourceTree = "<group>"; };
+		5BE3A1D21EB319E5005B35CD /* DezappTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappTextField.swift; sourceTree = "<group>"; };
+		5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappLabel.swift; sourceTree = "<group>"; };
+		5BE3A1D41EB319E5005B35CD /* DezappButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappButton.swift; sourceTree = "<group>"; };
+		5BE3A1D91EB7029E005B35CD /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		5C1130B984995A395004F4AF /* Pods_PursuitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PursuitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit.release.xcconfig"; sourceTree = "<group>"; };
+		F1B59CAB123C412E2EEBEE83 /* Pods-Pursuit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8820409961751A2FF0697AF /* Pods_Pursuit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +124,8 @@
 				5B1F83201E850E4100ABA24C /* PursuitTests */,
 				5B1F832B1E850E4100ABA24C /* PursuitUITests */,
 				5B1F830A1E850E4100ABA24C /* Products */,
+				7ED15C57F1F45022548C9AFD /* Pods */,
+				639FBB6540ED248722F99946 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,11 +142,11 @@
 		5B1F830B1E850E4100ABA24C /* Pursuit */ = {
 			isa = PBXGroup;
 			children = (
-				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
-				5B1F830E1E850E4100ABA24C /* ViewController.swift */,
-				5B1F83101E850E4100ABA24C /* Main.storyboard */,
+				5BE3A1D81EB7028F005B35CD /* Models */,
+				5BE3A1BB1EB3152B005B35CD /* ViewControllers */,
+				5BE3A1BA1EB3150A005B35CD /* Views */,
+				5BE3A1BC1EB315F0005B35CD /* Resources */,
 				5B1F83131E850E4100ABA24C /* Assets.xcassets */,
-				5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */,
 				5B1F83181E850E4100ABA24C /* Info.plist */,
 			);
 			path = Pursuit;
@@ -125,6 +170,115 @@
 			path = PursuitUITests;
 			sourceTree = "<group>";
 		};
+		5B1F833A1E851B3900ABA24C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */,
+				5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		5BE3A1B91EB314FF005B35CD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */,
+				5BE3A1B71EB314F9005B35CD /* Login.storyboard */,
+				5B1F83101E850E4100ABA24C /* ClientMain.storyboard */,
+				5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		5BE3A1BA1EB3150A005B35CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1D11EB319D9005B35CD /* CustomSelection */,
+				5BE3A1C31EB3193D005B35CD /* UITableViewCells */,
+				5BE3A1B91EB314FF005B35CD /* Storyboards */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5BE3A1BB1EB3152B005B35CD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1BF1EB31651005B35CD /* LoginVC.swift */,
+				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
+				5BE0D0491EC5893D00B11C50 /* PursuitNC.swift */,
+				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
+				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5BE3A1BC1EB315F0005B35CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1BD1EB31611005B35CD /* Transitions.swift */,
+				5B1F833A1E851B3900ABA24C /* Extensions */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5BE3A1C31EB3193D005B35CD /* UITableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1C41EB31960005B35CD /* Login */,
+			);
+			name = UITableViewCells;
+			sourceTree = "<group>";
+		};
+		5BE3A1C41EB31960005B35CD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1C51EB3196A005B35CD /* SignInCell.swift */,
+				5BE3A1C61EB3196A005B35CD /* SignInCell.xib */,
+				5BE3A1C71EB3196A005B35CD /* SignUpCell.swift */,
+				5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */,
+				5BE3A1C91EB3196A005B35CD /* ForgotPasswordCell.swift */,
+				5BE3A1CA1EB3196A005B35CD /* ForgotPasswordCell.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		5BE3A1D11EB319D9005B35CD /* CustomSelection */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1D21EB319E5005B35CD /* DezappTextField.swift */,
+				5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */,
+				5BE3A1D41EB319E5005B35CD /* DezappButton.swift */,
+			);
+			name = CustomSelection;
+			sourceTree = "<group>";
+		};
+		5BE3A1D81EB7028F005B35CD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1D91EB7029E005B35CD /* LoginModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		639FBB6540ED248722F99946 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */,
+				3CFCF4946A25E5C6B6E0D7FF /* Pods_PursuitTests.framework */,
+				5C1130B984995A395004F4AF /* Pods_PursuitUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7ED15C57F1F45022548C9AFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1B59CAB123C412E2EEBEE83 /* Pods-Pursuit.debug.xcconfig */,
+				AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +286,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B1F83311E850E4100ABA24C /* Build configuration list for PBXNativeTarget "Pursuit" */;
 			buildPhases = (
+				1F78707BD1A904C4C5129429 /* [CP] Check Pods Manifest.lock */,
 				5B1F83051E850E4100ABA24C /* Sources */,
 				5B1F83061E850E4100ABA24C /* Frameworks */,
 				5B1F83071E850E4100ABA24C /* Resources */,
+				5855F4345728A7DE662FA5AE /* [CP] Embed Pods Frameworks */,
+				3B22A9CAEDA77752B11D385A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -235,9 +392,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
+				5BE3A1CE1EB3196A005B35CD /* SignUpCell.xib in Resources */,
 				5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */,
 				5B1F83141E850E4100ABA24C /* Assets.xcassets in Resources */,
-				5B1F83121E850E4100ABA24C /* Main.storyboard in Resources */,
+				5BE3A1CC1EB3196A005B35CD /* SignInCell.xib in Resources */,
+				5BE3A1D01EB3196A005B35CD /* ForgotPasswordCell.xib in Resources */,
+				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
+				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,13 +419,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F78707BD1A904C4C5129429 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3B22A9CAEDA77752B11D385A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5855F4345728A7DE662FA5AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5B1F83051E850E4100ABA24C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B1F830F1E850E4100ABA24C /* ViewController.swift in Sources */,
+				5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */,
+				5BA7305A1EC7BF0700C87C0C /* ScheduleVC.swift in Sources */,
+				5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */,
+				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
+				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
+				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
+				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
+				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
+				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
+				5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */,
+				5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */,
+				5BE0D04A1EC5893D00B11C50 /* PursuitNC.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
+				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
+				5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,12 +522,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5B1F83101E850E4100ABA24C /* Main.storyboard */ = {
+		5B1F83101E850E4100ABA24C /* ClientMain.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5B1F83111E850E4100ABA24C /* Base */,
 			);
-			name = Main.storyboard;
+			name = ClientMain.storyboard;
 			sourceTree = "<group>";
 		};
 		5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */ = {
@@ -411,6 +634,7 @@
 		};
 		5B1F83321E850E4100ABA24C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1B59CAB123C412E2EEBEE83 /* Pods-Pursuit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H3MGB2C762;
@@ -424,6 +648,7 @@
 		};
 		5B1F83331E850E4100ABA24C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H3MGB2C762;
@@ -512,6 +737,7 @@
 				5B1F83331E850E4100ABA24C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B1F83341E850E4100ABA24C /* Build configuration list for PBXNativeTarget "PursuitTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +746,7 @@
 				5B1F83361E850E4100ABA24C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B1F83371E850E4100ABA24C /* Build configuration list for PBXNativeTarget "PursuitUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +755,7 @@
 				5B1F83391E850E4100ABA24C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

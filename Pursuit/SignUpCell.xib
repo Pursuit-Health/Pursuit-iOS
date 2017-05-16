@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="406" id="KGk-i7-Jjw" customClass="SignUpCell" customModule="Pursuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="399"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH9-4Y-pR7">
+                        <rect key="frame" x="30" y="196" width="260" height="1"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="SJR-O0-xZB"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ey-jw-Uvy" customClass="DezappTextField" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="30" y="171" width="260" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="DSx-bW-nXj"/>
+                        </constraints>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                <color key="value" red="0.9983524659863946" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyD-r0-IIj">
+                        <rect key="frame" x="30" y="257" width="260" height="1"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="DAj-EP-ipT"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSr-oG-M2x" customClass="DezappTextField" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="30" y="232" width="260" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="hZR-VN-1uD"/>
+                        </constraints>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fc3-Em-CWs">
+                        <rect key="frame" x="30" y="135" width="260" height="1"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="PhV-VG-N0o"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="hSK-4C-mT6"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ezT-3b-H7G" customClass="DezappTextField" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="30" y="110" width="260" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="XFX-wD-ewk"/>
+                        </constraints>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPx-X0-ZqW">
+                        <rect key="frame" x="30" y="73" width="260" height="1"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Gf6-P9-VVG"/>
+                        </constraints>
+                    </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOR-en-fLx" customClass="DezappTextField" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="30" y="48" width="260" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="zGY-68-GDb"/>
+                        </constraints>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVM-eo-BmG" customClass="DezappButton" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="20" y="288" width="280" height="55"/>
+                        <color key="backgroundColor" red="0.31372549019607843" green="0.82352941176470584" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="55" id="bTN-HL-YNP"/>
+                            <constraint firstAttribute="width" constant="280" id="reW-6J-wxC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                        <state key="normal" title="Sign Up">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="kerning">
+                                <real key="value" value="0.80000000000000004"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="Fc3-Em-CWs" firstAttribute="top" secondItem="ezT-3b-H7G" secondAttribute="bottom" constant="6" id="13I-vQ-7FD"/>
+                    <constraint firstItem="ezT-3b-H7G" firstAttribute="top" secondItem="iPx-X0-ZqW" secondAttribute="bottom" constant="36" id="3g3-hq-HwF"/>
+                    <constraint firstAttribute="trailing" secondItem="iPx-X0-ZqW" secondAttribute="trailing" constant="30" id="6wC-tq-Jlp"/>
+                    <constraint firstItem="5Ey-jw-Uvy" firstAttribute="top" secondItem="Fc3-Em-CWs" secondAttribute="bottom" constant="35" id="76x-3W-qTK"/>
+                    <constraint firstItem="PyD-r0-IIj" firstAttribute="top" secondItem="VSr-oG-M2x" secondAttribute="bottom" constant="6" id="8B4-aC-PCQ"/>
+                    <constraint firstItem="VSr-oG-M2x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="22" id="9cX-I8-rxH"/>
+                    <constraint firstItem="ezT-3b-H7G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="EdC-l4-8w3"/>
+                    <constraint firstItem="DH9-4Y-pR7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="KDc-gy-9ts"/>
+                    <constraint firstItem="bOR-en-fLx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="47.5" id="Lw9-Lv-OXB"/>
+                    <constraint firstItem="Fc3-Em-CWs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="MWF-EU-ZI8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="VSr-oG-M2x" secondAttribute="trailing" constant="22" id="Qed-MI-5BW"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PyD-r0-IIj" secondAttribute="trailing" constant="22" id="RX9-pZ-MHX"/>
+                    <constraint firstAttribute="trailing" secondItem="Fc3-Em-CWs" secondAttribute="trailing" constant="30" id="SW4-83-1T2"/>
+                    <constraint firstAttribute="trailing" secondItem="5Ey-jw-Uvy" secondAttribute="trailing" constant="30" id="TIe-52-nSj"/>
+                    <constraint firstItem="PyD-r0-IIj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="22" id="WSx-W3-kKl"/>
+                    <constraint firstItem="iPx-X0-ZqW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="c1B-A5-2pF"/>
+                    <constraint firstItem="DH9-4Y-pR7" firstAttribute="top" secondItem="5Ey-jw-Uvy" secondAttribute="bottom" constant="6" id="fOg-lt-HaD"/>
+                    <constraint firstItem="zVM-eo-BmG" firstAttribute="top" secondItem="PyD-r0-IIj" secondAttribute="bottom" constant="30" id="jQ3-TA-kbR"/>
+                    <constraint firstItem="5Ey-jw-Uvy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="kMu-fR-h9Y"/>
+                    <constraint firstAttribute="trailing" secondItem="DH9-4Y-pR7" secondAttribute="trailing" constant="30" id="kVg-Hm-kM9"/>
+                    <constraint firstItem="bOR-en-fLx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lvu-Mf-8WL"/>
+                    <constraint firstItem="VSr-oG-M2x" firstAttribute="top" secondItem="DH9-4Y-pR7" secondAttribute="bottom" constant="35" id="nxD-XS-9BO"/>
+                    <constraint firstAttribute="trailing" secondItem="ezT-3b-H7G" secondAttribute="trailing" constant="30" id="qPs-23-Lhk"/>
+                    <constraint firstItem="iPx-X0-ZqW" firstAttribute="top" secondItem="bOR-en-fLx" secondAttribute="bottom" constant="6" id="rtr-ZM-s4s"/>
+                    <constraint firstItem="zVM-eo-BmG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="uzz-wp-FT2"/>
+                    <constraint firstAttribute="trailing" secondItem="bOR-en-fLx" secondAttribute="trailing" constant="30" id="wYU-SW-eEz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="emailField" destination="ezT-3b-H7G" id="ILl-xt-G6i"/>
+                <outlet property="nameField" destination="bOR-en-fLx" id="T8d-tN-xfb"/>
+                <outlet property="passwordField" destination="5Ey-jw-Uvy" id="Tcw-l4-tUu"/>
+                <outlet property="submitButton" destination="zVM-eo-BmG" id="qzi-Uh-l6g"/>
+            </connections>
+            <point key="canvasLocation" x="63" y="354.5"/>
+        </tableViewCell>
+    </objects>
+</document>

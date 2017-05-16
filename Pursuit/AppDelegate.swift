@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        FIRApp.configure()
+//        Fabric.with([Crashlytics.self])
+//        if FIRAuth.auth()?.currentUser == nil {
+            let sbLogin = UIStoryboard(name: "Login", bundle: nil)
+            let vc = sbLogin.instantiateViewController(withIdentifier: "LoginVC")
+            window?.rootViewController = vc
+//        }else {
+//            Transitions.presentMain()
+//        }
         // Override point for customization after application launch.
         return true
     }
