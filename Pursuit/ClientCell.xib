@@ -20,14 +20,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-uE-dYH">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-uE-dYH">
                         <rect key="frame" x="20" y="14.821097283749396" width="39.999999999999986" height="39.999999999999979"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nmn-uE-dYH" secondAttribute="height" multiplier="1:1" id="tm8-oo-KWy"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="40"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Janet Rose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQQ-s6-WUq">
-                        <rect key="frame" x="90" y="24" width="277" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Janet Rose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQQ-s6-WUq">
+                        <rect key="frame" x="90" y="24" width="251" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -37,7 +43,6 @@
                     <constraint firstItem="nmn-uE-dYH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="G5t-cp-iJr"/>
                     <constraint firstItem="rQQ-s6-WUq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="STP-bz-IuA"/>
                     <constraint firstItem="nmn-uE-dYH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZJL-Kg-9CT"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="rQQ-s6-WUq" secondAttribute="trailing" id="kzd-11-8xF"/>
                     <constraint firstItem="rQQ-s6-WUq" firstAttribute="leading" secondItem="nmn-uE-dYH" secondAttribute="trailing" constant="30.000000000000014" id="vpJ-2P-i4H"/>
                 </constraints>
             </tableViewCellContentView>

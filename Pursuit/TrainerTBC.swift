@@ -8,13 +8,8 @@
 
 import UIKit
 
-class TrainerTBC: UITabBarController, UITableViewController {
+class TrainerTBC: UITabBarController {
 
-   
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
