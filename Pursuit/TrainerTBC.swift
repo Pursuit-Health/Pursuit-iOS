@@ -10,6 +10,10 @@ import UIKit
 
 class TrainerTBC: UITabBarController {
 
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

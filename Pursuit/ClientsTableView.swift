@@ -16,8 +16,17 @@ class ClientsTableView: UITableViewController {
         var clientImage = UIImageView()
     }
     
+    
     //list of client information
     var clientList = [clientInfo]()
+
+    
+    //list of client search results
+    var filteredClientList = [clientInfo]()
+    
+    //show search results boolean
+    var showSearchResults = false;
+    
     
 
     // MARK: - Table view data source
@@ -30,7 +39,15 @@ class ClientsTableView: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //returns number in clientList
-        return clientList.count
+        if showSearchResults == false{
+            
+            return clientList.count
+            
+        }else{
+            
+            return filteredClientList.count
+        }
+        
     }
 
 
@@ -38,17 +55,33 @@ class ClientsTableView: UITableViewController {
         
         let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as! ClientCell
 
-        //assigns cell image and makes image circular (commented)
-        cell.clientImage = clientList[indexPath.row].clientImage;
+        if showSearchResults == false {
+            
+            //assigns cell image
+            cell.clientImage = clientList[indexPath.row].clientImage;
+
+            //adds cell name
+            cell.clientName.text = clientList[indexPath.row].clientName;
+            
+        }else{
+            
+            //assigns cell image
+            cell.clientImage = filteredClientList[indexPath.row].clientImage;
+ 
+            //adds cell name
+            cell.clientName.text = filteredClientList[indexPath.row].clientName;
+
+        }
+        
+        //makes cell circular
         //cell.clientImage.layer.cornerRadius = cell.clientImage.frame.size.width/2;
         //cell.clientImage.clipsToBounds = true;
         
-        
-        //addings cell name and color
-        cell.clientName.text = clientList[indexPath.row].clientName;
+        //changes cell text color
         cell.clientName.textColor = UIColor.white;
-
+        
         return cell;
+        
     }
 
     override func viewDidLoad() {
