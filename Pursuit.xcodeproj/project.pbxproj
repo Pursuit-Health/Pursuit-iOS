@@ -32,6 +32,8 @@
 		5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */; };
 		5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D41EB319E5005B35CD /* DezappButton.swift */; };
 		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
+		BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */; };
+		BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */; };
 		E8820409961751A2FF0697AF /* Pods_Pursuit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,8 @@
 		5C1130B984995A395004F4AF /* Pods_PursuitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PursuitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit.release.xcconfig"; sourceTree = "<group>"; };
+		BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
+		BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientCell.xib; sourceTree = "<group>"; };
 		F1B59CAB123C412E2EEBEE83 /* Pods-Pursuit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +242,8 @@
 				5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */,
 				5BE3A1C91EB3196A005B35CD /* ForgotPasswordCell.swift */,
 				5BE3A1CA1EB3196A005B35CD /* ForgotPasswordCell.xib */,
+				BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */,
+				BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				5BE3A1D01EB3196A005B35CD /* ForgotPasswordCell.xib in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
+				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +489,7 @@
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
 				5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */,
+				BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */,
 				5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */,
 				5BE0D04A1EC5893D00B11C50 /* PursuitNC.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
