@@ -12,7 +12,7 @@ class ScheduleVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.edgesForExtendedLayout = .bottom
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +21,9 @@ class ScheduleVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     /*
     // MARK: - Navigation

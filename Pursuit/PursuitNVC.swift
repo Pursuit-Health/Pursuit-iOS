@@ -1,19 +1,26 @@
 //
-//  PursuitNC.swift
+//  PursuitNVC.swift
 //  Pursuit
 //
-//  Created by Arash Tadayon on 5/11/17.
+//  Created by Arash Tadayon on 5/16/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
 import UIKit
 
-class PursuitNC: UINavigationController {
+class PursuitNVC: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let imageView = UIImageView(image: UIImage(named: "bg"))
+        imageView.contentMode = .scaleAspectFill
+        self.view.insertSubview(imageView, at: 0)
+        
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.isTranslucent = true
+        self.view.backgroundColor = UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.1)
     }
 
     override func didReceiveMemoryWarning() {

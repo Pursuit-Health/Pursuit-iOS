@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1CC4101ECBAD5E00AB7C1F /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC40F1ECBAD5E00AB7C1F /* PursuitNVC.swift */; };
 		5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F830C1E850E4100ABA24C /* AppDelegate.swift */; };
 		5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83101E850E4100ABA24C /* ClientMain.storyboard */; };
 		5B1F83141E850E4100ABA24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83131E850E4100ABA24C /* Assets.xcassets */; };
@@ -17,9 +18,7 @@
 		5BA7305A1EC7BF0700C87C0C /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */; };
 		5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */; };
 		5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */; };
-		5BE0D04A1EC5893D00B11C50 /* PursuitNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0D0491EC5893D00B11C50 /* PursuitNC.swift */; };
 		5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1B71EB314F9005B35CD /* Login.storyboard */; };
-		5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BD1EB31611005B35CD /* Transitions.swift */; };
 		5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BF1EB31651005B35CD /* LoginVC.swift */; };
 		5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */; };
 		5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C51EB3196A005B35CD /* SignInCell.swift */; };
@@ -54,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		3CFCF4946A25E5C6B6E0D7FF /* Pods_PursuitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PursuitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1CC40F1ECBAD5E00AB7C1F /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		5B1F83091E850E4100ABA24C /* Pursuit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pursuit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F830C1E850E4100ABA24C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B1F83111E850E4100ABA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClientMain.storyboard; sourceTree = "<group>"; };
@@ -70,9 +70,7 @@
 		5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
 		5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTBC.swift; sourceTree = "<group>"; };
 		5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerMain.storyboard; sourceTree = "<group>"; };
-		5BE0D0491EC5893D00B11C50 /* PursuitNC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNC.swift; sourceTree = "<group>"; };
 		5BE3A1B71EB314F9005B35CD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		5BE3A1BD1EB31611005B35CD /* Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		5BE3A1BF1EB31651005B35CD /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExt.swift; sourceTree = "<group>"; };
 		5BE3A1C51EB3196A005B35CD /* SignInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInCell.swift; sourceTree = "<group>"; };
@@ -179,6 +177,22 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		5BB09F161ECBA35C003EB3BC /* Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
+				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
+			);
+			name = Trainer;
+			sourceTree = "<group>";
+		};
+		5BB09F171ECBA361003EB3BC /* Client */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
 		5BE3A1B91EB314FF005B35CD /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,11 +217,11 @@
 		5BE3A1BB1EB3152B005B35CD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5B1CC40F1ECBAD5E00AB7C1F /* PursuitNVC.swift */,
+				5BB09F171ECBA361003EB3BC /* Client */,
+				5BB09F161ECBA35C003EB3BC /* Trainer */,
 				5BE3A1BF1EB31651005B35CD /* LoginVC.swift */,
 				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
-				5BE0D0491EC5893D00B11C50 /* PursuitNC.swift */,
-				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
-				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -215,7 +229,6 @@
 		5BE3A1BC1EB315F0005B35CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5BE3A1BD1EB31611005B35CD /* Transitions.swift */,
 				5B1F833A1E851B3900ABA24C /* Extensions */,
 			);
 			name = Resources;
@@ -482,9 +495,8 @@
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
 				5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */,
-				5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */,
-				5BE0D04A1EC5893D00B11C50 /* PursuitNC.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
+				5B1CC4101ECBAD5E00AB7C1F /* PursuitNVC.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */,
 			);

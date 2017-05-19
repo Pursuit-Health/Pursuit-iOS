@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5BO-VW-YJ4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jpr-R0-cT0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="MeX-Lh-OEC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ybe-nG-YOT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_pursuit" selectedImage="ic_pursuit" id="SNi-kd-gFC"/>
+                    <tabBarItem key="tabBarItem" title="" image="ic_pursuit" id="SNi-kd-gFC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBm-IZ-SzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -37,39 +37,28 @@
                         <viewControllerLayoutGuide type="bottom" id="bhD-Mi-oYu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jSn-Ca-5uJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_list" selectedImage="ic_list" id="Q4H-TD-VhI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxC-03-Vph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="374" y="703"/>
+            <point key="canvasLocation" x="374" y="742"/>
         </scene>
         <!--ScheduleVC-->
         <scene sceneID="Q6x-O4-W6y">
             <objects>
-                <viewController id="2YP-X1-9ts" customClass="ScheduleVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleVC" id="2YP-X1-9ts" customClass="ScheduleVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cFV-w5-Mbx"/>
                         <viewControllerLayoutGuide type="bottom" id="bU5-U0-d8F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vpo-qL-luE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="13E-cM-XIo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="13E-cM-XIo" secondAttribute="trailing" id="8DV-sd-9eV"/>
-                            <constraint firstAttribute="bottom" secondItem="13E-cM-XIo" secondAttribute="bottom" id="JH6-sI-1Hh"/>
-                            <constraint firstItem="13E-cM-XIo" firstAttribute="leading" secondItem="vpo-qL-luE" secondAttribute="leading" id="nRZ-97-xjb"/>
-                            <constraint firstItem="13E-cM-XIo" firstAttribute="top" secondItem="vpo-qL-luE" secondAttribute="top" id="xYG-3Y-gmT"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_schedule" id="bPZ-sr-FRe"/>
                 </viewController>
@@ -77,15 +66,38 @@
             </objects>
             <point key="canvasLocation" x="373.60000000000002" y="-744.3778110944528"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--PursuitNVC-->
+        <scene sceneID="fS6-1s-zuB">
+            <objects>
+                <navigationController storyboardIdentifier="navController" extendedLayoutIncludesOpaqueBars="YES" id="jpr-R0-cT0" customClass="PursuitNVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9YU-bG-MOw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.099229236577181204" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5BO-VW-YJ4" kind="relationship" relationship="rootViewController" id="hsJ-fO-l4x"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOw-f1-NQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1513" y="-20"/>
+        </scene>
+        <!--TrainerTBC-->
         <scene sceneID="lAj-Cp-kGY">
             <objects>
-                <tabBarController id="5BO-VW-YJ4" customClass="ESTabBarController" customModule="ESTabBarController_swift" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="qGz-Cl-CT2">
+                <tabBarController storyboardIdentifier="TrainerTBC" id="5BO-VW-YJ4" customClass="TrainerTBC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="XMp-WC-07b"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="qGz-Cl-CT2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="2YP-X1-9ts" kind="relationship" relationship="viewControllers" id="zEb-bP-mu5"/>
@@ -99,7 +111,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg" width="375" height="667"/>
         <image name="ic_list" width="20" height="18"/>
         <image name="ic_pursuit" width="45" height="45"/>
         <image name="ic_schedule" width="22" height="22"/>
