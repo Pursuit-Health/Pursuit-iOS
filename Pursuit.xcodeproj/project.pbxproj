@@ -214,7 +214,7 @@
 				5BE0D0491EC5893D00B11C50 /* PursuitNC.swift */,
 				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
 				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
-				BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */,
+				BBDA2B591ECEAC42001FB6AD /* Trainer */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -292,6 +292,14 @@
 			children = (
 				BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */,
 				BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */,
+			);
+			name = Trainer;
+			sourceTree = "<group>";
+		};
+		BBDA2B591ECEAC42001FB6AD /* Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */,
 			);
 			name = Trainer;
 			sourceTree = "<group>";

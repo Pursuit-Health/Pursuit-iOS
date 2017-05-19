@@ -41,7 +41,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-OC-EKX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-OC-EKX">
                                 <rect key="frame" x="0.0" y="47" width="375" height="571"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -69,6 +69,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="sfN-Cp-x2V" secondAttribute="trailing" constant="-16" id="dD7-Go-mxa"/>
                             <constraint firstItem="sfN-Cp-x2V" firstAttribute="leading" secondItem="jSn-Ca-5uJ" secondAttribute="leadingMargin" constant="-16" id="f31-3c-jSK"/>
                             <constraint firstItem="NgV-OC-EKX" firstAttribute="leading" secondItem="jSn-Ca-5uJ" secondAttribute="leadingMargin" constant="-16" id="iRw-rD-Kyc"/>
+                            <constraint firstItem="NgV-OC-EKX" firstAttribute="top" secondItem="kNa-yL-5yq" secondAttribute="bottom" constant="27" id="zGW-e9-Pyp"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_list" selectedImage="ic_list" id="Q4H-TD-VhI"/>
