@@ -133,7 +133,7 @@ class LoginVC: UIViewController {
     }
 
     func showMainNC(){
-        Transitions.presentMain()
+        //Transitions.presentMain()
     }
 
     func validateSignUp() -> Bool {

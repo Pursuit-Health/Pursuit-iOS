@@ -231,6 +231,7 @@
 		5BE3A1C31EB3193D005B35CD /* UITableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				BBDA2B581ECEA8DA001FB6AD /* Trainer */,
 				5BE3A1C41EB31960005B35CD /* Login */,
 			);
 			name = UITableViewCells;
@@ -245,8 +246,6 @@
 				5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */,
 				5BE3A1C91EB3196A005B35CD /* ForgotPasswordCell.swift */,
 				5BE3A1CA1EB3196A005B35CD /* ForgotPasswordCell.xib */,
-				BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */,
-				BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -286,6 +285,15 @@
 				AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BBDA2B581ECEA8DA001FB6AD /* Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */,
+				BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */,
+			);
+			name = Trainer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

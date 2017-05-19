@@ -73,7 +73,7 @@ class ClientsTableView: UITableViewController {
 
         }
         
-        //makes cell circular
+        //makes cell image circular
         //cell.clientImage.layer.cornerRadius = cell.clientImage.frame.size.width/2;
         //cell.clientImage.clipsToBounds = true;
         
