@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 class ClientsTableView: UITableViewController {
 
+    //view objects
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var searchImage: UIImageView!
+    @IBOutlet weak var clientsTable: UITableView!
+    @IBOutlet weak var searchField: UITextField!
+    
+    
+    
     //struct of individual client information
     struct clientInfo {
         var clientName = String()
         var clientImage = UIImageView()
     }
     
-    
     //list of client information
     var clientList = [clientInfo]()
-
     
     //list of client search results
     var filteredClientList = [clientInfo]()

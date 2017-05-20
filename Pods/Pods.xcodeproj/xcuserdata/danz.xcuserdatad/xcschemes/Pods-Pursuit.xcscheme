@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "44AE3CA03630EFDB6163DECD8AC58ACF"
+               BlueprintIdentifier = "456BD771C1DEAE65B0EC3905DCFD4192"
                BuildableName = "Pods_Pursuit.framework"
                BlueprintName = "Pods-Pursuit"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44AE3CA03630EFDB6163DECD8AC58ACF"
+            BlueprintIdentifier = "456BD771C1DEAE65B0EC3905DCFD4192"
             BuildableName = "Pods_Pursuit.framework"
             BlueprintName = "Pods-Pursuit"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "44AE3CA03630EFDB6163DECD8AC58ACF"
-            BuildableName = "Pods_Pursuit.framework"
-            BlueprintName = "Pods-Pursuit"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

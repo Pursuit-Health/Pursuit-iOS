@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7891E2B724C54EF58FB1692B34F1455C'
-               BlueprintName = 'HMSegmentedControl'
+               BlueprintIdentifier = 'EEB2F2C85CC1D63652E2896372E04F50'
+               BlueprintName = 'SwipeCellKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'HMSegmentedControl.framework'>
+               BuildableName = 'SwipeCellKit.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

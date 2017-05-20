@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClientCell: UITableViewCell {
+class ClientCell: SwipeTableViewCell {
 
     @IBOutlet weak var clientImage: UIImageView!
 

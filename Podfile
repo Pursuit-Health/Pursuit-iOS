@@ -9,4 +9,5 @@ target 'Pursuit' do
   pod 'Crashlytics'
   pod 'HMSegmentedControl'
   pod 'ESTabBarController-swift'
+  pod 'SwipeCellKit'
 end

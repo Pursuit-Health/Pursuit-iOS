@@ -5,6 +5,7 @@ PODS:
   - Fabric (1.6.11)
   - HMSegmentedControl (1.5.3)
   - KVNProgress (2.3.1)
+  - SwipeCellKit (1.8.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - Fabric
   - HMSegmentedControl
   - KVNProgress
+  - SwipeCellKit
 
 SPEC CHECKSUMS:
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
@@ -19,7 +21,8 @@ SPEC CHECKSUMS:
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+  SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
 
-PODFILE CHECKSUM: 94006aea95956fb4f9721990bfcec5e49cdc7d7e
+PODFILE CHECKSUM: 25f8a39d00a366809b7b160ac68f2835bf63f681
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1
