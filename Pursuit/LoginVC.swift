@@ -115,6 +115,7 @@ class LoginVC: UIViewController {
 //                }
 //            })
 //        }
+        self.showMainNC()
     }
     
     func signUpPressed(){
@@ -133,7 +134,9 @@ class LoginVC: UIViewController {
     }
 
     func showMainNC(){
-        Transitions.presentMain()
+        let storyboard = UIStoryboard(name: "TrainerMain", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "navController")
+        self.present(controller, animated: true, completion: nil)
     }
 
     func validateSignUp() -> Bool {
