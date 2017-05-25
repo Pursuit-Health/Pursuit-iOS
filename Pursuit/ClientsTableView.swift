@@ -17,11 +17,11 @@ class ClientsTableView: UITableViewController {
     @IBOutlet weak var clientsTable: UITableView!
     @IBOutlet weak var searchField: UITextField!
     
+    
     var defaultOptions = SwipeTableOptions()
     var isSwipeRightEnabled = true
     var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
     var buttonStyle: ButtonStyle = .backgroundColor
-    
     
     
     //struct of individual client information
@@ -39,8 +39,37 @@ class ClientsTableView: UITableViewController {
     //show search results boolean
     var showSearchResults = false;
     
-    
 
+    //DEFAULT LOAD AND MEMORY FUNCTIONS
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    //searches client cells upon typing in searchfield
+    func textFieldDidChange(_ textField: UITextField) {
+        
+        var searchString = searchField.text
+        searchString = searchString?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        
+        //search client cells with string
+        
+    }
+    
+    
     // MARK: - Table view data source
 
     /*override func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,18 +130,18 @@ class ClientsTableView: UITableViewController {
     // MARK: - Actions
     
     @IBAction func moreTapped(_ sender: Any) {
+
+        
         let controller = UIAlertController(title: "Swipe Transition Style", message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: "Border", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
-        controller.addAction(UIAlertAction(title: "Drag", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .drag }))
-        controller.addAction(UIAlertAction(title: "Reveal", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .reveal }))
-        controller.addAction(UIAlertAction(title: "\(isSwipeRightEnabled ? "Disable" : "Enable") Swipe Right", style: .default, handler: { _ in self.isSwipeRightEnabled = !self.isSwipeRightEnabled }))
-        controller.addAction(UIAlertAction(title: "Button Display Mode", style: .default, handler: { _ in self.buttonDisplayModeTapped() }))
-        controller.addAction(UIAlertAction(title: "Button Style", style: .default, handler: { _ in self.buttonStyleTapped() }))
-        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        controller.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { _ in self.resetData() }))
+        controller.addAction(UIAlertAction(title: "Chat", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
+        controller.addAction(UIAlertAction(title: "Share", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
+        controller.addAction(UIAlertAction(title: "Performance", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
+        controller.addAction(UIAlertAction(title: "Schedule", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
+
         present(controller, animated: true, completion: nil)
     }
     
+    /*
     func buttonDisplayModeTapped() {
         let controller = UIAlertController(title: "Button Display Mode", message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Image + Title", style: .default, handler: { _ in self.buttonDisplayMode = .titleAndImage }))
@@ -149,23 +178,7 @@ class ClientsTableView: UITableViewController {
         tableView.reloadData()
     }
     
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -221,7 +234,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
-        let client = clientList[indexPath.row]
+        //let client = clientList[indexPath.row]
         
         if orientation == .left {
             
@@ -327,7 +340,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
         
         var options = SwipeTableOptions()
         
-        options.transitionStyle = .border //or drag/reveal
+        options.transitionStyle = .drag //or drag/reveal
         options.expansionStyle = .selection
         
         /*
@@ -431,7 +444,7 @@ class IndicatorView: UIView {
 }
 
 enum ActionDescriptor {
-    case chat, share, performance, schedule, trash
+    case chat, share, performance, schedule
     
     func title(forDisplayMode displayMode: ButtonDisplayMode) -> String? {
         guard displayMode != .imageOnly else { return nil }
@@ -441,7 +454,6 @@ enum ActionDescriptor {
         case .share: return "Share"
         case .performance: return "Performance"
         case .schedule: return "Schedule"
-        case .trash: return "Trash"
         }
     }
     
@@ -454,7 +466,6 @@ enum ActionDescriptor {
         case .share: name = "Share"
         case .performance: name = "Performance"
         case .schedule: name = "Schedule"
-        case .trash: name = "Trash"
         }
         
         return UIImage(named: style == .backgroundColor ? name : name + "-circle")
@@ -466,7 +477,6 @@ enum ActionDescriptor {
         case .share: return UIColor(red: (80/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
         case .performance: return UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
         case .schedule: return UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
-        case .trash: return UIColor(red: (0/255.0), green: (0/255.0), blue: (0/255.0), alpha: 1.0)
         }
     }
 }
