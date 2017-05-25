@@ -220,8 +220,57 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
     
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
         let client = clientList[indexPath.row]
         
+        if orientation == .left {
+            
+            //DISPLAY OPTIONS UPON LEFT SWIPE
+            let chat = SwipeAction(style: .default, title: nil){ action, indexPath in
+                
+                //action for chat press
+            }
+            chat.hidesWhenSelected = true
+            chat.image = #imageLiteral(resourceName: "btnChat")
+            chat.backgroundColor = UIColor(red: (101/255.0), green: (99/255.0), blue: (164/255.0), alpha: 1.0)
+            configure(action: chat, with: .chat)
+
+            
+            let share = SwipeAction(style: .default, title: nil){ action, indexPath in
+                
+                //action for share press
+            }
+            share.hidesWhenSelected = true
+            share.image = #imageLiteral(resourceName: "btnShare")
+            share.backgroundColor = UIColor(red: (80/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
+            configure(action: share, with: .share)
+            
+            
+            let performance = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                //action for preformance press
+            }
+            performance.hidesWhenSelected = true
+            performance.image = #imageLiteral(resourceName: "btnPerformance")
+            performance.backgroundColor = UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
+            configure(action: performance, with: .performance)
+            
+            
+            let schedule = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                //action for schedule press
+            }
+            schedule.hidesWhenSelected = true
+            schedule.image = #imageLiteral(resourceName: "btnSchedule")
+            schedule.backgroundColor = UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
+            configure(action: schedule, with: .schedule) //??
+            
+            return [chat, share, performance, schedule]
+            
+        }else{
+            //nothing happens if swipe is left
+            return nil
+        }
         
         /*
         if orientation == .left {
@@ -240,6 +289,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             configure(action: read, with: descriptor)
             
             return [read]*/
+         
         } else {
             
             let flag = SwipeAction(style: .default, title: nil, handler: nil)
@@ -277,6 +327,9 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
         
         var options = SwipeTableOptions()
         
+        options.transitionStyle = .border //or drag/reveal
+        options.expansionStyle = .selection
+        
         /*
         options.expansionStyle = orientation == .left ? .selection : .destructive
         options.transitionStyle = defaultOptions.transitionStyle
@@ -292,9 +345,9 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
         
         return options
     }
-    
+ 
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
-        /*
+        
         action.title = descriptor.title(forDisplayMode: buttonDisplayMode)
         
         action.image = descriptor.image(forStyle: buttonStyle, displayMode: buttonDisplayMode)
@@ -310,9 +363,9 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
         }
  
     }
- */
+ 
 }
-
+/*
 class MailCell: SwipeTableViewCell {
     @IBOutlet var fromLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -364,7 +417,7 @@ class MailCell: SwipeTableViewCell {
             closure()
         }
     }
-}
+}*/
 
 class IndicatorView: UIView {
     var color = UIColor.clear {
@@ -378,7 +431,7 @@ class IndicatorView: UIView {
 }
 
 enum ActionDescriptor {
-    case chat, share, preformance, schedule, trash
+    case chat, share, performance, schedule, trash
     
     func title(forDisplayMode displayMode: ButtonDisplayMode) -> String? {
         guard displayMode != .imageOnly else { return nil }
@@ -386,7 +439,7 @@ enum ActionDescriptor {
         switch self {
         case .chat: return "Chat"
         case .share: return "Share"
-        case .preformance: return "Preformance"
+        case .performance: return "Performance"
         case .schedule: return "Schedule"
         case .trash: return "Trash"
         }
@@ -399,7 +452,7 @@ enum ActionDescriptor {
         switch self {
         case .chat: name = "Chat"
         case .share: name = "Share"
-        case .preformance: name = "Preformance"
+        case .performance: name = "Performance"
         case .schedule: name = "Schedule"
         case .trash: name = "Trash"
         }
@@ -411,7 +464,7 @@ enum ActionDescriptor {
         switch self {
         case .chat: return UIColor(red: (101/255.0), green: (99/255.0), blue: (164/255.0), alpha: 1.0)
         case .share: return UIColor(red: (80/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
-        case .preformance: return UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
+        case .performance: return UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
         case .schedule: return UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
         case .trash: return UIColor(red: (0/255.0), green: (0/255.0), blue: (0/255.0), alpha: 1.0)
         }
