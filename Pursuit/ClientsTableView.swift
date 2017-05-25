@@ -222,9 +222,12 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         let client = clientList[indexPath.row]
         
+        
+        /*
         if orientation == .left {
             guard isSwipeRightEnabled else { return nil }
-            
+            /*
+             
             let read = SwipeAction(style: .default, title: nil) { action, indexPath in
                 
                 //action for swipe
@@ -236,11 +239,12 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             let descriptor: ActionDescriptor = email.unread ? .read : .unread
             configure(action: read, with: descriptor)
             
-            return [read]
+            return [read]*/
         } else {
             
             let flag = SwipeAction(style: .default, title: nil, handler: nil)
             flag.hidesWhenSelected = true
+            
             configure(action: flag, with: .flag)
             
             let delete = SwipeAction(style: .destructive, title: nil) { action, indexPath in
@@ -266,12 +270,14 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             configure(action: more, with: .more)
             
             return [delete, flag, more]
-        }
+        }*/
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
         
         var options = SwipeTableOptions()
+        
+        /*
         options.expansionStyle = orientation == .left ? .selection : .destructive
         options.transitionStyle = defaultOptions.transitionStyle
         
@@ -282,12 +288,15 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             options.buttonSpacing = 4
             options.backgroundColor = #colorLiteral(red: 0.9467939734, green: 0.9468161464, blue: 0.9468042254, alpha: 1)
         }
+         */
         
         return options
     }
     
     func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
+        /*
         action.title = descriptor.title(forDisplayMode: buttonDisplayMode)
+        
         action.image = descriptor.image(forStyle: buttonStyle, displayMode: buttonDisplayMode)
         
         switch buttonStyle {
@@ -299,7 +308,9 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             action.font = .systemFont(ofSize: 13)
             action.transitionDelegate = ScaleTransition.default
         }
+ 
     }
+ */
 }
 
 class MailCell: SwipeTableViewCell {
@@ -367,7 +378,7 @@ class IndicatorView: UIView {
 }
 
 enum ActionDescriptor {
-    case read, unread, more, flag, trash
+    case chat, share, preformance, schedule, trash
     
     func title(forDisplayMode displayMode: ButtonDisplayMode) -> String? {
         guard displayMode != .imageOnly else { return nil }
@@ -398,10 +409,11 @@ enum ActionDescriptor {
     
     var color: UIColor {
         switch self {
-        case .chat, .unread: return UIColor(red: (101/255.0), green: (99/255.0), blue: (164/255.0), alpha: 1.0)
-        case .share: return UIColor(red: (80)/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
+        case .chat: return UIColor(red: (101/255.0), green: (99/255.0), blue: (164/255.0), alpha: 1.0)
+        case .share: return UIColor(red: (80/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
         case .preformance: return UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
         case .schedule: return UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
+        case .trash: return UIColor(red: (0/255.0), green: (0/255.0), blue: (0/255.0), alpha: 1.0)
         }
     }
 }
