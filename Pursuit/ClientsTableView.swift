@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class ClientsTableView: UITableViewController {
+class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //view objects
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -27,7 +27,7 @@ class ClientsTableView: UITableViewController {
     //struct of individual client information
     struct clientInfo {
         var clientName = String()
-        var clientImage = UIImageView()
+        var clientImage = UIImage()
     }
     
     //list of client information
@@ -45,6 +45,14 @@ class ClientsTableView: UITableViewController {
         super.viewDidLoad()
         
         searchField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        for index in 1...5 {
+            var client = clientInfo()
+            client.clientName = "Janet Rose"
+            let imgName = "avatar\(index%3+1)"
+            client.clientImage = UIImage(named: imgName)!
+            clientList.append(client)
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -77,7 +85,7 @@ class ClientsTableView: UITableViewController {
         return 1
     }*/
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //returns number in clientList
         if showSearchResults == false{
@@ -90,33 +98,45 @@ class ClientsTableView: UITableViewController {
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
 
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as! ClientCell
 
         if showSearchResults == false {
             
             //assigns cell image
-            cell.clientImage = clientList[indexPath.row].clientImage;
+            cell.clientImage.image = clientList[indexPath.row].clientImage;
 
             //adds cell name
             cell.clientName.text = clientList[indexPath.row].clientName;
             
+            if indexPath.row == clientList.count-1 {
+                cell.separatorView.isHidden = true
+            }
+            
         }else{
             
             //assigns cell image
-            cell.clientImage = filteredClientList[indexPath.row].clientImage;
+            cell.clientImage.image = filteredClientList[indexPath.row].clientImage;
  
             //adds cell name
             cell.clientName.text = filteredClientList[indexPath.row].clientName;
 
+            if indexPath.row == filteredClientList.count-1 {
+                cell.separatorView.isHidden = true
+            }
         }
         
+        cell.backgroundColor = UIColor.clear
+        
         //makes cell image circular
-        //cell.clientImage.layer.cornerRadius = cell.clientImage.frame.size.width/2;
-        //cell.clientImage.clipsToBounds = true;
+        cell.clientImage.layer.cornerRadius = cell.clientImage.frame.size.width/2;
+        cell.clientImage.clipsToBounds = true;
         
         //changes cell text color
         cell.clientName.textColor = UIColor.white;

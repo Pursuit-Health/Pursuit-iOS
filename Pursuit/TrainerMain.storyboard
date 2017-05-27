@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5BO-VW-YJ4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5BO-VW-YJ4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
         <!--Clients Table View-->
         <scene sceneID="QaF-m5-PNT">
             <objects>
-                <viewController id="bK6-Hg-wWZ" customClass="ClientsTableView" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClientsTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bK6-Hg-wWZ" customClass="ClientsTableView" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kNa-yL-5yq"/>
                         <viewControllerLayoutGuide type="bottom" id="bhD-Mi-oYu"/>
@@ -44,9 +44,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="sfN-Cp-x2V">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-OC-EKX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-OC-EKX">
                                 <rect key="frame" x="0.0" y="82" width="375" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -54,8 +54,8 @@
                                     <outlet property="delegate" destination="bK6-Hg-wWZ" id="KUb-vB-zOk"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-pg-aMv">
-                                <rect key="frame" x="41" y="43" width="15" height="15"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-pg-aMv">
+                                <rect key="frame" x="31" y="33" width="25" height="25"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-tW-vXw">

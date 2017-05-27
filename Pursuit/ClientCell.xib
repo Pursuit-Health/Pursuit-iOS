@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,10 +19,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-uE-dYH">
-                        <rect key="frame" x="20" y="14.821097283749396" width="39.999999999999986" height="39.999999999999979"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nmn-uE-dYH">
+                        <rect key="frame" x="20" y="15" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="nmn-uE-dYH" secondAttribute="height" multiplier="1:1" id="tm8-oo-KWy"/>
+                            <constraint firstAttribute="width" constant="40" id="Bjy-UH-NFZ"/>
+                            <constraint firstAttribute="height" constant="40" id="muk-IQ-whf"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -32,16 +32,28 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Janet Rose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQQ-s6-WUq">
-                        <rect key="frame" x="90" y="24" width="257" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Janet Rose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQQ-s6-WUq">
+                        <rect key="frame" x="90" y="24" width="244" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="d3X-px-5qi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                         <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="right" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-dh-2l1">
-                        <rect key="frame" x="355" y="28" width="12" height="12"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-dh-2l1">
+                        <rect key="frame" x="342" y="22" width="25" height="25"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="ith-Ck-12R"/>
+                            <constraint firstAttribute="width" constant="25" id="srs-Lo-Hpl"/>
+                        </constraints>
                     </imageView>
+                    <view alpha="0.20000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gG8-ht-VGc">
+                        <rect key="frame" x="0.0" y="69" width="375" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -57,11 +69,12 @@
             <connections>
                 <outlet property="clientImage" destination="nmn-uE-dYH" id="jz3-Ut-1dm"/>
                 <outlet property="clientName" destination="rQQ-s6-WUq" id="yd7-ym-HoP"/>
+                <outlet property="separatorView" destination="gG8-ht-VGc" id="0zU-dV-rvu"/>
             </connections>
             <point key="canvasLocation" x="62.5" y="67"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="right" width="25" height="25"/>
+        <image name="arrow_right" width="7" height="12"/>
     </resources>
 </document>
