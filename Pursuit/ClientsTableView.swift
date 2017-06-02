@@ -32,12 +32,8 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     //list of client information
     var clientList = [clientInfo]()
-    
-    //list of client search results
-    var filteredClientList = [clientInfo]()
-    
-    //show search results boolean
-    var showSearchResults = false;
+    var filteredClientList = [clientInfo]() //search results
+    var showSearchResults = false; //show search results boolean
     
 
     //DEFAULT LOAD AND MEMORY FUNCTIONS
@@ -48,7 +44,7 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         for index in 1...5 {
             var client = clientInfo()
-            client.clientName = "Janet Rose"
+            client.clientName = "Janet Rose " + String(index)
             let imgName = "avatar\(index%3+1)"
             client.clientImage = UIImage(named: imgName)!
             clientList.append(client)
@@ -67,14 +63,34 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    //searches client cells upon typing in searchfield
+    //searches client cells typing in searchfield
     func textFieldDidChange(_ textField: UITextField) {
         
         var searchString = searchField.text
         searchString = searchString?.trimmingCharacters(in: NSCharacterSet.whitespaces)
         
-        //search client cells with string
+        if searchString == "" {
+            
+            self.showSearchResults = false
+            self.clientsTable.reloadData()
+            
+        }else{
         
+            self.filteredClientList.removeAll()
+        
+            //searches through each customer
+            for searchClientNum in 1...clientList.count {
+                var nameString = clientList[searchClientNum-1].clientName
+                print(nameString)
+                if nameString.lowercased().range(of: (searchString?.lowercased())!) != nil {
+                    filteredClientList.append(clientList[searchClientNum-1])
+                }
+            }
+        
+        self.showSearchResults = true
+        self.clientsTable.reloadData()
+            
+        }
     }
     
     
