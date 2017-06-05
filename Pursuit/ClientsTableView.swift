@@ -285,7 +285,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             
             //DISPLAY OPTIONS UPON LEFT SWIPE
             let chat = SwipeAction(style: .default, title: nil){ action, indexPath in
-                
+                print("chat pressed")
                 //action for chat press
             }
             chat.hidesWhenSelected = true
@@ -295,7 +295,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
 
             
             let share = SwipeAction(style: .default, title: nil){ action, indexPath in
-                
+                print("share pressed")
                 //action for share press
             }
             share.hidesWhenSelected = true
@@ -305,7 +305,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             
             
             let performance = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
+                print("performance pressed")
                 //action for preformance press
             }
             performance.hidesWhenSelected = true
@@ -315,7 +315,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             
             
             let schedule = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
+                print("schedule pressed")
                 //action for schedule press
             }
             schedule.hidesWhenSelected = true
