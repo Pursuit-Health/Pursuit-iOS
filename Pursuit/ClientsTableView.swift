@@ -156,7 +156,8 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         //changes cell text color
         cell.clientName.textColor = UIColor.white;
-        
+    
+        cell.delegate = self
         return cell;
         
     }
@@ -290,7 +291,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             chat.hidesWhenSelected = true
             chat.image = #imageLiteral(resourceName: "btnChat")
             chat.backgroundColor = UIColor(red: (101/255.0), green: (99/255.0), blue: (164/255.0), alpha: 1.0)
-            configure(action: chat, with: .chat)
+            //configure(action: chat, with: .chat)
 
             
             let share = SwipeAction(style: .default, title: nil){ action, indexPath in
@@ -300,7 +301,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             share.hidesWhenSelected = true
             share.image = #imageLiteral(resourceName: "btnShare")
             share.backgroundColor = UIColor(red: (80/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
-            configure(action: share, with: .share)
+            //configure(action: share, with: .share)
             
             
             let performance = SwipeAction(style: .default, title: nil) { action, indexPath in
@@ -310,7 +311,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             performance.hidesWhenSelected = true
             performance.image = #imageLiteral(resourceName: "btnPerformance")
             performance.backgroundColor = UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
-            configure(action: performance, with: .performance)
+            //configure(action: performance, with: .performance)
             
             
             let schedule = SwipeAction(style: .default, title: nil) { action, indexPath in
@@ -320,7 +321,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             schedule.hidesWhenSelected = true
             schedule.image = #imageLiteral(resourceName: "btnSchedule")
             schedule.backgroundColor = UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
-            configure(action: schedule, with: .schedule) //??
+            //configure(action: schedule, with: .schedule) //??
             
             //let closure: (UIAlertAction) -> Void = { _ in cell.hideSwipe(animated: true) }
             
@@ -386,22 +387,10 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
         
         var options = SwipeTableOptions()
         
-        options.transitionStyle = .drag //or drag/reveal
-        options.expansionStyle = .selection
-        
-        /*
-        options.expansionStyle = orientation == .left ? .selection : .destructive
-        options.transitionStyle = defaultOptions.transitionStyle
-        
-        switch buttonStyle {
-        case .backgroundColor:
-            options.buttonSpacing = 11
-        case .circular:
-            options.buttonSpacing = 4
-            options.backgroundColor = #colorLiteral(red: 0.9467939734, green: 0.9468161464, blue: 0.9468042254, alpha: 1)
-        }
-         */
-        
+        options.transitionStyle = .border //or drag/reveal/border
+        options.expansionStyle = .none
+        options.buttonPadding = 0
+                
         return options
     }
  
@@ -424,59 +413,7 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
     }
  
 }
-/*
-class MailCell: SwipeTableViewCell {
-    @IBOutlet var fromLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var subjectLabel: UILabel!
-    @IBOutlet var bodyLabel: UILabel!
-    
-    var animator: Any?
-    
-    var indicatorView = IndicatorView(frame: .zero)
-    
-    var unread = false {
-        didSet {
-            indicatorView.transform = unread ? CGAffineTransform.identity : CGAffineTransform.init(scaleX: 0.001, y: 0.001)
-        }
-    }
-    
-    override func awakeFromNib() {
-        setupIndicatorView()
-    }
-    
-    func setupIndicatorView() {
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        indicatorView.color = tintColor
-        indicatorView.backgroundColor = .clear
-        contentView.addSubview(indicatorView)
-        
-        let size: CGFloat = 12
-        indicatorView.widthAnchor.constraint(equalToConstant: size).isActive = true
-        indicatorView.heightAnchor.constraint(equalTo: indicatorView.widthAnchor).isActive = true
-        indicatorView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
-        indicatorView.centerYAnchor.constraint(equalTo: fromLabel.centerYAnchor).isActive = true
-    }
-    
-    func setUnread(_ unread: Bool, animated: Bool) {
-        let closure = {
-            self.unread = unread
-        }
-        
-        if #available(iOS 10, *), animated {
-            var localAnimator = self.animator as? UIViewPropertyAnimator
-            localAnimator?.stopAnimation(true)
-            
-            localAnimator = unread ? UIViewPropertyAnimator(duration: 1.0, dampingRatio: 0.4) : UIViewPropertyAnimator(duration: 0.3, dampingRatio: 1.0)
-            localAnimator?.addAnimations(closure)
-            localAnimator?.startAnimation()
-            
-            self.animator = localAnimator
-        } else {
-            closure()
-        }
-    }
-}*/
+
 
 class IndicatorView: UIView {
     var color = UIColor.clear {
