@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,9 +45,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="sfN-Cp-x2V">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-OC-EKX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-OC-EKX">
                                 <rect key="frame" x="0.0" y="82" width="375" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NgV-OC-EKX" secondAttribute="height" multiplier="406:605" id="Zlj-D6-tNN"/>
+                                </constraints>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -54,14 +58,17 @@
                                     <outlet property="delegate" destination="bK6-Hg-wWZ" id="KUb-vB-zOk"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-pg-aMv">
-                                <rect key="frame" x="31" y="33" width="25" height="25"/>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-pg-aMv">
+                                <rect key="frame" x="31" y="28" width="25" height="30"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hi" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-tW-vXw">
-                                <rect key="frame" x="64" y="28" width="265" height="30"/>
+                                <rect key="frame" x="64" y="30" width="265" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Mkm-tW-vXw" secondAttribute="height" multiplier="53:6" id="cAm-hR-5JR"/>
+                                </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -69,9 +76,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mkm-tW-vXw" firstAttribute="height" secondItem="yXT-pg-aMv" secondAttribute="height" id="2aq-8S-OT0"/>
                             <constraint firstItem="bhD-Mi-oYu" firstAttribute="top" secondItem="NgV-OC-EKX" secondAttribute="bottom" id="53Z-K9-oYJ"/>
+                            <constraint firstItem="Mkm-tW-vXw" firstAttribute="centerY" secondItem="yXT-pg-aMv" secondAttribute="centerY" id="73K-vr-T2L"/>
                             <constraint firstItem="bhD-Mi-oYu" firstAttribute="top" secondItem="sfN-Cp-x2V" secondAttribute="bottom" constant="-49" id="Frw-EC-0Ry"/>
-                            <constraint firstItem="NgV-OC-EKX" firstAttribute="top" secondItem="Mkm-tW-vXw" secondAttribute="bottom" constant="17" id="Oae-KY-ARf"/>
                             <constraint firstItem="sfN-Cp-x2V" firstAttribute="top" secondItem="kNa-yL-5yq" secondAttribute="bottom" constant="-20" id="RzC-fx-bFL"/>
                             <constraint firstItem="Mkm-tW-vXw" firstAttribute="leading" secondItem="yXT-pg-aMv" secondAttribute="trailing" constant="8" id="Wei-vf-YT8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NgV-OC-EKX" secondAttribute="trailing" constant="-16" id="bqu-g3-f8M"/>
@@ -79,7 +87,7 @@
                             <constraint firstItem="sfN-Cp-x2V" firstAttribute="leading" secondItem="jSn-Ca-5uJ" secondAttribute="leadingMargin" constant="-16" id="f31-3c-jSK"/>
                             <constraint firstItem="NgV-OC-EKX" firstAttribute="leading" secondItem="jSn-Ca-5uJ" secondAttribute="leadingMargin" constant="-16" id="iRw-rD-Kyc"/>
                             <constraint firstItem="sfN-Cp-x2V" firstAttribute="leading" secondItem="yXT-pg-aMv" secondAttribute="trailing" constant="-56" id="lb8-tO-8CD"/>
-                            <constraint firstItem="Mkm-tW-vXw" firstAttribute="leading" secondItem="sfN-Cp-x2V" secondAttribute="trailing" constant="-311" id="qtS-Ss-fVK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mkm-tW-vXw" secondAttribute="trailing" constant="30" id="uCc-Zh-bbd"/>
                             <constraint firstItem="NgV-OC-EKX" firstAttribute="top" secondItem="kNa-yL-5yq" secondAttribute="bottom" constant="62" id="vgA-FJ-GW2"/>
                             <constraint firstItem="NgV-OC-EKX" firstAttribute="top" secondItem="yXT-pg-aMv" secondAttribute="bottom" constant="24" id="wK2-HZ-sq6"/>
                         </constraints>
@@ -109,7 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="13E-cM-XIo">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

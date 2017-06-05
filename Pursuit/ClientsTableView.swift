@@ -267,6 +267,14 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
 
 extension ClientsTableView: SwipeTableViewCellDelegate {
     
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?, for orientation: SwipeActionsOrientation){
+        
+    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
@@ -313,6 +321,8 @@ extension ClientsTableView: SwipeTableViewCellDelegate {
             schedule.image = #imageLiteral(resourceName: "btnSchedule")
             schedule.backgroundColor = UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
             configure(action: schedule, with: .schedule) //??
+            
+            //let closure: (UIAlertAction) -> Void = { _ in cell.hideSwipe(animated: true) }
             
             return [chat, share, performance, schedule]
             
