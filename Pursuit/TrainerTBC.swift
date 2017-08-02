@@ -10,6 +10,7 @@ import UIKit
 
 class TrainerTBC: UITabBarController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBar.backgroundColor = UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.1)

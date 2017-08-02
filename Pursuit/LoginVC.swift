@@ -104,6 +104,9 @@ class LoginVC: UIViewController {
     }
     
     func signInPressed(){
+        let sb = UIStoryboard(name: "TrainerMain", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ClientsTableView")
+        self.present(vc, animated: true, completion: nil)
 //        if validateSignIn() {
 //            KVNProgress.show(withStatus: "Signing in...")
 //            API.signIn(email: signInModel.email!, password: signInModel.password!, completion: { (user, error) in

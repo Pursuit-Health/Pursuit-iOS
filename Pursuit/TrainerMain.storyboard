@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jpr-R0-cT0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5BO-VW-YJ4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,47 +19,138 @@
                         <viewControllerLayoutGuide type="bottom" id="MeX-Lh-OEC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ybe-nG-YOT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_pursuit" id="SNi-kd-gFC"/>
+                    <tabBarItem key="tabBarItem" title="" image="ic_pursuit" selectedImage="ic_pursuit" id="SNi-kd-gFC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBm-IZ-SzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="374" y="-20"/>
         </scene>
-        <!--View Controller-->
+        <!--Clients Table View-->
         <scene sceneID="QaF-m5-PNT">
             <objects>
-                <viewController id="bK6-Hg-wWZ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClientsTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bK6-Hg-wWZ" customClass="ClientsTableView" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kNa-yL-5yq"/>
                         <viewControllerLayoutGuide type="bottom" id="bhD-Mi-oYu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jSn-Ca-5uJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="sfN-Cp-x2V">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NgV-OC-EKX">
+                                <rect key="frame" x="0.0" y="82" width="375" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bK6-Hg-wWZ" id="TQ9-dA-H52"/>
+                                    <outlet property="delegate" destination="bK6-Hg-wWZ" id="KUb-vB-zOk"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40l-EF-Vlz">
+                                <rect key="frame" x="46" y="36" width="283" height="30"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-pg-aMv">
+                                        <rect key="frame" x="0.0" y="8" width="14" height="14"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="14" id="Oai-be-GhB"/>
+                                            <constraint firstAttribute="height" constant="14" id="cJh-nQ-cTh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-tW-vXw">
+                                        <rect key="frame" x="22" y="0.0" width="261" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" red="0.68254282994923865" green="0.68254282994923865" blue="0.68254282994923865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c98-LM-lxk">
+                                        <rect key="frame" x="0.0" y="29.5" width="283" height="0.5"/>
+                                        <color key="backgroundColor" red="0.31372549019607843" green="0.82352941176470584" blue="0.76078431372549016" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="QyW-iJ-C1g"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="c98-LM-lxk" secondAttribute="trailing" id="7Fs-pi-bif"/>
+                                    <constraint firstAttribute="bottom" secondItem="c98-LM-lxk" secondAttribute="bottom" id="Db3-wL-dpt"/>
+                                    <constraint firstItem="Mkm-tW-vXw" firstAttribute="top" secondItem="40l-EF-Vlz" secondAttribute="top" id="LAp-DR-nSQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mkm-tW-vXw" secondAttribute="bottom" id="SGG-VB-7qs"/>
+                                    <constraint firstItem="c98-LM-lxk" firstAttribute="leading" secondItem="40l-EF-Vlz" secondAttribute="leading" id="XXX-S4-4nF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mkm-tW-vXw" secondAttribute="trailing" id="cDW-aq-0BZ"/>
+                                    <constraint firstItem="yXT-pg-aMv" firstAttribute="centerY" secondItem="40l-EF-Vlz" secondAttribute="centerY" id="rcB-dV-bla"/>
+                                    <constraint firstItem="yXT-pg-aMv" firstAttribute="leading" secondItem="40l-EF-Vlz" secondAttribute="leading" id="tnd-tn-l3x"/>
+                                    <constraint firstItem="Mkm-tW-vXw" firstAttribute="leading" secondItem="yXT-pg-aMv" secondAttribute="trailing" constant="8" id="y5a-bz-GjU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bhD-Mi-oYu" firstAttribute="top" secondItem="NgV-OC-EKX" secondAttribute="bottom" id="53Z-K9-oYJ"/>
+                            <constraint firstItem="40l-EF-Vlz" firstAttribute="leading" secondItem="jSn-Ca-5uJ" secondAttribute="leadingMargin" constant="30" id="5pi-Lu-2xe"/>
+                            <constraint firstItem="NgV-OC-EKX" firstAttribute="top" secondItem="40l-EF-Vlz" secondAttribute="bottom" constant="16" id="95s-g7-1sw"/>
+                            <constraint firstItem="sfN-Cp-x2V" firstAttribute="leading" secondItem="jSn-Ca-5uJ" secondAttribute="leading" id="AzR-vs-8OI"/>
+                            <constraint firstItem="40l-EF-Vlz" firstAttribute="top" secondItem="kNa-yL-5yq" secondAttribute="bottom" constant="16" id="KGK-qm-w4j"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="40l-EF-Vlz" secondAttribute="trailing" constant="30" id="Sbj-Ax-z8B"/>
+                            <constraint firstAttribute="trailing" secondItem="NgV-OC-EKX" secondAttribute="trailing" id="TlG-cn-EKr"/>
+                            <constraint firstItem="NgV-OC-EKX" firstAttribute="leading" secondItem="jSn-Ca-5uJ" secondAttribute="leading" id="aAv-ch-gFN"/>
+                            <constraint firstItem="sfN-Cp-x2V" firstAttribute="top" secondItem="jSn-Ca-5uJ" secondAttribute="top" id="fs7-Di-dXd"/>
+                            <constraint firstAttribute="trailing" secondItem="sfN-Cp-x2V" secondAttribute="trailing" id="lak-Du-kpN"/>
+                            <constraint firstAttribute="bottom" secondItem="sfN-Cp-x2V" secondAttribute="bottom" id="n8h-hl-hLJ"/>
+                            <constraint firstItem="NgV-OC-EKX" firstAttribute="top" secondItem="kNa-yL-5yq" secondAttribute="bottom" constant="62" id="vgA-FJ-GW2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_list" selectedImage="ic_list" id="Q4H-TD-VhI"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="sfN-Cp-x2V" id="5Oh-LZ-LC0"/>
+                        <outlet property="clientsTable" destination="NgV-OC-EKX" id="EzQ-6P-jIh"/>
+                        <outlet property="searchField" destination="Mkm-tW-vXw" id="ijK-hD-xhz"/>
+                        <outlet property="searchImage" destination="yXT-pg-aMv" id="pXS-Tu-ifR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxC-03-Vph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="374" y="742"/>
+            <point key="canvasLocation" x="447.19999999999999" y="715.59220389805103"/>
         </scene>
         <!--ScheduleVC-->
         <scene sceneID="Q6x-O4-W6y">
             <objects>
-                <viewController storyboardIdentifier="ScheduleVC" id="2YP-X1-9ts" customClass="ScheduleVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2YP-X1-9ts" customClass="ScheduleVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cFV-w5-Mbx"/>
                         <viewControllerLayoutGuide type="bottom" id="bU5-U0-d8F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vpo-qL-luE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="13E-cM-XIo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="13E-cM-XIo" secondAttribute="trailing" id="8DV-sd-9eV"/>
+                            <constraint firstAttribute="bottom" secondItem="13E-cM-XIo" secondAttribute="bottom" id="JH6-sI-1Hh"/>
+                            <constraint firstItem="13E-cM-XIo" firstAttribute="leading" secondItem="vpo-qL-luE" secondAttribute="leading" id="nRZ-97-xjb"/>
+                            <constraint firstItem="13E-cM-XIo" firstAttribute="top" secondItem="vpo-qL-luE" secondAttribute="top" id="xYG-3Y-gmT"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_schedule" id="bPZ-sr-FRe"/>
                 </viewController>
@@ -66,38 +158,15 @@
             </objects>
             <point key="canvasLocation" x="373.60000000000002" y="-744.3778110944528"/>
         </scene>
-        <!--PursuitNVC-->
-        <scene sceneID="fS6-1s-zuB">
-            <objects>
-                <navigationController storyboardIdentifier="navController" extendedLayoutIncludesOpaqueBars="YES" id="jpr-R0-cT0" customClass="PursuitNVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9YU-bG-MOw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.099229236577181204" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="5BO-VW-YJ4" kind="relationship" relationship="rootViewController" id="hsJ-fO-l4x"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IOw-f1-NQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1513" y="-20"/>
-        </scene>
-        <!--TrainerTBC-->
+        <!--Tab Bar Controller-->
         <scene sceneID="lAj-Cp-kGY">
             <objects>
-                <tabBarController storyboardIdentifier="TrainerTBC" id="5BO-VW-YJ4" customClass="TrainerTBC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="XMp-WC-07b"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="qGz-Cl-CT2">
+                <tabBarController id="5BO-VW-YJ4" customClass="ESTabBarController" customModule="ESTabBarController_swift" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="qGz-Cl-CT2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="2YP-X1-9ts" kind="relationship" relationship="viewControllers" id="zEb-bP-mu5"/>
@@ -111,8 +180,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="375" height="667"/>
         <image name="ic_list" width="20" height="18"/>
         <image name="ic_pursuit" width="45" height="45"/>
         <image name="ic_schedule" width="22" height="22"/>
+        <image name="ic_search" width="14" height="14"/>
     </resources>
 </document>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B1CC4101ECBAD5E00AB7C1F /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1CC40F1ECBAD5E00AB7C1F /* PursuitNVC.swift */; };
 		5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F830C1E850E4100ABA24C /* AppDelegate.swift */; };
 		5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83101E850E4100ABA24C /* ClientMain.storyboard */; };
 		5B1F83141E850E4100ABA24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83131E850E4100ABA24C /* Assets.xcassets */; };
@@ -19,6 +18,7 @@
 		5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */; };
 		5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */; };
 		5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1B71EB314F9005B35CD /* Login.storyboard */; };
+		5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BD1EB31611005B35CD /* Transitions.swift */; };
 		5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BF1EB31651005B35CD /* LoginVC.swift */; };
 		5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */; };
 		5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C51EB3196A005B35CD /* SignInCell.swift */; };
@@ -31,6 +31,10 @@
 		5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */; };
 		5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D41EB319E5005B35CD /* DezappButton.swift */; };
 		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
+		84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D4D1F324A3600531740 /* PursuitNVC.swift */; };
+		BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */; };
+		BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */; };
+		BBDA2B571ECE7AA6001FB6AD /* ClientsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */; };
 		E8820409961751A2FF0697AF /* Pods_Pursuit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +57,6 @@
 
 /* Begin PBXFileReference section */
 		3CFCF4946A25E5C6B6E0D7FF /* Pods_PursuitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PursuitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B1CC40F1ECBAD5E00AB7C1F /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		5B1F83091E850E4100ABA24C /* Pursuit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pursuit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F830C1E850E4100ABA24C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B1F83111E850E4100ABA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClientMain.storyboard; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTBC.swift; sourceTree = "<group>"; };
 		5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerMain.storyboard; sourceTree = "<group>"; };
 		5BE3A1B71EB314F9005B35CD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		5BE3A1BD1EB31611005B35CD /* Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		5BE3A1BF1EB31651005B35CD /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExt.swift; sourceTree = "<group>"; };
 		5BE3A1C51EB3196A005B35CD /* SignInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInCell.swift; sourceTree = "<group>"; };
@@ -85,7 +89,11 @@
 		5BE3A1D91EB7029E005B35CD /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5C1130B984995A395004F4AF /* Pods_PursuitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PursuitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84AB4D4D1F324A3600531740 /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit.release.xcconfig"; sourceTree = "<group>"; };
+		BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
+		BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientCell.xib; sourceTree = "<group>"; };
+		BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsTableView.swift; sourceTree = "<group>"; };
 		F1B59CAB123C412E2EEBEE83 /* Pods-Pursuit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,22 +185,6 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		5BB09F161ECBA35C003EB3BC /* Trainer */ = {
-			isa = PBXGroup;
-			children = (
-				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
-				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
-			);
-			name = Trainer;
-			sourceTree = "<group>";
-		};
-		5BB09F171ECBA361003EB3BC /* Client */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Client;
-			sourceTree = "<group>";
-		};
 		5BE3A1B91EB314FF005B35CD /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,11 +209,12 @@
 		5BE3A1BB1EB3152B005B35CD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B1CC40F1ECBAD5E00AB7C1F /* PursuitNVC.swift */,
-				5BB09F171ECBA361003EB3BC /* Client */,
-				5BB09F161ECBA35C003EB3BC /* Trainer */,
+				84AB4D4D1F324A3600531740 /* PursuitNVC.swift */,
 				5BE3A1BF1EB31651005B35CD /* LoginVC.swift */,
 				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
+				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
+				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
+				BBDA2B591ECEAC42001FB6AD /* Trainer */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -229,6 +222,7 @@
 		5BE3A1BC1EB315F0005B35CD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BE3A1BD1EB31611005B35CD /* Transitions.swift */,
 				5B1F833A1E851B3900ABA24C /* Extensions */,
 			);
 			name = Resources;
@@ -237,6 +231,7 @@
 		5BE3A1C31EB3193D005B35CD /* UITableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				BBDA2B581ECEA8DA001FB6AD /* Trainer */,
 				5BE3A1C41EB31960005B35CD /* Login */,
 			);
 			name = UITableViewCells;
@@ -290,6 +285,23 @@
 				AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BBDA2B581ECEA8DA001FB6AD /* Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */,
+				BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */,
+			);
+			name = Trainer;
+			sourceTree = "<group>";
+		};
+		BBDA2B591ECEAC42001FB6AD /* Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */,
+			);
+			name = Trainer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +425,7 @@
 				5BE3A1D01EB3196A005B35CD /* ForgotPasswordCell.xib in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
+				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +458,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3B22A9CAEDA77752B11D385A /* [CP] Copy Pods Resources */ = {
@@ -485,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */,
 				5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */,
 				5BA7305A1EC7BF0700C87C0C /* ScheduleVC.swift in Sources */,
 				5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */,
@@ -495,8 +509,10 @@
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
 				5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */,
+				BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */,
+				BBDA2B571ECE7AA6001FB6AD /* ClientsTableView.swift in Sources */,
+				5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
-				5B1CC4101ECBAD5E00AB7C1F /* PursuitNVC.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */,
 			);
