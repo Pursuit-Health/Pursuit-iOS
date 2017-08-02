@@ -18,7 +18,6 @@
 		5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */; };
 		5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */; };
 		5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1B71EB314F9005B35CD /* Login.storyboard */; };
-		5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BD1EB31611005B35CD /* Transitions.swift */; };
 		5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BF1EB31651005B35CD /* LoginVC.swift */; };
 		5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */; };
 		5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1C51EB3196A005B35CD /* SignInCell.swift */; };
@@ -32,6 +31,19 @@
 		5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D41EB319E5005B35CD /* DezappButton.swift */; };
 		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
 		84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D4D1F324A3600531740 /* PursuitNVC.swift */; };
+		84AB4D731F32826700531740 /* BBBXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D721F32826700531740 /* BBBXIBView.m */; };
+		84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D761F32829900531740 /* CALayer+BBBProperty.m */; };
+		84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D7A1F3282A400531740 /* NSObject+BBBMultyThhreading.m */; };
+		84AB4D7E1F3282AC00531740 /* TableView+BBBExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D7D1F3282AC00531740 /* TableView+BBBExtension.swift */; };
+		84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D811F3282C300531740 /* UINavigationController+removeController.m */; };
+		84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D851F32831400531740 /* UIView+BBBProperty.m */; };
+		84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D8D1F32845400531740 /* UIView+BBBPlaceWithConstraint.m */; };
+		84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D931F3287DD00531740 /* ServiceProtocol.swift */; };
+		84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D951F3287F400531740 /* AlamofireService.swift */; };
+		84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D9A1F32883D00531740 /* PursuitAPIRequests.swift */; };
+		84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D9C1F32884B00531740 /* PSAPI.swift */; };
+		84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4DA01F32899000531740 /* ErrorProtocol.swift */; };
+		84AB4DA31F32899C00531740 /* PSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4DA21F32899C00531740 /* PSError.swift */; };
 		BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */; };
 		BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */; };
 		BBDA2B571ECE7AA6001FB6AD /* ClientsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */; };
@@ -74,7 +86,6 @@
 		5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTBC.swift; sourceTree = "<group>"; };
 		5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerMain.storyboard; sourceTree = "<group>"; };
 		5BE3A1B71EB314F9005B35CD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		5BE3A1BD1EB31611005B35CD /* Transitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		5BE3A1BF1EB31651005B35CD /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExt.swift; sourceTree = "<group>"; };
 		5BE3A1C51EB3196A005B35CD /* SignInCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInCell.swift; sourceTree = "<group>"; };
@@ -90,6 +101,26 @@
 		5C1130B984995A395004F4AF /* Pods_PursuitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PursuitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C9BE721552FEA3874A009E /* Pods_Pursuit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84AB4D4D1F324A3600531740 /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
+		84AB4D711F32826700531740 /* BBBXIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBXIBView.h; sourceTree = "<group>"; };
+		84AB4D721F32826700531740 /* BBBXIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBXIBView.m; sourceTree = "<group>"; };
+		84AB4D751F32829900531740 /* CALayer+BBBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+BBBProperty.h"; sourceTree = "<group>"; };
+		84AB4D761F32829900531740 /* CALayer+BBBProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+BBBProperty.m"; sourceTree = "<group>"; };
+		84AB4D791F3282A400531740 /* NSObject+BBBMultyThhreading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BBBMultyThhreading.h"; sourceTree = "<group>"; };
+		84AB4D7A1F3282A400531740 /* NSObject+BBBMultyThhreading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BBBMultyThhreading.m"; sourceTree = "<group>"; };
+		84AB4D7D1F3282AC00531740 /* TableView+BBBExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableView+BBBExtension.swift"; sourceTree = "<group>"; };
+		84AB4D801F3282C300531740 /* UINavigationController+removeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+removeController.h"; sourceTree = "<group>"; };
+		84AB4D811F3282C300531740 /* UINavigationController+removeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+removeController.m"; sourceTree = "<group>"; };
+		84AB4D841F32831400531740 /* UIView+BBBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BBBProperty.h"; sourceTree = "<group>"; };
+		84AB4D851F32831400531740 /* UIView+BBBProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BBBProperty.m"; sourceTree = "<group>"; };
+		84AB4D8A1F32836B00531740 /* Pursuit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pursuit-Bridging-Header.h"; sourceTree = "<group>"; };
+		84AB4D8C1F32845400531740 /* UIView+BBBPlaceWithConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BBBPlaceWithConstraint.h"; sourceTree = "<group>"; };
+		84AB4D8D1F32845400531740 /* UIView+BBBPlaceWithConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BBBPlaceWithConstraint.m"; sourceTree = "<group>"; };
+		84AB4D931F3287DD00531740 /* ServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		84AB4D951F3287F400531740 /* AlamofireService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireService.swift; sourceTree = "<group>"; };
+		84AB4D9A1F32883D00531740 /* PursuitAPIRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitAPIRequests.swift; sourceTree = "<group>"; };
+		84AB4D9C1F32884B00531740 /* PSAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSAPI.swift; sourceTree = "<group>"; };
+		84AB4DA01F32899000531740 /* ErrorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorProtocol.swift; sourceTree = "<group>"; };
+		84AB4DA21F32899C00531740 /* PSError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSError.swift; sourceTree = "<group>"; };
 		AB705669B1231EB03D419D74 /* Pods-Pursuit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit.release.xcconfig"; sourceTree = "<group>"; };
 		BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientCell.xib; sourceTree = "<group>"; };
@@ -148,12 +179,8 @@
 		5B1F830B1E850E4100ABA24C /* Pursuit */ = {
 			isa = PBXGroup;
 			children = (
-				5BE3A1D81EB7028F005B35CD /* Models */,
-				5BE3A1BB1EB3152B005B35CD /* ViewControllers */,
-				5BE3A1BA1EB3150A005B35CD /* Views */,
-				5BE3A1BC1EB315F0005B35CD /* Resources */,
-				5B1F83131E850E4100ABA24C /* Assets.xcassets */,
-				5B1F83181E850E4100ABA24C /* Info.plist */,
+				84AB4D6E1F32821900531740 /* Resources */,
+				84AB4D4F1F327C8A00531740 /* Application */,
 			);
 			path = Pursuit;
 			sourceTree = "<group>";
@@ -176,98 +203,6 @@
 			path = PursuitUITests;
 			sourceTree = "<group>";
 		};
-		5B1F833A1E851B3900ABA24C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */,
-				5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		5BE3A1B91EB314FF005B35CD /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */,
-				5BE3A1B71EB314F9005B35CD /* Login.storyboard */,
-				5B1F83101E850E4100ABA24C /* ClientMain.storyboard */,
-				5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */,
-			);
-			name = Storyboards;
-			sourceTree = "<group>";
-		};
-		5BE3A1BA1EB3150A005B35CD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5BE3A1D11EB319D9005B35CD /* CustomSelection */,
-				5BE3A1C31EB3193D005B35CD /* UITableViewCells */,
-				5BE3A1B91EB314FF005B35CD /* Storyboards */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		5BE3A1BB1EB3152B005B35CD /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				84AB4D4D1F324A3600531740 /* PursuitNVC.swift */,
-				5BE3A1BF1EB31651005B35CD /* LoginVC.swift */,
-				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
-				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
-				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
-				BBDA2B591ECEAC42001FB6AD /* Trainer */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		5BE3A1BC1EB315F0005B35CD /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5BE3A1BD1EB31611005B35CD /* Transitions.swift */,
-				5B1F833A1E851B3900ABA24C /* Extensions */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		5BE3A1C31EB3193D005B35CD /* UITableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				BBDA2B581ECEA8DA001FB6AD /* Trainer */,
-				5BE3A1C41EB31960005B35CD /* Login */,
-			);
-			name = UITableViewCells;
-			sourceTree = "<group>";
-		};
-		5BE3A1C41EB31960005B35CD /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				5BE3A1C51EB3196A005B35CD /* SignInCell.swift */,
-				5BE3A1C61EB3196A005B35CD /* SignInCell.xib */,
-				5BE3A1C71EB3196A005B35CD /* SignUpCell.swift */,
-				5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */,
-				5BE3A1C91EB3196A005B35CD /* ForgotPasswordCell.swift */,
-				5BE3A1CA1EB3196A005B35CD /* ForgotPasswordCell.xib */,
-			);
-			name = Login;
-			sourceTree = "<group>";
-		};
-		5BE3A1D11EB319D9005B35CD /* CustomSelection */ = {
-			isa = PBXGroup;
-			children = (
-				5BE3A1D21EB319E5005B35CD /* DezappTextField.swift */,
-				5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */,
-				5BE3A1D41EB319E5005B35CD /* DezappButton.swift */,
-			);
-			name = CustomSelection;
-			sourceTree = "<group>";
-		};
-		5BE3A1D81EB7028F005B35CD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5BE3A1D91EB7029E005B35CD /* LoginModel.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		639FBB6540ED248722F99946 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,21 +222,440 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BBDA2B581ECEA8DA001FB6AD /* Trainer */ = {
+		84AB4D4F1F327C8A00531740 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D511F327C9C00531740 /* UI */,
+				84AB4D501F327C9600531740 /* Model */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		84AB4D501F327C9600531740 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D5F1F32803100531740 /* Global */,
+				84AB4D5E1F32802800531740 /* Entities */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		84AB4D511F327C9C00531740 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D531F327CFB00531740 /* Global */,
+				84AB4D521F327CF100531740 /* Stories */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		84AB4D521F327CF100531740 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D5C1F327FDC00531740 /* ClientMain */,
+				84AB4D581F327F5E00531740 /* TrainerMain */,
+				84AB4D551F327E6300531740 /* Login */,
+			);
+			name = Stories;
+			sourceTree = "<group>";
+		};
+		84AB4D531F327CFB00531740 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D6B1F3281D400531740 /* Extensions */,
+				84AB4D631F3280CE00531740 /* Views */,
+				84AB4D601F3280A100531740 /* Controllers */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
+		84AB4D551F327E6300531740 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1B71EB314F9005B35CD /* Login.storyboard */,
+				84AB4D661F32812100531740 /* Cells */,
+				84AB4D561F327F2E00531740 /* Controllers */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		84AB4D561F327F2E00531740 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D571F327F3B00531740 /* LoginVC */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		84AB4D571F327F3B00531740 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1BF1EB31651005B35CD /* LoginVC.swift */,
+			);
+			name = LoginVC;
+			sourceTree = "<group>";
+		};
+		84AB4D581F327F5E00531740 /* TrainerMain */ = {
+			isa = PBXGroup;
+			children = (
+				5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */,
+				84AB4D651F32810C00531740 /* Cells */,
+				84AB4D591F327F6B00531740 /* Controllers */,
+			);
+			name = TrainerMain;
+			sourceTree = "<group>";
+		};
+		84AB4D591F327F6B00531740 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D5B1F327FCA00531740 /* ClientsTableView */,
+				84AB4D5A1F327FC000531740 /* ScheduleVC */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		84AB4D5A1F327FC000531740 /* ScheduleVC */ = {
+			isa = PBXGroup;
+			children = (
+				5BA730591EC7BF0700C87C0C /* ScheduleVC.swift */,
+			);
+			name = ScheduleVC;
+			sourceTree = "<group>";
+		};
+		84AB4D5B1F327FCA00531740 /* ClientsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */,
+			);
+			name = ClientsTableView;
+			sourceTree = "<group>";
+		};
+		84AB4D5C1F327FDC00531740 /* ClientMain */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D5D1F327FF200531740 /* Controllers */,
+				5B1F83101E850E4100ABA24C /* ClientMain.storyboard */,
+			);
+			name = ClientMain;
+			sourceTree = "<group>";
+		};
+		84AB4D5D1F327FF200531740 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		84AB4D5E1F32802800531740 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D6A1F32819500531740 /* LoginModel */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		84AB4D5F1F32803100531740 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D9E1F32897500531740 /* Errors */,
+				84AB4D8F1F32871C00531740 /* Handlers */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
+		84AB4D601F3280A100531740 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D621F3280B800531740 /* TrainerTBC */,
+				84AB4D611F3280AF00531740 /* PursuitNVC */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		84AB4D611F3280AF00531740 /* PursuitNVC */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D4D1F324A3600531740 /* PursuitNVC.swift */,
+			);
+			name = PursuitNVC;
+			sourceTree = "<group>";
+		};
+		84AB4D621F3280B800531740 /* TrainerTBC */ = {
+			isa = PBXGroup;
+			children = (
+				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
+			);
+			name = TrainerTBC;
+			sourceTree = "<group>";
+		};
+		84AB4D631F3280CE00531740 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D641F3280E500531740 /* Dezapp */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		84AB4D641F3280E500531740 /* Dezapp */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1D21EB319E5005B35CD /* DezappTextField.swift */,
+				5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */,
+				5BE3A1D41EB319E5005B35CD /* DezappButton.swift */,
+			);
+			name = Dezapp;
+			sourceTree = "<group>";
+		};
+		84AB4D651F32810C00531740 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BBDA2B581ECEA8DA001FB6AD /* ClientCell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		84AB4D661F32812100531740 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D691F32815400531740 /* ForgotPasswordCell */,
+				84AB4D681F32814900531740 /* SignUpCell */,
+				84AB4D671F32813F00531740 /* SignInCell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		84AB4D671F32813F00531740 /* SignInCell */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1C51EB3196A005B35CD /* SignInCell.swift */,
+				5BE3A1C61EB3196A005B35CD /* SignInCell.xib */,
+			);
+			name = SignInCell;
+			sourceTree = "<group>";
+		};
+		84AB4D681F32814900531740 /* SignUpCell */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1C71EB3196A005B35CD /* SignUpCell.swift */,
+				5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */,
+			);
+			name = SignUpCell;
+			sourceTree = "<group>";
+		};
+		84AB4D691F32815400531740 /* ForgotPasswordCell */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1C91EB3196A005B35CD /* ForgotPasswordCell.swift */,
+				5BE3A1CA1EB3196A005B35CD /* ForgotPasswordCell.xib */,
+			);
+			name = ForgotPasswordCell;
+			sourceTree = "<group>";
+		};
+		84AB4D6A1F32819500531740 /* LoginModel */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1D91EB7029E005B35CD /* LoginModel.swift */,
+			);
+			name = LoginModel;
+			sourceTree = "<group>";
+		};
+		84AB4D6B1F3281D400531740 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D6D1F32820100531740 /* UIColor+RGB */,
+				84AB4D6C1F3281DC00531740 /* UIViewController+Persuit */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		84AB4D6C1F3281DC00531740 /* UIViewController+Persuit */ = {
+			isa = PBXGroup;
+			children = (
+				5BE3A1C11EB318B7005B35CD /* ViewControllerExt.swift */,
+			);
+			name = "UIViewController+Persuit";
+			sourceTree = "<group>";
+		};
+		84AB4D6D1F32820100531740 /* UIColor+RGB */ = {
+			isa = PBXGroup;
+			children = (
+				5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */,
+			);
+			name = "UIColor+RGB";
+			sourceTree = "<group>";
+		};
+		84AB4D6E1F32821900531740 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D6F1F32821F00531740 /* External */,
+				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
+				5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */,
+				5B1F83131E850E4100ABA24C /* Assets.xcassets */,
+				5B1F83181E850E4100ABA24C /* Info.plist */,
+				84AB4D8A1F32836B00531740 /* Pursuit-Bridging-Header.h */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		84AB4D6F1F32821F00531740 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D8B1F32845400531740 /* UIView+BBBPlaceWithConstraint */,
+				84AB4D831F32831400531740 /* UIView+BBBProperty */,
+				84AB4D7F1F3282C300531740 /* UInavigationController+BBBRemoveController */,
+				84AB4D7C1F3282AC00531740 /* TableView+BBBExtension */,
+				84AB4D781F3282A400531740 /* NSObject+BBBMultyThhreading */,
+				84AB4D741F32829900531740 /* CALayer+BBBProperty */,
+				84AB4D701F32826700531740 /* BBBXIBView */,
+			);
+			name = External;
+			sourceTree = "<group>";
+		};
+		84AB4D701F32826700531740 /* BBBXIBView */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D711F32826700531740 /* BBBXIBView.h */,
+				84AB4D721F32826700531740 /* BBBXIBView.m */,
+			);
+			path = BBBXIBView;
+			sourceTree = "<group>";
+		};
+		84AB4D741F32829900531740 /* CALayer+BBBProperty */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D751F32829900531740 /* CALayer+BBBProperty.h */,
+				84AB4D761F32829900531740 /* CALayer+BBBProperty.m */,
+			);
+			path = "CALayer+BBBProperty";
+			sourceTree = "<group>";
+		};
+		84AB4D781F3282A400531740 /* NSObject+BBBMultyThhreading */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D791F3282A400531740 /* NSObject+BBBMultyThhreading.h */,
+				84AB4D7A1F3282A400531740 /* NSObject+BBBMultyThhreading.m */,
+			);
+			path = "NSObject+BBBMultyThhreading";
+			sourceTree = "<group>";
+		};
+		84AB4D7C1F3282AC00531740 /* TableView+BBBExtension */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D7D1F3282AC00531740 /* TableView+BBBExtension.swift */,
+			);
+			path = "TableView+BBBExtension";
+			sourceTree = "<group>";
+		};
+		84AB4D7F1F3282C300531740 /* UInavigationController+BBBRemoveController */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D801F3282C300531740 /* UINavigationController+removeController.h */,
+				84AB4D811F3282C300531740 /* UINavigationController+removeController.m */,
+			);
+			path = "UInavigationController+BBBRemoveController";
+			sourceTree = "<group>";
+		};
+		84AB4D831F32831400531740 /* UIView+BBBProperty */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D841F32831400531740 /* UIView+BBBProperty.h */,
+				84AB4D851F32831400531740 /* UIView+BBBProperty.m */,
+			);
+			path = "UIView+BBBProperty";
+			sourceTree = "<group>";
+		};
+		84AB4D8B1F32845400531740 /* UIView+BBBPlaceWithConstraint */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D8C1F32845400531740 /* UIView+BBBPlaceWithConstraint.h */,
+				84AB4D8D1F32845400531740 /* UIView+BBBPlaceWithConstraint.m */,
+			);
+			path = "UIView+BBBPlaceWithConstraint";
+			sourceTree = "<group>";
+		};
+		84AB4D8F1F32871C00531740 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D901F3287B000531740 /* Network */,
+			);
+			name = Handlers;
+			sourceTree = "<group>";
+		};
+		84AB4D901F3287B000531740 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D921F3287C100531740 /* API */,
+				84AB4D911F3287BC00531740 /* Services */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		84AB4D911F3287BC00531740 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D971F3287F700531740 /* AlamofireService */,
+				84AB4D931F3287DD00531740 /* ServiceProtocol.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		84AB4D921F3287C100531740 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D981F32881300531740 /* PSAPI */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		84AB4D971F3287F700531740 /* AlamofireService */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D951F3287F400531740 /* AlamofireService.swift */,
+			);
+			name = AlamofireService;
+			sourceTree = "<group>";
+		};
+		84AB4D981F32881300531740 /* PSAPI */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D9C1F32884B00531740 /* PSAPI.swift */,
+				84AB4D991F32882200531740 /* Requests */,
+			);
+			name = PSAPI;
+			sourceTree = "<group>";
+		};
+		84AB4D991F32882200531740 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4D9A1F32883D00531740 /* PursuitAPIRequests.swift */,
+			);
+			name = Requests;
+			sourceTree = "<group>";
+		};
+		84AB4D9E1F32897500531740 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4DA01F32899000531740 /* ErrorProtocol.swift */,
+				84AB4D9F1F32897D00531740 /* PSError */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		84AB4D9F1F32897D00531740 /* PSError */ = {
+			isa = PBXGroup;
+			children = (
+				84AB4DA21F32899C00531740 /* PSError.swift */,
+			);
+			name = PSError;
+			sourceTree = "<group>";
+		};
+		BBDA2B581ECEA8DA001FB6AD /* ClientCell */ = {
 			isa = PBXGroup;
 			children = (
 				BBDA2B521ECE6EFA001FB6AD /* ClientCell.swift */,
 				BBDA2B531ECE6EFA001FB6AD /* ClientCell.xib */,
 			);
-			name = Trainer;
-			sourceTree = "<group>";
-		};
-		BBDA2B591ECEAC42001FB6AD /* Trainer */ = {
-			isa = PBXGroup;
-			children = (
-				BBDA2B561ECE7AA6001FB6AD /* ClientsTableView.swift */,
-			);
-			name = Trainer;
+			name = ClientCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,21 +853,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */,
+				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
 				5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */,
+				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
+				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
 				5BA7305A1EC7BF0700C87C0C /* ScheduleVC.swift in Sources */,
 				5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */,
 				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
+				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
+				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
+				84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */,
 				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
+				84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */,
+				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
+				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
+				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
+				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
 				5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */,
 				BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */,
 				BBDA2B571ECE7AA6001FB6AD /* ClientsTableView.swift in Sources */,
-				5BE3A1BE1EB31611005B35CD /* Transitions.swift in Sources */,
+				84AB4D7E1F3282AC00531740 /* TableView+BBBExtension.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
+				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -670,6 +1036,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pursuithealth.Pursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -684,6 +1051,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pursuithealth.Pursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

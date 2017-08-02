@@ -10,4 +10,11 @@ target 'Pursuit' do
   pod 'HMSegmentedControl'
   pod 'ESTabBarController-swift'
   pod 'SwipeCellKit'
+  
+  pod 'AlamofireObjectMapper', '~> 4.1'
+  pod 'SDWebImage', '~> 4.1'
+  pod 'TPKeyboardAvoiding', '~> 1.3'
+  pod 'TabPageViewController', '~> 0.2'
+  pod 'SVProgressHUD', '~> 2.1'
+  
 end
