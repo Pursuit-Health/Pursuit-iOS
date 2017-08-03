@@ -104,9 +104,7 @@ class LoginVC: UIViewController {
     }
     
     func signInPressed(){
-        let sb = UIStoryboard(name: "TrainerMain", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ClientsTableView")
-        self.present(vc, animated: true, completion: nil)
+        
 //        if validateSignIn() {
 //            KVNProgress.show(withStatus: "Signing in...")
 //            API.signIn(email: signInModel.email!, password: signInModel.password!, completion: { (user, error) in
@@ -138,7 +136,7 @@ class LoginVC: UIViewController {
 
     func showMainNC(){
         let storyboard = UIStoryboard(name: "TrainerMain", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "navController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "TabBarControllerIdentifier")
         self.present(controller, animated: true, completion: nil)
     }
 
