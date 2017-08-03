@@ -27,6 +27,7 @@ class MainAuthVC: UIViewController {
     @IBOutlet var signInButton: DezappButton!
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var viewForPageController: UIView!
     var authState : AuthState = .SignIn
     let kSignUp = "SIGN UP"
     let kSignIn = "SIGN IN"
@@ -47,12 +48,6 @@ class MainAuthVC: UIViewController {
     var signUpPassword : UITextField?
     var signUpName : UITextField?
     
-    var pageVC: PageViewController? {
-        didSet {
-            pageVC?.delegateForNotifyMain = self
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //setupTableView()
@@ -67,10 +62,23 @@ class MainAuthVC: UIViewController {
     }
     
     func setUpPageViewControllerForShow(){
-        let controller = storyboard?.instantiateViewController(withIdentifier: "PageVC") as! PageViewController
-        controller.mainAuth = self
+        
+        
+        let controller = TabPageViewController.create()
+
+        let vc1 = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "SignInVCID")
+                let vc2 = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "SignUpVCID")
+        controller.tabItems = [(vc1, "SignIn"), (vc2, "SignUp")]
+        var option = TabPageOption()
+        option.currentBarHeight = 3.0
+        option.tabWidth = view.frame.width / CGFloat(controller.tabItems.count)
+        option.tabBackgroundColor = .clear
+        option.currentColor = UIColor.customAuthButtonsColor()
+        controller.option = option
         addChildViewController(controller)
-        controller.view.frame = CGRect(x: 0, y: self.view.frame.size.height*0.41, width: self.view.frame.size.width, height: self.view.frame.size.height*0.6)
+        
+        let frame = viewForPageController.frame
+        controller.view.frame = CGRect(x: 0, y: frame.origin.y - 44, width: self.view.frame.size.width, height: frame.size.height)
         view.addSubview((controller.view)!)
         controller.didMove(toParentViewController: self)
     }
@@ -411,30 +419,4 @@ enum AuthState {
     case SignIn
     case SignUp
     case ForgotPassword
-}
-
-extension MainAuthVC: PageViewControllerDelegate {
-    func changeControllersInPageVC(index: Int) {
-        
-
-        view.layoutSubviews()
-        DispatchQueue.main.async {
-            //self.signInSelectionView.isHidden = true
-        }
-        
-         //signInSelectionView.isHidden = false
-        //signUpSelectionView.backgroundColor = .green
-        switch index {
-            
-           
-        case 0: break
-
-            
-        case 1: break
-
-            
-        default:
-            break
-        }
-    }
 }

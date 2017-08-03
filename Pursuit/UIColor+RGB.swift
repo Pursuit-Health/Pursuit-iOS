@@ -21,6 +21,10 @@ extension UIColor {
         return UIColor(red: 80.0/255, green: 210.0/255, blue: 194.0/255, alpha: 1.0)
     }
     
+    class func customAuthButtonsColor() -> UIColor {
+        return UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 1)
+    }
+    
     /**
      Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
      

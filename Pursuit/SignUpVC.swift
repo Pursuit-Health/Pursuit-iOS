@@ -21,11 +21,13 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //signForNotifications()
-        
         setTextFields()
         
         IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+       // IQKeyboardManager.sharedManager().enable = false
     }
     
     //MARK: Private
@@ -58,6 +60,7 @@ class SignUpVC: UIViewController {
     }
 }
 
+//MARK: UITextFieldDelegate
 extension SignUpVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
