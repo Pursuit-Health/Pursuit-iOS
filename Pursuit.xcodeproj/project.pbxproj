@@ -13,7 +13,6 @@
 		5B1F83221E850E4100ABA24C /* PursuitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F83211E850E4100ABA24C /* PursuitTests.swift */; };
 		5B1F832D1E850E4100ABA24C /* PursuitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F832C1E850E4100ABA24C /* PursuitUITests.swift */; };
 		5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */; };
-		5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */; };
 		5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */; };
 		5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BE3A1B71EB314F9005B35CD /* Login.storyboard */; };
 		5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1BF1EB31651005B35CD /* LoginVC.swift */; };
@@ -37,6 +36,7 @@
 		842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD281F33143200A3169F /* TemplateCell.xib */; };
 		842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD2E1F33163800A3169F /* CalendarCell.swift */; };
 		842EBD311F33176F00A3169F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD301F33176F00A3169F /* Assets.xcassets */; };
+		842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD321F33181700A3169F /* TrainerTBC.swift */; };
 		84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D4D1F324A3600531740 /* PursuitNVC.swift */; };
 		84AB4D731F32826700531740 /* BBBXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D721F32826700531740 /* BBBXIBView.m */; };
 		84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D761F32829900531740 /* CALayer+BBBProperty.m */; };
@@ -89,7 +89,6 @@
 		5B1F832C1E850E4100ABA24C /* PursuitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PursuitUITests.swift; sourceTree = "<group>"; };
 		5B1F832E1E850E4100ABA24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
-		5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTBC.swift; sourceTree = "<group>"; };
 		5BE0D0471EC588A000B11C50 /* TrainerMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerMain.storyboard; sourceTree = "<group>"; };
 		5BE3A1B71EB314F9005B35CD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5BE3A1BF1EB31651005B35CD /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		842EBD281F33143200A3169F /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
 		842EBD2E1F33163800A3169F /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		842EBD301F33176F00A3169F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		842EBD321F33181700A3169F /* TrainerTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTBC.swift; sourceTree = "<group>"; };
 		84AB4D4D1F324A3600531740 /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		84AB4D711F32826700531740 /* BBBXIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBXIBView.h; sourceTree = "<group>"; };
 		84AB4D721F32826700531740 /* BBBXIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBXIBView.m; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 		84AB4D621F3280B800531740 /* TrainerTBC */ = {
 			isa = PBXGroup;
 			children = (
-				5BA7305B1EC7BF4E00C87C0C /* TrainerTBC.swift */,
+				842EBD321F33181700A3169F /* TrainerTBC.swift */,
 			);
 			name = TrainerTBC;
 			sourceTree = "<group>";
@@ -932,10 +932,10 @@
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
+				842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
-				5BA7305C1EC7BF4E00C87C0C /* TrainerTBC.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
 				BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */,
 				BBDA2B571ECE7AA6001FB6AD /* ClientsTableView.swift in Sources */,
