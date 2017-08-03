@@ -19,14 +19,14 @@ class MainAuthVC: UIViewController {
     var delegate: MainAuthVCDelegate?
     
     @IBOutlet var tableView: UITableView!
-
+    
     @IBOutlet var signUpSelectionView: UIView!
     @IBOutlet var signInSelectionView: UIView!
-
+    
     @IBOutlet var signUpButton: DezappButton!
     @IBOutlet var signInButton: DezappButton!
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
-    
+
     var authState : AuthState = .SignIn
     let kSignUp = "SIGN UP"
     let kSignIn = "SIGN IN"
@@ -47,20 +47,32 @@ class MainAuthVC: UIViewController {
     var signUpPassword : UITextField?
     var signUpName : UITextField?
     
+    var pageVC: PageViewController? {
+        didSet {
+            pageVC?.delegateForNotifyMain = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        //setupTableView()
         let tap = UITapGestureRecognizer(target: self, action: #selector(MainAuthVC.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
-        let controller = storyboard?.instantiateViewController(withIdentifier: "PageVC") as! PageViewController
+        setUpPageViewControllerForShow()
         
+        // signUpSelectionView.isHidden = true
+        authState = .SignIn
+   
+    }
+    
+    func setUpPageViewControllerForShow(){
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PageVC") as! PageViewController
         controller.mainAuth = self
         addChildViewController(controller)
         controller.view.frame = CGRect(x: 0, y: self.view.frame.size.height*0.41, width: self.view.frame.size.width, height: self.view.frame.size.height*0.6)
         view.addSubview((controller.view)!)
         controller.didMove(toParentViewController: self)
-
     }
     
     func dismissKeyboard(){
@@ -76,7 +88,7 @@ class MainAuthVC: UIViewController {
             signUpSelectionView.isHidden = false
             authState = .SignUp
             let path = IndexPath(row: 0, section: 0)
-            tableView.reloadRows(at: [path], with: .left)
+            //tableView.reloadRows(at: [path], with: .left)
         }
     }
     
@@ -88,7 +100,7 @@ class MainAuthVC: UIViewController {
             signUpSelectionView.isHidden = true
             authState = .SignIn
             let path = IndexPath(row: 0, section: 0)
-            tableView.reloadRows(at: [path], with: .right)
+            //tableView.reloadRows(at: [path], with: .right)
         }
     }
     
@@ -99,19 +111,19 @@ class MainAuthVC: UIViewController {
         signInSelectionView.isHidden = true
         signUpSelectionView.isHidden = true
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupKeyboardListeners()
     }
     
     override func setKeyboardWillShowConstraint(height: CGFloat) {
-        self.bottomConstraint.constant = height
+       // self.bottomConstraint.constant = height
         self.view.layoutIfNeeded()
     }
     
     override func setKeyboardWillHideConstraint() {
-        self.bottomConstraint.constant = 0
+       // self.bottomConstraint.constant = 0
         self.view.layoutIfNeeded()
     }
     
@@ -126,142 +138,143 @@ class MainAuthVC: UIViewController {
     }
     
     func signInPressed(){
-        let sb = UIStoryboard(name: "TrainerMain", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ClientsTableView")
-        self.present(vc, animated: true, completion: nil)
-//        if validateSignIn() {
-//            KVNProgress.show(withStatus: "Signing in...")
-//            API.signIn(email: signInModel.email!, password: signInModel.password!, completion: { (user, error) in
-//                KVNProgress.dismiss()
-//                if error != nil {
-//                    self.presentDialog(title : "Error" , errorString: error!.localizedDescription)
-//                }else{
-//                    self.showMainNC()
-//                }
-//            })
-//        }
+        //        let sb = UIStoryboard(name: "TrainerMain", bundle: nil)
+        //        let vc = sb.instantiateViewController(withIdentifier: "PursuitNVC")
+        //        self.present(vc, animated: true, completion: nil)
+        //        if validateSignIn() {
+        //            KVNProgress.show(withStatus: "Signing in...")
+        //            API.signIn(email: signInModel.email!, password: signInModel.password!, completion: { (user, error) in
+        //                KVNProgress.dismiss()
+        //                if error != nil {
+        //                    self.presentDialog(title : "Error" , errorString: error!.localizedDescription)
+        //                }else{
+        //                    self.showMainNC()
+        //                }
+        //            })
+        //        }
+        
         self.showMainNC()
     }
     
     func signUpPressed(){
-//        if validateSignUp() {
-//            KVNProgress.show(withStatus: "Signing up...")
-//            API.createAccount(name: signUpModel.name!, email: signUpModel.email!, password: signUpModel.password!, completion: { (user, error) in
-//                if error != nil {
-//                    KVNProgress.dismiss()
-//                    self.presentDialog(title : "Error", errorString: error!.localizedDescription)
-//                }else{
-//                    KVNProgress.showSuccess()
-//                    self.showMainNC()
-//                }
-//            })
-//        }
+        //        if validateSignUp() {
+        //            KVNProgress.show(withStatus: "Signing up...")
+        //            API.createAccount(name: signUpModel.name!, email: signUpModel.email!, password: signUpModel.password!, completion: { (user, error) in
+        //                if error != nil {
+        //                    KVNProgress.dismiss()
+        //                    self.presentDialog(title : "Error", errorString: error!.localizedDescription)
+        //                }else{
+        //                    KVNProgress.showSuccess()
+        //                    self.showMainNC()
+        //                }
+        //            })
+        //        }
     }
-
+    
     func showMainNC(){
         let storyboard = UIStoryboard(name: "TrainerMain", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "navController")
         self.present(controller, animated: true, completion: nil)
     }
-
+    
     func validateSignUp() -> Bool {
-//        var isValid = true
-//        var errorString = ""
-//        if signUpModel.email == nil || signUpModel.email?.isValidEmail() == false {
-//            isValid = false
-//            errorString = "Please enter a valid email address"
-//        }
-//        else if signUpModel.password == nil || signUpModel.password?.isEmpty == true {
-//            isValid = false
-//            errorString = "Please enter a valid password"
-//        }
-//        else if signUpModel.name == nil || signUpModel.name?.isEmpty == true {
-//            isValid = false
-//            errorString = "Please enter a valid name"
-//        }
-//        
-//        if isValid == false {
-//            presentDialog(title: "Error", errorString: errorString)
-//        }
-//        
-//        return isValid
+        //        var isValid = true
+        //        var errorString = ""
+        //        if signUpModel.email == nil || signUpModel.email?.isValidEmail() == false {
+        //            isValid = false
+        //            errorString = "Please enter a valid email address"
+        //        }
+        //        else if signUpModel.password == nil || signUpModel.password?.isEmpty == true {
+        //            isValid = false
+        //            errorString = "Please enter a valid password"
+        //        }
+        //        else if signUpModel.name == nil || signUpModel.name?.isEmpty == true {
+        //            isValid = false
+        //            errorString = "Please enter a valid name"
+        //        }
+        //
+        //        if isValid == false {
+        //            presentDialog(title: "Error", errorString: errorString)
+        //        }
+        //
+        //        return isValid
         return true
     }
     
-  
+    
     func validateSignIn() -> Bool {
-//        var isValid = true
-//        var errorString = ""
-//        if signInModel.email == nil || signInModel.email?.isValidEmail() == false {
-//            isValid = false
-//            errorString = "Please enter a valid email address"
-//        }
-//        else if signInModel.password == nil || signInModel.password?.isEmpty == true {
-//            isValid = false
-//            errorString = "Please enter a valid password"
-//        }
-//        
-//        if isValid == false {
-//            presentDialog(title: "Error", errorString: errorString)
-//        }
-//        
-//        return isValid
+        //        var isValid = true
+        //        var errorString = ""
+        //        if signInModel.email == nil || signInModel.email?.isValidEmail() == false {
+        //            isValid = false
+        //            errorString = "Please enter a valid email address"
+        //        }
+        //        else if signInModel.password == nil || signInModel.password?.isEmpty == true {
+        //            isValid = false
+        //            errorString = "Please enter a valid password"
+        //        }
+        //
+        //        if isValid == false {
+        //            presentDialog(title: "Error", errorString: errorString)
+        //        }
+        //
+        //        return isValid
         return true
     }
     
     func validateResetPassword() -> Bool {
-//        var isValid = true
-//        var errorString = ""
-//        if resetPasswordModel.email == nil || resetPasswordModel.email?.isValidEmail() == false {
-//            isValid = false
-//            errorString = "Please enter a valid email address"
-//        }
-//        if isValid == false {
-//            presentDialog(title: "Error", errorString: errorString)
-//        }
-//        return isValid
+        //        var isValid = true
+        //        var errorString = ""
+        //        if resetPasswordModel.email == nil || resetPasswordModel.email?.isValidEmail() == false {
+        //            isValid = false
+        //            errorString = "Please enter a valid email address"
+        //        }
+        //        if isValid == false {
+        //            presentDialog(title: "Error", errorString: errorString)
+        //        }
+        //        return isValid
         return true
     }
     
     func textFieldUpdated(textField : UITextField){
-//        let text = textField.text
-//        if authState == .SignIn {
-//            switch textField.tag {
-//                case kEmailField:
-//                    signInModel.email = text
-//                default:
-//                    signInModel.password = text
-//            }
-//        }else if authState == .SignUp{
-//            switch textField.tag {
-//                case kEmailField:
-//                    signUpModel.email = text
-//                case kNameField:
-//                    signUpModel.name = text
-//                default:
-//                    signUpModel.password = text
-//            }
-//        }else{ //Forgot password
-//            resetPasswordModel.email = text
-//        }
+        //        let text = textField.text
+        //        if authState == .SignIn {
+        //            switch textField.tag {
+        //                case kEmailField:
+        //                    signInModel.email = text
+        //                default:
+        //                    signInModel.password = text
+        //            }
+        //        }else if authState == .SignUp{
+        //            switch textField.tag {
+        //                case kEmailField:
+        //                    signUpModel.email = text
+        //                case kNameField:
+        //                    signUpModel.name = text
+        //                default:
+        //                    signUpModel.password = text
+        //            }
+        //        }else{ //Forgot password
+        //            resetPasswordModel.email = text
+        //        }
     }
     
     func resetPasswordPressed(){
-//        if validateResetPassword() {
-//            KVNProgress.show()
-//            API.resetPassword(email: resetPasswordModel.email!) { (error) in
-//                if error != nil {
-//                    self.presentDialog(title: "Error", errorString: error!.localizedDescription)
-//                }
-//                else{
-//                    KVNProgress.showSuccess(withStatus: "A password reset email was sent to the email address", completion: {
-//                        self.signInButtonPressed(NSObject())
-//                    })
-//                }
-//            }
-//        }
+        //        if validateResetPassword() {
+        //            KVNProgress.show()
+        //            API.resetPassword(email: resetPasswordModel.email!) { (error) in
+        //                if error != nil {
+        //                    self.presentDialog(title: "Error", errorString: error!.localizedDescription)
+        //                }
+        //                else{
+        //                    KVNProgress.showSuccess(withStatus: "A password reset email was sent to the email address", completion: {
+        //                        self.signInButtonPressed(NSObject())
+        //                    })
+        //                }
+        //            }
+        //        }
     }
-
+    
 }
 
 extension MainAuthVC : UITableViewDelegate, UITableViewDataSource {
@@ -282,9 +295,9 @@ extension MainAuthVC : UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ForgotPasswordCell") as! ForgotPasswordCell
         
-//        if let email = resetPasswordModel.email {
-//            cell.emailField.updateAttributedTextWithString(string: email)
-//        }
+        //        if let email = resetPasswordModel.email {
+        //            cell.emailField.updateAttributedTextWithString(string: email)
+        //        }
         cell.emailField.tag = kResetPasswordEmail
         cell.emailField.addTarget(self, action: #selector(MainAuthVC.textFieldUpdated(textField:)), for: .editingChanged)
         cell.submitButton.addTarget(self, action: #selector(MainAuthVC.resetPasswordPressed), for: .touchUpInside)
@@ -299,13 +312,13 @@ extension MainAuthVC : UITableViewDelegate, UITableViewDataSource {
         signInPassword = cell.passwordField
         
         
-//        if let email = signInModel.email {
-//            cell.emailField.updateAttributedTextWithString(string: email)
-//        }
-//        if let pw = signInModel.password {
-//            cell.passwordField.updateAttributedTextWithString(string: pw)
-//        }
-
+        //        if let email = signInModel.email {
+        //            cell.emailField.updateAttributedTextWithString(string: email)
+        //        }
+        //        if let pw = signInModel.password {
+        //            cell.passwordField.updateAttributedTextWithString(string: pw)
+        //        }
+        
         cell.passwordField.returnKeyType = .done
         cell.emailField.returnKeyType = .next
         cell.emailField.delegate = self
@@ -332,15 +345,15 @@ extension MainAuthVC : UITableViewDelegate, UITableViewDataSource {
         cell.passwordField.tag = kPasswordField
         cell.nameField.tag = kNameField
         
-//        if let email = signUpModel.email {
-//            cell.emailField.updateAttributedTextWithString(string: email)
-//        }
-//        if let pw = signUpModel.password {
-//            cell.passwordField.updateAttributedTextWithString(string: pw)
-//        }
-//        if let name = signUpModel.name {
-//            cell.nameField.updateAttributedTextWithString(string: name)
-//        }
+        //        if let email = signUpModel.email {
+        //            cell.emailField.updateAttributedTextWithString(string: email)
+        //        }
+        //        if let pw = signUpModel.password {
+        //            cell.passwordField.updateAttributedTextWithString(string: pw)
+        //        }
+        //        if let name = signUpModel.name {
+        //            cell.nameField.updateAttributedTextWithString(string: name)
+        //        }
         
         cell.passwordField.returnKeyType = .done
         cell.emailField.returnKeyType = .next
@@ -358,7 +371,7 @@ extension MainAuthVC : UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-
+    
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -398,4 +411,30 @@ enum AuthState {
     case SignIn
     case SignUp
     case ForgotPassword
+}
+
+extension MainAuthVC: PageViewControllerDelegate {
+    func changeControllersInPageVC(index: Int) {
+        
+
+        view.layoutSubviews()
+        DispatchQueue.main.async {
+            //self.signInSelectionView.isHidden = true
+        }
+        
+         //signInSelectionView.isHidden = false
+        //signUpSelectionView.backgroundColor = .green
+        switch index {
+            
+           
+        case 0: break
+
+            
+        case 1: break
+
+            
+        default:
+            break
+        }
+    }
 }

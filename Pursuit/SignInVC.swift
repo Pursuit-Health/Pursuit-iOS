@@ -17,11 +17,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerXibs()
-        
-        configureTableView()
-        
-        self.preferredContentSize  = CGSize(width:(self.view.frame.size.width / 100) * 65,height: (self.view.frame.size.height / 100) * 65);
+    
     }
     
     //MARK: Private
