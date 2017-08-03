@@ -9,7 +9,15 @@
 import UIKit
 import KVNProgress
 
-class LoginVC: UIViewController {
+protocol MainAuthVCDelegate: class {
+   func userDidPressedSignUpButton()
+    func userDidPressedSignInButton()
+}
+
+class MainAuthVC: UIViewController {
+    
+    var delegate: MainAuthVCDelegate?
+    
     @IBOutlet var tableView: UITableView!
 
     @IBOutlet var signUpSelectionView: UIView!
@@ -42,8 +50,17 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginVC.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(MainAuthVC.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PageVC") as! PageViewController
+        
+        controller.mainAuth = self
+        addChildViewController(controller)
+        controller.view.frame = CGRect(x: 0, y: self.view.frame.size.height*0.41, width: self.view.frame.size.width, height: self.view.frame.size.height*0.6)
+        view.addSubview((controller.view)!)
+        controller.didMove(toParentViewController: self)
+
     }
     
     func dismissKeyboard(){
@@ -51,6 +68,9 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signUpButtonPressed(_ sender: Any) {
+        
+        delegate?.userDidPressedSignUpButton()
+        
         if authState == .SignIn || authState == .ForgotPassword {
             signInSelectionView.isHidden = true
             signUpSelectionView.isHidden = false
@@ -61,6 +81,8 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signInButtonPressed(_ sender: Any) {
+        delegate?.userDidPressedSignInButton()
+        
         if authState == .SignUp || authState == .ForgotPassword {
             signInSelectionView.isHidden = false
             signUpSelectionView.isHidden = true
@@ -242,7 +264,7 @@ class LoginVC: UIViewController {
 
 }
 
-extension LoginVC : UITableViewDelegate, UITableViewDataSource {
+extension MainAuthVC : UITableViewDelegate, UITableViewDataSource {
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -264,8 +286,8 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
 //            cell.emailField.updateAttributedTextWithString(string: email)
 //        }
         cell.emailField.tag = kResetPasswordEmail
-        cell.emailField.addTarget(self, action: #selector(LoginVC.textFieldUpdated(textField:)), for: .editingChanged)
-        cell.submitButton.addTarget(self, action: #selector(LoginVC.resetPasswordPressed), for: .touchUpInside)
+        cell.emailField.addTarget(self, action: #selector(MainAuthVC.textFieldUpdated(textField:)), for: .editingChanged)
+        cell.submitButton.addTarget(self, action: #selector(MainAuthVC.resetPasswordPressed), for: .touchUpInside)
         cell.selectionStyle = .none
         return cell
     }
@@ -291,10 +313,10 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
         
         cell.emailField.tag = kEmailField
         cell.passwordField.tag = kPasswordField
-        cell.emailField.addTarget(self, action: #selector(LoginVC.textFieldUpdated(textField:)), for: .editingChanged)
-        cell.passwordField.addTarget(self, action: #selector(LoginVC.textFieldUpdated(textField:)), for: .editingChanged)
-        cell.forgotPasswordButton.addTarget(self, action: #selector(LoginVC.forgotPasswordSelected), for: .touchUpInside)
-        cell.submitButton.addTarget(self, action: #selector(LoginVC.signInPressed), for: .touchUpInside)
+        cell.emailField.addTarget(self, action: #selector(MainAuthVC.textFieldUpdated(textField:)), for: .editingChanged)
+        cell.passwordField.addTarget(self, action: #selector(MainAuthVC.textFieldUpdated(textField:)), for: .editingChanged)
+        cell.forgotPasswordButton.addTarget(self, action: #selector(MainAuthVC.forgotPasswordSelected), for: .touchUpInside)
+        cell.submitButton.addTarget(self, action: #selector(MainAuthVC.signInPressed), for: .touchUpInside)
         return cell
     }
     
@@ -328,11 +350,11 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
         cell.passwordField.delegate = self
         cell.emailField.delegate = self
         
-        cell.emailField.addTarget(self, action: #selector(LoginVC.textFieldUpdated(textField:)), for: .editingChanged)
-        cell.passwordField.addTarget(self, action: #selector(LoginVC.textFieldUpdated(textField:)), for: .editingChanged)
-        cell.nameField.addTarget(self, action: #selector(LoginVC.textFieldUpdated(textField:)), for: .editingChanged)
+        cell.emailField.addTarget(self, action: #selector(MainAuthVC.textFieldUpdated(textField:)), for: .editingChanged)
+        cell.passwordField.addTarget(self, action: #selector(MainAuthVC.textFieldUpdated(textField:)), for: .editingChanged)
+        cell.nameField.addTarget(self, action: #selector(MainAuthVC.textFieldUpdated(textField:)), for: .editingChanged)
         
-        cell.submitButton.addTarget(self, action: #selector(LoginVC.signUpPressed), for: .touchUpInside)
+        cell.submitButton.addTarget(self, action: #selector(MainAuthVC.signUpPressed), for: .touchUpInside)
         
         return cell
     }
@@ -348,7 +370,7 @@ extension LoginVC : UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension LoginVC : UITextFieldDelegate {
+extension MainAuthVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if authState == .SignIn {
             if textField.tag == kEmailField {
