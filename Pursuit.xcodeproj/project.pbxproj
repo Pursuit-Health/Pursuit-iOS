@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F830C1E850E4100ABA24C /* AppDelegate.swift */; };
 		5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83101E850E4100ABA24C /* ClientMain.storyboard */; };
-		5B1F83141E850E4100ABA24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83131E850E4100ABA24C /* Assets.xcassets */; };
 		5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */; };
 		5B1F83221E850E4100ABA24C /* PursuitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F83211E850E4100ABA24C /* PursuitTests.swift */; };
 		5B1F832D1E850E4100ABA24C /* PursuitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F832C1E850E4100ABA24C /* PursuitUITests.swift */; };
@@ -37,6 +36,7 @@
 		842EBD291F33143200A3169F /* TemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD271F33143200A3169F /* TemplateCell.swift */; };
 		842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD281F33143200A3169F /* TemplateCell.xib */; };
 		842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD2E1F33163800A3169F /* CalendarCell.swift */; };
+		842EBD311F33176F00A3169F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD301F33176F00A3169F /* Assets.xcassets */; };
 		84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D4D1F324A3600531740 /* PursuitNVC.swift */; };
 		84AB4D731F32826700531740 /* BBBXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D721F32826700531740 /* BBBXIBView.m */; };
 		84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D761F32829900531740 /* CALayer+BBBProperty.m */; };
@@ -80,7 +80,6 @@
 		5B1F83091E850E4100ABA24C /* Pursuit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pursuit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1F830C1E850E4100ABA24C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B1F83111E850E4100ABA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ClientMain.storyboard; sourceTree = "<group>"; };
-		5B1F83131E850E4100ABA24C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B1F83161E850E4100ABA24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B1F83181E850E4100ABA24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B1F831D1E850E4100ABA24C /* PursuitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PursuitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +112,7 @@
 		842EBD271F33143200A3169F /* TemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCell.swift; sourceTree = "<group>"; };
 		842EBD281F33143200A3169F /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
 		842EBD2E1F33163800A3169F /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		842EBD301F33176F00A3169F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84AB4D4D1F324A3600531740 /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		84AB4D711F32826700531740 /* BBBXIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBXIBView.h; sourceTree = "<group>"; };
 		84AB4D721F32826700531740 /* BBBXIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBXIBView.m; sourceTree = "<group>"; };
@@ -537,8 +537,8 @@
 			children = (
 				84AB4D6F1F32821F00531740 /* External */,
 				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
+				842EBD301F33176F00A3169F /* Assets.xcassets */,
 				5B1F83151E850E4100ABA24C /* LaunchScreen.storyboard */,
-				5B1F83131E850E4100ABA24C /* Assets.xcassets */,
 				5B1F83181E850E4100ABA24C /* Info.plist */,
 				84AB4D8A1F32836B00531740 /* Pursuit-Bridging-Header.h */,
 			);
@@ -830,8 +830,8 @@
 			files = (
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				5BE3A1CE1EB3196A005B35CD /* SignUpCell.xib in Resources */,
+				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
 				5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */,
-				5B1F83141E850E4100ABA24C /* Assets.xcassets in Resources */,
 				842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */,
 				5BE3A1CC1EB3196A005B35CD /* SignInCell.xib in Resources */,
 				842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */,
