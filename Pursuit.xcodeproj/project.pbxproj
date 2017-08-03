@@ -36,6 +36,7 @@
 		842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD251F33142B00A3169F /* TemplatesVC.swift */; };
 		842EBD291F33143200A3169F /* TemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD271F33143200A3169F /* TemplateCell.swift */; };
 		842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD281F33143200A3169F /* TemplateCell.xib */; };
+		842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD2E1F33163800A3169F /* CalendarCell.swift */; };
 		84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D4D1F324A3600531740 /* PursuitNVC.swift */; };
 		84AB4D731F32826700531740 /* BBBXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D721F32826700531740 /* BBBXIBView.m */; };
 		84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D761F32829900531740 /* CALayer+BBBProperty.m */; };
@@ -111,6 +112,7 @@
 		842EBD251F33142B00A3169F /* TemplatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplatesVC.swift; sourceTree = "<group>"; };
 		842EBD271F33143200A3169F /* TemplateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCell.swift; sourceTree = "<group>"; };
 		842EBD281F33143200A3169F /* TemplateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemplateCell.xib; sourceTree = "<group>"; };
+		842EBD2E1F33163800A3169F /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		84AB4D4D1F324A3600531740 /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		84AB4D711F32826700531740 /* BBBXIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBXIBView.h; sourceTree = "<group>"; };
 		84AB4D721F32826700531740 /* BBBXIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBXIBView.m; sourceTree = "<group>"; };
@@ -253,6 +255,14 @@
 				842EBD251F33142B00A3169F /* TemplatesVC.swift */,
 			);
 			name = TemplatesVC;
+			sourceTree = "<group>";
+		};
+		842EBD2D1F33162B00A3169F /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				842EBD2E1F33163800A3169F /* CalendarCell.swift */,
+			);
+			name = CalendarCell;
 			sourceTree = "<group>";
 		};
 		84AB4D4F1F327C8A00531740 /* Application */ = {
@@ -444,6 +454,7 @@
 		84AB4D651F32810C00531740 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				842EBD2D1F33162B00A3169F /* CalendarCell */,
 				842EBD2B1F33143A00A3169F /* TemplateCell */,
 				842EBD231F3313FB00A3169F /* ScheduleCell */,
 				BBDA2B581ECEA8DA001FB6AD /* ClientCell */,
@@ -901,6 +912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */,
+				842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */,
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
 				5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */,
 				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
