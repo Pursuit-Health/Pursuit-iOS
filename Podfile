@@ -16,5 +16,7 @@ target 'Pursuit' do
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'TabPageViewController', '~> 0.2'
   pod 'SVProgressHUD', '~> 2.1'
+  pod 'pop', '~> 1.0'
+  pod 'JTAppleCalendar', '~> 7.0'
   
 end

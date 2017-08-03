@@ -8,8 +8,10 @@ PODS:
   - ESTabBarController-swift (2.4)
   - Fabric (1.6.11)
   - HMSegmentedControl (1.5.3)
+  - JTAppleCalendar (7.0.6)
   - KVNProgress (2.3.1)
   - ObjectMapper (2.2.8)
+  - pop (1.0.10)
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
@@ -24,7 +26,9 @@ DEPENDENCIES:
   - ESTabBarController-swift
   - Fabric
   - HMSegmentedControl
+  - JTAppleCalendar (~> 7.0)
   - KVNProgress
+  - pop (~> 1.0)
   - SDWebImage (~> 4.1)
   - SVProgressHUD (~> 2.1)
   - SwipeCellKit
@@ -38,14 +42,16 @@ SPEC CHECKSUMS:
   ESTabBarController-swift: af496895039ba10ae60bf825473c45f23fc5c8b6
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
+  JTAppleCalendar: 6a942475e33b9ad4dee0a0e14aa4c63adcf4f543
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
   TabPageViewController: c37a1257a50c2b50712dde61bf499768eee95b67
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: fa1f7692931e9836d3eaf7c610f51d3e1ea376e0
+PODFILE CHECKSUM: d27d8893d5825eca19180d26b697574ee95daf97
 
 COCOAPODS: 1.2.1
