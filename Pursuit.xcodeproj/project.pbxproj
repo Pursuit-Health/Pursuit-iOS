@@ -37,6 +37,9 @@
 		842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD2E1F33163800A3169F /* CalendarCell.swift */; };
 		842EBD311F33176F00A3169F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD301F33176F00A3169F /* Assets.xcassets */; };
 		842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD321F33181700A3169F /* TrainerTBC.swift */; };
+		842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD351F33188900A3169F /* ExampleBasicContentView.swift */; };
+		842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD361F33188900A3169F /* ExampleBouncesContentView.swift */; };
+		842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD371F33188900A3169F /* ExampleIrregularityContentView.swift */; };
 		84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D4D1F324A3600531740 /* PursuitNVC.swift */; };
 		84AB4D731F32826700531740 /* BBBXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D721F32826700531740 /* BBBXIBView.m */; };
 		84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D761F32829900531740 /* CALayer+BBBProperty.m */; };
@@ -113,6 +116,9 @@
 		842EBD2E1F33163800A3169F /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		842EBD301F33176F00A3169F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		842EBD321F33181700A3169F /* TrainerTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTBC.swift; sourceTree = "<group>"; };
+		842EBD351F33188900A3169F /* ExampleBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBasicContentView.swift; sourceTree = "<group>"; };
+		842EBD361F33188900A3169F /* ExampleBouncesContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBouncesContentView.swift; sourceTree = "<group>"; };
+		842EBD371F33188900A3169F /* ExampleIrregularityContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleIrregularityContentView.swift; sourceTree = "<group>"; };
 		84AB4D4D1F324A3600531740 /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		84AB4D711F32826700531740 /* BBBXIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBXIBView.h; sourceTree = "<group>"; };
 		84AB4D721F32826700531740 /* BBBXIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBXIBView.m; sourceTree = "<group>"; };
@@ -263,6 +269,16 @@
 				842EBD2E1F33163800A3169F /* CalendarCell.swift */,
 			);
 			name = CalendarCell;
+			sourceTree = "<group>";
+		};
+		842EBD341F33186900A3169F /* ESTViews */ = {
+			isa = PBXGroup;
+			children = (
+				842EBD351F33188900A3169F /* ExampleBasicContentView.swift */,
+				842EBD361F33188900A3169F /* ExampleBouncesContentView.swift */,
+				842EBD371F33188900A3169F /* ExampleIrregularityContentView.swift */,
+			);
+			name = ESTViews;
 			sourceTree = "<group>";
 		};
 		84AB4D4F1F327C8A00531740 /* Application */ = {
@@ -436,6 +452,7 @@
 		84AB4D631F3280CE00531740 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				842EBD341F33186900A3169F /* ESTViews */,
 				84AB4D641F3280E500531740 /* Dezapp */,
 			);
 			name = Views;
@@ -930,8 +947,10 @@
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
+				842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */,
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
+				842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */,
 				842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
@@ -945,6 +964,7 @@
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				5BE3A1C01EB31651005B35CD /* LoginVC.swift in Sources */,
+				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
