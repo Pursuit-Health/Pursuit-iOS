@@ -39,6 +39,9 @@
 		7832B0141F33AC6300BC8116 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7832B0051F33AC6300BC8116 /* Info.plist */; };
 		7832B0151F33AC6300BC8116 /* TabPageViewController.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7832B0071F33AC6300BC8116 /* TabPageViewController.xcconfig */; };
 		7832B0161F33AC6300BC8116 /* TabPageViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7832B0081F33AC6300BC8116 /* TabPageViewController-dummy.m */; };
+		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
+		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
+		788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */; };
 		842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD1B1F3313C300A3169F /* ScheduleVC.swift */; };
 		842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD1D1F3313E100A3169F /* ScheduleCell.swift */; };
 		842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD1E1F3313E100A3169F /* ScheduleCell.xib */; };
@@ -133,6 +136,9 @@
 		7832B0081F33AC6300BC8116 /* TabPageViewController-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TabPageViewController-dummy.m"; sourceTree = "<group>"; };
 		7832B0091F33AC6300BC8116 /* TabPageViewController-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TabPageViewController-prefix.pch"; sourceTree = "<group>"; };
 		7832B00A1F33AC6300BC8116 /* TabPageViewController-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TabPageViewController-umbrella.h"; sourceTree = "<group>"; };
+		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
+		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
+		788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingTableViewCell.xib; sourceTree = "<group>"; };
 		842EBD1B1F3313C300A3169F /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
 		842EBD1D1F3313E100A3169F /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		842EBD1E1F3313E100A3169F /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
@@ -294,6 +300,23 @@
 			path = ../Pods/TabPageViewController;
 			sourceTree = "<group>";
 		};
+		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
+			isa = PBXGroup;
+			children = (
+				788EE8971F34DD5500DD8A98 /* TrainingVC.swift */,
+			);
+			name = TrainingVC;
+			sourceTree = "<group>";
+		};
+		788EE8991F34E65900DD8A98 /* TrainingCell */ = {
+			isa = PBXGroup;
+			children = (
+				788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */,
+				788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */,
+			);
+			name = TrainingCell;
+			sourceTree = "<group>";
+		};
 		842EBD231F3313FB00A3169F /* ScheduleCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +457,7 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				788EE8961F34DD3000DD8A98 /* TrainingVC */,
 				842EBD2C1F33144300A3169F /* TemplatesVC */,
 				842EBD241F33140800A3169F /* ScheduleClientVC */,
 				84AB4D5B1F327FCA00531740 /* ClientsTableView */,
@@ -538,6 +562,7 @@
 		84AB4D651F32810C00531740 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				788EE8991F34E65900DD8A98 /* TrainingCell */,
 				842EBD2D1F33162B00A3169F /* CalendarCell */,
 				842EBD2B1F33143A00A3169F /* TemplateCell */,
 				842EBD231F3313FB00A3169F /* ScheduleCell */,
@@ -914,6 +939,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
+				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
 				5BE3A1CE1EB3196A005B35CD /* SignUpCell.xib in Resources */,
 				7832B0141F33AC6300BC8116 /* Info.plist in Resources */,
 				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
@@ -1036,6 +1062,7 @@
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
 				7832B00D1F33AC6300BC8116 /* TabCollectionCell.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
+				788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */,
 				BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */,
 				BBDA2B571ECE7AA6001FB6AD /* ClientsTableView.swift in Sources */,
 				84AB4D7E1F3282AC00531740 /* TableView+BBBExtension.swift in Sources */,
@@ -1045,6 +1072,7 @@
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
+				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

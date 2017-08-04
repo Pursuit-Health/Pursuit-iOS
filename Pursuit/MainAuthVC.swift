@@ -78,7 +78,8 @@ class MainAuthVC: UIViewController {
         addChildViewController(controller)
         
         let frame = viewForPageController.frame
-        controller.view.frame = CGRect(x: 0, y: frame.origin.y - 44, width: self.view.frame.size.width, height: frame.size.height)
+
+        controller.view.frame = CGRect(x: 0, y: frame.origin.y - 44, width: self.view.frame.size.width, height: viewForPageController.frame.size.height + 120)
         view.addSubview((controller.view)!)
         controller.didMove(toParentViewController: self)
     }

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        if FIRAuth.auth()?.currentUser == nil {
             let sbLogin = UIStoryboard(name: "Login", bundle: nil)
             let vc = sbLogin.instantiateViewController(withIdentifier: "LoginVC")
-            window?.rootViewController = vc
+           // window?.rootViewController = vc
 //        }else {
 //            Transitions.presentMain()
 //        }
