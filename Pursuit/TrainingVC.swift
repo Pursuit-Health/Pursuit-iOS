@@ -19,39 +19,48 @@ class TrainingVC: UIViewController {
     }
     
     //MARK: IBOutlets
+    @IBOutlet weak var trainingTableView: UITableView!
     
     //MARK: Variables
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
+        registerXibs()
 
     }
     
     //MARK: Private
     private func configureTableView(){
+        trainingTableView.rowHeight = UITableViewAutomaticDimension
+        trainingTableView.estimatedRowHeight = 200
         
     }
     
-    private func registerXibs(){
-        
+    private func registerXibs() {
+        trainingTableView.register(UINib(nibName: "TrainingTableViewCell", bundle: nil),
+        forCellReuseIdentifier: Constants.Identifiers.TrainingCellReuseID)
     }
 }
 
 //MARK: UITableViewDataSource
 extension TrainingVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 2
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Identifiers.TrainingCellReuseID, for: indexPath) as? TrainingTableViewCell else {return UITableViewCell()}
+        return cell
+
     }
 }
 
 //MARK: UITableViewDelegate
 extension TrainingVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        
     }
 }

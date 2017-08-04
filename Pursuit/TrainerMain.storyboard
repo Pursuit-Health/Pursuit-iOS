@@ -465,6 +465,10 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z4y-pd-hpY">
                                 <rect key="frame" x="0.0" y="400" width="375" height="267"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SHD-3k-6xp" id="OHM-Qf-ySu"/>
+                                    <outlet property="delegate" destination="SHD-3k-6xp" id="tPn-ON-GmS"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -483,6 +487,9 @@
                             <constraint firstAttribute="trailing" secondItem="mtJ-i8-zom" secondAttribute="trailing" id="vCI-eO-wbv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="trainingTableView" destination="z4y-pd-hpY" id="sPt-Or-5Uk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rF6-5T-0rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
