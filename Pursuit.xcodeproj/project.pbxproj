@@ -39,9 +39,12 @@
 		7832B0141F33AC6300BC8116 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7832B0051F33AC6300BC8116 /* Info.plist */; };
 		7832B0151F33AC6300BC8116 /* TabPageViewController.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7832B0071F33AC6300BC8116 /* TabPageViewController.xcconfig */; };
 		7832B0161F33AC6300BC8116 /* TabPageViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7832B0081F33AC6300BC8116 /* TabPageViewController-dummy.m */; };
+		784640881F379D4B00CEFC66 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784640871F379D4B00CEFC66 /* CircleView.swift */; };
+		7846408A1F37A0CC00CEFC66 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784640891F37A0CC00CEFC66 /* CircleImageView.swift */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
 		788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */; };
+		788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */; };
 		842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD1B1F3313C300A3169F /* ScheduleVC.swift */; };
 		842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD1D1F3313E100A3169F /* ScheduleCell.swift */; };
 		842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD1E1F3313E100A3169F /* ScheduleCell.xib */; };
@@ -136,9 +139,12 @@
 		7832B0081F33AC6300BC8116 /* TabPageViewController-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TabPageViewController-dummy.m"; sourceTree = "<group>"; };
 		7832B0091F33AC6300BC8116 /* TabPageViewController-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TabPageViewController-prefix.pch"; sourceTree = "<group>"; };
 		7832B00A1F33AC6300BC8116 /* TabPageViewController-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TabPageViewController-umbrella.h"; sourceTree = "<group>"; };
+		784640871F379D4B00CEFC66 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		784640891F37A0CC00CEFC66 /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingTableViewCell.xib; sourceTree = "<group>"; };
+		788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTemplateVC.swift; sourceTree = "<group>"; };
 		842EBD1B1F3313C300A3169F /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
 		842EBD1D1F3313E100A3169F /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		842EBD1E1F3313E100A3169F /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
@@ -300,6 +306,15 @@
 			path = ../Pods/TabPageViewController;
 			sourceTree = "<group>";
 		};
+		7846408B1F37A76500CEFC66 /* CircleViews */ = {
+			isa = PBXGroup;
+			children = (
+				784640871F379D4B00CEFC66 /* CircleView.swift */,
+				784640891F37A0CC00CEFC66 /* CircleImageView.swift */,
+			);
+			name = CircleViews;
+			sourceTree = "<group>";
+		};
 		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +330,14 @@
 				788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */,
 			);
 			name = TrainingCell;
+			sourceTree = "<group>";
+		};
+		788EE89E1F379A9F00DD8A98 /* CreateTemplateVC */ = {
+			isa = PBXGroup;
+			children = (
+				788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */,
+			);
+			name = CreateTemplateVC;
 			sourceTree = "<group>";
 		};
 		842EBD231F3313FB00A3169F /* ScheduleCell */ = {
@@ -457,6 +480,7 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				788EE89E1F379A9F00DD8A98 /* CreateTemplateVC */,
 				788EE8961F34DD3000DD8A98 /* TrainingVC */,
 				842EBD2C1F33144300A3169F /* TemplatesVC */,
 				842EBD241F33140800A3169F /* ScheduleClientVC */,
@@ -543,6 +567,7 @@
 		84AB4D631F3280CE00531740 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7846408B1F37A76500CEFC66 /* CircleViews */,
 				842EBD341F33186900A3169F /* ESTViews */,
 				84AB4D641F3280E500531740 /* Dezapp */,
 			);
@@ -1039,6 +1064,7 @@
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
 				5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */,
 				842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */,
+				788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */,
 				7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */,
 				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
 				7832B00F1F33AC6300BC8116 /* TabPageViewController.swift in Sources */,
@@ -1050,11 +1076,13 @@
 				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
 				84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
+				784640881F379D4B00CEFC66 /* CircleView.swift in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
 				842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */,
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
+				7846408A1F37A0CC00CEFC66 /* CircleImageView.swift in Sources */,
 				842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */,
 				842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,

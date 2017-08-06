@@ -25,6 +25,10 @@ extension UIColor {
         return UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 1)
     }
     
+    class func tableSeparatorViewColor() -> UIColor {
+        return UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
+    }
+    
     /**
      Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
      

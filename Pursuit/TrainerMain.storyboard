@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SHD-3k-6xp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ZIe-AK-DC9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -495,6 +496,87 @@
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="2141.3793103448279"/>
         </scene>
+        <!--Create TemplateVC-->
+        <scene sceneID="AED-un-UGN">
+            <objects>
+                <viewController id="ZIe-AK-DC9" customClass="CreateTemplateVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GvA-31-ay7"/>
+                        <viewControllerLayoutGuide type="bottom" id="iMB-VJ-Tof"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tgo-RU-WM6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="5BE-cH-him">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbW-ld-AyI">
+                                <rect key="frame" x="0.0" y="20" width="375" height="133.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8d-e5-cxi" customClass="CircleView" customModule="Pursuit" customModuleProvider="target">
+                                        <rect key="frame" x="121" y="67" width="133.5" height="133.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="R8d-e5-cxi" secondAttribute="height" multiplier="1:1" id="7pL-sX-DpY"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="R8d-e5-cxi" firstAttribute="centerY" secondItem="qbW-ld-AyI" secondAttribute="centerY" multiplier="2" id="UNz-1D-vMc"/>
+                                    <constraint firstItem="R8d-e5-cxi" firstAttribute="centerX" secondItem="qbW-ld-AyI" secondAttribute="centerX" id="sOU-ui-tQR"/>
+                                    <constraint firstItem="R8d-e5-cxi" firstAttribute="height" secondItem="qbW-ld-AyI" secondAttribute="height" id="t6n-jc-oyi"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weightlifting" translatesAutoresizingMaskIntoConstraints="NO" id="PvY-BO-ofO" customClass="CircleImageView" customModule="Pursuit" customModuleProvider="target">
+                                <rect key="frame" x="150" y="121" width="76" height="66.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chest + Arms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4I-Wt-AMe">
+                                <rect key="frame" x="136" y="63.5" width="104" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-U6-gLx">
+                                <rect key="frame" x="0.0" y="220.5" width="375" height="446.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZIe-AK-DC9" id="9EB-t0-5iC"/>
+                                    <outlet property="delegate" destination="ZIe-AK-DC9" id="6MQ-td-hsC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="A4I-Wt-AMe" firstAttribute="centerX" secondItem="R8d-e5-cxi" secondAttribute="centerX" id="2Uz-o6-TdT"/>
+                            <constraint firstItem="PvY-BO-ofO" firstAttribute="centerY" secondItem="R8d-e5-cxi" secondAttribute="centerY" id="9QB-5E-GTu"/>
+                            <constraint firstItem="qbW-ld-AyI" firstAttribute="top" secondItem="GvA-31-ay7" secondAttribute="bottom" id="ElJ-C1-OHJ"/>
+                            <constraint firstItem="gnS-U6-gLx" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="Ia7-lQ-cMz"/>
+                            <constraint firstItem="gnS-U6-gLx" firstAttribute="top" secondItem="R8d-e5-cxi" secondAttribute="bottom" id="LSr-g5-dYS"/>
+                            <constraint firstAttribute="trailing" secondItem="qbW-ld-AyI" secondAttribute="trailing" id="M7T-v3-Bh1"/>
+                            <constraint firstItem="qbW-ld-AyI" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="SCu-g5-KO5"/>
+                            <constraint firstItem="R8d-e5-cxi" firstAttribute="top" secondItem="A4I-Wt-AMe" secondAttribute="bottom" id="SU0-gl-IDE"/>
+                            <constraint firstItem="PvY-BO-ofO" firstAttribute="centerX" secondItem="R8d-e5-cxi" secondAttribute="centerX" id="SjM-g6-I3E"/>
+                            <constraint firstItem="PvY-BO-ofO" firstAttribute="height" secondItem="R8d-e5-cxi" secondAttribute="height" multiplier="0.5" id="TqA-ZV-yRb"/>
+                            <constraint firstItem="5BE-cH-him" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="XJN-qw-vEC"/>
+                            <constraint firstAttribute="trailing" secondItem="gnS-U6-gLx" secondAttribute="trailing" id="hyc-7u-mBV"/>
+                            <constraint firstItem="5BE-cH-him" firstAttribute="top" secondItem="GvA-31-ay7" secondAttribute="bottom" id="jFy-B8-n8b"/>
+                            <constraint firstItem="iMB-VJ-Tof" firstAttribute="top" secondItem="5BE-cH-him" secondAttribute="bottom" id="l5n-Ax-N5l"/>
+                            <constraint firstItem="qbW-ld-AyI" firstAttribute="height" secondItem="Tgo-RU-WM6" secondAttribute="height" multiplier="0.2" id="qZu-Gw-obc"/>
+                            <constraint firstAttribute="trailing" secondItem="5BE-cH-him" secondAttribute="trailing" id="yUE-yI-QQT"/>
+                            <constraint firstItem="iMB-VJ-Tof" firstAttribute="top" secondItem="gnS-U6-gLx" secondAttribute="bottom" id="zkt-eO-hNs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="templateTableView" destination="gnS-U6-gLx" id="dFB-V2-gkB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tET-Er-94K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1067" y="2150"/>
+        </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="RLj-t4-zWJ">
             <objects>
@@ -773,5 +855,6 @@
         <image name="ic_plus" width="36" height="36"/>
         <image name="ic_schedule" width="25" height="25"/>
         <image name="ic_search" width="14" height="14"/>
+        <image name="weightlifting" width="76" height="100"/>
     </resources>
 </document>
