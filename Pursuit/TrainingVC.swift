@@ -26,8 +26,12 @@ class TrainingVC: UIViewController {
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureTableView()
+        
         registerXibs()
+        
+        trainingTableView.separatorColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
 
     }
     
