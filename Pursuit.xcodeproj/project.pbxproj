@@ -29,8 +29,6 @@
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
-		784640881F379D4B00CEFC66 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784640871F379D4B00CEFC66 /* CircleView.swift */; };
-		7846408A1F37A0CC00CEFC66 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784640891F37A0CC00CEFC66 /* CircleImageView.swift */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
 		788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */; };
@@ -123,8 +121,6 @@
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
-		784640871F379D4B00CEFC66 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		784640891F37A0CC00CEFC66 /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingTableViewCell.xib; sourceTree = "<group>"; };
@@ -274,15 +270,6 @@
 			);
 			name = TabPageViewController;
 			path = ../Pods/TabPageViewController;
-			sourceTree = "<group>";
-		};
-		7846408B1F37A76500CEFC66 /* CircleViews */ = {
-			isa = PBXGroup;
-			children = (
-				784640871F379D4B00CEFC66 /* CircleView.swift */,
-				784640891F37A0CC00CEFC66 /* CircleImageView.swift */,
-			);
-			name = CircleViews;
 			sourceTree = "<group>";
 		};
 		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
@@ -537,7 +524,6 @@
 		84AB4D631F3280CE00531740 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7846408B1F37A76500CEFC66 /* CircleViews */,
 				842EBD341F33186900A3169F /* ESTViews */,
 				84AB4D641F3280E500531740 /* Dezapp */,
 			);
@@ -1042,13 +1028,11 @@
 				84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */,
 				78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
-				784640881F379D4B00CEFC66 /* CircleView.swift in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
 				842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */,
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
-				7846408A1F37A0CC00CEFC66 /* CircleImageView.swift in Sources */,
 				842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */,
 				842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */,
 				78CE34C31F38FDF2002BD31D /* TabPageViewController.swift in Sources */,
