@@ -12,51 +12,61 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrainingCellReuseID" rowHeight="98" id="KGk-i7-Jjw" customClass="TrainingTableViewCell" customModule="Pursuit" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="98" id="KGk-i7-Jjw" customClass="TrainingTableViewCell" customModule="Pursuit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="97.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bench press" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwy-Se-IqF">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Bench press" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwy-Se-IqF">
                         <rect key="frame" x="27" y="14" width="95" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_clock" translatesAutoresizingMaskIntoConstraints="NO" id="Ogu-Ab-ANF">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="time_clock" translatesAutoresizingMaskIntoConstraints="NO" id="Ogu-Ab-ANF">
                         <rect key="frame" x="27" y="50" width="30" height="31"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3*10 sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-8x-kXF">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3*10 sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-8x-kXF">
                         <rect key="frame" x="78" y="55" width="73" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="BYo-6d-YFq">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="BYo-6d-YFq">
                         <rect key="frame" x="167" y="49" width="13" height="33"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hM-mm-3kl">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="125 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hM-mm-3kl">
                         <rect key="frame" x="195" y="55" width="50.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-1g-d0g">
+                        <rect key="frame" x="0.0" y="88.5" width="320" height="1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="JDI-BC-UFp"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="Ogu-Ab-ANF" firstAttribute="top" secondItem="Dwy-Se-IqF" secondAttribute="bottom" constant="15" id="9cw-HV-qVR"/>
+                    <constraint firstItem="Ba4-1g-d0g" firstAttribute="top" secondItem="Ogu-Ab-ANF" secondAttribute="bottom" constant="5" id="KGC-Fs-4a9"/>
                     <constraint firstItem="Ogu-Ab-ANF" firstAttribute="leading" secondItem="Dwy-Se-IqF" secondAttribute="leading" id="LJy-Hi-OcS"/>
                     <constraint firstItem="bDT-8x-kXF" firstAttribute="centerY" secondItem="Ogu-Ab-ANF" secondAttribute="centerY" id="Mce-gd-ih3"/>
+                    <constraint firstItem="Ba4-1g-d0g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="N6k-1e-7RI"/>
                     <constraint firstItem="1hM-mm-3kl" firstAttribute="centerY" secondItem="BYo-6d-YFq" secondAttribute="centerY" id="OZC-Yg-94F"/>
                     <constraint firstItem="Dwy-Se-IqF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="Odo-id-By7"/>
                     <constraint firstItem="BYo-6d-YFq" firstAttribute="centerY" secondItem="bDT-8x-kXF" secondAttribute="centerY" id="OyI-kV-NNH"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ba4-1g-d0g" secondAttribute="bottom" id="Ps7-tu-roo"/>
                     <constraint firstItem="Dwy-Se-IqF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="19" id="YxG-ig-7Ta"/>
                     <constraint firstItem="BYo-6d-YFq" firstAttribute="leading" secondItem="bDT-8x-kXF" secondAttribute="trailing" constant="16" id="aUB-1f-PHB"/>
                     <constraint firstItem="1hM-mm-3kl" firstAttribute="leading" secondItem="BYo-6d-YFq" secondAttribute="trailing" constant="15" id="gkp-EL-YEH"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Ogu-Ab-ANF" secondAttribute="bottom" constant="8.5" id="r2e-wA-3su"/>
                     <constraint firstItem="bDT-8x-kXF" firstAttribute="leading" secondItem="Ogu-Ab-ANF" secondAttribute="trailing" constant="21" id="xkv-gP-lWJ"/>
+                    <constraint firstAttribute="trailing" secondItem="Ba4-1g-d0g" secondAttribute="trailing" id="zzE-bg-jTQ"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

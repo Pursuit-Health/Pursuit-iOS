@@ -18,7 +18,6 @@ PODS:
   - SDWebImage/Core (4.1.0)
   - SVProgressHUD (2.1.2)
   - SwipeCellKit (1.8.0)
-  - TabPageViewController (0.2.7)
   - TPKeyboardAvoiding (1.3.1)
 
 DEPENDENCIES:
@@ -34,7 +33,6 @@ DEPENDENCIES:
   - SDWebImage (~> 4.1)
   - SVProgressHUD (~> 2.1)
   - SwipeCellKit
-  - TabPageViewController (~> 0.2)
   - TPKeyboardAvoiding (~> 1.3)
 
 SPEC CHECKSUMS:
@@ -52,9 +50,8 @@ SPEC CHECKSUMS:
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
-  TabPageViewController: c37a1257a50c2b50712dde61bf499768eee95b67
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 5b0989dba5cc095960d19a20be21eb31c3cb13b8
+PODFILE CHECKSUM: 1cfa49c0cf3cc41fe5240129a9d5206e914cfa72
 
 COCOAPODS: 1.2.1

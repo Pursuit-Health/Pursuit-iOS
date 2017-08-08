@@ -20,14 +20,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    IQKeyboardManager.sharedManager().enable = true
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        //IQKeyboardManager.sharedManager().enable = false
-    }
-    //MARK: Private
-
 }
 
 //MARK: UITextFieldDelegate

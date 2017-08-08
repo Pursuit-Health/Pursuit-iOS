@@ -17,6 +17,6 @@ target 'Pursuit' do
   pod 'SVProgressHUD', '~> 2.1'
   pod 'pop', '~> 1.0'
   pod 'JTAppleCalendar', '~> 7.0'
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManagerSwift', '~> 4.0'
   
 end
