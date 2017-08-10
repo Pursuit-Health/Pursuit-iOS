@@ -27,7 +27,7 @@ class MainAuthVC: UIViewController {
         getControllers()
         
     }
-    
+        
     //MARK: Private
     
     private func getControllers(){
@@ -48,7 +48,7 @@ class MainAuthVC: UIViewController {
         option.currentBarHeight = 3.0
         option.tabWidth = view.frame.width / CGFloat(controller.tabItems.count)
         option.tabBackgroundColor = .clear
-        option.currentColor = UIColor.customAuthButtonsColor()
+        option.currentColor = UIColor.customAuthButtons()
         controller.option = option
     }
     

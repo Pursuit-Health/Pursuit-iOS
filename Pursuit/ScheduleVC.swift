@@ -9,7 +9,7 @@
 import UIKit
 import JTAppleCalendar
 
-class ScheduleVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ScheduleVC: UIViewController {
     let formatter = DateFormatter()
     var curCal = Calendar.current
     var navController: PursuitNVC!
@@ -31,6 +31,10 @@ class ScheduleVC: UIViewController, UICollectionViewDataSource, UICollectionView
         self.tabBarController?.navigationItem.rightBarButtonItem  = addScheduleButton
         
         setupCalendarView()
+        
+        self.calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
+        self.calendarView.scrollToDate(Date())
+       // self.calendarView.selectDates([Date()])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,11 +57,6 @@ class ScheduleVC: UIViewController, UICollectionViewDataSource, UICollectionView
             self.navController.setTitle(text: self.formatter.string(from: date!))
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -69,18 +68,14 @@ class ScheduleVC: UIViewController, UICollectionViewDataSource, UICollectionView
         self.modalPresentationStyle = .currentContext // Display on top of current UIView
         self.present(scheduleClientVC, animated: true, completion: nil)
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+extension ScheduleVC: UICollectionViewDataSource {
     
-    //MARK: - UICollectionView Datasource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -90,17 +85,15 @@ class ScheduleVC: UIViewController, UICollectionViewDataSource, UICollectionView
         return cell
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    //MARK: - UICollectionView Delegate
+}
+
+extension ScheduleVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         return
     }
 }
 
-extension ScheduleVC: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
+extension ScheduleVC: JTAppleCalendarViewDataSource {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = Calendar.current.timeZone
@@ -116,6 +109,7 @@ extension ScheduleVC: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
         cell.dateLabel.text = cellState.text
+   
         if(cellState.dateBelongsTo == DateOwner.previousMonthWithinBoundary || cellState.dateBelongsTo == DateOwner.followingMonthWithinBoundary)  {
             cell.dateLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
         } else {
@@ -123,9 +117,22 @@ extension ScheduleVC: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource
         }
         cell.bgView.layer.borderWidth = 0.0
         cell.bgView.layer.borderColor = UIColor(colorLiteralRed: 140.0/255.0, green: 136.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss +zzzz"
+        if cellState.date == formatter.date(from: "2017-08-09 21:00:00 +0000") {
+            cell.bgView.layer.borderWidth = 1.0
+            cell.bgView.layer.borderColor = UIColor(colorLiteralRed: 140.0/255.0, green: 136.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+            if(selectedCell != nil) {
+                selectedCell.bgView.layer.borderWidth = 0.0
+                selectedCell.bgView.layer.borderColor = UIColor.clear.cgColor
+            }
+            selectedCell = cell
+        }
         return cell
     }
-    
+}
+
+extension ScheduleVC: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         let calCell = cell as! CalendarCell
         calCell.bgView.layer.borderWidth = 1.0
@@ -135,6 +142,8 @@ extension ScheduleVC: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource
             selectedCell.bgView.layer.borderColor = UIColor.clear.cgColor
         }
         selectedCell = calCell
+        print(date)
+        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
@@ -142,4 +151,8 @@ extension ScheduleVC: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource
         self.formatter.dateFormat = ("MMMM yyyy")
         self.navController.setTitle(text: self.formatter.string(from: date!))
     }
+}
+
+extension ScheduleVC {
+    
 }

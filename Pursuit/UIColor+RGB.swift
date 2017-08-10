@@ -21,11 +21,11 @@ extension UIColor {
         return UIColor(red: 80.0/255, green: 210.0/255, blue: 194.0/255, alpha: 1.0)
     }
     
-    class func customAuthButtonsColor() -> UIColor {
+    class func customAuthButtons() -> UIColor {
         return UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 1)
     }
     
-    class func tableSeparatorViewColor() -> UIColor {
+    class func tableSeparatorView() -> UIColor {
         return UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
     }
     

@@ -22,6 +22,12 @@ class SignUpVC: UIViewController {
     }
 }
 
+extension SignUpVC {
+    func signUp(){
+        
+    }
+}
+
 extension SignUpVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
