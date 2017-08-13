@@ -33,6 +33,7 @@
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
 		788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */; };
 		788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */; };
+		78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */; };
 		78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34B81F38FDDE002BD31D /* TabPageOption.swift */; };
 		78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BA1F38FDF2002BD31D /* TabView.xib */; };
 		78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34BB1F38FDF2002BD31D /* TabView.swift */; };
@@ -40,6 +41,9 @@
 		78CE34C41F38FDF2002BD31D /* TabPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BD1F38FDF2002BD31D /* TabPageViewController.storyboard */; };
 		78CE34C51F38FDF2002BD31D /* TabCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BF1F38FDF2002BD31D /* TabCollectionCell.xib */; };
 		78CE34C61F38FDF2002BD31D /* TabCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34C01F38FDF2002BD31D /* TabCollectionCell.swift */; };
+		78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */; };
+		78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */; };
+		78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4438E1F40E3EB00525F7A /* CustomTextField.swift */; };
 		842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD1B1F3313C300A3169F /* ScheduleVC.swift */; };
 		842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD1D1F3313E100A3169F /* ScheduleCell.swift */; };
 		842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842EBD1E1F3313E100A3169F /* ScheduleCell.xib */; };
@@ -125,6 +129,7 @@
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingTableViewCell.xib; sourceTree = "<group>"; };
 		788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTemplateVC.swift; sourceTree = "<group>"; };
+		78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		78CE34B81F38FDDE002BD31D /* TabPageOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabPageOption.swift; path = Pursuit/TabPageOption.swift; sourceTree = SOURCE_ROOT; };
 		78CE34BA1F38FDF2002BD31D /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabView.xib; path = Pursuit/TabView.xib; sourceTree = SOURCE_ROOT; };
 		78CE34BB1F38FDF2002BD31D /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Pursuit/TabView.swift; sourceTree = SOURCE_ROOT; };
@@ -133,6 +138,9 @@
 		78CE34BE1F38FDF2002BD31D /* TabPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabPageViewController.h; path = Pursuit/TabPageViewController.h; sourceTree = SOURCE_ROOT; };
 		78CE34BF1F38FDF2002BD31D /* TabCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabCollectionCell.xib; path = Pursuit/TabCollectionCell.xib; sourceTree = SOURCE_ROOT; };
 		78CE34C01F38FDF2002BD31D /* TabCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabCollectionCell.swift; path = Pursuit/TabCollectionCell.swift; sourceTree = SOURCE_ROOT; };
+		78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClienCell.swift; sourceTree = "<group>"; };
+		78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleClienCell.xib; sourceTree = "<group>"; };
+		78E4438E1F40E3EB00525F7A /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		842EBD1B1F3313C300A3169F /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
 		842EBD1D1F3313E100A3169F /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		842EBD1E1F3313E100A3169F /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
@@ -297,6 +305,15 @@
 			name = CreateTemplateVC;
 			sourceTree = "<group>";
 		};
+		78E443871F40DF9200525F7A /* ScheduleClient */ = {
+			isa = PBXGroup;
+			children = (
+				78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */,
+				78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */,
+			);
+			name = ScheduleClient;
+			sourceTree = "<group>";
+		};
 		842EBD231F3313FB00A3169F /* ScheduleCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				842EBD211F3313EE00A3169F /* ScheduleClientVC.swift */,
+				78E4438E1F40E3EB00525F7A /* CustomTextField.swift */,
 			);
 			name = ScheduleClientVC;
 			sourceTree = "<group>";
@@ -409,19 +427,12 @@
 		84AB4D561F327F2E00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				84AB4D571F327F3B00531740 /* LoginVC */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		84AB4D571F327F3B00531740 /* LoginVC */ = {
-			isa = PBXGroup;
-			children = (
 				7832AFEA1F331D2600BC8116 /* SignInVC.swift */,
 				7832AFE81F331D1D00BC8116 /* SignUpVC.swift */,
 				7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */,
+				78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */,
 			);
-			name = LoginVC;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		84AB4D581F327F5E00531740 /* TrainerMain */ = {
@@ -543,6 +554,7 @@
 		84AB4D651F32810C00531740 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				78E443871F40DF9200525F7A /* ScheduleClient */,
 				788EE8991F34E65900DD8A98 /* TrainingCell */,
 				842EBD2D1F33162B00A3169F /* CalendarCell */,
 				842EBD2B1F33143A00A3169F /* TemplateCell */,
@@ -933,6 +945,7 @@
 				5BE3A1D01EB3196A005B35CD /* ForgotPasswordCell.xib in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
+				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1016,12 +1029,14 @@
 				842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */,
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
 				5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */,
+				78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */,
 				842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */,
 				788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */,
 				7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */,
 				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
+				78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */,
 				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
 				84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */,
 				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
@@ -1039,6 +1054,7 @@
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
+				78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
 				788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */,
 				78CE34C61F38FDF2002BD31D /* TabCollectionCell.swift in Sources */,

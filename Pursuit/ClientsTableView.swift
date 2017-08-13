@@ -23,6 +23,8 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
     var buttonStyle: ButtonStyle = .backgroundColor
     
+    var navController:PursuitNVC!
+    
     
     //struct of individual client information
     struct clientInfo {
@@ -57,12 +59,11 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navController = self.navigationController as! PursuitNVC
+        navController.setTitle(text: "Clients")
     }
-    
-    
     //searches client cells typing in searchfield
     func textFieldDidChange(_ textField: UITextField) {
         

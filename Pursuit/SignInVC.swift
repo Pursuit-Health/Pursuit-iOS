@@ -12,15 +12,43 @@ import IQKeyboardManagerSwift
 class SignInVC: UIViewController {
     
     //MARK: IBOutlets
-
+    
     @IBOutlet weak var emailTeaxtField: DezappTextField!
     @IBOutlet weak var passwordTextField: DezappTextField!
+    
+    //MARK: IBActions
+    
+    @IBAction func signInButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
+        showForgotPasswordVC()
+    }
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    //MARK: Private
+    
+    private func showForgotPasswordVC() {
+        guard let forgotPVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController (withIdentifier: "ForgotPasswordVC") as? ForgotPasswordVC else { return }
+        
+        placeControllerToSuperView(forgotPVC)
+    }
+    
+    private func placeControllerToSuperView(_ forgotPVC: ForgotPasswordVC) {
+        addChildViewController(forgotPVC)
+        
+        self.view.addSubview(forgotPVC.view)
+        self.view.addConstraints(UIView.place(forgotPVC.view, onOtherView: self.view))
+        
+        forgotPVC.didMove(toParentViewController: self)
+    }
+    
 }
 
 //MARK: UITextFieldDelegate

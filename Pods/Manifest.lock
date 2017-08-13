@@ -26,7 +26,7 @@ DEPENDENCIES:
   - ESTabBarController-swift
   - Fabric
   - HMSegmentedControl
-  - IQKeyboardManagerSwift
+  - IQKeyboardManagerSwift (~> 4.0)
   - JTAppleCalendar (~> 7.0)
   - KVNProgress
   - pop (~> 1.0)
@@ -52,6 +52,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 1cfa49c0cf3cc41fe5240129a9d5206e914cfa72
+PODFILE CHECKSUM: 28aad5a49d0f83903fafef366cea95958f9380f5
 
 COCOAPODS: 1.2.1
