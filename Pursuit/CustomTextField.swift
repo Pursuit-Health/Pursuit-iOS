@@ -40,15 +40,6 @@ class CustomTextField: UITextField {
     }
     
     fileprivate func customLayout() {
-        /*// Add search icon on left side
-         let searchImageView = UIImageView()
-         searchImageView.contentMode = .scaleAspectFit
-         let searchIcon = UIImage( named: "search_magnifier" )
-         searchImageView.image = searchIcon
-         self.leftView = searchImageView
-         self.leftViewMode = .always*/
-        
-        // Set custom clear button on right side
         let clearButton = UIButton()
         clearButton.setImage( UIImage( named: "search" ), for: .normal )
         clearButton.contentMode = .scaleAspectFit

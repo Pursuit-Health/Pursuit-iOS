@@ -10,81 +10,99 @@ import UIKit
 import JTAppleCalendar
 
 class ScheduleVC: UIViewController {
-    let formatter = DateFormatter()
-    var curCal = Calendar.current
-    var navController: PursuitNVC!
-    @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var headerLabelsView: UIStackView!
-    @IBOutlet var calendarView: JTAppleCalendarView!
-    var selectedCell:CalendarCell!
+    
+    //MARK: Constants
+    
+    fileprivate struct Constants {
+        struct Dates {
+            static let StartDate    = "2017 01 01"
+            static let EndDate      = "2022 12 31"
+            static let DateFormat   = "yyyy MM dd"
+        }
+    }
+    
+    //MARK: IBOutlets
+    @IBOutlet var collectionView: UICollectionView! {
+        didSet {
+            collectionView.contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
+        }
+    }
+    
+    @IBOutlet var headerLabelsView  : UIStackView! {
+        didSet {
+             headerLabelsView.backgroundColor = UIColor(white: 255.0/255.0, alpha: 0.1)
+        }
+    }
+    
+    @IBOutlet var calendarView      : JTAppleCalendarView!
+    
+    //MARK: Variables
+    
+    let formatter   = DateFormatter()
+    var curCal      = Calendar.current
+    
+    var selectedCell    : CalendarCell!
+    
+    //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "scheduleCell")
-        collectionView.contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
-        headerLabelsView.backgroundColor = UIColor(white: 255.0/255.0, alpha: 0.1)
         
-        navController = self.navigationController as! PursuitNVC
-        
-        let addScheduleButton = UIBarButtonItem(image: UIImage(named: "ic_plus"), style: .plain, target: self, action:#selector(self.addSchedule))
-        self.tabBarController?.navigationItem.rightBarButtonItem  = addScheduleButton
+        registerCollectionView()
         
         setupCalendarView()
-        
-        self.calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
-        self.calendarView.scrollToDate(Date())
-       // self.calendarView.selectDates([Date()])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        calendarView.visibleDates { (visibleDates) in
-            let date = visibleDates.monthDates.first?.date
-            self.formatter.dateFormat = ("MMMM yyyy")
-            self.navController.setTitle(text: self.formatter.string(from: date!))
-        }
+        calendarViewVisibleDates()
+        
+        setUpBackgroundImage()
+        
+        navigationController?.navigationBar.setAppearence()
     }
     
-    func  setupCalendarView() {
-        calendarView.minimumInteritemSpacing = 0
-        calendarView.minimumLineSpacing = 0
+    //MARK: Private
+    
+   private func registerCollectionView() {
+        collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "scheduleCell")
+    }
+    
+    private func setupCalendarView() {
         
+        self.calendarView.minimumInteritemSpacing = 0
+        self.calendarView.minimumLineSpacing = 0
+        
+        self.calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
+        self.calendarView.scrollToDate(Date())
+        // self.calendarView.selectDates([Date()]
+        
+        calendarViewVisibleDates()
+    }
+    
+    private func calendarViewVisibleDates() {
         calendarView.visibleDates { (visibleDates) in
             let date = visibleDates.monthDates.first?.date
             self.formatter.dateFormat = ("MMMM yyyy")
-            self.navController.setTitle(text: self.formatter.string(from: date!))
+            self.updateLeftTitle(newTitle: self.formatter.string(from: date!))
         }
     }
     
     override var prefersStatusBarHidden: Bool {
         return false
     }
-    
-    func addSchedule() {
-        let scheduleClientVC : ScheduleClientVC = storyboard?.instantiateViewController(withIdentifier: "ScheduleClientVC") as! ScheduleClientVC
-        self.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        self.modalPresentationStyle = .currentContext // Display on top of current UIView
-        self.present(scheduleClientVC, animated: true, completion: nil)
-    }
 }
 
 extension ScheduleVC: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:ScheduleCell = collectionView.dequeueReusableCell(withReuseIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "scheduleCell", for: indexPath) as? ScheduleCell else { return UICollectionViewCell() }
         return cell
     }
-    
 }
 
 extension ScheduleVC: UICollectionViewDelegate {
@@ -95,12 +113,14 @@ extension ScheduleVC: UICollectionViewDelegate {
 
 extension ScheduleVC: JTAppleCalendarViewDataSource {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone = Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
+        formatter.dateFormat = Constants.Dates.DateFormat
+        let calendar = Calendar.current
         
-        let start = formatter.date(from: "2017 01 01")!
-        let end = formatter.date(from: "2022 12 31")!
+        formatter.timeZone = calendar.timeZone
+        formatter.locale = calendar.locale
+        
+        let start = formatter.date(from: Constants.Dates.StartDate)!
+        let end = formatter.date(from: Constants.Dates.EndDate)!
         
         let params = ConfigurationParameters(startDate: start, endDate: end)
         return params
@@ -109,7 +129,7 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
         cell.dateLabel.text = cellState.text
-   
+        
         if(cellState.dateBelongsTo == DateOwner.previousMonthWithinBoundary || cellState.dateBelongsTo == DateOwner.followingMonthWithinBoundary)  {
             cell.dateLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
         } else {
@@ -143,16 +163,12 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         }
         selectedCell = calCell
         print(date)
-        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         let date = visibleDates.monthDates.first?.date
         self.formatter.dateFormat = ("MMMM yyyy")
-        self.navController.setTitle(text: self.formatter.string(from: date!))
+        updateLeftTitle(newTitle: self.formatter.string(from: date!))
+   
     }
-}
-
-extension ScheduleVC {
-    
 }

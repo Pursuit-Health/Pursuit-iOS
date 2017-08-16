@@ -26,6 +26,8 @@
 		5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */; };
 		5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D41EB319E5005B35CD /* DezappButton.swift */; };
 		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
+		780D8E901F4360FE0030A992 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E8F1F4360FE0030A992 /* Template.swift */; };
+		780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E951F44DAD90030A992 /* UINavigationBar.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -122,6 +124,8 @@
 		5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappLabel.swift; sourceTree = "<group>"; };
 		5BE3A1D41EB319E5005B35CD /* DezappButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappButton.swift; sourceTree = "<group>"; };
 		5BE3A1D91EB7029E005B35CD /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		780D8E8F1F4360FE0030A992 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -262,6 +266,22 @@
 				5B1F832E1E850E4100ABA24C /* Info.plist */,
 			);
 			path = PursuitUITests;
+			sourceTree = "<group>";
+		};
+		780D8E8E1F4360D00030A992 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				780D8E8F1F4360FE0030A992 /* Template.swift */,
+			);
+			name = Template;
+			sourceTree = "<group>";
+		};
+		780D8E941F44DABF0030A992 /* UINavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				780D8E951F44DAD90030A992 /* UINavigationBar.swift */,
+			);
+			name = UINavigationBar;
 			sourceTree = "<group>";
 		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
@@ -493,6 +513,7 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				780D8E8E1F4360D00030A992 /* Template */,
 				84AB4D6A1F32819500531740 /* LoginModel */,
 			);
 			name = Entities;
@@ -612,6 +633,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				780D8E941F44DABF0030A992 /* UINavigationBar */,
 				84AB4D6D1F32820100531740 /* UIColor+RGB */,
 				84AB4D6C1F3281DC00531740 /* UIViewController+Persuit */,
 			);
@@ -1019,6 +1041,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */,
 				78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */,
 				84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */,
 				842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */,
@@ -1036,6 +1059,7 @@
 				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
+				780D8E901F4360FE0030A992 /* Template.swift in Sources */,
 				78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */,
 				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
 				84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */,

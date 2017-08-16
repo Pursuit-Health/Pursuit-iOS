@@ -61,8 +61,7 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navController = self.navigationController as! PursuitNVC
-        navController.setTitle(text: "Clients")
+       
     }
     //searches client cells typing in searchfield
     func textFieldDidChange(_ textField: UITextField) {
@@ -168,8 +167,6 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: - Actions
     
     @IBAction func moreTapped(_ sender: Any) {
-
-        
         let controller = UIAlertController(title: "Swipe Transition Style", message: nil, preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Chat", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
         controller.addAction(UIAlertAction(title: "Share", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))

@@ -8,47 +8,30 @@
 
 import UIKit
 
-class TemplatesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TemplatesVC: UIViewController {
+    
+    //MARK: Constant
+    
+    //MARK: IBOutlets
+    
     @IBOutlet var tableView: UITableView!
-    var navController:PursuitNVC!
-
+    
+    //MARK: Variables
+    
+    //MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.tableView.register(UINib(nibName: "TemplateCell", bundle: nil), forCellReuseIdentifier: "TemplateCell")
+       
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navController = self.navigationController as! PursuitNVC
-        navController.setTitle(text: "Workout Log")
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+   
+    //MARK: Private
     override var prefersStatusBarHidden: Bool {
         return false
     }
-    
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    // MARK: - Table view data source
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+extension TemplatesVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -59,8 +42,8 @@ class TemplatesVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TemplateCell", for: indexPath)
+        guard let cell = tableView.gc_dequeueReusableCell(type: TemplateCell.self) else { return UITableViewCell() }
         return cell
     }
-
+    
 }

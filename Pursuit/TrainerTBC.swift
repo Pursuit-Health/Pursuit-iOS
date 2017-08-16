@@ -27,7 +27,7 @@ class TrainerTBC: ESTabBarController {
         self.tabBar.backgroundImage = UIImage()
         self.tabBar.barTintColor = UIColor(white: 255/255.0, alpha: 0.1)
         
-        self.viewControllers = [v1!, v2!, v3!]
+        //self.viewControllers = [v1!, v2!, v3!]
     }
 
     override func didReceiveMemoryWarning() {

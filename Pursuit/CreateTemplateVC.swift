@@ -12,8 +12,8 @@ class CreateTemplateVC: UIViewController {
 
     //MARK: Constants
 
-    
     //MARK: IBOutlets
+    
     @IBOutlet weak var templateTableView: UITableView! {
         didSet {
             templateTableView.rowHeight = UITableViewAutomaticDimension
@@ -24,8 +24,13 @@ class CreateTemplateVC: UIViewController {
     //MARK: Variables
     
     //MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpBackgroundImage()
+        
+        navigationController?.navigationBar.setAppearence()
     }
 }
 

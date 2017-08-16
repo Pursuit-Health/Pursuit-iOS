@@ -21,7 +21,6 @@ class ScheduleClientVC: UIViewController {
         
     }
     
-    
     @IBAction func closePressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -29,7 +28,6 @@ class ScheduleClientVC: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-    
 }
 
 extension ScheduleClientVC: UITableViewDataSource{
@@ -38,7 +36,6 @@ extension ScheduleClientVC: UITableViewDataSource{
         return 2
         
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
