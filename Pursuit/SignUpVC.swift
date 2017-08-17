@@ -28,6 +28,7 @@ extension SignUpVC {
     }
 }
 
+//TODO: Maybe think if exists better solution
 extension SignUpVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {

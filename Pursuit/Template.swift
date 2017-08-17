@@ -8,6 +8,7 @@
 
 import ObjectMapper
 
+//TODO: Remove NSObject
 class Template: NSObject, Mappable {
     
     //Create Template

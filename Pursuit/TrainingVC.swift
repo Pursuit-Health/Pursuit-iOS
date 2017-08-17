@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//TODO: Tabulation, spacing and remove unnecessary marks, methods
 
 class TrainingVC: UIViewController {
     

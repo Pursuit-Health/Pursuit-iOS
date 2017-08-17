@@ -13,6 +13,7 @@ class PursuitNVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO: Separate by methods
         let imageView = UIImageView(image: UIImage(named: "bg"))
         imageView.bounds = self.view.bounds
         imageView.frame = self.view.frame
@@ -42,6 +43,7 @@ class PursuitNVC: UINavigationController {
         return UIStatusBarStyle.lightContent
     }
     
+    //TODO: spacing, color need to be as default parameter
     func setTitle(text: String) {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "Avenir-Book", size: 17.0)

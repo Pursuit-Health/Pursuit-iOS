@@ -51,6 +51,8 @@ class SignInVC: UIViewController {
     
 }
 
+
+//TODO: Mayby think a better solution
 //MARK: UITextFieldDelegate
 extension SignInVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

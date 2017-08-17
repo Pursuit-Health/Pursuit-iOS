@@ -33,6 +33,7 @@ class MainAuthVC: UIViewController {
     private func getControllers(){
         let controller = TabPageViewController.create()
         
+        //TODO: Duplication storyboard, make one veriable storyboard
         let vc1 = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "SignInVCID")
         let vc2 = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "SignUpVCID")
         controller.tabItems = [(vc1, "SignIn"), (vc2, "SignUp")]
@@ -43,6 +44,7 @@ class MainAuthVC: UIViewController {
         
     }
     
+    //TODO: tabulation
     private func setUpOptions(_ controller: TabPageViewController){
         var option = TabPageOption()
         option.currentBarHeight = 3.0

@@ -13,6 +13,7 @@ class ScheduleVC: UIViewController {
     
     //MARK: Constants
     
+    //TODO: move all date formats into ona place. Ask me to show how and where
     fileprivate struct Constants {
         struct Dates {
             static let StartDate    = "2017 01 01"
@@ -112,6 +113,7 @@ extension ScheduleVC: UICollectionViewDelegate {
 }
 
 extension ScheduleVC: JTAppleCalendarViewDataSource {
+    //TODO: This methods need to be separated with more methods
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = Constants.Dates.DateFormat
         let calendar = Calendar.current
@@ -153,6 +155,8 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
 }
 
 extension ScheduleVC: JTAppleCalendarViewDelegate {
+    
+    //TODO: this also need to be separated
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         let calCell = cell as! CalendarCell
         calCell.bgView.layer.borderWidth = 1.0

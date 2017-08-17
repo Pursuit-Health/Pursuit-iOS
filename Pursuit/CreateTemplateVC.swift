@@ -13,7 +13,7 @@ class CreateTemplateVC: UIViewController {
     //MARK: Constants
 
     //MARK: IBOutlets
-    
+    //TODO: Spacing and tabulation
     @IBOutlet weak var templateTableView: UITableView! {
         didSet {
             templateTableView.rowHeight = UITableViewAutomaticDimension
@@ -41,7 +41,8 @@ extension CreateTemplateVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.gc_dequeueReusableCell(type: TrainingTableViewCell.self) else { return UITableViewCell() }
+        guard let cell = tableView.gc_dequeueReusableCell(type: TrainingTableViewCell.self) else { return UITableViewCell()
+        }
            
             return cell
     }

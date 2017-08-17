@@ -15,6 +15,7 @@ class TrainerTBC: ESTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //TODO: Move to external methos
         let v1 = self.storyboard?.instantiateViewController(withIdentifier: "ScheduleVC")
         let v2 = self.storyboard?.instantiateViewController(withIdentifier: "TemplatesVC")
         let v3 = self.storyboard?.instantiateViewController(withIdentifier: "ClientsTableView")
@@ -30,6 +31,7 @@ class TrainerTBC: ESTabBarController {
         //self.viewControllers = [v1!, v2!, v3!]
     }
 
+    //TODO: Remove unnecessary code
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

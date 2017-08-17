@@ -16,6 +16,7 @@ class ForgotPasswordCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        //TODO: use ui file to do that
         submitButton.layer.borderWidth = 1.0
         submitButton.layer.cornerRadius = 19.0
         submitButton.layer.borderColor = UIColor(colorLiteralRed: 28/255, green: 86/255, blue: 255/255, alpha: 1.0).cgColor

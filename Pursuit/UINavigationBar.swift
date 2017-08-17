@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+//TODO: Extension file in name should include section what's it doing "UINavigationBar+appearance"
+//TODO: equal spacing
 extension UINavigationBar {
      func setAppearence() {
         self.setBackgroundImage(UIImage(), for: .default)

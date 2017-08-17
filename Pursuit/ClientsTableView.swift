@@ -9,6 +9,7 @@
 import UIKit
 import SwipeCellKit
 
+//TODO: WTF is this. Reimplemn 100%
 class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //view objects

@@ -22,6 +22,7 @@ class SignUpCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        //TODO: Move to did set method
         nameField.updateAttributedTextWithString(string: "")
         emailField.updateAttributedTextWithString(string: "")
         passwordField.updateAttributedTextWithString(string: "")
