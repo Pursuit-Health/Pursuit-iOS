@@ -11,14 +11,22 @@ import UIKit
 class SignUpVC: UIViewController {
     
     //MARK: IBOutlets
-    @IBOutlet weak var birthDayTextField: DezappTextField!
-    @IBOutlet weak var emailTextField: DezappTextField!
-    @IBOutlet weak var passwordTextField: DezappTextField!
-    @IBOutlet weak var nameTextField: DezappTextField!
+    @IBOutlet weak var birthDayTextField    : DezappTextField!
+    @IBOutlet weak var emailTextField       : DezappTextField!
+    @IBOutlet weak var passwordTextField    : DezappTextField!
+    @IBOutlet weak var nameTextField        : DezappTextField!
 
+    //MARK: Variables
+    
+    var textFieldsArray: [DezappTextField] {
+        return [self.nameTextField, self.birthDayTextField, self.passwordTextField, self.emailTextField]
+    }
+    
     //MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 }
 
@@ -31,18 +39,10 @@ extension SignUpVC {
 //TODO: Maybe think if exists better solution
 extension SignUpVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case nameTextField:
-            birthDayTextField.becomeFirstResponder()
-        case birthDayTextField:
-            passwordTextField.becomeFirstResponder()
-        case passwordTextField:
-            emailTextField.becomeFirstResponder()
-        case emailTextField:
-            emailTextField.resignFirstResponder()
-        default:
-            break
-        }
+      
+        makeTextFieldsFirstResponder(textFieldsArray, textField)
+        
         return true
     }
 }
+

@@ -10,19 +10,18 @@ import UIKit
 
 class TemplatesVC: UIViewController {
     
-    //MARK: Constant
-    
     //MARK: IBOutlets
     
     @IBOutlet var tableView: UITableView!
-    
-    //MARK: Variables
     
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        setUpBackgroundImage()
+        
+        navigationController?.navigationBar.setAppearence()
     }
    
     //MARK: Private

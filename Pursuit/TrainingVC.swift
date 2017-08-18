@@ -10,18 +10,14 @@ import UIKit
 //TODO: Tabulation, spacing and remove unnecessary marks, methods
 
 class TrainingVC: UIViewController {
-    
-    //MARK: Constants
-    
+
     //MARK: IBOutlets
     @IBOutlet weak var trainingTableView: UITableView! {
         didSet{
-            trainingTableView.rowHeight = UITableViewAutomaticDimension
-            trainingTableView.estimatedRowHeight = 200
+            trainingTableView.rowHeight             = UITableViewAutomaticDimension
+            trainingTableView.estimatedRowHeight    = 200
         }
     }
-    
-    //MARK: Variables
     
     //MARK: Lifecycle
     override func viewDidLoad() {

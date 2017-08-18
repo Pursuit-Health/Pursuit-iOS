@@ -10,7 +10,7 @@ import UIKit
 import SwipeCellKit
 
 //TODO: WTF is this. Reimplemn 100%
-class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ClientsVC: UIViewController {
 
     //view objects
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -24,7 +24,6 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
     var buttonStyle: ButtonStyle = .backgroundColor
     
-    var navController:PursuitNVC!
     
     
     //struct of individual client information
@@ -58,6 +57,10 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        setUpBackgroundImage()
+        
+        navigationController?.navigationBar.setAppearence()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,74 +98,6 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    // MARK: - Table view data source
-
-    /*override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }*/
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        //returns number in clientList
-        if showSearchResults == false{
-            
-            return clientList.count
-            
-        }else{
-            
-            return filteredClientList.count
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as! ClientCell
-
-        if showSearchResults == false {
-            
-            //assigns cell image
-            cell.clientImage.image = clientList[indexPath.row].clientImage;
-
-            //adds cell name
-            cell.clientName.text = clientList[indexPath.row].clientName;
-            
-            if indexPath.row == clientList.count-1 {
-                cell.separatorView.isHidden = true
-            }
-            
-        }else{
-            
-            //assigns cell image
-            cell.clientImage.image = filteredClientList[indexPath.row].clientImage;
- 
-            //adds cell name
-            cell.clientName.text = filteredClientList[indexPath.row].clientName;
-
-            if indexPath.row == filteredClientList.count-1 {
-                cell.separatorView.isHidden = true
-            }
-        }
-        
-        cell.backgroundColor = UIColor.clear
-        
-        //makes cell image circular
-        cell.clientImage.layer.cornerRadius = cell.clientImage.frame.size.width/2;
-        cell.clientImage.clipsToBounds = true;
-        
-        //changes cell text color
-        cell.clientName.textColor = UIColor.white;
-    
-        cell.delegate = self
-        return cell;
-        
-    }
-
     //TABLEVIEW NOTIFCATIONS
     
     // MARK: - Actions
@@ -264,8 +199,73 @@ class ClientsTableView: UIViewController, UITableViewDelegate, UITableViewDataSo
 
 }
 
+extension ClientsVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //returns number in clientList
+        if showSearchResults == false{
+            
+            return clientList.count
+            
+        }else{
+            
+            return filteredClientList.count
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = Bundle.main.loadNibNamed("ClientCell", owner: self, options: nil)?.first as! ClientCell
+        
+        if showSearchResults == false {
+            
+            //assigns cell image
+            cell.clientImage.image = clientList[indexPath.row].clientImage;
+            
+            //adds cell name
+            cell.clientName.text = clientList[indexPath.row].clientName;
+            
+            if indexPath.row == clientList.count-1 {
+                cell.separatorView.isHidden = true
+            }
+            
+        }else{
+            
+            //assigns cell image
+            cell.clientImage.image = filteredClientList[indexPath.row].clientImage;
+            
+            //adds cell name
+            cell.clientName.text = filteredClientList[indexPath.row].clientName;
+            
+            if indexPath.row == filteredClientList.count-1 {
+                cell.separatorView.isHidden = true
+            }
+        }
+        
+        cell.backgroundColor = UIColor.clear
+        
+        //makes cell image circular
+        cell.clientImage.layer.cornerRadius = cell.clientImage.frame.size.width/2;
+        cell.clientImage.clipsToBounds = true;
+        
+        //changes cell text color
+        cell.clientName.textColor = UIColor.white;
+        
+        cell.delegate = self
+        return cell;
+        
+    }
 
-extension ClientsTableView: SwipeTableViewCellDelegate {
+}
+
+
+extension ClientsVC: SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
         

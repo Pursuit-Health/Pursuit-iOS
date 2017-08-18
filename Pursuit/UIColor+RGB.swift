@@ -29,6 +29,10 @@ extension UIColor {
         return UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.1)
     }
     
+    class func cellSelection() -> UIColor {
+        return UIColor(colorLiteralRed: 140.0/255.0, green: 136.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+    }
+    
     /**
      Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
      

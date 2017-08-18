@@ -16,10 +16,15 @@ protocol MainAuthVCDelegate: class {
 
 class MainAuthVC: UIViewController {
     
+    //MARK: Variables
+    
     weak var delegate: MainAuthVCDelegate?
     
+    //MARK: IBOutlets
     
     @IBOutlet weak var viewForPageController: UIView!
+    
+    //MARK: LIfecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +39,12 @@ class MainAuthVC: UIViewController {
         let controller = TabPageViewController.create()
         
         //TODO: Duplication storyboard, make one veriable storyboard
-        let vc1 = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "SignInVCID")
-        let vc2 = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "SignUpVCID")
-        controller.tabItems = [(vc1, "SignIn"), (vc2, "SignUp")]
+        let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        
+        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: "SignInVCID")
+        let signUpVC = loginStoryboard.instantiateViewController(withIdentifier: "SignUpVCID")
+        
+        controller.tabItems = [(signInVC, "SignIn"), (signUpVC, "SignUp")]
         
         setUpOptions(controller)
         
@@ -45,16 +53,16 @@ class MainAuthVC: UIViewController {
     }
     
     //TODO: tabulation
-    private func setUpOptions(_ controller: TabPageViewController){
-        var option = TabPageOption()
-        option.currentBarHeight = 3.0
-        option.tabWidth = view.frame.width / CGFloat(controller.tabItems.count)
-        option.tabBackgroundColor = .clear
-        option.currentColor = UIColor.customAuthButtons()
-        controller.option = option
+    private func setUpOptions(_ controller: TabPageViewController) {
+        var option                  = TabPageOption()
+        option.currentBarHeight     = 3.0
+        option.tabWidth             = view.frame.width / CGFloat(controller.tabItems.count)
+        option.tabBackgroundColor   = .clear
+        option.currentColor         = UIColor.customAuthButtons()
+        controller.option           = option
     }
     
-    private func setUpControllerToMainView(_ controller: TabPageViewController){
+    private func setUpControllerToMainView(_ controller: TabPageViewController) {
         addChildViewController(controller)
         self.viewForPageController.addSubview(controller.view)
         self.viewForPageController.addConstraints(UIView.place(controller.view, onOtherView: viewForPageController))

@@ -10,18 +10,14 @@ import UIKit
 
 class CreateTemplateVC: UIViewController {
 
-    //MARK: Constants
-
     //MARK: IBOutlets
     //TODO: Spacing and tabulation
     @IBOutlet weak var templateTableView: UITableView! {
         didSet {
-            templateTableView.rowHeight = UITableViewAutomaticDimension
-            templateTableView.estimatedRowHeight = 200
+            templateTableView.rowHeight             = UITableViewAutomaticDimension
+            templateTableView.estimatedRowHeight    = 200
         }
     }
-    
-    //MARK: Variables
     
     //MARK: Lifecycle
     

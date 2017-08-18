@@ -19,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.sharedManager().enable = true
         
+        let tabBar = UITabBar.appearance()
+        tabBar.barTintColor = UIColor.clear
+        tabBar.backgroundImage = UIImage()
+        tabBar.shadowImage = UIImage()
+        
+        let view = UIView()
+        view.bounds = tabBar.frame
+        view.backgroundColor = .red
+        tabBar.addSubview(view)
+        
         return true
     }
 

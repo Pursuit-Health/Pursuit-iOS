@@ -109,7 +109,7 @@ extension UIViewController {
         titleLabel.font = UIFont(name: "Avenir-Book", size: 17.0)
         titleLabel.bounds = CGRect(x: 0, y: 0, width: 200, height: 40)
         titleLabel.text = title
-        titleLabel.textColor = .red
+        titleLabel.textColor = .white
         titleLabel.sizeToFit()
         return titleLabel
     }
@@ -145,5 +145,19 @@ extension UIViewController {
         NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: imageView, attribute: .bottom, relatedBy: .equal, toItem: self.bottomLayoutGuide, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
          self.view.backgroundColor = UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.1)
+    }
+}
+
+extension UIViewController {
+    func makeTextFieldsFirstResponder(_ textFieldsArray: [DezappTextField],_ textField: UITextField) {
+        for (index, value) in textFieldsArray.enumerated() {
+            if value == textField {
+                if index == textFieldsArray.endIndex - 1 {
+                    textFieldsArray[index].resignFirstResponder()
+                    return
+                }
+                textFieldsArray[index + 1].becomeFirstResponder()
+            }
+        }
     }
 }

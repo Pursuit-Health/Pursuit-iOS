@@ -11,21 +11,28 @@ import UIKit
 //TODO: Same
 class ScheduleClientVC: UIViewController {
     
+    //MARK: IBOutlets
+    
     @IBOutlet weak var scheduleClientTableView: UITableView!{
         didSet{
-            scheduleClientTableView.rowHeight = UITableViewAutomaticDimension
-            scheduleClientTableView.estimatedRowHeight = 200
+            scheduleClientTableView.rowHeight           = UITableViewAutomaticDimension
+            scheduleClientTableView.estimatedRowHeight  = 200
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    
+    //MARK: IBActions
     
     @IBAction func closePressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+
     override var prefersStatusBarHidden: Bool {
         return true
     }

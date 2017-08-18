@@ -13,8 +13,14 @@ class SignInVC: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var emailTeaxtField: DezappTextField!
+    @IBOutlet weak var emailTeaxtField  : DezappTextField!
     @IBOutlet weak var passwordTextField: DezappTextField!
+    
+    //MARK: Variables
+    
+    var textFieldsArray: [DezappTextField] {
+        return [self.emailTeaxtField, self.passwordTextField]
+    }
     
     //MARK: IBActions
     
@@ -27,6 +33,7 @@ class SignInVC: UIViewController {
     }
     
     //MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,16 +58,13 @@ class SignInVC: UIViewController {
     
 }
 
-
 //TODO: Mayby think a better solution
 //MARK: UITextFieldDelegate
 extension SignInVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTeaxtField {
-            passwordTextField.becomeFirstResponder()
-        }else if textField == passwordTextField {
-            passwordTextField.resignFirstResponder()
-        }
+        
+        makeTextFieldsFirstResponder(textFieldsArray, textField)
+        
         return true
     }
 }
