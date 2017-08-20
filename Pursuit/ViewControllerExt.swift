@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+
+//TODO: separate extensions int odifferent file
+
 extension UIViewController {
     func presentDialog(title : String, errorString : String ){
         let alert = UIAlertController(title: title, message: errorString, preferredStyle: .alert)
@@ -71,6 +74,7 @@ extension UIViewController {
     }
     
 }
+//TODO: reimplement due to comments
 import ObjectiveC
 extension UIViewController {
     
@@ -100,6 +104,7 @@ extension UIViewController {
             items = leftBarItems
             items.append(rightItem)
         }
+        items = [leftBarItems, rightItem].flatMap{ $0 }
         self.navigationItem.leftBarButtonItems = items
         
     }
