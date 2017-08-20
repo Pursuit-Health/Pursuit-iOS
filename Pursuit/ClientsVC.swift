@@ -18,7 +18,7 @@ class ClientsVC: UIViewController {
     @IBOutlet weak var clientsTable: UITableView!
     @IBOutlet weak var searchField: UITextField!
     
-    
+    //TODO: add Tabulation
     var defaultOptions = SwipeTableOptions()
     var isSwipeRightEnabled = true
     var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
@@ -26,7 +26,7 @@ class ClientsVC: UIViewController {
     
     
     
-    //struct of individual client information
+    //TODO: use optionals
     struct clientInfo {
         var clientName = String()
         var clientImage = UIImage()
@@ -42,6 +42,7 @@ class ClientsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO: Move to didSet
         searchField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         for index in 1...5 {
@@ -67,7 +68,7 @@ class ClientsVC: UIViewController {
         super.viewWillAppear(animated)
        
     }
-    //searches client cells typing in searchfield
+    //TODO: reimplement, lets meet together regarding old files
     func textFieldDidChange(_ textField: UITextField) {
         
         var searchString = searchField.text

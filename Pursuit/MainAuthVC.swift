@@ -38,7 +38,7 @@ class MainAuthVC: UIViewController {
     private func getControllers(){
         let controller = TabPageViewController.create()
         
-        //TODO: Duplication storyboard, make one veriable storyboard
+        //TODO: Place string into constants, ask me how
         let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
         let signInVC = loginStoryboard.instantiateViewController(withIdentifier: "SignInVCID")

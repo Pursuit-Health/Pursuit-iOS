@@ -36,7 +36,7 @@ extension SignUpVC {
     }
 }
 
-//TODO: Maybe think if exists better solution
+//TODO: think after MVP together beter organizatin. Do not fix it yet.
 extension SignUpVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
       
