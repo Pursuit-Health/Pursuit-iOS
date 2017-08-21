@@ -8,8 +8,7 @@
 
 import ObjectMapper
 
-//TODO: Remove NSObject
-class Template: NSObject, Mappable {
+class Template: Mappable {
     
     //Create Template
     var email       : String?

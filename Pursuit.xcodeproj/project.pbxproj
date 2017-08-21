@@ -35,7 +35,9 @@
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
 		788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */; };
 		788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */; };
+		7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892A8901F4B411400BDCD79 /* UINavigationItem+leftTitle.swift */; };
 		78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */; };
+		78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */; };
 		78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34B81F38FDDE002BD31D /* TabPageOption.swift */; };
 		78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BA1F38FDF2002BD31D /* TabView.xib */; };
 		78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34BB1F38FDF2002BD31D /* TabView.swift */; };
@@ -134,7 +136,9 @@
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingTableViewCell.xib; sourceTree = "<group>"; };
 		788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTemplateVC.swift; sourceTree = "<group>"; };
+		7892A8901F4B411400BDCD79 /* UINavigationItem+leftTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+leftTitle.swift"; sourceTree = "<group>"; };
 		78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+label.swift"; sourceTree = "<group>"; };
 		78CE34B81F38FDDE002BD31D /* TabPageOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabPageOption.swift; path = Pursuit/TabPageOption.swift; sourceTree = SOURCE_ROOT; };
 		78CE34BA1F38FDF2002BD31D /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabView.xib; path = Pursuit/TabView.xib; sourceTree = SOURCE_ROOT; };
 		78CE34BB1F38FDF2002BD31D /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Pursuit/TabView.swift; sourceTree = SOURCE_ROOT; };
@@ -325,6 +329,22 @@
 				788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */,
 			);
 			name = CreateTemplateVC;
+			sourceTree = "<group>";
+		};
+		7892A8921F4B411900BDCD79 /* UINavigationItem+leftTitle */ = {
+			isa = PBXGroup;
+			children = (
+				7892A8901F4B411400BDCD79 /* UINavigationItem+leftTitle.swift */,
+			);
+			name = "UINavigationItem+leftTitle";
+			sourceTree = "<group>";
+		};
+		78BBA6831F4B639A0037E7DF /* UIBarButtonItem+label */ = {
+			isa = PBXGroup;
+			children = (
+				78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */,
+			);
+			name = "UIBarButtonItem+label";
 			sourceTree = "<group>";
 		};
 		78E443871F40DF9200525F7A /* ScheduleClient */ = {
@@ -644,9 +664,11 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				78BBA6831F4B639A0037E7DF /* UIBarButtonItem+label */,
 				780D8E941F44DABF0030A992 /* UINavigationBar */,
 				84AB4D6D1F32820100531740 /* UIColor+RGB */,
 				84AB4D6C1F3281DC00531740 /* UIViewController+Persuit */,
+				7892A8921F4B411900BDCD79 /* UINavigationItem+leftTitle */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1070,6 +1092,7 @@
 				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
+				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
 				780D8E901F4360FE0030A992 /* Template.swift in Sources */,
 				78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */,
 				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
@@ -1086,6 +1109,7 @@
 				842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */,
 				842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */,
 				78CE34C31F38FDF2002BD31D /* TabPageViewController.swift in Sources */,
+				7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */,
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,

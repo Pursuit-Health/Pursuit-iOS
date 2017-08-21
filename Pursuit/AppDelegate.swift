@@ -11,14 +11,20 @@ import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         IQKeyboardManager.sharedManager().enable = true
-        //TODO: Move to separate method
+        
+        setUpTabBarAppearens()
+        
+        return true
+    }
+    
+    func setUpTabBarAppearens() {
         let tabBar = UITabBar.appearance()
         tabBar.barTintColor = UIColor.clear
         tabBar.backgroundImage = UIImage()
@@ -28,8 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         view.bounds = tabBar.frame
         view.backgroundColor = .red
         tabBar.addSubview(view)
-        
-        return true
     }
 }
 

@@ -68,6 +68,10 @@ class ClientsVC: UIViewController {
         super.viewWillAppear(animated)
        
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     //TODO: reimplement, lets meet together regarding old files
     func textFieldDidChange(_ textField: UITextField) {
         

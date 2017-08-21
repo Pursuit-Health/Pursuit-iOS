@@ -26,7 +26,7 @@ class TemplatesVC: UIViewController {
    
     //MARK: Private
     override var prefersStatusBarHidden: Bool {
-        return false
+        return true
     }
 }
 

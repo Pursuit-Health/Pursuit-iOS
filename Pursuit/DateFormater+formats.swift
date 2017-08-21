@@ -7,12 +7,11 @@
 
 import Foundation
 
-//TODO: Tabulation
 struct DateFormatters {
-    static let serverTimeFormatter: DateFormatter = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm")
-    static let projectFormatFormatter: DateFormatter = DateFormatters.dateFormatterWith("yyyy MM dd")
+    static let serverTimeFormatter: DateFormatter       = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm")
+    static let projectFormatFormatter: DateFormatter    = DateFormatters.dateFormatterWith("yyyy MM dd")
     static let createEditFormatFormatter: DateFormatter = DateFormatters.dateFormatterWith("dd/MM/yyyy")
-    static let fullFormat: DateFormatter = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm:ss +zzzz")
+    static let fullFormat: DateFormatter                = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm:ss +zzzz")
     
     static func defaultFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()

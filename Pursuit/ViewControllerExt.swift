@@ -74,70 +74,9 @@ extension UIViewController {
     }
     
 }
-//TODO: reimplement due to comments
+
 import ObjectiveC
 extension UIViewController {
-    
-    private static var left_associated_key: UInt8   = 0
-    
-    @IBInspectable
-    public var leftTitle: String? {
-        set {
-            objc_setAssociatedObject(self, &UIViewController.left_associated_key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-            addLeft(title: newValue ?? "")
-        }
-        
-        get {
-            return objc_getAssociatedObject(self, &UIViewController.left_associated_key) as? String
-        }
-    }
-    
-    func addLeft(title: String) {
-        
-        var items: [UIBarButtonItem] = []
-        let rightItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        rightItem.customView = setUpTitleLabelApperence(title: title)
-        let leftBarItems = self.navigationItem.leftBarButtonItems ?? []
-        if leftBarItems.count == 0 {
-            items.append(rightItem)
-        }else {
-            items = leftBarItems
-            items.append(rightItem)
-        }
-        items = [leftBarItems, rightItem].flatMap{ $0 }
-        self.navigationItem.leftBarButtonItems = items
-        
-    }
-    
-    func setUpTitleLabelApperence(title: String) -> UILabel {
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont(name: "Avenir-Book", size: 17.0)
-        titleLabel.bounds = CGRect(x: 0, y: 0, width: 200, height: 40)
-        titleLabel.text = title
-        titleLabel.textColor = .white
-        titleLabel.sizeToFit()
-        return titleLabel
-    }
-    
-    func updateLeftTitle(newTitle: String) {
-        var items: [UIBarButtonItem] = []
-        let barButtonItems = self.navigationItem.leftBarButtonItems ?? []
-        items = barButtonItems
-        
-        if items.count == 0 {
-            return
-        }
-        
-        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        item.customView = setUpTitleLabelApperence(title: newTitle)
-        
-        items.removeLast()
-        items.append(item)
-        
-        self.navigationItem.leftBarButtonItems = items
-        
-    }
-
      func setUpBackgroundImage() {
         let imageView = UIImageView(image: UIImage(named: "bg"))
         imageView.bounds = self.view.bounds
@@ -166,3 +105,21 @@ extension UIViewController {
         }
     }
 }
+
+import ObjectiveC
+extension UIViewController {
+    
+    private static var left_associated_key: UInt8   = 0
+    
+    @IBInspectable
+    public var leftTitle: String? {
+        set {
+            self.navigationItem.leftTitle = newValue
+        }
+        
+        get {
+            return self.navigationItem.leftTitle
+        }
+    }
+}
+

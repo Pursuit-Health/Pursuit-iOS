@@ -32,6 +32,7 @@ class ScheduleVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var leftTitleBarButtonItem: UIBarButtonItem!
     @IBOutlet var calendarView      : JTAppleCalendarView!
     
     //MARK: Variables
@@ -83,14 +84,16 @@ class ScheduleVC: UIViewController {
         calendarView.visibleDates { (visibleDates) in
             let date = visibleDates.monthDates.first?.date
             self.formatter.dateFormat = ("MMMM yyyy")
-            self.updateLeftTitle(newTitle: self.formatter.string(from: date!))
+            //self.updateLeftTitle(newTitle: self.formatter.string(from: date!))
+            //self.leftTitleBarButtonItem.title = self.formatter.string(from: date!)
+            
+            self.navigationItem.leftTitle = self.formatter.string(from: date!)
+            
         }
     }
     
-    
-    
     override var prefersStatusBarHidden: Bool {
-        return false
+        return true
     }
 }
 
@@ -158,7 +161,10 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         guard  let date = visibleDates.monthDates.first?.date else { return }
         self.formatter.dateFormat = ("MMMM yyyy")
-        updateLeftTitle(newTitle: self.formatter.string(from: date))
+        //updateLeftTitle(newTitle: self.formatter.string(from: date))
+
+        self.navigationItem.leftTitle = self.formatter.string(from: date)
+        
     }
 }
 

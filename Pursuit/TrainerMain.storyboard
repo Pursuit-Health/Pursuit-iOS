@@ -51,8 +51,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="JR3-BR-MTj">
-                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="uXf-RJ-p6W"/>
-                        <barButtonItem key="rightBarButtonItem" image="ic_plus" id="KC7-Pw-Pen"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="uXf-RJ-p6W">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ic_plus" id="KC7-Pw-Pen">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Workout Log"/>
@@ -454,7 +458,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_list" selectedImage="ic_list" id="EMM-Jq-bM3"/>
                     <navigationItem key="navigationItem" id="mIa-Mk-FBQ">
-                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="f5F-sc-lna"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="f5F-sc-lna">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Clients"/>
@@ -959,7 +965,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5m0-4L-WpZ" firstAttribute="top" secondItem="p2L-r3-DGl" secondAttribute="bottom" id="4xM-55-DHE"/>
+                            <constraint firstItem="5m0-4L-WpZ" firstAttribute="top" secondItem="p2L-r3-DGl" secondAttribute="bottom" id="0rK-AJ-Hap"/>
                             <constraint firstItem="cgt-Wo-3Tf" firstAttribute="top" secondItem="tqa-uj-dPW" secondAttribute="bottom" id="HKx-dB-5VX"/>
                             <constraint firstItem="cgt-Wo-3Tf" firstAttribute="top" secondItem="5m0-4L-WpZ" secondAttribute="bottom" constant="56" id="PEI-62-0et"/>
                             <constraint firstItem="8k9-98-yQD" firstAttribute="top" secondItem="p2L-r3-DGl" secondAttribute="bottom" id="PVT-H0-hBn"/>
@@ -974,7 +980,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bAU-Qx-aM0">
-                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="bXM-e2-6yP"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="bXM-e2-6yP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="вамвамвамва"/>
+                            </userDefinedRuntimeAttributes>
+                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Schedule VC"/>
@@ -1078,6 +1089,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ea-OI-QAa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="0.1044463087" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="lzh-JK-VSH" kind="relationship" relationship="rootViewController" id="5xZ-cc-egI"/>
