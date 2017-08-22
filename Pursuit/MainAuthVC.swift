@@ -51,8 +51,7 @@ class MainAuthVC: UIViewController {
         setUpControllerToMainView(controller)
         
     }
-    
-    //TODO: tabulation
+
     private func setUpOptions(_ controller: TabPageViewController) {
         var option                  = TabPageOption()
         option.currentBarHeight     = 3.0

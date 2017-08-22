@@ -10,6 +10,19 @@ import UIKit
 import JTAppleCalendar
 
 class CalendarCell: JTAppleCell {
+    
+    //MARK: IBOutlets
+    
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var bgView: UIView!
+    @IBOutlet weak var specialDatesView: UIView!
+    
+    //MARK: Variables
+    
+    var isSpecialDate: Bool = true {
+        didSet{
+           specialDatesView.isHidden = isSpecialDate
+        }
+    }
+    
 }

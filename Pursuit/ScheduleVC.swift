@@ -10,8 +10,7 @@ import UIKit
 import JTAppleCalendar
 
 class ScheduleVC: UIViewController {
-
-    //TODO: move all date formats into ona place. Ask me to show how and where
+    
     fileprivate struct Constants {
         struct Dates {
             static let StartDate    = "2017 01 01"
@@ -28,12 +27,12 @@ class ScheduleVC: UIViewController {
     
     @IBOutlet var headerLabelsView  : UIStackView! {
         didSet {
-             headerLabelsView.backgroundColor = UIColor(white: 255.0/255.0, alpha: 0.1)
+            headerLabelsView.backgroundColor = UIColor(white: 255.0/255.0, alpha: 0.1)
         }
     }
     
-    @IBOutlet weak var leftTitleBarButtonItem: UIBarButtonItem!
-    @IBOutlet var calendarView      : JTAppleCalendarView!
+    @IBOutlet weak var leftTitleBarButtonItem   : UIBarButtonItem!
+    @IBOutlet var calendarView                  : JTAppleCalendarView!
     
     //MARK: Variables
     
@@ -64,7 +63,7 @@ class ScheduleVC: UIViewController {
     
     //MARK: Private
     
-   private func registerCollectionView() {
+    private func registerCollectionView() {
         collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "scheduleCell")
     }
     
@@ -75,7 +74,7 @@ class ScheduleVC: UIViewController {
         
         self.calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
         self.calendarView.scrollToDate(Date())
-        // self.calendarView.selectDates([Date()]
+        self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
         
         calendarViewVisibleDates()
     }
@@ -84,11 +83,8 @@ class ScheduleVC: UIViewController {
         calendarView.visibleDates { (visibleDates) in
             let date = visibleDates.monthDates.first?.date
             self.formatter.dateFormat = ("MMMM yyyy")
-            //self.updateLeftTitle(newTitle: self.formatter.string(from: date!))
-            //self.leftTitleBarButtonItem.title = self.formatter.string(from: date!)
             
             self.navigationItem.leftTitle = self.formatter.string(from: date!)
-            
         }
     }
     
@@ -115,34 +111,22 @@ extension ScheduleVC: UICollectionViewDelegate {
 }
 
 extension ScheduleVC: JTAppleCalendarViewDataSource {
-    //TODO: This methods need to be separated with more methods
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-
+        
         setUpDateFormatter()
         
         return configurationParameters()
     }
     
-   
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         
         guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as? CalendarCell else { return JTAppleCell() }
         
         cell.dateLabel.text = cellState.text
         
-        handleCellState(cellState, for: cell)
+        handleCellTextColor(cell: cell, cellState: cellState)
         
-        settingBorderColorAndWidth(borderColor: UIColor.cellSelection(), borderWidth: 0.0, for: cell)
-        
-        formatter = DateFormatters.fullFormat
-        
-        if cellState.date != formatter.date(from: "2017-08-09 21:00:00 +0000") { return cell }
-            
-            settingBorderColorAndWidth(borderColor: UIColor.cellSelection(), borderWidth: 1.0, for: cell)
-            if(selectedCell != nil) {
-            selectedCell = handleDateSelection(calCell: selectedCell, color: UIColor.clear, borderWidth: 0.0)
-            }
-            selectedCell = cell
+        handleCellSelection(cell: cell, cellState: cellState)
         
         return cell
     }
@@ -150,26 +134,66 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
 
 extension ScheduleVC: JTAppleCalendarViewDelegate {
     
-    //TODO: this also need to be separated
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         guard let calCell = cell as? CalendarCell else { return }
+        
+        handleCellTextColor(cell: calCell, cellState: cellState)
+        handleCellSelection(cell: calCell, cellState: cellState)
+    }
     
-        selectedCell = handleDateSelection(calCell: calCell, color: UIColor.cellSelection(), borderWidth: 1.0)
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        
+        guard let calCell = cell as? CalendarCell else { return }
+        
+        handleCellTextColor(cell: calCell, cellState: cellState)
+        handleCellSelection(cell: calCell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         guard  let date = visibleDates.monthDates.first?.date else { return }
         self.formatter.dateFormat = ("MMMM yyyy")
-        //updateLeftTitle(newTitle: self.formatter.string(from: date))
-
-        self.navigationItem.leftTitle = self.formatter.string(from: date)
         
+        self.navigationItem.leftTitle = self.formatter.string(from: date)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
+        
+        return date.compare(Date()) == .orderedAscending
+    }
+    
+}
+private extension ScheduleVC {
+    func handleCellTextColor(cell: CalendarCell, cellState: CellState) {
+        let myCustomCell = cell
+        
+        if cellState.isSelected {
+            myCustomCell.dateLabel.textColor = UIColor.white
+        } else {
+            myCustomCell.dateLabel.textColor = (cellState.dateBelongsTo == .thisMonth) ? .white : .gray
+        }
+    }
+    
+    func handleCellSelection(cell: CalendarCell, cellState: CellState) {
+        let myCustomCell = cell
+        
+        myCustomCell.isSpecialDate = cellState.date.compare(Date()) == .orderedAscending
+        
+        if cellState.isSelected {
+            myCustomCell.bgView.clipsToBounds           = true
+            myCustomCell.bgView.isHidden                = false
+            
+            myCustomCell.bgView.backgroundColor         = UIColor.clear
+            myCustomCell.bgView.layer.borderWidth       = 1.0
+            myCustomCell.bgView.layer.borderColor       = UIColor.cellSelection().cgColor
+        } else {
+            myCustomCell.bgView.isHidden                = true
+        }
     }
 }
 
 private extension ScheduleVC {
-     func setUpDateFormatter() {
+    func setUpDateFormatter() {
         
         formatter           = DateFormatters.projectFormatFormatter
         let calendar        = Calendar.current
@@ -178,34 +202,11 @@ private extension ScheduleVC {
         formatter.locale    = calendar.locale
     }
     
-     func configurationParameters() -> ConfigurationParameters {
-        let start   = formatter.date(from: Constants.Dates.StartDate)!
-        let end     = formatter.date(from: Constants.Dates.EndDate)!
+    func configurationParameters() -> ConfigurationParameters {
+        let start           = formatter.date(from: Constants.Dates.StartDate)!
+        let end             = formatter.date(from: Constants.Dates.EndDate)!
         
-        let params  = ConfigurationParameters(startDate: start, endDate: end)
+        let params          = ConfigurationParameters(startDate: start, endDate: end)
         return params
-    }
-    
-    func settingBorderColorAndWidth(borderColor: UIColor, borderWidth: CGFloat, for cell: CalendarCell) {
-        cell.bgView.layer.borderWidth = borderWidth
-        cell.bgView.layer.borderColor = borderColor.cgColor
-    }
-    
-    func handleCellState(_ cellState: CellState,for cell: CalendarCell) {
-        var color = UIColor()
-        if(cellState.dateBelongsTo == DateOwner.previousMonthWithinBoundary || cellState.dateBelongsTo == DateOwner.followingMonthWithinBoundary)  {
-            color = UIColor(white: 1.0, alpha: 0.5)
-        } else {
-            color = UIColor(white: 1.0, alpha: 1.0)
-        }
-        
-        cell.dateLabel.textColor = color
-    }
-    
-    func handleDateSelection(calCell: CalendarCell, color: UIColor, borderWidth: CGFloat) -> CalendarCell {
-        calCell.bgView.layer.borderWidth = borderWidth
-        calCell.bgView.layer.borderColor = color.cgColor
-        
-        return calCell
     }
 }

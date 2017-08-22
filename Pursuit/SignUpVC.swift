@@ -2,7 +2,7 @@
 //  SignUpVcViewController.swift
 //  Pursuit
 //
-//  Created by ігор on 8/2/17.
+//  Created by Igor on 8/2/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
