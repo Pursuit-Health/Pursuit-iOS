@@ -13,11 +13,12 @@ class CalendarCell: JTAppleCell {
     
     //MARK: IBOutlets
     
+    //TODO: Why outlets not weak? 
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var bgView: UIView!
     @IBOutlet weak var specialDatesView: UIView!
     
-    //MARK: Variables
+    //MARK: Public
     
     var isSpecialDate: Bool = true {
         didSet{
