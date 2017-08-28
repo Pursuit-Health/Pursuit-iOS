@@ -29,7 +29,7 @@ class PSAPI {
     private static var showIndicator    = true
     //MARK: Private.Methods
     
-    private func perform(_ request: Request) -> DataRequest? {
+     func perform(_ request: Request) -> DataRequest? {
         let showIndicator   = PSAPI.showIndicator
         PSAPI.showIndicator = true
         
@@ -53,7 +53,7 @@ class PSAPI {
         return 200...299 ~= statusCode
     }
     
-    private func isValid(response: HTTPURLResponse?, errorData: Data? = nil) -> PSError? {
+     private func isValid(response: HTTPURLResponse?, errorData: Data? = nil) -> PSError? {
         var error: PSError?
         guard let responseValue = response else {
             error = .internetConnection
@@ -70,7 +70,24 @@ class PSAPI {
         }
         return error
     }
+
+    @discardableResult
+    func signUp(signUpInfo: [String: Any], completion: SignUpCompletion? = nil) -> DataRequest? {
+        let request = Request.signUp(parameters: signUpInfo)
+        return self.perform(request)?.responseObject(keyPath:"data") { (response: DataResponse<User>) in
+              var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            
+           completion?(response.result.value, error)
+        }
+    }
 }
 
 extension PSAPI {
+    
+    //MARK: Typelias
+    
+    typealias SignUpCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
 }

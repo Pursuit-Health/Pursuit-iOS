@@ -374,6 +374,9 @@
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpButtonPresseed:" destination="tLq-m9-KSO" eventType="touchUpInside" id="tI7-r4-MDc"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_username" translatesAutoresizingMaskIntoConstraints="NO" id="w7O-uH-4uq">
                                 <rect key="frame" x="26" y="68.5" width="22" height="22"/>

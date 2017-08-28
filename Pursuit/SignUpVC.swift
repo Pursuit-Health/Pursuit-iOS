@@ -22,17 +22,46 @@ class SignUpVC: UIViewController {
         return [self.nameTextField, self.birthDayTextField, self.passwordTextField, self.emailTextField]
     }
     
+    var user = User().signUpData
+    
+    @IBAction func signUpButtonPresseed(_ sender: Any) {
+        signUp()
+    }
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        user?.userAccount      = "client"
+        user?.email            = "email"
+        user?.password         = "password"
+        user?.gender           = "gender"
+        user?.birthday         = "birthday"
     }
 }
 
-extension SignUpVC {
+private extension SignUpVC {
     func signUp(){
+        makeSignUp { success in
+            if success {
+                //go to login
+            }
+        }
         
+    }
+    
+    func makeSignUp(completion: @escaping (_ success: Bool)-> Void) {
+        print(user?.userAccount)
+        
+        
+        User.signUp(signUpInfo: (user)!, completion: { signUpInfo, error in
+            if let success = signUpInfo {
+                print(success)
+                completion(true)
+            }else {
+                completion(false)
+            }
+        })
     }
 }
 

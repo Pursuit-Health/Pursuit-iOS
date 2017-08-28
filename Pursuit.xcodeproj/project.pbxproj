@@ -28,6 +28,8 @@
 		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
 		780D8E901F4360FE0030A992 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E8F1F4360FE0030A992 /* Template.swift */; };
 		780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E951F44DAD90030A992 /* UINavigationBar.swift */; };
+		78179B871F54977500520D08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B861F54977500520D08 /* User.swift */; };
+		78179B891F54982C00520D08 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B881F54982C00520D08 /* User+API.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -129,6 +131,8 @@
 		5BE3A1D91EB7029E005B35CD /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		780D8E8F1F4360FE0030A992 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		78179B861F54977500520D08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		78179B881F54982C00520D08 /* User+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -288,6 +292,15 @@
 				780D8E951F44DAD90030A992 /* UINavigationBar.swift */,
 			);
 			name = UINavigationBar;
+			sourceTree = "<group>";
+		};
+		782264451F507A3000EFD5F9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				78179B861F54977500520D08 /* User.swift */,
+				78179B881F54982C00520D08 /* User+API.swift */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
@@ -544,6 +557,7 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				782264451F507A3000EFD5F9 /* User */,
 				780D8E8E1F4360D00030A992 /* Template */,
 				84AB4D6A1F32819500531740 /* LoginModel */,
 			);
@@ -1079,6 +1093,7 @@
 				84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */,
 				842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */,
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
+				78179B891F54982C00520D08 /* User+API.swift in Sources */,
 				7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */,
 				5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */,
 				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
@@ -1128,6 +1143,7 @@
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
+				78179B871F54977500520D08 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

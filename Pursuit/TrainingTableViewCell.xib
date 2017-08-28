@@ -50,10 +50,14 @@
                             <constraint firstAttribute="height" constant="1" id="JDI-BC-UFp"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_right" translatesAutoresizingMaskIntoConstraints="NO" id="oqr-4E-lmZ">
+                        <rect key="frame" x="264" y="36.5" width="25" height="25"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="Ogu-Ab-ANF" firstAttribute="top" secondItem="Dwy-Se-IqF" secondAttribute="bottom" constant="15" id="9cw-HV-qVR"/>
+                    <constraint firstItem="oqr-4E-lmZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EVg-Y8-v1D"/>
                     <constraint firstItem="Ba4-1g-d0g" firstAttribute="top" secondItem="Ogu-Ab-ANF" secondAttribute="bottom" constant="5" id="KGC-Fs-4a9"/>
                     <constraint firstItem="Ogu-Ab-ANF" firstAttribute="leading" secondItem="Dwy-Se-IqF" secondAttribute="leading" id="LJy-Hi-OcS"/>
                     <constraint firstItem="bDT-8x-kXF" firstAttribute="centerY" secondItem="Ogu-Ab-ANF" secondAttribute="centerY" id="Mce-gd-ih3"/>
@@ -65,6 +69,7 @@
                     <constraint firstItem="Dwy-Se-IqF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="19" id="YxG-ig-7Ta"/>
                     <constraint firstItem="BYo-6d-YFq" firstAttribute="leading" secondItem="bDT-8x-kXF" secondAttribute="trailing" constant="16" id="aUB-1f-PHB"/>
                     <constraint firstItem="1hM-mm-3kl" firstAttribute="leading" secondItem="BYo-6d-YFq" secondAttribute="trailing" constant="15" id="gkp-EL-YEH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="oqr-4E-lmZ" secondAttribute="trailing" constant="23" id="jIJ-8v-Q9B"/>
                     <constraint firstItem="bDT-8x-kXF" firstAttribute="leading" secondItem="Ogu-Ab-ANF" secondAttribute="trailing" constant="21" id="xkv-gP-lWJ"/>
                     <constraint firstAttribute="trailing" secondItem="Ba4-1g-d0g" secondAttribute="trailing" id="zzE-bg-jTQ"/>
                 </constraints>
@@ -75,6 +80,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="btn_right" width="25" height="25"/>
         <image name="location" width="13" height="33"/>
         <image name="time_clock" width="30" height="31"/>
     </resources>

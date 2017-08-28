@@ -7,18 +7,27 @@ extension PSAPI {
         
         typealias Query = [String : String?]
         
+        case signUp(parameters: Parameters)
+        
+        
         //MARK: Private.Property
         
         private var baseURLString: String {
-            return "https://b2c-api-core.swaypay.net/api/"
+            return "http://ec2-52-23-153-110.compute-1.amazonaws.com:3000/"
         }
         
         private var method: HTTPMethod {
-            return .get
+            switch self {
+            case .signUp:
+                return .post
+            }
         }
         
         private var path: String {
-            return ""
+            switch self {
+            case .signUp:
+                return "signup"
+            }
         }
         
         private var tokenString: String {
@@ -44,6 +53,12 @@ extension PSAPI {
         
         private func addParametersAndHeadersForRequest(request: URLRequest) throws -> URLRequest {
             var request     = request
+            
+            switch self {
+            case .signUp(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+            default: break
+            }
             self.addHeadersForRequest(request: &request, signed: nil)
             return request
         }
@@ -149,5 +164,4 @@ private extension String {
         }
         return String(hash)
     }
-    
 }
