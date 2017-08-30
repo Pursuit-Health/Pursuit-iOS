@@ -38,17 +38,20 @@ class User: Mappable {
     
     //MARK: Properties
     
-    var signUpData: PersonalData?
+    var signUpData = PersonalData()
     
     //MARK: Mappable
     
-    var email : String?
+    var email    : String?
+    var status   : String?
+    var message  : String?
     
     func mapping(map: Map) {
         self.email      <- map["email"]
+        self.status     <- map["status"]
+        self.message    <- map["message"]
     }
     
-    init() {}
     required init?(map: Map) {
         
     }

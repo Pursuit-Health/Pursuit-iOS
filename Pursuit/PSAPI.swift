@@ -32,7 +32,7 @@ class PSAPI {
      func perform(_ request: Request) -> DataRequest? {
         let showIndicator   = PSAPI.showIndicator
         PSAPI.showIndicator = true
-        
+  
         if showIndicator {
             if PSAPI.runningRequests == 0 {
                 SVProgressHUD.show()
@@ -42,6 +42,7 @@ class PSAPI {
         return self.service.request(request: request).response(completionHandler: { response in
             if showIndicator {
                 PSAPI.runningRequests -= 1
+                
                 if PSAPI.runningRequests == 0 {
                     SVProgressHUD.dismiss()
                 }
@@ -74,14 +75,14 @@ class PSAPI {
     @discardableResult
     func signUp(signUpInfo: [String: Any], completion: SignUpCompletion? = nil) -> DataRequest? {
         let request = Request.signUp(parameters: signUpInfo)
-        return self.perform(request)?.responseObject(keyPath:"data") { (response: DataResponse<User>) in
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
               var error: PSError?
             if let responseError = self.isValid(response: response.response) {
                 error = responseError
             }
             
            completion?(response.result.value, error)
-        }
+        })
     }
 }
 

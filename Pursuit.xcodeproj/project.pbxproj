@@ -26,6 +26,7 @@
 		5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */; };
 		5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D41EB319E5005B35CD /* DezappButton.swift */; };
 		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
+		7804AF461F55FE7D00CE5780 /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7804AF451F55FE7D00CE5780 /* CellState.swift */; };
 		780D8E901F4360FE0030A992 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E8F1F4360FE0030A992 /* Template.swift */; };
 		780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E951F44DAD90030A992 /* UINavigationBar.swift */; };
 		78179B871F54977500520D08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B861F54977500520D08 /* User.swift */; };
@@ -129,6 +130,7 @@
 		5BE3A1D31EB319E5005B35CD /* DezappLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappLabel.swift; sourceTree = "<group>"; };
 		5BE3A1D41EB319E5005B35CD /* DezappButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappButton.swift; sourceTree = "<group>"; };
 		5BE3A1D91EB7029E005B35CD /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		7804AF451F55FE7D00CE5780 /* CellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellState.swift; sourceTree = "<group>"; };
 		780D8E8F1F4360FE0030A992 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		78179B861F54977500520D08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -276,6 +278,14 @@
 				5B1F832E1E850E4100ABA24C /* Info.plist */,
 			);
 			path = PursuitUITests;
+			sourceTree = "<group>";
+		};
+		7804AF441F55FE4600CE5780 /* CellState */ = {
+			isa = PBXGroup;
+			children = (
+				7804AF451F55FE7D00CE5780 /* CellState.swift */,
+			);
+			name = CellState;
 			sourceTree = "<group>";
 		};
 		780D8E8E1F4360D00030A992 /* Template */ = {
@@ -678,6 +688,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7804AF441F55FE4600CE5780 /* CellState */,
 				78BBA6831F4B639A0037E7DF /* UIBarButtonItem+label */,
 				780D8E941F44DABF0030A992 /* UINavigationBar */,
 				84AB4D6D1F32820100531740 /* UIColor+RGB */,
@@ -1119,6 +1130,7 @@
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
 				842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */,
+				7804AF461F55FE7D00CE5780 /* CellState.swift in Sources */,
 				5BE3A1D61EB319E5005B35CD /* DezappLabel.swift in Sources */,
 				5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */,
 				842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */,

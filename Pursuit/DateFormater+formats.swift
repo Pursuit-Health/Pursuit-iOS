@@ -12,10 +12,12 @@ struct DateFormatters {
     static let projectFormatFormatter: DateFormatter    = DateFormatters.dateFormatterWith("yyyy MM dd")
     static let createEditFormatFormatter: DateFormatter = DateFormatters.dateFormatterWith("dd/MM/yyyy")
     static let fullFormat: DateFormatter                = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm:ss +zzzz")
+    static let monthYearFormat: DateFormatter           = DateFormatters.dateFormatterWith("MMMM yyyy")
     
     static func defaultFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.default
+        dateFormatter.locale = Calendar.current.locale
         return dateFormatter
     }
     

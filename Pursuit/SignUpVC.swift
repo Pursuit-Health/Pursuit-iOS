@@ -22,7 +22,7 @@ class SignUpVC: UIViewController {
         return [self.nameTextField, self.birthDayTextField, self.passwordTextField, self.emailTextField]
     }
     
-    var user = User().signUpData
+    var user =  User()
     
     @IBAction func signUpButtonPresseed(_ sender: Any) {
         signUp()
@@ -32,11 +32,11 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user?.userAccount      = "client"
-        user?.email            = "email"
-        user?.password         = "password"
-        user?.gender           = "gender"
-        user?.birthday         = "birthday"
+        user.signUpData.userAccount      = "client"
+        user.signUpData.email            = "email"
+        user.signUpData.password         = "password"
+        user.signUpData.gender           = "gender"
+        user.signUpData.birthday         = "birthday"
     }
 }
 
@@ -51,10 +51,10 @@ private extension SignUpVC {
     }
     
     func makeSignUp(completion: @escaping (_ success: Bool)-> Void) {
-        print(user?.userAccount)
+        print(user.signUpData.email)
         
         
-        User.signUp(signUpInfo: (user)!, completion: { signUpInfo, error in
+        User.signUp(signUpInfo: (user.signUpData), completion: { signUpInfo, error in
             if let success = signUpInfo {
                 print(success)
                 completion(true)

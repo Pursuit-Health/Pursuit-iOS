@@ -12,17 +12,16 @@ import JTAppleCalendar
 class CalendarCell: JTAppleCell {
     
     //MARK: IBOutlets
-    
-    //TODO: Why outlets not weak? 
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var bgView: UIView!
+
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var specialDatesView: UIView!
     
     //MARK: Public
     
     var isSpecialDate: Bool = true {
         didSet{
-           specialDatesView.isHidden = isSpecialDate
+           specialDatesView.isHidden = !isSpecialDate
         }
     }
     

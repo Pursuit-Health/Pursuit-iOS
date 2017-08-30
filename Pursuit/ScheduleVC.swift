@@ -23,36 +23,31 @@ class ScheduleVC: UIViewController {
     @IBOutlet var collectionView: UICollectionView! {
         didSet {
             collectionView.contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
+            collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "scheduleCell")
         }
     }
     
-    //TODO: background color can be set from UI file
-    @IBOutlet var headerLabelsView  : UIStackView! {
-        didSet {
-            headerLabelsView.backgroundColor = UIColor(white: 255.0 / 255.0, alpha: 0.1)
+    @IBOutlet weak var calendarView: JTAppleCalendarView! {
+        didSet{
+            self.calendarView.minimumInteritemSpacing   = 0
+            self.calendarView.minimumLineSpacing        = 0
+            
+            self.calendarView.scrollingMode             = .stopAtEachCalendarFrameWidth
+            self.calendarView.scrollToDate(Date())
+            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
         }
     }
-    
-    @IBOutlet weak var leftTitleBarButtonItem   : UIBarButtonItem!
-    //TODO: why not weak?
-    @IBOutlet var calendarView                  : JTAppleCalendarView!
     
     //MARK: Variables
-    
-    //TODO: Do we really need this as class veriables? If yes, that should it be not private?
-    var formatter   = DateFormatter()
-    var curCal      = Calendar.current
-    
-    //TODO: Why do we need to use it? Connect with me it's super bad approach.
-    var selectedCell    : CalendarCell!
-    
+
+    fileprivate var formatter   = DateFormatter()
+
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerCollectionView()
-        setupCalendarView()
+        calendarViewVisibleDates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,30 +62,10 @@ class ScheduleVC: UIViewController {
     
     //MARK: Private
     
-    //TODO: Move to didSet of collection view
-    private func registerCollectionView() {
-        collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "scheduleCell")
-    }
-    
-    //TODO: Move to didSet
-    private func setupCalendarView() {
-        
-        self.calendarView.minimumInteritemSpacing = 0
-        self.calendarView.minimumLineSpacing = 0
-        
-        self.calendarView.scrollingMode = .stopAtEachCalendarFrameWidth
-        self.calendarView.scrollToDate(Date())
-        self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
-        
-        calendarViewVisibleDates()
-    }
-    
     private func calendarViewVisibleDates() {
         calendarView.visibleDates { (visibleDates) in
             let date = visibleDates.monthDates.first?.date
-            //TODO: Use our date formats
-            self.formatter.dateFormat = ("MMMM yyyy")
-            
+            self.formatter = DateFormatters.monthYearFormat
             self.navigationItem.leftTitle = self.formatter.string(from: date!)
         }
     }
@@ -130,10 +105,11 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
         guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as? CalendarCell else { return JTAppleCell() }
         
         cell.dateLabel.text = cellState.text
+        formatter = DateFormatters.projectFormatFormatter
         
-        handleCellTextColor(cell: cell, cellState: cellState)
-        
-        handleCellSelection(cell: cell, cellState: cellState)
+        cellState.handleCellTextColor(cell: cell)
+        cellState.handleCellSelection(cell: cell)
+        cellState.handleSpecialDates(cell: cell, specialDates: specialDates(), formatter: formatter)
         
         return cell
     }
@@ -145,72 +121,30 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         
         guard let calCell = cell as? CalendarCell else { return }
         
-        handleCellTextColor(cell: calCell, cellState: cellState)
-        handleCellSelection(cell: calCell, cellState: cellState)
+        cellState.handleCellTextColor(cell: calCell)
+        cellState.handleCellSelection(cell: calCell)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         guard let calCell = cell as? CalendarCell else { return }
         
-        handleCellTextColor(cell: calCell, cellState: cellState)
-        handleCellSelection(cell: calCell, cellState: cellState)
+        cellState.handleCellTextColor(cell: calCell)
+        cellState.handleCellSelection(cell: calCell)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         guard  let date = visibleDates.monthDates.first?.date else { return }
-        self.formatter.dateFormat = ("MMMM yyyy")
+        self.formatter = DateFormatters.monthYearFormat
         
         self.navigationItem.leftTitle = self.formatter.string(from: date)
-    }
-    
-    func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
-        
-        return date.compare(Date()) == .orderedAscending
-    }
-    
-}
-private extension ScheduleVC {
-    //TODO: write extension to cellState
-    func handleCellTextColor(cell: CalendarCell, cellState: CellState) {
-        let myCustomCell = cell
-        
-        if cellState.isSelected {
-            myCustomCell.dateLabel.textColor = UIColor.white
-        } else {
-            myCustomCell.dateLabel.textColor = (cellState.dateBelongsTo == .thisMonth) ? .white : .gray
-        }
-    }
-    
-    //TODO: write extension to cellState. Configure all properties for selected and not selected states.
-    func handleCellSelection(cell: CalendarCell, cellState: CellState) {
-        let myCustomCell = cell
-        
-        myCustomCell.isSpecialDate = cellState.date.compare(Date()) == .orderedAscending
-        
-        if cellState.isSelected {
-            myCustomCell.bgView.clipsToBounds           = true
-            myCustomCell.bgView.isHidden                = false
-            
-            myCustomCell.bgView.backgroundColor         = UIColor.clear
-            myCustomCell.bgView.layer.borderWidth       = 1.0
-            myCustomCell.bgView.layer.borderColor       = UIColor.cellSelection().cgColor
-        } else {
-            myCustomCell.bgView.isHidden                = true
-        }
-    }
+    }  
 }
 
 private extension ScheduleVC {
     
-    //TODO: Use our date formaters 
     func setUpDateFormatter() {
-        
-        formatter           = DateFormatters.projectFormatFormatter
-        let calendar        = Calendar.current
-        
-        formatter.timeZone  = calendar.timeZone
-        formatter.locale    = calendar.locale
+        formatter = DateFormatters.projectFormatFormatter
     }
     
     func configurationParameters() -> ConfigurationParameters {
@@ -219,5 +153,14 @@ private extension ScheduleVC {
         
         let params          = ConfigurationParameters(startDate: start, endDate: end)
         return params
+    }
+    
+    func specialDates() -> [String:String] {
+        return [
+             "2017 08 01": "",
+             "2017 08 08": "",
+             "2017 08 14": "",
+             "2017 08 24": ""
+        ]
     }
 }
