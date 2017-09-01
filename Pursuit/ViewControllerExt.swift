@@ -104,6 +104,11 @@ extension UIViewController {
             }
         }
     }
+    
+    func animateConstraint(_ textFieldsArray: [DezappTextField],_ textField: UITextField) {
+        
+        
+    }
 }
 
 import ObjectiveC

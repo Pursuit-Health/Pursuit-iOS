@@ -13,19 +13,40 @@ class SignInVC: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var emailTeaxtField  : DezappTextField!
-    @IBOutlet weak var passwordTextField: DezappTextField!
+    @IBOutlet weak var emailLabel           : UILabel!
+    @IBOutlet weak var passwordLabel        : UILabel!
+    
+    @IBOutlet weak var emailTeaxtField      : DezappTextField!
+    @IBOutlet weak var passwordTextField    : DezappTextField!
+    
+    @IBOutlet var bottomEmailConstraint     : NSLayoutConstraint!
+    @IBOutlet var bottomPasswordConstraint  : NSLayoutConstraint!
     
     //MARK: Variables
+    
+    var changeConstraint: Bool = false {
+        didSet{
+            
+        }
+    }
     
     var textFieldsArray: [DezappTextField] {
         return [self.emailTeaxtField, self.passwordTextField]
     }
     
+    var constraintsDictionary: [DezappTextField : NSLayoutConstraint] {
+        return [emailTeaxtField:bottomEmailConstraint, passwordTextField:bottomPasswordConstraint]
+    }
+    
+    var labelsDictionary : [DezappTextField : UILabel] {
+        return [emailTeaxtField:emailLabel, passwordTextField:passwordLabel]
+    }
+    
+    var loginData = User.PersonalData()
     //MARK: IBActions
     
     @IBAction func signInButtonPressed(_ sender: Any) {
-        
+        makeSignIn()
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
@@ -36,7 +57,8 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loginData.email = "igor1994makara@gmail.com"
+        loginData.password =  "123456789"
     }
     
     //MARK: Private
@@ -58,13 +80,45 @@ class SignInVC: UIViewController {
     
 }
 
+
+private extension SignInVC {
+    func makeSignIn(){
+        makeSignIn { success in
+            if success {
+                //go to login
+            }
+        }
+    }
+    
+    func makeSignIn(completion: @escaping (_ success: Bool)-> Void) {
+        User.login(loginData: loginData, completion: { signUpInfo, error in
+            if let success = signUpInfo {
+                
+                completion(true)
+            }else {
+                completion(false)
+            }
+       })
+    }
+}
+
 //TODO: think after MVP together beter organizatin. Do not fix it yet.
 //MARK: UITextFieldDelegate
 extension SignInVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+    
         makeTextFieldsFirstResponder(textFieldsArray, textField)
         
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.animateText(constraint: constraintsDictionary[(textField as? DezappTextField)!]!, isSelected: true)
+        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        textField.animateText(constraint: constraintsDictionary[(textField as? DezappTextField)!]!, isSelected: false)
+        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: false)
     }
 }

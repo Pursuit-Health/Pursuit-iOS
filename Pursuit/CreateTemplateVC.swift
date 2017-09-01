@@ -11,7 +11,7 @@ import UIKit
 class CreateTemplateVC: UIViewController {
 
     //MARK: IBOutlets
-    //TODO: Spacing and tabulation
+
     @IBOutlet weak var templateTableView: UITableView! {
         didSet {
             templateTableView.rowHeight             = UITableViewAutomaticDimension

@@ -22,9 +22,11 @@ class SignUpVC: UIViewController {
         return [self.nameTextField, self.birthDayTextField, self.passwordTextField, self.emailTextField]
     }
     
-    var user =  User()
+    
+    var personalData = User.PersonalData()
     
     @IBAction func signUpButtonPresseed(_ sender: Any) {
+        setParametersForRequest()
         signUp()
     }
     //MARK: Lifecycle
@@ -32,11 +34,13 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user.signUpData.userAccount      = "client"
-        user.signUpData.email            = "email"
-        user.signUpData.password         = "password"
-        user.signUpData.gender           = "gender"
-        user.signUpData.birthday         = "birthday"
+    }
+    
+    private func setParametersForRequest() {
+        personalData.name        = nameTextField.text
+        personalData.email       = emailTextField.text
+        personalData.password    = passwordTextField.text
+        personalData.birthday    = birthDayTextField.text
     }
 }
 
@@ -47,16 +51,13 @@ private extension SignUpVC {
                 //go to login
             }
         }
-        
     }
     
-    func makeSignUp(completion: @escaping (_ success: Bool)-> Void) {
-        print(user.signUpData.email)
-        
-        
-        User.signUp(signUpInfo: (user.signUpData), completion: { signUpInfo, error in
+    func makeSignUp(completion: @escaping (_ success: Bool) -> Void) {
+        User.registerClient(personalData: personalData, completion: { signUpInfo, error in
             if let success = signUpInfo {
-                print(success)
+            print(success.personalData?.birthday)
+                
                 completion(true)
             }else {
                 completion(false)

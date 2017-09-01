@@ -14,20 +14,26 @@ class User: Mappable {
         
         //MARK: Properties
         
-        var userAccount         : String?
-        var email               : String?
-        var password            : String?
-        var gender              : String?
-        var birthday            : String?
+        var name               : String?
+        var email              : String?
+        var password           : String?
+        var birthday           : String?
+        
+        var id                 : Int?
+        var userable           : PersonalData?
+        var userableData       : PersonalData?
+        
         
         //MARK: Mappable
         
         func mapping(map: Map) {
-            self.userAccount     <- map["account"]
+            self.name            <- map["name"]
             self.email           <- map["email"]
             self.password        <- map["password"]
-            self.gender          <- map["gender"]
             self.birthday        <- map["birthday"]
+            self.id              <- map["id"]
+            self.userable        <- map["userable"]
+            self.userableData    <- map["data"]
         }
         
         init() {}
@@ -36,23 +42,35 @@ class User: Mappable {
         }
     }
     
-    //MARK: Properties
+    class MetaData: Mappable {
+        
+        var userType               : String?
+        
+        //MARK: Mappable
+        
+        func mapping(map: Map) {
+            self.userType         <- map["user_type"]
+        }
+        
+        init() {}
+        required init?(map: Map) {
+            
+        }
+    }
+ 
+        //MARK: Mappable
     
-    var signUpData = PersonalData()
-    
-    //MARK: Mappable
-    
-    var email    : String?
-    var status   : String?
-    var message  : String?
+    var personalData    : PersonalData?
+    var metaData        : MetaData?
+
     
     func mapping(map: Map) {
-        self.email      <- map["email"]
-        self.status     <- map["status"]
-        self.message    <- map["message"]
+        self.personalData         <- map["data"]
+        self.metaData             <- map["meta"]
     }
     
     required init?(map: Map) {
         
     }
 }
+

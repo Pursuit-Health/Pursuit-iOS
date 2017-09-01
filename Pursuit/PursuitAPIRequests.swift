@@ -6,27 +6,33 @@ extension PSAPI {
     enum Request: URLRequestConvertible {
         
         typealias Query = [String : String?]
-        
-        case signUp(parameters: Parameters)
+
+        case registerTrainer(parameters: Parameters)
+        case registerClient(parameters: Parameters)
+        case login(parameters: Parameters)
         
         
         //MARK: Private.Property
         
         private var baseURLString: String {
-            return "http://ec2-52-23-153-110.compute-1.amazonaws.com:3000/"
+            return "http://dev.nerdzlab.com/v1/"
         }
         
         private var method: HTTPMethod {
             switch self {
-            case .signUp:
+            case .registerClient, .registerTrainer, .login:
                 return .post
             }
         }
         
         private var path: String {
             switch self {
-            case .signUp:
-                return "signup"
+            case .registerTrainer:
+                return "auth/register/trainer"
+            case .registerClient:
+                return "auth/register/client"
+            case .login:
+                return "auth/login"
             }
         }
         
@@ -35,7 +41,7 @@ extension PSAPI {
         }
         
         private var contentType: String {
-            return "application/json;charset=UTF-8"
+            return "application/json"
         }
         
         private var queryParams: Query? {
@@ -46,17 +52,21 @@ extension PSAPI {
         
         private func addHeadersForRequest( request: inout URLRequest, signed signature: String?) {
             request.setValue(self.contentType, forHTTPHeaderField: "Content-Type")
-            if let signature = signature {
-                request.setValue(signature, forHTTPHeaderField: "signature")
-            }
         }
         
         private func addParametersAndHeadersForRequest(request: URLRequest) throws -> URLRequest {
             var request     = request
             
             switch self {
-            case .signUp(let parameters):
+            case .registerClient(let parameters):
                 request = try JSONEncoding.default.encode(request, with: parameters)
+                
+            case .registerTrainer(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+                
+            case .login(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+                
             default: break
             }
             self.addHeadersForRequest(request: &request, signed: nil)

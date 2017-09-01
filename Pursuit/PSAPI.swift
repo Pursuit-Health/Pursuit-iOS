@@ -73,8 +73,8 @@ class PSAPI {
     }
 
     @discardableResult
-    func signUp(signUpInfo: [String: Any], completion: SignUpCompletion? = nil) -> DataRequest? {
-        let request = Request.signUp(parameters: signUpInfo)
+    func registerTrainer(personalData: [String: Any], completion: RegisterTrainerCompletion? = nil) -> DataRequest? {
+        let request = Request.registerTrainer(parameters: personalData)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
               var error: PSError?
             if let responseError = self.isValid(response: response.response) {
@@ -84,11 +84,41 @@ class PSAPI {
            completion?(response.result.value, error)
         })
     }
+    
+    @discardableResult
+    func registerClient(personalData: [String: Any], completion: @escaping RegisterClientCompletion) -> DataRequest? {
+        let request = Request.registerClient(parameters: personalData)
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            
+            completion(response.result.value, error)
+        })
+    }
+    
+    @discardableResult
+    func login(loginData: [String: Any], completion: @escaping LoginCompletion) -> DataRequest? {
+        let request = Request.login(parameters: loginData)
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            
+            completion(response.result.value, error)
+        })
+    }
 }
 
 extension PSAPI {
     
     //MARK: Typelias
     
-    typealias SignUpCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    typealias LoginCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
 }

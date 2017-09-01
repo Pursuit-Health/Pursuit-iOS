@@ -18,6 +18,7 @@ PODS:
   - SDWebImage/Core (4.1.0)
   - SVProgressHUD (2.1.2)
   - SwipeCellKit (1.8.0)
+  - TextFieldEffects (1.3.3)
   - TPKeyboardAvoiding (1.3.1)
 
 DEPENDENCIES:
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - SDWebImage (~> 4.1)
   - SVProgressHUD (~> 2.1)
   - SwipeCellKit
+  - TextFieldEffects (~> 1.3)
   - TPKeyboardAvoiding (~> 1.3)
 
 SPEC CHECKSUMS:
@@ -50,8 +52,9 @@ SPEC CHECKSUMS:
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
+  TextFieldEffects: 8706f53525f1ce51c8921b7af32237caab50c467
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 28aad5a49d0f83903fafef366cea95958f9380f5
+PODFILE CHECKSUM: 4524535ac6eba455c230feb2a4c5e483a0f805a3
 
 COCOAPODS: 1.2.1
