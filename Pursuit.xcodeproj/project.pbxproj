@@ -27,6 +27,12 @@
 		5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D41EB319E5005B35CD /* DezappButton.swift */; };
 		5BE3A1DA1EB7029E005B35CD /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE3A1D91EB7029E005B35CD /* LoginModel.swift */; };
 		7804AF461F55FE7D00CE5780 /* CellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7804AF451F55FE7D00CE5780 /* CellState.swift */; };
+		78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A261F5BD94E001325B4 /* KeychainAccessService.swift */; };
+		78094A291F5BD958001325B4 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A281F5BD958001325B4 /* KeychainService.swift */; };
+		78094A2B1F5BD9BE001325B4 /* PursuitKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A2A1F5BD9BE001325B4 /* PursuitKeychain.swift */; };
+		78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78094A2E1F5BF9D2001325B4 /* Splash.storyboard */; };
+		78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A301F5BFA40001325B4 /* SplashVC.swift */; };
+		78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */; };
 		780D8E901F4360FE0030A992 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E8F1F4360FE0030A992 /* Template.swift */; };
 		780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E951F44DAD90030A992 /* UINavigationBar.swift */; };
 		780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780ECFDA1F5878860009E6A6 /* UITextField.swift */; };
@@ -133,6 +139,13 @@
 		5BE3A1D41EB319E5005B35CD /* DezappButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DezappButton.swift; sourceTree = "<group>"; };
 		5BE3A1D91EB7029E005B35CD /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		7804AF451F55FE7D00CE5780 /* CellState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellState.swift; sourceTree = "<group>"; };
+		78094A261F5BD94E001325B4 /* KeychainAccessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainAccessService.swift; sourceTree = "<group>"; };
+		78094A281F5BD958001325B4 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		78094A2A1F5BD9BE001325B4 /* PursuitKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitKeychain.swift; sourceTree = "<group>"; };
+		78094A2E1F5BF9D2001325B4 /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		78094A301F5BFA40001325B4 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		78094A331F5BFDAD001325B4 /* mksanstallx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mksanstallx.ttf; sourceTree = "<group>"; };
+		78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		780D8E8F1F4360FE0030A992 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		780ECFDA1F5878860009E6A6 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -290,6 +303,73 @@
 				7804AF451F55FE7D00CE5780 /* CellState.swift */,
 			);
 			name = CellState;
+			sourceTree = "<group>";
+		};
+		78094A201F5BD860001325B4 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				78094A231F5BD89C001325B4 /* Services */,
+				78094A211F5BD87F001325B4 /* Managers */,
+			);
+			name = Keychain;
+			sourceTree = "<group>";
+		};
+		78094A211F5BD87F001325B4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				78094A251F5BD8EA001325B4 /* PursuitKeychain */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		78094A231F5BD89C001325B4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				78094A281F5BD958001325B4 /* KeychainService.swift */,
+				78094A241F5BD8AA001325B4 /* KeychainAccessService */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		78094A241F5BD8AA001325B4 /* KeychainAccessService */ = {
+			isa = PBXGroup;
+			children = (
+				78094A261F5BD94E001325B4 /* KeychainAccessService.swift */,
+			);
+			name = KeychainAccessService;
+			sourceTree = "<group>";
+		};
+		78094A251F5BD8EA001325B4 /* PursuitKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				78094A2A1F5BD9BE001325B4 /* PursuitKeychain.swift */,
+			);
+			name = PursuitKeychain;
+			sourceTree = "<group>";
+		};
+		78094A2C1F5BF99F001325B4 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				78094A2E1F5BF9D2001325B4 /* Splash.storyboard */,
+				78094A2D1F5BF9AE001325B4 /* Controllers */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
+		78094A2D1F5BF9AE001325B4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				78094A301F5BFA40001325B4 /* SplashVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		78094A321F5BFD82001325B4 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				78094A331F5BFDAD001325B4 /* mksanstallx.ttf */,
+			);
+			name = Font;
 			sourceTree = "<group>";
 		};
 		780D8E8E1F4360D00030A992 /* Template */ = {
@@ -490,6 +570,7 @@
 		84AB4D521F327CF100531740 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				78094A2C1F5BF99F001325B4 /* Splash */,
 				84AB4D5C1F327FDC00531740 /* ClientMain */,
 				84AB4D581F327F5E00531740 /* TrainerMain */,
 				84AB4D551F327E6300531740 /* Login */,
@@ -525,6 +606,7 @@
 				7832AFE81F331D1D00BC8116 /* SignUpVC.swift */,
 				7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */,
 				78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */,
+				78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -739,6 +821,7 @@
 		84AB4D6E1F32821900531740 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				78094A321F5BFD82001325B4 /* Font */,
 				84AB4D6F1F32821F00531740 /* External */,
 				5B1F830C1E850E4100ABA24C /* AppDelegate.swift */,
 				842EBD301F33176F00A3169F /* Assets.xcassets */,
@@ -829,6 +912,7 @@
 		84AB4D8F1F32871C00531740 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				78094A201F5BD860001325B4 /* Keychain */,
 				84AB4D901F3287B000531740 /* Network */,
 			);
 			name = Handlers;
@@ -1033,6 +1117,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
 				78CE34C41F38FDF2002BD31D /* TabPageViewController.storyboard in Resources */,
@@ -1142,14 +1227,18 @@
 				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
 				780D8E901F4360FE0030A992 /* Template.swift in Sources */,
+				78094A291F5BD958001325B4 /* KeychainService.swift in Sources */,
 				78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */,
 				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
 				84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */,
 				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
+				78094A2B1F5BD9BE001325B4 /* PursuitKeychain.swift in Sources */,
 				84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */,
 				78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
+				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
+				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
 				842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */,
 				780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */,
@@ -1180,6 +1269,7 @@
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
 				78179B871F54977500520D08 /* User.swift in Sources */,
+				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

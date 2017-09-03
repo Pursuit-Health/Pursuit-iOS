@@ -19,5 +19,6 @@ target 'Pursuit' do
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'IQKeyboardManagerSwift', '~> 4.0'
   pod 'TextFieldEffects', '~> 1.3'
+  pod 'KeychainAccess', '~> 3.0'
   
 end

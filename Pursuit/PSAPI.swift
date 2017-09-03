@@ -110,6 +110,34 @@ class PSAPI {
             completion(response.result.value, error)
         })
     }
+    
+    @discardableResult
+    func forgotPassword(email: String, completion: @escaping ChangePasswordCompletion) -> DataRequest? {
+        let request = Request.forgotPassword(parameters: ["email": email])
+        return self.perform(request)?.responseJSON(completionHandler: { response in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            if let statusCode = response.response?.statusCode {
+                completion(statusCode == 200)
+            }
+        })
+    }
+    
+    @discardableResult
+    func changePassword(password: String, completion: @escaping ChangePasswordCompletion) -> DataRequest? {
+        let request = Request.changePassword(parameters: ["password": password])
+        return self.perform(request)?.responseJSON(completionHandler: { response in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            if let statusCode = response.response?.statusCode {
+                completion(statusCode == 200)
+            }
+        })
+    }
 }
 
 extension PSAPI {
@@ -120,5 +148,11 @@ extension PSAPI {
     
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
-    typealias LoginCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+     typealias ForgotPassword           = (_ success: Bool) -> Void
+    
+    typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
+    
+   
 }

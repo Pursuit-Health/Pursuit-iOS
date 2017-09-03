@@ -6,10 +6,16 @@ extension PSAPI {
     enum Request: URLRequestConvertible {
         
         typealias Query = [String : String?]
-
+        
+        //MARK: Auth
         case registerTrainer(parameters: Parameters)
         case registerClient(parameters: Parameters)
         case login(parameters: Parameters)
+        case forgotPassword(parameters: Parameters)
+        
+        //MARK: Settings
+        case changePassword(parameters: Parameters)
+        
         
         
         //MARK: Private.Property
@@ -20,8 +26,10 @@ extension PSAPI {
         
         private var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login:
+            case .registerClient, .registerTrainer, .login, .forgotPassword:
                 return .post
+            case .changePassword:
+                return .put
             }
         }
         
@@ -33,11 +41,23 @@ extension PSAPI {
                 return "auth/register/client"
             case .login:
                 return "auth/login"
+            case .forgotPassword:
+                return "auth/forgot-password"
+            
+            case .changePassword:
+                return "settings/password"
             }
         }
         
         private var tokenString: String {
-            return ""
+            
+        guard let token = User.token else {return ""}
+            switch self{
+            case .changePassword:
+                return "Bearer" + token
+            default:
+                return ""
+            }
         }
         
         private var contentType: String {
@@ -52,6 +72,7 @@ extension PSAPI {
         
         private func addHeadersForRequest( request: inout URLRequest, signed signature: String?) {
             request.setValue(self.contentType, forHTTPHeaderField: "Content-Type")
+            request.setValue(self.tokenString, forHTTPHeaderField: "Authorization")
         }
         
         private func addParametersAndHeadersForRequest(request: URLRequest) throws -> URLRequest {
@@ -65,6 +86,12 @@ extension PSAPI {
                 request = try JSONEncoding.default.encode(request, with: parameters)
                 
             case .login(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+                
+            case .forgotPassword(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+                
+            case .changePassword(let parameters):
                 request = try JSONEncoding.default.encode(request, with: parameters)
                 
             default: break

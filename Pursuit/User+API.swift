@@ -8,15 +8,15 @@
 
 extension User {
     
+    //MARK: Typealias
+    
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
-    
-//    class func signUp(signUpInfo: PersonalData, completion: @escaping SignUpCompletion) {
-//        let api = PSAPI()
-//        
-//        api.signUp(signUpInfo: signUpInfo.toJSON(), completion: completion)
-//    }
+    typealias ForgotPasswordCompletion  = (_ success: Bool) -> Void
+    typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
+
+    //MARK: Public
     
     class func registerTrainer(personalData: PersonalData, completion: @escaping RegisterTrainerCompletion) {
         let api = PSAPI()
@@ -33,6 +33,26 @@ extension User {
     class func login(loginData: PersonalData, completion: @escaping LoginCompletion) {
         let api = PSAPI()
         
-        api.login(loginData: loginData.toJSON(), completion: completion)
+        api.login(loginData: loginData.toJSON()) { (user, error) in
+            
+            if let user = user {
+                if let token = user.metaData?.token {
+                  self.token = token
+                }
+            }
+            completion(user, error)
+        }
+    }
+    
+    class func forgotPassword(email: String, completion: @escaping ForgotPasswordCompletion) {
+        let api = PSAPI()
+        
+        api.forgotPassword(email: email, completion: completion)
+    }
+    
+    class func changePassword(password: String, completion: @escaping ChangePasswordCompletion) {
+        let api = PSAPI()
+        
+        api.changePassword(password: password, completion: completion)
     }
 }

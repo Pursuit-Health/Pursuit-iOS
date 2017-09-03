@@ -10,6 +10,34 @@ import ObjectMapper
 
 class User: Mappable {
     
+    //MARK: Private.Properties
+    
+    static var token: String? {
+        get {
+            let keychain        = PursuitKeychain()
+            return keychain.token
+        }
+        set(newValue) {
+            let keychain        = PursuitKeychain()
+            keychain.token      = newValue
+        }
+    }
+    
+    //MARK: Mappable
+    
+    var personalData    : PersonalData?
+    var metaData        : MetaData?
+    
+    
+    func mapping(map: Map) {
+        self.personalData         <- map["data"]
+        self.metaData             <- map["meta"]
+    }
+    
+    required init?(map: Map) {
+        
+    }
+    
     class PersonalData: Mappable {
         
         //MARK: Properties
@@ -45,32 +73,19 @@ class User: Mappable {
     class MetaData: Mappable {
         
         var userType               : String?
+        var token                  : String?
         
         //MARK: Mappable
         
         func mapping(map: Map) {
             self.userType         <- map["user_type"]
+            self.token            <- map["token"]
         }
         
         init() {}
         required init?(map: Map) {
             
         }
-    }
- 
-        //MARK: Mappable
-    
-    var personalData    : PersonalData?
-    var metaData        : MetaData?
-
-    
-    func mapping(map: Map) {
-        self.personalData         <- map["data"]
-        self.metaData             <- map["meta"]
-    }
-    
-    required init?(map: Map) {
-        
     }
 }
 

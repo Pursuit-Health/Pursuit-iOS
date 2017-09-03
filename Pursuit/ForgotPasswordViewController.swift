@@ -8,17 +8,23 @@
 
 import UIKit
 
+protocol ForgotPasswordVCDelegate: class {
+    func dissmissForgotPasswordVC()
+}
+
 class ForgotPasswordVC: UIViewController {
     
     //MARK: IBOutlets
     
     @IBOutlet weak var emailTextField: UITextField!
+    
     //MARK: Variables
     
+    weak var forgotPasswordVCDelegate: ForgotPasswordVCDelegate?
+    
     //MARK: IBActions
-
+    
     @IBAction func submitEmailButtonPressed(_ sender: Any) {
-        
         submitEmail()
     }
     
@@ -26,14 +32,13 @@ class ForgotPasswordVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
     private func submitEmail(){
         guard validateEmail() else { invalidEmailAlert(); return}
         
-        //API call forgot password
+        sendEmaiForNewPassword()
     }
     
     private func invalidEmailAlert(){
@@ -42,6 +47,22 @@ class ForgotPasswordVC: UIViewController {
         alert.addAction(okButton)
         
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension ForgotPasswordVC {
+    func sendEmaiForNewPassword() {
+        forgotPasswordRequest { success in
+            if success {
+              self.forgotPasswordVCDelegate?.dissmissForgotPasswordVC()
+            }
+        }
+    }
+    
+    private func forgotPasswordRequest(completion: @escaping (_ success: Bool) -> Void){
+        User.forgotPassword(email: emailTextField.text!) { success in
+            completion(success)
+        }
     }
 }
 

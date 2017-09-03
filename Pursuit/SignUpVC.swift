@@ -34,6 +34,8 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(User.token)
+        
     }
     
     private func setParametersForRequest() {

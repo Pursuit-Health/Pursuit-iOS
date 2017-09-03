@@ -10,6 +10,7 @@ PODS:
   - HMSegmentedControl (1.5.3)
   - IQKeyboardManagerSwift (4.0.11)
   - JTAppleCalendar (7.0.6)
+  - KeychainAccess (3.0.2)
   - KVNProgress (2.3.1)
   - ObjectMapper (2.2.8)
   - pop (1.0.10)
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - HMSegmentedControl
   - IQKeyboardManagerSwift (~> 4.0)
   - JTAppleCalendar (~> 7.0)
+  - KeychainAccess (~> 3.0)
   - KVNProgress
   - pop (~> 1.0)
   - SDWebImage (~> 4.1)
@@ -46,6 +48,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
   IQKeyboardManagerSwift: 10f0a6b8ea2904c8943c0e1a116c99f5b8ad83af
   JTAppleCalendar: 6a942475e33b9ad4dee0a0e14aa4c63adcf4f543
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
@@ -55,6 +58,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 8706f53525f1ce51c8921b7af32237caab50c467
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 4524535ac6eba455c230feb2a4c5e483a0f805a3
+PODFILE CHECKSUM: 4a0d1001b195d79814b97adadf41e8aefb78367c
 
 COCOAPODS: 1.2.1
