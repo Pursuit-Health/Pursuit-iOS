@@ -15,6 +15,7 @@ extension User {
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias ForgotPasswordCompletion  = (_ success: Bool) -> Void
     typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
+    typealias ChangeAvatarCompletion    = (_ success: Bool) -> Void
 
     //MARK: Public
     
@@ -54,5 +55,11 @@ extension User {
         let api = PSAPI()
         
         api.changePassword(password: password, completion: completion)
+    }
+    
+    class func uploadAvatar(data: Data, completion: @escaping  ChangeAvatarCompletion) {
+        let api = PSAPI()
+        
+        api.uploadAvatar(data: data, completion: completion)
     }
 }

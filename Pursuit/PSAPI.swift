@@ -49,7 +49,7 @@ class PSAPI {
             }
         })
     }
-    
+
     private func isValid(statusCode: Int) -> Bool {
         return 200...299 ~= statusCode
     }
@@ -138,6 +138,27 @@ class PSAPI {
             }
         })
     }
+    
+    func uploadAvatar(data: Data, completion: @escaping ChangeAvatarCompletion) {
+        guard let token = User.token else {return}
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(data, withName: "avatar")
+                
+        },
+            to: "http://dev.nerdzlab.com/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        completion(true)
+                        debugPrint(response)
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        })
+    }
 }
 
 extension PSAPI {
@@ -150,9 +171,11 @@ extension PSAPI {
     
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
-     typealias ForgotPassword           = (_ success: Bool) -> Void
+    typealias ForgotPassword            = (_ success: Bool) -> Void
     
     typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
+    
+    typealias ChangeAvatarCompletion    = (_ success: Bool) -> Void
     
    
 }

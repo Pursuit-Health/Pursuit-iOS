@@ -35,12 +35,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="267"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ndA-WZ-ht6">
-                                        <rect key="frame" x="65" y="11.5" width="245" height="245"/>
+                                        <rect key="frame" x="65.5" y="11.5" width="245" height="245"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ced-45-HAB">
+                                        <rect key="frame" x="325" y="19" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="DLj-jo-d0J"/>
+                                            <constraint firstAttribute="height" constant="30" id="tp3-GX-wW5"/>
+                                        </constraints>
+                                        <state key="normal" image="add_photo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addPhotoButtonPressed:" destination="Nag-E4-VC3" eventType="touchUpInside" id="tsA-FK-5Vz"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QSm-NT-e9w">
+                                        <rect key="frame" x="121.5" y="67.5" width="133.5" height="133.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QSm-NT-e9w" secondAttribute="height" multiplier="1:1" id="VGy-JH-bRx"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="ced-45-HAB" firstAttribute="top" secondItem="UOk-0s-lrP" secondAttribute="top" constant="19" id="4PB-RN-38G"/>
+                                    <constraint firstItem="QSm-NT-e9w" firstAttribute="centerY" secondItem="UOk-0s-lrP" secondAttribute="centerY" id="5W4-Mi-wuq"/>
+                                    <constraint firstAttribute="trailing" secondItem="ced-45-HAB" secondAttribute="trailing" constant="20" id="6bf-ff-Lst"/>
                                     <constraint firstItem="ndA-WZ-ht6" firstAttribute="centerY" secondItem="UOk-0s-lrP" secondAttribute="centerY" id="7eh-Wk-9Se"/>
+                                    <constraint firstItem="QSm-NT-e9w" firstAttribute="centerX" secondItem="UOk-0s-lrP" secondAttribute="centerX" id="7mc-ad-isG"/>
+                                    <constraint firstItem="QSm-NT-e9w" firstAttribute="height" secondItem="UOk-0s-lrP" secondAttribute="height" multiplier="0.5" id="I5A-Q3-bnb"/>
                                     <constraint firstItem="ndA-WZ-ht6" firstAttribute="centerX" secondItem="UOk-0s-lrP" secondAttribute="centerX" id="uTX-6m-TbZ"/>
                                 </constraints>
                             </view>
@@ -72,6 +101,9 @@
                     <navigationItem key="navigationItem" id="O1Q-Z4-rnj"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="addPhotoButton" destination="ced-45-HAB" id="hqP-sU-iiE"/>
+                        <outlet property="logoImageView" destination="ndA-WZ-ht6" id="NTM-G6-IRv"/>
+                        <outlet property="profilePhotoImageView" destination="QSm-NT-e9w" id="DOr-ES-RDd"/>
                         <outlet property="viewForPageController" destination="juF-RJ-xKS" id="H2R-JW-N5p"/>
                     </connections>
                 </viewController>
@@ -763,6 +795,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add_photo" width="54" height="52"/>
         <image name="bg" width="375" height="667"/>
         <image name="btn_close" width="25" height="25"/>
         <image name="email" width="40" height="35"/>

@@ -20,9 +20,36 @@ class MainAuthVC: UIViewController {
     
     weak var delegate: MainAuthVCDelegate?
     
+    var isHiddenProfileImage: Bool = true {
+        didSet {
+            profilePhotoImageView.isHidden  = isHiddenProfileImage
+            addPhotoButton.isHidden         = isHiddenProfileImage
+            logoImageView.isHidden          = !isHiddenProfileImage
+        }
+    }
+    
     //MARK: IBOutlets
     
+    @IBOutlet weak var logoImageView        : UIImageView!
     @IBOutlet weak var viewForPageController: UIView!
+    
+    @IBOutlet weak var profilePhotoImageView: UIImageView!{
+        didSet {
+            profilePhotoImageView.isHidden = true
+        }
+    }
+    @IBOutlet weak var addPhotoButton: UIButton! {
+        didSet {
+            addPhotoButton.isHidden = true
+        }
+    }
+    
+    //MARK: IBActions
+    
+    @IBAction func addPhotoButtonPressed(_ sender: Any) {
+        //showActionSheetForUploadingPhoto()
+        uploadImage()
+    }
     
     //MARK: LIfecycle
     
@@ -32,12 +59,13 @@ class MainAuthVC: UIViewController {
         getControllers()
         
     }
-        
+    
     //MARK: Private
     
     private func getControllers(){
         let controller = TabPageViewController.create()
         
+        controller.tabPageVCDelegate = self
         //TODO: Place string into constants, ask me how
         let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
         
@@ -51,7 +79,7 @@ class MainAuthVC: UIViewController {
         setUpControllerToMainView(controller)
         
     }
-
+    
     private func setUpOptions(_ controller: TabPageViewController) {
         var option                  = TabPageOption()
         option.currentBarHeight     = 3.0
@@ -68,6 +96,64 @@ class MainAuthVC: UIViewController {
         
         controller.didMove(toParentViewController: self)
     }
+    
+    private func showActionSheetForUploadingPhoto() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cameraSheet = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
+        self.showImagePickerControllerWithType(.camera)
+        })
+        
+        let librarySheet = UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
+            self.showImagePickerControllerWithType(.photoLibrary)
+        })
+        
+        actionSheet.addAction(cameraSheet)
+        actionSheet.addAction(librarySheet)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func uploadImage() {
+        let image = UIImage(named: "avatar1")
+        let data = UIImagePNGRepresentation(image!) as NSData?
+        User.uploadAvatar(data: data! as Data) { success in
+            
+        }
+    }
 }
 
+extension MainAuthVC: TabPageViewControllerDelegate {
+    func dispayControllerWithIndex(_ index: Int) {
+        changeImagesAccordingControllerIndex(index)
+    }
+}
+
+private extension MainAuthVC {
+    func changeImagesAccordingControllerIndex(_ index: Int) {
+        isHiddenProfileImage = index < 1
+    }
+}
+
+extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func showImagePickerControllerWithType(_ type: UIImagePickerControllerSourceType) {
+        let picker              = UIImagePickerController()
+        picker.delegate         = self
+        picker.allowsEditing    = true
+        picker.sourceType       = type
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        profilePhotoImageView.image = chosenImage
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
 

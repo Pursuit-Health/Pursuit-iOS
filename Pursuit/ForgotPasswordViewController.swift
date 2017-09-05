@@ -36,7 +36,7 @@ class ForgotPasswordVC: UIViewController {
     }
     
     private func submitEmail(){
-        guard validateEmail() else { invalidEmailAlert(); return}
+        guard RegexExpression.validateEmail(string: emailTextField.text ?? "") else { invalidEmailAlert(); return}
         
         sendEmaiForNewPassword()
     }
@@ -63,18 +63,5 @@ extension ForgotPasswordVC {
         User.forgotPassword(email: emailTextField.text!) { success in
             completion(success)
         }
-    }
-}
-
-//MARK: -   EmailValidation
-
-//TODO: Move reg exp to global class, ask me
-private extension ForgotPasswordVC {
-    func validateEmail() -> Bool{
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        return emailTest.evaluate(with: emailTextField.text ?? "")
     }
 }

@@ -33,6 +33,7 @@
 		78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78094A2E1F5BF9D2001325B4 /* Splash.storyboard */; };
 		78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A301F5BFA40001325B4 /* SplashVC.swift */; };
 		78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */; };
+		780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D26841F5C92D900FA1558 /* RegexExpression.swift */; };
 		780D8E901F4360FE0030A992 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E8F1F4360FE0030A992 /* Template.swift */; };
 		780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E951F44DAD90030A992 /* UINavigationBar.swift */; };
 		780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780ECFDA1F5878860009E6A6 /* UITextField.swift */; };
@@ -146,6 +147,7 @@
 		78094A301F5BFA40001325B4 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		78094A331F5BFDAD001325B4 /* mksanstallx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mksanstallx.ttf; sourceTree = "<group>"; };
 		78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
+		780D26841F5C92D900FA1558 /* RegexExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexExpression.swift; sourceTree = "<group>"; };
 		780D8E8F1F4360FE0030A992 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		780ECFDA1F5878860009E6A6 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				78FA53DE1F47794200C38413 /* DateFormater+formats.swift */,
+				780D26841F5C92D900FA1558 /* RegexExpression.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -1262,6 +1265,7 @@
 				84AB4D7E1F3282AC00531740 /* TableView+BBBExtension.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
 				7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */,
+				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,

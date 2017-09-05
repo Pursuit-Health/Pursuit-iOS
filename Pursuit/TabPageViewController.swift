@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TabPageViewControllerDelegate: class {
+    func dispayControllerWithIndex(_ index: Int)
+}
+
 open class TabPageViewController: UIPageViewController {
     open var isInfinity: Bool = false
     open var option: TabPageOption = TabPageOption()
@@ -36,6 +40,8 @@ open class TabPageViewController: UIPageViewController {
         let sb = UIStoryboard(name: "TabPageViewController", bundle: Bundle(for: TabPageViewController.self))
         return sb.instantiateInitialViewController() as! TabPageViewController
     }
+    
+    weak var tabPageVCDelegate: TabPageViewControllerDelegate?
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +84,9 @@ open class TabPageViewController: UIPageViewController {
 public extension TabPageViewController {
 
     public func displayControllerWithIndex(_ index: Int, direction: UIPageViewControllerNavigationDirection, animated: Bool) {
-
+        
+        tabPageVCDelegate?.dispayControllerWithIndex(index)
+        
         beforeIndex = index
         shouldScrollCurrentBar = false
         let nextViewControllers: [UIViewController] = [tabItems[index].viewController]

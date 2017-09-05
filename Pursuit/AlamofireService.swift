@@ -21,13 +21,13 @@ class AlamofireService: ServiceProtocol {
         return self.sessionManager.request(request)
     }
     
+    //TODO:
     @discardableResult
     func upload(_ data: Data, to url: URLConvertible, method: HTTPMethod = .post, headers: HTTPHeaders? = nil) -> UploadRequest {
         return self.sessionManager.upload(data, to: url, method: method, headers: headers)
     }
     
-    func upload(
-        multipartFormData: @escaping (MultipartFormData) -> Void,
+    func upload(multipartFormData: @escaping (MultipartFormData) -> Void,
         to url: URLConvertible,
         with headers: HTTPHeaders,
         encodingCompletion: ((SessionManager.MultipartFormDataEncodingResult) -> Void)?) {
