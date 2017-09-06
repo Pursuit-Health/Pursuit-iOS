@@ -12,6 +12,7 @@ extension PSAPI {
         case registerClient(parameters: Parameters)
         case login(parameters: Parameters)
         case forgotPassword(parameters: Parameters)
+        case setPassword(parameters: Parameters)
         
         //MARK: Settings
         case changePassword(parameters: Parameters)
@@ -27,7 +28,7 @@ extension PSAPI {
         
         private var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword:
                 return .post
             case .changePassword:
                 return .put
@@ -44,6 +45,8 @@ extension PSAPI {
                 return "auth/login"
             case .forgotPassword:
                 return "auth/forgot-password"
+            case .setPassword:
+                return "auth/set-password"
             
             case .changePassword:
                 return "settings/password"
@@ -70,7 +73,6 @@ extension PSAPI {
             default:
                 return "application/json"
             }
-            
         }
         
         private var queryParams: Query? {
@@ -98,6 +100,9 @@ extension PSAPI {
                 request = try JSONEncoding.default.encode(request, with: parameters)
                 
             case .forgotPassword(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+                
+            case .setPassword(let parameters):
                 request = try JSONEncoding.default.encode(request, with: parameters)
                 
             case .changePassword(let parameters):

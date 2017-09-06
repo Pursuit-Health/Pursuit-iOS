@@ -51,6 +51,8 @@ class User: Mappable {
         var userable           : PersonalData?
         var userableData       : PersonalData?
         
+        var trainerId           : Int?
+        
         
         //MARK: Mappable
         

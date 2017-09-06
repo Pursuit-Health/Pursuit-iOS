@@ -13,12 +13,26 @@ protocol MainAuthVCDelegate: class {
     func signUpButtonPressedMainAuthVC()
     func signInButtonPressedMainAuthVC()
 }
-
+    //IGOR: Check
 class MainAuthVC: UIViewController {
     
+    //MARK: Constants 
+
+    struct Constants {
+        struct Stroryboard {
+            static let Login    = "Login"
+        }
+        struct Identifiers {
+            static let SignUpVC = "SignUpVCID"
+            static let SignInVC = "SignInVCID"
+        }
+    }
     //MARK: Variables
     
     weak var delegate: MainAuthVCDelegate?
+    
+    var services: [DeepLinkService]         = [GuestDeepLinkService()]
+
     
     var isHiddenProfileImage: Bool = true {
         didSet {
@@ -60,17 +74,21 @@ class MainAuthVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
     //MARK: Private
     
     private func getControllers(){
         let controller = TabPageViewController.create()
         
         controller.tabPageVCDelegate = self
-        //TODO: Place string into constants, ask me how
-        let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
         
-        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: "SignInVCID")
-        let signUpVC = loginStoryboard.instantiateViewController(withIdentifier: "SignUpVCID")
+        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignInVC)
+        let signUpVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignUpVC)
         
         controller.tabItems = [(signInVC, "SignIn"), (signUpVC, "SignUp")]
         
@@ -156,4 +174,5 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
 

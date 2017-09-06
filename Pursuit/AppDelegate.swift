@@ -8,11 +8,20 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import DeepLinkKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    //MARK: Properties
     
     var window: UIWindow?
+    lazy var router: DPLDeepLinkRouter?     = DPLDeepLinkRouter()
+    var services: [DeepLinkService]         = [GuestDeepLinkService()]
+    
+    //MARK: Private.Properties
+    
+    private var deepLinking: Bool = false
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -21,7 +30,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setUpTabBarAppearens()
         
+        setupDeepLinking()
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return self.router?.handle(url, withCompletion: { (handled, error) in
+            if handled && error == nil {
+                self.deepLinking = true
+            }
+        }) ?? true
+    }
+    
+    //MARK: Private
+    
+    private func setupDeepLinking() {
+
+        self.services.forEach{ self.router?.register(service: $0) }
     }
     
     func setUpTabBarAppearens() {

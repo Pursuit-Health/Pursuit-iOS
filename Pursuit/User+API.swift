@@ -6,6 +6,7 @@
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
+//IGOR: Check
 extension User {
     
     //MARK: Typealias
@@ -14,6 +15,7 @@ extension User {
     typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias ForgotPasswordCompletion  = (_ success: Bool) -> Void
+    typealias SetPasswordCompletion     = (_ success: Bool) -> Void
     typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
     typealias ChangeAvatarCompletion    = (_ success: Bool) -> Void
 
@@ -49,6 +51,12 @@ extension User {
         let api = PSAPI()
         
         api.forgotPassword(email: email, completion: completion)
+    }
+    
+    class func setPassword(password: String, hash: String, completion: @escaping SetPasswordCompletion) {
+        let api = PSAPI()
+        
+        api.setPassword(password: password, hash: hash, completion: completion)
     }
     
     class func changePassword(password: String, completion: @escaping ChangePasswordCompletion) {

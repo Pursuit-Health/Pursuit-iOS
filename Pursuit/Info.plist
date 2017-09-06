@@ -47,5 +47,16 @@
 	<string>Pursuit Health needs access to photo library.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Pursuit Health needs access to camera.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>helthpersuit</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>helthpersuit.com</string>
+		</dict>
+	</array>
 </dict>
 </plist>

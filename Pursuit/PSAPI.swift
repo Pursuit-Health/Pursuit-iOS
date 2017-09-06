@@ -29,10 +29,10 @@ class PSAPI {
     private static var showIndicator    = true
     //MARK: Private.Methods
     
-     func perform(_ request: Request) -> DataRequest? {
+    func perform(_ request: Request) -> DataRequest? {
         let showIndicator   = PSAPI.showIndicator
         PSAPI.showIndicator = true
-  
+        
         if showIndicator {
             if PSAPI.runningRequests == 0 {
                 SVProgressHUD.show()
@@ -49,12 +49,12 @@ class PSAPI {
             }
         })
     }
-
+    
     private func isValid(statusCode: Int) -> Bool {
         return 200...299 ~= statusCode
     }
     
-     private func isValid(response: HTTPURLResponse?, errorData: Data? = nil) -> PSError? {
+    private func isValid(response: HTTPURLResponse?, errorData: Data? = nil) -> PSError? {
         var error: PSError?
         guard let responseValue = response else {
             error = .internetConnection
@@ -71,17 +71,17 @@ class PSAPI {
         }
         return error
     }
-
+    //IGOR: Check
     @discardableResult
     func registerTrainer(personalData: [String: Any], completion: RegisterTrainerCompletion? = nil) -> DataRequest? {
         let request = Request.registerTrainer(parameters: personalData)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
-              var error: PSError?
+            var error: PSError?
             if let responseError = self.isValid(response: response.response) {
                 error = responseError
             }
             
-           completion?(response.result.value, error)
+            completion?(response.result.value, error)
         })
     }
     
@@ -114,6 +114,22 @@ class PSAPI {
     @discardableResult
     func forgotPassword(email: String, completion: @escaping ChangePasswordCompletion) -> DataRequest? {
         let request = Request.forgotPassword(parameters: ["email": email])
+        return self.perform(request)?.responseJSON(completionHandler: { response in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            if let statusCode = response.response?.statusCode {
+                completion(statusCode == 200)
+            }
+        })
+    }
+    
+    @discardableResult
+    func setPassword(password: String, hash: String, completion: @escaping SetPasswordCompletion) -> DataRequest? {
+        
+        let request = Request.setPassword(parameters: ["hash": hash,
+                                                       "password": password])
         return self.perform(request)?.responseJSON(completionHandler: { response in
             var error: PSError?
             if let responseError = self.isValid(response: response.response) {
@@ -173,9 +189,9 @@ extension PSAPI {
     
     typealias ForgotPassword            = (_ success: Bool) -> Void
     
+    typealias SetPasswordCompletion     = (_ success: Bool) -> Void
+    
     typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
     
     typealias ChangeAvatarCompletion    = (_ success: Bool) -> Void
-    
-   
 }

@@ -5,6 +5,7 @@ PODS:
     - ObjectMapper (~> 2.0)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
+  - DeepLinkKit (1.4.0)
   - ESTabBarController-swift (2.4)
   - Fabric (1.6.11)
   - HMSegmentedControl (1.5.3)
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 4.1)
   - Crashlytics
+  - DeepLinkKit (~> 1.4)
   - ESTabBarController-swift
   - Fabric
   - HMSegmentedControl
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  DeepLinkKit: bffd3b5e51549222f974d631b4e0e7484600b9d8
   ESTabBarController-swift: af496895039ba10ae60bf825473c45f23fc5c8b6
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   HMSegmentedControl: 7c6145afb50f26cec5f3243082f6f12b9f41318f
@@ -58,6 +61,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 8706f53525f1ce51c8921b7af32237caab50c467
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 4a0d1001b195d79814b97adadf41e8aefb78367c
+PODFILE CHECKSUM: dfc6c631503f122d813e188707812f883ceb7325
 
 COCOAPODS: 1.2.1

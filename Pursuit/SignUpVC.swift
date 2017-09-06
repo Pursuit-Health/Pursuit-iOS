@@ -8,58 +8,90 @@
 
 import UIKit
 
+//IGOR: Check
 class SignUpVC: UIViewController {
     
     //MARK: IBOutlets
+    
     @IBOutlet weak var birthDayTextField    : DezappTextField!
     @IBOutlet weak var emailTextField       : DezappTextField!
     @IBOutlet weak var passwordTextField    : DezappTextField!
     @IBOutlet weak var nameTextField        : DezappTextField!
 
+    @IBOutlet weak var userTypeSwitch: UISwitch!
+    
     //MARK: Variables
     
     var textFieldsArray: [DezappTextField] {
         return [self.nameTextField, self.birthDayTextField, self.passwordTextField, self.emailTextField]
     }
     
-    
     var personalData = User.PersonalData()
     
+    //MARK: IBActions
+    
     @IBAction func signUpButtonPresseed(_ sender: Any) {
-        setParametersForRequest()
-        signUp()
+        userTypeSwitch.isOn ? presentSelectTrainerVC() : registerClient()
     }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(User.token)
-        
     }
     
-    private func setParametersForRequest() {
+    //MARK: Private 
+    
+    private func presentSelectTrainerVC() {
+        let rootVC = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.viewControllers.first
+        
+        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.SelectTrainer) as? SelectTrainerVC
+        controller?.delegate = self
+        rootVC?.present(controller!, animated: true, completion: nil)
+    }
+}
+
+private extension SignUpVC {
+    
+     func setParametersForRequest() {
         personalData.name        = nameTextField.text
         personalData.email       = emailTextField.text
         personalData.password    = passwordTextField.text
         personalData.birthday    = birthDayTextField.text
     }
-}
-
-private extension SignUpVC {
-    func signUp(){
-        makeSignUp { success in
+    
+    func registerClient(){
+        setParametersForRequest()
+        registerClient { success in
             if success {
                 //go to login
             }
         }
     }
     
-    func makeSignUp(completion: @escaping (_ success: Bool) -> Void) {
+    func registerTrainer() {
+        setParametersForRequest()
+        registerTrainer { success in
+            if success {
+                //go to login
+            }
+        }
+    }
+    
+    private func registerClient(completion: @escaping (_ success: Bool) -> Void) {
         User.registerClient(personalData: personalData, completion: { signUpInfo, error in
             if let success = signUpInfo {
-            print(success.personalData?.birthday)
-                
+                completion(true)
+            }else {
+                completion(false)
+            }
+        })
+    }
+    
+    private func registerTrainer(completion: @escaping (_ success: Bool) -> Void) {
+        User.registerTrainer(personalData: personalData, completion: { signUpInfo, error in
+            if let success = signUpInfo {
                 completion(true)
             }else {
                 completion(false)
@@ -73,8 +105,14 @@ extension SignUpVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
       
         makeTextFieldsFirstResponder(textFieldsArray, textField)
-        
         return true
+    }
+}
+
+extension SignUpVC: SelectTrainerVCDelegate {
+    func trainerSelectedWithId(_ id: Int) {
+        personalData.trainerId = id
+        registerTrainer()
     }
 }
 
