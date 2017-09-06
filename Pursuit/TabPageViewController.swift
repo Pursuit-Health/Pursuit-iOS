@@ -10,6 +10,9 @@ import UIKit
 
 protocol TabPageViewControllerDelegate: class {
     func dispayControllerWithIndex(_ index: Int)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    
 }
 
 open class TabPageViewController: UIPageViewController {
@@ -366,7 +369,8 @@ extension TabPageViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.x == defaultContentOffsetX || !shouldScrollCurrentBar {
             return
         }
-
+        
+        tabPageVCDelegate?.scrollViewDidScroll(scrollView)
         // (0..<tabItemsCount)
         var index: Int
         if scrollView.contentOffset.x > defaultContentOffsetX {
@@ -383,6 +387,10 @@ extension TabPageViewController: UIScrollViewDelegate {
 
         let scrollOffsetX = scrollView.contentOffset.x - view.frame.width
         tabView.scrollCurrentBarView(index, contentOffsetX: scrollOffsetX)
+    }
+    
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        tabPageVCDelegate?.scrollViewWillBeginDragging(scrollView)
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

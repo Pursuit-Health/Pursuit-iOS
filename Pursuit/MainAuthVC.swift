@@ -28,33 +28,33 @@ class MainAuthVC: UIViewController {
         }
     }
     //MARK: Variables
+    var lastOffSetX = CGFloat()
     
     weak var delegate: MainAuthVCDelegate?
     
     var services: [DeepLinkService]         = [GuestDeepLinkService()]
 
     
-    var isHiddenProfileImage: Bool = true {
+    var changeScrollViewOffSet: Bool = true {
         didSet {
-            profilePhotoImageView.isHidden  = isHiddenProfileImage
-            addPhotoButton.isHidden         = isHiddenProfileImage
-            logoImageView.isHidden          = !isHiddenProfileImage
+            authStateScrollView.contentOffset.x = changeScrollViewOffSet ? 0 : authStateScrollView.contentSize.width/2
         }
     }
     
     //MARK: IBOutlets
     
+    @IBOutlet weak var authStateScrollView: UIScrollView!
     @IBOutlet weak var logoImageView        : UIImageView!
     @IBOutlet weak var viewForPageController: UIView!
     
     @IBOutlet weak var profilePhotoImageView: UIImageView!{
         didSet {
-            profilePhotoImageView.isHidden = true
+            //profilePhotoImageView.isHidden = true
         }
     }
     @IBOutlet weak var addPhotoButton: UIButton! {
         didSet {
-            addPhotoButton.isHidden = true
+           // addPhotoButton.isHidden = true
         }
     }
     
@@ -145,11 +145,27 @@ extension MainAuthVC: TabPageViewControllerDelegate {
     func dispayControllerWithIndex(_ index: Int) {
         changeImagesAccordingControllerIndex(index)
     }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+       lastOffSetX = scrollView.contentOffset.x
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let currentX = scrollView.contentOffset.x
+        let difference = currentX - lastOffSetX
+
+        var currentBackgroundOffset = authStateScrollView.contentOffset
+        currentBackgroundOffset.x += difference
+        authStateScrollView.contentOffset = currentBackgroundOffset
+
+        lastOffSetX = currentX
+    }
 }
 
 private extension MainAuthVC {
     func changeImagesAccordingControllerIndex(_ index: Int) {
-        isHiddenProfileImage = index < 1
+        changeScrollViewOffSet = index < 1
     }
 }
 
