@@ -10,33 +10,115 @@ import ObjectMapper
 
 class Template: Mappable {
     
-    //Create Template
-    var email       : String?
-    var template    : Template?
-    var name        : String?
-    var icon        : String?
-    var duration    : String?
-    var exercises   : [Template]?
-    var sets        : String?
-    var reps        : String?
-    var weight      : String?
+    //MARK: Variables
+    var templateId       : Int?
+    var name            : String?
+    var time            : Int?
+    var imageId         : Int?
+    
+    var templateData : [Template]?
+    
+    var simpleTemplatedata : SimpleTemplate?
+
+    //MARK: Mappable
     
     func mapping(map: Map) {
-        self.template   <- map["template"]
-        self.name       <- map["name"]
-        self.icon       <- map["icon"]
-        self.duration   <- map["duration"]
-        self.exercises  <- map["exercises"]
-        self.sets       <- map["sets"]
-        self.reps       <- map["reps"]
-        self.weight     <- map["weight"]
+        self.name               <- map["name"]
+        self.time               <- map["time"]
+        self.imageId            <- map["image_id"]
+        self.templateId         <- map["id"]
+        self.templateData       <- map["data"]
+        self.simpleTemplatedata <- map["data"]
+
     }
     
     required init?(map: Map) {
         
     }
+    
+    class SimpleTemplate: Mappable {
+        //MARK: Variables
+        
+        var templateId       : Int?
+        var name            : String?
+        var time            : Int?
+        var imageId         : Int?
+        var exercises       : SimpleTemplate?
+        var exercisesData   : [Exercises]?
+    
+        //MARK: Mappable
+    
+        func mapping(map: Map) {
+
+            self.name               <- map["name"]
+            self.time               <- map["time"]
+            self.imageId            <- map["image_id"]
+            self.templateId         <- map["id"]
+            self.exercises          <- map["exercises"]
+            self.exercisesData      <- map["data"]
+    
+        }
+    
+        required init?(map: Map) {
+            
+        }
+    }
+    
+    class Exercises: Mappable {
+        
+        //MARK: Variables
+        
+        var name        : String?
+        var type        : String?
+        var exercisable : Exercises?
+        var times       : Int?
+        var count       : Int?
+        var weight      : Int?
+        var exercisesId : Int?
+        var data        : Exercises?
+        var dataArray   : [Exercises]?
+        var execiseId    : Int?
+        
+        //MARK: Mappable
+        
+        func mapping(map: Map) {
+            self.name               <- map["name"]
+            self.type               <- map["type"]
+            self.exercisable        <- map["exercisable"]
+            self.times              <- map["times"]
+            self.count              <- map["count"]
+            self.weight             <- map["weight"]
+            self.exercisesId        <- map["id"]
+            self.dataArray          <- map["data"]
+            self.data               <- map["data"]
+            self.exercisesId        <- map["id"]
+        }
+        
+        required init?(map: Map) {
+            
+        }
+    }
+    
+    class CreateTemplateData: Mappable {
+        
+        var name            : String?
+        var time            : Int?
+        var imageId         : Int?
+        var exercises       : [Exercises]?
+        
+        //MARK: Mappable
+        
+        func mapping(map: Map) {
+            self.name               <- map["name"]
+            self.time               <- map["time"]
+            self.imageId            <- map["image_id"]
+            self.exercises          <- map["exercises"]
+   
+        }
+        
+        required init?(map: Map) {
+            
+        }
+    }
 }
 
-extension Template {
-    
-}

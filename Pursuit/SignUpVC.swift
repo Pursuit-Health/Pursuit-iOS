@@ -17,7 +17,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var emailTextField       : DezappTextField!
     @IBOutlet weak var passwordTextField    : DezappTextField!
     @IBOutlet weak var nameTextField        : DezappTextField!
-
+    
     @IBOutlet weak var userTypeSwitch: UISwitch!
     
     //MARK: Variables
@@ -40,21 +40,24 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
     }
     
-    //MARK: Private 
+    //MARK: Private
     
     private func presentSelectTrainerVC() {
+        
         let rootVC = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.viewControllers.first
         
         let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.SelectTrainer) as? SelectTrainerVC
+        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.SelectTrainer) as? UINavigationController)?.visibleViewController as? SelectTrainerVC
+        
         controller?.delegate = self
-        rootVC?.present(controller!, animated: true, completion: nil)
+        
+        rootVC?.show(controller!, sender: self)
     }
 }
 
 private extension SignUpVC {
     
-     func setParametersForRequest() {
+    func setParametersForRequest() {
         personalData.name        = nameTextField.text
         personalData.email       = emailTextField.text
         personalData.password    = passwordTextField.text
@@ -103,7 +106,7 @@ private extension SignUpVC {
 //TODO: think after MVP together beter organizatin. Do not fix it yet.
 extension SignUpVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      
+        
         makeTextFieldsFirstResponder(textFieldsArray, textField)
         return true
     }

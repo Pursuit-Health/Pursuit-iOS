@@ -155,6 +155,17 @@ class PSAPI {
         })
     }
     
+    func getTrainers(completion: @escaping GetTrainersCompletion) -> DataRequest? {
+        let request = Request.getTrainers()
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        })
+    }
+    
     func uploadAvatar(data: Data, completion: @escaping ChangeAvatarCompletion) {
         guard let token = User.token else {return}
         Alamofire.upload(
@@ -173,6 +184,70 @@ class PSAPI {
                 case .failure(let encodingError):
                     print(encodingError)
                 }
+        })
+    }
+    
+    //MARK: Template
+    
+    func createTemplate(templateData: [String: Any], completion: @escaping CreateTemplateCompletion) -> DataRequest? {
+        let request = Request.createTemplate(parameters: templateData)
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            
+            completion(response.result.value, error)
+        })
+    }
+    
+    func editTemplate(templateId: String, templateData: [String: Any], completion: @escaping EditTemplateCompletion) -> DataRequest? {
+        let request = Request.editTemplate(templateId: templateId, parameters: templateData)
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            
+            completion(response.result.value, error)
+        })
+    }
+    
+    func getAllTemplates(completion: @escaping GetAllTemplatesCompletion) -> DataRequest? {
+        let request = Request.getAllTemplates()
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            
+            completion(response.result.value, error)
+        })
+    }
+    
+    func getTemplateWithExercises(templateId: String, completion: @escaping GetTemplateWithExercises) -> DataRequest? {
+        let request = Request.getTemplateWithExercise(templateId: templateId)
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            
+            completion(response.result.value, error)
+        })
+    }
+    
+    func deleteTemplate(templateId: String, personalData: [String: Any], completion: @escaping DeleteTemplateCompletion) -> DataRequest?{
+        let request = Request.deleteTemplate(templateId: templateId, parameters: personalData)
+        return self.perform(request)?.responseJSON(completionHandler: { response in
+           
+            if self.isValid(response: response.response) != nil {
+
+            }
+            
+            if let statusCode = response.response?.statusCode {
+                completion(statusCode == 200)
+            }
         })
     }
 }
@@ -194,4 +269,16 @@ extension PSAPI {
     typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
     
     typealias ChangeAvatarCompletion    = (_ success: Bool) -> Void
+    
+    typealias GetTrainersCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    typealias CreateTemplateCompletion  = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    
+    typealias EditTemplateCompletion    = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetAllTemplatesCompletion = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetTemplateWithExercises  = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    
+    typealias DeleteTemplateCompletion  = (_ success: Bool) -> Void
 }

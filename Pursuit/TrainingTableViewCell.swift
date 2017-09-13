@@ -10,6 +10,10 @@ import UIKit
 
 class TrainingTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var exercisesNameLabel: UILabel!
+    @IBOutlet weak var setsLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

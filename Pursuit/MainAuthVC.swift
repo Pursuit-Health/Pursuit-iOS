@@ -9,15 +9,11 @@
 import UIKit
 import KVNProgress
 
-protocol MainAuthVCDelegate: class {
-    func signUpButtonPressedMainAuthVC()
-    func signInButtonPressedMainAuthVC()
-}
-    //IGOR: Check
+//IGOR: Check
 class MainAuthVC: UIViewController {
     
-    //MARK: Constants 
-
+    //MARK: Constants
+    
     struct Constants {
         struct Stroryboard {
             static let Login    = "Login"
@@ -26,14 +22,16 @@ class MainAuthVC: UIViewController {
             static let SignUpVC = "SignUpVCID"
             static let SignInVC = "SignInVCID"
         }
+        
+        struct SeguesIDs {
+            static let Trainer  = "ShowTrainerStoryboard"
+        }
     }
     //MARK: Variables
     var lastOffSetX = CGFloat()
     
-    weak var delegate: MainAuthVCDelegate?
-    
     var services: [DeepLinkService]         = [GuestDeepLinkService()]
-
+    
     
     var changeScrollViewOffSet: Bool = true {
         didSet {
@@ -54,7 +52,7 @@ class MainAuthVC: UIViewController {
     }
     @IBOutlet weak var addPhotoButton: UIButton! {
         didSet {
-           // addPhotoButton.isHidden = true
+            // addPhotoButton.isHidden = true
         }
     }
     
@@ -78,7 +76,7 @@ class MainAuthVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
     }
-
+    
     //MARK: Private
     
     private func getControllers(){
@@ -87,10 +85,11 @@ class MainAuthVC: UIViewController {
         controller.tabPageVCDelegate = self
         let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
         
-        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignInVC)
+        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignInVC) as? SignInVC
+        signInVC?.delegate = self
         let signUpVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignUpVC)
         
-        controller.tabItems = [(signInVC, "SignIn"), (signUpVC, "SignUp")]
+        controller.tabItems = [(signInVC!, "SignIn"), (signUpVC, "SignUp")]
         
         setUpOptions(controller)
         
@@ -119,7 +118,7 @@ class MainAuthVC: UIViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cameraSheet = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
-        self.showImagePickerControllerWithType(.camera)
+            self.showImagePickerControllerWithType(.camera)
         })
         
         let librarySheet = UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
@@ -147,18 +146,18 @@ extension MainAuthVC: TabPageViewControllerDelegate {
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-       lastOffSetX = scrollView.contentOffset.x
+        lastOffSetX = scrollView.contentOffset.x
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let currentX = scrollView.contentOffset.x
         let difference = currentX - lastOffSetX
-
+        
         var currentBackgroundOffset = authStateScrollView.contentOffset
         currentBackgroundOffset.x += difference
         authStateScrollView.contentOffset = currentBackgroundOffset
-
+        
         lastOffSetX = currentX
     }
 }
@@ -191,4 +190,9 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
     }
 }
 
+extension MainAuthVC: SignInVCDelegate {
+    func lofinSuccessfull(on: SignInVC) {
+        performSegue(withIdentifier: Constants.SeguesIDs.Trainer, sender: self)
+    }
+}
 

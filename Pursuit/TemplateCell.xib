@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -60,9 +60,6 @@
                             <constraint firstAttribute="width" constant="15" id="FT8-Gs-kVY"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_right" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-d6-3at">
-                        <rect key="frame" x="260" y="23" width="25" height="25"/>
-                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -70,7 +67,6 @@
                     <constraint firstAttribute="trailingMargin" secondItem="vSq-C6-hH4" secondAttribute="trailing" constant="22" id="3fr-Ow-rbq"/>
                     <constraint firstItem="ghJ-59-i1Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BfC-Pr-wtV"/>
                     <constraint firstItem="tpz-Rp-DbT" firstAttribute="top" secondItem="qMk-eO-Sks" secondAttribute="top" id="Dos-OG-QUP"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="DeA-d6-3at" secondAttribute="trailing" constant="27" id="HDp-wE-Wcv"/>
                     <constraint firstItem="vSq-C6-hH4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MhN-DH-KMO"/>
                     <constraint firstItem="tpz-Rp-DbT" firstAttribute="leading" secondItem="qMk-eO-Sks" secondAttribute="trailing" constant="22" id="PSA-Ig-ngx"/>
                     <constraint firstItem="qMk-eO-Sks" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UTQ-B1-Ytm"/>
@@ -78,15 +74,17 @@
                     <constraint firstItem="Dbf-LR-tpP" firstAttribute="leading" secondItem="qMk-eO-Sks" secondAttribute="trailing" constant="22" id="op3-Sf-ekH"/>
                     <constraint firstItem="qMk-eO-Sks" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="pof-4B-NuF"/>
                     <constraint firstAttribute="bottom" secondItem="ghJ-59-i1Y" secondAttribute="bottom" id="yPZ-DD-OMj"/>
-                    <constraint firstItem="DeA-d6-3at" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ydo-Lc-uno"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="templateNameLabel" destination="tpz-Rp-DbT" id="sVh-uY-7ia"/>
+                <outlet property="templateTimeLabel" destination="Dbf-LR-tpP" id="0iZ-lp-Zu8"/>
+            </connections>
             <point key="canvasLocation" x="34" y="53.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="btn_right" width="25" height="25"/>
         <image name="ic_arrow_right" width="7" height="12"/>
         <image name="situp" width="41" height="41"/>
     </resources>

@@ -10,6 +10,9 @@ import UIKit
 
 class TemplateCell: UITableViewCell {
 
+    @IBOutlet weak var templateNameLabel: UILabel!
+    @IBOutlet weak var templateTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

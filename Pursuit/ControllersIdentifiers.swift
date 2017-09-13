@@ -12,5 +12,6 @@ struct Controllers {
     struct Identifiers {
         static let ResetPassword = "ResetPasswordVC"
         static let SelectTrainer = "SelectTrainerVCIdentifier"
+        static let CreateTemplate = "CreateTemplateVCID"
     }
 }

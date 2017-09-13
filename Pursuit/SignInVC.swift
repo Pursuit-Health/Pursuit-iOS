@@ -9,6 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+protocol SignInVCDelegate: class {
+    func lofinSuccessfull(on controller: SignInVC)
+}
+
 class SignInVC: UIViewController {
     
     //MARK: IBOutlets
@@ -23,6 +27,8 @@ class SignInVC: UIViewController {
     @IBOutlet var bottomPasswordConstraint  : NSLayoutConstraint!
     
     //MARK: Variables
+    
+    weak var delegate: SignInVCDelegate?
     
     var textFieldsArray: [DezappTextField] {
         return [self.emailTeaxtField, self.passwordTextField]
@@ -87,9 +93,7 @@ class SignInVC: UIViewController {
         
         forgotPVC.didMove(toParentViewController: self)
     }
-    
 }
-
 
 private extension SignInVC {
     func makeSignIn(){
@@ -104,6 +108,8 @@ private extension SignInVC {
         User.login(loginData: loginData, completion: { userData, error in
             if let data = userData {
                 completion(true)
+                self.delegate?.lofinSuccessfull(on: self)
+                
             }else {
                 completion(false)
             }

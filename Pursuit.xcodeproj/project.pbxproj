@@ -42,6 +42,9 @@
 		780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E951F44DAD90030A992 /* UINavigationBar.swift */; };
 		780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780ECFDA1F5878860009E6A6 /* UITextField.swift */; };
 		780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780ECFDD1F58C05B0009E6A6 /* UILabel.swift */; };
+		781110531F65932700457E8B /* SelectTrainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110511F65932700457E8B /* SelectTrainer.swift */; };
+		781110541F65932700457E8B /* SelectTrainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781110521F65932700457E8B /* SelectTrainer.xib */; };
+		781110561F6672BD00457E8B /* Template+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110551F6672BD00457E8B /* Template+API.swift */; };
 		78179B871F54977500520D08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B861F54977500520D08 /* User.swift */; };
 		78179B891F54982C00520D08 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B881F54982C00520D08 /* User+API.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
@@ -161,6 +164,9 @@
 		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		780ECFDA1F5878860009E6A6 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		780ECFDD1F58C05B0009E6A6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		781110511F65932700457E8B /* SelectTrainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainer.swift; sourceTree = "<group>"; };
+		781110521F65932700457E8B /* SelectTrainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectTrainer.xib; sourceTree = "<group>"; };
+		781110551F6672BD00457E8B /* Template+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+API.swift"; sourceTree = "<group>"; };
 		78179B861F54977500520D08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		78179B881F54982C00520D08 /* User+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
@@ -413,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				780D8E8F1F4360FE0030A992 /* Template.swift */,
+				781110551F6672BD00457E8B /* Template+API.swift */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -439,6 +446,15 @@
 				780ECFDD1F58C05B0009E6A6 /* UILabel.swift */,
 			);
 			name = UILabel;
+			sourceTree = "<group>";
+		};
+		781110501F6592DC00457E8B /* SelecTrainer */ = {
+			isa = PBXGroup;
+			children = (
+				781110511F65932700457E8B /* SelectTrainer.swift */,
+				781110521F65932700457E8B /* SelectTrainer.xib */,
+			);
+			name = SelecTrainer;
 			sourceTree = "<group>";
 		};
 		782264451F507A3000EFD5F9 /* User */ = {
@@ -786,6 +802,7 @@
 		84AB4D661F32812100531740 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				781110501F6592DC00457E8B /* SelecTrainer */,
 				84AB4D691F32815400531740 /* ForgotPasswordCell */,
 				84AB4D681F32814900531740 /* SignUpCell */,
 				84AB4D671F32813F00531740 /* SignInCell */,
@@ -1176,6 +1193,7 @@
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
 				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
+				781110541F65932700457E8B /* SelectTrainer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1278,6 +1296,7 @@
 				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
 				78094A2B1F5BD9BE001325B4 /* PursuitKeychain.swift in Sources */,
 				84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */,
+				781110561F6672BD00457E8B /* Template+API.swift in Sources */,
 				78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
@@ -1311,6 +1330,7 @@
 				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
+				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,

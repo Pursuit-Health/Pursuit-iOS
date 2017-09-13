@@ -10,9 +10,21 @@ import UIKit
 
 class TemplatesVC: UIViewController {
     
+    //MARK: Constants
+    struct Constants {
+        struct Segues {
+            static let CreateTemplate = "ShowCreateTemplateVCSegueID"
+        }
+    }
     //MARK: IBOutlets
     
     @IBOutlet var tableView: UITableView!
+    
+    //MARK: Variables
+    
+    var templatesData: [Template]? = []
+    
+    var templateId: String?
     
     //MARK: Lifecycle
     
@@ -22,18 +34,42 @@ class TemplatesVC: UIViewController {
         setUpBackgroundImage()
         
         navigationController?.navigationBar.setAppearence()
+        
+        loadTemplates()
     }
-   
+
     //MARK: Private
+    
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+extension TemplatesVC {
+    func loadTemplates() {
+        getAllTemplates { success in
+            if success {
+                self.tableView.reloadData()
+            }
+            
+        }
+    }
+    
+    private func getAllTemplates(completion: @escaping (_ success: Bool) -> Void) {
+        Template.getAllTemplates(completion: { template, error in
+            if let templates = template {
+                self.templatesData = templates.templateData
+                completion(true)
+            }
+        })
     }
 }
 
 extension TemplatesVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let number = self.templatesData?.count else { return 0}
+        return number
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -42,7 +78,27 @@ extension TemplatesVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: TemplateCell.self) else { return UITableViewCell() }
+        let templates = templatesData?[indexPath.row]
+        cell.templateNameLabel.text = templates?.name
+        cell.templateTimeLabel.text = "\(templates?.time ?? 0)" + "minutes"
         return cell
     }
+}
+
+extension TemplatesVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let templates = templatesData?[indexPath.row]
+        guard let id = templates?.templateId else {return}
+        self.templateId = "\(id)"
+        
+        performSegue(withIdentifier: Constants.Segues.CreateTemplate, sender: self)
+    }
     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navController = segue.destination as? UINavigationController else { return }
+            let controller = navController.viewControllers.first as! CreateTemplateVC
+            if segue.identifier == Constants.Segues.CreateTemplate {
+                controller.templateId = self.templateId
+            }
+    }
 }

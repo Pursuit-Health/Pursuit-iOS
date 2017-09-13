@@ -27,11 +27,12 @@ class User: Mappable {
     
     var personalData    : PersonalData?
     var metaData        : MetaData?
-    
+    var trainersData    : [TrainersData]?
     
     func mapping(map: Map) {
         self.personalData         <- map["data"]
         self.metaData             <- map["meta"]
+        self.trainersData         <- map["data"]
     }
     
     required init?(map: Map) {
@@ -82,6 +83,28 @@ class User: Mappable {
         func mapping(map: Map) {
             self.userType         <- map["user_type"]
             self.token            <- map["token"]
+        }
+        
+        init() {}
+        required init?(map: Map) {
+            
+        }
+    }
+    
+    class TrainersData: Mappable {
+        var id: Int?
+        var user: TrainersData?
+        var data: TrainersData?
+        var name: String?
+        
+        //MARK: Mappable
+        
+        func mapping(map: Map) {
+            self.id              <- map["id"]
+            self.user            <- map["user"]
+            self.data            <- map["data"]
+            self.name            <- map["name"]
+          
         }
         
         init() {}

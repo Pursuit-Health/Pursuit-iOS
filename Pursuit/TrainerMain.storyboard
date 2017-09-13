@@ -63,6 +63,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="tableView" destination="xbq-xa-hSK" id="vwW-4K-bGj"/>
+                        <segue destination="ZpD-DS-z4R" kind="presentation" identifier="ShowCreateTemplateVCSegueID" id="UsW-Mf-yzc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqK-sg-PfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -357,7 +358,7 @@
             <objects>
                 <navigationController id="Lda-mY-OiH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="fT0-cl-Kwm"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N4K-UP-02U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="N4K-UP-02U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -719,7 +720,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-U6-gLx">
-                                <rect key="frame" x="0.0" y="264.5" width="375" height="402.5"/>
+                                <rect key="frame" x="0.0" y="265" width="375" height="346"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -727,39 +728,62 @@
                                     <outlet property="delegate" destination="ZIe-AK-DC9" id="6MQ-td-hsC"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_add" translatesAutoresizingMaskIntoConstraints="NO" id="0TK-rT-ig9">
+                                <rect key="frame" x="165" y="616.5" width="45" height="45"/>
+                            </imageView>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ja7-w1-h8G">
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="uUJ-G5-PD1"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ja7-w1-h8G" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="0hj-zY-Nf6"/>
                             <constraint firstItem="A4I-Wt-AMe" firstAttribute="centerX" secondItem="R8d-e5-cxi" secondAttribute="centerX" id="2Uz-o6-TdT"/>
+                            <constraint firstItem="0TK-rT-ig9" firstAttribute="centerY" secondItem="Ja7-w1-h8G" secondAttribute="centerY" id="6nA-W1-3Nt"/>
                             <constraint firstItem="PvY-BO-ofO" firstAttribute="centerY" secondItem="R8d-e5-cxi" secondAttribute="centerY" id="9QB-5E-GTu"/>
                             <constraint firstItem="qbW-ld-AyI" firstAttribute="top" secondItem="GvA-31-ay7" secondAttribute="bottom" id="ElJ-C1-OHJ"/>
                             <constraint firstItem="gnS-U6-gLx" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="Ia7-lQ-cMz"/>
                             <constraint firstItem="gnS-U6-gLx" firstAttribute="top" secondItem="R8d-e5-cxi" secondAttribute="bottom" id="LSr-g5-dYS"/>
                             <constraint firstAttribute="trailing" secondItem="qbW-ld-AyI" secondAttribute="trailing" id="M7T-v3-Bh1"/>
+                            <constraint firstItem="iMB-VJ-Tof" firstAttribute="top" secondItem="Ja7-w1-h8G" secondAttribute="bottom" id="Pia-8E-oEP"/>
                             <constraint firstItem="qbW-ld-AyI" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="SCu-g5-KO5"/>
                             <constraint firstItem="R8d-e5-cxi" firstAttribute="top" secondItem="A4I-Wt-AMe" secondAttribute="bottom" id="SU0-gl-IDE"/>
                             <constraint firstItem="PvY-BO-ofO" firstAttribute="centerX" secondItem="R8d-e5-cxi" secondAttribute="centerX" id="SjM-g6-I3E"/>
                             <constraint firstItem="PvY-BO-ofO" firstAttribute="height" secondItem="R8d-e5-cxi" secondAttribute="height" multiplier="0.5" id="TqA-ZV-yRb"/>
                             <constraint firstItem="5BE-cH-him" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="XJN-qw-vEC"/>
+                            <constraint firstItem="Ja7-w1-h8G" firstAttribute="top" secondItem="gnS-U6-gLx" secondAttribute="bottom" id="f6j-Yb-xvW"/>
+                            <constraint firstItem="0TK-rT-ig9" firstAttribute="centerX" secondItem="Ja7-w1-h8G" secondAttribute="centerX" id="hRe-uk-nM2"/>
                             <constraint firstAttribute="trailing" secondItem="gnS-U6-gLx" secondAttribute="trailing" id="hyc-7u-mBV"/>
                             <constraint firstItem="5BE-cH-him" firstAttribute="top" secondItem="GvA-31-ay7" secondAttribute="bottom" id="jFy-B8-n8b"/>
                             <constraint firstItem="iMB-VJ-Tof" firstAttribute="top" secondItem="5BE-cH-him" secondAttribute="bottom" id="l5n-Ax-N5l"/>
                             <constraint firstItem="qbW-ld-AyI" firstAttribute="height" secondItem="Tgo-RU-WM6" secondAttribute="height" multiplier="0.2" id="qZu-Gw-obc"/>
+                            <constraint firstAttribute="trailing" secondItem="Ja7-w1-h8G" secondAttribute="trailing" id="tOa-OF-rie"/>
                             <constraint firstAttribute="trailing" secondItem="5BE-cH-him" secondAttribute="trailing" id="yUE-yI-QQT"/>
-                            <constraint firstItem="iMB-VJ-Tof" firstAttribute="top" secondItem="gnS-U6-gLx" secondAttribute="bottom" id="zkt-eO-hNs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="alU-gk-27D"/>
+                    <navigationItem key="navigationItem" id="alU-gk-27D">
+                        <barButtonItem key="leftBarButtonItem" image="btn_close" id="IgQ-Bh-G1n">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="closeBarButtonPressed:" destination="ZIe-AK-DC9" id="7fx-tZ-DcP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="lfvldf,vldf"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Create Template"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="templateNameLabel" destination="A4I-Wt-AMe" id="gJ6-s7-LZa"/>
                         <outlet property="templateTableView" destination="gnS-U6-gLx" id="dFB-V2-gkB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tET-Er-94K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2074.4000000000001" y="2745.8770614692658"/>
+            <point key="canvasLocation" x="-599.20000000000005" y="2909.5952023988007"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="RLj-t4-zWJ">
@@ -1014,7 +1038,7 @@
         <scene sceneID="hii-RO-N6L">
             <objects>
                 <navigationController storyboardIdentifier="navController" extendedLayoutIncludesOpaqueBars="YES" id="jbD-nH-xqF" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lHD-Ht-iaC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lHD-Ht-iaC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.099229236580000005" colorSpace="calibratedRGB"/>
@@ -1051,9 +1075,9 @@
         <!--Navigation Controller-->
         <scene sceneID="SbF-Nd-70h">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZpD-DS-z4R" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CreateTemplateVCID" automaticallyAdjustsScrollViewInsets="NO" id="ZpD-DS-z4R" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HyI-RP-58t">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HyI-RP-58t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <userDefinedRuntimeAttributes>
@@ -1072,14 +1096,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-dv-NSw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="2745.8770614692658"/>
+            <point key="canvasLocation" x="-1484" y="2910"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EpF-Et-lgy">
             <objects>
                 <navigationController id="5fy-wa-JO5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_pursuit" id="sGg-gS-RKM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ext-CY-ltK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ext-CY-ltK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1096,7 +1120,7 @@
             <objects>
                 <navigationController id="tKi-fJ-SHE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_schedule" id="x5Y-Bg-dZv"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ea-OI-QAa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4Ea-OI-QAa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="0.1044463087" colorSpace="calibratedWhite"/>

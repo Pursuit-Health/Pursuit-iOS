@@ -13,12 +13,19 @@ extension PSAPI {
         case login(parameters: Parameters)
         case forgotPassword(parameters: Parameters)
         case setPassword(parameters: Parameters)
+        case getTrainers()
         
         //MARK: Settings
         case changePassword(parameters: Parameters)
         case uploadAvatar()
         
+        //MARK: Trainer
         
+        case createTemplate(parameters: Parameters)
+        case getAllTemplates()
+        case getTemplateWithExercise(templateId: String)
+        case editTemplate(templateId: String, parameters: Parameters)
+        case deleteTemplate(templateId: String, parameters: Parameters)
         
         //MARK: Private.Property
         
@@ -28,10 +35,14 @@ extension PSAPI {
         
         private var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate:
                 return .post
-            case .changePassword:
+            case .changePassword, .editTemplate:
                 return .put
+            case .deleteTemplate:
+                return .delete
+            default:
+                return .get
             }
         }
         
@@ -47,11 +58,26 @@ extension PSAPI {
                 return "auth/forgot-password"
             case .setPassword:
                 return "auth/set-password"
-            
+                case .getTrainers:
+                return "auth/register/trainers"
+                
             case .changePassword:
                 return "settings/password"
             case .uploadAvatar:
                 return "settings/avatar"
+                
+              //Template
+                
+            case .createTemplate:
+                return "trainer/templates"
+            case .getAllTemplates:
+                return "trainer/templates"
+            case .getTemplateWithExercise(let templateId):
+                return "trainer/templates/" + templateId
+            case .editTemplate(let templateId, _):
+                return "trainer/templates/" + templateId
+            case .deleteTemplate(let templateId, _):
+                return "trainer/templates/" + templateId
             }
         }
         
@@ -59,7 +85,7 @@ extension PSAPI {
             
         guard let token = User.token else {return ""}
             switch self{
-            case .changePassword, .uploadAvatar:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise:
                 return "Bearer" + token
             default:
                 return ""
@@ -105,11 +131,31 @@ extension PSAPI {
             case .setPassword(let parameters):
                 request = try JSONEncoding.default.encode(request, with: parameters)
                 
+            case .getTrainers():
+                 request = try URLEncoding.default.encode(request, with: [:])
+                
             case .changePassword(let parameters):
                 request = try JSONEncoding.default.encode(request, with: parameters)
                 
             case .uploadAvatar():
                 request = try URLEncoding.default.encode(request, with: [:])
+                
+                //MARK: Templates
+                
+            case .createTemplate(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+                
+            case .getAllTemplates():
+                request = try URLEncoding.default.encode(request, with: [:])
+                
+            case .editTemplate(_ , let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
+                
+            case .getTemplateWithExercise:
+                request = try URLEncoding.default.encode(request, with: [:])
+                
+            case .deleteTemplate(_ , let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
                 
             default: break
             }
