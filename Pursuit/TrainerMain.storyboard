@@ -358,7 +358,7 @@
             <objects>
                 <navigationController id="Lda-mY-OiH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="fT0-cl-Kwm"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="N4K-UP-02U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N4K-UP-02U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -676,17 +676,17 @@
                         <viewControllerLayoutGuide type="bottom" id="iMB-VJ-Tof"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tgo-RU-WM6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="5BE-cH-him">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbW-ld-AyI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="133.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8d-e5-cxi">
-                                        <rect key="frame" x="121" y="67" width="133.5" height="133.5"/>
+                                        <rect key="frame" x="127.5" y="60.5" width="120.5" height="120.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="R8d-e5-cxi" secondAttribute="height" multiplier="1:1" id="7pL-sX-DpY"/>
@@ -706,7 +706,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weightlifting" translatesAutoresizingMaskIntoConstraints="NO" id="PvY-BO-ofO">
-                                <rect key="frame" x="150" y="165" width="76" height="66.5"/>
+                                <rect key="frame" x="150" y="91.5" width="76" height="60"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
                                         <real key="value" value="50"/>
@@ -714,13 +714,13 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chest + Arms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4I-Wt-AMe">
-                                <rect key="frame" x="136" y="107.5" width="104" height="23.5"/>
+                                <rect key="frame" x="136" y="37" width="104" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-U6-gLx">
-                                <rect key="frame" x="0.0" y="265" width="375" height="346"/>
+                                <rect key="frame" x="0.0" y="181.5" width="375" height="365.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -729,10 +729,10 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_add" translatesAutoresizingMaskIntoConstraints="NO" id="0TK-rT-ig9">
-                                <rect key="frame" x="165" y="616.5" width="45" height="45"/>
+                                <rect key="frame" x="165" y="552.5" width="45" height="45"/>
                             </imageView>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ja7-w1-h8G">
-                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="547" width="375" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="uUJ-G5-PD1"/>
@@ -1038,7 +1038,7 @@
         <scene sceneID="hii-RO-N6L">
             <objects>
                 <navigationController storyboardIdentifier="navController" extendedLayoutIncludesOpaqueBars="YES" id="jbD-nH-xqF" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lHD-Ht-iaC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lHD-Ht-iaC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.099229236580000005" colorSpace="calibratedRGB"/>
@@ -1077,9 +1077,10 @@
             <objects>
                 <navigationController storyboardIdentifier="CreateTemplateVCID" automaticallyAdjustsScrollViewInsets="NO" id="ZpD-DS-z4R" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HyI-RP-58t">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="HyI-RP-58t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="leftBarButtonImage" value="ic_menu"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="navigationBarTitle" value="Create Template"/>
@@ -1103,7 +1104,7 @@
             <objects>
                 <navigationController id="5fy-wa-JO5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_pursuit" id="sGg-gS-RKM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ext-CY-ltK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ext-CY-ltK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1120,7 +1121,7 @@
             <objects>
                 <navigationController id="tKi-fJ-SHE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_schedule" id="x5Y-Bg-dZv"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4Ea-OI-QAa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ea-OI-QAa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="0.1044463087" colorSpace="calibratedWhite"/>

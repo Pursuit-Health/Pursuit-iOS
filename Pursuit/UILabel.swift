@@ -9,11 +9,34 @@
 import UIKit
 
 extension UILabel {
-    func configureAppearence(isSelected: Bool) {
-        self.textColor = isSelected ? UIColor.white : UIColor.init(red: 166/255, green: 166/255, blue: 166/255, alpha: 1)
-       // self.font = self.font.withSize(isSelected ? 8.0 : 17.0)
-        UIView.animate(withDuration: 0.8, animations: {() -> Void in
-           self.font = UIFont.boldSystemFont(ofSize: isSelected ? 10.0 : 17.0)
-        })
+    func configureAppearence(isSelected: Bool, minFontSize: CGFloat, maxFontSize: CGFloat) {
+        let font = UIFont.systemFont(ofSize: isSelected ? minFontSize : maxFontSize)
+        
+        let height = self.text?.height(withConstrainedWidth: 1000, font: font) ?? 0
+        let width = self.text?.width(withConstraintedHeight: height, font: font) ?? 0
+        if minimumScaleFactor != 0.1 {
+            self.numberOfLines = 1
+            self.minimumScaleFactor = 0.1
+            self.adjustsFontSizeToFitWidth = true
+        }
+        
+        self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: width, height: height))
+    }
+}
+
+
+extension String {
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        
+        return ceil(boundingBox.height)
+    }
+    
+    func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        
+        return ceil(boundingBox.width)
     }
 }

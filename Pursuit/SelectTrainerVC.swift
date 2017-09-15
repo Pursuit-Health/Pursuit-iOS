@@ -16,13 +16,12 @@ class SelectTrainerVC: UIViewController {
     
     //MARK: Constants
     
-    struct Constants {
-        struct NibName {
-        static let SelectTrainer = "SelectTrainer"
+    fileprivate struct Constants {
+        struct Cell {
+            var nibName: String
+            var identifier: String
             
-        }
-        struct Identifiers {
-            static let SelectTrainer = "SelectTrainerCollectionViewCellReuseID"
+            static let trainer = Cell(nibName: "SelectTrainer", identifier: "SelectTrainerCollectionViewCellReuseID")
         }
     }
     
@@ -30,25 +29,25 @@ class SelectTrainerVC: UIViewController {
     
     @IBOutlet weak var selectTrainerCollectionView: UICollectionView! {
         didSet{
-            selectTrainerCollectionView.register(UINib(nibName: Constants.NibName.SelectTrainer, bundle: nil), forCellWithReuseIdentifier: Constants.Identifiers.SelectTrainer)
+            let cellData    = Constants.Cell.trainer
+            let nib         = UINib(nibName: cellData.nibName, bundle: .main)
+            
+            selectTrainerCollectionView.register(nib, forCellWithReuseIdentifier: cellData.identifier)
         }
     }
     
     //MARK: Variables
     
     weak var delegate: SelectTrainerVCDelegate?
-    
     var trainerData: [User.TrainersData]? = []
     
     //MARK: IBActions
-
+    
     @IBAction func closeBarButtonPressed(_ sender: Any) {
-            removeController()
+        removeController()
     }
     
     @IBAction func selectTrainer(_ sender: Any) {
-       
-        
         
     }
     
@@ -56,8 +55,7 @@ class SelectTrainerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      navigationController?.navigationBar.setAppearence()
-        
+       
         setUpBackgroundImage()
         loadTrainers()
         
@@ -81,7 +79,7 @@ extension SelectTrainerVC {
                 completion(true)
             }
         })
-    
+        
     }
     fileprivate func removeController() {
         
@@ -100,7 +98,7 @@ extension SelectTrainerVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Identifiers.SelectTrainer, for: indexPath) as? SelectTrainer else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.trainer.identifier, for: indexPath) as? SelectTrainer else { return UICollectionViewCell() }
         
         cell.profilePhotoImageView.image = UIImage(named: "avatar1")
         cell.trainerNameLabel.text = trainerData?[indexPath.row].user?.data?.name
@@ -111,7 +109,7 @@ extension SelectTrainerVC: UICollectionViewDataSource {
 extension SelectTrainerVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         userDidSelectTrainerWithId(indexPath.row)
-      removeController()
+        removeController()
     }
 }
 

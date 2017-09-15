@@ -136,11 +136,11 @@ extension SignInVC : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.animateText(constraint: constraintsDictionary[(textField as? DezappTextField)!]!, isSelected: true)
-        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: true)
+        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: true, minFontSize: 8.0, maxFontSize: 16.0)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         textField.animateText(constraint: constraintsDictionary[(textField as? DezappTextField)!]!, isSelected: false)
-        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: false)
+        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: false, minFontSize: 8.0, maxFontSize: 16.0)
     }
 }
