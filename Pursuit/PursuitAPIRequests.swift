@@ -20,12 +20,14 @@ extension PSAPI {
         case uploadAvatar()
         
         //MARK: Trainer
-        
         case createTemplate(parameters: Parameters)
         case getAllTemplates()
         case getTemplateWithExercise(templateId: String)
         case editTemplate(templateId: String, parameters: Parameters)
         case deleteTemplate(templateId: String, parameters: Parameters)
+        case getAllClients()
+        case getAllEventsInRange(startDate: String, endDate: String)
+        case createEvent(parameters: Parameters)
         
         //MARK: Private.Property
         
@@ -35,7 +37,7 @@ extension PSAPI {
         
         private var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent:
                 return .post
             case .changePassword, .editTemplate:
                 return .put
@@ -67,7 +69,6 @@ extension PSAPI {
                 return "settings/avatar"
                 
               //Template
-                
             case .createTemplate:
                 return "trainer/templates"
             case .getAllTemplates:
@@ -78,6 +79,12 @@ extension PSAPI {
                 return "trainer/templates/" + templateId
             case .deleteTemplate(let templateId, _):
                 return "trainer/templates/" + templateId
+            case .getAllClients:
+                return "trainer/clients"
+            case .getAllEventsInRange:
+                return "trainer/events"
+            case .createEvent:
+                return "trainer/events"
             }
         }
         
@@ -85,7 +92,7 @@ extension PSAPI {
             
         guard let token = User.token else {return ""}
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getAllEventsInRange, .createEvent:
                 return "Bearer" + token
             default:
                 return ""
@@ -102,7 +109,12 @@ extension PSAPI {
         }
         
         private var queryParams: Query? {
-            return nil
+            switch self {
+            case .getAllEventsInRange(let startDate, let endDate):
+                return ["start_date":startDate, "end_date": endDate]
+            default:
+                return nil
+            }
         }
         
         //MARK: Private.Methods
@@ -157,7 +169,14 @@ extension PSAPI {
             case .deleteTemplate(_ , let parameters):
                 request = try JSONEncoding.default.encode(request, with: parameters)
                 
-            default: break
+            case .getAllClients():
+                request = try URLEncoding.default.encode(request, with: [:])
+            
+            case .getAllEventsInRange:
+                request = try URLEncoding.default.encode(request, with: [:])
+                
+            case .createEvent(let parameters):
+                request = try JSONEncoding.default.encode(request, with: parameters)
             }
             self.addHeadersForRequest(request: &request, signed: nil)
             return request

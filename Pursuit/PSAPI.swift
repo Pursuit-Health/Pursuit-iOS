@@ -250,6 +250,45 @@ class PSAPI {
             }
         })
     }
+    
+    func getAllClients(completion: @escaping GetAllClientsComletion) -> DataRequest? {
+        let request = Request.getAllClients()
+        
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Client>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        })
+    }
+    
+    func getEventsInRange(startDate: String, endDate: String, completion: @escaping GetEventsInRange) -> DataRequest? {
+        let request = Request.getAllEventsInRange(startDate: startDate, endDate: endDate)
+        
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Event>) in
+            var error: PSError?
+            if let responseError = self.isValid(response: response.response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        })
+    }
+    
+    func createEvent(eventData: [String: Any], completion: @escaping CreateEventCompletion) -> DataRequest? {
+        let request = Request.createEvent(parameters: eventData)
+        
+        return self.perform(request)?.responseJSON(completionHandler: { response in
+            
+            if self.isValid(response: response.response) != nil {
+                
+            }
+            
+            if let statusCode = response.response?.statusCode {
+                completion(statusCode == 200)
+            }
+        })
+    }
 }
 
 extension PSAPI {
@@ -281,4 +320,10 @@ extension PSAPI {
     typealias GetTemplateWithExercises  = (_ template: Template?, _ error: ErrorProtocol?) -> Void
     
     typealias DeleteTemplateCompletion  = (_ success: Bool) -> Void
+    
+    typealias GetAllClientsComletion    = (_ client: Client?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetEventsInRange          = (_ event: Event?, _ error: ErrorProtocol?) -> Void
+    
+    typealias CreateEventCompletion     = (_ success: Bool) -> Void
 }

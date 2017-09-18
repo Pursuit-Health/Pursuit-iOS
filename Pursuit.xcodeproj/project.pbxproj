@@ -47,6 +47,10 @@
 		781110561F6672BD00457E8B /* Template+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110551F6672BD00457E8B /* Template+API.swift */; };
 		78179B871F54977500520D08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B861F54977500520D08 /* User.swift */; };
 		78179B891F54982C00520D08 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B881F54982C00520D08 /* User+API.swift */; };
+		782B82EB1F703E9400A019AC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EA1F703E9400A019AC /* Client.swift */; };
+		782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EC1F7044DA00A019AC /* Client+API.swift */; };
+		782B82F01F704BC200A019AC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EF1F704BC200A019AC /* Event.swift */; };
+		782B82F21F704BD600A019AC /* Event+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82F11F704BD600A019AC /* Event+API.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -171,6 +175,10 @@
 		781110551F6672BD00457E8B /* Template+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+API.swift"; sourceTree = "<group>"; };
 		78179B861F54977500520D08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		78179B881F54982C00520D08 /* User+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
+		782B82EA1F703E9400A019AC /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		782B82EC1F7044DA00A019AC /* Client+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+API.swift"; sourceTree = "<group>"; };
+		782B82EF1F704BC200A019AC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		782B82F11F704BD600A019AC /* Event+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+API.swift"; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -470,6 +478,24 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		782B82E91F703E7500A019AC /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				782B82EA1F703E9400A019AC /* Client.swift */,
+				782B82EC1F7044DA00A019AC /* Client+API.swift */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		782B82EE1F704BAE00A019AC /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				782B82EF1F704BC200A019AC /* Event.swift */,
+				782B82F11F704BD600A019AC /* Event+API.swift */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,6 +765,8 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				782B82EE1F704BAE00A019AC /* Event */,
+				782B82E91F703E7500A019AC /* Client */,
 				782264451F507A3000EFD5F9 /* User */,
 				780D8E8E1F4360D00030A992 /* Template */,
 				84AB4D6A1F32819500531740 /* LoginModel */,
@@ -1292,6 +1320,7 @@
 				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
 				78E426801F69B0FE00C12D94 /* UITextField+Effects.swift in Sources */,
 				842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */,
+				782B82F01F704BC200A019AC /* Event.swift in Sources */,
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
 				5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */,
 				78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */,
@@ -1333,6 +1362,7 @@
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
+				782B82EB1F703E9400A019AC /* Client.swift in Sources */,
 				78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */,
 				78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
@@ -1350,10 +1380,12 @@
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,
+				782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
 				78179B871F54977500520D08 /* User.swift in Sources */,
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
+				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
