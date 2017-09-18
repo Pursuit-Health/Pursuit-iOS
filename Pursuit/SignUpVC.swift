@@ -13,16 +13,16 @@ class SignUpVC: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var birthDayTextField    : DezappTextField!
-    @IBOutlet weak var emailTextField       : DezappTextField!
-    @IBOutlet weak var passwordTextField    : DezappTextField!
-    @IBOutlet weak var nameTextField        : DezappTextField!
+    @IBOutlet weak var birthDayTextField    : AnimatedTextField!
+    @IBOutlet weak var emailTextField       : AnimatedTextField!
+    @IBOutlet weak var passwordTextField    : AnimatedTextField!
+    @IBOutlet weak var nameTextField        : AnimatedTextField!
     
     @IBOutlet weak var userTypeSwitch: UISwitch!
     
     //MARK: Variables
     
-    var textFieldsArray: [DezappTextField] {
+    var textFieldsArray: [AnimatedTextField] {
         return [self.nameTextField, self.birthDayTextField, self.passwordTextField, self.emailTextField]
     }
     

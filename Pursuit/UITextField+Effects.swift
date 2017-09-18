@@ -8,17 +8,15 @@
 
 
 import UIKit
+import RHDisplayLinkStepper
 
-/**
- An HoshiTextField is a subclass of the TextFieldEffects object, is a control that displays an UITextField with a customizable visual effect around the lower edge of the control.
- */
-@IBDesignable open class IMTextField: TextFieldEffects {
+open class AnimatedTextField: TextFieldEffects {
     
-    /**
-     The color of the border when it has no content.
-     
-     This property applies a color to the lower edge of the control. The default value for this property is a clear color.
-     */
+    
+    //MARK: Properties
+    
+    var  displayLinker = RHDisplayLinkStepper()
+    
     @IBInspectable dynamic open var minFontSize: CGFloat = 17 {
         didSet {
             
@@ -121,40 +119,32 @@ import UIKit
     override open func animateViewsForTextEntry() {
         if text!.isEmpty {
             UIView.animate(withDuration: 1.35, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 2.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: ({
-                self.placeholderLabel.frame.origin = CGPoint(x: 10, y: self.placeholderLabel.frame.origin.y - 30 )
-                self.placeholderLabel.frame = CGRect(x: 0, y: -10, width: self.placeholderLabel.bounds.width, height:self.placeholderLabel.bounds.height)
-                self.placeholderLabel.configureAppearence(isSelected: true, minFontSize: self.minFontSize, maxFontSize: self.maxFontSize)
                 
-                //self.layoutPlaceholderInTextRect()
-                //self.placeholderLabel.frame.origin = self.activePlaceholderPoint
-                //self.placeholderLabel.alpha = 0
             }), completion: { _ in
                 self.animationCompletionHandler?(.textEntry)
             })
         }
-        //TODO: IGOR set default size of placeholderlabel
-        
-        
-        //placeholderLabel.frame.origin = activePlaceholderPoint
-        
-        
-        
-        activeBorderLayer.frame = rectForBorder(borderThickness.active, isFilled: true)
+        let multiplier = self.minFontSize / self.maxFontSize
+        if text?.isEmpty ?? true {
+            animatelabelfont(from: 1, to: multiplier)
+        }
         
         placeholderLabel.textColor = updatePlaceHolderTextColor(isActive: true)
     }
-    //became inactive
+    
     override open func animateViewsForTextDisplay() {
         if text!.isEmpty {
             UIView.animate(withDuration: 1.35, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 2.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: ({
-                self.placeholderLabel.configureAppearence(isSelected: false, minFontSize: self.minFontSize, maxFontSize: self.maxFontSize)
-                self.layoutPlaceholderInTextRect()
-                self.placeholderLabel.alpha = 1
+                
             }), completion: { _ in
                 self.animationCompletionHandler?(.textDisplay)
             })
+            let multiplier = self.minFontSize / self.maxFontSize
             
-            activeBorderLayer.frame = self.rectForBorder(self.borderThickness.active, isFilled: false)
+            if text?.isEmpty ?? true{
+                animatelabelfont(from: 1, to: 1/multiplier)
+            }
+            //activeBorderLayer.frame = self.rectForBorder(self.borderThickness.active, isFilled: false)
             
             placeholderLabel.textColor = updatePlaceHolderTextColor(isActive: false)
         }
@@ -212,11 +202,20 @@ import UIKit
             break
         }
         
-        //placeholderLabel.frame = CGRect(origin: .init(x: originX, y: textRect.height/2), size: self.intrinsicContentSize)
         placeholderLabel.frame = CGRect(x: originX, y: textRect.height/2, width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
         
         activePlaceholderPoint = CGPoint(x: placeholderLabel.frame.origin.x, y: placeholderLabel.frame.origin.y - placeholderLabel.frame.size.height - placeholderInsets.y)
+    }
+    
+    private func animatelabelfont(from: CGFloat, to: CGFloat) {
+        let frame = self.placeholderLabel.frame
+        self.placeholderLabel.adjustsFontSizeToFitWidth = true
         
+        self.displayLinker.step(from: from, to: to, withDuration: 0.2) { (progress) in
+            let multiplier: CGFloat = from > to ? 1 : -1
+            let y = frame.origin.y - (from - progress) / (from - to) * 10 * multiplier
+            self.placeholderLabel.frame = CGRect(x: frame.origin.x, y: y, width: frame.size.width * progress, height: frame.size.height * progress)
+        }
     }
     
     // MARK: - Overrides

@@ -93,7 +93,7 @@ extension UIViewController {
 }
 
 extension UIViewController {
-    func makeTextFieldsFirstResponder(_ textFieldsArray: [DezappTextField],_ textField: UITextField) {
+    func makeTextFieldsFirstResponder(_ textFieldsArray: [AnimatedTextField],_ textField: UITextField) {
         for (index, value) in textFieldsArray.enumerated() {
             if value == textField {
                 if index == textFieldsArray.endIndex - 1 {

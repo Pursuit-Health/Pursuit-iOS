@@ -21,5 +21,6 @@ target 'Pursuit' do
   pod 'TextFieldEffects', '~> 1.3'
   pod 'KeychainAccess', '~> 3.0'
   pod 'DeepLinkKit', '~> 1.4'
+  pod 'RHDisplayLinkStepper', '~> 1.0'
   
 end

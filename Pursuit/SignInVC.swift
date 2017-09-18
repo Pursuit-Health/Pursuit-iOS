@@ -20,8 +20,8 @@ class SignInVC: UIViewController {
     @IBOutlet weak var emailLabel           : UILabel!
     @IBOutlet weak var passwordLabel        : UILabel!
     
-    @IBOutlet weak var emailTeaxtField      : DezappTextField!
-    @IBOutlet weak var passwordTextField    : DezappTextField!
+    @IBOutlet weak var emailTeaxtField      : AnimatedTextField!
+    @IBOutlet weak var passwordTextField    : AnimatedTextField!
     
     @IBOutlet var bottomEmailConstraint     : NSLayoutConstraint!
     @IBOutlet var bottomPasswordConstraint  : NSLayoutConstraint!
@@ -30,15 +30,15 @@ class SignInVC: UIViewController {
     
     weak var delegate: SignInVCDelegate?
     
-    var textFieldsArray: [DezappTextField] {
+    var textFieldsArray: [AnimatedTextField] {
         return [self.emailTeaxtField, self.passwordTextField]
     }
     
-    var constraintsDictionary: [DezappTextField : NSLayoutConstraint] {
+    var constraintsDictionary: [AnimatedTextField : NSLayoutConstraint] {
         return [emailTeaxtField:bottomEmailConstraint, passwordTextField:bottomPasswordConstraint]
     }
     
-    var labelsDictionary : [DezappTextField : UILabel] {
+    var labelsDictionary : [AnimatedTextField : UILabel] {
         return [emailTeaxtField:emailLabel, passwordTextField:passwordLabel]
     }
     
@@ -135,12 +135,10 @@ extension SignInVC : UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.animateText(constraint: constraintsDictionary[(textField as? DezappTextField)!]!, isSelected: true)
-        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: true, minFontSize: 8.0, maxFontSize: 16.0)
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        textField.animateText(constraint: constraintsDictionary[(textField as? DezappTextField)!]!, isSelected: false)
-        labelsDictionary[(textField as? DezappTextField)!]?.configureAppearence(isSelected: false, minFontSize: 8.0, maxFontSize: 16.0)
+
     }
 }

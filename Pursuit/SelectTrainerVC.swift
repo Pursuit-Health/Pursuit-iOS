@@ -16,7 +16,7 @@ class SelectTrainerVC: UIViewController {
     
     //MARK: Constants
     
-    fileprivate struct Constants {
+     struct Constants {
         struct Cell {
             var nibName: String
             var identifier: String
