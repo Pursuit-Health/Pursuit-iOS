@@ -22,7 +22,11 @@ class TemplatesVC: UIViewController {
     
     //MARK: Variables
     
-    var templatesData: [Template]? = []
+    var templatesData: [Template] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     var templateId: String?
     
@@ -45,22 +49,11 @@ class TemplatesVC: UIViewController {
     }
 }
 
+//TODO: why it's repeating
 extension TemplatesVC {
     func loadTemplates() {
-        getAllTemplates { success in
-            if success {
-                self.tableView.reloadData()
-            }
-            
-        }
-    }
-    
-    private func getAllTemplates(completion: @escaping (_ success: Bool) -> Void) {
         Template.getAllTemplates(completion: { template, error in
-            if let templates = template {
-                self.templatesData = templates.templateData
-                completion(true)
-            }
+            self.templatesData = template ?? []
         })
     }
 }
@@ -68,8 +61,7 @@ extension TemplatesVC {
 extension TemplatesVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let number = self.templatesData?.count else { return 0}
-        return number
+        return self.templatesData.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -78,17 +70,17 @@ extension TemplatesVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: TemplateCell.self) else { return UITableViewCell() }
-        let templates = templatesData?[indexPath.row]
-        cell.templateNameLabel.text = templates?.name
-        cell.templateTimeLabel.text = "\(templates?.time ?? 0)" + "minutes"
+        let templates = templatesData[indexPath.row]
+        cell.templateNameLabel.text = templates.name
+        cell.templateTimeLabel.text = "\(templates.time ?? 0)" + "minutes"
         return cell
     }
 }
 
 extension TemplatesVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let templates = templatesData?[indexPath.row]
-        guard let id = templates?.templateId else {return}
+        let templates = templatesData[indexPath.row]
+        guard let id = templates.templateId else { return }
         self.templateId = "\(id)"
         
         performSegue(withIdentifier: Constants.Segues.CreateTemplate, sender: self)

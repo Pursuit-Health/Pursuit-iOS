@@ -14,10 +14,10 @@ extension User {
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
-    typealias ForgotPasswordCompletion  = (_ success: Bool) -> Void
-    typealias SetPasswordCompletion     = (_ success: Bool) -> Void
-    typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
-    typealias ChangeAvatarCompletion    = (_ success: Bool) -> Void
+    typealias ForgotPasswordCompletion  = (_ error: ErrorProtocol?) -> Void
+    typealias SetPasswordCompletion     = (_ error: ErrorProtocol?) -> Void
+    typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
+    typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     typealias GetTrainersCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
 
     //MARK: Public

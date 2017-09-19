@@ -14,11 +14,11 @@ extension Template {
     
     typealias EditTemplateCompletion    = (_ template: Template?, _ error: ErrorProtocol?) -> Void
     
-    typealias GetAllTemplatesCompletion = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    typealias GetAllTemplatesCompletion = (_ template: [Template]?, _ error: ErrorProtocol?) -> Void
     
     typealias GetTemplateWithExercises  = (_ template: Template?, _ error: ErrorProtocol?) -> Void
     
-    typealias DeleteTemplateCompletion  = (_ success: Bool) -> Void
+    typealias DeleteTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
    class func createTemplate(templateData: Template, completion: @escaping CreateTemplateCompletion) {
         let api = PSAPI()

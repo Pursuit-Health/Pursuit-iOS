@@ -97,22 +97,20 @@ class SignInVC: UIViewController {
 
 private extension SignInVC {
     func makeSignIn(){
-        makeSignIn { success in
-            if success {
+        makeSignIn { error in
+            if error == nil {
                 //go to login
             }
         }
     }
     
-    func makeSignIn(completion: @escaping (_ success: Bool)-> Void) {
-        User.login(loginData: loginData, completion: { userData, error in
-            if let data = userData {
-                completion(true)
+    //TODO: Wehy we always send back sing completion?
+    func makeSignIn(completion: @escaping (_ error: ErrorProtocol?)-> Void) {
+        User.login(loginData: loginData, completion: { _, error in
+            if error == nil {
                 self.delegate?.lofinSuccessfull(on: self)
-                
-            }else {
-                completion(false)
             }
+            completion(error)
         })
     }
 }

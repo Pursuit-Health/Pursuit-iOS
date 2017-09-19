@@ -88,6 +88,10 @@
 		842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD351F33188900A3169F /* ExampleBasicContentView.swift */; };
 		842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD361F33188900A3169F /* ExampleBouncesContentView.swift */; };
 		842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EBD371F33188900A3169F /* ExampleIrregularityContentView.swift */; };
+		845882F81F7067F000BE7D69 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845882F11F7067F000BE7D69 /* API.swift */; };
+		845882F91F7067F000BE7D69 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845882F31F7067F000BE7D69 /* Requests.swift */; };
+		845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845882FE1F706C2600BE7D69 /* Taskable.swift */; };
+		845883021F706E6000BE7D69 /* Error+Pursuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845883011F706E6000BE7D69 /* Error+Pursuit.swift */; };
 		84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D4D1F324A3600531740 /* PursuitNVC.swift */; };
 		84AB4D731F32826700531740 /* BBBXIBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D721F32826700531740 /* BBBXIBView.m */; };
 		84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AB4D761F32829900531740 /* CALayer+BBBProperty.m */; };
@@ -217,6 +221,10 @@
 		842EBD351F33188900A3169F /* ExampleBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBasicContentView.swift; sourceTree = "<group>"; };
 		842EBD361F33188900A3169F /* ExampleBouncesContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBouncesContentView.swift; sourceTree = "<group>"; };
 		842EBD371F33188900A3169F /* ExampleIrregularityContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleIrregularityContentView.swift; sourceTree = "<group>"; };
+		845882F11F7067F000BE7D69 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = API/API.swift; sourceTree = "<group>"; };
+		845882F31F7067F000BE7D69 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		845882FE1F706C2600BE7D69 /* Taskable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Taskable.swift; sourceTree = "<group>"; };
+		845883011F706E6000BE7D69 /* Error+Pursuit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Pursuit.swift"; sourceTree = "<group>"; };
 		84AB4D4D1F324A3600531740 /* PursuitNVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PursuitNVC.swift; sourceTree = "<group>"; };
 		84AB4D711F32826700531740 /* BBBXIBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBXIBView.h; sourceTree = "<group>"; };
 		84AB4D721F32826700531740 /* BBBXIBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBXIBView.m; sourceTree = "<group>"; };
@@ -635,6 +643,38 @@
 			name = ESTViews;
 			sourceTree = "<group>";
 		};
+		845882F21F7067F000BE7D69 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				845882F31F7067F000BE7D69 /* Requests.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		845882FC1F706C0000BE7D69 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				845882FD1F706C0500BE7D69 /* Taskable */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		845882FD1F706C0500BE7D69 /* Taskable */ = {
+			isa = PBXGroup;
+			children = (
+				845882FE1F706C2600BE7D69 /* Taskable.swift */,
+			);
+			name = Taskable;
+			sourceTree = "<group>";
+		};
+		845883001F706E5800BE7D69 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				845883011F706E6000BE7D69 /* Error+Pursuit.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		84AB4D4F1F327C8A00531740 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +817,8 @@
 		84AB4D5F1F32803100531740 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				845883001F706E5800BE7D69 /* Extensions */,
+				845882FC1F706C0000BE7D69 /* Protocols */,
 				84AB4D9E1F32897500531740 /* Errors */,
 				84AB4D8F1F32871C00531740 /* Handlers */,
 			);
@@ -1022,6 +1064,7 @@
 		84AB4D901F3287B000531740 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				845882F21F7067F000BE7D69 /* Requests */,
 				84AB4D921F3287C100531740 /* API */,
 				84AB4D911F3287BC00531740 /* Services */,
 			);
@@ -1040,6 +1083,7 @@
 		84AB4D921F3287C100531740 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				845882F11F7067F000BE7D69 /* API.swift */,
 				84AB4D981F32881300531740 /* PSAPI */,
 			);
 			name = API;
@@ -1298,7 +1342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1347,6 +1391,7 @@
 				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
 				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
 				5BE3A1D51EB319E5005B35CD /* DezappTextField.swift in Sources */,
+				845883021F706E6000BE7D69 /* Error+Pursuit.swift in Sources */,
 				780D601F1F5F1588002A7303 /* Storyboards.swift in Sources */,
 				842EBD391F33188900A3169F /* ExampleBouncesContentView.swift in Sources */,
 				780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */,
@@ -1361,6 +1406,7 @@
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
+				845882F91F7067F000BE7D69 /* Requests.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
 				782B82EB1F703E9400A019AC /* Client.swift in Sources */,
 				78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */,
@@ -1377,6 +1423,7 @@
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
+				845882F81F7067F000BE7D69 /* API.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,
@@ -1386,6 +1433,7 @@
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
+				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

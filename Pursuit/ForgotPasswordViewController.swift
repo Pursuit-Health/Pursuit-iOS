@@ -52,14 +52,14 @@ class ForgotPasswordVC: UIViewController {
 
 extension ForgotPasswordVC {
     func sendEmaiForNewPassword() {
-        forgotPasswordRequest { success in
-            if success {
+        forgotPasswordRequest { error in
+            if error == nil {
               self.forgotPasswordVCDelegate?.dissmissForgotPasswordVC()
             }
         }
     }
     
-    private func forgotPasswordRequest(completion: @escaping (_ success: Bool) -> Void){
+    private func forgotPasswordRequest(completion: @escaping (_ error: ErrorProtocol?) -> Void){
         User.forgotPassword(email: emailTextField.text!) { success in
             completion(success)
         }

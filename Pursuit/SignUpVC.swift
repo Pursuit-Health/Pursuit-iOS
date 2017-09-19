@@ -66,8 +66,8 @@ private extension SignUpVC {
     
     func registerClient(){
         setParametersForRequest()
-        registerClient { success in
-            if success {
+        registerClient { error in
+            if error == nil {
                 //go to login
             }
         }
@@ -75,30 +75,22 @@ private extension SignUpVC {
     
     func registerTrainer() {
         setParametersForRequest()
-        registerTrainer { success in
-            if success {
+        registerTrainer { error in
+            if error == nil {
                 //go to login
             }
         }
     }
     
-    private func registerClient(completion: @escaping (_ success: Bool) -> Void) {
+    private func registerClient(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
         User.registerClient(personalData: personalData, completion: { signUpInfo, error in
-            if let success = signUpInfo {
-                completion(true)
-            }else {
-                completion(false)
-            }
+            completion(error)
         })
     }
     
-    private func registerTrainer(completion: @escaping (_ success: Bool) -> Void) {
+    private func registerTrainer(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
         User.registerTrainer(personalData: personalData, completion: { signUpInfo, error in
-            if let success = signUpInfo {
-                completion(true)
-            }else {
-                completion(false)
-            }
+            completion(error)
         })
     }
 }

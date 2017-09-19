@@ -16,8 +16,7 @@ class Template: Mappable {
     var time            : Int?
     var imageId         : Int?
     
-    var templateData : [Template]?
-    
+    //TODO: WTF?
     var simpleTemplatedata : SimpleTemplate?
 
     //MARK: Mappable
@@ -27,7 +26,6 @@ class Template: Mappable {
         self.time               <- map["time"]
         self.imageId            <- map["image_id"]
         self.templateId         <- map["id"]
-        self.templateData       <- map["data"]
         self.simpleTemplatedata <- map["data"]
 
     }
@@ -39,7 +37,7 @@ class Template: Mappable {
     class SimpleTemplate: Mappable {
         //MARK: Variables
         
-        var templateId       : Int?
+        var templateId      : Int?
         var name            : String?
         var time            : Int?
         var imageId         : Int?

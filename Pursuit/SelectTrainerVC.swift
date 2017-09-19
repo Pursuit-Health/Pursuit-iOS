@@ -65,19 +65,19 @@ class SelectTrainerVC: UIViewController {
 
 extension SelectTrainerVC {
     func loadTrainers() {
-        loadTrainersRequest { success in
-            if success {
+        loadTrainersRequest { error in
+            if error == nil {
                 self.selectTrainerCollectionView.reloadData()
             }
         }
     }
     
-    private func loadTrainersRequest(completion: @escaping (_ success: Bool) -> Void) {
+    private func loadTrainersRequest(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
         User.getTrainers(completion: { trainersInfo, error in
             if let data = trainersInfo {
                 self.trainerData = data.trainersData
-                completion(true)
             }
+            completion(error)
         })
         
     }

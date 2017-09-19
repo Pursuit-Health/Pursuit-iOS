@@ -16,6 +16,12 @@ class ScheduleVC: UIViewController {
             static let StartDate    = "2017 01 01"
             static let EndDate      = "2022 12 31"
         }
+        struct Cell {
+            let nibName: String
+            let identifier: String
+            
+            static let schedule = Cell(nibName: "ScheduleCell", identifier: "scheduleCell")
+        }
     }
     
     //MARK: IBOutlets
@@ -23,7 +29,10 @@ class ScheduleVC: UIViewController {
     @IBOutlet var collectionView: UICollectionView! {
         didSet {
             collectionView.contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
-            collectionView.register(UINib(nibName: "ScheduleCell", bundle: nil), forCellWithReuseIdentifier: "scheduleCell")
+            
+            let cell    = Constants.Cell.schedule
+            let nib     = UINib(nibName: cell.nibName, bundle: .main)
+            collectionView.register(nib, forCellWithReuseIdentifier: cell.identifier)
         }
     }
     
@@ -37,10 +46,6 @@ class ScheduleVC: UIViewController {
             self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
         }
     }
-    
-    //MARK: Variables
-
-    fileprivate var formatter   = DateFormatter()
 
     //MARK: Lifecycle
     
@@ -54,24 +59,26 @@ class ScheduleVC: UIViewController {
         super.viewWillAppear(animated)
         
         calendarViewVisibleDates()
-        
         setUpBackgroundImage()
-        
+        //TODO: this thing is unnecessary, need to think how to change it. Do it with me.
         navigationController?.navigationBar.setAppearence()
+    }
+    
+    //MARK: Override
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     //MARK: Private
     
     private func calendarViewVisibleDates() {
         calendarView.visibleDates { (visibleDates) in
-            let date = visibleDates.monthDates.first?.date
-            self.formatter = DateFormatters.monthYearFormat
-            self.navigationItem.leftTitle = self.formatter.string(from: date!)
+            if let date = visibleDates.monthDates.first?.date {
+                let formatter                   = DateFormatters.monthYearFormat
+                self.navigationItem.leftTitle   = formatter.string(from: date)
+            }
         }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
 }
 
@@ -81,7 +88,10 @@ extension ScheduleVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "scheduleCell", for: indexPath) as? ScheduleCell else { return UICollectionViewCell() }
+        let cellInfo = Constants.Cell.schedule
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellInfo.identifier, for: indexPath) as? ScheduleCell else {
+            return UICollectionViewCell()
+        }
         return cell
     }
 }
@@ -94,9 +104,6 @@ extension ScheduleVC: UICollectionViewDelegate {
 
 extension ScheduleVC: JTAppleCalendarViewDataSource {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        
-        setUpDateFormatter()
-        
         return configurationParameters()
     }
     
@@ -105,7 +112,7 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
         guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as? CalendarCell else { return JTAppleCell() }
         
         cell.dateLabel.text = cellState.text
-        formatter = DateFormatters.projectFormatFormatter
+        let formatter       = DateFormatters.projectFormatFormatter
         
         cellState.handleCellTextColor(cell: cell)
         cellState.handleCellSelection(cell: cell)
@@ -135,19 +142,16 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         guard  let date = visibleDates.monthDates.first?.date else { return }
-        self.formatter = DateFormatters.monthYearFormat
+        let formatter = DateFormatters.monthYearFormat
         
-        self.navigationItem.leftTitle = self.formatter.string(from: date)
+        self.navigationItem.leftTitle = formatter.string(from: date)
     }  
 }
 
 private extension ScheduleVC {
     
-    func setUpDateFormatter() {
-        formatter = DateFormatters.projectFormatFormatter
-    }
-    
     func configurationParameters() -> ConfigurationParameters {
+        let formatter       = DateFormatters.projectFormatFormatter
         let start           = formatter.date(from: Constants.Dates.StartDate)!
         let end             = formatter.date(from: Constants.Dates.EndDate)!
         

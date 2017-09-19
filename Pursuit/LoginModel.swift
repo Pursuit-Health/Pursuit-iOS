@@ -9,8 +9,8 @@
 import Foundation
 
 class LoginModel: NSObject {
-    var email : String?
-    var password : String?
-    var name : String?
+    var email       : String?
+    var password    : String?
+    var name        : String?
     
 }

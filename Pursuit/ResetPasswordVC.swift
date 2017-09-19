@@ -54,28 +54,28 @@ class ResetPasswordVC: UIViewController {
 private extension ResetPasswordVC {
     
     func setPassword() {
-        setPassword { success in
-            if success {
+        setPassword { error in
+            if error == nil {
                 
             }
         }
     }
     
-    private func setPassword(completion: @escaping (_ success: Bool) -> Void) {
+    private func setPassword(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
         User.setPassword(password: newPasswordTextField.text ?? "", hash: ResetPasswordVC.hashString) { success in
             completion(success)
         }
     }
     
      func submit() {
-        submitPassword { success in
-            if success {
+        submitPassword { error in
+            if error == nil {
                 
             }
         }
     }
     
-    private func submitPassword(completion: @escaping (_ success: Bool)-> Void) {
+    private func submitPassword(completion: @escaping (_ error: ErrorProtocol?)-> Void) {
         User.changePassword(password: newPasswordTextField.text!) { success in
             completion(success)
         }

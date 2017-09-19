@@ -11,7 +11,7 @@ extension Event {
     //MARK: Typealias
     
     typealias GetEventsInRange          = (_ event: Event?, _ error: ErrorProtocol?) -> Void
-    typealias CreateEventCompletion     = (_ success: Bool) -> Void
+    typealias CreateEventCompletion     = (_ error: ErrorProtocol?) -> Void
     
     //MARK: Public
     

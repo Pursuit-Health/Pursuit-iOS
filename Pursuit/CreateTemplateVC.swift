@@ -52,21 +52,21 @@ class CreateTemplateVC: UIViewController {
 
 extension CreateTemplateVC {
     func loadTemplate() {
-        loadTemplateById{ success in
-            if success {
+        loadTemplateById{ error in
+            if error == nil {
                 self.templateNameLabel.text = self.template?.name ?? ""
                 self.templateTableView.reloadData()
             }
         }
     }
     
-    private func loadTemplateById(completion: @escaping (_ success: Bool) -> Void) {
+    private func loadTemplateById(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
         Template.getTemplateWithExercises(templateId: templateId ?? "", completion: { template, error in
             if let templateInfo = template {
-                self.template = templateInfo.simpleTemplatedata
-                self.exercises = templateInfo.simpleTemplatedata?.exercises?.exercisesData
-                completion(true)
+                self.template   = templateInfo.simpleTemplatedata
+                self.exercises  = templateInfo.simpleTemplatedata?.exercises?.exercisesData
             }
+            completion(error)
         })
     }
 }

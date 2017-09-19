@@ -52,7 +52,7 @@ class User: Mappable {
         var userable           : PersonalData?
         var userableData       : PersonalData?
         
-        var trainerId           : Int?
+        var trainerId          : Int?
         
         
         //MARK: Mappable
@@ -91,6 +91,8 @@ class User: Mappable {
         }
     }
     
+    
+    //TODO: WTF?
     class TrainersData: Mappable {
         var id: Int?
         var user: TrainersData?

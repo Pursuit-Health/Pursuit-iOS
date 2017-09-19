@@ -12,72 +12,34 @@ import ObjectMapper
 import SVProgressHUD
 import Foundation
 
-class PSAPI {
+class PSAPI: APIHandable {
     
-    class func avoidIndicator() {
-        self.showIndicator = false
-    }
-    
-    //MARK: Public.Properties
+    //MARK: APIHandable
     
     var service: ServiceProtocol = AlamofireService()
     
-    //MARK: Private.Properties
-    
-    //TODO: Change to groups
-    private static var runningRequests  = 0
-    private static var showIndicator    = true
-    //MARK: Private.Methods
-    
-    func perform(_ request: Request) -> DataRequest? {
-        let showIndicator   = PSAPI.showIndicator
-        PSAPI.showIndicator = true
+    func error<T>(response: DataResponse<T>) -> ErrorProtocol? {
+        guard let data = response.data else {
+            return PSError.somethingWentWrong
+        }
         
-        if showIndicator {
-            if PSAPI.runningRequests == 0 {
-                SVProgressHUD.show()
+        if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            if let message = json?["errorMessage"] as? String {
+                return PSError.texted(text: message)
             }
-            PSAPI.runningRequests += 1
         }
-        return self.service.request(request: request).response(completionHandler: { response in
-            if showIndicator {
-                PSAPI.runningRequests -= 1
-                
-                if PSAPI.runningRequests == 0 {
-                    SVProgressHUD.dismiss()
-                }
-            }
-        })
+        
+        return PSError.somethingWentWrong
     }
     
-    private func isValid(statusCode: Int) -> Bool {
-        return 200...299 ~= statusCode
-    }
+    //MARK: Public
     
-    private func isValid(response: HTTPURLResponse?, errorData: Data? = nil) -> PSError? {
-        var error: PSError?
-        guard let responseValue = response else {
-            error = .internetConnection
-            return error
-        }
-        if !self.isValid(statusCode: responseValue.statusCode) {
-            guard let data      = errorData,
-                let json        = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-                let statusCode  = json?["error"] as? Int,
-                let message     = json?["errorMessage"] as? String else {
-                    return PSError.texted(text: "Invalid status code").log()
-            }
-            error = PSError.error(description: message, statusCode: statusCode).log()
-        }
-        return error
-    }
-    //IGOR: Check
     @discardableResult
     func registerTrainer(personalData: [String: Any], completion: RegisterTrainerCompletion? = nil) -> DataRequest? {
         let request = Request.registerTrainer(parameters: personalData)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
@@ -89,8 +51,8 @@ class PSAPI {
     func registerClient(personalData: [String: Any], completion: @escaping RegisterClientCompletion) -> DataRequest? {
         let request = Request.registerClient(parameters: personalData)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
@@ -102,8 +64,8 @@ class PSAPI {
     func login(loginData: [String: Any], completion: @escaping LoginCompletion) -> DataRequest? {
         let request = Request.login(parameters: loginData)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
@@ -114,15 +76,7 @@ class PSAPI {
     @discardableResult
     func forgotPassword(email: String, completion: @escaping ChangePasswordCompletion) -> DataRequest? {
         let request = Request.forgotPassword(parameters: ["email": email])
-        return self.perform(request)?.responseJSON(completionHandler: { response in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
-                error = responseError
-            }
-            if let statusCode = response.response?.statusCode {
-                completion(statusCode == 200)
-            }
-        })
+        return self.simple(request: request, completion: completion)
     }
     
     @discardableResult
@@ -131,13 +85,11 @@ class PSAPI {
         let request = Request.setPassword(parameters: ["hash": hash,
                                                        "password": password])
         return self.perform(request)?.responseJSON(completionHandler: { response in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
-            if let statusCode = response.response?.statusCode {
-                completion(statusCode == 200)
-            }
+            completion(error)
         })
     }
     
@@ -145,21 +97,20 @@ class PSAPI {
     func changePassword(password: String, completion: @escaping ChangePasswordCompletion) -> DataRequest? {
         let request = Request.changePassword(parameters: ["password": password])
         return self.perform(request)?.responseJSON(completionHandler: { response in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
-            if let statusCode = response.response?.statusCode {
-                completion(statusCode == 200)
-            }
+            completion(error)
         })
     }
     
+    @discardableResult
     func getTrainers(completion: @escaping GetTrainersCompletion) -> DataRequest? {
         let request = Request.getTrainers()
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             completion(response.result.value, error)
@@ -178,22 +129,23 @@ class PSAPI {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        completion(true)
+                        completion(nil)
                         debugPrint(response)
                     }
                 case .failure(let encodingError):
-                    print(encodingError)
+                    completion(encodingError.psError)
                 }
         })
     }
     
     //MARK: Template
     
+    @discardableResult
     func createTemplate(templateData: [String: Any], completion: @escaping CreateTemplateCompletion) -> DataRequest? {
         let request = Request.createTemplate(parameters: templateData)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
@@ -201,11 +153,12 @@ class PSAPI {
         })
     }
     
+    @discardableResult
     func editTemplate(templateId: String, templateData: [String: Any], completion: @escaping EditTemplateCompletion) -> DataRequest? {
         let request = Request.editTemplate(templateId: templateId, parameters: templateData)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
@@ -213,11 +166,12 @@ class PSAPI {
         })
     }
     
+    @discardableResult
     func getAllTemplates(completion: @escaping GetAllTemplatesCompletion) -> DataRequest? {
         let request = Request.getAllTemplates()
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+        return self.perform(request)?.responseArray(completionHandler: { (response: DataResponse<[Template]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
@@ -225,11 +179,12 @@ class PSAPI {
         })
     }
     
+    @discardableResult
     func getTemplateWithExercises(templateId: String, completion: @escaping GetTemplateWithExercises) -> DataRequest? {
         let request = Request.getTemplateWithExercise(templateId: templateId)
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
@@ -237,57 +192,42 @@ class PSAPI {
         })
     }
     
+    @discardableResult
     func deleteTemplate(templateId: String, personalData: [String: Any], completion: @escaping DeleteTemplateCompletion) -> DataRequest?{
         let request = Request.deleteTemplate(templateId: templateId, parameters: personalData)
-        return self.perform(request)?.responseJSON(completionHandler: { response in
-           
-            if self.isValid(response: response.response) != nil {
-
-            }
-            
-            if let statusCode = response.response?.statusCode {
-                completion(statusCode == 200)
-            }
-        })
+        return self.simple(request: request, completion: completion)
     }
     
+    @discardableResult
     func getAllClients(completion: @escaping GetAllClientsComletion) -> DataRequest? {
         let request = Request.getAllClients()
         
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Client>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             completion(response.result.value, error)
         })
     }
     
+    @discardableResult
     func getEventsInRange(startDate: String, endDate: String, completion: @escaping GetEventsInRange) -> DataRequest? {
         let request = Request.getAllEventsInRange(startDate: startDate, endDate: endDate)
         
         return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Event>) in
-            var error: PSError?
-            if let responseError = self.isValid(response: response.response) {
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
                 error = responseError
             }
             completion(response.result.value, error)
         })
     }
     
+    @discardableResult
     func createEvent(eventData: [String: Any], completion: @escaping CreateEventCompletion) -> DataRequest? {
         let request = Request.createEvent(parameters: eventData)
-        
-        return self.perform(request)?.responseJSON(completionHandler: { response in
-            
-            if self.isValid(response: response.response) != nil {
-                
-            }
-            
-            if let statusCode = response.response?.statusCode {
-                completion(statusCode == 200)
-            }
-        })
+        return self.simple(request: request, completion: completion)
     }
 }
 
@@ -301,13 +241,13 @@ extension PSAPI {
     
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
-    typealias ForgotPassword            = (_ success: Bool) -> Void
+    typealias ForgotPassword            = (_ error: ErrorProtocol?) -> Void
     
-    typealias SetPasswordCompletion     = (_ success: Bool) -> Void
+    typealias SetPasswordCompletion     = (_ error: ErrorProtocol?) -> Void
     
-    typealias ChangePasswordCompletion  = (_ success: Bool) -> Void
+    typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     
-    typealias ChangeAvatarCompletion    = (_ success: Bool) -> Void
+    typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     
     typealias GetTrainersCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
@@ -315,15 +255,15 @@ extension PSAPI {
     
     typealias EditTemplateCompletion    = (_ template: Template?, _ error: ErrorProtocol?) -> Void
     
-    typealias GetAllTemplatesCompletion = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    typealias GetAllTemplatesCompletion = (_ template: [Template]?, _ error: ErrorProtocol?) -> Void
     
     typealias GetTemplateWithExercises  = (_ template: Template?, _ error: ErrorProtocol?) -> Void
     
-    typealias DeleteTemplateCompletion  = (_ success: Bool) -> Void
+    typealias DeleteTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
     typealias GetAllClientsComletion    = (_ client: Client?, _ error: ErrorProtocol?) -> Void
     
     typealias GetEventsInRange          = (_ event: Event?, _ error: ErrorProtocol?) -> Void
     
-    typealias CreateEventCompletion     = (_ success: Bool) -> Void
+    typealias CreateEventCompletion     = (_ error: ErrorProtocol?) -> Void
 }
