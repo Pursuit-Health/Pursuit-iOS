@@ -24,7 +24,7 @@ class CreateTemplateVC: UIViewController {
     
     var templateId: String?
     
-    var template : Template.SimpleTemplate?
+   // var template : Template.SimpleTemplate?
     var exercises: [Template.Exercises]?
     
     //MARK: IBActions
@@ -54,7 +54,7 @@ extension CreateTemplateVC {
     func loadTemplate() {
         loadTemplateById{ error in
             if error == nil {
-                self.templateNameLabel.text = self.template?.name ?? ""
+              //  self.templateNameLabel.text = self.template?.name ?? ""
                 self.templateTableView.reloadData()
             }
         }
@@ -63,8 +63,8 @@ extension CreateTemplateVC {
     private func loadTemplateById(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
         Template.getTemplateWithExercises(templateId: templateId ?? "", completion: { template, error in
             if let templateInfo = template {
-                self.template   = templateInfo.simpleTemplatedata
-                self.exercises  = templateInfo.simpleTemplatedata?.exercises?.exercisesData
+               // self.template   = templateInfo.simpleTemplatedata
+                //self.exercises  = templateInfo.simpleTemplatedata?.exercises?.exercisesData
             }
             completion(error)
         })
@@ -73,20 +73,20 @@ extension CreateTemplateVC {
 
 extension CreateTemplateVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = self.exercises?.count else { return 0 }
-        return count
+       // guard let count = self.exercises?.count else { return 0 }
+        return 0
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: TrainingTableViewCell.self) else { return UITableViewCell()
         }
-        let exersicesInfo = self.exercises?[indexPath.row]
-        let exercissableData = exersicesInfo?.exercisable?.data
-        cell.exercisesNameLabel.text = exersicesInfo?.name
-        cell.weightLabel.text = "\(exercissableData?.weight ?? 0)"
-        cell.setsLabel.text = "\(exercissableData?.times ?? 0)" + "x" + "\(exercissableData?.count ?? 0)"
-           
+//        let exersicesInfo = self.exercises?[indexPath.row]
+//        let exercissableData = exersicesInfo?.exercisable?.data
+//        cell.exercisesNameLabel.text = exersicesInfo?.name
+//        cell.weightLabel.text = "\(exercissableData?.weight ?? 0)"
+//        cell.setsLabel.text = "\(exercissableData?.times ?? 0)" + "x" + "\(exercissableData?.count ?? 0)"
+//           
             return cell
     }
 }

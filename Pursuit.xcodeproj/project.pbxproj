@@ -51,9 +51,22 @@
 		782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EC1F7044DA00A019AC /* Client+API.swift */; };
 		782B82F01F704BC200A019AC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EF1F704BC200A019AC /* Event.swift */; };
 		782B82F21F704BD600A019AC /* Event+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82F11F704BD600A019AC /* Event+API.swift */; };
+		782B82FF1F71256D00A019AC /* SignUpDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82FD1F71256D00A019AC /* SignUpDataCell.swift */; };
+		782B83001F71256D00A019AC /* SignUpDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782B82FE1F71256D00A019AC /* SignUpDataCell.xib */; };
+		782B830F1F7126DC00A019AC /* ChooseTrainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B830D1F7126DC00A019AC /* ChooseTrainerCell.swift */; };
+		782B83101F7126DC00A019AC /* ChooseTrainerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782B830E1F7126DC00A019AC /* ChooseTrainerCell.xib */; };
+		782B83131F71278D00A019AC /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B83111F71278D00A019AC /* QuestionCell.swift */; };
+		782B83141F71278D00A019AC /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782B83121F71278D00A019AC /* QuestionCell.xib */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
+		783484221F7155CC00C58191 /* UserTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484211F7155CC00C58191 /* UserTypeView.swift */; };
+		783484241F71560600C58191 /* UserTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783484231F71560600C58191 /* UserTypeView.xib */; };
+		783484281F71804D00C58191 /* SignUpButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484261F71804D00C58191 /* SignUpButtonCell.swift */; };
+		783484291F71804D00C58191 /* SignUpButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783484271F71804D00C58191 /* SignUpButtonCell.xib */; };
+		783484311F71B05100C58191 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484301F71B05100C58191 /* Trainer.swift */; };
+		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
+		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
@@ -183,9 +196,22 @@
 		782B82EC1F7044DA00A019AC /* Client+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+API.swift"; sourceTree = "<group>"; };
 		782B82EF1F704BC200A019AC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		782B82F11F704BD600A019AC /* Event+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+API.swift"; sourceTree = "<group>"; };
+		782B82FD1F71256D00A019AC /* SignUpDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpDataCell.swift; sourceTree = "<group>"; };
+		782B82FE1F71256D00A019AC /* SignUpDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpDataCell.xib; sourceTree = "<group>"; };
+		782B830D1F7126DC00A019AC /* ChooseTrainerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTrainerCell.swift; sourceTree = "<group>"; };
+		782B830E1F7126DC00A019AC /* ChooseTrainerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseTrainerCell.xib; sourceTree = "<group>"; };
+		782B83111F71278D00A019AC /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		782B83121F71278D00A019AC /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		783484211F7155CC00C58191 /* UserTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTypeView.swift; sourceTree = "<group>"; };
+		783484231F71560600C58191 /* UserTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTypeView.xib; sourceTree = "<group>"; };
+		783484261F71804D00C58191 /* SignUpButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpButtonCell.swift; sourceTree = "<group>"; };
+		783484271F71804D00C58191 /* SignUpButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpButtonCell.xib; sourceTree = "<group>"; };
+		783484301F71B05100C58191 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
+		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
+		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
@@ -504,6 +530,54 @@
 			name = Event;
 			sourceTree = "<group>";
 		};
+		782B82F91F71251B00A019AC /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				7834841E1F71551F00C58191 /* Views */,
+				782B82FA1F71253D00A019AC /* Cells */,
+				7832AFE81F331D1D00BC8116 /* SignUpVC.swift */,
+			);
+			name = SignUp;
+			sourceTree = "<group>";
+		};
+		782B82FA1F71253D00A019AC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				783484251F71802000C58191 /* SignUpButtonCell */,
+				782B831A1F71284700A019AC /* QuestionCell */,
+				782B83191F71283300A019AC /* ChooseTrainerCell */,
+				782B83151F7127A800A019AC /* SignUpDataCell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		782B83151F7127A800A019AC /* SignUpDataCell */ = {
+			isa = PBXGroup;
+			children = (
+				782B82FD1F71256D00A019AC /* SignUpDataCell.swift */,
+				782B82FE1F71256D00A019AC /* SignUpDataCell.xib */,
+			);
+			name = SignUpDataCell;
+			sourceTree = "<group>";
+		};
+		782B83191F71283300A019AC /* ChooseTrainerCell */ = {
+			isa = PBXGroup;
+			children = (
+				782B830D1F7126DC00A019AC /* ChooseTrainerCell.swift */,
+				782B830E1F7126DC00A019AC /* ChooseTrainerCell.xib */,
+			);
+			name = ChooseTrainerCell;
+			sourceTree = "<group>";
+		};
+		782B831A1F71284700A019AC /* QuestionCell */ = {
+			isa = PBXGroup;
+			children = (
+				782B83111F71278D00A019AC /* QuestionCell.swift */,
+				782B83121F71278D00A019AC /* QuestionCell.xib */,
+			);
+			name = QuestionCell;
+			sourceTree = "<group>";
+		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +592,74 @@
 			);
 			name = TabPageViewController;
 			path = ../Pods/TabPageViewController;
+			sourceTree = "<group>";
+		};
+		7834841E1F71551F00C58191 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				783484211F7155CC00C58191 /* UserTypeView.swift */,
+				783484231F71560600C58191 /* UserTypeView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		783484251F71802000C58191 /* SignUpButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				783484261F71804D00C58191 /* SignUpButtonCell.swift */,
+				783484271F71804D00C58191 /* SignUpButtonCell.xib */,
+			);
+			name = SignUpButtonCell;
+			sourceTree = "<group>";
+		};
+		7834842A1F71883600C58191 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				7832AFEA1F331D2600BC8116 /* SignInVC.swift */,
+			);
+			name = SignIn;
+			sourceTree = "<group>";
+		};
+		7834842B1F71884200C58191 /* MainContainer */ = {
+			isa = PBXGroup;
+			children = (
+				7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */,
+			);
+			name = MainContainer;
+			sourceTree = "<group>";
+		};
+		7834842C1F71885600C58191 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */,
+				78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */,
+			);
+			name = Password;
+			sourceTree = "<group>";
+		};
+		7834842D1F71886500C58191 /* SelectTrainer */ = {
+			isa = PBXGroup;
+			children = (
+				7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */,
+			);
+			name = SelectTrainer;
+			sourceTree = "<group>";
+		};
+		7834842E1F71B03200C58191 /* Trainer */ = {
+			isa = PBXGroup;
+			children = (
+				783484301F71B05100C58191 /* Trainer.swift */,
+				783484321F71B62100C58191 /* Trainer+API.swift */,
+			);
+			name = Trainer;
+			sourceTree = "<group>";
+		};
+		78383B431F72A89500AA75E3 /* SignInMapper */ = {
+			isa = PBXGroup;
+			children = (
+				78383B441F72A8BF00AA75E3 /* SignInMapper.swift */,
+			);
+			name = SignInMapper;
 			sourceTree = "<group>";
 		};
 		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
@@ -737,12 +879,11 @@
 		84AB4D561F327F2E00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7832AFEA1F331D2600BC8116 /* SignInVC.swift */,
-				7832AFE81F331D1D00BC8116 /* SignUpVC.swift */,
-				7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */,
-				78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */,
-				78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */,
-				7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */,
+				7834842D1F71886500C58191 /* SelectTrainer */,
+				7834842C1F71885600C58191 /* Password */,
+				7834842B1F71884200C58191 /* MainContainer */,
+				7834842A1F71883600C58191 /* SignIn */,
+				782B82F91F71251B00A019AC /* SignUp */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -805,6 +946,8 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78383B431F72A89500AA75E3 /* SignInMapper */,
+				7834842E1F71B03200C58191 /* Trainer */,
 				782B82EE1F704BAE00A019AC /* Event */,
 				782B82E91F703E7500A019AC /* Client */,
 				782264451F507A3000EFD5F9 /* User */,
@@ -1263,11 +1406,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */,
+				782B83141F71278D00A019AC /* QuestionCell.xib in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
 				78CE34C41F38FDF2002BD31D /* TabPageViewController.storyboard in Resources */,
 				5BE3A1CE1EB3196A005B35CD /* SignUpCell.xib in Resources */,
 				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
+				783484241F71560600C58191 /* UserTypeView.xib in Resources */,
+				782B83101F7126DC00A019AC /* ChooseTrainerCell.xib in Resources */,
+				783484291F71804D00C58191 /* SignUpButtonCell.xib in Resources */,
+				782B83001F71256D00A019AC /* SignUpDataCell.xib in Resources */,
 				5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */,
 				78CE34C51F38FDF2002BD31D /* TabCollectionCell.xib in Resources */,
 				842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */,
@@ -1342,7 +1490,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1359,6 +1507,7 @@
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
 				78179B891F54982C00520D08 /* User+API.swift in Sources */,
 				7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */,
+				783484221F7155CC00C58191 /* UserTypeView.swift in Sources */,
 				5BE3A1D71EB319E5005B35CD /* DezappButton.swift in Sources */,
 				780D601D1F5EAA6C002A7303 /* GuestDeepLinkService.swift in Sources */,
 				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
@@ -1369,6 +1518,7 @@
 				5BE3A1CD1EB3196A005B35CD /* SignUpCell.swift in Sources */,
 				78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */,
 				842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */,
+				78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */,
 				788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */,
 				7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */,
 				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
@@ -1377,7 +1527,9 @@
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
 				780D8E901F4360FE0030A992 /* Template.swift in Sources */,
 				78094A291F5BD958001325B4 /* KeychainService.swift in Sources */,
+				782B82FF1F71256D00A019AC /* SignUpDataCell.swift in Sources */,
 				78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */,
+				782B83131F71278D00A019AC /* QuestionCell.swift in Sources */,
 				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
 				780D60211F5F161E002A7303 /* ControllersIdentifiers.swift in Sources */,
 				84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */,
@@ -1405,6 +1557,7 @@
 				7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */,
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
+				783484281F71804D00C58191 /* SignUpButtonCell.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				845882F91F7067F000BE7D69 /* Requests.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
@@ -1420,16 +1573,19 @@
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
 				7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */,
 				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
+				783484331F71B62100C58191 /* Trainer+API.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
 				845882F81F7067F000BE7D69 /* API.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
+				783484311F71B05100C58191 /* Trainer.swift in Sources */,
 				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,
 				782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
 				78179B871F54977500520D08 /* User.swift in Sources */,
+				782B830F1F7126DC00A019AC /* ChooseTrainerCell.swift in Sources */,
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,

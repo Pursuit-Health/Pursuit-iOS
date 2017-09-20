@@ -37,7 +37,7 @@ class PSAPI: APIHandable {
     @discardableResult
     func registerTrainer(personalData: [String: Any], completion: RegisterTrainerCompletion? = nil) -> DataRequest? {
         let request = Request.registerTrainer(parameters: personalData)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Trainer>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
@@ -63,7 +63,7 @@ class PSAPI: APIHandable {
     @discardableResult
     func login(loginData: [String: Any], completion: @escaping LoginCompletion) -> DataRequest? {
         let request = Request.login(parameters: loginData)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<SignInMapper>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
@@ -108,13 +108,13 @@ class PSAPI: APIHandable {
     @discardableResult
     func getTrainers(completion: @escaping GetTrainersCompletion) -> DataRequest? {
         let request = Request.getTrainers()
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Trainer]>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
             }
             completion(response.result.value, error)
-        })
+        }
     }
     
     func uploadAvatar(data: Data, completion: @escaping ChangeAvatarCompletion) {
@@ -235,9 +235,9 @@ extension PSAPI {
     
     //MARK: Typelias
     
-    typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    typealias RegisterTrainerCompletion = (_ user: Trainer?, _ error: ErrorProtocol?) -> Void
     
-    typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    typealias RegisterClientCompletion  = (_ user: Client?, _ error: ErrorProtocol?) -> Void
     
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
@@ -249,7 +249,7 @@ extension PSAPI {
     
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     
-    typealias GetTrainersCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    typealias GetTrainersCompletion     = (_ user: [Trainer]?, _ error: ErrorProtocol?) -> Void
     
     typealias CreateTemplateCompletion  = (_ template: Template?, _ error: ErrorProtocol?) -> Void
     

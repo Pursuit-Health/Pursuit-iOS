@@ -8,19 +8,26 @@
 
 import ObjectMapper
 
-class Client: Mappable {
-    
+class Client: User {
+
     //MARK: Private.Properties
     
-    
+    var trainer: Trainer?
     
     //MARK: Mappable
     
-    func mapping(map: Map) {
-        
+     override func mapping(map: Map) {
+        super.mapping(map: map)
+       self.trainer <- map["userable"]
+    }
+    
+   override init() {
+    super.init()
     }
     
     required init?(map: Map) {
-        
+       super.init(map: map)
     }
+    
+
 }

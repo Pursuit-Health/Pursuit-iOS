@@ -12,35 +12,28 @@ extension User {
     //MARK: Typealias
     
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
-    typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias ForgotPasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias SetPasswordCompletion     = (_ error: ErrorProtocol?) -> Void
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
-    typealias GetTrainersCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
 
     //MARK: Public
     
-    class func registerTrainer(personalData: PersonalData, completion: @escaping RegisterTrainerCompletion) {
-        let api = PSAPI()
-        
-        api.registerTrainer(personalData: personalData.toJSON(), completion: completion)
-    }
-    
-    class func registerClient(personalData: PersonalData, completion: @escaping RegisterClientCompletion) {
+    class func registerClient(personalData: Trainer, completion: @escaping RegisterClientCompletion) {
         let api = PSAPI()
         
         api.registerClient(personalData: personalData.toJSON(), completion: completion)
     }
     
-    class func login(loginData: PersonalData, completion: @escaping LoginCompletion) {
+    class func login(loginData: User, completion: @escaping LoginCompletion) {
         let api = PSAPI()
         
         api.login(loginData: loginData.toJSON()) { (user, error) in
             
             if let user = user {
-                if let token = user.metaData?.token {
+                if let token = user.token {
                   self.token = token
                 }
             }
@@ -72,9 +65,5 @@ extension User {
         api.uploadAvatar(data: data, completion: completion)
     }
     
-    class func getTrainers(completion: @escaping GetTrainersCompletion) {
-        let api = PSAPI()
-        
-        api.getTrainers(completion: completion)
-    }
+
  }

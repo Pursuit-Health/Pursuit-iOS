@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SelectTrainerVCDelegate: class {
-    func trainerSelectedWithId(_ id: Int)
+    func trainerSelectedWithId(trainer: Trainer)
 }
 //IGOR: Check
 class SelectTrainerVC: UIViewController {
@@ -39,16 +39,13 @@ class SelectTrainerVC: UIViewController {
     //MARK: Variables
     
     weak var delegate: SelectTrainerVCDelegate?
-    var trainerData: [User.TrainersData]? = []
+   
+    var trainers: [Trainer] = []
     
     //MARK: IBActions
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
-        removeController()
-    }
-    
-    @IBAction func selectTrainer(_ sender: Any) {
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: Lifecycle
@@ -57,7 +54,12 @@ class SelectTrainerVC: UIViewController {
         super.viewDidLoad()
        
         setUpBackgroundImage()
+        
         loadTrainers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
     }
@@ -73,43 +75,41 @@ extension SelectTrainerVC {
     }
     
     private func loadTrainersRequest(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
-        User.getTrainers(completion: { trainersInfo, error in
+        Trainer.getTrainers(completion: { trainersInfo, error in
             if let data = trainersInfo {
-                self.trainerData = data.trainersData
+               self.trainers = data
             }
             completion(error)
         })
-        
     }
-    fileprivate func removeController() {
-        
-        let rootVC = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)
-        rootVC?.viewControllers.remove(at: 1)
-    }
-    fileprivate func userDidSelectTrainerWithId(_ id: Int) {
-        delegate?.trainerSelectedWithId(id)
-        self.dismiss(animated: true, completion: nil)
+
+    fileprivate func userDidSelectTrainerWithId(trainer: Trainer) {
+        delegate?.trainerSelectedWithId(trainer: trainer)
     }
 }
 
 extension SelectTrainerVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trainerData?.count ?? 0
+        return self.trainers.count
     }
     
+    //TODO: Make Bindable
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.trainer.identifier, for: indexPath) as? SelectTrainer else { return UICollectionViewCell() }
-        
+        let trainerData = trainers[indexPath.row]
         cell.profilePhotoImageView.image = UIImage(named: "avatar1")
-        cell.trainerNameLabel.text = trainerData?[indexPath.row].user?.data?.name
+        cell.trainerNameLabel.text = trainerData.trainerName
+        
         return cell
     }
 }
 
 extension SelectTrainerVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        userDidSelectTrainerWithId(indexPath.row)
-        removeController()
+        
+        let trainerData = trainers[indexPath.row]
+
+        userDidSelectTrainerWithId(trainer: trainerData)
     }
 }
 

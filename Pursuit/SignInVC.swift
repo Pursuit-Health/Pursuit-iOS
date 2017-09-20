@@ -42,11 +42,9 @@ class SignInVC: UIViewController {
         return [emailTeaxtField:emailLabel, passwordTextField:passwordLabel]
     }
     
-    var loginData = User.PersonalData()
-    
-    var metaData = User.MetaData()
-    
     var user: User?
+    
+    var loginData = User()
     
     //MARK: IBActions
     
@@ -69,10 +67,8 @@ class SignInVC: UIViewController {
     //MARK: Private
     
     private func setParametersforRequest() {
-//        loginData.email       = emailTeaxtField.text
-//        loginData.password    =  passwordTextField
-        loginData.email = "igor1994makara@gmail.com"
-        loginData.password =  "123456789"
+        loginData.email = "igor1994ma@gmail.com"
+        loginData.password = "123456789"
     }
     
     private func showForgotPasswordVC() {

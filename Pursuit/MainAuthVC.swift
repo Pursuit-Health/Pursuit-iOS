@@ -56,11 +56,34 @@ class MainAuthVC: UIViewController {
         }
     }
     
+    lazy var signInVC: SignInVC? = {
+        let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
+        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignInVC) as? SignInVC
+        signInVC?.delegate = self
+        
+        return signInVC
+    }()
+    
+    lazy var signUpVC: SignUpVC? = {
+        let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
+        let signUpVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignUpVC) as? SignUpVC
+        signUpVC?.delegate = self
+        
+        return signUpVC
+    }()
+    
+    lazy var selectTrainerVC: SelectTrainerVC? = {
+        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
+        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.SelectTrainer) as? UINavigationController)?.visibleViewController as? SelectTrainerVC
+        controller?.delegate = self
+        return controller
+    }()
+    
     //MARK: IBActions
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
-        //showActionSheetForUploadingPhoto()
-        uploadImage()
+        showActionSheetForUploadingPhoto()
+        //uploadImage()
     }
     
     //MARK: LIfecycle
@@ -83,13 +106,10 @@ class MainAuthVC: UIViewController {
         let controller = TabPageViewController.create()
         
         controller.tabPageVCDelegate = self
-        let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
         
-        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignInVC) as? SignInVC
-        signInVC?.delegate = self
-        let signUpVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignUpVC)
-        
-        controller.tabItems = [(signInVC!, "SignIn"), (signUpVC, "SignUp")]
+        if let signInController = signInVC, let signUpController = signUpVC {
+            controller.tabItems = [(signInController, "SignIn"), (signUpController, "SignUp")]
+        }
         
         setUpOptions(controller)
         
@@ -193,6 +213,24 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 extension MainAuthVC: SignInVCDelegate {
     func lofinSuccessfull(on: SignInVC) {
         performSegue(withIdentifier: Constants.SeguesIDs.Trainer, sender: self)
+    }
+}
+
+extension MainAuthVC: SignUpVCDelegate {
+    func showSelectTrainerVC(on controller: SignUpVC) {
+        
+        if let controller = selectTrainerVC {
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}
+
+extension MainAuthVC: SelectTrainerVCDelegate {
+    func trainerSelectedWithId(trainer: Trainer) {
+        
+        signUpVC?.trainer = trainer
+        
+        selectTrainerVC?.navigationController?.popViewController(animated: true)
     }
 }
 

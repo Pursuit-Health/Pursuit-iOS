@@ -10,57 +10,7 @@ import ObjectMapper
 
 class Template: Mappable {
     
-    //MARK: Variables
-    var templateId       : Int?
-    var name            : String?
-    var time            : Int?
-    var imageId         : Int?
-    
-    //TODO: WTF?
-    var simpleTemplatedata : SimpleTemplate?
-
-    //MARK: Mappable
-    
-    func mapping(map: Map) {
-        self.name               <- map["name"]
-        self.time               <- map["time"]
-        self.imageId            <- map["image_id"]
-        self.templateId         <- map["id"]
-        self.simpleTemplatedata <- map["data"]
-
-    }
-    
-    required init?(map: Map) {
-        
-    }
-    
-    class SimpleTemplate: Mappable {
-        //MARK: Variables
-        
-        var templateId      : Int?
-        var name            : String?
-        var time            : Int?
-        var imageId         : Int?
-        var exercises       : SimpleTemplate?
-        var exercisesData   : [Exercises]?
-    
-        //MARK: Mappable
-    
-        func mapping(map: Map) {
-
-            self.name               <- map["name"]
-            self.time               <- map["time"]
-            self.imageId            <- map["image_id"]
-            self.templateId         <- map["id"]
-            self.exercises          <- map["exercises"]
-            self.exercisesData      <- map["data"]
-    
-        }
-    
-        required init?(map: Map) {
-            
-        }
-    }
+    //MARK: Nested
     
     class Exercises: Mappable {
         
@@ -97,26 +47,23 @@ class Template: Mappable {
         }
     }
     
-    class CreateTemplateData: Mappable {
+    //MARK: Variables
+    var templateId       : Int?
+    var name            : String?
+    var time            : Int?
+    var imageId         : Int?
+
+    //MARK: Mappable
+    
+    func mapping(map: Map) {
+        self.name               <- map["name"]
+        self.time               <- map["time"]
+        self.imageId            <- map["image_id"]
+        self.templateId         <- map["id"]
+    }
+    
+    required init?(map: Map) {
         
-        var name            : String?
-        var time            : Int?
-        var imageId         : Int?
-        var exercises       : [Exercises]?
-        
-        //MARK: Mappable
-        
-        func mapping(map: Map) {
-            self.name               <- map["name"]
-            self.time               <- map["time"]
-            self.imageId            <- map["image_id"]
-            self.exercises          <- map["exercises"]
-   
-        }
-        
-        required init?(map: Map) {
-            
-        }
     }
 }
 

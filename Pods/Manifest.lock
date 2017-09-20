@@ -19,6 +19,7 @@ PODS:
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
+  - SHTextFieldBlocks (1.1.1)
   - SVProgressHUD (2.1.2)
   - SwipeCellKit (1.8.0)
   - TextFieldEffects (1.3.3)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - pop (~> 1.0)
   - RHDisplayLinkStepper (~> 1.0)
   - SDWebImage (~> 4.1)
+  - SHTextFieldBlocks (~> 1.1)
   - SVProgressHUD (~> 2.1)
   - SwipeCellKit
   - TextFieldEffects (~> 1.3)
@@ -59,11 +61,12 @@ SPEC CHECKSUMS:
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RHDisplayLinkStepper: 000ea5b06588eed23ffff66c8c8735f5e4e9a7c8
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SHTextFieldBlocks: 5ecaaff2051371e86ae4dffb7a6eab37b80aa56d
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwipeCellKit: 01a58bf7e63d5df09aedd161828833944c4c333c
   TextFieldEffects: 8706f53525f1ce51c8921b7af32237caab50c467
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: e397b37b079287705714e0e09f4cefca81ff7712
+PODFILE CHECKSUM: ff1fb25a8dbfbedf4c1a2c51294dd083b1fe56a2
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1
