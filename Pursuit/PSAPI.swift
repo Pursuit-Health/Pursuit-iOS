@@ -35,42 +35,95 @@ class PSAPI: APIHandable {
     //MARK: Public
     
     @discardableResult
-    func registerTrainer(personalData: [String: Any], completion: RegisterTrainerCompletion? = nil) -> DataRequest? {
+    func registerTrainer(personalData: [String : String], completion: @escaping RegisterTrainerCompletion) -> DataRequest? {
+        
         let request = Request.registerTrainer(parameters: personalData)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Trainer>) in
+        return self.service.request(request: request).responseJSON { (response) in
             var error: ErrorProtocol?
+            var user: Trainer?
             if let responseError = self.handle(response: response) {
                 error = responseError
+            } else {
+                switch response.result {
+                case .success(let JSON):
+                    let userData = ((JSON as? [String : Any])?["data"] as? [String : Any])
+                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
+                    if let type = metaData?["user_type"], let token = metaData?["token"], let userData = userData {
+                        let objectData = ["user" : userData]
+                        if type == "trainer" {
+                            user = Trainer(JSON: objectData)
+                        }
+                        user?.token = token
+                    }
+                    
+                case .failure(let serverError):
+                    error = serverError.psError
+                }
             }
-            
-            completion?(response.result.value, error)
-        })
+            completion(user, error)
+        }
     }
     
+    //TODO: Refactore this code
     @discardableResult
-    func registerClient(personalData: [String: Any], completion: @escaping RegisterClientCompletion) -> DataRequest? {
+    func registerClient(personalData: [String : String], completion: @escaping RegisterClientCompletion) -> DataRequest? {
         let request = Request.registerClient(parameters: personalData)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<User>) in
+        return self.service.request(request: request).responseJSON { (response) in
             var error: ErrorProtocol?
+            var user: Client?
             if let responseError = self.handle(response: response) {
                 error = responseError
+            } else {
+                switch response.result {
+                case .success(let JSON):
+                    let userData = ((JSON as? [String : Any])?["data"] as? [String : Any])
+                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
+                    if let type = metaData?["user_type"], let token = metaData?["token"], let userData = userData {
+                        let objectData = ["user" : userData]
+                        if type == "client" {
+                            user = Client(JSON: objectData)
+                        }
+                        user?.token = token
+                    }
+                    
+                case .failure(let serverError):
+                    error = serverError.psError
+                }
             }
-            
-            completion(response.result.value, error)
-        })
+            completion(user, error)
+        }
     }
     
     @discardableResult
-    func login(loginData: [String: Any], completion: @escaping LoginCompletion) -> DataRequest? {
-        let request = Request.login(parameters: loginData)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<SignInMapper>) in
+    func login(email: String, password: String, completion: @escaping LoginCompletion) -> DataRequest? {
+        let request = Request.login(parameters: ["email": email,
+                                                 "password": password])
+        return self.service.request(request: request).responseJSON { (response) in
             var error: ErrorProtocol?
+            var user: User?
             if let responseError = self.handle(response: response) {
                 error = responseError
+            } else {
+                switch response.result {
+                case .success(let JSON):
+                    let userData = ((JSON as? [String : Any])?["data"] as? [String : Any])
+                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
+                    if let type = metaData?["user_type"], let token = metaData?["token"], let userData = userData {
+                        let objectData = ["user" : userData]
+                        if type == "trainer" {
+                            user = Trainer(JSON: objectData)
+                        } else if type == "client" {
+                            user = Client(JSON: objectData)
+                        }
+                        user?.token = token
+                    }
+                    
+                case .failure(let serverError):
+                    error = serverError.psError
+                }
             }
-            
-            completion(response.result.value, error)
-        })
+            completion(user, error)
+        }
     }
     
     @discardableResult
@@ -235,9 +288,9 @@ extension PSAPI {
     
     //MARK: Typelias
     
-    typealias RegisterTrainerCompletion = (_ user: Trainer?, _ error: ErrorProtocol?) -> Void
+    typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
-    typealias RegisterClientCompletion  = (_ user: Client?, _ error: ErrorProtocol?) -> Void
+    typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
     

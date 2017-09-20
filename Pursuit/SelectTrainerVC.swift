@@ -98,7 +98,7 @@ extension SelectTrainerVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.trainer.identifier, for: indexPath) as? SelectTrainer else { return UICollectionViewCell() }
         let trainerData = trainers[indexPath.row]
         cell.profilePhotoImageView.image = UIImage(named: "avatar1")
-        cell.trainerNameLabel.text = trainerData.trainerName
+        cell.trainerNameLabel.text = trainerData.name
         
         return cell
     }

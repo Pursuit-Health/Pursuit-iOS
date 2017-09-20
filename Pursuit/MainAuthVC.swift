@@ -47,12 +47,10 @@ class MainAuthVC: UIViewController {
     
     @IBOutlet weak var profilePhotoImageView: UIImageView!{
         didSet {
-            //profilePhotoImageView.isHidden = true
         }
     }
     @IBOutlet weak var addPhotoButton: UIButton! {
         didSet {
-            // addPhotoButton.isHidden = true
         }
     }
     
@@ -83,7 +81,6 @@ class MainAuthVC: UIViewController {
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
         showActionSheetForUploadingPhoto()
-        //uploadImage()
     }
     
     //MARK: LIfecycle
@@ -92,7 +89,6 @@ class MainAuthVC: UIViewController {
         super.viewDidLoad()
         
         getControllers()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,8 +141,11 @@ class MainAuthVC: UIViewController {
             self.showImagePickerControllerWithType(.photoLibrary)
         })
         
+        let cancelSheet = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        
         actionSheet.addAction(cameraSheet)
         actionSheet.addAction(librarySheet)
+        actionSheet.addAction(cancelSheet)
         
         self.present(actionSheet, animated: true, completion: nil)
     }
@@ -212,6 +211,11 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 
 extension MainAuthVC: SignInVCDelegate {
     func lofinSuccessfull(on: SignInVC) {
+        performSegue(withIdentifier: Constants.SeguesIDs.Trainer, sender: self)
+    }
+    
+    
+    func signUpSuccessfull(on controller: SignUpVC) {
         performSegue(withIdentifier: Constants.SeguesIDs.Trainer, sender: self)
     }
 }

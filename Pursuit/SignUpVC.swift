@@ -13,6 +13,7 @@ import SHTextFieldBlocks
 
 protocol SignUpVCDelegate: class {
     func showSelectTrainerVC(on controller: SignUpVC)
+    func signUpSuccessfull(on controller: SignUpVC)
 }
 class SignUpVC: UIViewController {
     
@@ -31,19 +32,34 @@ class SignUpVC: UIViewController {
     
     weak var delegate: SignUpVCDelegate?
     
-    var personalData = User.PersonalData()
+    var client      = Client()
     
-    var clientPersonalData = Client()
+    var trainer     = Trainer()
     
-    var trainerPersonalData: Trainer?
-    
-    var trainer = Trainer() {
+    var user: User? {
         didSet {
-            clientPersonalData.trainerId = self.trainer.trainerId
-            
+            let isTrainer = self.user is Trainer
+            let indexPath = IndexPath(row:1, section:0)
+            if let _ = self.signUpTableView.cellForRow(at: indexPath) as? ChooseTrainerCell {
+                if isTrainer {
+                    deleteTrainerRow()
+                }
+            }else {
+                if isTrainer {
+                    return
+                }
+                insertTrainerRow()
+            }
+        }
+    }
+    
+    var trainerData = Trainer() {
+        didSet {
             deleteTrainerRow()
             
             insertTrainerRow()
+            
+            self.client.id = trainerData.id
         }
     }
     
@@ -125,44 +141,40 @@ class SignUpVC: UIViewController {
         private func fillNameCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Name"
             cell.cellImageview.image            = UIImage(named: "ic_username")
-            cell.userDataTextField.sh_setShouldChangeCharactersInRange { (textField, range, string) -> Bool in
+            cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
                 }
-                return true
             }
         }
         
         private func fillEmailCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Email"
             cell.cellImageview.image            = UIImage(named: "email")
-            cell.userDataTextField.sh_setShouldChangeCharactersInRange { (textField, range, string) -> Bool in
+            cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
                 }
-                return true
             }
         }
         
         private func fillPasswordCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Password"
             cell.cellImageview.image            = UIImage(named: "ic_password")
-            cell.userDataTextField.sh_setShouldChangeCharactersInRange { (textField, range, string) -> Bool in
+            cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
                 }
-                return true
             }
         }
         
         private func fillBirthdayCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Birthday"
             cell.cellImageview.image            = UIImage(named: "gift")
-            cell.userDataTextField.sh_setShouldChangeCharactersInRange { (textField, range, string) -> Bool in
+            cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
                 }
-                return true
             }
         }
         
@@ -178,7 +190,6 @@ class SignUpVC: UIViewController {
         private func fill(cell: SignUpButtonCell, delegate: SignUpButtonCellDelegate) {
             cell.delegate = delegate
         }
-        
     }
     
     //MARK: Lifecycle
@@ -197,23 +208,8 @@ class SignUpVC: UIViewController {
     
     fileprivate func insertTrainerRow() {
         let indexPath = IndexPath(row:1, section:0)
-        self.cellsInfo.insert(.selectTrainer(trainerName: self.trainer.trainerName), at: 1)
+        self.cellsInfo.insert(.selectTrainer(trainerName: self.trainerData.name), at: 1)
         self.signUpTableView.insertRows(at: [indexPath], with: .fade)
-    }
-    
-    fileprivate func addTrainer(isTrainer: Bool) {
-        let indexPath = IndexPath(row:1, section:0)
-        if let _ = self.signUpTableView.cellForRow(at: indexPath) as? ChooseTrainerCell {
-            if isTrainer {
-                deleteTrainerRow()
-            }
-            
-        }else {
-            if isTrainer {
-                return
-            }
-            insertTrainerRow()
-        }
     }
 }
 
@@ -231,17 +227,20 @@ extension SignUpVC: UITableViewDataSource {
             
             switch cellType {
             case .name:
-                self.personalData.name       = text
-                self.trainerPersonalData?.name       = text
+                self.client.name        = text
+                self.trainer.name       = text
             case .password:
-                self.personalData.password   = text
-                self.trainerPersonalData?.password       = text
+                
+                self.client.password    = text
+                self.trainer.password   = text
             case .email:
-                self.personalData.email      = text
-                self.trainerPersonalData?.email       = text
+                
+                self.client.email       = text
+                self.trainer.email      = text
             case .birthday:
-                self.personalData.birthday   = text
-                self.trainerPersonalData?.birthday       = text
+                
+                self.client.birthday    = text
+                self.trainer.birthday   = text
             default:
                 return
             }
@@ -259,44 +258,6 @@ extension SignUpVC: UITableViewDelegate {
     }
 }
 
-private extension SignUpVC {
-    
-    func setParametersForRequest() {
-        
-        clientPersonalData.trainerId = 11
-    }
-    
-    func registerClient(){
-        setParametersForRequest()
-        registerClient { error in
-            if error == nil {
-                //go to login
-            }
-        }
-    }
-    
-    func registerTrainer() {
-        setParametersForRequest()
-        registerTrainer { error in
-            if error == nil {
-                //go to login
-            }
-        }
-    }
-    
-    private func registerClient(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
-        User.registerClient(personalData: personalData, completion: { signUpInfo, error in
-            completion(error)
-        })
-    }
-    
-    private func registerTrainer(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
-        Trainer.registerTrainer(personalData: trainerPersonalData!, completion: { signUpInfo, error in
-            completion(error)
-        })
-    }
-}
-
 extension SignUpVC: SignUpButtonCellDelegate {
     
     func termsButtonPressed(on cell: SignUpButtonCell) {
@@ -304,13 +265,21 @@ extension SignUpVC: SignUpButtonCellDelegate {
     }
     
     func signUpButtonPressed(on cell: SignUpButtonCell) {
-        setParametersForRequest()
+        self.user?.signUp(completion: { (user, error) in
+            if error == nil {
+                self.delegate?.signUpSuccessfull(on: self)
+            }
+        })
     }
 }
 
 extension SignUpVC: QuestionCellDelegate {
     func isTrainer(_ isTrainer: Bool, on cell: QuestionCell) {
-        addTrainer(isTrainer: isTrainer)
+        if isTrainer {
+            self.user = self.trainer
+        } else {
+            self.user = self.client
+        }
     }
 }
 

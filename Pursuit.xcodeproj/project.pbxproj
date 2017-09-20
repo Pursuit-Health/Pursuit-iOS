@@ -67,6 +67,7 @@
 		783484311F71B05100C58191 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484301F71B05100C58191 /* Trainer.swift */; };
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
+		784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
@@ -212,6 +213,8 @@
 		783484301F71B05100C58191 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
+		784734F11F72FB9D00FE5B1C /* UITextField+BBBPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BBBPattern.h"; sourceTree = "<group>"; };
+		784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BBBPattern.m"; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
@@ -660,6 +663,16 @@
 				78383B441F72A8BF00AA75E3 /* SignInMapper.swift */,
 			);
 			name = SignInMapper;
+			sourceTree = "<group>";
+		};
+		784734F01F72FB9D00FE5B1C /* UITextField+BBBPattern */ = {
+			isa = PBXGroup;
+			children = (
+				784734F11F72FB9D00FE5B1C /* UITextField+BBBPattern.h */,
+				784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */,
+			);
+			name = "UITextField+BBBPattern";
+			path = "CALayer+BBBProperty/UITextField+BBBPattern";
 			sourceTree = "<group>";
 		};
 		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
@@ -1127,6 +1140,7 @@
 				84AB4D7C1F3282AC00531740 /* TableView+BBBExtension */,
 				84AB4D781F3282A400531740 /* NSObject+BBBMultyThhreading */,
 				84AB4D741F32829900531740 /* CALayer+BBBProperty */,
+				784734F01F72FB9D00FE5B1C /* UITextField+BBBPattern */,
 				84AB4D701F32826700531740 /* BBBXIBView */,
 			);
 			name = External;
@@ -1525,6 +1539,7 @@
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
+				784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */,
 				780D8E901F4360FE0030A992 /* Template.swift in Sources */,
 				78094A291F5BD958001325B4 /* KeychainService.swift in Sources */,
 				782B82FF1F71256D00A019AC /* SignUpDataCell.swift in Sources */,

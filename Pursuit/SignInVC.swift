@@ -17,31 +17,13 @@ class SignInVC: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var emailLabel           : UILabel!
-    @IBOutlet weak var passwordLabel        : UILabel!
-    
     @IBOutlet weak var emailTeaxtField      : AnimatedTextField!
     @IBOutlet weak var passwordTextField    : AnimatedTextField!
-    
-    @IBOutlet var bottomEmailConstraint     : NSLayoutConstraint!
-    @IBOutlet var bottomPasswordConstraint  : NSLayoutConstraint!
     
     //MARK: Variables
     
     weak var delegate: SignInVCDelegate?
-    
-    var textFieldsArray: [AnimatedTextField] {
-        return [self.emailTeaxtField, self.passwordTextField]
-    }
-    
-    var constraintsDictionary: [AnimatedTextField : NSLayoutConstraint] {
-        return [emailTeaxtField:bottomEmailConstraint, passwordTextField:bottomPasswordConstraint]
-    }
-    
-    var labelsDictionary : [AnimatedTextField : UILabel] {
-        return [emailTeaxtField:emailLabel, passwordTextField:passwordLabel]
-    }
-    
+
     var user: User?
     
     var loginData = User()
@@ -49,8 +31,7 @@ class SignInVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func signInButtonPressed(_ sender: Any) {
-        setParametersforRequest()
-        makeSignIn()
+              makeSignIn()
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
@@ -67,8 +48,7 @@ class SignInVC: UIViewController {
     //MARK: Private
     
     private func setParametersforRequest() {
-        loginData.email = "igor1994ma@gmail.com"
-        loginData.password = "123456789"
+  
     }
     
     private func showForgotPasswordVC() {
@@ -101,8 +81,10 @@ private extension SignInVC {
     }
     
     //TODO: Wehy we always send back sing completion?
-    func makeSignIn(completion: @escaping (_ error: ErrorProtocol?)-> Void) {
-        User.login(loginData: loginData, completion: { _, error in
+    private func makeSignIn(completion: @escaping (_ error: ErrorProtocol?)-> Void) {
+        
+        print(emailTeaxtField.text)
+        User.login(email: emailTeaxtField.text ?? "", password: passwordTextField.text ?? "", completion: { _, error in
             if error == nil {
                 self.delegate?.lofinSuccessfull(on: self)
             }
@@ -122,9 +104,6 @@ extension SignInVC: ForgotPasswordVCDelegate {
 //MARK: UITextFieldDelegate
 extension SignInVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        makeTextFieldsFirstResponder(textFieldsArray, textField)
-        
         return true
     }
     

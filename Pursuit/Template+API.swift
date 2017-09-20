@@ -44,7 +44,7 @@ extension Template {
         api.getTemplateWithExercises(templateId: templateId, completion: completion)
     }
     
-    class func deleteTemplate(templateId: String, personalData: User.PersonalData, completion: @escaping DeleteTemplateCompletion) {
+    class func deleteTemplate(templateId: String, personalData: User, completion: @escaping DeleteTemplateCompletion) {
         let api = PSAPI()
         
         api.deleteTemplate(templateId: templateId, personalData: personalData.toJSON(), completion: completion)

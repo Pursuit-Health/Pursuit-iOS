@@ -7,21 +7,15 @@
 //
 
 extension Trainer {
-    typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    //MARK: Typealias
     
     typealias GetTrainersCompletion     = (_ user: [Trainer]?, _ error: ErrorProtocol?) -> Void
     
-    
-    class func registerTrainer(personalData: Trainer, completion: @escaping RegisterTrainerCompletion) {
-        let api = PSAPI()
-        
-        api.registerTrainer(personalData: personalData.toJSON(), completion: completion)
-    }
-    
+    //MARK: Public
     class func getTrainers(completion: @escaping GetTrainersCompletion) {
         let api = PSAPI()
         
         api.getTrainers(completion: completion)
     }
-    
 }

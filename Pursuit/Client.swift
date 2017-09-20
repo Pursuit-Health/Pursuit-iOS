@@ -9,25 +9,34 @@
 import ObjectMapper
 
 class Client: User {
-
+    
+    //MARK: Typealias
+    
+    typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
     //MARK: Private.Properties
     
     var trainer: Trainer?
     
     //MARK: Mappable
     
-     override func mapping(map: Map) {
+    override func mapping(map: Map) {
         super.mapping(map: map)
-       self.trainer <- map["userable"]
+        if map.mappingType == .fromJSON && self.id == nil {
+            self.id <- map["id"]
+        } else if map.mappingType == .toJSON {
+            self.id <- map["id"]
+        }
     }
     
-   override init() {
-    super.init()
+    override func createSignUpParameters() -> [String : String] {
+        var parameters = super.createSignUpParameters()
+        parameters["trainer_id"] = "\(self.id ?? 0)"
+        return parameters
     }
     
-    required init?(map: Map) {
-       super.init(map: map)
+    override func signUp(completion: @escaping RegisterClientCompletion) {
+        let api = PSAPI()
+        api.registerClient(personalData: self.createSignUpParameters(), completion: completion)
     }
-    
-
 }

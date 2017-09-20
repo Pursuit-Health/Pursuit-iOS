@@ -12,7 +12,6 @@ extension User {
     //MARK: Typealias
     
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
-    typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias ForgotPasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias SetPasswordCompletion     = (_ error: ErrorProtocol?) -> Void
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
@@ -20,17 +19,12 @@ extension User {
     
 
     //MARK: Public
+
     
-    class func registerClient(personalData: Trainer, completion: @escaping RegisterClientCompletion) {
+    class func login(email: String, password: String, completion: @escaping LoginCompletion) {
         let api = PSAPI()
         
-        api.registerClient(personalData: personalData.toJSON(), completion: completion)
-    }
-    
-    class func login(loginData: User, completion: @escaping LoginCompletion) {
-        let api = PSAPI()
-        
-        api.login(loginData: loginData.toJSON()) { (user, error) in
+        api.login(email: email, password: password) { (user, error) in
             
             if let user = user {
                 if let token = user.token {

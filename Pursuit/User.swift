@@ -32,17 +32,36 @@ class User: Mappable {
     var birthday            : String?
     var token               : String?
     var avatar              : String?
+    var signInName : String?
     
     func mapping(map: Map) {
-        self.name            <- map["data.name"]
-        self.email           <- map["data.email"]
-        self.password        <- map["data.password"]
-        self.birthday        <- map["data.birthday"]
-        self.token           <- map["meta.token"]
+        self.name            <- map["user.data.name"]
+        self.email           <- map["user.data.email"]
+        self.password        <- map["user.data.password"]
+        self.birthday        <- map["user.data.birthday"]
+        self.id              <- map["user.data.userable.data.id"]
     }
     
     init() {}
     required init?(map: Map) {
+        
+    }
+    
+    func createSignUpParameters() -> [String : String] {
+        var dictionary: [String:String] = [:]
+        dictionary["name"] = self.name
+        dictionary["email"] = self.email
+        dictionary["password"] = self.password
+        dictionary["birthday"] = self.birthday
+        
+        return dictionary
+    }
+    
+    //MARK: Public
+    
+    typealias RegisterCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    func signUp(completion: @escaping RegisterCompletion) {
         
     }
 }

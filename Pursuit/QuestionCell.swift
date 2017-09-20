@@ -24,7 +24,7 @@ class QuestionCell: UITableViewCell {
     }
     @IBOutlet weak var trainerIsSelectedView: UserTypeView! {
         didSet {
-            self.trainerIsSelectedView.isSelected = true
+            self.trainerIsSelectedView.isSelected = false
             self.trainerIsSelectedView.userTypeLabel.text = "Yes"
         }
     }

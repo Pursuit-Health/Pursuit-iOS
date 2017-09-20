@@ -74,12 +74,16 @@
                                                             <action selector="addPhotoButtonPressed:" destination="Nag-E4-VC3" eventType="touchUpInside" id="tsA-FK-5Vz"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="ESI-Mo-FkG">
-                                                        <rect key="frame" x="137" y="83" width="100" height="100"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="ESI-Mo-FkG">
+                                                        <rect key="frame" x="94" y="40" width="186" height="186"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="100" id="d6m-ds-5fG"/>
-                                                            <constraint firstAttribute="width" constant="100" id="kgU-Gx-asO"/>
+                                                            <constraint firstAttribute="width" secondItem="ESI-Mo-FkG" secondAttribute="height" id="GZZ-eI-C1B"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                                                <real key="value" value="50"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -87,6 +91,7 @@
                                                     <constraint firstItem="ESI-Mo-FkG" firstAttribute="centerY" secondItem="SXY-Lf-I3h" secondAttribute="centerY" id="8A9-6b-8tD"/>
                                                     <constraint firstItem="ced-45-HAB" firstAttribute="top" secondItem="SXY-Lf-I3h" secondAttribute="top" constant="20" id="GT9-PI-tmi"/>
                                                     <constraint firstAttribute="trailing" secondItem="ced-45-HAB" secondAttribute="trailing" constant="20" id="i34-lO-HdY"/>
+                                                    <constraint firstItem="ESI-Mo-FkG" firstAttribute="height" secondItem="SXY-Lf-I3h" secondAttribute="height" multiplier="0.7" id="ov4-PE-2cP"/>
                                                     <constraint firstItem="ESI-Mo-FkG" firstAttribute="centerX" secondItem="SXY-Lf-I3h" secondAttribute="centerX" id="vTp-8q-yFI"/>
                                                 </constraints>
                                             </view>
@@ -140,6 +145,7 @@
                     <connections>
                         <outlet property="addPhotoButton" destination="ced-45-HAB" id="hqP-sU-iiE"/>
                         <outlet property="authStateScrollView" destination="uaf-R5-T8N" id="DLA-AS-K9g"/>
+                        <outlet property="profilePhotoImageView" destination="ESI-Mo-FkG" id="RMM-W3-iML"/>
                         <outlet property="viewForPageController" destination="juF-RJ-xKS" id="H2R-JW-N5p"/>
                         <segue destination="iE0-gJ-nPe" kind="show" identifier="ShowTrainerStoryboard" id="iSM-0s-8UD"/>
                     </connections>
@@ -274,10 +280,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="wVI-aM-Ohw">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzy-jd-8AL" customClass="DezappTextField" customModule="Pursuit" customModuleProvider="target">
-                                <rect key="frame" x="73" y="70" width="266" height="19"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="igor1994makara@gmail.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzy-jd-8AL" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
+                                <rect key="frame" x="73" y="70" width="266" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="ixA-Zp-Onc"/>
+                                    <constraint firstAttribute="height" constant="40" id="ixA-Zp-Onc"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -286,22 +292,25 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="NEK-EH-cs2" id="njE-Fc-b8I"/>
                                 </connections>
                             </textField>
                             <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPJ-QL-DQZ">
-                                <rect key="frame" x="36" y="100" width="303" height="1"/>
+                                <rect key="frame" x="36" y="121" width="303" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="fZE-fC-mYO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddL-Oq-hge" customClass="DezappTextField" customModule="Pursuit" customModuleProvider="target">
-                                <rect key="frame" x="73" y="132" width="266" height="19"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456789" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddL-Oq-hge" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
+                                <rect key="frame" x="73" y="153" width="266" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="wI8-kB-jFQ"/>
+                                    <constraint firstAttribute="height" constant="40" id="wI8-kB-jFQ"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -310,20 +319,23 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="NEK-EH-cs2" id="U1x-gT-88O"/>
                                 </connections>
                             </textField>
                             <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c60-Nd-Nuf">
-                                <rect key="frame" x="36" y="162" width="303" height="1"/>
+                                <rect key="frame" x="36" y="204" width="303" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="FDI-8q-sZi"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6p-CK-oA0" customClass="DezappButton" customModule="Pursuit" customModuleProvider="target">
-                                <rect key="frame" x="36" y="308" width="303" height="45"/>
+                                <rect key="frame" x="36" y="350" width="303" height="45"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="4bQ-SG-wKD"/>
@@ -337,35 +349,35 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_username" translatesAutoresizingMaskIntoConstraints="NO" id="36j-Ml-tM4">
-                                <rect key="frame" x="40" y="68" width="22" height="22"/>
+                                <rect key="frame" x="40" y="89" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="YE5-mc-5dJ"/>
                                     <constraint firstAttribute="height" constant="22" id="iqU-Cq-eej"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_password" translatesAutoresizingMaskIntoConstraints="NO" id="bZa-pk-ERT">
-                                <rect key="frame" x="40" y="130" width="22" height="22"/>
+                                <rect key="frame" x="40" y="172" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="762-MI-7GM"/>
                                     <constraint firstAttribute="height" constant="22" id="hym-XM-eof"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHX-Z3-q50" userLabel="ProportionSeparatorView">
-                                <rect key="frame" x="188" y="171" width="0.0" height="123"/>
+                                <rect key="frame" x="188" y="213" width="0.0" height="123"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="DiN-Zy-YDu"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qC2-0j-szA">
-                                <rect key="frame" x="188" y="353" width="0.0" height="24"/>
+                                <rect key="frame" x="188" y="395" width="0.0" height="24"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="6sX-wb-Leb"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IlK-dF-Eem" customClass="DezappButton" customModule="Pursuit" customModuleProvider="target">
-                                <rect key="frame" x="36" y="377" width="303" height="24"/>
+                                <rect key="frame" x="36" y="419" width="303" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="ze2-L3-wcn"/>
                                 </constraints>
@@ -382,37 +394,21 @@
                                     <action selector="forgotPasswordButtonPressed:" destination="NEK-EH-cs2" eventType="touchUpInside" id="15p-6Z-yLh"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2R-Oo-tkn">
-                                <rect key="frame" x="73" y="73" width="35" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6K-ei-f7b">
-                                <rect key="frame" x="73" y="135" width="63" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="c60-Nd-Nuf" firstAttribute="top" secondItem="ddL-Oq-hge" secondAttribute="bottom" constant="11" id="4ry-Lp-vLy"/>
-                            <constraint firstItem="P2R-Oo-tkn" firstAttribute="leading" secondItem="rzy-jd-8AL" secondAttribute="leading" id="6g2-ko-BhP"/>
                             <constraint firstItem="IlK-dF-Eem" firstAttribute="leading" secondItem="R6p-CK-oA0" secondAttribute="leading" id="76P-ip-JmS"/>
-                            <constraint firstItem="rzy-jd-8AL" firstAttribute="top" secondItem="P2R-Oo-tkn" secondAttribute="bottom" constant="-20" id="9hJ-L4-Naz"/>
                             <constraint firstItem="rzy-jd-8AL" firstAttribute="leading" secondItem="36j-Ml-tM4" secondAttribute="trailing" constant="11" id="E59-wZ-TUI"/>
                             <constraint firstItem="ddL-Oq-hge" firstAttribute="top" secondItem="gPJ-QL-DQZ" secondAttribute="bottom" constant="31" id="Gq4-YW-5ms"/>
                             <constraint firstItem="qC2-0j-szA" firstAttribute="top" secondItem="R6p-CK-oA0" secondAttribute="bottom" id="HeF-Ue-TXu"/>
                             <constraint firstItem="R6p-CK-oA0" firstAttribute="top" secondItem="dHX-Z3-q50" secondAttribute="bottom" constant="14" id="HmZ-fV-PSa"/>
                             <constraint firstAttribute="trailing" secondItem="wVI-aM-Ohw" secondAttribute="trailing" id="I2k-Xo-CLF"/>
-                            <constraint firstItem="u6K-ei-f7b" firstAttribute="leading" secondItem="ddL-Oq-hge" secondAttribute="leading" id="IJc-C6-TG4"/>
                             <constraint firstItem="c60-Nd-Nuf" firstAttribute="top" secondItem="bZa-pk-ERT" secondAttribute="bottom" constant="10" id="JaD-WC-LsT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rzy-jd-8AL" secondAttribute="trailing" constant="20" id="MTU-7h-zSE"/>
                             <constraint firstItem="ddL-Oq-hge" firstAttribute="trailing" secondItem="rzy-jd-8AL" secondAttribute="trailing" id="Mgk-rj-bAx"/>
                             <constraint firstItem="gPJ-QL-DQZ" firstAttribute="top" secondItem="rzy-jd-8AL" secondAttribute="bottom" constant="11" id="P8Y-FR-bfA"/>
                             <constraint firstItem="wVI-aM-Ohw" firstAttribute="leading" secondItem="Jq3-RL-vXK" secondAttribute="leading" id="Pa1-s0-IPU"/>
-                            <constraint firstItem="ddL-Oq-hge" firstAttribute="top" secondItem="u6K-ei-f7b" secondAttribute="bottom" constant="-20" id="Q5q-O7-clr"/>
                             <constraint firstItem="c60-Nd-Nuf" firstAttribute="trailing" secondItem="gPJ-QL-DQZ" secondAttribute="trailing" id="SdW-1W-92H"/>
                             <constraint firstItem="dHX-Z3-q50" firstAttribute="top" secondItem="c60-Nd-Nuf" secondAttribute="bottom" constant="8" id="VZ1-Ko-9a1"/>
                             <constraint firstItem="IlK-dF-Eem" firstAttribute="top" secondItem="qC2-0j-szA" secondAttribute="bottom" id="Yg2-Z4-hl7"/>
@@ -436,11 +432,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomEmailConstraint" destination="9hJ-L4-Naz" id="GkK-gj-zCN"/>
-                        <outlet property="bottomPasswordConstraint" destination="Q5q-O7-clr" id="t75-ms-8oN"/>
-                        <outlet property="emailLabel" destination="P2R-Oo-tkn" id="4o5-FA-Ns4"/>
                         <outlet property="emailTeaxtField" destination="rzy-jd-8AL" id="JLy-RK-oBx"/>
-                        <outlet property="passwordLabel" destination="u6K-ei-f7b" id="iOl-ne-AP5"/>
                         <outlet property="passwordTextField" destination="ddL-Oq-hge" id="DiU-M0-04T"/>
                     </connections>
                 </viewController>
