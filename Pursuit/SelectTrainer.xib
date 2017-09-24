@@ -31,21 +31,22 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJw-cc-EgQ">
-                        <rect key="frame" x="79" y="111" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJw-cc-EgQ">
+                        <rect key="frame" x="10" y="111" width="180" height="16.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.18823529410000001" green="0.83529411760000005" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="uFk-E1-dFZ" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.6" id="8SP-uA-s1k"/>
+                <constraint firstItem="cJw-cc-EgQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="KSF-tG-idL"/>
+                <constraint firstAttribute="trailing" secondItem="cJw-cc-EgQ" secondAttribute="trailing" constant="10" id="NpY-nJ-yVC"/>
                 <constraint firstItem="uFk-E1-dFZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="O9k-M4-Rrg"/>
                 <constraint firstItem="uFk-E1-dFZ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TW6-KA-NPs"/>
-                <constraint firstItem="cJw-cc-EgQ" firstAttribute="centerX" secondItem="uFk-E1-dFZ" secondAttribute="centerX" id="Upm-2l-U6T"/>
                 <constraint firstItem="cJw-cc-EgQ" firstAttribute="top" secondItem="uFk-E1-dFZ" secondAttribute="bottom" id="zQw-cB-yBI"/>
             </constraints>
             <size key="customSize" width="200" height="185"/>

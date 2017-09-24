@@ -15,32 +15,30 @@ class Template: Mappable {
     class Exercises: Mappable {
         
         //MARK: Variables
-        
+        var exerciseId  : Int?
         var name        : String?
         var type        : String?
-        var exercisable : Exercises?
+        
+        
         var times       : Int?
         var count       : Int?
         var weight      : Int?
-        var exercisesId : Int?
-        var data        : Exercises?
-        var dataArray   : [Exercises]?
-        var execiseId    : Int?
         
         //MARK: Mappable
         
         func mapping(map: Map) {
+            
+            self.exerciseId         <- map["id"]
             self.name               <- map["name"]
             self.type               <- map["type"]
-            self.exercisable        <- map["exercisable"]
-            self.times              <- map["times"]
-            self.count              <- map["count"]
-            self.weight             <- map["weight"]
-            self.exercisesId        <- map["id"]
-            self.dataArray          <- map["data"]
-            self.data               <- map["data"]
-            self.exercisesId        <- map["id"]
+           
+            self.times              <- map["data.times"]
+            self.count              <- map["data.count"]
+            self.weight             <- map["data.weight"]
+      
         }
+        
+        init() {}
         
         required init?(map: Map) {
             
@@ -52,6 +50,8 @@ class Template: Mappable {
     var name            : String?
     var time            : Int?
     var imageId         : Int?
+    var exercises       : [Exercises]?
+    var exercisesForUpload : [Exercises]?
 
     //MARK: Mappable
     
@@ -60,8 +60,11 @@ class Template: Mappable {
         self.time               <- map["time"]
         self.imageId            <- map["image_id"]
         self.templateId         <- map["id"]
+        self.exercises          <- map["exercises.data"]
+        self.exercisesForUpload <- map["exercises"]
     }
     
+   init() {}
     required init?(map: Map) {
         
     }

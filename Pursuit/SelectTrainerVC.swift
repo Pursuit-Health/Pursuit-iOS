@@ -16,7 +16,7 @@ class SelectTrainerVC: UIViewController {
     
     //MARK: Constants
     
-     struct Constants {
+    struct Constants {
         struct Cell {
             var nibName: String
             var identifier: String
@@ -36,11 +36,30 @@ class SelectTrainerVC: UIViewController {
         }
     }
     
+    
+    @IBOutlet weak var trainerSearchBar: UISearchBar! {
+        didSet {
+            trainerSearchBar.backgroundImage    = UIImage()
+            if let searchField = trainerSearchBar.value(forKey: "_searchField") as? UITextField {
+                searchField.borderStyle         = .none
+                searchField.backgroundColor     = .clear
+                searchField.textColor           = .white
+                searchField.font                = UIFont(name: "Avenir", size: 15)
+            }
+        }
+    }
+    
     //MARK: Variables
     
     weak var delegate: SelectTrainerVCDelegate?
-   
+    
     var trainers: [Trainer] = []
+    
+    var filteredTrainers: [Trainer] = [] {
+        didSet {
+            self.selectTrainerCollectionView.reloadData()
+        }
+    }
     
     //MARK: IBActions
     
@@ -52,37 +71,30 @@ class SelectTrainerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         setUpBackgroundImage()
         
         loadTrainers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.setAppearence()
         navigationController?.navigationBar.isHidden = false
     }
 }
 
 extension SelectTrainerVC {
-    func loadTrainers() {
-        loadTrainersRequest { error in
-            if error == nil {
-                self.selectTrainerCollectionView.reloadData()
-            }
-        }
-    }
     
-    private func loadTrainersRequest(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
+     fileprivate func loadTrainers(){
         Trainer.getTrainers(completion: { trainersInfo, error in
             if let data = trainersInfo {
-               self.trainers = data
+                self.trainers = data
+                self.filteredTrainers = data
             }
-            completion(error)
         })
     }
-
+    
     fileprivate func userDidSelectTrainerWithId(trainer: Trainer) {
         delegate?.trainerSelectedWithId(trainer: trainer)
     }
@@ -90,13 +102,13 @@ extension SelectTrainerVC {
 
 extension SelectTrainerVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.trainers.count
+        return self.filteredTrainers.count
     }
     
     //TODO: Make Bindable
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.trainer.identifier, for: indexPath) as? SelectTrainer else { return UICollectionViewCell() }
-        let trainerData = trainers[indexPath.row]
+        let trainerData = filteredTrainers[indexPath.row]
         cell.profilePhotoImageView.image = UIImage(named: "avatar1")
         cell.trainerNameLabel.text = trainerData.name
         
@@ -108,14 +120,25 @@ extension SelectTrainerVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let trainerData = trainers[indexPath.row]
-
+        
         userDidSelectTrainerWithId(trainer: trainerData)
     }
 }
 
 extension SelectTrainerVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = UIScreen.main.bounds
-        return CGSize(width: ((size.width-20)/3)-1, height: size.width/3)
+        let size = self.selectTrainerCollectionView.bounds
+        return CGSize(width: ((size.width - 20) / 3) - 1, height: size.width / 3)
+    }
+}
+
+extension SelectTrainerVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchText = searchBar.text else { return }
+        if searchText == "" {
+            self.filteredTrainers = self.trainers
+        }else {
+            self.filteredTrainers = self.trainers.filter{ $0.name?.contains(searchText) ?? false }
+        }
     }
 }

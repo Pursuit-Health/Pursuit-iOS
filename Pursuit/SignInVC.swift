@@ -42,7 +42,7 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     //MARK: Private
@@ -75,15 +75,18 @@ private extension SignInVC {
     func makeSignIn(){
         makeSignIn { error in
             if error == nil {
-                //go to login
+//                
+//                User.refreshToken(completion: { (error) in
+//                    if error == nil {
+//                        
+//                    }
+//                })
             }
         }
     }
     
     //TODO: Wehy we always send back sing completion?
     private func makeSignIn(completion: @escaping (_ error: ErrorProtocol?)-> Void) {
-        
-        print(emailTeaxtField.text)
         User.login(email: emailTeaxtField.text ?? "", password: passwordTextField.text ?? "", completion: { _, error in
             if error == nil {
                 self.delegate?.lofinSuccessfull(on: self)

@@ -150,11 +150,15 @@ class MainAuthVC: UIViewController {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    func uploadImage() {
-        let image = UIImage(named: "avatar1")
-        let data = UIImagePNGRepresentation(image!) as NSData?
-        User.uploadAvatar(data: data! as Data) { success in
+    fileprivate func uploadImage() {
+        
+        guard let image = profilePhotoImageView.image else { return }
+        
+        let data = UIImagePNGRepresentation(image) as NSData?
+        User.uploadAvatar(data: data! as Data) { error in
+            if (error == nil) {
             
+            }
         }
     }
 }
@@ -216,13 +220,14 @@ extension MainAuthVC: SignInVCDelegate {
     
     
     func signUpSuccessfull(on controller: SignUpVC) {
+        
+        uploadImage()
         performSegue(withIdentifier: Constants.SeguesIDs.Trainer, sender: self)
     }
 }
 
 extension MainAuthVC: SignUpVCDelegate {
     func showSelectTrainerVC(on controller: SignUpVC) {
-        
         if let controller = selectTrainerVC {
             self.navigationController?.pushViewController(controller, animated: true)
         }

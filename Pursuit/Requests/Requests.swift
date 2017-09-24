@@ -52,8 +52,7 @@ extension RequestConvertible {
         jar.setCookies(cookies, for: url, mainDocumentURL: url)
     }
     
-    private func set(headers: Headers, request: URLRequest) {
-        var request = request
+    private func set(headers: Headers, request: inout URLRequest) {
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
@@ -66,7 +65,7 @@ extension RequestConvertible {
         }
         
         if let headers = self.headers {
-            self.set(headers: headers, request: request)
+            self.set(headers: headers, request: &request)
         }
         
         if let cookies = self.cookies, let url = request.url {

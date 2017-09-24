@@ -16,6 +16,7 @@ extension User {
     typealias SetPasswordCompletion     = (_ error: ErrorProtocol?) -> Void
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
+    typealias RefreshTokenCompletion    = (_ error: ErrorProtocol?) -> Void
     
 
     //MARK: Public
@@ -33,6 +34,11 @@ extension User {
             }
             completion(user, error)
         }
+    }
+    
+    class func refreshToken(completion: @escaping RefreshTokenCompletion) {
+        let api = PSAPI()
+        api.refreshToken(completion: completion)
     }
     
     class func forgotPassword(email: String, completion: @escaping ForgotPasswordCompletion) {

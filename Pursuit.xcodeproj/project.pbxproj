@@ -68,6 +68,12 @@
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
 		784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */; };
+		78473BD01F742CEA0067DA1F /* SelectClientsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BCF1F742CEA0067DA1F /* SelectClientsVC.swift */; };
+		78473BD41F742D7E0067DA1F /* SelectClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BD21F742D7D0067DA1F /* SelectClientCell.swift */; };
+		78473BD51F742D7E0067DA1F /* SelectClientCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BD31F742D7E0067DA1F /* SelectClientCell.xib */; };
+		78473BD81F745B7F0067DA1F /* AddExerceiseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BD71F745B7F0067DA1F /* AddExerceiseVC.swift */; };
+		78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */; };
+		78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
@@ -215,6 +221,12 @@
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
 		784734F11F72FB9D00FE5B1C /* UITextField+BBBPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BBBPattern.h"; sourceTree = "<group>"; };
 		784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BBBPattern.m"; sourceTree = "<group>"; };
+		78473BCF1F742CEA0067DA1F /* SelectClientsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientsVC.swift; sourceTree = "<group>"; };
+		78473BD21F742D7D0067DA1F /* SelectClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientCell.swift; sourceTree = "<group>"; };
+		78473BD31F742D7E0067DA1F /* SelectClientCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectClientCell.xib; sourceTree = "<group>"; };
+		78473BD71F745B7F0067DA1F /* AddExerceiseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerceiseVC.swift; sourceTree = "<group>"; };
+		78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
+		78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExerciseCell.xib; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
@@ -473,12 +485,12 @@
 			name = Template;
 			sourceTree = "<group>";
 		};
-		780D8E941F44DABF0030A992 /* UINavigationBar */ = {
+		780D8E941F44DABF0030A992 /* UINavigationBar+Appearance */ = {
 			isa = PBXGroup;
 			children = (
 				780D8E951F44DAD90030A992 /* UINavigationBar.swift */,
 			);
-			name = UINavigationBar;
+			name = "UINavigationBar+Appearance";
 			sourceTree = "<group>";
 		};
 		780ECFD91F58785E0009E6A6 /* UITextField */ = {
@@ -673,6 +685,40 @@
 			);
 			name = "UITextField+BBBPattern";
 			path = "CALayer+BBBProperty/UITextField+BBBPattern";
+			sourceTree = "<group>";
+		};
+		78473BCE1F742C580067DA1F /* SelectClients */ = {
+			isa = PBXGroup;
+			children = (
+				78473BCF1F742CEA0067DA1F /* SelectClientsVC.swift */,
+			);
+			name = SelectClients;
+			sourceTree = "<group>";
+		};
+		78473BD11F742D3D0067DA1F /* SelectClientsCell */ = {
+			isa = PBXGroup;
+			children = (
+				78473BD21F742D7D0067DA1F /* SelectClientCell.swift */,
+				78473BD31F742D7E0067DA1F /* SelectClientCell.xib */,
+			);
+			name = SelectClientsCell;
+			sourceTree = "<group>";
+		};
+		78473BD61F745B590067DA1F /* AddExercise */ = {
+			isa = PBXGroup;
+			children = (
+				78473BD71F745B7F0067DA1F /* AddExerceiseVC.swift */,
+			);
+			name = AddExercise;
+			sourceTree = "<group>";
+		};
+		78473BD91F745B930067DA1F /* AddExerciseCell */ = {
+			isa = PBXGroup;
+			children = (
+				78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */,
+				78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */,
+			);
+			name = AddExerciseCell;
 			sourceTree = "<group>";
 		};
 		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
@@ -914,6 +960,8 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				78473BD61F745B590067DA1F /* AddExercise */,
+				78473BCE1F742C580067DA1F /* SelectClients */,
 				788EE89E1F379A9F00DD8A98 /* CreateTemplateVC */,
 				788EE8961F34DD3000DD8A98 /* TrainingVC */,
 				842EBD2C1F33144300A3169F /* TemplatesVC */,
@@ -1028,6 +1076,8 @@
 		84AB4D651F32810C00531740 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				78473BD91F745B930067DA1F /* AddExerciseCell */,
+				78473BD11F742D3D0067DA1F /* SelectClientsCell */,
 				78E443871F40DF9200525F7A /* ScheduleClient */,
 				788EE8991F34E65900DD8A98 /* TrainingCell */,
 				842EBD2D1F33162B00A3169F /* CalendarCell */,
@@ -1091,7 +1141,7 @@
 				780ECFD91F58785E0009E6A6 /* UITextField */,
 				7804AF441F55FE4600CE5780 /* CellState */,
 				78BBA6831F4B639A0037E7DF /* UIBarButtonItem+label */,
-				780D8E941F44DABF0030A992 /* UINavigationBar */,
+				780D8E941F44DABF0030A992 /* UINavigationBar+Appearance */,
 				84AB4D6D1F32820100531740 /* UIColor+RGB */,
 				84AB4D6C1F3281DC00531740 /* UIViewController+Persuit */,
 				7892A8921F4B411900BDCD79 /* UINavigationItem+leftTitle */,
@@ -1423,8 +1473,10 @@
 				782B83141F71278D00A019AC /* QuestionCell.xib in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
+				78473BD51F742D7E0067DA1F /* SelectClientCell.xib in Resources */,
 				78CE34C41F38FDF2002BD31D /* TabPageViewController.storyboard in Resources */,
 				5BE3A1CE1EB3196A005B35CD /* SignUpCell.xib in Resources */,
+				78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */,
 				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
 				783484241F71560600C58191 /* UserTypeView.xib in Resources */,
 				782B83101F7126DC00A019AC /* ChooseTrainerCell.xib in Resources */,
@@ -1568,6 +1620,7 @@
 				780D601B1F5EAA63002A7303 /* DeepLinkService.swift in Sources */,
 				842EBD381F33188900A3169F /* ExampleBasicContentView.swift in Sources */,
 				842EBD331F33181700A3169F /* TrainerTBC.swift in Sources */,
+				78473BD81F745B7F0067DA1F /* AddExerceiseVC.swift in Sources */,
 				78CE34C31F38FDF2002BD31D /* TabPageViewController.swift in Sources */,
 				7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */,
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
@@ -1597,14 +1650,17 @@
 				783484311F71B05100C58191 /* Trainer.swift in Sources */,
 				842EBD3A1F33188900A3169F /* ExampleIrregularityContentView.swift in Sources */,
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,
+				78473BD01F742CEA0067DA1F /* SelectClientsVC.swift in Sources */,
 				782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
+				78473BD41F742D7E0067DA1F /* SelectClientCell.swift in Sources */,
 				78179B871F54977500520D08 /* User.swift in Sources */,
 				782B830F1F7126DC00A019AC /* ChooseTrainerCell.swift in Sources */,
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
 				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,
+				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

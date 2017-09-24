@@ -22,6 +22,8 @@ class TemplatesVC: UIViewController {
     
     //MARK: Variables
     
+    var isEditTemplate: Bool = false
+    
     var templatesData: [Template] = [] {
         didSet {
             self.tableView.reloadData()
@@ -30,6 +32,22 @@ class TemplatesVC: UIViewController {
     
     var templateId: String?
     
+    lazy var createTemplateVC: CreateTemplateVC? = {
+        let storyboard = UIStoryboard(name: Storyboards.Trainer, bundle: nil)
+        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.CreateTemplate)as? UINavigationController)?.visibleViewController as? CreateTemplateVC
+        
+        controller?.delegate = self
+        
+        return controller
+    }()
+    
+    //MARK: IBActions
+    
+    @IBAction func createTemplateButtonPressed(_ sender: Any) {
+        self.isEditTemplate = false
+        pushCreateTemplateVC()
+    }
+
     //MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -38,6 +56,11 @@ class TemplatesVC: UIViewController {
         setUpBackgroundImage()
         
         navigationController?.navigationBar.setAppearence()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
         
         loadTemplates()
     }
@@ -46,6 +69,30 @@ class TemplatesVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    fileprivate func pushCreateTemplateVC() {
+        guard let controller = createTemplateVC else { return }
+        
+        controller.templateId = self.templateId
+        
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    fileprivate func createTemplate(_ template: Template) {
+        Template.createTemplate(templateData: template) { (template, error) in
+            if error == nil {
+                self.loadTemplates()
+            }
+        }
+    }
+    
+    fileprivate func editTemplate(_ template: Template) {
+        Template.editTemplate(templateId: self.templateId ?? "", templateData: template) { (template, error) in
+            if error == nil {
+                self.loadTemplates()
+            }
+        }
     }
 }
 
@@ -72,7 +119,7 @@ extension TemplatesVC: UITableViewDataSource {
         guard let cell = tableView.gc_dequeueReusableCell(type: TemplateCell.self) else { return UITableViewCell() }
         let templates = templatesData[indexPath.row]
         cell.templateNameLabel.text = templates.name
-        cell.templateTimeLabel.text = "\(templates.time ?? 0)" + "minutes"
+        cell.templateTimeLabel.text = "\(templates.time ?? 0)" + " minutes"
         return cell
     }
 }
@@ -82,15 +129,19 @@ extension TemplatesVC: UITableViewDelegate {
         let templates = templatesData[indexPath.row]
         guard let id = templates.templateId else { return }
         self.templateId = "\(id)"
-        
-        performSegue(withIdentifier: Constants.Segues.CreateTemplate, sender: self)
-    }
-    
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let navController = segue.destination as? UINavigationController else { return }
-            let controller = navController.viewControllers.first as! CreateTemplateVC
-            if segue.identifier == Constants.Segues.CreateTemplate {
-                controller.templateId = self.templateId
-            }
+        self.isEditTemplate = true
+        pushCreateTemplateVC()
     }
 }
+
+extension TemplatesVC: CreateTemplateVCDelegate {
+    func saveTemplate(_ template: Template, on controllers: CreateTemplateVC) {
+        if isEditTemplate {
+            editTemplate(template)
+        }else {
+            createTemplate(template)
+        }
+    }
+}
+
+

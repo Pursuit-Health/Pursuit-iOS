@@ -35,6 +35,28 @@ class PSAPI: APIHandable {
     //MARK: Public
     
     @discardableResult
+    func refreshToken(completion: @escaping RefreshTokenCompletion) -> DataRequest? {
+        let request = Request.refreshToken()
+        return self.service.request(request: request).responseJSON { (response) in
+            var error: ErrorProtocol?
+            
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            } else {
+                if let headers  = response.response?.allHeaderFields {
+                    if let token  = headers["Authorization"] as? String {
+                        print(token)
+                        let newToken = token.replacingOccurrences(of: "Bearer", with: "")
+                        
+                        User.token = newToken
+                    }
+                }
+            }
+            completion( error)
+        }
+    }
+    
+    @discardableResult
     func registerTrainer(personalData: [String : String], completion: @escaping RegisterTrainerCompletion) -> DataRequest? {
         
         let request = Request.registerTrainer(parameters: personalData)
@@ -53,7 +75,7 @@ class PSAPI: APIHandable {
                         if type == "trainer" {
                             user = Trainer(JSON: objectData)
                         }
-                        user?.token = token
+                        User.token = token
                     }
                     
                 case .failure(let serverError):
@@ -83,7 +105,7 @@ class PSAPI: APIHandable {
                         if type == "client" {
                             user = Client(JSON: objectData)
                         }
-                        user?.token = token
+                        User.token = token
                     }
                     
                 case .failure(let serverError):
@@ -115,7 +137,7 @@ class PSAPI: APIHandable {
                         } else if type == "client" {
                             user = Client(JSON: objectData)
                         }
-                        user?.token = token
+                        User.token = token
                     }
                     
                 case .failure(let serverError):
@@ -172,9 +194,10 @@ class PSAPI: APIHandable {
     
     func uploadAvatar(data: Data, completion: @escaping ChangeAvatarCompletion) {
         guard let token = User.token else {return}
+        
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                multipartFormData.append(data, withName: "avatar")
+                multipartFormData.append(data, withName: "avatar", fileName: "image.jpg", mimeType: "image/jpeg")
                 
         },
             to: "http://dev.nerdzlab.com/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
@@ -222,27 +245,27 @@ class PSAPI: APIHandable {
     @discardableResult
     func getAllTemplates(completion: @escaping GetAllTemplatesCompletion) -> DataRequest? {
         let request = Request.getAllTemplates()
-        return self.perform(request)?.responseArray(completionHandler: { (response: DataResponse<[Template]>) in
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Template]>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
             completion(response.result.value, error)
-        })
+        }
     }
     
     @discardableResult
     func getTemplateWithExercises(templateId: String, completion: @escaping GetTemplateWithExercises) -> DataRequest? {
         let request = Request.getTemplateWithExercise(templateId: templateId)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
+        return self.perform(request)?.responseObject(keyPath: "data") { (response: DataResponse<Template>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
             }
             
             completion(response.result.value, error)
-        })
+        }
     }
     
     @discardableResult
@@ -255,13 +278,13 @@ class PSAPI: APIHandable {
     func getAllClients(completion: @escaping GetAllClientsComletion) -> DataRequest? {
         let request = Request.getAllClients()
         
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Client>) in
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Client]>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
             }
             completion(response.result.value, error)
-        })
+        }
     }
     
     @discardableResult
@@ -287,6 +310,8 @@ class PSAPI: APIHandable {
 extension PSAPI {
     
     //MARK: Typelias
+    
+    typealias RefreshTokenCompletion    = (_ error: ErrorProtocol?) -> Void
     
     typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
@@ -314,7 +339,7 @@ extension PSAPI {
     
     typealias DeleteTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
-    typealias GetAllClientsComletion    = (_ client: Client?, _ error: ErrorProtocol?) -> Void
+    typealias GetAllClientsComletion    = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
     
     typealias GetEventsInRange          = (_ event: Event?, _ error: ErrorProtocol?) -> Void
     

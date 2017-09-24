@@ -69,6 +69,10 @@ class ClientsVC: UIViewController {
        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //self.performSegue(withIdentifier: "SelectClients", sender: self)
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

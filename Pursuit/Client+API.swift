@@ -12,7 +12,7 @@ extension Client {
     
     //MARK: Typealias 
     
-    typealias GetAllClientsComletion    = (_ client: Client?, _ error: ErrorProtocol?) -> Void
+    typealias GetAllClientsComletion    = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
     
     //MARK: Public 
     

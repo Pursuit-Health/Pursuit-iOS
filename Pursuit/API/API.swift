@@ -55,6 +55,16 @@ extension APIHandable {
     
     func handle<T>(response: DataResponse<T>?) -> ErrorProtocol? {
         var error: ErrorProtocol?
+        
+        if let statusCode = response?.response?.statusCode {
+            if statusCode == 401 {
+                User.refreshToken(completion: { (error) in
+                    
+                })
+                error = PSError.somethingWentWrong
+                return error
+            }
+        }
         if let  response = response {
             if !self.isValid(response: response) {
                 if let responseError = self.error(response: response) {

@@ -6,6 +6,7 @@ extension PSAPI {
     enum Request: RequestConvertible {
         
         //MARK: Auth
+        case refreshToken()
         case registerTrainer(parameters: Parameters)
         case registerClient(parameters: Parameters)
         case login(parameters: Parameters)
@@ -26,6 +27,7 @@ extension PSAPI {
         case getAllClients()
         case getAllEventsInRange(startDate: String, endDate: String)
         case createEvent(parameters: Parameters)
+        
         
         //MARK: RequestConvertible
         
@@ -48,6 +50,8 @@ extension PSAPI {
         
         var path: String {
             switch self {
+            case .refreshToken:
+                return "auth/refresh"
             case .registerTrainer:
                 return "auth/register/trainer"
             case .registerClient:
@@ -125,7 +129,7 @@ extension PSAPI {
             guard let token = User.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getAllEventsInRange, .createEvent:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getAllEventsInRange, .createEvent, .refreshToken:
                 return "Bearer" + token
             default:
                 return ""
