@@ -26,7 +26,6 @@ class SplashVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        User.token = nil
         self.performSegue(withIdentifier: checkIfUserLoggedIn() ? Constants.SeguesIDs.Trainer: Constants.SeguesIDs.Login, sender: self)
     }
     
