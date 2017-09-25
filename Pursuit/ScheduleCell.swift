@@ -10,9 +10,15 @@ import UIKit
 
 class ScheduleCell: UICollectionViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var clientsCountLabel: UILabel!
+    @IBOutlet weak var imagesStackView: UIStackView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
 }

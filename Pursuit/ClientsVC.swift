@@ -16,7 +16,11 @@ class ClientsVC: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var searchImage: UIImageView!
     @IBOutlet weak var clientsTable: UITableView!
-    @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var searchField: UITextField! {
+        didSet {
+            self.searchField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        }
+    }
     
     //TODO: add Tabulation
     var defaultOptions = SwipeTableOptions()
@@ -42,9 +46,6 @@ class ClientsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO: Move to didSet
-        searchField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
         for index in 1...5 {
             var client = clientInfo()
             client.clientName = "Janet Rose " + String(index)
@@ -52,13 +53,6 @@ class ClientsVC: UIViewController {
             client.clientImage = UIImage(named: imgName)!
             clientList.append(client)
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         setUpBackgroundImage()
         
         navigationController?.navigationBar.setAppearence()

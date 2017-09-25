@@ -9,6 +9,12 @@
 import UIKit
 import JTAppleCalendar
 
+typealias EventsCompletion = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
+
+protocol ClientScheduleDataSource: class {
+    func updateDataSource(_ schedule: ScheduleVC, _ startDate: String, endDate: String, complation: @escaping EventsCompletion)
+}
+
 class ScheduleVC: UIViewController {
     
     fileprivate struct Constants {
@@ -46,7 +52,24 @@ class ScheduleVC: UIViewController {
             self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
         }
     }
-
+    
+    //MARK: Variables
+    
+    weak var datasource: ClientScheduleDataSource?
+    
+    var events: [Event] = [] {
+        didSet {
+            
+        }
+    }
+    
+    var filteredEvents: [Event] = [] {
+        didSet {
+            self.collectionView.reloadData()
+            self.calendarView.reloadData()
+        }
+    }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -59,9 +82,14 @@ class ScheduleVC: UIViewController {
         super.viewWillAppear(animated)
         
         calendarViewVisibleDates()
+        
         setUpBackgroundImage()
+        
+         self.tabBarController?.tabBar.isHidden = false
         //TODO: this thing is unnecessary, need to think how to change it. Do it with me.
         navigationController?.navigationBar.setAppearence()
+        
+        updateEvents()
     }
     
     //MARK: Override
@@ -80,11 +108,22 @@ class ScheduleVC: UIViewController {
             }
         }
     }
+    
+     func updateEvents() {
+        self.datasource?.updateDataSource(self, "2017-09-23", endDate: "2017-11-15", complation: { (events, error) in
+            if error == nil {
+                if let events = events {
+                self.filteredEvents = events
+                self.events = events
+                }
+            }
+        })
+    }
 }
 
 extension ScheduleVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.filteredEvents.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,6 +131,14 @@ extension ScheduleVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellInfo.identifier, for: indexPath) as? ScheduleCell else {
             return UICollectionViewCell()
         }
+        
+        let iventInfo = filteredEvents[indexPath.row]
+        cell.descriptionLabel.text  = iventInfo.location
+        cell.dateLabel.text         = (iventInfo.startAt ?? "") + "-" + (iventInfo.endAt ?? "")
+        
+        cell.clientsCountLabel.text = "\(iventInfo.clients?.count ?? 0)"
+        print("\(iventInfo.clients?[0].clientName)")
+        
         return cell
     }
 }
@@ -112,7 +159,7 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
         guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as? CalendarCell else { return JTAppleCell() }
         
         cell.dateLabel.text = cellState.text
-        let formatter       = DateFormatters.projectFormatFormatter
+        let formatter       = DateFormatters.serverTimeFormatter
         
         cellState.handleCellTextColor(cell: cell)
         cellState.handleCellSelection(cell: cell)
@@ -130,6 +177,11 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         
         cellState.handleCellTextColor(cell: calCell)
         cellState.handleCellSelection(cell: calCell)
+        
+        let formatter       = DateFormatters.serverTimeFormatter
+        
+        self.filteredEvents = self.events.filter{ $0.date?.contains(formatter.string(from: cellState.date)) ?? false }
+
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -145,7 +197,7 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         let formatter = DateFormatters.monthYearFormat
         
         self.navigationItem.leftTitle = formatter.string(from: date)
-    }  
+    }
 }
 
 private extension ScheduleVC {
@@ -159,12 +211,13 @@ private extension ScheduleVC {
         return params
     }
     
-    func specialDates() -> [String:String] {
-        return [
-             "2017 08 01": "",
-             "2017 08 08": "",
-             "2017 08 14": "",
-             "2017 08 24": ""
-        ]
+    func specialDates() -> [String] {
+        var specialDates: [String] = []
+        for event in self.events {
+            if let date = event.date {
+            specialDates.append(date)
+            }
+        }
+    return specialDates
     }
 }

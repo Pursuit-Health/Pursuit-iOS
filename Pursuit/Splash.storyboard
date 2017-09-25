@@ -60,6 +60,7 @@
                     <connections>
                         <segue destination="I2L-Kl-uI3" kind="show" identifier="ShowLoginStoryboard" id="lf2-W9-0vB"/>
                         <segue destination="FTd-T8-MTE" kind="show" identifier="ShowTrainerStoryboard" id="De8-9d-AHl"/>
+                        <segue destination="FlY-dZ-qOX" kind="show" identifier="ShowClientStoryboard" id="U8G-cU-xrU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XqA-oF-Tc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -72,7 +73,7 @@
                 <viewControllerPlaceholder storyboardName="Login" id="I2L-Kl-uI3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ovx-S1-5eW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="-117"/>
+            <point key="canvasLocation" x="625" y="-91"/>
         </scene>
         <!--TrainerMain-->
         <scene sceneID="7fQ-aP-AZ9">
@@ -81,6 +82,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3SG-mv-579" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="657" y="280"/>
+        </scene>
+        <!--ClientMain-->
+        <scene sceneID="XP9-G7-TWb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ClientMain" id="FlY-dZ-qOX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="doY-ch-blN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="702" y="98"/>
         </scene>
     </scenes>
     <resources>

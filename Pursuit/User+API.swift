@@ -29,7 +29,7 @@ extension User {
             
             if let user = user {
                 if let token = user.token {
-                  self.token = token
+                  self.shared.token = token
                 }
             }
             completion(user, error)

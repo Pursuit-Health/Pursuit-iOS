@@ -18,7 +18,15 @@
                 <viewControllerPlaceholder storyboardName="TrainerMain" id="iE0-gJ-nPe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yTa-XZ-SPa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735" y="-429"/>
+            <point key="canvasLocation" x="666" y="-416"/>
+        </scene>
+        <!--ClientMain-->
+        <scene sceneID="FTg-Pr-xY6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ClientMain" id="mnW-1v-Me5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-GT-o1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="-330"/>
         </scene>
         <!--Main AuthVC-->
         <scene sceneID="7FC-DL-dID">
@@ -148,6 +156,7 @@
                         <outlet property="profilePhotoImageView" destination="ESI-Mo-FkG" id="RMM-W3-iML"/>
                         <outlet property="viewForPageController" destination="juF-RJ-xKS" id="H2R-JW-N5p"/>
                         <segue destination="iE0-gJ-nPe" kind="show" identifier="ShowTrainerStoryboard" id="iSM-0s-8UD"/>
+                        <segue destination="mnW-1v-Me5" kind="show" identifier="ShowClientStoryboard" id="CXU-oU-jRo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7i-A3-5Sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -703,7 +712,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ResetPasswordVC" automaticallyAdjustsScrollViewInsets="NO" id="PYc-mx-DPt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r8w-XC-0Hb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="r8w-XC-0Hb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -721,7 +730,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="16j-fR-XTM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eEQ-dQ-XUt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eEQ-dQ-XUt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -732,14 +741,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SB3-6P-q8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-591.20000000000005" y="42.728635682158924"/>
+            <point key="canvasLocation" x="-911" y="45"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CIj-Ff-hCy">
             <objects>
                 <navigationController storyboardIdentifier="SelectTrainerVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="svW-yI-cai" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jLg-YP-4Ct">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jLg-YP-4Ct">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

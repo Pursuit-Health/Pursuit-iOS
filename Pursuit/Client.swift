@@ -18,6 +18,9 @@ class Client: User {
     
     var trainer: Trainer?
     
+    var clientName          : String?
+    var clientAvatar        : String?
+    
     //MARK: Mappable
     
     override func mapping(map: Map) {
@@ -27,6 +30,9 @@ class Client: User {
         } else if map.mappingType == .toJSON {
             self.id <- map["id"]
         }
+        
+        self.clientName         <- map["user.data.name"]
+        self.clientAvatar       <- map["user.data.avatar"]
     }
     
     override func createSignUpParameters() -> [String : String] {

@@ -12,7 +12,9 @@ class User: Mappable {
     
     //MARK: Private.Properties
     
-    static var token: String? {
+    static public var shared = User()
+    
+    var token: String? {
         get {
             let keychain        = PursuitKeychain()
             return keychain.token
@@ -30,7 +32,6 @@ class User: Mappable {
     var email               : String?
     var password            : String?
     var birthday            : String?
-    var token               : String?
     var avatar              : String?
     var signInName : String?
     

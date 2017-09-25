@@ -16,6 +16,7 @@ class SplashVC: UIViewController {
         struct SeguesIDs {
             static let Trainer  = "ShowTrainerStoryboard"
             static let Login    = "ShowLoginStoryboard"
+            static let Client   = "ShowClientStoryboard"
         }
     }
     
@@ -26,13 +27,27 @@ class SplashVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.performSegue(withIdentifier: checkIfUserLoggedIn() ? Constants.SeguesIDs.Trainer: Constants.SeguesIDs.Login, sender: self)
+        self.performSegue(withIdentifier: checkIfUserLoggedIn() ? checkUserType()
+            : Constants.SeguesIDs.Login, sender: self)
     }
     
     //MARK: Private
     
     private func checkIfUserLoggedIn() -> Bool {
-        return User.token != nil
+        //User.shared.token = nil
+        return Auth.Token != nil
+        //return User.shared.token != nil
+    }
+    
+    private func checkUserType() -> String {
+        if let clientType = Auth.IsClient {
+            if clientType {
+                return Constants.SeguesIDs.Client
+            } else {
+                return Constants.SeguesIDs.Trainer
+            }
+        }
+        return ""
     }
     
     override var prefersStatusBarHidden: Bool {

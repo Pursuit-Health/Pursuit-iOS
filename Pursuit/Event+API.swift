@@ -15,12 +15,6 @@ extension Event {
     
     //MARK: Public
     
-    class func getEventsInRange(startDate: String, endDate: String, completion: @escaping GetEventsInRange) {
-        let api = PSAPI()
-        
-        api.getEventsInRange(startDate: startDate, endDate: endDate, completion: completion)
-    }
-    
     class func createTemplate(eventData: Event, completion: @escaping CreateEventCompletion) {
         let api = PSAPI()
         

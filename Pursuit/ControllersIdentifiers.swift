@@ -14,5 +14,6 @@ struct Controllers {
         static let SelectTrainer    = "SelectTrainerVCIdentifier"
         static let AddExercises     = "AddExercisesVCIdentifier"
         static let CreateTemplate   = "CreateTemplateVCIdentifier"
+        static let ClientWorkout    = "TrainingVCIdentifier"
     }
 }

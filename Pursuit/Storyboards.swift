@@ -11,4 +11,5 @@ import Foundation
 struct Storyboards {
     static let Login        = "Login"
     static let Trainer      = "TrainerMain"
+    static let Client       = "ClientMain"
 }

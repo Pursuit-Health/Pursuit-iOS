@@ -48,7 +48,7 @@ class PSAPI: APIHandable {
                         print(token)
                         let newToken = token.replacingOccurrences(of: "Bearer", with: "")
                         
-                        User.token = newToken
+                        User.shared.token = newToken
                     }
                 }
             }
@@ -73,9 +73,10 @@ class PSAPI: APIHandable {
                     if let type = metaData?["user_type"], let token = metaData?["token"], let userData = userData {
                         let objectData = ["user" : userData]
                         if type == "trainer" {
+                            UserDefaults.standard.set(false, forKey:"isClient")
                             user = Trainer(JSON: objectData)
                         }
-                        User.token = token
+                        User.shared.token = token
                     }
                     
                 case .failure(let serverError):
@@ -103,9 +104,10 @@ class PSAPI: APIHandable {
                     if let type = metaData?["user_type"], let token = metaData?["token"], let userData = userData {
                         let objectData = ["user" : userData]
                         if type == "client" {
+                            UserDefaults.standard.set(true, forKey:"isClient")
                             user = Client(JSON: objectData)
                         }
-                        User.token = token
+                        User.shared.token = token
                     }
                     
                 case .failure(let serverError):
@@ -133,11 +135,13 @@ class PSAPI: APIHandable {
                     if let type = metaData?["user_type"], let token = metaData?["token"], let userData = userData {
                         let objectData = ["user" : userData]
                         if type == "trainer" {
+                            UserDefaults.standard.set(false, forKey:"isClient")
                             user = Trainer(JSON: objectData)
                         } else if type == "client" {
+                            UserDefaults.standard.set(true, forKey:"isClient")
                             user = Client(JSON: objectData)
                         }
-                        User.token = token
+                        User.shared.token = token
                     }
                     
                 case .failure(let serverError):
@@ -193,7 +197,7 @@ class PSAPI: APIHandable {
     }
     
     func uploadAvatar(data: Data, completion: @escaping ChangeAvatarCompletion) {
-        guard let token = User.token else {return}
+        guard let token = User.shared.token else {return}
         
         Alamofire.upload(
             multipartFormData: { multipartFormData in
@@ -288,22 +292,60 @@ class PSAPI: APIHandable {
     }
     
     @discardableResult
-    func getEventsInRange(startDate: String, endDate: String, completion: @escaping GetEventsInRange) -> DataRequest? {
-        let request = Request.getAllEventsInRange(startDate: startDate, endDate: endDate)
+    func getTrainerEvents(startDate: String, endDate: String, completion: @escaping GetTrainerEvents) -> DataRequest? {
+        let request = Request.getTrainerEvents(startDate: startDate, endDate: endDate)
         
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Event>) in
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Event]>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
             }
             completion(response.result.value, error)
-        })
+        }
+    }
+    
+    @discardableResult
+    func getClientEvents(startDate: String, endDate: String, completion: @escaping GetClientEvents) -> DataRequest? {
+        let request = Request.getClientEvents(startDate: startDate, endDate: endDate)
+        
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Event]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
     }
     
     @discardableResult
     func createEvent(eventData: [String: Any], completion: @escaping CreateEventCompletion) -> DataRequest? {
         let request = Request.createEvent(parameters: eventData)
         return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func getWorkouts(completion: @escaping GetWorkoutsCompletion) -> DataRequest? {
+        let request = Request.getWorkouts()
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Workout]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
+    }
+    
+    @discardableResult
+    func getWorkoutById(workoutId: String, completion: @escaping GetWorkoutByIdCompletion) -> DataRequest? {
+        let request = Request.getWorkoutById(workoutId: workoutId)
+        return self.perform(request)?.responseObject(keyPath: "data") { (response: DataResponse<Workout>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            
+            completion(response.result.value, error)
+        }
     }
 }
 
@@ -341,7 +383,15 @@ extension PSAPI {
     
     typealias GetAllClientsComletion    = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
     
-    typealias GetEventsInRange          = (_ event: Event?, _ error: ErrorProtocol?) -> Void
+    typealias GetTrainerEvents          = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetClientEvents           = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
     
     typealias CreateEventCompletion     = (_ error: ErrorProtocol?) -> Void
+    
+    typealias GetWorkoutsCompletion     = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetWorkoutByIdCompletion = (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
+    
+    
 }

@@ -25,6 +25,7 @@ class MainAuthVC: UIViewController {
         
         struct SeguesIDs {
             static let Trainer  = "ShowTrainerStoryboard"
+            static let Client   = "ShowClientStoryboard"
         }
     }
     //MARK: Variables
@@ -215,7 +216,10 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 
 extension MainAuthVC: SignInVCDelegate {
     func lofinSuccessfull(on: SignInVC) {
-        performSegue(withIdentifier: Constants.SeguesIDs.Trainer, sender: self)
+        
+        if let isClient = Auth.IsClient {
+        performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
+        }
     }
     
     

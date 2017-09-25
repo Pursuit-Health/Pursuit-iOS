@@ -8,7 +8,7 @@
 import Foundation
 
 struct DateFormatters {
-    static let serverTimeFormatter: DateFormatter       = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm")
+    static let serverTimeFormatter: DateFormatter       = DateFormatters.dateFormatterWith("yyyy-MM-dd")
     static let projectFormatFormatter: DateFormatter    = DateFormatters.dateFormatterWith("yyyy MM dd")
     static let createEditFormatFormatter: DateFormatter = DateFormatters.dateFormatterWith("dd/MM/yyyy")
     static let fullFormat: DateFormatter                = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm:ss +zzzz")

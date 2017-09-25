@@ -2,7 +2,7 @@
 //  SelectClientsVC.swift
 //  Pursuit
 //
-//  Created by ігор on 9/21/17.
+//  Created by Igor on 9/21/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
@@ -40,7 +40,7 @@ class SelectClientsVC: UIViewController {
                 searchField.borderStyle         = .none
                 searchField.backgroundColor     = .clear
                 searchField.textColor           = .white
-                searchField.font                = UIFont(name: "m", size: 15)
+                searchField.font                = UIFont(name: "Avenir", size: 15)
             }
         }
     }
@@ -69,7 +69,7 @@ class SelectClientsVC: UIViewController {
         super.viewDidLoad()
         setUpBackgroundImage()
         
-        loadTrainers()
+        loadClients()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +82,7 @@ class SelectClientsVC: UIViewController {
 
 extension SelectClientsVC {
     
-    fileprivate func loadTrainers(){
+    fileprivate func loadClients(){
         Client.getAllClients(completion: { trainersInfo, error in
             if let data = trainersInfo {
                 self.client             = data

@@ -12,16 +12,23 @@ class Event: Mappable {
     
     //MARK: Private.Properties
     
-    var location: String?
-    var startAt: String?
-    var endAt: String?
-    var date: String?
-    var clients: [Int]?
+    var location        : String?
+    var startAt         : String?
+    var endAt           : String?
+    var date            : String?
+    var clients         : [Client]?
     
     
     //MARK: Mappable
     
     func mapping(map: Map) {
+        
+        self.location       <- map["location"]
+        self.startAt        <- map["start_at"]
+        self.endAt          <- map["end_at"]
+        self.date           <- map["date"]
+        self.clients        <- map["clients.data"]
+        
         
     }
     

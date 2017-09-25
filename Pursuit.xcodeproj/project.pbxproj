@@ -57,6 +57,12 @@
 		782B83101F7126DC00A019AC /* ChooseTrainerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782B830E1F7126DC00A019AC /* ChooseTrainerCell.xib */; };
 		782B83131F71278D00A019AC /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B83111F71278D00A019AC /* QuestionCell.swift */; };
 		782B83141F71278D00A019AC /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782B83121F71278D00A019AC /* QuestionCell.xib */; };
+		782E899B1F7911F5002AD54C /* ClientTemlatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E899A1F7911F5002AD54C /* ClientTemlatesVC.swift */; };
+		782E899D1F792168002AD54C /* ClientTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E899C1F792168002AD54C /* ClientTabBarVC.swift */; };
+		782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E899F1F792EB7002AD54C /* TrainerTabBarVC.swift */; };
+		782E89A21F793D86002AD54C /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A11F793D86002AD54C /* Auth.swift */; };
+		782E89A51F797FD8002AD54C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A41F797FD8002AD54C /* Workout.swift */; };
+		782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A61F7980D2002AD54C /* Workout+API.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -209,6 +215,12 @@
 		782B830E1F7126DC00A019AC /* ChooseTrainerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseTrainerCell.xib; sourceTree = "<group>"; };
 		782B83111F71278D00A019AC /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		782B83121F71278D00A019AC /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
+		782E899A1F7911F5002AD54C /* ClientTemlatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTemlatesVC.swift; sourceTree = "<group>"; };
+		782E899C1F792168002AD54C /* ClientTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTabBarVC.swift; sourceTree = "<group>"; };
+		782E899F1F792EB7002AD54C /* TrainerTabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTabBarVC.swift; sourceTree = "<group>"; };
+		782E89A11F793D86002AD54C /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		782E89A41F797FD8002AD54C /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		782E89A61F7980D2002AD54C /* Workout+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+API.swift"; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -593,6 +605,23 @@
 			name = QuestionCell;
 			sourceTree = "<group>";
 		};
+		782E899E1F792E92002AD54C /* TrainerTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				782E899F1F792EB7002AD54C /* TrainerTabBarVC.swift */,
+			);
+			name = TrainerTabBarController;
+			sourceTree = "<group>";
+		};
+		782E89A31F797FBF002AD54C /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				782E89A41F797FD8002AD54C /* Workout.swift */,
+				782E89A61F7980D2002AD54C /* Workout+API.swift */,
+			);
+			name = Workout;
+			sourceTree = "<group>";
+		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +816,7 @@
 				780D26841F5C92D900FA1558 /* RegexExpression.swift */,
 				780D601E1F5F1588002A7303 /* Storyboards.swift */,
 				780D60201F5F161E002A7303 /* ControllersIdentifiers.swift */,
+				782E89A11F793D86002AD54C /* Auth.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -960,10 +990,10 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				782E899E1F792E92002AD54C /* TrainerTabBarController */,
 				78473BD61F745B590067DA1F /* AddExercise */,
 				78473BCE1F742C580067DA1F /* SelectClients */,
 				788EE89E1F379A9F00DD8A98 /* CreateTemplateVC */,
-				788EE8961F34DD3000DD8A98 /* TrainingVC */,
 				842EBD2C1F33144300A3169F /* TemplatesVC */,
 				842EBD241F33140800A3169F /* ScheduleClientVC */,
 				84AB4D5B1F327FCA00531740 /* ClientsVC */,
@@ -991,6 +1021,7 @@
 		84AB4D5C1F327FDC00531740 /* ClientMain */ = {
 			isa = PBXGroup;
 			children = (
+				788EE8961F34DD3000DD8A98 /* TrainingVC */,
 				84AB4D5D1F327FF200531740 /* Controllers */,
 				5B1F83101E850E4100ABA24C /* ClientMain.storyboard */,
 			);
@@ -1000,6 +1031,8 @@
 		84AB4D5D1F327FF200531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				782E899A1F7911F5002AD54C /* ClientTemlatesVC.swift */,
+				782E899C1F792168002AD54C /* ClientTabBarVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1007,6 +1040,7 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				782E89A31F797FBF002AD54C /* Workout */,
 				78383B431F72A89500AA75E3 /* SignInMapper */,
 				7834842E1F71B03200C58191 /* Trainer */,
 				782B82EE1F704BAE00A019AC /* Event */,
@@ -1570,6 +1604,7 @@
 				78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */,
 				84AB4D4E1F324A3600531740 /* PursuitNVC.swift in Sources */,
 				842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */,
+				782E899D1F792168002AD54C /* ClientTabBarVC.swift in Sources */,
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
 				78179B891F54982C00520D08 /* User+API.swift in Sources */,
 				7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */,
@@ -1588,7 +1623,9 @@
 				788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */,
 				7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */,
 				5BE3A1CB1EB3196A005B35CD /* SignInCell.swift in Sources */,
+				782E89A51F797FD8002AD54C /* Workout.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
+				782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */,
 				5BE3A1CF1EB3196A005B35CD /* ForgotPasswordCell.swift in Sources */,
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
 				784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */,
@@ -1606,6 +1643,8 @@
 				781110561F6672BD00457E8B /* Template+API.swift in Sources */,
 				78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
+				782E899B1F7911F5002AD54C /* ClientTemlatesVC.swift in Sources */,
+				782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
 				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
@@ -1660,6 +1699,7 @@
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
 				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,
+				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

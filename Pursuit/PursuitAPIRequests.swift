@@ -25,8 +25,11 @@ extension PSAPI {
         case editTemplate(templateId: String, parameters: Parameters)
         case deleteTemplate(templateId: String, parameters: Parameters)
         case getAllClients()
-        case getAllEventsInRange(startDate: String, endDate: String)
+        case getTrainerEvents(startDate: String, endDate: String)
+        case getClientEvents(startDate: String, endDate: String)
         case createEvent(parameters: Parameters)
+        case getWorkouts()
+        case getWorkoutById(workoutId: String)
         
         
         //MARK: RequestConvertible
@@ -83,10 +86,16 @@ extension PSAPI {
                 return "trainer/templates/" + templateId
             case .getAllClients:
                 return "trainer/clients"
-            case .getAllEventsInRange:
+            case .getTrainerEvents:
                 return "trainer/events"
+            case .getClientEvents:
+                return "client/events"
             case .createEvent:
                 return "trainer/events"
+            case .getWorkouts:
+                return "client/workouts"
+            case .getWorkoutById(let workoutId):
+                return "client/workouts/" + workoutId
             }
         }
         
@@ -97,7 +106,9 @@ extension PSAPI {
         
         var queryParams: Query? {
             switch self {
-            case .getAllEventsInRange(let startDate, let endDate):
+            case .getTrainerEvents(let startDate, let endDate):
+                return ["start_date":startDate, "end_date": endDate]
+            case .getClientEvents(let startDate, let endDate):
                 return ["start_date":startDate, "end_date": endDate]
             default:
                 return nil
@@ -126,10 +137,10 @@ extension PSAPI {
         
         private var tokenString: String {
             
-            guard let token = User.token else {return ""}
+            guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getAllEventsInRange, .createEvent, .refreshToken:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById:
                 return "Bearer" + token
             default:
                 return ""
