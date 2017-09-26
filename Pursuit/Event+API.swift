@@ -15,7 +15,7 @@ extension Event {
     
     //MARK: Public
     
-    class func createTemplate(eventData: Event, completion: @escaping CreateEventCompletion) {
+    class func createEvent(eventData: Event, completion: @escaping CreateEventCompletion) {
         let api = PSAPI()
         
         api.createEvent(eventData: eventData.toJSON(), completion: completion)

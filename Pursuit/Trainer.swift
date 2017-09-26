@@ -13,6 +13,7 @@ class Trainer: User {
     //MARK: Typealias
     
     typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    var trainerAvatar: String?
     
     override func mapping(map: Map) {
         super.mapping(map: map)
@@ -21,6 +22,7 @@ class Trainer: User {
         } else if map.mappingType == .toJSON {
             self.id <- map["id"]
         }
+        self.trainerAvatar       <- map["user.data.avatar"]
     }
     
     override func signUp(completion: @escaping RegisterTrainerCompletion) {

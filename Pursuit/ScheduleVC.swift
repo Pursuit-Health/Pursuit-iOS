@@ -8,6 +8,7 @@
 
 import UIKit
 import JTAppleCalendar
+import SDWebImage
 
 typealias EventsCompletion = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
 
@@ -137,7 +138,7 @@ extension ScheduleVC: UICollectionViewDataSource {
         cell.dateLabel.text         = (iventInfo.startAt ?? "") + "-" + (iventInfo.endAt ?? "")
         
         cell.clientsCountLabel.text = "\(iventInfo.clients?.count ?? 0)"
-        print("\(iventInfo.clients?[0].clientName)")
+        cell.fillImages(clients: iventInfo.clients ?? [])
         
         return cell
     }

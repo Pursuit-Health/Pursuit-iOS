@@ -74,7 +74,7 @@
                                     <constraint firstAttribute="width" constant="25" id="JuQ-QM-ZuW"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-Dy-fAD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-Dy-fAD">
                                 <rect key="frame" x="27" y="122" width="15" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="0Lv-GZ-uq9"/>
@@ -120,6 +120,9 @@
                 <outlet property="clientsCountLabel" destination="Mj3-Dy-fAD" id="qAl-ji-NgQ"/>
                 <outlet property="dateLabel" destination="PEU-6g-UJl" id="tcN-rx-a2V"/>
                 <outlet property="descriptionLabel" destination="vme-ZR-Up5" id="xJU-JE-wRS"/>
+                <outlet property="firstImageView" destination="4Lu-6L-X9G" id="1bU-Y8-sZx"/>
+                <outlet property="secondImageView" destination="4ZJ-kG-BB3" id="1bv-hX-G0l"/>
+                <outlet property="thirdImageView" destination="8v0-Rv-t8g" id="jX5-tC-4H3"/>
             </connections>
         </collectionViewCell>
     </objects>

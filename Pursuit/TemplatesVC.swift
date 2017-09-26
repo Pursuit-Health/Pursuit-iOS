@@ -18,7 +18,12 @@ class TemplatesVC: UIViewController {
     }
     //MARK: IBOutlets
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableView: UITableView! {
+        didSet {
+            self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.estimatedRowHeight = 71
+        }
+    }
     
     //MARK: Variables
     
@@ -45,7 +50,11 @@ class TemplatesVC: UIViewController {
     
     @IBAction func createTemplateButtonPressed(_ sender: Any) {
         self.isEditTemplate = false
-        pushCreateTemplateVC()
+        guard let controller = createTemplateVC else { return }
+        
+        controller.templateId = nil
+        
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     //MARK: Lifecycle
@@ -63,6 +72,12 @@ class TemplatesVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         
         loadTemplates()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     //MARK: Private
@@ -111,9 +126,9 @@ extension TemplatesVC: UITableViewDataSource {
         return self.templatesData.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 71.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 71.0
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: TemplateCell.self) else { return UITableViewCell() }

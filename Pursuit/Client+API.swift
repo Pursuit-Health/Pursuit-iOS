@@ -14,7 +14,9 @@ extension Client {
     
     typealias GetAllClientsComletion    = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
     
-    typealias GetClientEvents          = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
+    typealias GetClientEvents           = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
+    
+    typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
     //MARK: Public 
     
@@ -28,5 +30,11 @@ extension Client {
         let api = PSAPI()
         
         api.getClientEvents(startDate: startdDate, endDate: endDate, completion: completion)
+    }
+    
+    class func assignTemplate(clientId: String, templateId: String, completion: @escaping AssignTemplateCompletion) {
+        let api = PSAPI()
+        
+        api.assignTemaplate(clientId: clientId, templateId: templateId, completion: completion)
     }
 }

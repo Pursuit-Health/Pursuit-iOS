@@ -347,6 +347,12 @@ class PSAPI: APIHandable {
             completion(response.result.value, error)
         }
     }
+    
+    @discardableResult
+    func assignTemaplate(clientId: String, templateId: String, completion: @escaping AssignTemplateCompletion) -> DataRequest? {
+        let request = Request.assignTemplate(clientId: clientId, templateId: templateId, parameters: [:])
+        return self.simple(request: request, completion: completion)
+    }
 }
 
 extension PSAPI {
@@ -393,5 +399,5 @@ extension PSAPI {
     
     typealias GetWorkoutByIdCompletion = (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
     
-    
+    typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
 }

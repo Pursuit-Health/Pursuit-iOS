@@ -23,4 +23,6 @@ target 'Pursuit' do
   pod 'DeepLinkKit', '~> 1.4'
   pod 'RHDisplayLinkStepper', '~> 1.0'
   pod 'SHTextFieldBlocks', '~> 1.1'
+  pod 'SwiftDate', '~> 4.1.11 '
+  pod 'SDWebImage', '~> 4.1'
 end

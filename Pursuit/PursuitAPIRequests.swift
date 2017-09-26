@@ -30,6 +30,7 @@ extension PSAPI {
         case createEvent(parameters: Parameters)
         case getWorkouts()
         case getWorkoutById(workoutId: String)
+        case assignTemplate(clientId: String, templateId: String, parameters: Parameters)
         
         
         //MARK: RequestConvertible
@@ -40,7 +41,7 @@ extension PSAPI {
         
         var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent, .assignTemplate:
                 return .post
             case .changePassword, .editTemplate:
                 return .put
@@ -96,6 +97,8 @@ extension PSAPI {
                 return "client/workouts"
             case .getWorkoutById(let workoutId):
                 return "client/workouts/" + workoutId
+            case .assignTemplate(let clientId, let templateId, _):
+                return "trainer/clients/" + clientId + "/assign/" + templateId
             }
         }
         
@@ -126,7 +129,8 @@ extension PSAPI {
                  .createTemplate(let parameters),
                  .editTemplate(_ , let parameters),
                  .deleteTemplate(_ , let parameters),
-                 .createEvent(let parameters):
+                 .createEvent(let parameters),
+                 .assignTemplate(_ , _ , let parameters):
                 return parameters
             default:
                 return nil
@@ -140,7 +144,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate:
                 return "Bearer" + token
             default:
                 return ""

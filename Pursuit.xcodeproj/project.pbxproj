@@ -63,6 +63,7 @@
 		782E89A21F793D86002AD54C /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A11F793D86002AD54C /* Auth.swift */; };
 		782E89A51F797FD8002AD54C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A41F797FD8002AD54C /* Workout.swift */; };
 		782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A61F7980D2002AD54C /* Workout+API.swift */; };
+		782E89AA1F79A944002AD54C /* TrainerTemplatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A91F79A944002AD54C /* TrainerTemplatesVC.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -73,6 +74,10 @@
 		783484311F71B05100C58191 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484301F71B05100C58191 /* Trainer.swift */; };
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
+		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
+		784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */; };
+		784419B61F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784419B41F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib */; };
+		784419B81F7AD7A7009CB350 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B71F7AD7A7009CB350 /* URL.swift */; };
 		784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */; };
 		78473BD01F742CEA0067DA1F /* SelectClientsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BCF1F742CEA0067DA1F /* SelectClientsVC.swift */; };
 		78473BD41F742D7E0067DA1F /* SelectClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BD21F742D7D0067DA1F /* SelectClientCell.swift */; };
@@ -221,6 +226,7 @@
 		782E89A11F793D86002AD54C /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		782E89A41F797FD8002AD54C /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		782E89A61F7980D2002AD54C /* Workout+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+API.swift"; sourceTree = "<group>"; };
+		782E89A91F79A944002AD54C /* TrainerTemplatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTemplatesVC.swift; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -231,6 +237,10 @@
 		783484301F71B05100C58191 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
+		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
+		784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClientCollectionViewCell.swift; sourceTree = "<group>"; };
+		784419B41F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleClientCollectionViewCell.xib; sourceTree = "<group>"; };
+		784419B71F7AD7A7009CB350 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		784734F11F72FB9D00FE5B1C /* UITextField+BBBPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BBBPattern.h"; sourceTree = "<group>"; };
 		784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BBBPattern.m"; sourceTree = "<group>"; };
 		78473BCF1F742CEA0067DA1F /* SelectClientsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientsVC.swift; sourceTree = "<group>"; };
@@ -622,6 +632,14 @@
 			name = Workout;
 			sourceTree = "<group>";
 		};
+		782E89A81F79A8F9002AD54C /* TrainerTemplatesVC */ = {
+			isa = PBXGroup;
+			children = (
+				782E89A91F79A944002AD54C /* TrainerTemplatesVC.swift */,
+			);
+			name = TrainerTemplatesVC;
+			sourceTree = "<group>";
+		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +722,23 @@
 				78383B441F72A8BF00AA75E3 /* SignInMapper.swift */,
 			);
 			name = SignInMapper;
+			sourceTree = "<group>";
+		};
+		784419AF1F7A2C66009CB350 /* AssignTemplateVC */ = {
+			isa = PBXGroup;
+			children = (
+				784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */,
+			);
+			name = AssignTemplateVC;
+			sourceTree = "<group>";
+		};
+		784419B21F7A7F03009CB350 /* SheduleClientsCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */,
+				784419B41F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib */,
+			);
+			name = SheduleClientsCollectionCell;
 			sourceTree = "<group>";
 		};
 		784734F01F72FB9D00FE5B1C /* UITextField+BBBPattern */ = {
@@ -817,6 +852,7 @@
 				780D601E1F5F1588002A7303 /* Storyboards.swift */,
 				780D60201F5F161E002A7303 /* ControllersIdentifiers.swift */,
 				782E89A11F793D86002AD54C /* Auth.swift */,
+				784419B71F7AD7A7009CB350 /* URL.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -990,6 +1026,8 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				784419AF1F7A2C66009CB350 /* AssignTemplateVC */,
+				782E89A81F79A8F9002AD54C /* TrainerTemplatesVC */,
 				782E899E1F792E92002AD54C /* TrainerTabBarController */,
 				78473BD61F745B590067DA1F /* AddExercise */,
 				78473BCE1F742C580067DA1F /* SelectClients */,
@@ -1110,6 +1148,7 @@
 		84AB4D651F32810C00531740 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				784419B21F7A7F03009CB350 /* SheduleClientsCollectionCell */,
 				78473BD91F745B930067DA1F /* AddExerciseCell */,
 				78473BD11F742D3D0067DA1F /* SelectClientsCell */,
 				78E443871F40DF9200525F7A /* ScheduleClient */,
@@ -1507,6 +1546,7 @@
 				782B83141F71278D00A019AC /* QuestionCell.xib in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
+				784419B61F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib in Resources */,
 				78473BD51F742D7E0067DA1F /* SelectClientCell.xib in Resources */,
 				78CE34C41F38FDF2002BD31D /* TabPageViewController.storyboard in Resources */,
 				5BE3A1CE1EB3196A005B35CD /* SignUpCell.xib in Resources */,
@@ -1668,6 +1708,7 @@
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				845882F91F7067F000BE7D69 /* Requests.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
+				784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */,
 				782B82EB1F703E9400A019AC /* Client.swift in Sources */,
 				78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */,
 				78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */,
@@ -1676,14 +1717,17 @@
 				78CE34C61F38FDF2002BD31D /* TabCollectionCell.swift in Sources */,
 				BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */,
 				BBDA2B571ECE7AA6001FB6AD /* ClientsVC.swift in Sources */,
+				782E89AA1F79A944002AD54C /* TrainerTemplatesVC.swift in Sources */,
 				84AB4D7E1F3282AC00531740 /* TableView+BBBExtension.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
+				784419B81F7AD7A7009CB350 /* URL.swift in Sources */,
 				7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */,
 				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
 				783484331F71B62100C58191 /* Trainer+API.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
+				784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */,
 				845882F81F7067F000BE7D69 /* API.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				783484311F71B05100C58191 /* Trainer.swift in Sources */,

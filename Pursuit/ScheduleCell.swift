@@ -7,18 +7,76 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ScheduleCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var clientsCountLabel: UILabel!
     @IBOutlet weak var imagesStackView: UIStackView!
     
+    @IBOutlet weak var firstImageView: UIImageView!
+    @IBOutlet weak var secondImageView: UIImageView!
+    @IBOutlet weak var thirdImageView: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-
+    
+    //TODO: Grater solution
+    func fillImages(clients: [Client]) {
+        
+        if clients.count >= 3 {
+            if let url = clients[0].clientAvatar {
+                firstImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+            }else {
+                firstImageView.image = UIImage(named: "profile")
+            }
+            
+            if let url = clients[1].clientAvatar {
+                secondImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+            }else {
+                secondImageView.image = UIImage(named: "profile")
+            }
+            if let url = clients[2].clientAvatar {
+                thirdImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+            }else {
+                thirdImageView.image = UIImage(named: "profile")
+            }
+            if clients.count == 3 {
+                clientsCountLabel.text = ""
+            }else {
+                clientsCountLabel.text = "+" + "\(clients.count - 3)"
+            }
+            
+        }else if clients.count == 2 {
+            
+            if let url = clients[0].clientAvatar {
+                secondImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+            }else {
+                secondImageView.image = UIImage(named: "profile")
+            }
+            if let url = clients[1].clientAvatar {
+                thirdImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+            }else {
+                thirdImageView.image = UIImage(named: "profile")
+            }
+            
+            clientsCountLabel.text = ""
+        }else if clients.count == 1 {
+            
+            if let url = clients[0].clientAvatar {
+                thirdImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+            }else {
+                thirdImageView.image = UIImage(named: "profile")
+            }
+            
+            clientsCountLabel.text = ""
+        }
+    }
+    
 }

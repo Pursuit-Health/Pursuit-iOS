@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SelectClientsVCDelegate: class {
+    func clientSelected(_ client: Client, on controller: SelectClientsVC)
+}
+
 class SelectClientsVC: UIViewController {
 
     //MARK: Constants
@@ -32,6 +36,7 @@ class SelectClientsVC: UIViewController {
         }
     }
     
+    weak var delegate: SelectClientsVCDelegate?
     
     @IBOutlet weak var clientSearchBar: UISearchBar! {
         didSet {
@@ -60,7 +65,7 @@ class SelectClientsVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: Lifecycle
@@ -117,6 +122,8 @@ extension SelectClientsVC: UICollectionViewDelegate {
         cell.clientSelected = true
         
         let clientData = filteredClients[indexPath.row]
+        
+        delegate?.clientSelected(clientData, on: self)
         
         selectedClients.append(clientData.id ?? 0)
         

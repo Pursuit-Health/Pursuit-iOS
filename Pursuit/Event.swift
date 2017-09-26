@@ -12,11 +12,12 @@ class Event: Mappable {
     
     //MARK: Private.Properties
     
-    var location        : String?
-    var startAt         : String?
-    var endAt           : String?
-    var date            : String?
-    var clients         : [Client]?
+    var location            : String?
+    var startAt             : String?
+    var endAt               : String?
+    var date                : String?
+    var clients             : [Client]?
+    var clientsForUpload    : [Int]?
     
     
     //MARK: Mappable
@@ -28,23 +29,12 @@ class Event: Mappable {
         self.endAt          <- map["end_at"]
         self.date           <- map["date"]
         self.clients        <- map["clients.data"]
-        
-        
+        self.clientsForUpload <- map["clients"]
     }
     
+     init(){}
     required init?(map: Map) {
         
     }
 }
 
-//{
-//    "location": "somewhere",
-//    "start_at": "10:10",
-//    "end_at": "12:10",
-//    "date": "2017-11-11",
-//    "clients": [
-//    104,
-//    53
-//    
-//    ]
-//}

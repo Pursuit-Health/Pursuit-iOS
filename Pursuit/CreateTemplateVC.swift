@@ -23,7 +23,11 @@ class CreateTemplateVC: UIViewController {
         }
     }
     
-    @IBOutlet weak var templateNameTextField: UITextField!
+    @IBOutlet weak var templateNameTextField: UITextField! {
+        didSet {
+            self.templateNameTextField.attributedPlaceholder =  NSAttributedString(string: "Template Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        }
+    }
     
     //MARK: Variables
     
@@ -31,13 +35,14 @@ class CreateTemplateVC: UIViewController {
     
     var templateId: String? {
         didSet {
-            loadTemplate()
+                loadTemplate()
         }
     }
     
     var template: Template? {
         didSet {
-            self.templateNameTextField.text = self.template?.name
+            guard let name = self.template?.name else { return }
+            self.templateNameTextField.text = name
         }
     }
     
@@ -76,13 +81,15 @@ class CreateTemplateVC: UIViewController {
         template.imageId = 1
         template.time = 60
         template.exercisesForUpload = exercises
-        for index in 0...template.exercisesForUpload!.count - 1 {
+        if let exercises = template.exercisesForUpload {
+        for index in 0...exercises.count - 1 {
             template.exercisesForUpload?[index].exerciseId = nil
+        }
         }
         
         
         delegate?.saveTemplate(template, on: self)
-         self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: Lifecycle
@@ -99,7 +106,7 @@ class CreateTemplateVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = true
-
+        
     }
 }
 
@@ -107,6 +114,10 @@ extension CreateTemplateVC {
     func loadTemplate() {
         loadTemplateById{ error in
             if error == nil {
+                
+            }else {
+                self.template = nil
+                self.exercises = []
                 
             }
         }
@@ -138,6 +149,7 @@ extension CreateTemplateVC: UITableViewDataSource {
         cell.exercisesNameLabel.text    = exersiceInfo.name
         cell.weightLabel.text           = "\(exersiceInfo.weight ?? 0)"
         cell.setsLabel.text             = "\(exersiceInfo.times ?? 0)" + "x" + "\(exersiceInfo.count ?? 0)"
+        
         return cell
     }
 }
