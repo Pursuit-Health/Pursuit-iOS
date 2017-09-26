@@ -26,8 +26,7 @@ class ResetPasswordVC: UIViewController {
     }
     
     @IBAction func submitPasswordButtonPressed(_ sender: Any) {
-        checkEqualityOfPasswords() ? submit() : presentDialog(title: "Error", errorString: "Different paswords entered in fields. Please try again.")
-        setPassword()
+        checkEqualityOfPasswords() ? setPassword() : presentDialog(title: "Error", errorString: "Different paswords entered in fields. Please try again.")
     }
     
     //MARK: Lifecycle
@@ -56,7 +55,7 @@ private extension ResetPasswordVC {
     func setPassword() {
         setPassword { error in
             if error == nil {
-                
+                 self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -71,6 +70,7 @@ private extension ResetPasswordVC {
         submitPassword { error in
             if error == nil {
                 
+                //self.navigationController?.popViewController(animated: true)
             }
         }
     }
