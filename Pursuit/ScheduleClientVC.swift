@@ -92,6 +92,7 @@ class ScheduleClientVC: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    //TODO: Use separated method
     @IBAction func saveScheduleButtonPressed(_ sender: Any) {
         var clientIdies: [Int] = []
         

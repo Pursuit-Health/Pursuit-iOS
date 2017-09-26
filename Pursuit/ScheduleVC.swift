@@ -9,6 +9,7 @@
 import UIKit
 import JTAppleCalendar
 import SDWebImage
+import SwiftDate
 
 typealias EventsCompletion = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
 
@@ -111,7 +112,14 @@ class ScheduleVC: UIViewController {
     }
     
      func updateEvents() {
-        self.datasource?.updateDataSource(self, "2017-09-23", endDate: "2017-11-15", complation: { (events, error) in
+        var changedDate = DateInRegion(absoluteDate: Date())
+        let dateformatter = DateFormatters.serverTimeFormatter
+        dateformatter.dateFormat = "yyyy-MM-dd"
+        let startDate: String = dateformatter.string(from: changedDate.absoluteDate)
+        changedDate = changedDate + 1.month
+        let endDate: String = dateformatter.string(from: changedDate.absoluteDate)
+
+        self.datasource?.updateDataSource(self, startDate, endDate: endDate, complation: { (events, error) in
             if error == nil {
                 if let events = events {
                 self.filteredEvents = events
