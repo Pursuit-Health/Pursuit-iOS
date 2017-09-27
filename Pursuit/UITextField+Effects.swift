@@ -207,11 +207,22 @@ open class AnimatedTextField: TextFieldEffects {
         activePlaceholderPoint = CGPoint(x: placeholderLabel.frame.origin.x, y: placeholderLabel.frame.origin.y - placeholderLabel.frame.size.height - placeholderInsets.y)
     }
     
-    private func animatelabelfont(from: CGFloat, to: CGFloat) {
+     private func animatelabelfont(from: CGFloat, to: CGFloat) {
         let frame = self.placeholderLabel.frame
         self.placeholderLabel.adjustsFontSizeToFitWidth = true
         
         self.displayLinker.step(from: from, to: to, withDuration: 0.2) { (progress) in
+            let multiplier: CGFloat = from > to ? 1 : -1
+            let y = frame.origin.y - (from - progress) / (from - to) * 10 * multiplier
+            self.placeholderLabel.frame = CGRect(x: frame.origin.x, y: y, width: frame.size.width * progress, height: frame.size.height * progress)
+        }
+    }
+    
+    func animatelabelfontQuick(from: CGFloat, to: CGFloat) {
+        let frame = self.placeholderLabel.frame
+        self.placeholderLabel.adjustsFontSizeToFitWidth = true
+        
+        self.displayLinker.step(from: from, to: to, withDuration: 0) { (progress) in
             let multiplier: CGFloat = from > to ? 1 : -1
             let y = frame.origin.y - (from - progress) / (from - to) * 10 * multiplier
             self.placeholderLabel.frame = CGRect(x: frame.origin.x, y: y, width: frame.size.width * progress, height: frame.size.height * progress)

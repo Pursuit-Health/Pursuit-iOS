@@ -140,6 +140,10 @@ class SignUpVC: UIViewController {
         
         private func fillNameCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Name"
+            if cell.userDataTextField.text != "" {
+                let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
+                cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
+            }
             cell.cellImageview.image            = UIImage(named: "ic_username")
             cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
@@ -150,6 +154,10 @@ class SignUpVC: UIViewController {
         
         private func fillEmailCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Email"
+            if cell.userDataTextField.text != "" {
+                let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
+                cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
+            }
             cell.cellImageview.image            = UIImage(named: "email")
             cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
