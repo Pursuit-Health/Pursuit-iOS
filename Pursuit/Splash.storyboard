@@ -95,9 +95,9 @@
         <!--Navigation Controller-->
         <scene sceneID="2gs-Sa-syv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pev-2o-pMH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SplashVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="Pev-2o-pMH" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VUV-b6-ccK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="VUV-b6-ccK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -18,5 +18,6 @@ struct Controllers {
         static let AssignTemplate   = "AssignTemplateVCIdentifier"
         static let ScheduleClient   = "ClientSchedulerVCIdentifier"
         static let SelectClients    = "SelectClientsVCIdentifier"
+        static let Splesh           = "SplashVCIdentifier"
     }
 }

@@ -27,23 +27,23 @@ class ScheduleCell: UICollectionViewCell {
         
     }
     
-    //TODO: Grater solution
+    //TODO: Find Grater solution
     func fillImages(clients: [Client]) {
         
         if clients.count >= 3 {
             if let url = clients[0].clientAvatar {
-                firstImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+                firstImageView.sd_setImage(with: URL(string: url))
             }else {
                 firstImageView.image = UIImage(named: "profile")
             }
             
             if let url = clients[1].clientAvatar {
-                secondImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+                secondImageView.sd_setImage(with: URL(string:  url))
             }else {
                 secondImageView.image = UIImage(named: "profile")
             }
             if let url = clients[2].clientAvatar {
-                thirdImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+                thirdImageView.sd_setImage(with: URL(string: url))
             }else {
                 thirdImageView.image = UIImage(named: "profile")
             }
@@ -56,12 +56,12 @@ class ScheduleCell: UICollectionViewCell {
         }else if clients.count == 2 {
             
             if let url = clients[0].clientAvatar {
-                secondImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+                secondImageView.sd_setImage(with: URL(string: url))
             }else {
                 secondImageView.image = UIImage(named: "profile")
             }
             if let url = clients[1].clientAvatar {
-                thirdImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+                thirdImageView.sd_setImage(with: URL(string: url))
             }else {
                 thirdImageView.image = UIImage(named: "profile")
             }
@@ -70,7 +70,7 @@ class ScheduleCell: UICollectionViewCell {
         }else if clients.count == 1 {
             
             if let url = clients[0].clientAvatar {
-                thirdImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+                thirdImageView.sd_setImage(with: URL(string: url))
             }else {
                 thirdImageView.image = UIImage(named: "profile")
             }

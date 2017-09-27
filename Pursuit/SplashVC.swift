@@ -35,7 +35,7 @@ class SplashVC: UIViewController {
     //MARK: Private
     
     private func checkIfUserLoggedIn() -> Bool {
-        //User.shared.token = nil
+        User.shared.token = nil
         return Auth.Token != nil
         //return User.shared.token != nil
     }

@@ -10,10 +10,10 @@ import UIKit
 import SwipeCellKit
 import SDWebImage
 
-//TODO: WTF is this. Reimplemn 100%
 class ClientsVC: UIViewController {
     
-    //view objects
+    //MARK: IBOutlets
+    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var clientsTable: UITableView!
     
@@ -28,12 +28,13 @@ class ClientsVC: UIViewController {
             }
         }
     }
+
+    //MARK: Variables
     
-    //TODO: add Tabulation
-    var defaultOptions = SwipeTableOptions()
-    var isSwipeRightEnabled = true
-    var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
-    var buttonStyle: ButtonStyle = .backgroundColor
+    var defaultOptions                          = SwipeTableOptions()
+    var isSwipeRightEnabled                     = true
+    var buttonDisplayMode: ButtonDisplayMode    = .titleAndImage
+    var buttonStyle: ButtonStyle                = .backgroundColor
     
     
     lazy var assignTemplateVC: AssignTemplateVC? = {
@@ -59,9 +60,8 @@ class ClientsVC: UIViewController {
         }
     }
     
+    //MARK: Lifecycle
     
-    
-    //DEFAULT LOAD AND MEMORY FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,9 +129,7 @@ extension ClientsVC: UITableViewDataSource {
         
         let clientData = filteredClients[indexPath.row]
         if let url = clientData.clientAvatar {
-         cell.clientImage.sd_setImage(with: URL(string: PSURL.BaseURL + url))
-            print(PSURL.BaseURL + url)
-            
+         cell.clientImage.sd_setImage(with: URL(string: url))            
         }else {
             cell.clientImage.image = UIImage(named: "profile")
         }
@@ -156,6 +154,11 @@ extension ClientsVC: UISearchBarDelegate {
         }else {
             self.filteredClients = self.client.filter{ $0.name?.contains(searchText) ?? false }
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+  
+        searchBar.resignFirstResponder()
     }
 }
 

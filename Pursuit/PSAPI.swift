@@ -204,7 +204,7 @@ class PSAPI: APIHandable {
                 multipartFormData.append(data, withName: "avatar", fileName: "image.jpg", mimeType: "image/jpeg")
                 
         },
-            to: "http://dev.nerdzlab.com/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
+            to: "http://pursuitapp-env.p4zisxyyg8.us-east-2.elasticbeanstalk.com/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
@@ -343,9 +343,14 @@ class PSAPI: APIHandable {
             if let responseError = self.handle(response: response) {
                 error = responseError
             }
-            
             completion(response.result.value, error)
         }
+    }
+    
+    @discardableResult
+    func submitWorkout(workoutId: String, completion: @escaping SubmitWorkOutCompletion) -> DataRequest? {
+        let request = Request.submitWorkout(workoutId: workoutId)
+        return self.simple(request: request, completion: completion)
     }
     
     @discardableResult
@@ -400,4 +405,6 @@ extension PSAPI {
     typealias GetWorkoutByIdCompletion = (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
     
     typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
+    
+    typealias SubmitWorkOutCompletion   = (_ error: ErrorProtocol?) -> Void
 }

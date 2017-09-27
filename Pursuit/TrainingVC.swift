@@ -76,13 +76,21 @@ class TrainingVC: UIViewController {
         getWorkoutById()
     }
     
-    private func getWorkoutById() {
+    fileprivate func getWorkoutById() {
         Workout.getWorkoutById(workoutId: workoutId ?? "") { (workout, error) in
             if error == nil {
                 if let workoutUn = workout {
                     self.workout = workoutUn
                     self.exercises = workoutUn.template?.exercises ?? []
                 }
+            }
+        }
+    }
+    
+    fileprivate func submitWorkout() {
+        Client.submitWorkout(workoutId: workoutId ?? "") { (error) in
+            if error == nil {
+                 self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -109,5 +117,19 @@ extension TrainingVC: UITableViewDataSource{
 extension TrainingVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.exercises.remove(at: indexPath.row)
+            
+            if self.exercises.count == 0 {
+                submitWorkout()
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+         
+        }
     }
 }

@@ -74,6 +74,7 @@
 		783484311F71B05100C58191 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484301F71B05100C58191 /* Trainer.swift */; };
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
+		7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */; };
 		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
 		784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */; };
 		784419B61F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784419B41F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib */; };
@@ -237,6 +238,7 @@
 		783484301F71B05100C58191 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
+		7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRetrier.swift; sourceTree = "<group>"; };
 		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
 		784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClientCollectionViewCell.swift; sourceTree = "<group>"; };
 		784419B41F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleClientCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -722,6 +724,14 @@
 				78383B441F72A8BF00AA75E3 /* SignInMapper.swift */,
 			);
 			name = SignInMapper;
+			sourceTree = "<group>";
+		};
+		7843FB681F7BAE3C006A8A2D /* TokenRetrier */ = {
+			isa = PBXGroup;
+			children = (
+				7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */,
+			);
+			name = TokenRetrier;
 			sourceTree = "<group>";
 		};
 		784419AF1F7A2C66009CB350 /* AssignTemplateVC */ = {
@@ -1344,6 +1354,7 @@
 		84AB4D901F3287B000531740 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				7843FB681F7BAE3C006A8A2D /* TokenRetrier */,
 				845882F21F7067F000BE7D69 /* Requests */,
 				84AB4D921F3287C100531740 /* API */,
 				84AB4D911F3287BC00531740 /* Services */,
@@ -1745,6 +1756,7 @@
 				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
+				7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

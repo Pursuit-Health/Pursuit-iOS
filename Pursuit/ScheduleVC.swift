@@ -17,6 +17,10 @@ protocol ClientScheduleDataSource: class {
     func updateDataSource(_ schedule: ScheduleVC, _ startDate: String, endDate: String, complation: @escaping EventsCompletion)
 }
 
+protocol ScheduleVCDelegate: class {
+    func showlogin()
+}
+
 class ScheduleVC: UIViewController {
     
     fileprivate struct Constants {
@@ -61,15 +65,24 @@ class ScheduleVC: UIViewController {
     
     var events: [Event] = [] {
         didSet {
+            self.calendarView.reloadData()
+            self.calendarView.scrollToDate(Date())
+            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
             
+     
         }
     }
     
     var filteredEvents: [Event] = [] {
         didSet {
             self.collectionView.reloadData()
-            self.calendarView.reloadData()
         }
+    }
+    
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        User.shared.token = nil
+        let controller = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)
+            controller?.viewControllers.removeLast()
     }
     
     //MARK: Lifecycle
@@ -87,7 +100,7 @@ class ScheduleVC: UIViewController {
         
         setUpBackgroundImage()
         
-         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
         //TODO: this thing is unnecessary, need to think how to change it. Do it with me.
         navigationController?.navigationBar.setAppearence()
         
@@ -111,19 +124,19 @@ class ScheduleVC: UIViewController {
         }
     }
     
-     func updateEvents() {
+    func updateEvents() {
         var changedDate = DateInRegion(absoluteDate: Date())
         let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "yyyy-MM-dd"
         let startDate: String = dateformatter.string(from: changedDate.absoluteDate)
         changedDate = changedDate + 1.month
         let endDate: String = dateformatter.string(from: changedDate.absoluteDate)
-
+        
         self.datasource?.updateDataSource(self, startDate, endDate: endDate, complation: { (events, error) in
             if error == nil {
                 if let events = events {
-                self.filteredEvents = events
-                self.events = events
+                    self.filteredEvents = events
+                    self.events = events
                 }
             }
         })
@@ -190,7 +203,7 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         let formatter       = DateFormatters.serverTimeFormatter
         
         self.filteredEvents = self.events.filter{ $0.date?.contains(formatter.string(from: cellState.date)) ?? false }
-
+        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -224,9 +237,20 @@ private extension ScheduleVC {
         var specialDates: [String] = []
         for event in self.events {
             if let date = event.date {
-            specialDates.append(date)
+                specialDates.append(date)
             }
         }
-    return specialDates
+        return specialDates
+    }
+    
+    func fromStringToDate(specialDates: [String]) -> [Date] {
+        let formatter       = DateFormatters.serverTimeFormatter
+        var dates: [Date] = []
+        for date in specialDates {
+            if let data = formatter.date(from: date) {
+                dates.append(data)
+            }
+        }
+        return dates
     }
 }

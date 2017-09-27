@@ -18,6 +18,8 @@ extension Client {
     
     typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
+    typealias SubmitWorkOutCompletion  = (_ error: ErrorProtocol?) -> Void
+    
     //MARK: Public 
     
     class func getAllClients(completion: @escaping GetAllClientsComletion) {
@@ -36,5 +38,11 @@ extension Client {
         let api = PSAPI()
         
         api.assignTemaplate(clientId: clientId, templateId: templateId, completion: completion)
+    }
+    
+    class func submitWorkout(workoutId: String, completion: @escaping SubmitWorkOutCompletion) {
+        let api = PSAPI()
+        
+        api.submitWorkout(workoutId: workoutId, completion: completion)
     }
 }

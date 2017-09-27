@@ -14,6 +14,9 @@ class AssignTemplateVC: TemplatesVC {
     
     var clientId: String?
     
+    @IBAction func closeBarButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,8 +25,8 @@ class AssignTemplateVC: TemplatesVC {
         loadTemplates()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = true
     }

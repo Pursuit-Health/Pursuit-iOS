@@ -31,17 +31,18 @@ extension PSAPI {
         case getWorkouts()
         case getWorkoutById(workoutId: String)
         case assignTemplate(clientId: String, templateId: String, parameters: Parameters)
+        case submitWorkout(workoutId: String)
         
         
         //MARK: RequestConvertible
         
         var baseURLString: String {
-            return "http://dev.nerdzlab.com/v1/"
+            return "http://pursuitapp-env.p4zisxyyg8.us-east-2.elasticbeanstalk.com/v1/"
         }
         
         var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent, .assignTemplate:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent, .assignTemplate, .submitWorkout:
                 return .post
             case .changePassword, .editTemplate:
                 return .put
@@ -99,6 +100,8 @@ extension PSAPI {
                 return "client/workouts/" + workoutId
             case .assignTemplate(let clientId, let templateId, _):
                 return "trainer/clients/" + clientId + "/assign/" + templateId
+            case .submitWorkout(let workoutId):
+                return "client/workouts/" + workoutId + "/submit"
             }
         }
         
@@ -144,7 +147,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout:
                 return "Bearer" + token
             default:
                 return ""

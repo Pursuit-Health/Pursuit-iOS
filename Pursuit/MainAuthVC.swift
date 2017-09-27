@@ -226,7 +226,9 @@ extension MainAuthVC: SignInVCDelegate {
     func signUpSuccessfull(on controller: SignUpVC) {
         
         uploadImage()
-        performSegue(withIdentifier: Constants.SeguesIDs.Trainer, sender: self)
+        if let isClient = Auth.IsClient {
+            performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
+        }
     }
 }
 
@@ -241,7 +243,7 @@ extension MainAuthVC: SignUpVCDelegate {
 extension MainAuthVC: SelectTrainerVCDelegate {
     func trainerSelectedWithId(trainer: Trainer) {
         
-        signUpVC?.trainer = trainer
+        signUpVC?.trainerData = trainer
         
         selectTrainerVC?.navigationController?.popViewController(animated: true)
     }

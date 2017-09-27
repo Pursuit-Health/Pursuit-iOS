@@ -13,7 +13,7 @@ protocol SelectClientsVCDelegate: class {
 }
 
 class SelectClientsVC: UIViewController {
-
+    
     //MARK: Constants
     
     struct Constants {
@@ -106,7 +106,13 @@ extension SelectClientsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.client.identifier, for: indexPath) as? SelectClientCell else { return UICollectionViewCell() }
         let clientData = filteredClients[indexPath.row]
-        cell.clientPhotoImageView.image = UIImage(named: "avatar1")
+        
+        
+        if let url = clientData.clientAvatar {
+            cell.clientPhotoImageView.sd_setImage(with: URL(string: url))
+        }else {
+            cell.clientPhotoImageView.image = UIImage(named: "profile")
+        }
         cell.clientNameLabel.text = clientData.name
         
         return cell

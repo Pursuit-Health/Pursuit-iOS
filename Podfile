@@ -25,4 +25,6 @@ target 'Pursuit' do
   pod 'SHTextFieldBlocks', '~> 1.1'
   pod 'SwiftDate', '~> 4.1.11 '
   pod 'SDWebImage', '~> 4.1'
+  pod 'HTTPStatusCodes', '~> 3.1'
+  
 end

@@ -53,26 +53,41 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:8v0-Rv-t8g:image" translatesAutoresizingMaskIntoConstraints="NO" id="8v0-Rv-t8g">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:8v0-Rv-t8g:image" translatesAutoresizingMaskIntoConstraints="NO" id="8v0-Rv-t8g">
                                 <rect key="frame" x="122" y="122" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2uI-wF-phi"/>
                                     <constraint firstAttribute="width" constant="25" id="G5u-fa-iKd"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:4ZJ-kG-BB3:image" translatesAutoresizingMaskIntoConstraints="NO" id="4ZJ-kG-BB3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:4ZJ-kG-BB3:image" translatesAutoresizingMaskIntoConstraints="NO" id="4ZJ-kG-BB3">
                                 <rect key="frame" x="87" y="122" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="49c-VF-iJG"/>
                                     <constraint firstAttribute="height" constant="25" id="TzM-vg-gbh"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:4Lu-6L-X9G:image" translatesAutoresizingMaskIntoConstraints="NO" id="4Lu-6L-X9G">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:4Lu-6L-X9G:image" translatesAutoresizingMaskIntoConstraints="NO" id="4Lu-6L-X9G">
                                 <rect key="frame" x="52" y="122" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="8nT-FD-3Tl"/>
                                     <constraint firstAttribute="width" constant="25" id="JuQ-QM-ZuW"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-Dy-fAD">
                                 <rect key="frame" x="27" y="122" width="15" height="25"/>

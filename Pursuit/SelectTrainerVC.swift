@@ -110,7 +110,7 @@ extension SelectTrainerVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.trainer.identifier, for: indexPath) as? SelectTrainer else { return UICollectionViewCell() }
         let trainerData = filteredTrainers[indexPath.row]
         if let url = trainerData.trainerAvatar {
-            cell.profilePhotoImageView.sd_setImage(with: URL(string: PSURL.BaseURL + url))
+            cell.profilePhotoImageView.sd_setImage(with: URL(string: url))
         }else {
             cell.profilePhotoImageView.image = UIImage(named: "profile")
         }

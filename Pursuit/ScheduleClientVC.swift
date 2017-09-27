@@ -100,7 +100,7 @@ class ScheduleClientVC: UIViewController {
             clientIdies.append(client.id ?? 0)
         }
         
-        var dateformatter = DateFormatters.serverTimeFormatter
+        let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "hh:mm"
         let startTime: String = dateformatter.string(from: startDatePicker.date)
         let endTime: String = dateformatter.string(from: enadDatePicker.date)
@@ -108,7 +108,7 @@ class ScheduleClientVC: UIViewController {
         dateformatter.dateFormat = "yyyy-MM-dd"
         let date: String = dateformatter.string(from: Date())
         
-        event.location = "somewhere"
+        event.location = eventTitleTextField.text ?? ""
         event.startAt = startTime
         event.endAt = endTime
         event.date = date
@@ -178,8 +178,11 @@ extension ScheduleClientVC: UICollectionViewDataSource {
         
         let client = self.clients[indexPath.row]
         
-        cell.clientPhotoImageView.image = UIImage(named:"avatar1")
-        
+        if let url = client.clientAvatar {
+            cell.clientPhotoImageView.sd_setImage(with: URL(string: url))
+        }else {
+            cell.clientPhotoImageView.image = UIImage(named: "profile")
+        }
         return cell
     }
 }

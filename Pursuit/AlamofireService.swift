@@ -10,8 +10,11 @@ class AlamofireService: ServiceProtocol {
         configuration.httpCookieStorage = nil
         configuration.httpCookieAcceptPolicy = .never
         configuration.httpShouldSetCookies = false
-
-        return Alamofire.SessionManager(configuration: configuration)
+        let sessionManager = SessionManager()
+        sessionManager.retrier = TokenRetrier()
+        
+        return sessionManager
+        //return Alamofire.SessionManager(configuration: configuration)
     }()
     
     //MARK: ServiceProtocol

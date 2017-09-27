@@ -9,6 +9,7 @@ PODS:
   - ESTabBarController-swift (2.5)
   - Fabric (1.6.13)
   - HMSegmentedControl (1.5.4)
+  - HTTPStatusCodes (3.1.2)
   - IQKeyboardManagerSwift (4.0.13)
   - JTAppleCalendar (7.0.6)
   - KeychainAccess (3.1.0)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - ESTabBarController-swift
   - Fabric
   - HMSegmentedControl
+  - HTTPStatusCodes (~> 3.1)
   - IQKeyboardManagerSwift (~> 4.0)
   - JTAppleCalendar (~> 7.0)
   - KeychainAccess (~> 3.0)
@@ -55,6 +57,7 @@ SPEC CHECKSUMS:
   ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
   Fabric: 2fb5676bc811af011a04513451f463dac6803206
   HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
+  HTTPStatusCodes: 88155ba36826366a898a7b4f34d311f49083d546
   IQKeyboardManagerSwift: fb399c4cddcd8d9bbcd2d0c7c81ed290b61c088e
   JTAppleCalendar: 6a942475e33b9ad4dee0a0e14aa4c63adcf4f543
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
@@ -70,6 +73,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 8706f53525f1ce51c8921b7af32237caab50c467
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 27334543796451e60e3a67e5348390f0baadc53d
+PODFILE CHECKSUM: e30e7afb297246ec6c08bf52a1dd452186058e54
 
 COCOAPODS: 1.2.1
