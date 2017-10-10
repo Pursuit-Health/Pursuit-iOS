@@ -117,6 +117,7 @@ extension CreateTemplateVC {
                 
             }else {
                 self.template = nil
+                self.templateNameTextField.text = nil
                 self.exercises = []
                 
             }

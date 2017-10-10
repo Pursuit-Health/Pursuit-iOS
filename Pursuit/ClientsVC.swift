@@ -129,7 +129,7 @@ extension ClientsVC: UITableViewDataSource {
         
         let clientData = filteredClients[indexPath.row]
         if let url = clientData.clientAvatar {
-         cell.clientImage.sd_setImage(with: URL(string: url))            
+         cell.clientImage.sd_setImage(with: URL(string: url.persuitImageUrl()))            
         }else {
             cell.clientImage.image = UIImage(named: "profile")
         }

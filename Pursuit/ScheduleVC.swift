@@ -18,7 +18,7 @@ protocol ClientScheduleDataSource: class {
 }
 
 protocol ScheduleVCDelegate: class {
-    func showlogin()
+    func removeAuthController(on controller: ScheduleVC)
 }
 
 class ScheduleVC: UIViewController {
@@ -63,6 +63,8 @@ class ScheduleVC: UIViewController {
     
     weak var datasource: ClientScheduleDataSource?
     
+    weak var delegate: ScheduleVCDelegate?
+    
     var events: [Event] = [] {
         didSet {
             self.calendarView.reloadData()
@@ -80,9 +82,16 @@ class ScheduleVC: UIViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
+        
         User.shared.token = nil
+        
+        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
+        let loginController = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.MainAuth)
         let controller = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)
-            controller?.viewControllers.removeLast()
+        controller?.viewControllers.insert(loginController, at: 0)
+        
+        controller?.popViewController(animated: true)
+            //controller?.viewControllers.removeLast()
     }
     
     //MARK: Lifecycle
@@ -105,6 +114,8 @@ class ScheduleVC: UIViewController {
         navigationController?.navigationBar.setAppearence()
         
         updateEvents()
+        
+        self.delegate?.removeAuthController(on: self)
     }
     
     //MARK: Override

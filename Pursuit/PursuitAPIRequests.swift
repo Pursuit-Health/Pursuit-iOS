@@ -37,7 +37,8 @@ extension PSAPI {
         //MARK: RequestConvertible
         
         var baseURLString: String {
-            return "http://pursuitapp-env.p4zisxyyg8.us-east-2.elasticbeanstalk.com/v1/"
+            //return "https://pursuithealthtech.com/v1/"
+            return "https://dev.nerdzlab.com/v1/"
         }
         
         var method: HTTPMethod {

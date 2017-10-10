@@ -216,18 +216,23 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 
 extension MainAuthVC: SignInVCDelegate {
     func lofinSuccessfull(on: SignInVC) {
-        
         if let isClient = Auth.IsClient {
         performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
-        }
-    }
-    
-    
-    func signUpSuccessfull(on controller: SignUpVC) {
-        
-        uploadImage()
-        if let isClient = Auth.IsClient {
-            performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
+            
+            
+//
+//            let storyboard = UIStoryboard(name: isClient ? Storyboards.Client : Storyboards.Trainer, bundle: nil)
+//
+//            let tabController = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.TrainerTBVC) as? TrainerTabBarVC)
+//
+//            let controller = tabController?.viewControllers![0] as? ScheduleVC
+//
+//            //: (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.TrainerTBVC) as? TrainerTabBarVC)?.viewControllers![0] as? ScheduleVC
+//
+//
+//            controller?.delegate = self
+//
+//            self.navigationController?.pushViewController(controller!, animated: true)
         }
     }
 }
@@ -236,6 +241,13 @@ extension MainAuthVC: SignUpVCDelegate {
     func showSelectTrainerVC(on controller: SignUpVC) {
         if let controller = selectTrainerVC {
             self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
+    func signUpSuccessfull(on controller: SignUpVC) {
+        uploadImage()
+        if let isClient = Auth.IsClient {
+            performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
         }
     }
 }
@@ -248,4 +260,11 @@ extension MainAuthVC: SelectTrainerVCDelegate {
         selectTrainerVC?.navigationController?.popViewController(animated: true)
     }
 }
+
+extension MainAuthVC: ScheduleVCDelegate {
+    func removeAuthController(on controller: ScheduleVC) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
 

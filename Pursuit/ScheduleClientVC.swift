@@ -179,7 +179,7 @@ extension ScheduleClientVC: UICollectionViewDataSource {
         let client = self.clients[indexPath.row]
         
         if let url = client.clientAvatar {
-            cell.clientPhotoImageView.sd_setImage(with: URL(string: url))
+            cell.clientPhotoImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
         }else {
             cell.clientPhotoImageView.image = UIImage(named: "profile")
         }

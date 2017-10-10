@@ -74,6 +74,7 @@
 		783484311F71B05100C58191 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484301F71B05100C58191 /* Trainer.swift */; };
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
+		783FBA6B1F8D223700BB26EC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBA6A1F8D223700BB26EC /* String.swift */; };
 		7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */; };
 		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
 		784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */; };
@@ -87,6 +88,8 @@
 		78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */; };
 		78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
+		78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78835C981F8B5D7400C28C76 /* BirthdayCell.swift */; };
+		78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78835C991F8B5D7500C28C76 /* BirthdayCell.xib */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
 		788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */; };
 		788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */; };
@@ -238,6 +241,7 @@
 		783484301F71B05100C58191 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
+		783FBA6A1F8D223700BB26EC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRetrier.swift; sourceTree = "<group>"; };
 		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
 		784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClientCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
 		78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExerciseCell.xib; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
+		78835C981F8B5D7400C28C76 /* BirthdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayCell.swift; sourceTree = "<group>"; };
+		78835C991F8B5D7500C28C76 /* BirthdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayCell.xib; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
 		788EE89A1F34E68300DD8A98 /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		788EE89B1F34E68300DD8A98 /* TrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingTableViewCell.xib; sourceTree = "<group>"; };
@@ -582,6 +588,7 @@
 		782B82FA1F71253D00A019AC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				78835C9C1F8B5D9F00C28C76 /* BirthdayCell */,
 				783484251F71802000C58191 /* SignUpButtonCell */,
 				782B831A1F71284700A019AC /* QuestionCell */,
 				782B83191F71283300A019AC /* ChooseTrainerCell */,
@@ -726,6 +733,14 @@
 			name = SignInMapper;
 			sourceTree = "<group>";
 		};
+		783FBA691F8D222100BB26EC /* String */ = {
+			isa = PBXGroup;
+			children = (
+				783FBA6A1F8D223700BB26EC /* String.swift */,
+			);
+			name = String;
+			sourceTree = "<group>";
+		};
 		7843FB681F7BAE3C006A8A2D /* TokenRetrier */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +808,15 @@
 				78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */,
 			);
 			name = AddExerciseCell;
+			sourceTree = "<group>";
+		};
+		78835C9C1F8B5D9F00C28C76 /* BirthdayCell */ = {
+			isa = PBXGroup;
+			children = (
+				78835C981F8B5D7400C28C76 /* BirthdayCell.swift */,
+				78835C991F8B5D7500C28C76 /* BirthdayCell.xib */,
+			);
+			name = BirthdayCell;
 			sourceTree = "<group>";
 		};
 		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
@@ -1176,7 +1200,7 @@
 			children = (
 				781110501F6592DC00457E8B /* SelecTrainer */,
 				84AB4D691F32815400531740 /* ForgotPasswordCell */,
-				84AB4D681F32814900531740 /* SignUpCell */,
+				84AB4D681F32814900531740 /* SignUpCells */,
 				84AB4D671F32813F00531740 /* SignInCell */,
 			);
 			name = Cells;
@@ -1191,13 +1215,13 @@
 			name = SignInCell;
 			sourceTree = "<group>";
 		};
-		84AB4D681F32814900531740 /* SignUpCell */ = {
+		84AB4D681F32814900531740 /* SignUpCells */ = {
 			isa = PBXGroup;
 			children = (
 				5BE3A1C71EB3196A005B35CD /* SignUpCell.swift */,
 				5BE3A1C81EB3196A005B35CD /* SignUpCell.xib */,
 			);
-			name = SignUpCell;
+			name = SignUpCells;
 			sourceTree = "<group>";
 		};
 		84AB4D691F32815400531740 /* ForgotPasswordCell */ = {
@@ -1220,6 +1244,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				783FBA691F8D222100BB26EC /* String */,
 				780ECFDC1F58C0480009E6A6 /* UILabel */,
 				780ECFD91F58785E0009E6A6 /* UITextField */,
 				7804AF441F55FE4600CE5780 /* CellState */,
@@ -1511,7 +1536,7 @@
 				TargetAttributes = {
 					5B1F83081E850E4100ABA24C = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9FDKQ36M59;
+						DevelopmentTeam = HEL7S68QC6;
 						ProvisioningStyle = Automatic;
 					};
 					5B1F831C1E850E4100ABA24C = {
@@ -1575,6 +1600,7 @@
 				842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */,
 				5BE3A1D01EB3196A005B35CD /* ForgotPasswordCell.xib in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
+				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
 				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
@@ -1681,6 +1707,7 @@
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
 				784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */,
 				780D8E901F4360FE0030A992 /* Template.swift in Sources */,
+				783FBA6B1F8D223700BB26EC /* String.swift in Sources */,
 				78094A291F5BD958001325B4 /* KeychainService.swift in Sources */,
 				782B82FF1F71256D00A019AC /* SignUpDataCell.swift in Sources */,
 				78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */,
@@ -1722,6 +1749,7 @@
 				784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */,
 				782B82EB1F703E9400A019AC /* Client.swift in Sources */,
 				78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */,
+				78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */,
 				78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
 				788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */,
@@ -1907,11 +1935,15 @@
 			baseConfigurationReference = 1A9414D73EF8AD2ED81CD96A /* Pods-Pursuit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9FDKQ36M59;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pursuitheal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1922,11 +1954,15 @@
 			baseConfigurationReference = E5925E799CFCCD7566ADA043 /* Pods-Pursuit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9FDKQ36M59;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pursuitheal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;

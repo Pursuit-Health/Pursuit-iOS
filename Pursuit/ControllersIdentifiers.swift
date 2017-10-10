@@ -10,6 +10,7 @@ import Foundation
 
 struct Controllers {
     struct Identifiers {
+        static let MainAuth         = "MainAuthVCIdentifier"
         static let ResetPassword    = "ResetPasswordVC"
         static let SelectTrainer    = "SelectTrainerVCIdentifier"
         static let AddExercises     = "AddExercisesVCIdentifier"
@@ -19,5 +20,7 @@ struct Controllers {
         static let ScheduleClient   = "ClientSchedulerVCIdentifier"
         static let SelectClients    = "SelectClientsVCIdentifier"
         static let Splesh           = "SplashVCIdentifier"
+        static let TrainerTBVC      = "TrainerTabBarVCIdentifier"
+        static let ClientTBVC       = "ClientTabBarVCIdentifier"
     }
 }

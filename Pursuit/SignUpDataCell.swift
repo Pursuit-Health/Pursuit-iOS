@@ -25,4 +25,27 @@ class SignUpDataCell: UITableViewCell {
 
     }
     
+    func datePicker() -> UIDatePicker {
+        
+        let datePickerView: UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = .date
+        
+       datePickerView.addTarget(self, action: #selector(SignUpDataCell.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    
+    return datePickerView
+    }
+    
+    func datePickerValueChanged(sender: UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = .medium
+        
+        dateFormatter.timeStyle = .none
+        
+        userDataTextField.text = dateFormatter.string(from: sender.date)
+        
+    }
+    
 }

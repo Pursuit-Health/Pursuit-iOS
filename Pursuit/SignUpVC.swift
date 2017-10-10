@@ -168,7 +168,12 @@ class SignUpVC: UIViewController {
         
         private func fillPasswordCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Password"
-            cell.cellImageview.image            = UIImage(named: "ic_password")
+            if cell.userDataTextField.text != "" {
+                let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
+                cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
+            }
+            cell.userDataTextField.isSecureTextEntry    = true
+            cell.cellImageview.image                    = UIImage(named: "ic_password")
             cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
@@ -178,7 +183,14 @@ class SignUpVC: UIViewController {
         
         private func fillBirthdayCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Birthday"
+            if cell.userDataTextField.text != "" {
+                let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
+                cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
+            }
             cell.cellImageview.image            = UIImage(named: "gift")
+            
+            cell.userDataTextField.inputView = cell.datePicker()
+            
             cell.userDataTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
@@ -247,8 +259,18 @@ extension SignUpVC: UITableViewDataSource {
                 self.trainer.email      = text
             case .birthday:
                 
-                self.client.birthday    = text
-                self.trainer.birthday   = text
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM dd,yyyy"
+                
+                if let date = dateFormatter.date(from: text) {
+                    
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let birthday = dateFormatter.string(from: date)
+                    
+                    self.client.birthday    = birthday
+                    self.trainer.birthday   = birthday
+                }
+                
             default:
                 return
             }

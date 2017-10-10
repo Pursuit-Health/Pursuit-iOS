@@ -109,7 +109,7 @@ extension SelectClientsVC: UICollectionViewDataSource {
         
         
         if let url = clientData.clientAvatar {
-            cell.clientPhotoImageView.sd_setImage(with: URL(string: url))
+            cell.clientPhotoImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
         }else {
             cell.clientPhotoImageView.image = UIImage(named: "profile")
         }
