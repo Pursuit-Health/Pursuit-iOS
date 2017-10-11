@@ -86,9 +86,10 @@ static inline BOOL BBB_selector_belongsToProtocol(SEL selector, Protocol * proto
         return;
     }
     
+    BBB_PatternTextFieldChangedBlock block = self.BBB_reactFromCodeChange ? self.BBB_changedBlock : nil;
     [UITextField BBB_calculateText:text
                       forTextField:self
-                       changeBlock:nil
+                       changeBlock:block
                          withRange:NSMakeRange(-1, -1)];
 }
 
@@ -425,6 +426,18 @@ replacementString:(NSString *)string {
 
 @dynamic BBB_pattern;
 @dynamic BBB_regular;
+@dynamic BBB_reactFromCodeChange;
+
+- (BOOL)BBB_reactFromCodeChange {
+    return [objc_getAssociatedObject(self, @selector(BBB_reactFromCodeChange)) boolValue];
+}
+
+- (void)setBBB_reactFromCodeChange:(BOOL)BBB_reactFromCodeChange {
+    objc_setAssociatedObject(self,
+                             @selector(BBB_reactFromCodeChange),
+                             @(BBB_reactFromCodeChange),
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 - (NSString *)BBB_pattern {
     return objc_getAssociatedObject(self, @selector(BBB_pattern));

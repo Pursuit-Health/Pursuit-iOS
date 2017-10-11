@@ -15,7 +15,7 @@ protocol APIHandable: Taskable {
 extension APIHandable {
     
     func simple(request: RequestConvertible, completion: ((_ error: ErrorProtocol?) -> Void)?) -> DataRequest? {
-        return self.perform(request)?.validate().responseJSON { (response) in
+        return self.perform(request)?.responseJSON { (response) in
             var error: ErrorProtocol?
             if let errorResponse = self.handle(response: response) {
                 error = errorResponse
@@ -58,7 +58,6 @@ extension APIHandable {
         
         if let  response = response {
             if !self.isValid(response: response) {
-                SVProgressHUD.showError(withStatus:"Something went wrong!")
                 if let responseError = self.error(response: response) {
                     error = responseError
                 } else {

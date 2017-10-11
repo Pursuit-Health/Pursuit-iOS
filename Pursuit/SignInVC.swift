@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 
 protocol SignInVCDelegate: class {
     func lofinSuccessfull(on controller: SignInVC)
@@ -23,7 +22,7 @@ class SignInVC: UIViewController {
     //MARK: Variables
     
     weak var delegate: SignInVCDelegate?
-
+    
     var user: User?
     
     var loginData = User()
@@ -31,7 +30,7 @@ class SignInVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func signInButtonPressed(_ sender: Any) {
-              makeSignIn()
+        makeSignIn()
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
@@ -42,13 +41,13 @@ class SignInVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     //MARK: Private
     
     private func setParametersforRequest() {
-  
+        
     }
     
     private func showForgotPasswordVC() {
@@ -75,12 +74,12 @@ private extension SignInVC {
     func makeSignIn(){
         makeSignIn { error in
             if error == nil {
-//                
-//                User.refreshToken(completion: { (error) in
-//                    if error == nil {
-//                        
-//                    }
-//                })
+                //
+                //                User.refreshToken(completion: { (error) in
+                //                    if error == nil {
+                //
+                //                    }
+                //                })
             }
         }
     }
@@ -99,7 +98,7 @@ private extension SignInVC {
 extension SignInVC: ForgotPasswordVCDelegate {
     func dissmissForgotPasswordVC() {
         guard let viewWithTag = self.view.viewWithTag(123) else {return }
-            viewWithTag.removeFromSuperview()
+        viewWithTag.removeFromSuperview()
     }
 }
 
@@ -115,6 +114,6 @@ extension SignInVC : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-
+        
     }
 }

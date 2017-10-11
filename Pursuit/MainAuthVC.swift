@@ -144,7 +144,9 @@ class MainAuthVC: UIViewController {
         
         let cancelSheet = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         
-        actionSheet.addAction(cameraSheet)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(cameraSheet)
+        }
         actionSheet.addAction(librarySheet)
         actionSheet.addAction(cancelSheet)
         

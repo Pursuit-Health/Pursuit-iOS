@@ -44,6 +44,18 @@ class QuestionCell: UITableViewCell {
 
     }
     
+    func selectTrainer() {
+        self.trainerIsSelectedView.isSelected = true
+        self.trainerNotSelectedView.isSelected = false
+        delegate?.isTrainer(true, on: self)
+    }
+    
+    func selectClient() {
+        self.trainerIsSelectedView.isSelected = false
+        self.trainerNotSelectedView.isSelected = true
+        delegate?.isTrainer(false, on: self)
+    }
+    
     //MARK: Private 
     
     private func addGestures() {
@@ -60,15 +72,11 @@ class QuestionCell: UITableViewCell {
     }
     
     @objc private func selectTrainer(_ gesture: UITapGestureRecognizer) {
-        self.trainerIsSelectedView.isSelected = true
-        self.trainerNotSelectedView.isSelected = false
-        delegate?.isTrainer(true, on: self)
+        self.selectTrainer()
     }
     
     @objc private func deselctTrainer(_ gesture: UITapGestureRecognizer) {
-        self.trainerIsSelectedView.isSelected = false
-        self.trainerNotSelectedView.isSelected = true
-        delegate?.isTrainer(false, on: self)
+        self.selectClient()
     }
     
 }

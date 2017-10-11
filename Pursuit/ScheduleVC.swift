@@ -82,15 +82,15 @@ class ScheduleVC: UIViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        
+        //TODO: Move to user
         User.shared.token = nil
         
         let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
         let loginController = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.MainAuth)
-        let controller = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)
+        let controller = self.navigationController?.navigationController
         controller?.viewControllers.insert(loginController, at: 0)
         
-        controller?.popViewController(animated: true)
+        controller?.popToRootViewController(animated: true)
             //controller?.viewControllers.removeLast()
     }
     

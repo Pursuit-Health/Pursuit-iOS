@@ -15,25 +15,15 @@ class SignUpDataCell: UITableViewCell {
     @IBOutlet weak var userDataTextField: AnimatedTextField!
     @IBOutlet weak var cellImageview: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
     func datePicker() -> UIDatePicker {
         
         let datePickerView: UIDatePicker = UIDatePicker()
         
         datePickerView.datePickerMode = .date
         
-       datePickerView.addTarget(self, action: #selector(SignUpDataCell.datePickerValueChanged), for: UIControlEvents.valueChanged)
-    
-    return datePickerView
+        datePickerView.addTarget(self, action: #selector(SignUpDataCell.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+        return datePickerView
     }
     
     func datePickerValueChanged(sender: UIDatePicker) {

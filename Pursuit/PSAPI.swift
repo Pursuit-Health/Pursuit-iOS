@@ -37,7 +37,7 @@ class PSAPI: APIHandable {
     @discardableResult
     func refreshToken(completion: @escaping RefreshTokenCompletion) -> DataRequest? {
         let request = Request.refreshToken()
-        return self.service.request(request: request).responseJSON { (response) in
+        return self.perform(request)?.responseJSON { (response) in
             var error: ErrorProtocol?
             
             if let responseError = self.handle(response: response) {
@@ -60,7 +60,7 @@ class PSAPI: APIHandable {
     func registerTrainer(personalData: [String : String], completion: @escaping RegisterTrainerCompletion) -> DataRequest? {
         
         let request = Request.registerTrainer(parameters: personalData)
-        return self.service.request(request: request).responseJSON { (response) in
+        return self.perform(request)?.responseJSON { (response) in
             var error: ErrorProtocol?
             var user: Trainer?
             if let responseError = self.handle(response: response) {
@@ -91,7 +91,7 @@ class PSAPI: APIHandable {
     @discardableResult
     func registerClient(personalData: [String : String], completion: @escaping RegisterClientCompletion) -> DataRequest? {
         let request = Request.registerClient(parameters: personalData)
-        return self.service.request(request: request).responseJSON { (response) in
+        return self.perform(request)?.responseJSON { (response) in
             var error: ErrorProtocol?
             var user: Client?
             if let responseError = self.handle(response: response) {
@@ -122,7 +122,10 @@ class PSAPI: APIHandable {
     func login(email: String, password: String, completion: @escaping LoginCompletion) -> DataRequest? {
         let request = Request.login(parameters: ["email": email,
                                                  "password": password])
+        //TODO: add error handling
+        SVProgressHUD.show()
         return self.service.request(request: request).responseJSON { (response) in
+            SVProgressHUD.dismiss()
             var error: ErrorProtocol?
             var user: User?
             if let responseError = self.handle(response: response) {

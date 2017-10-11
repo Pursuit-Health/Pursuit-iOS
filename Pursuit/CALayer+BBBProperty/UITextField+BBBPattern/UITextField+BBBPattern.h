@@ -16,5 +16,6 @@ typedef void (^BBB_PatternTextFieldChangedBlock)(UITextField * _Nonnull);
 @property (nonatomic, strong, nullable) IBInspectable NSString *BBB_regular;
 @property (nonatomic, strong, nullable, readonly) NSString *BBB_nonPatternText;
 @property (nonatomic, copy, nullable) BBB_PatternTextFieldChangedBlock BBB_changedBlock;
+@property (nonatomic, assign) BOOL BBB_reactFromCodeChange;
 
 @end

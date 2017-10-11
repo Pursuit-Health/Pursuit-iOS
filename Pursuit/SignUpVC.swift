@@ -38,7 +38,10 @@ class SignUpVC: UIViewController {
     
     var user: User? {
         didSet {
+            //TODO: Reimplement, check cell delegate method
             let isTrainer = self.user is Trainer
+            self.cellsInfo.remove(at: 0)
+            self.cellsInfo.insert(.question(delegate: self, isTrainer: isTrainer), at: 0)
             let indexPath = IndexPath(row:1, section:0)
             if let _ = self.signUpTableView.cellForRow(at: indexPath) as? ChooseTrainerCell {
                 if isTrainer {
@@ -63,7 +66,7 @@ class SignUpVC: UIViewController {
         }
     }
     
-    lazy var cellsInfo: [CellType] = [.question(delegate: self), .name, .email, .password, .birthday, .signup(delegate: self)]
+    lazy var cellsInfo: [CellType] = [.question(delegate: self, isTrainer: true), .name, .email, .password, .birthday, .signup(delegate: self)]
     
     //MARK: Nested
     
@@ -72,7 +75,7 @@ class SignUpVC: UIViewController {
         case email
         case password
         case birthday
-        case question(delegate: QuestionCellDelegate)
+        case question(delegate: QuestionCellDelegate, isTrainer: Bool)
         case selectTrainer(trainerName: String?)
         case signup(delegate: SignUpButtonCellDelegate)
         
@@ -121,9 +124,9 @@ class SignUpVC: UIViewController {
                         completion(text)
                     })
                 }
-            case .question(let delegate):
+            case .question(let delegate, let isTrainer):
                 if let castedCell = cell as? QuestionCell {
-                    fill(cell: castedCell, delegate: delegate)
+                    fill(cell: castedCell, delegate: delegate, isTrainer: isTrainer)
                 }
             case .selectTrainer(let trainerName):
                 if let castedCell = cell as? ChooseTrainerCell {
@@ -138,6 +141,7 @@ class SignUpVC: UIViewController {
             }
         }
         
+        //TODO: change to different cell types, that inherites from main cell
         private func fillNameCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Name"
             if cell.userDataTextField.text != "" {
@@ -145,8 +149,10 @@ class SignUpVC: UIViewController {
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
             cell.cellImageview.image            = UIImage(named: "ic_username")
-            cell.userDataTextField.sh_setDidEndEditing { (textField) in
-                if let text = textField?.text {
+            cell.userDataTextField.bbb_reactFromCodeChange = false
+            cell.userDataTextField.isSecureTextEntry    = false
+            cell.userDataTextField.bbb_changedBlock = { (textfield) in
+                if let text = textfield.text {
                     completion(text)
                 }
             }
@@ -158,9 +164,12 @@ class SignUpVC: UIViewController {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
+            
+            cell.userDataTextField.bbb_reactFromCodeChange = false
+            cell.userDataTextField.isSecureTextEntry    = false
             cell.cellImageview.image            = UIImage(named: "email")
-            cell.userDataTextField.sh_setDidEndEditing { (textField) in
-                if let text = textField?.text {
+            cell.userDataTextField.bbb_changedBlock = { (textfield) in
+                if let text = textfield.text {
                     completion(text)
                 }
             }
@@ -172,10 +181,12 @@ class SignUpVC: UIViewController {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
+            
+            cell.userDataTextField.bbb_reactFromCodeChange = false
             cell.userDataTextField.isSecureTextEntry    = true
             cell.cellImageview.image                    = UIImage(named: "ic_password")
-            cell.userDataTextField.sh_setDidEndEditing { (textField) in
-                if let text = textField?.text {
+            cell.userDataTextField.bbb_changedBlock = { (textfield) in
+                if let text = textfield.text {
                     completion(text)
                 }
             }
@@ -189,17 +200,24 @@ class SignUpVC: UIViewController {
             }
             cell.cellImageview.image            = UIImage(named: "gift")
             
+            //TODO: Reimplement
+            cell.userDataTextField.bbb_reactFromCodeChange = true
+            cell.userDataTextField.isSecureTextEntry    = false
             cell.userDataTextField.inputView = cell.datePicker()
-            
-            cell.userDataTextField.sh_setDidEndEditing { (textField) in
-                if let text = textField?.text {
+            cell.userDataTextField.bbb_changedBlock = { (textfield) in
+                if let text = textfield.text {
                     completion(text)
                 }
             }
         }
         
-        private func fill(cell: QuestionCell, delegate: QuestionCellDelegate) {
+        private func fill(cell: QuestionCell, delegate: QuestionCellDelegate, isTrainer: Bool) {
             cell.delegate = delegate
+            if isTrainer {
+                cell.selectTrainer()
+            } else {
+                cell.selectClient()
+            }
         }
         
         private func fill(cell: ChooseTrainerCell, trainerName: String?) {
@@ -216,6 +234,7 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     //MARK: Private
@@ -243,6 +262,7 @@ extension SignUpVC: UITableViewDataSource {
         let cellType = cellsInfo[indexPath.row]
         
         guard let cell = tableView.gc_dequeueReusableCell(type: cellType.cellType) else { return UITableViewCell() }
+        //TODO: Reimplement
         cellType.fillCell(cell: cell, completion: { text in
             
             switch cellType {

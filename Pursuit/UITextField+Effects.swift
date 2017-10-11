@@ -103,27 +103,24 @@ open class AnimatedTextField: TextFieldEffects {
     // MARK: - TextFieldEffects
     
     override open func drawViewsForRect(_ rect: CGRect) {
-        let frame = CGRect(origin: CGPoint.zero, size: CGSize(width: rect.size.width, height: rect.size.height))
-        
-        placeholderLabel.frame = frame.insetBy(dx: placeholderInsets.x, dy: placeholderInsets.y)
-        placeholderLabel.font = placeholderFontFromFont(font!)
-        
-        updateBorder()
-        updatePlaceholder()
-        
-        layer.addSublayer(inactiveBorderLayer)
-        layer.addSublayer(activeBorderLayer)
-        addSubview(placeholderLabel)
+        if placeholderLabel.superview !== self {
+            updateBorder()
+            updatePlaceholder()
+            
+            layer.addSublayer(inactiveBorderLayer)
+            layer.addSublayer(activeBorderLayer)
+            addSubview(placeholderLabel)
+        }
     }
     
     override open func animateViewsForTextEntry() {
-        if text!.isEmpty {
-            UIView.animate(withDuration: 1.35, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 2.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: ({
-                
-            }), completion: { _ in
-                self.animationCompletionHandler?(.textEntry)
-            })
-        }
+//        if text?.isEmpty ?? true {
+//            UIView.animate(withDuration: 1.35, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 2.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: ({
+//
+//            }), completion: { _ in
+//                self.animationCompletionHandler?(.textEntry)
+//            })
+//        }
         let multiplier = self.minFontSize / self.maxFontSize
         if text?.isEmpty ?? true {
             animatelabelfont(from: 1, to: multiplier)
@@ -133,21 +130,19 @@ open class AnimatedTextField: TextFieldEffects {
     }
     
     override open func animateViewsForTextDisplay() {
-        if text!.isEmpty {
-            UIView.animate(withDuration: 1.35, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 2.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: ({
-                
-            }), completion: { _ in
-                self.animationCompletionHandler?(.textDisplay)
-            })
+//            UIView.animate(withDuration: 1.35, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 2.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: ({
+//
+//            }), completion: { _ in
+//                self.animationCompletionHandler?(.textDisplay)
+//            })
             let multiplier = self.minFontSize / self.maxFontSize
             
-            if text?.isEmpty ?? true{
+            if text?.isEmpty ?? true {
                 animatelabelfont(from: 1, to: 1/multiplier)
             }
             //activeBorderLayer.frame = self.rectForBorder(self.borderThickness.active, isFilled: false)
             
             placeholderLabel.textColor = updatePlaceHolderTextColor(isActive: false)
-        }
     }
     
     // MARK: - Private
@@ -201,9 +196,11 @@ open class AnimatedTextField: TextFieldEffects {
         default:
             break
         }
-        
-        placeholderLabel.frame = CGRect(x: originX, y: textRect.height/2, width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
-        
+        if self.text?.isEmpty ?? true {
+            placeholderLabel.frame = CGRect(x: originX, y: textRect.height/2, width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
+        } else {
+            placeholderLabel.frame = CGRect(x: originX, y: 0, width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
+        }
         activePlaceholderPoint = CGPoint(x: placeholderLabel.frame.origin.x, y: placeholderLabel.frame.origin.y - placeholderLabel.frame.size.height - placeholderInsets.y)
     }
     
