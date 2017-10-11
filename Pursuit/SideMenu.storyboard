@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxf-jP-tCa">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--TrainerMain-->
+        <scene sceneID="gUS-G8-765">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrainerMain" id="ck3-ZJ-rt9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fde-KS-gDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1310" y="332"/>
+        </scene>
+        <!--ClientMain-->
+        <scene sceneID="oLE-m1-5Zt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ClientMain" id="hZg-Qu-zKK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nme-OT-jI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1303" y="591"/>
+        </scene>
+        <!--NavigatorVC-->
+        <scene sceneID="5I0-7x-Jjn">
+            <objects>
+                <viewController id="sxH-Ge-hB2" customClass="NavigatorVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Usr-pS-xLF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="I5j-2l-xv3"/>
+                    </view>
+                    <connections>
+                        <segue destination="ck3-ZJ-rt9" kind="presentation" identifier="ShowTrainerStoryboard" id="l0m-kA-2w0"/>
+                        <segue destination="hZg-Qu-zKK" kind="show" identifier="ShowClientStoryboard" id="4Mm-HY-Bqh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7e-u8-i5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="477"/>
+        </scene>
+        <!--SettingsVC-->
+        <scene sceneID="Iln-OU-RLf">
+            <objects>
+                <viewController id="rZh-Cb-TAh" customClass="SettingsVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hf8-ge-CAh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hI1-nl-q3D">
+                                <rect key="frame" x="0.0" y="10" width="300" height="667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera-2" translatesAutoresizingMaskIntoConstraints="NO" id="R1A-XU-At2">
+                                        <rect key="frame" x="50" y="80" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="R1A-XU-At2" secondAttribute="height" multiplier="1:1" id="PXr-Ef-fVg"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4I-Pg-WOw">
+                                        <rect key="frame" x="129.5" y="300" width="42" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlY-qa-5gs">
+                                        <rect key="frame" x="129" y="343.5" width="42" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OpC-Ns-pg2">
+                                        <rect key="frame" x="30" y="387" width="240" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="1Pp-nT-pw7"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logout" translatesAutoresizingMaskIntoConstraints="NO" id="vwg-7q-9hE">
+                                        <rect key="frame" x="30" y="428" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Blt-v9-k2l"/>
+                                            <constraint firstAttribute="width" constant="30" id="sAq-gM-FvT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14c-iD-3X6">
+                                        <rect key="frame" x="80" y="425" width="55" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButtonPressed:" destination="rZh-Cb-TAh" eventType="touchUpInside" id="9xT-LO-9J5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="A4I-Pg-WOw" firstAttribute="top" secondItem="R1A-XU-At2" secondAttribute="bottom" constant="20" id="3Cs-PU-m2T"/>
+                                    <constraint firstItem="HlY-qa-5gs" firstAttribute="top" secondItem="A4I-Pg-WOw" secondAttribute="bottom" constant="20" id="64Q-X8-ghM"/>
+                                    <constraint firstItem="14c-iD-3X6" firstAttribute="leading" secondItem="vwg-7q-9hE" secondAttribute="trailing" constant="20" id="6RW-gF-0RS"/>
+                                    <constraint firstAttribute="trailing" secondItem="R1A-XU-At2" secondAttribute="trailing" constant="50" id="8bR-6S-UXV"/>
+                                    <constraint firstItem="vwg-7q-9hE" firstAttribute="leading" secondItem="OpC-Ns-pg2" secondAttribute="leading" id="MGa-8w-8sN"/>
+                                    <constraint firstItem="OpC-Ns-pg2" firstAttribute="top" secondItem="HlY-qa-5gs" secondAttribute="bottom" constant="20" id="VFP-l6-fiW"/>
+                                    <constraint firstItem="vwg-7q-9hE" firstAttribute="top" secondItem="OpC-Ns-pg2" secondAttribute="bottom" constant="40" id="VZr-0i-PkM"/>
+                                    <constraint firstAttribute="trailing" secondItem="OpC-Ns-pg2" secondAttribute="trailing" constant="30" id="XOo-fc-JXx"/>
+                                    <constraint firstItem="HlY-qa-5gs" firstAttribute="centerX" secondItem="A4I-Pg-WOw" secondAttribute="centerX" id="beQ-c5-UfO"/>
+                                    <constraint firstItem="OpC-Ns-pg2" firstAttribute="leading" secondItem="hI1-nl-q3D" secondAttribute="leading" constant="30" id="d5J-AP-MIR"/>
+                                    <constraint firstItem="R1A-XU-At2" firstAttribute="top" secondItem="hI1-nl-q3D" secondAttribute="top" constant="80" id="eCb-IZ-3WO"/>
+                                    <constraint firstItem="A4I-Pg-WOw" firstAttribute="centerX" secondItem="R1A-XU-At2" secondAttribute="centerX" id="qkw-qn-fEn"/>
+                                    <constraint firstItem="R1A-XU-At2" firstAttribute="leading" secondItem="hI1-nl-q3D" secondAttribute="leading" constant="50" id="uSi-Cv-zkv"/>
+                                    <constraint firstItem="14c-iD-3X6" firstAttribute="centerY" secondItem="vwg-7q-9hE" secondAttribute="centerY" id="vre-s9-Fha"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hI1-nl-q3D" firstAttribute="centerY" secondItem="umY-dW-voy" secondAttribute="centerY" id="8pP-IB-er1"/>
+                            <constraint firstItem="hI1-nl-q3D" firstAttribute="leading" secondItem="umY-dW-voy" secondAttribute="leading" id="GLi-Sk-DGz"/>
+                            <constraint firstItem="hI1-nl-q3D" firstAttribute="width" secondItem="hf8-ge-CAh" secondAttribute="width" multiplier="0.8" id="dmc-Us-PTG"/>
+                            <constraint firstItem="hI1-nl-q3D" firstAttribute="height" secondItem="hf8-ge-CAh" secondAttribute="height" id="yJg-ji-OHC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="umY-dW-voy"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="HlY-qa-5gs" id="AHb-M6-X8Y"/>
+                        <outlet property="userImageView" destination="R1A-XU-At2" id="oNh-FV-0SI"/>
+                        <outlet property="userNameLabel" destination="A4I-Pg-WOw" id="1E7-2i-gxH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hv0-UL-6dB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709.60000000000002" y="1197.7511244377813"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="pyB-4Z-Hj9">
+            <objects>
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxf-jP-tCa" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="rZh-Cb-TAh" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="7nz-VW-vlP"/>
+                        <segue destination="sxH-Ge-hB2" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="VwF-1F-KII"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9of-yA-OK7" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-177" y="940"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logout" width="512" height="512"/>
+        <image name="photo-camera-2" width="512" height="512"/>
+    </resources>
+</document>

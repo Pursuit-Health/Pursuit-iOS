@@ -269,6 +269,9 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="вамвамвамва"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="qAd-i5-szg" id="idv-dq-jdn"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="UtN-7Y-4WR">
                             <connections>

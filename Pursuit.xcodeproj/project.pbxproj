@@ -75,6 +75,10 @@
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
 		783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A456B1F8E50580048A0F9 /* TokenAdapter.swift */; };
+		783A456F1F8E6A2E0048A0F9 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 783A456E1F8E6A2E0048A0F9 /* SideMenu.storyboard */; };
+		783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 783A45721F8E6BB60048A0F9 /* SWRevealViewController.m */; };
+		783A45751F8E7A7C0048A0F9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */; };
+		783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45761F8E87000048A0F9 /* NavigatorVC.swift */; };
 		783FBA6B1F8D223700BB26EC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBA6A1F8D223700BB26EC /* String.swift */; };
 		7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */; };
 		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
@@ -244,6 +248,11 @@
 		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
 		783A456B1F8E50580048A0F9 /* TokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAdapter.swift; sourceTree = "<group>"; };
+		783A456E1F8E6A2E0048A0F9 /* SideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
+		783A45711F8E6BB60048A0F9 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		783A45721F8E6BB60048A0F9 /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		783A45761F8E87000048A0F9 /* NavigatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorVC.swift; sourceTree = "<group>"; };
 		783FBA6A1F8D223700BB26EC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRetrier.swift; sourceTree = "<group>"; };
 		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
@@ -745,6 +754,25 @@
 			name = TokenAdapter;
 			sourceTree = "<group>";
 		};
+		783A456D1F8E69F80048A0F9 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				783A456E1F8E6A2E0048A0F9 /* SideMenu.storyboard */,
+				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
+				783A45761F8E87000048A0F9 /* NavigatorVC.swift */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		783A45701F8E6B960048A0F9 /* SWRewealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				783A45711F8E6BB60048A0F9 /* SWRevealViewController.h */,
+				783A45721F8E6BB60048A0F9 /* SWRevealViewController.m */,
+			);
+			path = SWRewealViewController;
+			sourceTree = "<group>";
+		};
 		783FBA691F8D222100BB26EC /* String */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,6 +1046,7 @@
 		84AB4D521F327CF100531740 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				783A456D1F8E69F80048A0F9 /* SideMenu */,
 				78094A2C1F5BF99F001325B4 /* Splash */,
 				84AB4D5C1F327FDC00531740 /* ClientMain */,
 				84AB4D581F327F5E00531740 /* TrainerMain */,
@@ -1295,6 +1324,7 @@
 		84AB4D6F1F32821F00531740 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				783A45701F8E6B960048A0F9 /* SWRewealViewController */,
 				78E4267E1F69B0DA00C12D94 /* UITextField+Effects */,
 				7832B00C1F33AC6300BC8116 /* TabPageViewController */,
 				84AB4D8B1F32845400531740 /* UIView+BBBPlaceWithConstraint */,
@@ -1604,6 +1634,7 @@
 				5BE3A1CC1EB3196A005B35CD /* SignInCell.xib in Resources */,
 				78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */,
 				842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */,
+				783A456F1F8E6A2E0048A0F9 /* SideMenu.storyboard in Resources */,
 				5BE3A1D01EB3196A005B35CD /* ForgotPasswordCell.xib in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
@@ -1673,7 +1704,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1750,8 +1781,10 @@
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				783484281F71804D00C58191 /* SignUpButtonCell.swift in Sources */,
+				783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				845882F91F7067F000BE7D69 /* Requests.swift in Sources */,
+				783A45751F8E7A7C0048A0F9 /* SettingsVC.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
 				784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */,
 				782B82EB1F703E9400A019AC /* Client.swift in Sources */,
@@ -1790,6 +1823,7 @@
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
 				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,
+				783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */,
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
 				7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */,

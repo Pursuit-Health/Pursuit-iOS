@@ -67,11 +67,20 @@
                         <segue destination="I2L-Kl-uI3" kind="show" identifier="ShowLoginStoryboard" id="lf2-W9-0vB"/>
                         <segue destination="FTd-T8-MTE" kind="show" identifier="ShowTrainerStoryboard" id="De8-9d-AHl"/>
                         <segue destination="FlY-dZ-qOX" kind="show" identifier="ShowClientStoryboard" id="U8G-cU-xrU"/>
+                        <segue destination="Bef-sR-jpL" kind="show" identifier="ShowSideMenu" id="zu5-G1-XN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XqA-oF-Tc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1024.8" y="98.50074962518741"/>
+        </scene>
+        <!--SideMenu-->
+        <scene sceneID="cTn-S8-qm2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SideMenu" id="Bef-sR-jpL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zhw-cO-BmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1585" y="-178"/>
         </scene>
         <!--Login-->
         <scene sceneID="BvZ-OB-MYR">

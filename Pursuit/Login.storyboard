@@ -17,6 +17,14 @@
         </array>
     </customFonts>
     <scenes>
+        <!--SideMenu-->
+        <scene sceneID="7wR-AA-DnH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SideMenu" id="ZNp-Ay-8hF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5l-cw-xVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="342" y="-418"/>
+        </scene>
         <!--TrainerMain-->
         <scene sceneID="JlC-Q6-1rM">
             <objects>
@@ -93,7 +101,7 @@
                                                                             <action selector="addPhotoButtonPressed:" destination="Nag-E4-VC3" eventType="touchUpInside" id="JYC-6F-uOl"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="VFF-vM-szL">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="VFF-vM-szL">
                                                                         <rect key="frame" x="94" y="40" width="186" height="185.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="VFF-vM-szL" secondAttribute="height" id="Vbw-qN-Gua"/>
@@ -187,6 +195,7 @@
                         <outlet property="viewForPageController" destination="baT-US-LIk" id="tBz-hc-rby"/>
                         <segue destination="iE0-gJ-nPe" kind="show" identifier="ShowTrainerStoryboard" id="iSM-0s-8UD"/>
                         <segue destination="mnW-1v-Me5" kind="show" identifier="ShowClientStoryboard" id="CXU-oU-jRo"/>
+                        <segue destination="ZNp-Ay-8hF" kind="show" identifier="ShowSideMenu" id="Gmt-7x-2ju"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7i-A3-5Sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -804,6 +813,6 @@
         <image name="ic_password" width="20" height="23"/>
         <image name="ic_username" width="22" height="22"/>
         <image name="logo" width="245" height="245"/>
-        <image name="profile" width="48" height="48"/>
+        <image name="photo-camera" width="512" height="512"/>
     </resources>
 </document>

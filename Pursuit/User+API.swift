@@ -12,11 +12,13 @@ extension User {
     //MARK: Typealias
     
     typealias LoginCompletion           = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    typealias GetUserInfoCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
     typealias ForgotPasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias SetPasswordCompletion     = (_ error: ErrorProtocol?) -> Void
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     typealias RefreshTokenCompletion    = (_ error: ErrorProtocol?) -> Void
+    
     
 
     //MARK: Public
@@ -65,5 +67,10 @@ extension User {
         api.uploadAvatar(data: data, completion: completion)
     }
     
+    class func getUserInfo(completion: @escaping GetUserInfoCompletion) {
+        let api = PSAPI()
+        
+        api.getUserInfo(completion: completion)
+    }
 
  }

@@ -28,7 +28,7 @@ class SplashVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.performSegue(withIdentifier: checkIfUserLoggedIn() ? checkUserType()
+        self.performSegue(withIdentifier: checkIfUserLoggedIn() ? "ShowSideMenu"
             : Constants.SeguesIDs.Login, sender: self)
     }
     

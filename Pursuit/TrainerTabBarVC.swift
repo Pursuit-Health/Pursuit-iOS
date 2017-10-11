@@ -18,6 +18,8 @@ class TrainerTabBarVC: UITabBarController {
             
         }
         
+        
+        //TODO: Check
         if let templatesVC = (self.viewControllers?[1] as? UINavigationController)?.visibleViewController as? TemplatesVC {
             
         }

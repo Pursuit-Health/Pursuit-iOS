@@ -23,6 +23,6 @@ class PreloadVC: UIViewController {
     //MARK: Private.Methods
     
     private func prepareNavigation() {
-        self.navigationController?.isNavigationBarHidden = true
+//        self.navigationController?.isNavigationBarHidden = true
     }
 }

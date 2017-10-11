@@ -24,7 +24,7 @@ class User: Mappable {
             keychain.token      = newValue
         }
     }
-    
+
     //MARK: Mappable
     
     var id                  : Int?

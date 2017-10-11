@@ -188,6 +188,43 @@ class PSAPI: APIHandable {
     }
     
     @discardableResult
+    func getUserInfo(completion: @escaping GetUserInfoCompletion) -> DataRequest? {
+        let request = Request.getUserInfo()
+        
+        //TODO: remove copypaste
+        SVProgressHUD.show()
+        return self.service.request(request: request).validate().responseJSON { (response) in
+            SVProgressHUD.dismiss()
+            var error: ErrorProtocol?
+            var user: User?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            } else {
+                switch response.result {
+                case .success(let JSON):
+                    let userData = ((JSON as? [String : Any])?["data"] as? [String : Any])
+                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
+                    if let type = metaData?["user_type"], let userData = userData {
+                        let objectData = ["user" : userData]
+                        if let name = userData["name"] as? String, let email =  userData["email"] as? String {
+                            User.shared.name = name
+                            User.shared.email = email
+                            if let avatar = userData["avatar"] as? String {
+                            User.shared.avatar = avatar
+                            }
+                        }
+                    }
+            
+                case .failure(let serverError):
+                    error = serverError.psError
+                }
+            }
+            completion(user, error)
+        }
+        
+    }
+    
+    @discardableResult
     func getTrainers(completion: @escaping GetTrainersCompletion) -> DataRequest? {
         let request = Request.getTrainers()
         return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Trainer]>) in
@@ -410,4 +447,6 @@ extension PSAPI {
     typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
     typealias SubmitWorkOutCompletion   = (_ error: ErrorProtocol?) -> Void
+    
+    typealias GetUserInfoCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
 }

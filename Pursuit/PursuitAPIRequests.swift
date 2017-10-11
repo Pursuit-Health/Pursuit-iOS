@@ -17,6 +17,7 @@ extension PSAPI {
         //MARK: Settings
         case changePassword(parameters: Parameters)
         case uploadAvatar()
+        case getUserInfo()
         
         //MARK: Trainer
         case createTemplate(parameters: Parameters)
@@ -75,6 +76,8 @@ extension PSAPI {
                 return "settings/password"
             case .uploadAvatar:
                 return "settings/avatar"
+            case .getUserInfo:
+                return "settings/info"
                 
             //Template
             case .createTemplate:
@@ -148,7 +151,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo:
                 return "Bearer" + token
             default:
                 return ""

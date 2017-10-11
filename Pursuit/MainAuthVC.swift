@@ -219,7 +219,9 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 extension MainAuthVC: SignInVCDelegate {
     func lofinSuccessfull(on: SignInVC) {
         if let isClient = Auth.IsClient {
-        performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
+            //TODO
+            performSegue(withIdentifier: "ShowSideMenu", sender: self)
+       // performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
             
             
 //
@@ -249,7 +251,8 @@ extension MainAuthVC: SignUpVCDelegate {
     func signUpSuccessfull(on controller: SignUpVC) {
         uploadImage()
         if let isClient = Auth.IsClient {
-            performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
+            performSegue(withIdentifier: "ShowSideMenu", sender: self)
+           // performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
         }
     }
 }

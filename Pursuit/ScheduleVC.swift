@@ -19,6 +19,13 @@ protocol ClientScheduleDataSource: class {
 
 protocol ScheduleVCDelegate: class {
     func removeAuthController(on controller: ScheduleVC)
+    func menuButtonPressed(on controller: ScheduleVC)
+}
+
+extension ScheduleVCDelegate{
+    func menuButtonPressed(on controller: ScheduleVC) {
+        
+    }
 }
 
 class ScheduleVC: UIViewController {
@@ -82,17 +89,19 @@ class ScheduleVC: UIViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        //TODO: Move to user
-        User.shared.token = nil
-        
-        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
-        let loginController = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.MainAuth)
-        let controller = self.navigationController?.navigationController
-        controller?.viewControllers.insert(loginController, at: 0)
-        
-        controller?.popToRootViewController(animated: true)
+  
             //controller?.viewControllers.removeLast()
     }
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        
+        delegate?.menuButtonPressed(on: self)
+        
+        if self.revealViewController() != nil {
+            self.revealViewController().revealToggle(self)
+        }
+    }
+    
     
     //MARK: Lifecycle
     
@@ -100,6 +109,12 @@ class ScheduleVC: UIViewController {
         super.viewDidLoad()
         
         calendarViewVisibleDates()
+        
+//        self.navigationController?.isNavigationBarHidden = true
+        
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
