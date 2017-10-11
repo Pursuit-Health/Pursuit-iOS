@@ -45,7 +45,7 @@ class TokenRetrier: RequestRetrier {
                 
                 strongSelf.requestsToRetry.forEach { $0((error != nil), 0.0) }
                 
-                //strongSelf.requestsToRetry.removeAll()
+                strongSelf.requestsToRetry.removeAll()
                 
                 strongSelf.retriesCount += 1
                 
