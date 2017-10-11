@@ -37,7 +37,7 @@ class PSAPI: APIHandable {
     @discardableResult
     func refreshToken(completion: @escaping RefreshTokenCompletion) -> DataRequest? {
         let request = Request.refreshToken()
-        return self.perform(request)?.responseJSON { (response) in
+        return self.service.request(request: request).responseJSON { (response) in
             var error: ErrorProtocol?
             
             if let responseError = self.handle(response: response) {
