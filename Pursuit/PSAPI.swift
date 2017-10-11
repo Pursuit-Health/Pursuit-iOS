@@ -46,13 +46,13 @@ class PSAPI: APIHandable {
                 if let headers  = response.response?.allHeaderFields {
                     if let token  = headers["Authorization"] as? String {
                         print(token)
-                        let newToken = token.replacingOccurrences(of: "Bearer", with: "")
+                        let newToken = token.replacingOccurrences(of: "Bearer ", with: "")
                         
                         User.shared.token = newToken
                     }
                 }
             }
-            completion( error)
+            completion(error)
         }
     }
     

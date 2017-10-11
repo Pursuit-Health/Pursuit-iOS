@@ -11,6 +11,9 @@ class AlamofireService: ServiceProtocol {
         configuration.httpCookieAcceptPolicy = .never
         configuration.httpShouldSetCookies = false
         let sessionManager = SessionManager()
+        if let token = User.shared.token {
+        sessionManager.adapter = TokenAdapter(accessToken: token)
+        }
         sessionManager.retrier = TokenRetrier()
         
         return sessionManager

@@ -13,7 +13,7 @@ import Alamofire
 class TokenRetrier: RequestRetrier {
     
     private enum Constants {
-        static let retriesCount = 3
+        static let retriesCount = 1
     }
     
     private let lock = NSLock()
@@ -41,9 +41,14 @@ class TokenRetrier: RequestRetrier {
 
                 guard let strongSelf = self else { return }
                 
-                strongSelf.lock.lock() ; defer { strongSelf.lock.unlock() }
+                strongSelf.lock.lock() ; defer {
+                    strongSelf.lock.unlock()
+                }
                 
-                strongSelf.requestsToRetry.forEach { $0((error != nil), 0.0) }
+                strongSelf.requestsToRetry.forEach {
+                    $0((error == nil), 0.0)
+                    
+                }
                 
                 strongSelf.requestsToRetry.removeAll()
                 
