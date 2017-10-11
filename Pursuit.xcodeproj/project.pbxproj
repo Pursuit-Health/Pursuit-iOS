@@ -74,6 +74,7 @@
 		783484311F71B05100C58191 /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484301F71B05100C58191 /* Trainer.swift */; };
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
+		783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A456B1F8E50580048A0F9 /* TokenAdapter.swift */; };
 		783FBA6B1F8D223700BB26EC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBA6A1F8D223700BB26EC /* String.swift */; };
 		7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */; };
 		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
@@ -241,6 +242,7 @@
 		783484301F71B05100C58191 /* Trainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
 		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
+		783A456B1F8E50580048A0F9 /* TokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAdapter.swift; sourceTree = "<group>"; };
 		783FBA6A1F8D223700BB26EC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRetrier.swift; sourceTree = "<group>"; };
 		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
@@ -731,6 +733,14 @@
 				78383B441F72A8BF00AA75E3 /* SignInMapper.swift */,
 			);
 			name = SignInMapper;
+			sourceTree = "<group>";
+		};
+		783A456A1F8E4FD10048A0F9 /* TokenAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				783A456B1F8E50580048A0F9 /* TokenAdapter.swift */,
+			);
+			name = TokenAdapter;
 			sourceTree = "<group>";
 		};
 		783FBA691F8D222100BB26EC /* String */ = {
@@ -1379,6 +1389,7 @@
 		84AB4D901F3287B000531740 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				783A456A1F8E4FD10048A0F9 /* TokenAdapter */,
 				7843FB681F7BAE3C006A8A2D /* TokenRetrier */,
 				845882F21F7067F000BE7D69 /* Requests */,
 				84AB4D921F3287C100531740 /* API */,
@@ -1762,6 +1773,7 @@
 				784419B81F7AD7A7009CB350 /* URL.swift in Sources */,
 				7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */,
 				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
+				783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */,
 				783484331F71B62100C58191 /* Trainer+API.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,

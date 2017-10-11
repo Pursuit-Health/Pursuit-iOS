@@ -16,7 +16,7 @@ class User: Mappable {
     
     var token: String? {
         get {
-            let keychain        = PursuitKeychain()
+            let keychain = PursuitKeychain()
             return keychain.token
         }
         set(newValue) {
