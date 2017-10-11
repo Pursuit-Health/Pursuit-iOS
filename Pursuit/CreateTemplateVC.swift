@@ -26,6 +26,9 @@ class CreateTemplateVC: UIViewController {
     @IBOutlet weak var templateNameTextField: UITextField! {
         didSet {
             self.templateNameTextField.attributedPlaceholder =  NSAttributedString(string: "Template Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            if self.templateId == nil {
+                self.templateNameTextField.text = ""
+            }
         }
     }
     
@@ -48,7 +51,7 @@ class CreateTemplateVC: UIViewController {
     
     var exercises: [Template.Exercises] = [] {
         didSet {
-            self.templateTableView.reloadData()
+            self.templateTableView?.reloadData()
         }
     }
     
@@ -74,7 +77,9 @@ class CreateTemplateVC: UIViewController {
     }
     
     @IBAction func saveTemplateButtonPressed(_ sender: Any) {
-        
+        if templateNameTextField.text == "" {
+           showAlert()
+        }
         let template = Template()
         
         template.name = self.templateNameTextField.text
@@ -86,8 +91,6 @@ class CreateTemplateVC: UIViewController {
             template.exercisesForUpload?[index].exerciseId = nil
         }
         }
-        
-        
         delegate?.saveTemplate(template, on: self)
         self.navigationController?.popViewController(animated: true)
     }
@@ -108,19 +111,30 @@ class CreateTemplateVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         
     }
+    
+    //MARK: Private
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Please enter Template name.", message: nil, preferredStyle: .alert)
+        let okButton = UIAlertAction(title:"OK", style: .default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+        return
+    }
 }
 
 extension CreateTemplateVC {
     func loadTemplate() {
+        if templateId != nil {
         loadTemplateById{ error in
             if error == nil {
                 
             }else {
-                self.template = nil
-                self.templateNameTextField.text = nil
-                self.exercises = []
-                
             }
+        }
+        }else {
+            self.template = nil
+            self.exercises = []
         }
     }
     

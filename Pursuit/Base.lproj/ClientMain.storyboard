@@ -273,11 +273,6 @@
                                 <action selector="menuButtonPressed:" destination="qAd-i5-szg" id="idv-dq-jdn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="UtN-7Y-4WR">
-                            <connections>
-                                <action selector="logoutButtonPressed:" destination="qAd-i5-szg" id="FBj-qv-ijL"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Schedule VC"/>

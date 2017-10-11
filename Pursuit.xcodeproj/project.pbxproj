@@ -1573,7 +1573,7 @@
 					5B1F83081E850E4100ABA24C = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HEL7S68QC6;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					5B1F831C1E850E4100ABA24C = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1977,15 +1977,15 @@
 			baseConfigurationReference = 1A9414D73EF8AD2ED81CD96A /* Pods-Pursuit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HEL7S68QC6;
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "27838570-12e4-4d0f-80e8-6247da789130";
+				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Provision_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1996,15 +1996,15 @@
 			baseConfigurationReference = E5925E799CFCCD7566ADA043 /* Pods-Pursuit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HEL7S68QC6;
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "27838570-12e4-4d0f-80e8-6247da789130";
+				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Provision_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;

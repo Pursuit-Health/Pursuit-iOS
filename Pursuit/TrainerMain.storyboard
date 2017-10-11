@@ -978,11 +978,6 @@
                                 <action selector="menuButtonPressed:" destination="lzh-JK-VSH" id="mJx-6m-lfc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="lNQ-X3-fyt">
-                            <connections>
-                                <action selector="logoutButtonPressed:" destination="lzh-JK-VSH" id="BiI-9O-Lr5"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Schedule VC"/>
