@@ -199,7 +199,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7i-A3-5Sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="tmW-zC-27w" customClass="HideKeyboardTapGestureManager" customModule="HideKeyboardTapGestureManager">
+                <customObject id="tmW-zC-27w" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
                     <connections>
                         <outletCollection property="targets" destination="5eK-ZU-lDj" collectionClass="NSMutableArray" id="0sR-UF-pQM"/>
                     </connections>
