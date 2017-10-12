@@ -390,13 +390,13 @@ class PSAPI: APIHandable {
     @discardableResult
     func submitWorkout(workoutId: String, completion: @escaping SubmitWorkOutCompletion) -> DataRequest? {
         let request = Request.submitWorkout(workoutId: workoutId)
-        return self.simple(request: request, completion: completion)
+        return self.simple(request: request, completion: completion)?.validate()
     }
     
     @discardableResult
     func assignTemaplate(clientId: String, templateId: String, completion: @escaping AssignTemplateCompletion) -> DataRequest? {
         let request = Request.assignTemplate(clientId: clientId, templateId: templateId, parameters: [:])
-        return self.simple(request: request, completion: completion)
+        return self.simple(request: request, completion: completion)?.validate()
     }
 }
 

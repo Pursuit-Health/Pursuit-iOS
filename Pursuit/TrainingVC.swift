@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class TrainingVC: UIViewController {
     
@@ -42,22 +43,8 @@ class TrainingVC: UIViewController {
             self.completedLabel.text    = "0"
             self.completedCount          = 0
             
-            guard let dayCur  = self.workout?.currentWorkDay else { return }
-            guard let dateS = dateformatter.date(from: dayCur) else { return }
-            
-            //TODO: Move to separate method
-            dateformatter.dateFormat = "EEEE"
-            let dayOfWeak: String = dateformatter.string(from: dateS)
-            dateformatter.dateFormat = "MMMM yyyy"
-            let monthYear: String = dateformatter.string(from: dateS)
-            dateformatter.dateFormat = "dd"
-            let digitOfDay: String = dateformatter.string(from: dateS)
-            
-            self.dayNameLabel.text = dayOfWeak
-            self.dayDigitLabel.text = digitOfDay
-            self.monthYearLabel.text = monthYear
-            
-            self.trainingTableView?.reloadData()
+            self.exercises = workout?.template?.exercises ?? []
+            self.fillWorkout()
         }
     }
     
@@ -67,7 +54,7 @@ class TrainingVC: UIViewController {
             self.todoLabel.text = "\(self.exercises.count)"
             
             if exercises.count == 0 {
-                self.submitButton.isEnabled = true
+                self.submitButton.isEnabled = self.workout?.currentWorkDay == nil
             }
         }
     }
@@ -99,8 +86,33 @@ class TrainingVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = true
-        
+        self.submitButton.isEnabled = false
         getWorkoutById()
+    }
+    
+    private func fillWorkout() {
+        
+        var date = Date()
+        if  self.workout?.currentWorkDay != nil{
+            self.exercises = []
+            SVProgressHUD.showSuccess(withStatus: "Workout completed for today.")
+            if let serDate = dateformatter.date(from: self.workout?.currentWorkDay ?? "") {
+                date = serDate
+            }
+        }
+        //TODO: Move to separate method
+        dateformatter.dateFormat = "EEEE"
+        let dayOfWeak: String = dateformatter.string(from: date)
+        dateformatter.dateFormat = "MMMM yyyy"
+        let monthYear: String = dateformatter.string(from: date)
+        dateformatter.dateFormat = "dd"
+        let digitOfDay: String = dateformatter.string(from: date)
+        
+        self.dayNameLabel.text = dayOfWeak
+        self.dayDigitLabel.text = digitOfDay
+        self.monthYearLabel.text = monthYear
+        
+        self.trainingTableView?.reloadData()
     }
     
     fileprivate func getWorkoutById() {
@@ -108,7 +120,6 @@ class TrainingVC: UIViewController {
             if error == nil {
                 if let workoutUn = workout {
                     self.workout = workoutUn
-                    self.exercises = workoutUn.template?.exercises ?? []
                 }
             }
         }

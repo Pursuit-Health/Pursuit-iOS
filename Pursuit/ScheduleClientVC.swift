@@ -99,6 +99,8 @@ class ScheduleClientVC: UIViewController {
         for client in clients {
             clientIdies.append(client.id ?? 0)
         }
+        let set = Set(clientIdies)
+        clientIdies = Array(set)
         
         let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "hh:mm"
@@ -106,9 +108,9 @@ class ScheduleClientVC: UIViewController {
         let endTime: String = dateformatter.string(from: enadDatePicker.date)
         
         dateformatter.dateFormat = "yyyy-MM-dd"
-        let date: String = dateformatter.string(from: Date())
+        let date: String = dateformatter.string(from: changedDate.absoluteDate)
         
-        event.location = eventTitleTextField.text ?? ""
+        event.location = "SomeWhere"
         event.startAt = startTime
         event.endAt = endTime
         event.date = date
@@ -150,8 +152,6 @@ class ScheduleClientVC: UIViewController {
             self.dayOfWeakLabel.text    = dayOfWeak
             self.dayOfMonthLabel.text   = digitOfDay
             self.monthYearLabel.text    = monthYear
-            
-        
     }
     
     func uploadEvent() {
