@@ -8,7 +8,6 @@ PODS:
   - DeepLinkKit (1.4.0)
   - ESTabBarController-swift (2.5)
   - Fabric (1.6.13)
-  - HideKeyboardTapGestureManager (1.1.1)
   - HMSegmentedControl (1.5.4)
   - HTTPStatusCodes (3.1.2)
   - JTAppleCalendar (7.0.6)
@@ -32,7 +31,6 @@ DEPENDENCIES:
   - DeepLinkKit (~> 1.4)
   - ESTabBarController-swift
   - Fabric
-  - HideKeyboardTapGestureManager (~> 1.1)
   - HMSegmentedControl
   - HTTPStatusCodes (~> 3.1)
   - JTAppleCalendar (~> 7.0)
@@ -54,7 +52,6 @@ SPEC CHECKSUMS:
   DeepLinkKit: bffd3b5e51549222f974d631b4e0e7484600b9d8
   ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
   Fabric: 2fb5676bc811af011a04513451f463dac6803206
-  HideKeyboardTapGestureManager: d943b963b442d5095784d86c12ba8e6f2cb68ee1
   HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
   HTTPStatusCodes: 88155ba36826366a898a7b4f34d311f49083d546
   JTAppleCalendar: 6a942475e33b9ad4dee0a0e14aa4c63adcf4f543
@@ -70,6 +67,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: e9ff953c820394a4e641cfb0118b6c959506aec2
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 281e3c388b0e2ec2e46858a406da33cb44d5f6fc
+PODFILE CHECKSUM: 4b5bcbf9a873650ca96a47ed8b9cb51508b10387
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.1.1
