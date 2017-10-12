@@ -94,9 +94,6 @@ class ScheduleVC: UIViewController {
     }
     
     @IBAction func menuButtonPressed(_ sender: Any) {
-        
-        delegate?.menuButtonPressed(on: self)
-        
         if self.revealViewController() != nil {
             self.revealViewController().revealToggle(self)
         }
@@ -109,12 +106,6 @@ class ScheduleVC: UIViewController {
         super.viewDidLoad()
         
         calendarViewVisibleDates()
-        
-//        self.navigationController?.isNavigationBarHidden = true
-        
-        if self.revealViewController() != nil {
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,6 +119,8 @@ class ScheduleVC: UIViewController {
         //TODO: this thing is unnecessary, need to think how to change it. Do it with me.
         navigationController?.navigationBar.setAppearence()
         
+        //self.navigationController?.isNavigationBarHidden = false
+
         updateEvents()
         
         self.delegate?.removeAuthController(on: self)

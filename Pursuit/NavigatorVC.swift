@@ -92,7 +92,7 @@ class NavigatorVC: UIViewController {
     }
     
     func isClientType() -> Bool {
-        if let clientType = Auth.IsClient {
+        if let clientType = UserDefaults.standard.value(forKey: "isClient") as? Bool {
             return clientType
         }
         return false

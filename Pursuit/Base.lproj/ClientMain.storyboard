@@ -344,6 +344,9 @@
                     <navigationItem key="navigationItem" id="5I6-0h-hW4">
                         <barButtonItem key="leftBarButtonItem" image="ic_menu" id="bUe-9b-BxB">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="RPK-Tj-2hv" id="KrL-in-NF5"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
@@ -550,6 +553,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aY-MY-eL5">
                                 <rect key="frame" x="165" y="616.5" width="45" height="45"/>
                                 <state key="normal" image="btn_add"/>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="h1H-dm-qIn" eventType="touchUpInside" id="ea8-dZ-Dtn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -586,9 +592,12 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Track Workout"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="completedLabel" destination="GcF-Di-lwj" id="Zt3-Xu-0ln"/>
                         <outlet property="dayDigitLabel" destination="yst-R1-Gqd" id="saJ-Gx-SOj"/>
                         <outlet property="dayNameLabel" destination="heb-kB-kd3" id="T9z-Nb-laR"/>
                         <outlet property="monthYearLabel" destination="eUh-69-L2E" id="8s8-Ei-bYx"/>
+                        <outlet property="submitButton" destination="4aY-MY-eL5" id="Bb7-Mr-Y17"/>
+                        <outlet property="todoLabel" destination="2BR-bU-G3P" id="rAr-jg-tuA"/>
                         <outlet property="trainingTableView" destination="PEp-1r-Tbh" id="qqL-cQ-tXr"/>
                     </connections>
                 </viewController>

@@ -65,8 +65,6 @@
                     <navigationItem key="navigationItem" id="NyM-LH-DVz"/>
                     <connections>
                         <segue destination="I2L-Kl-uI3" kind="show" identifier="ShowLoginStoryboard" id="lf2-W9-0vB"/>
-                        <segue destination="FTd-T8-MTE" kind="show" identifier="ShowTrainerStoryboard" id="De8-9d-AHl"/>
-                        <segue destination="FlY-dZ-qOX" kind="show" identifier="ShowClientStoryboard" id="U8G-cU-xrU"/>
                         <segue destination="Bef-sR-jpL" kind="show" identifier="ShowSideMenu" id="zu5-G1-XN9"/>
                     </connections>
                 </viewController>

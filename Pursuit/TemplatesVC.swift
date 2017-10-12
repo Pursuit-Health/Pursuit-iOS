@@ -56,6 +56,12 @@ class TemplatesVC: UIViewController {
         
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        if self.revealViewController() != nil {
+            self.revealViewController().revealToggle(self)
+        }
+    }
 
     //MARK: Lifecycle
     

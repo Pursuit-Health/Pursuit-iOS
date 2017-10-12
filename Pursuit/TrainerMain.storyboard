@@ -59,6 +59,9 @@
                     <navigationItem key="navigationItem" id="JR3-BR-MTj">
                         <barButtonItem key="leftBarButtonItem" image="ic_menu" id="uXf-RJ-p6W">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="kHa-fg-u7u" id="8rt-tX-Dcx"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic_plus" id="KC7-Pw-Pen">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -457,6 +460,9 @@
                     <navigationItem key="navigationItem" id="mIa-Mk-FBQ">
                         <barButtonItem key="leftBarButtonItem" image="ic_menu" id="f5F-sc-lna">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="CnM-wx-Jhw" id="dOM-ay-AvK"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>

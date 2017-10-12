@@ -29,6 +29,11 @@ class SettingsVC: UIViewController {
         
         self.getUserInfo()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     @IBAction func logoutButtonPressed(_ sender: Any) {
         
         //TODO: Move to user

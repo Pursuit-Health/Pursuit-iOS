@@ -105,7 +105,7 @@ class MainAuthVC: UIViewController {
         controller.tabPageVCDelegate = self
         
         if let signInController = signInVC, let signUpController = signUpVC {
-            controller.tabItems = [(signInController, "SignIn"), (signUpController, "SignUp")]
+            controller.tabItems = [(signInController, "SIGN IN"), (signUpController, "SIGN UP")]
         }
         
         setUpOptions(controller)
@@ -218,7 +218,7 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 
 extension MainAuthVC: SignInVCDelegate {
     func lofinSuccessfull(on: SignInVC) {
-        if let isClient = Auth.IsClient {
+  
             //TODO
             performSegue(withIdentifier: "ShowSideMenu", sender: self)
        // performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
@@ -237,7 +237,7 @@ extension MainAuthVC: SignInVCDelegate {
 //            controller?.delegate = self
 //
 //            self.navigationController?.pushViewController(controller!, animated: true)
-        }
+        
     }
 }
 
@@ -250,10 +250,10 @@ extension MainAuthVC: SignUpVCDelegate {
     
     func signUpSuccessfull(on controller: SignUpVC) {
         uploadImage()
-        if let isClient = Auth.IsClient {
+        //if let isClient = Auth.IsClient {
             performSegue(withIdentifier: "ShowSideMenu", sender: self)
            // performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
-        }
+       // }
     }
 }
 

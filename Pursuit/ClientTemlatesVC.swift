@@ -31,6 +31,12 @@ class ClientTemlatesVC: UIViewController {
         return controller
     }()
     
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        if self.revealViewController() != nil {
+            self.revealViewController().revealToggle(self)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
