@@ -25,5 +25,6 @@ target 'Pursuit' do
   pod 'SDWebImage', '~> 4.1'
   pod 'HTTPStatusCodes', '~> 3.1'
   pod 'TPKeyboardAvoiding', '~> 1.3'
+  pod 'PIDatePicker', '~> 0.1'
   
 end

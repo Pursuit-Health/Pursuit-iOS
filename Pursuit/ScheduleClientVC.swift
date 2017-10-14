@@ -30,16 +30,15 @@ class ScheduleClientVC: UIViewController {
     @IBOutlet weak var monthYearLabel   : UILabel!
     @IBOutlet weak var eventTitleTextField: UITextField!
     
-    @IBOutlet weak var startDatePicker: UIDatePicker! {
+    @IBOutlet weak var startDateTextField: UITextField! {
         didSet {
-            self.startDatePicker.datePickerMode = .time
+            self.startDateTextField.inputView = startDatePicker()
         }
     }
     
-    @IBOutlet weak var enadDatePicker: UIDatePicker! {
+    @IBOutlet weak var endDateTextField: UITextField! {
         didSet {
-            self.enadDatePicker.datePickerMode = .time
-            self.enadDatePicker.setValue(UIColor.white, forKeyPath: "textColor")
+            self.endDateTextField.inputView = endDatePicker()
         }
     }
     
@@ -69,6 +68,8 @@ class ScheduleClientVC: UIViewController {
     
     var changedDate = DateInRegion(absoluteDate: Date())
     
+    var startTime: String = ""
+    var endTime: String = ""
     
     //MARK: IBActions
     
@@ -104,15 +105,20 @@ class ScheduleClientVC: UIViewController {
         
         let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "hh:mm"
-        let startTime: String = dateformatter.string(from: startDatePicker.date)
-        let endTime: String = dateformatter.string(from: enadDatePicker.date)
+        //let startTime: String = dateformatter.string(from: startDatePicker.date)
+        //let endTime: String = dateformatter.string(from: enadDatePicker.date)
         
         dateformatter.dateFormat = "yyyy-MM-dd"
         let date: String = dateformatter.string(from: changedDate.absoluteDate)
         
+        if !self.compareDates(self.startTime, self.endTime) {
+            showAler()
+            return
+        }
+        
         event.location = "SomeWhere"
-        event.startAt = startTime
-        event.endAt = endTime
+        event.startAt = self.startTime
+        event.endAt = self.endTime
         event.date = date
         event.clientsForUpload = clientIdies
         
@@ -131,7 +137,76 @@ class ScheduleClientVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    func decreaseDate(_ decrease: Bool?) {
+    //MARK: Private
+    
+    private func startDatePicker() -> UIDatePicker {
+        let startPicker = createDatePicker()
+        startPicker.addTarget(self, action: #selector(ScheduleClientVC.startPickerValueChanged), for: UIControlEvents.valueChanged)
+        return startPicker
+    }
+    
+   private func endDatePicker() -> UIDatePicker {
+        let endPicker = createDatePicker()
+        endPicker.addTarget(self, action: #selector(ScheduleClientVC.endPickerValueChanged), for: UIControlEvents.valueChanged)
+        return endPicker
+    }
+    
+    private func createDatePicker() -> UIDatePicker {
+        let datePickerView: UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = .time
+        datePickerView.minuteInterval = 10
+        return datePickerView
+    }
+    
+    @objc private func startPickerValueChanged(sender: UIDatePicker) {
+        self.startDateTextField.text = self.datePickerFormatter(start: true, sender: sender)
+    }
+    
+    @objc private func endPickerValueChanged(sender: UIDatePicker) {
+      self.endDateTextField.text = self.datePickerFormatter(start: false, sender: sender)
+    }
+    
+    private func datePickerFormatter(start: Bool, sender: UIDatePicker) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        
+        let dateAsString = dateFormatter.string(from: sender.date)
+        let date = dateFormatter.date(from:dateAsString)
+        
+        dateFormatter.dateFormat = "HH:mm"
+        let date24 = dateFormatter.string(from:date!)
+        if start {
+            self.startTime = date24
+        }else {
+            self.endTime = date24
+        }
+        
+        return dateAsString
+    }
+    
+    private func compareDates(_ startDate: String, _ endDate: String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        guard  let start = dateFormatter.date(from: startDate), let end = dateFormatter.date(from: endDate) else {
+            return false
+        }
+        
+        return end > start
+    }
+    
+    private func showAler() {
+        let alert = UIAlertController(title: "Last date must be grater than start!", message: nil, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+   private func decreaseDate(_ decrease: Bool?) {
 
         if let decrease = decrease {
             if decrease {

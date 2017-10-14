@@ -244,7 +244,7 @@ class PSAPI: APIHandable {
                 multipartFormData.append(data, withName: "avatar", fileName: "image.jpg", mimeType: "image/jpeg")
                 
         },
-            to: "http://pursuitapp-env.p4zisxyyg8.us-east-2.elasticbeanstalk.com/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
+            to: PSURL.BaseURL + "/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):

@@ -123,7 +123,7 @@ extension SelectTrainerVC: UICollectionViewDataSource {
 extension SelectTrainerVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let trainerData = trainers[indexPath.row]
+        let trainerData = filteredTrainers[indexPath.row]
         
         userDidSelectTrainerWithId(trainer: trainerData)
     }
