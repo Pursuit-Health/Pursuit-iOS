@@ -43,7 +43,10 @@ extension AssignTemplateVC {
 extension AssignTemplateVC {
     func assignTemplate() {
         Client.assignTemplate(clientId: self.clientId ?? "", templateId: self.templateId ?? "") { (error) in
-            if error == nil {
+            if let error = error {
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
               self.navigationController?.popViewController(animated: true)
             }
         }

@@ -5,4 +5,5 @@ protocol ErrorProtocol: Error {
     
     func log() -> PSError
     //func alert(action: ((JHTAlertAction) -> Void)?) -> JHTAlertController
+    func alert(action: UIAlertAction) -> UIAlertController
 }

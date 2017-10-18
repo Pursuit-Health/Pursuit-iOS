@@ -72,27 +72,16 @@ class SignInVC: UIViewController {
     }
 }
 
-private extension SignInVC {
-    func makeSignIn(){
-        makeSignIn { error in
-            if error == nil {
-                //
-                //                User.refreshToken(completion: { (error) in
-                //                    if error == nil {
-                //
-                //                    }
-                //                })
-            }
-        }
-    }
+extension SignInVC {
     
-    //TODO: Wehy we always send back sing completion?
-    private func makeSignIn(completion: @escaping (_ error: ErrorProtocol?)-> Void) {
+     func makeSignIn() {
         User.login(email: emailTeaxtField.text ?? "", password: passwordTextField.text ?? "", completion: { _, error in
-            if error == nil {
+            if let error = error {
+               let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
                 self.delegate?.lofinSuccessfull(on: self)
             }
-            completion(error)
         })
     }
 }

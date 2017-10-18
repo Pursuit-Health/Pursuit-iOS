@@ -232,7 +232,7 @@ extension ClientsVC: SwipeTableViewCellDelegate {
                 //action for schedule press
                 
                 guard let controller = self.clientScheduleVC else { return }
-                
+                self.filteredClients[indexPath.row].isSelected = true
                 controller.clients = [self.filteredClients[indexPath.row]]
                 
                 self.navigationController?.pushViewController(controller, animated: true)

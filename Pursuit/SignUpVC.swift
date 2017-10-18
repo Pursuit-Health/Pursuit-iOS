@@ -316,7 +316,10 @@ extension SignUpVC: SignUpButtonCellDelegate {
     
     func signUpButtonPressed(on cell: SignUpButtonCell) {
         self.user?.signUp(completion: { (user, error) in
-            if error == nil {
+            if let error = error {
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
                 self.delegate?.signUpSuccessfull(on: self)
             }
         })

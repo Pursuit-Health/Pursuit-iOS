@@ -21,7 +21,7 @@ class TemplatesVC: UIViewController {
     @IBOutlet var tableView: UITableView! {
         didSet {
             self.tableView.rowHeight = UITableViewAutomaticDimension
-            self.tableView.estimatedRowHeight = 71
+            self.tableView.estimatedRowHeight = 200
         }
     }
     
@@ -102,7 +102,13 @@ class TemplatesVC: UIViewController {
     
     fileprivate func createTemplate(_ template: Template) {
         Template.createTemplate(templateData: template) { (template, error) in
-            if error == nil {
+            
+            if let error = error {
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
+                guard let controller = self.self.createTemplateVC else { return }
+                controller.navigationController?.popViewController(animated: true)
                 self.loadTemplates()
             }
         }
@@ -131,11 +137,7 @@ extension TemplatesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.templatesData.count
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 71.0
-//    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: TemplateCell.self) else { return UITableViewCell() }
         let templates = templatesData[indexPath.row]

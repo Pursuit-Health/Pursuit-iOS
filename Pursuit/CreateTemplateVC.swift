@@ -38,7 +38,7 @@ class CreateTemplateVC: UIViewController {
     
     var templateId: String? {
         didSet {
-                loadTemplate()
+            loadTemplate()
         }
     }
     
@@ -78,7 +78,8 @@ class CreateTemplateVC: UIViewController {
     
     @IBAction func saveTemplateButtonPressed(_ sender: Any) {
         if templateNameTextField.text == "" {
-           showAlert()
+            showAlert()
+            return
         }
         let template = Template()
         
@@ -86,13 +87,14 @@ class CreateTemplateVC: UIViewController {
         template.imageId = 1
         template.time = 60
         template.exercisesForUpload = exercises
-        if let exercises = template.exercisesForUpload {
-        for index in 0...exercises.count - 1 {
-            template.exercisesForUpload?[index].exerciseId = nil
-        }
+        if let newExercises = template.exercisesForUpload {
+            if newExercises.count > 0 {
+                for index in 0...newExercises.count - 1 {
+                    template.exercisesForUpload?[index].exerciseId = nil
+                }
+            }
         }
         delegate?.saveTemplate(template, on: self)
-        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: Lifecycle
@@ -109,7 +111,9 @@ class CreateTemplateVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = true
-        
+        if self.templateId == nil {
+            self.templateNameTextField.text = ""
+        }
     }
     
     //MARK: Private
@@ -119,19 +123,18 @@ class CreateTemplateVC: UIViewController {
         let okButton = UIAlertAction(title:"OK", style: .default, handler: nil)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
-        return
     }
 }
 
 extension CreateTemplateVC {
     func loadTemplate() {
         if templateId != nil {
-        loadTemplateById{ error in
-            if error == nil {
-                
-            }else {
+            loadTemplateById{ error in
+                if error == nil {
+                    
+                }else {
+                }
             }
-        }
         }else {
             self.template = nil
             self.exercises = []

@@ -19,12 +19,25 @@ class PSAPI: APIHandable {
     var service: ServiceProtocol = AlamofireService()
     
     func error<T>(response: DataResponse<T>) -> ErrorProtocol? {
-        guard let data = response.data else {
+        guard let data = response.data, data.count > 0 else {
+            if let error = response.error {
+                let error = error as NSError
+                if error.code == URLError.Code.notConnectedToInternet.rawValue {
+                    return PSError.internetConnection
+                }
+                return PSError.custom(error: error, statusCode: error.code)
+            }
             return PSError.somethingWentWrong
+        }
+        let statusCode = response.response?.statusCode
+        if statusCode == 401 {
+            return PSError.unAuthorized
+        }else if statusCode == 500 {
+            return PSError.serverUnavalble
         }
         
         if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
-            if let message = json?["errorMessage"] as? String {
+            if let message = json?["message"] as? String {
                 return PSError.texted(text: message)
             }
         }
@@ -210,11 +223,11 @@ class PSAPI: APIHandable {
                             User.shared.name = name
                             User.shared.email = email
                             if let avatar = userData["avatar"] as? String {
-                            User.shared.avatar = avatar
+                                User.shared.avatar = avatar
                             }
                         }
                     }
-            
+                    
                 case .failure(let serverError):
                     error = serverError.psError
                 }

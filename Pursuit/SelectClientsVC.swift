@@ -56,7 +56,7 @@ class SelectClientsVC: UIViewController {
     
     var filteredClients: [Client] = [] {
         didSet {
-            self.selectClientCollectionView.reloadData()
+            self.selectClientCollectionView?.reloadData()
         }
     }
     
@@ -82,6 +82,11 @@ class SelectClientsVC: UIViewController {
         
         navigationController?.navigationBar.setAppearence()
         navigationController?.navigationBar.isHidden = false
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 }
 
@@ -107,6 +112,7 @@ extension SelectClientsVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.client.identifier, for: indexPath) as? SelectClientCell else { return UICollectionViewCell() }
         let clientData = filteredClients[indexPath.row]
         
+        cell.clientSelected = clientData.isSelected
         
         if let url = clientData.clientAvatar {
             cell.clientPhotoImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
@@ -124,10 +130,12 @@ extension SelectClientsVC: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? SelectClientCell else {
             return
         }
-        
-        cell.clientSelected = true
-        
+        //TODO:
         let clientData = filteredClients[indexPath.row]
+        
+        clientData.isSelected = !clientData.isSelected
+        
+        cell.clientSelected = clientData.isSelected
         
         delegate?.clientSelected(clientData, on: self)
         

@@ -132,6 +132,7 @@ extension TabPageViewController {
         scrollView?.scrollsToTop = false
         scrollView?.delegate = self
         scrollView?.backgroundColor = option.pageBackgoundColor
+        scrollView?.bounces = false
     }
 
     /**

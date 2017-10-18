@@ -8,13 +8,27 @@
 
 import ObjectMapper
 
-class Client: User {
+class Client: User, Equatable, Hashable {
+    
+    //MARK: Hashable
+    
+    var hashValue: Int = 0
+    
+    //MARK: Equatable
+    
+    static func ==(lhs: Client, rhs: Client) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     //MARK: Typealias
     
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
     //MARK: Private.Properties
+    
+    var isSelected: Bool = false
+    
+    //MARK: Mappable
     
     var trainer: Trainer?
     

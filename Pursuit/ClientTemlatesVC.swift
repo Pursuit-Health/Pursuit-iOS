@@ -12,7 +12,8 @@ class ClientTemlatesVC: UIViewController {
     
     @IBOutlet weak var clientTemplateTableView: UITableView! {
         didSet {
-            self.clientTemplateTableView.rowHeight = 71.0
+            self.clientTemplateTableView.rowHeight             = UITableViewAutomaticDimension
+            self.clientTemplateTableView.estimatedRowHeight    = 200
         }
     }
     
@@ -69,7 +70,6 @@ class ClientTemlatesVC: UIViewController {
             }
         }
     }
-    
 }
 
 extension ClientTemlatesVC: UITableViewDataSource {
@@ -77,11 +77,7 @@ extension ClientTemlatesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.workoutsData.count
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 71.0
-    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: TemplateCell.self) else { return UITableViewCell() }
         let workout = workoutsData[indexPath.row]

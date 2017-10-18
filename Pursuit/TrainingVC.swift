@@ -2,7 +2,7 @@
 //  TrainingVC.swift
 //  Pursuit
 //
-//  Created by ігор on 8/4/17.
+//  Created by Igor on 8/4/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
@@ -41,7 +41,7 @@ class TrainingVC: UIViewController {
     var workout: Workout? {
         didSet {
             self.completedLabel.text    = "0"
-            self.completedCount          = 0
+            self.completedCount         = 0
             
             self.exercises = workout?.template?.exercises ?? []
             self.fillWorkout()
@@ -127,7 +127,10 @@ class TrainingVC: UIViewController {
     
     fileprivate func submitWorkout() {
         Client.submitWorkout(workoutId: workoutId ?? "") { (error) in
-            if error == nil {
+            if let error = error {
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
                 self.navigationController?.popViewController(animated: true)
             }
         }

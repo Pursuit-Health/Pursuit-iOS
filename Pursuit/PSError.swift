@@ -16,6 +16,8 @@ enum PSError: ErrorProtocol {
     case internetConnection
     case versionUncheckable
     case somethingWentWrong
+    case unAuthorized
+    case serverUnavalble
     
     //MARK: BDKError
     
@@ -48,6 +50,10 @@ enum PSError: ErrorProtocol {
             return text
         case .error(let description, _):
             return description
+        case .unAuthorized:
+            return "Invalid credentials. Please check your email and password."
+        case .serverUnavalble:
+            return "Server is not reachable!"
         }
     }
     
@@ -66,4 +72,10 @@ enum PSError: ErrorProtocol {
         
         return alertController
     }*/
+    
+    func alert(action: UIAlertAction) -> UIAlertController {
+        let alert = UIAlertController(title: "Oops.", message: self.description, preferredStyle: .alert)
+        alert.addAction(action)
+        return alert
+    }
 }

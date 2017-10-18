@@ -111,10 +111,10 @@ class ScheduleClientVC: UIViewController {
         dateformatter.dateFormat = "yyyy-MM-dd"
         let date: String = dateformatter.string(from: changedDate.absoluteDate)
         
-        if !self.compareDates(self.startTime, self.endTime) {
-            showAler()
-            return
-        }
+        //        if !self.compareDates(self.startTime, self.endTime) {
+        //            showAler()
+        //            return
+        //        }
         
         event.location = "SomeWhere"
         event.startAt = self.startTime
@@ -145,7 +145,7 @@ class ScheduleClientVC: UIViewController {
         return startPicker
     }
     
-   private func endDatePicker() -> UIDatePicker {
+    private func endDatePicker() -> UIDatePicker {
         let endPicker = createDatePicker()
         endPicker.addTarget(self, action: #selector(ScheduleClientVC.endPickerValueChanged), for: UIControlEvents.valueChanged)
         return endPicker
@@ -164,7 +164,7 @@ class ScheduleClientVC: UIViewController {
     }
     
     @objc private func endPickerValueChanged(sender: UIDatePicker) {
-      self.endDateTextField.text = self.datePickerFormatter(start: false, sender: sender)
+        self.endDateTextField.text = self.datePickerFormatter(start: false, sender: sender)
     }
     
     private func datePickerFormatter(start: Bool, sender: UIDatePicker) -> String {
@@ -206,8 +206,9 @@ class ScheduleClientVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-   private func decreaseDate(_ decrease: Bool?) {
-
+    //TODO: Make good solution
+    private func decreaseDate(_ decrease: Bool?) {
+        
         if let decrease = decrease {
             if decrease {
                 changedDate = changedDate + 1.day
@@ -215,23 +216,26 @@ class ScheduleClientVC: UIViewController {
                 changedDate = changedDate - 1.day
             }
         }
-
-            let dateformatter = DateFormatters.serverTimeFormatter
-            dateformatter.dateFormat = "EEEE"
-            let dayOfWeak: String = dateformatter.string(from: changedDate.absoluteDate)
-            dateformatter.dateFormat = "MMMM yyyy"
-            let monthYear: String = dateformatter.string(from: changedDate.absoluteDate)
-            dateformatter.dateFormat = "dd"
-            let digitOfDay: String = dateformatter.string(from: changedDate.absoluteDate)
-            
-            self.dayOfWeakLabel.text    = dayOfWeak
-            self.dayOfMonthLabel.text   = digitOfDay
-            self.monthYearLabel.text    = monthYear
+        
+        let dateformatter = DateFormatters.serverTimeFormatter
+        dateformatter.dateFormat = "EEEE"
+        let dayOfWeak: String = dateformatter.string(from: changedDate.absoluteDate)
+        dateformatter.dateFormat = "MMMM yyyy"
+        let monthYear: String = dateformatter.string(from: changedDate.absoluteDate)
+        dateformatter.dateFormat = "dd"
+        let digitOfDay: String = dateformatter.string(from: changedDate.absoluteDate)
+        
+        self.dayOfWeakLabel.text    = dayOfWeak
+        self.dayOfMonthLabel.text   = digitOfDay
+        self.monthYearLabel.text    = monthYear
     }
     
     func uploadEvent() {
         Event.createEvent(eventData: self.event) { (error) in
-            if error == nil {
+            if let error = error {
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -272,6 +276,9 @@ extension ScheduleClientVC: UICollectionViewDelegateFlowLayout {
 extension ScheduleClientVC: SelectClientsVCDelegate {
     func clientSelected(_ client: Client, on controller: SelectClientsVC) {
         self.clients.append(client)
-               self.clientsCollectionView.reloadData()
+        self.clients = self.clients.filter{ $0.isSelected }
+        let set = Set(self.clients)
+        self.clients = Array(set)
+        self.clientsCollectionView.reloadData()
     }
 }
