@@ -665,6 +665,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tET-Er-94K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="ThD-Uw-PlE" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="targets" destination="gnS-U6-gLx" collectionClass="NSMutableArray" id="UYQ-oK-edf"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-599.20000000000005" y="2909.5952023988007"/>
         </scene>
@@ -747,8 +752,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zw8-dq-Bas" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="wim-Xe-3Iw" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="targets" destination="puF-SZ-kKW" collectionClass="NSMutableArray" id="tC8-Yy-QEy"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="1465" y="3322"/>
+            <point key="canvasLocation" x="858" y="2910"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="RLj-t4-zWJ">
@@ -1196,6 +1206,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E5Z-sr-8Q6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="pAW-Vv-cMj" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="targets" destination="24D-Um-EgS" collectionClass="NSMutableArray" id="H4o-CH-ECn"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-753" y="3681"/>
         </scene>

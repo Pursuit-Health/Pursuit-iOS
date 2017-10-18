@@ -19,7 +19,7 @@ class SettingsVC: UIViewController {
             userNameLabel.text = User.shared.name ?? ""
             emailLabel.text = User.shared.email ?? ""
             if User.shared.avatar != nil {
-                userImageView.sd_setImage(with: URL(string: User.shared.avatar ?? ""))
+                userImageView.sd_setImage(with: URL(string:  PSURL.BaseURL + User.shared.avatar! ?? ""))
             }
         }
     }

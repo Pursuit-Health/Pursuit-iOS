@@ -10,6 +10,7 @@ import UIKit
 
 protocol SignInVCDelegate: class {
     func lofinSuccessfull(on controller: SignInVC)
+    func forgotPasswordButtonPressed(on controller: SignInVC)
 }
 
 class SignInVC: UIViewController {
@@ -34,7 +35,8 @@ class SignInVC: UIViewController {
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
-        showForgotPasswordVC()
+        delegate?.forgotPasswordButtonPressed(on: self)
+        //showForgotPasswordVC()
     }
     
     //MARK: Lifecycle

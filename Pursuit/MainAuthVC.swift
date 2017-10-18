@@ -78,6 +78,12 @@ class MainAuthVC: UIViewController {
         return controller
     }()
     
+    lazy var forgotPasswordVC: ForgotPasswordVC? = {
+        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
+        let forgotPVC = (storyboard.instantiateViewController (withIdentifier: "ForgotPasswordVC") as? UINavigationController)?.visibleViewController as? ForgotPasswordVC
+        return forgotPVC
+    }()
+    
     //MARK: IBActions
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
@@ -238,6 +244,12 @@ extension MainAuthVC: SignInVCDelegate {
 //
 //            self.navigationController?.pushViewController(controller!, animated: true)
         
+    }
+    
+    func forgotPasswordButtonPressed(on controller: SignInVC) {
+        if let forgotPasswordVC = forgotPasswordVC {
+        self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
+        }
     }
 }
 

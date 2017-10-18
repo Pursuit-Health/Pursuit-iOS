@@ -16,7 +16,11 @@ class ForgotPasswordVC: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField! {
+        didSet {
+            self.emailTextField.attributedPlaceholder =  NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
+        }
+    }
     
     //MARK: Variables
     
@@ -28,11 +32,21 @@ class ForgotPasswordVC: UIViewController {
         submitEmail()
     }
     
+    @IBAction func closeBarButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        //forgotPasswordVCDelegate?.dissmissForgotPasswordVC()
+    }
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpBackgroundImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setAppearence()
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func submitEmail(){
@@ -54,7 +68,8 @@ extension ForgotPasswordVC {
     func sendEmaiForNewPassword() {
         forgotPasswordRequest { error in
             if error == nil {
-              self.forgotPasswordVCDelegate?.dissmissForgotPasswordVC()
+                self.navigationController?.popViewController(animated: true)
+              //self.forgotPasswordVCDelegate?.dissmissForgotPasswordVC()
             }
         }
     }
