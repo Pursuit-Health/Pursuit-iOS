@@ -142,7 +142,7 @@ extension SelectTrainerVC: UISearchBarDelegate {
         if searchText == "" {
             self.filteredTrainers = self.trainers
         }else {
-            self.filteredTrainers = self.trainers.filter{ $0.name?.contains(searchText) ?? false }
+            self.filteredTrainers = self.trainers.filter{ $0.name?.lowercased().contains(searchText.lowercased()) ?? false }
         }
     }
 }

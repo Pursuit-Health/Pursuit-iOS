@@ -157,7 +157,7 @@ extension ClientsVC: UISearchBarDelegate {
         if searchText == "" {
             self.filteredClients = self.client
         }else {
-            self.filteredClients = self.client.filter{ $0.name?.contains(searchText) ?? false }
+            self.filteredClients = self.client.filter{ $0.name?.lowercased().contains(searchText.lowercased()) ?? false }
         }
     }
     
