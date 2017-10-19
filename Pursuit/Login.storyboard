@@ -757,6 +757,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YsG-ID-MuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="HeG-Xh-VgD" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="targets" destination="gWJ-c3-g41" collectionClass="NSMutableArray" id="232-TS-mWq"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="3097" y="45"/>
         </scene>
