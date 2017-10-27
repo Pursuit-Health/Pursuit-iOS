@@ -26,9 +26,9 @@ class ClientTemlatesVC: UIViewController {
     var workoutId: String?
     
     lazy var clientWorkoutVC: TrainingVC? = {
-        let storyboard = UIStoryboard(name: Storyboards.Client, bundle: nil)
-        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.ClientWorkout)as? UINavigationController)?.visibleViewController as? TrainingVC
         
+        guard let controller = UIStoryboard.Client.Training else { return UIViewController() as? TrainingVC }
+    
         return controller
     }()
     

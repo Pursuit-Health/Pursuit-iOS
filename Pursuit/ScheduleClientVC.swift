@@ -60,8 +60,8 @@ class ScheduleClientVC: UIViewController {
     
     
     lazy var selectClientsVC: SelectClientsVC? = {
-        let storyboard = UIStoryboard(name: Storyboards.Trainer, bundle: nil)
-        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.SelectClients)as? UINavigationController)?.visibleViewController as? SelectClientsVC
+        
+        guard let controller = UIStoryboard.Trainer.SelectClients else { return UIViewController() as? SelectClientsVC }
         
         return controller
     }()

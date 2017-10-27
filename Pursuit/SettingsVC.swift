@@ -39,10 +39,9 @@ class SettingsVC: UIViewController {
         //TODO: Move to user
         User.shared.token = nil
         
-        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
-        let loginController = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.MainAuth)
+        let loginController = UIStoryboard.Login.MainAuth
         let controller = self.navigationController
-        controller?.viewControllers.insert(loginController, at: 0)
+        controller?.viewControllers.insert(loginController!, at: 0)
         
         controller?.popToRootViewController(animated: true)
     }

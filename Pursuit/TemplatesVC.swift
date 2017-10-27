@@ -38,10 +38,10 @@ class TemplatesVC: UIViewController {
     var templateId: String?
     
     lazy var createTemplateVC: CreateTemplateVC? = {
-        let storyboard = UIStoryboard(name: Storyboards.Trainer, bundle: nil)
-        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.CreateTemplate)as? UINavigationController)?.visibleViewController as? CreateTemplateVC
         
-        controller?.delegate = self
+        guard let controller = UIStoryboard.Trainer.CreateTemplate else {  return UIViewController() as? CreateTemplateVC }
+        
+        controller.delegate = self
         
         return controller
     }()

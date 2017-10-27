@@ -38,15 +38,14 @@ class ClientsVC: UIViewController {
     
     
     lazy var assignTemplateVC: AssignTemplateVC? = {
-        let storyboard = UIStoryboard(name: Storyboards.Trainer, bundle: nil)
-        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.AssignTemplate)as? UINavigationController)?.visibleViewController as? AssignTemplateVC
+        
+        guard let controller = UIStoryboard.Trainer.AssignTemplate else { return UIViewController() as? AssignTemplateVC }
         
         return controller
     }()
     
     lazy var clientScheduleVC: ScheduleClientVC? = {
-        let storyboard = UIStoryboard(name: Storyboards.Trainer, bundle: nil)
-        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.ScheduleClient)as? UINavigationController)?.visibleViewController as? ScheduleClientVC
+        guard let controller = UIStoryboard.Trainer.ScheduleClient else { return UIViewController() as? ScheduleClientVC }
         
         return controller
     }()

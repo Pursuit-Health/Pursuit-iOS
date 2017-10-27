@@ -23,7 +23,7 @@
                 <viewControllerPlaceholder storyboardName="SideMenu" id="ZNp-Ay-8hF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5l-cw-xVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="-418"/>
+            <point key="canvasLocation" x="654" y="-563"/>
         </scene>
         <!--TrainerMain-->
         <scene sceneID="JlC-Q6-1rM">
@@ -39,12 +39,12 @@
                 <viewControllerPlaceholder storyboardName="ClientMain" id="mnW-1v-Me5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRt-GT-o1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757" y="-330"/>
+            <point key="canvasLocation" x="658" y="-304"/>
         </scene>
         <!--Main AuthVC-->
         <scene sceneID="7FC-DL-dID">
             <objects>
-                <viewController storyboardIdentifier="MainAuthVCIdentifier" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nag-E4-VC3" customClass="MainAuthVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainAuthVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nag-E4-VC3" customClass="MainAuthVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dsZ-7v-UM8"/>
                         <viewControllerLayoutGuide type="bottom" id="Szb-Gq-dE7"/>
@@ -316,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBa-vR-VFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="359.19999999999999" y="757.87106446776613"/>
+            <point key="canvasLocation" x="1806" y="758"/>
         </scene>
         <!--Sign InVC-->
         <scene sceneID="QJ6-fl-XAM">
@@ -509,12 +509,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wrr-sT-Zng" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="42.728635682158924"/>
+            <point key="canvasLocation" x="1130" y="45"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="OBC-f7-efi">
             <objects>
-                <viewController storyboardIdentifier="SignUpVCID" id="tLq-m9-KSO" customClass="SignUpVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" id="tLq-m9-KSO" customClass="SignUpVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Gz-jN-mHw"/>
                         <viewControllerLayoutGuide type="bottom" id="YYV-eJ-njk"/>
@@ -568,12 +568,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEZ-qZ-G1V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.8" y="42.728635682158924"/>
+            <point key="canvasLocation" x="1807" y="45"/>
         </scene>
         <!--Select TrainerVC-->
         <scene sceneID="Yx3-Ee-p02">
             <objects>
-                <viewController id="ybR-eh-cCa" customClass="SelectTrainerVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectTrainerVC" id="ybR-eh-cCa" customClass="SelectTrainerVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F7C-ys-69D"/>
                         <viewControllerLayoutGuide type="bottom" id="xVv-LE-JjT"/>
@@ -583,10 +583,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="bAP-xa-gkS">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rDV-SX-Qe2">
-                                <rect key="frame" x="40" y="160" width="295" height="507"/>
+                                <rect key="frame" x="40" y="116" width="295" height="551"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZJX-UQ-WH0">
                                     <size key="itemSize" width="50" height="50"/>
@@ -610,7 +610,7 @@
                                 </connections>
                             </collectionView>
                             <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-0e-vrU">
-                                <rect key="frame" x="40" y="64" width="295" height="56"/>
+                                <rect key="frame" x="40" y="20" width="295" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <offsetWrapper key="searchTextPositionAdjustment" horizontal="5" vertical="0.0"/>
@@ -620,7 +620,7 @@
                                 </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8P-fI-dmY">
-                                <rect key="frame" x="40" y="120" width="295" height="1"/>
+                                <rect key="frame" x="40" y="76" width="295" height="1"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Bl0-1n-XbM"/>
@@ -663,12 +663,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNB-nD-kwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2417" y="723"/>
+            <point key="canvasLocation" x="2497" y="45"/>
         </scene>
         <!--Forgot PasswordVC-->
         <scene sceneID="lLX-fu-ZW4">
             <objects>
-                <viewController id="rNL-9c-iiS" customClass="ForgotPasswordVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPasswordVC" id="rNL-9c-iiS" customClass="ForgotPasswordVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DSO-2A-4jz"/>
                         <viewControllerLayoutGuide type="bottom" id="PV2-sM-wub"/>
@@ -678,7 +678,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="h6F-yh-Ncv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oOq-ao-gkP">
                                 <rect key="frame" x="36" y="225" width="303" height="17"/>
@@ -695,7 +695,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8p-4A-gMG">
-                                <rect key="frame" x="56" y="462.5" width="263" height="45"/>
+                                <rect key="frame" x="56" y="478" width="263" height="45"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="r6p-KM-7Oo"/>
@@ -716,7 +716,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXH-zm-XzQ">
-                                <rect key="frame" x="188" y="251" width="0.0" height="211.5"/>
+                                <rect key="frame" x="188" y="251" width="0.0" height="227"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" id="o6G-bE-xdg"/>
@@ -752,6 +752,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="ForgotPassword"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="emailTextField" destination="oOq-ao-gkP" id="O5g-52-vyi"/>
                     </connections>
@@ -763,11 +766,12 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="3097" y="45"/>
+            <point key="canvasLocation" x="3166" y="43"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TCq-r1-Och">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kuk-9q-b07" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="ResetPasswordVC" automaticallyAdjustsScrollViewInsets="NO" id="PYc-mx-DPt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="r8w-XC-0Hb">
@@ -779,63 +783,8 @@
                         <segue destination="rXq-a4-UYA" kind="relationship" relationship="rootViewController" id="QTM-mZ-unS"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kuk-9q-b07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-580" y="758.77061469265368"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Q0n-kY-rY3">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="16j-fR-XTM" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eEQ-dQ-XUt">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Nag-E4-VC3" kind="relationship" relationship="rootViewController" id="xYf-P2-92V"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SB3-6P-q8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-911" y="45"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CIj-Ff-hCy">
-            <objects>
-                <navigationController storyboardIdentifier="SelectTrainerVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="svW-yI-cai" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jLg-YP-4Ct">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ybR-eh-cCa" kind="relationship" relationship="rootViewController" id="k7U-ix-EbA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IcQ-ty-OoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1688.8" y="722.78860569715152"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="2Y5-6j-DYd">
-            <objects>
-                <navigationController storyboardIdentifier="ForgotPasswordVC" automaticallyAdjustsScrollViewInsets="NO" id="rTu-Cr-XFe" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uQl-yS-qUR">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rNL-9c-iiS" kind="relationship" relationship="rootViewController" id="l2N-4g-DGD"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G5R-9y-Z4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2416" y="44.07796101949026"/>
+            <point key="canvasLocation" x="1129" y="758"/>
         </scene>
     </scenes>
     <resources>

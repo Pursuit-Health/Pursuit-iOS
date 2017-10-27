@@ -19,7 +19,7 @@
         <!--Client Tab BarVC-->
         <scene sceneID="bAp-mn-m9D">
             <objects>
-                <tabBarController storyboardIdentifier="ClientTabBarVCIdentifier" id="kfv-HJ-dNm" customClass="ClientTabBarVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ClientTabBarVC" id="kfv-HJ-dNm" customClass="ClientTabBarVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="3Jk-g4-CDF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -32,7 +32,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="es6-KN-4D4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="94"/>
+            <point key="canvasLocation" x="631" y="125"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="qhn-KH-wSG">
@@ -308,7 +308,7 @@
         <!--Client TemlatesVC-->
         <scene sceneID="KO4-O8-yC6">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RPK-Tj-2hv" customClass="ClientTemlatesVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClientTemlatesVC" automaticallyAdjustsScrollViewInsets="NO" id="RPK-Tj-2hv" customClass="ClientTemlatesVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4lj-z2-jpF"/>
                         <viewControllerLayoutGuide type="bottom" id="DvE-r8-0mh"/>
@@ -358,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lbl-5H-Lny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="530"/>
+            <point key="canvasLocation" x="2081" y="530"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D2K-or-UJ4">
@@ -377,12 +377,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Fw-82-vIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="850" y="531"/>
+            <point key="canvasLocation" x="1422" y="529"/>
         </scene>
         <!--TrainingVC-->
         <scene sceneID="XSj-Cw-0eE">
             <objects>
-                <viewController id="h1H-dm-qIn" customClass="TrainingVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrainingVC" id="h1H-dm-qIn" customClass="TrainingVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mFO-ga-iZZ"/>
                         <viewControllerLayoutGuide type="bottom" id="vwg-iw-86q"/>
@@ -392,7 +392,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="xa2-Sd-Ff1">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSG-qu-2uK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
@@ -492,22 +492,22 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLM-JL-9vm">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="176"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="220"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yst-R1-Gqd">
-                                                <rect key="frame" x="172.5" y="51" width="31" height="75.5"/>
+                                                <rect key="frame" x="172.5" y="73" width="31" height="75.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="55"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUNDAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heb-kB-kd3">
-                                                <rect key="frame" x="164.5" y="24.5" width="47.5" height="16.5"/>
+                                                <rect key="frame" x="164.5" y="46.5" width="47.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARY 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-69-L2E">
-                                                <rect key="frame" x="146" y="136.5" width="84" height="16.5"/>
+                                                <rect key="frame" x="146" y="158.5" width="84" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -603,25 +603,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOf-Zq-Dwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3324" y="528.48575712143929"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="oes-Lv-LPP">
-            <objects>
-                <navigationController storyboardIdentifier="TrainingVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="gTU-Ee-K5D" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AYe-nS-JbV">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="h1H-dm-qIn" kind="relationship" relationship="rootViewController" id="WJs-UI-Qfe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZPy-JZ-1Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2384.8000000000002" y="528.48575712143929"/>
+            <point key="canvasLocation" x="2978" y="206"/>
         </scene>
     </scenes>
     <resources>

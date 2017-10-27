@@ -57,35 +57,29 @@ class MainAuthVC: UIViewController {
     }
     
     lazy var signInVC: SignInVC? = {
-        let controller = UIStoryboard.Login.SignIn
-        
-        let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
-        let signInVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignInVC) as? SignInVC
-        
-        
-        signInVC?.delegate = self
+        guard let signInVC = UIStoryboard.Login.SignIn else { return UIViewController() as? SignInVC }
+        signInVC.delegate = self
         
         return signInVC
     }()
     
     lazy var signUpVC: SignUpVC? = {
-        let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
-        let signUpVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignUpVC) as? SignUpVC
-        signUpVC?.delegate = self
+        guard let signUpVC = UIStoryboard.Login.SignUp else { return UIViewController() as? SignUpVC }
+        signUpVC.delegate = self
         
         return signUpVC
     }()
     
     lazy var selectTrainerVC: SelectTrainerVC? = {
-        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
-        let controller = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.SelectTrainer) as? UINavigationController)?.visibleViewController as? SelectTrainerVC
-        controller?.delegate = self
+        guard let controller = UIStoryboard.Login.SelectTrainer else { return UIViewController() as? SelectTrainerVC }
+        controller.delegate = self
+        
         return controller
     }()
     
     lazy var forgotPasswordVC: ForgotPasswordVC? = {
-        let storyboard = UIStoryboard(name: Storyboards.Login, bundle: nil)
-        let forgotPVC = (storyboard.instantiateViewController (withIdentifier: "ForgotPasswordVC") as? UINavigationController)?.visibleViewController as? ForgotPasswordVC
+
+        guard let forgotPVC = UIStoryboard.Login.ForgotPassword else { return UIViewController() as? ForgotPasswordVC }
         return forgotPVC
     }()
     

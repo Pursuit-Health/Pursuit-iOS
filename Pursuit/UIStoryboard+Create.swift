@@ -98,6 +98,30 @@ extension UIStoryboard {
         var Schedule: ScheduleVC? {
             return self.instantiate(type: ScheduleVC.self)
         }
+        
+        var TrainerTabBar: TrainerTabBarVC? {
+            return self.instantiate(type: TrainerTabBarVC.self)
+        }
+        
+        var AddExercises: AddExerceiseVC? {
+            return self.instantiate(type: AddExerceiseVC.self)
+        }
+        
+        var CreateTemplate: CreateTemplateVC? {
+            return self.instantiate(type: CreateTemplateVC.self)
+        }
+        
+        var SelectClients: SelectClientsVC? {
+            return self.instantiate(type: SelectClientsVC.self)
+        }
+        
+        var AssignTemplate: AssignTemplateVC? {
+            return self.instantiate(type: AssignTemplateVC.self)
+        }
+        
+        var ScheduleClient: ScheduleClientVC? {
+            return self.instantiate(type: ScheduleClientVC.self)
+        }
     }
     
     //MARK: ClientStoryboard
@@ -106,6 +130,15 @@ extension UIStoryboard {
         static var name: String {
             return "ClientMain"
         }
+        
+        var ClientTabBar: ClientTabBarVC? {
+            return self.instantiate(type: ClientTabBarVC.self)
+        }
+        
+        var Training: TrainingVC? {
+            return self.instantiate(type: TrainingVC.self)
+        }
+        
         
     }
     

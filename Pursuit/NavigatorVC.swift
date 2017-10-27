@@ -21,12 +21,10 @@ class NavigatorVC: UIViewController {
     
     var userController: UIViewController {
         if isClientType() {
-            let storyboard = UIStoryboard(name: Storyboards.Client, bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.ClientTBVC)
+            guard let controller = UIStoryboard.Client.ClientTabBar else { return UIViewController() }
             return controller
         }else {
-            let storyboard = UIStoryboard(name: Storyboards.Trainer, bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.TrainerTBVC)
+            guard let controller = UIStoryboard.Trainer.TrainerTabBar else { return UIViewController() }
             return controller
         }
     }
