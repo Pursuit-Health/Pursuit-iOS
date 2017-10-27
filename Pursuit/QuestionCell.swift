@@ -36,6 +36,7 @@ class QuestionCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        //TODO: Move to did set method
         addGestures()
     }
     

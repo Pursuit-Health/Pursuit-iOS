@@ -14,6 +14,7 @@ class MainAuthVC: UIViewController {
     
     //MARK: Constants
     
+    //TODO: Create manager that will instanciate controllers from enums
     struct Constants {
         struct Stroryboard {
             static let Login    = "Login"
@@ -56,8 +57,12 @@ class MainAuthVC: UIViewController {
     }
     
     lazy var signInVC: SignInVC? = {
+        let controller = UIStoryboard.Login.SignIn
+        
         let loginStoryboard = UIStoryboard(name: Constants.Stroryboard.Login, bundle: nil)
         let signInVC = loginStoryboard.instantiateViewController(withIdentifier: Constants.Identifiers.SignInVC) as? SignInVC
+        
+        
         signInVC?.delegate = self
         
         return signInVC
@@ -166,7 +171,7 @@ class MainAuthVC: UIViewController {
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
             if (error == nil) {
-            
+                
             }
         }
     }
@@ -223,49 +228,41 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 }
 
 extension MainAuthVC: SignInVCDelegate {
-    func lofinSuccessfull(on: SignInVC) {
-  
-            //TODO
-            performSegue(withIdentifier: "ShowSideMenu", sender: self)
-       // performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
-            
-            
-//
-//            let storyboard = UIStoryboard(name: isClient ? Storyboards.Client : Storyboards.Trainer, bundle: nil)
-//
-//            let tabController = (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.TrainerTBVC) as? TrainerTabBarVC)
-//
-//            let controller = tabController?.viewControllers![0] as? ScheduleVC
-//
-//            //: (storyboard.instantiateViewController(withIdentifier: Controllers.Identifiers.TrainerTBVC) as? TrainerTabBarVC)?.viewControllers![0] as? ScheduleVC
-//
-//
-//            controller?.delegate = self
-//
-//            self.navigationController?.pushViewController(controller!, animated: true)
-        
+    func loginButtonPressed(on controller: SignInVC, with user: User) {
+        User.login(user: user, completion: { _, error in
+            if let error = error {
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
+                self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
+            }
+        })
     }
     
     func forgotPasswordButtonPressed(on controller: SignInVC) {
         if let forgotPasswordVC = forgotPasswordVC {
-        self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
+            self.navigationController?.pushViewController(forgotPasswordVC, animated: true)
         }
     }
 }
 
 extension MainAuthVC: SignUpVCDelegate {
+    func signUpButtonPressed(on controller: SignUpVC, with user: User) {
+        user.signUp(completion: { (user, error) in
+            if let error = error {
+                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
+                self.uploadImage()
+                self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
+            }
+        })
+    }
+    
     func showSelectTrainerVC(on controller: SignUpVC) {
         if let controller = selectTrainerVC {
             self.navigationController?.pushViewController(controller, animated: true)
         }
-    }
-    
-    func signUpSuccessfull(on controller: SignUpVC) {
-        uploadImage()
-        //if let isClient = Auth.IsClient {
-            performSegue(withIdentifier: "ShowSideMenu", sender: self)
-           // performSegue(withIdentifier: isClient ? Constants.SeguesIDs.Client : Constants.SeguesIDs.Trainer, sender: self)
-       // }
     }
 }
 

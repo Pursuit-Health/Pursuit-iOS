@@ -34,7 +34,7 @@ extension UITableView {
         self.register(nib, forCellReuseIdentifier: reuseIdentifier)
     }
     
-    func gc_dequeueReusableCell<T: UITableViewCell>(type: T.Type) -> T? where T: BBB_ReusableView {
+    func gc_dequeueReusableCell<T: UITableViewCell>(type: T.Type) -> T? {
         let returnCell: UITableViewCell?
         let identifier = type.defaultReuseIdentifier
         if let cell = self.dequeueReusableCell(withIdentifier: identifier) {

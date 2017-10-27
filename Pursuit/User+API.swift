@@ -24,10 +24,10 @@ extension User {
     //MARK: Public
 
     
-    class func login(email: String, password: String, completion: @escaping LoginCompletion) {
+    class func login(user: User, completion: @escaping LoginCompletion) {
         let api = PSAPI()
         
-        api.login(email: email, password: password) { (user, error) in
+        api.login(email: user.email ?? "", password: user.password ?? "") { (user, error) in
             
             if let user = user {
                 if let token = user.token {

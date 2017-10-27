@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SignInVCDelegate: class {
-    func lofinSuccessfull(on controller: SignInVC)
+    func loginButtonPressed(on controller: SignInVC, with user: User)
     func forgotPasswordButtonPressed(on controller: SignInVC)
 }
 
@@ -24,9 +24,7 @@ class SignInVC: UIViewController {
     
     weak var delegate: SignInVCDelegate?
     
-    var user: User?
-    
-    var loginData = User()
+    var user = User()
     
     //MARK: IBActions
     
@@ -36,60 +34,14 @@ class SignInVC: UIViewController {
     
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
         delegate?.forgotPasswordButtonPressed(on: self)
-        //showForgotPasswordVC()
-    }
-    
-    //MARK: Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    //MARK: Private
-    
-    private func setParametersforRequest() {
-        
-    }
-    
-    private func showForgotPasswordVC() {
-        guard let forgotPVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController (withIdentifier: "ForgotPasswordVC") as? ForgotPasswordVC else { return }
-        
-        placeControllerToSuperView(forgotPVC)
-    }
-    
-    private func placeControllerToSuperView(_ forgotPVC: ForgotPasswordVC) {
-        
-        addChildViewController(forgotPVC)
-        let view = forgotPVC.view
-        view?.tag = 123
-        self.view.addSubview(view!)
-        self.view.addConstraints(UIView.place(forgotPVC.view, onOtherView: self.view))
-        
-        forgotPVC.forgotPasswordVCDelegate = self
-        
-        forgotPVC.didMove(toParentViewController: self)
     }
 }
 
 extension SignInVC {
-    
      func makeSignIn() {
-        User.login(email: emailTeaxtField.text ?? "", password: passwordTextField.text ?? "", completion: { _, error in
-            if let error = error {
-               let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                self.present(error.alert(action: action), animated: true, completion: nil)
-            }else {
-                self.delegate?.lofinSuccessfull(on: self)
-            }
-        })
-    }
-}
-
-extension SignInVC: ForgotPasswordVCDelegate {
-    func dissmissForgotPasswordVC() {
-        guard let viewWithTag = self.view.viewWithTag(123) else {return }
-        viewWithTag.removeFromSuperview()
+        user.email      = emailTeaxtField.text ?? ""
+        user.password   = passwordTextField.text ?? ""
+        self.delegate?.loginButtonPressed(on: self, with: self.user)
     }
 }
 

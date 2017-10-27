@@ -31,10 +31,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="yG8-kf-UIr">
-                                <rect key="frame" x="0.0" y="68" width="375" height="494"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="498"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xbq-xa-hSK">
-                                <rect key="frame" x="0.0" y="68" width="375" height="494"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="498"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5K-aA-vRg">
-                                <rect key="frame" x="16" y="98" width="343" height="140"/>
+                                <rect key="frame" x="16" y="94" width="343" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv5-V1-rGD">
                                         <rect key="frame" x="0.0" y="39" width="25" height="25"/>
@@ -162,7 +162,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YI8-dg-aDw">
-                                <rect key="frame" x="0.0" y="238" width="375" height="429"/>
+                                <rect key="frame" x="0.0" y="234" width="375" height="433"/>
                                 <subviews>
                                     <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7x-cW-tab">
                                         <rect key="frame" x="20" y="43.5" width="335" height="1"/>
@@ -203,7 +203,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j66-bz-lob">
-                                        <rect key="frame" x="20" y="166.5" width="295" height="182.5"/>
+                                        <rect key="frame" x="20" y="166.5" width="295" height="186.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cIs-xF-zyW">
                                             <size key="itemSize" width="50" height="50"/>
@@ -392,7 +392,7 @@
                 <navigationController id="Lda-mY-OiH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="fT0-cl-Kwm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N4K-UP-02U">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -416,10 +416,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="mN4-bU-fwI">
-                                <rect key="frame" x="0.0" y="68" width="375" height="544"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="548"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9RY-dc-74B">
-                                <rect key="frame" x="0.0" y="124" width="375" height="438"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="442"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -429,7 +429,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-Zd-5Xz">
-                                <rect key="frame" x="16" y="68" width="343" height="56"/>
+                                <rect key="frame" x="16" y="64" width="343" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <offsetWrapper key="searchTextPositionAdjustment" horizontal="5" vertical="0.0"/>
@@ -494,10 +494,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="SOm-oa-neN">
-                                <rect key="frame" x="0.0" y="68" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hr4-aW-b1p">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="huA-qJ-OlL" id="HBB-DU-uyT"/>
@@ -544,11 +544,11 @@
                         <viewControllerLayoutGuide type="bottom" id="iMB-VJ-Tof"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Tgo-RU-WM6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="5BE-cH-him">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbW-ld-AyI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120.5"/>
@@ -589,7 +589,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-U6-gLx">
-                                <rect key="frame" x="0.0" y="181.5" width="375" height="361.5"/>
+                                <rect key="frame" x="0.0" y="181.5" width="375" height="365.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -598,14 +598,14 @@
                                 </connections>
                             </tableView>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ja7-w1-h8G">
-                                <rect key="frame" x="0.0" y="543" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="547" width="375" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="uUJ-G5-PD1"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akr-cc-M6A">
-                                <rect key="frame" x="165" y="549" width="45" height="45"/>
+                                <rect key="frame" x="165" y="553" width="45" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="btn_add"/>
                                 <connections>
@@ -684,10 +684,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="CJu-WF-esG">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="puF-SZ-kKW">
-                                <rect key="frame" x="0.0" y="68" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="547"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="mPS-89-Xct" id="46g-hO-LUw"/>
@@ -771,10 +771,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="5m0-4L-WpZ">
-                                <rect key="frame" x="0.0" y="68" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="547"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tqa-uj-dPW">
-                                <rect key="frame" x="0.0" y="411" width="375" height="256"/>
+                                <rect key="frame" x="0.0" y="407" width="375" height="260"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="1000" id="CTt-C5-dmv">
                                     <size key="itemSize" width="162" height="162"/>
@@ -835,7 +835,7 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8k9-98-yQD">
-                                <rect key="frame" x="0.0" y="68" width="375" height="343"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="343"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaX-ec-r6p">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -1015,7 +1015,7 @@
             <objects>
                 <navigationController storyboardIdentifier="navController" extendedLayoutIncludesOpaqueBars="YES" id="jbD-nH-xqF" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lHD-Ht-iaC">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.099229236580000005" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
@@ -1054,7 +1054,7 @@
                 <navigationController storyboardIdentifier="CreateTemplateVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="ZpD-DS-z4R" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="HyI-RP-58t">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="leftBarButtonImage" value="ic_menu"/>
@@ -1080,7 +1080,7 @@
                 <navigationController id="5fy-wa-JO5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_pursuit" id="sGg-gS-RKM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ext-CY-ltK">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="usU-o6-in1">
@@ -1100,7 +1100,7 @@
                 <navigationController id="tKi-fJ-SHE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_schedule" id="x5Y-Bg-dZv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ea-OI-QAa">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="0.1044463087" colorSpace="calibratedWhite"/>
                     </navigationBar>
@@ -1125,10 +1125,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Pi5-Tc-WdI">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="24D-Um-EgS">
-                                <rect key="frame" x="40" y="164" width="295" height="503"/>
+                                <rect key="frame" x="40" y="160" width="295" height="507"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0yZ-l1-npC">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1152,7 +1152,7 @@
                                 </connections>
                             </collectionView>
                             <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v86-g2-g8g">
-                                <rect key="frame" x="40" y="68" width="295" height="56"/>
+                                <rect key="frame" x="40" y="64" width="295" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <offsetWrapper key="searchTextPositionAdjustment" horizontal="5" vertical="0.0"/>
@@ -1162,7 +1162,7 @@
                                 </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tah-kr-7v7">
-                                <rect key="frame" x="40" y="124" width="295" height="1"/>
+                                <rect key="frame" x="40" y="120" width="295" height="1"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="9Oe-3i-XLb"/>
@@ -1218,7 +1218,7 @@
                 <navigationController storyboardIdentifier="SelectClientsVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="GXW-sS-4Fq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4pU-zW-X5w">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1236,7 +1236,7 @@
                 <navigationController storyboardIdentifier="AddExercisesVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="lV5-nQ-nLp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f1d-Ze-2If">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1254,7 +1254,7 @@
                 <navigationController storyboardIdentifier="AssignTemplateVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="djd-QT-agb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Crl-18-fgI">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1272,7 +1272,7 @@
                 <navigationController storyboardIdentifier="ClientSchedulerVCIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="b7C-ue-FZf" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ya0-cd-9qi">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

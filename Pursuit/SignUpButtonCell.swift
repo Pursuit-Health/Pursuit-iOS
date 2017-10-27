@@ -10,7 +10,7 @@ import UIKit
 
 protocol SignUpButtonCellDelegate: class {
     func signUpButtonPressed(on cell: SignUpButtonCell)
-        func termsButtonPressed(on cell: SignUpButtonCell)
+    func termsButtonPressed(on cell: SignUpButtonCell)
 }
 
 class SignUpButtonCell: UITableViewCell {
@@ -29,16 +29,4 @@ class SignUpButtonCell: UITableViewCell {
     @IBAction func termsButtonPressed(_ sender: Any) {
         delegate?.termsButtonPressed(on: self)
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

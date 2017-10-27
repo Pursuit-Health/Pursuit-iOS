@@ -83,6 +83,7 @@
 		78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */; };
 		78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
+		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
 		78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78835C981F8B5D7400C28C76 /* BirthdayCell.swift */; };
 		78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78835C991F8B5D7500C28C76 /* BirthdayCell.xib */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
@@ -245,6 +246,7 @@
 		78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
 		78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExerciseCell.xib; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
+		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
 		78835C981F8B5D7400C28C76 /* BirthdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayCell.swift; sourceTree = "<group>"; };
 		78835C991F8B5D7500C28C76 /* BirthdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayCell.xib; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
@@ -556,9 +558,9 @@
 		782B82F91F71251B00A019AC /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				785FF4271FA1DFAA00787CF4 /* Controllers */,
 				7834841E1F71551F00C58191 /* Views */,
 				782B82FA1F71253D00A019AC /* Cells */,
-				7832AFE81F331D1D00BC8116 /* SignUpVC.swift */,
 			);
 			name = SignUp;
 			sourceTree = "<group>";
@@ -723,9 +725,8 @@
 		783A456D1F8E69F80048A0F9 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				785FF42C1FA31E6500787CF4 /* Controllers */,
 				783A456E1F8E6A2E0048A0F9 /* SideMenu.storyboard */,
-				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
-				783A45761F8E87000048A0F9 /* NavigatorVC.swift */,
 			);
 			name = SideMenu;
 			sourceTree = "<group>";
@@ -816,6 +817,49 @@
 			name = AddExerciseCell;
 			sourceTree = "<group>";
 		};
+		785FF4271FA1DFAA00787CF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				785FF4281FA1DFBD00787CF4 /* SignUpVC */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		785FF4281FA1DFBD00787CF4 /* SignUpVC */ = {
+			isa = PBXGroup;
+			children = (
+				7832AFE81F331D1D00BC8116 /* SignUpVC.swift */,
+			);
+			name = SignUpVC;
+			sourceTree = "<group>";
+		};
+		785FF4291FA1FF9500787CF4 /* UIStoryboard+Create */ = {
+			isa = PBXGroup;
+			children = (
+				785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */,
+			);
+			name = "UIStoryboard+Create";
+			sourceTree = "<group>";
+		};
+		785FF42C1FA31E6500787CF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
+				783A45761F8E87000048A0F9 /* NavigatorVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		785FF42D1FA31E7900787CF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				788EE8971F34DD5500DD8A98 /* TrainingVC.swift */,
+				782E899A1F7911F5002AD54C /* ClientTemlatesVC.swift */,
+				782E899C1F792168002AD54C /* ClientTabBarVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		78835C9C1F8B5D9F00C28C76 /* BirthdayCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,14 +867,6 @@
 				78835C991F8B5D7500C28C76 /* BirthdayCell.xib */,
 			);
 			name = BirthdayCell;
-			sourceTree = "<group>";
-		};
-		788EE8961F34DD3000DD8A98 /* TrainingVC */ = {
-			isa = PBXGroup;
-			children = (
-				788EE8971F34DD5500DD8A98 /* TrainingVC.swift */,
-			);
-			name = TrainingVC;
 			sourceTree = "<group>";
 		};
 		788EE8991F34E65900DD8A98 /* TrainingCell */ = {
@@ -1011,8 +1047,8 @@
 		84AB4D521F327CF100531740 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				783A456D1F8E69F80048A0F9 /* SideMenu */,
 				78094A2C1F5BF99F001325B4 /* Splash */,
+				783A456D1F8E69F80048A0F9 /* SideMenu */,
 				84AB4D5C1F327FDC00531740 /* ClientMain */,
 				84AB4D581F327F5E00531740 /* TrainerMain */,
 				84AB4D551F327E6300531740 /* Login */,
@@ -1098,20 +1134,10 @@
 		84AB4D5C1F327FDC00531740 /* ClientMain */ = {
 			isa = PBXGroup;
 			children = (
-				788EE8961F34DD3000DD8A98 /* TrainingVC */,
-				84AB4D5D1F327FF200531740 /* Controllers */,
+				785FF42D1FA31E7900787CF4 /* Controllers */,
 				5B1F83101E850E4100ABA24C /* ClientMain.storyboard */,
 			);
 			name = ClientMain;
-			sourceTree = "<group>";
-		};
-		84AB4D5D1F327FF200531740 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				782E899A1F7911F5002AD54C /* ClientTemlatesVC.swift */,
-				782E899C1F792168002AD54C /* ClientTabBarVC.swift */,
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 		84AB4D5E1F32802800531740 /* Entities */ = {
@@ -1182,6 +1208,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				785FF4291FA1FF9500787CF4 /* UIStoryboard+Create */,
 				783FBA691F8D222100BB26EC /* String */,
 				780ECFDC1F58C0480009E6A6 /* UILabel */,
 				780ECFD91F58785E0009E6A6 /* UITextField */,
@@ -1658,6 +1685,7 @@
 				781110561F6672BD00457E8B /* Template+API.swift in Sources */,
 				78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
+				785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */,
 				782E899B1F7911F5002AD54C /* ClientTemlatesVC.swift in Sources */,
 				782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,

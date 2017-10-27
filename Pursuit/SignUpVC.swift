@@ -13,14 +13,13 @@ import SHTextFieldBlocks
 
 protocol SignUpVCDelegate: class {
     func showSelectTrainerVC(on controller: SignUpVC)
-    func signUpSuccessfull(on controller: SignUpVC)
+    func signUpButtonPressed(on controller: SignUpVC, with user: User)
 }
 class SignUpVC: UIViewController {
     
     //MARK: IBOutlets
     
     @IBOutlet weak var userTypeSwitch: UISwitch!
-    
     @IBOutlet weak var signUpTableView: UITableView! {
         didSet {
             self.signUpTableView.rowHeight          = UITableViewAutomaticDimension
@@ -31,27 +30,26 @@ class SignUpVC: UIViewController {
     //MARK: Variables
     
     weak var delegate: SignUpVCDelegate?
-    
     var client      = Client()
-    
     var trainer     = Trainer()
     
     var user: User? {
         didSet {
-            //TODO: Reimplement, check cell delegate method
             let isTrainer = self.user is Trainer
+            //TODO: move next three lines to separate method
             self.cellsInfo.remove(at: 0)
             self.cellsInfo.insert(.question(delegate: self, isTrainer: isTrainer), at: 0)
+            
             let indexPath = IndexPath(row:1, section:0)
+            //TODO: Also move to another method
             if let _ = self.signUpTableView.cellForRow(at: indexPath) as? ChooseTrainerCell {
                 if isTrainer {
                     deleteTrainerRow()
                 }
-            }else {
-                if isTrainer {
-                    return
+            } else {
+                if !isTrainer {
+                    insertTrainerRow()
                 }
-                insertTrainerRow()
             }
         }
     }
@@ -59,9 +57,8 @@ class SignUpVC: UIViewController {
     var trainerData = Trainer() {
         didSet {
             deleteTrainerRow()
-            
+            //TODO: make method with trainer parameter
             insertTrainerRow()
-            
             self.client.id = trainerData.id
         }
     }
@@ -97,6 +94,7 @@ class SignUpVC: UIViewController {
                 return SignUpButtonCell.self
             }
         }
+        
         typealias TextFieldComletion = (_ text: String) -> Void
         func fillCell(cell: UITableViewCell, completion: @escaping TextFieldComletion) {
             switch self {
@@ -141,9 +139,9 @@ class SignUpVC: UIViewController {
             }
         }
         
-        //TODO: change to different cell types, that inherites from main cell
         private func fillNameCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Name"
+            //TODO: this prt duplicates
             if cell.userDataTextField.text != "" {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
@@ -230,13 +228,6 @@ class SignUpVC: UIViewController {
         }
     }
     
-    //MARK: Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     //MARK: Private
     
     fileprivate func deleteTrainerRow() {
@@ -245,6 +236,7 @@ class SignUpVC: UIViewController {
         self.signUpTableView.deleteRows(at: [indexPath], with: .fade)
     }
     
+    //TODO: parameter trsineer
     fileprivate func insertTrainerRow() {
         let indexPath = IndexPath(row:1, section:0)
         self.cellsInfo.insert(.selectTrainer(trainerName: self.trainerData.name), at: 1)
@@ -265,6 +257,7 @@ extension SignUpVC: UITableViewDataSource {
         //TODO: Reimplement
         cellType.fillCell(cell: cell, completion: { text in
             
+            //TODO: Move to seprate method
             switch cellType {
             case .name:
                 self.client.name        = text
@@ -279,6 +272,7 @@ extension SignUpVC: UITableViewDataSource {
                 self.trainer.email      = text
             case .birthday:
                 
+                //TODO: Move date formatter to constants
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM dd,yyyy"
                 
@@ -315,14 +309,9 @@ extension SignUpVC: SignUpButtonCellDelegate {
     }
     
     func signUpButtonPressed(on cell: SignUpButtonCell) {
-        self.user?.signUp(completion: { (user, error) in
-            if let error = error {
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                self.present(error.alert(action: action), animated: true, completion: nil)
-            }else {
-                self.delegate?.signUpSuccessfull(on: self)
-            }
-        })
+        if let user = self.user {
+            self.delegate?.signUpButtonPressed(on: self, with: user)
+        }
     }
 }
 
