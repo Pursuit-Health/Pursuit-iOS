@@ -39,7 +39,7 @@ class TemplatesVC: UIViewController {
     
     lazy var createTemplateVC: CreateTemplateVC? = {
         
-        guard let controller = UIStoryboard.Trainer.CreateTemplate else {  return UIViewController() as? CreateTemplateVC }
+        guard let controller = UIStoryboard.trainer.CreateTemplate else {  return UIViewController() as? CreateTemplateVC }
         
         controller.delegate = self
         

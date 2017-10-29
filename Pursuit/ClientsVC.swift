@@ -39,13 +39,13 @@ class ClientsVC: UIViewController {
     
     lazy var assignTemplateVC: AssignTemplateVC? = {
         
-        guard let controller = UIStoryboard.Trainer.AssignTemplate else { return UIViewController() as? AssignTemplateVC }
+        guard let controller = UIStoryboard.trainer.AssignTemplate else { return UIViewController() as? AssignTemplateVC }
         
         return controller
     }()
     
     lazy var clientScheduleVC: ScheduleClientVC? = {
-        guard let controller = UIStoryboard.Trainer.ScheduleClient else { return UIViewController() as? ScheduleClientVC }
+        guard let controller = UIStoryboard.trainer.ScheduleClient else { return UIViewController() as? ScheduleClientVC }
         
         return controller
     }()

@@ -27,7 +27,7 @@ class ClientTemlatesVC: UIViewController {
     
     lazy var clientWorkoutVC: TrainingVC? = {
         
-        guard let controller = UIStoryboard.Client.Training else { return UIViewController() as? TrainingVC }
+        guard let controller = UIStoryboard.client.Training else { return UIViewController() as? TrainingVC }
     
         return controller
     }()

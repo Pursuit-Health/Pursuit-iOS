@@ -6,63 +6,50 @@
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
-protocol StoryboardIndetifiers {
-    static var name: String { get }
-    static var bundle: Bundle { get }
+fileprivate var cache: [String : UIStoryboard] = [:]
+fileprivate class BaseStoryboardBuilder<T> where T: UIStoryboard {
+    
+    class func create() -> T {
+        let name    = T.name
+        if let storyboard = cache[name] as? T {
+            return storyboard
+        }
+        let bundle      = T.bundle
+        let storyboard  = T(name: name, bundle: bundle)
+        cache[name]     = storyboard
+        
+        return storyboard
+    }
 }
 
-extension StoryboardIndetifiers {
-    static var bundle: Bundle { return .main }
+fileprivate extension UIStoryboard {
+    static var name: String {
+        return String(describing: self)
+    }
+    static var bundle: Bundle {
+        return .main
+    }
 }
 
 extension UIStoryboard {
     
     //MARK: Variables
     
-    static var Login: LoginStoryboard {
-        return LoginBuilder.create()
+    static var login: Login {
+        return BaseStoryboardBuilder<UIStoryboard.Login>.create()
     }
     
-    static var Trainer: TrainerStoryboard {
-        return TrainerBuilder.create()
+    static var trainer: TrainerMain {
+        return BaseStoryboardBuilder<UIStoryboard.TrainerMain>.create()
     }
     
-    static var Client: ClientStoryboard {
-        return ClientBuilder.create()
-    }
-    
-    //MARK: BASE
-    
-    class BaseStoryboardBuilder<T> where T: StoryboardIndetifiers, T: UIStoryboard {
-        class func create() -> T {
-            let name = T.name
-            let bundle = T.bundle
-            
-            return T(name: name, bundle: bundle)
-        }
-    }
-    
-    //MARK: Builders
-    
-    class LoginBuilder: BaseStoryboardBuilder<UIStoryboard.LoginStoryboard> {
-        
-    }
-    
-    class TrainerBuilder: BaseStoryboardBuilder<UIStoryboard.TrainerStoryboard> {
-        
-    }
-    
-    class ClientBuilder: BaseStoryboardBuilder<UIStoryboard.ClientStoryboard> {
-        
+    static var client: ClientMain {
+        return BaseStoryboardBuilder<UIStoryboard.ClientMain>.create()
     }
     
     //MARK: LoginStoryboard
     
-    class LoginStoryboard: UIStoryboard, StoryboardIndetifiers {
-        static var name: String {
-            return "Login"
-        }
-        
+    class Login: UIStoryboard {
         var MainAuth: MainAuthVC? {
             return self.instantiate(type: MainAuthVC.self)
         }
@@ -90,11 +77,7 @@ extension UIStoryboard {
     
     //MARK: TrainerStoryboard
     
-    class TrainerStoryboard: UIStoryboard, StoryboardIndetifiers {
-        static var name: String {
-            return "TrainerMain"
-        }
-        
+    class TrainerMain: UIStoryboard {
         var Schedule: ScheduleVC? {
             return self.instantiate(type: ScheduleVC.self)
         }
@@ -126,11 +109,7 @@ extension UIStoryboard {
     
     //MARK: ClientStoryboard
     
-    class ClientStoryboard: UIStoryboard, StoryboardIndetifiers {
-        static var name: String {
-            return "ClientMain"
-        }
-        
+    class ClientMain: UIStoryboard {
         var ClientTabBar: ClientTabBarVC? {
             return self.instantiate(type: ClientTabBarVC.self)
         }
@@ -138,13 +117,11 @@ extension UIStoryboard {
         var Training: TrainingVC? {
             return self.instantiate(type: TrainingVC.self)
         }
-        
-        
     }
     
     //MARK: Instatiate
     
-    func instantiate<T: UIViewController>(type: T.Type) -> T? {
+    fileprivate func instantiate<T: UIViewController>(type: T.Type) -> T? {
         return self.instantiateViewController(withIdentifier: String(describing: T.self)) as? T
     }
 }

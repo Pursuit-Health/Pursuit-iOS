@@ -57,7 +57,7 @@ class CreateTemplateVC: UIViewController {
     
     lazy var addExercisesVC: AddExerceiseVC? = {
         
-        guard let controller = UIStoryboard.Trainer.AddExercises else { return UIViewController() as? AddExerceiseVC }
+        guard let controller = UIStoryboard.trainer.AddExercises else { return UIViewController() as? AddExerceiseVC }
         
         controller.delegate = self
         

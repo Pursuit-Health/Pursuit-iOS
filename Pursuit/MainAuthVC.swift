@@ -57,21 +57,21 @@ class MainAuthVC: UIViewController {
     }
     
     lazy var signInVC: SignInVC? = {
-        guard let signInVC = UIStoryboard.Login.SignIn else { return UIViewController() as? SignInVC }
+        guard let signInVC = UIStoryboard.login.SignIn else { return UIViewController() as? SignInVC }
         signInVC.delegate = self
         
         return signInVC
     }()
     
     lazy var signUpVC: SignUpVC? = {
-        guard let signUpVC = UIStoryboard.Login.SignUp else { return UIViewController() as? SignUpVC }
+        guard let signUpVC = UIStoryboard.login.SignUp else { return UIViewController() as? SignUpVC }
         signUpVC.delegate = self
         
         return signUpVC
     }()
     
     lazy var selectTrainerVC: SelectTrainerVC? = {
-        guard let controller = UIStoryboard.Login.SelectTrainer else { return UIViewController() as? SelectTrainerVC }
+        guard let controller = UIStoryboard.login.SelectTrainer else { return UIViewController() as? SelectTrainerVC }
         controller.delegate = self
         
         return controller
@@ -79,7 +79,7 @@ class MainAuthVC: UIViewController {
     
     lazy var forgotPasswordVC: ForgotPasswordVC? = {
 
-        guard let forgotPVC = UIStoryboard.Login.ForgotPassword else { return UIViewController() as? ForgotPasswordVC }
+        guard let forgotPVC = UIStoryboard.login.ForgotPassword else { return UIViewController() as? ForgotPasswordVC }
         return forgotPVC
     }()
     

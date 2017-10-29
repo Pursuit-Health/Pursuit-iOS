@@ -61,7 +61,7 @@ class ScheduleClientVC: UIViewController {
     
     lazy var selectClientsVC: SelectClientsVC? = {
         
-        guard let controller = UIStoryboard.Trainer.SelectClients else { return UIViewController() as? SelectClientsVC }
+        guard let controller = UIStoryboard.trainer.SelectClients else { return UIViewController() as? SelectClientsVC }
         
         return controller
     }()
