@@ -124,6 +124,15 @@ extension TabPageViewController {
                            direction: .forward,
                            animated: false,
                            completion: nil)
+        
+        self.view.backgroundColor = .clear
+        
+        for subviews in self.view.subviews {
+            subviews.backgroundColor = .clear
+            for sub in subviews.subviews {
+                sub.backgroundColor = .clear
+            }
+        }
     }
 
     fileprivate func setupScrollView() {
@@ -133,6 +142,7 @@ extension TabPageViewController {
         scrollView?.delegate = self
         scrollView?.backgroundColor = option.pageBackgoundColor
         scrollView?.bounces = false
+        scrollView?.backgroundColor = .clear
     }
 
     /**

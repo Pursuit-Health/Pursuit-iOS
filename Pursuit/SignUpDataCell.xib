@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,19 +15,19 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="KGk-i7-Jjw" customClass="SignUpDataCell" customModule="Pursuit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="66.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_username" translatesAutoresizingMaskIntoConstraints="NO" id="DLZ-B0-R0i">
-                        <rect key="frame" x="18" y="19" width="30" height="30"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ic_username" translatesAutoresizingMaskIntoConstraints="NO" id="DLZ-B0-R0i">
+                        <rect key="frame" x="26" y="19" width="22" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="38G-5b-BoY"/>
-                            <constraint firstAttribute="height" constant="30" id="kBT-VE-KJG"/>
+                            <constraint firstAttribute="width" constant="22" id="38G-5b-BoY"/>
+                            <constraint firstAttribute="height" constant="22" id="kBT-VE-KJG"/>
                         </constraints>
                     </imageView>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lG9-Jl-UyF" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
-                        <rect key="frame" x="58" y="9" width="234" height="40"/>
+                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="lG9-Jl-UyF" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="58" y="9" width="226" height="40"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="6IE-Dy-PUI"/>
@@ -50,8 +50,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </textField>
-                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1I-ei-0L3">
-                        <rect key="frame" x="18" y="57" width="274" height="1"/>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1I-ei-0L3">
+                        <rect key="frame" x="26" y="57" width="268" height="1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="cmf-VT-o3N"/>
@@ -65,7 +65,7 @@
                     <constraint firstItem="e1I-ei-0L3" firstAttribute="top" secondItem="lG9-Jl-UyF" secondAttribute="bottom" constant="8" id="CuJ-zz-2cR"/>
                     <constraint firstItem="e1I-ei-0L3" firstAttribute="leading" secondItem="DLZ-B0-R0i" secondAttribute="leading" id="NKl-9a-DHI"/>
                     <constraint firstItem="lG9-Jl-UyF" firstAttribute="leading" secondItem="DLZ-B0-R0i" secondAttribute="trailing" constant="10" id="Xle-bF-rJK"/>
-                    <constraint firstItem="e1I-ei-0L3" firstAttribute="trailing" secondItem="lG9-Jl-UyF" secondAttribute="trailing" id="cI1-s8-Gca"/>
+                    <constraint firstItem="e1I-ei-0L3" firstAttribute="trailing" secondItem="lG9-Jl-UyF" secondAttribute="trailing" constant="10" id="cI1-s8-Gca"/>
                     <constraint firstItem="DLZ-B0-R0i" firstAttribute="bottom" secondItem="lG9-Jl-UyF" secondAttribute="bottom" id="krQ-t3-4fp"/>
                     <constraint firstAttribute="trailingMargin" secondItem="lG9-Jl-UyF" secondAttribute="trailing" constant="20" id="v4B-hq-i2U"/>
                 </constraints>

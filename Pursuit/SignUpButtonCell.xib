@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,12 +20,12 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="129" id="KGk-i7-Jjw" customClass="SignUpButtonCell" customModule="Pursuit" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="128.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuW-iS-RZN" customClass="DezappButton" customModule="Pursuit" customModuleProvider="target">
-                        <rect key="frame" x="20" y="88" width="280" height="24"/>
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuW-iS-RZN" customClass="DezappButton" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="26" y="88" width="268" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="u1N-yc-TXl"/>
                         </constraints>
@@ -42,12 +42,11 @@
                             <action selector="termsButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dNF-in-jgR"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmr-4Y-BZu" customClass="DezappButton" customModule="Pursuit" customModuleProvider="target">
-                        <rect key="frame" x="20" y="23" width="280" height="45"/>
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmr-4Y-BZu" customClass="DezappButton" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="26" y="23" width="268" height="45"/>
                         <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="45" id="Bpb-XV-7OA"/>
-                            <constraint firstAttribute="width" constant="280" id="D94-DK-cG3"/>
+                            <constraint firstAttribute="height" constant="56" id="Bpb-XV-7OA"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                         <state key="normal" title="Sign Up">
@@ -65,11 +64,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="lmr-4Y-BZu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="5dg-26-vk5"/>
-                    <constraint firstItem="lmr-4Y-BZu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="EzD-sL-eJB"/>
+                    <constraint firstItem="lmr-4Y-BZu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="EzD-sL-eJB"/>
                     <constraint firstItem="QuW-iS-RZN" firstAttribute="leading" secondItem="lmr-4Y-BZu" secondAttribute="leading" id="FHc-Jz-YQS"/>
                     <constraint firstAttribute="bottomMargin" secondItem="QuW-iS-RZN" secondAttribute="bottom" constant="8" id="IcG-mQ-Q33"/>
                     <constraint firstItem="QuW-iS-RZN" firstAttribute="top" secondItem="lmr-4Y-BZu" secondAttribute="bottom" constant="20" id="OMd-OC-C83"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="lmr-4Y-BZu" secondAttribute="trailing" constant="12" id="ssx-Vj-soR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lmr-4Y-BZu" secondAttribute="trailing" constant="10" id="ssx-Vj-soR"/>
                     <constraint firstItem="QuW-iS-RZN" firstAttribute="trailing" secondItem="lmr-4Y-BZu" secondAttribute="trailing" id="y3t-tX-tJp"/>
                 </constraints>
             </tableViewCellContentView>

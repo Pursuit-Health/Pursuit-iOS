@@ -17,13 +17,13 @@ open class AnimatedTextField: TextFieldEffects {
     
     var  displayLinker = RHDisplayLinkStepper()
     
-    @IBInspectable dynamic open var minFontSize: CGFloat = 17 {
+    @IBInspectable dynamic open var minFontSize: CGFloat = 8 {
         didSet {
             
         }
     }
     
-    @IBInspectable dynamic open var maxFontSize: CGFloat = 17 {
+    @IBInspectable dynamic open var maxFontSize: CGFloat = 14 {
         didSet {
             
         }
@@ -74,7 +74,7 @@ open class AnimatedTextField: TextFieldEffects {
      
      This property determines the size of the placeholder label relative to the font size of the text field.
      */
-    @IBInspectable dynamic open var placeholderFontScale: CGFloat = 0.65 {
+    @IBInspectable dynamic open var placeholderFontScale: CGFloat = 0.35 {
         didSet {
             updatePlaceholder()
         }
@@ -202,6 +202,7 @@ open class AnimatedTextField: TextFieldEffects {
             placeholderLabel.frame = CGRect(x: originX, y: 0, width: placeholderLabel.bounds.width, height: placeholderLabel.bounds.height)
         }
         activePlaceholderPoint = CGPoint(x: placeholderLabel.frame.origin.x, y: placeholderLabel.frame.origin.y - placeholderLabel.frame.size.height - placeholderInsets.y)
+        placeholderLabel.font = UIFont(name: "Avenir-Book", size: 14.0)
     }
     
      private func animatelabelfont(from: CGFloat, to: CGFloat) {

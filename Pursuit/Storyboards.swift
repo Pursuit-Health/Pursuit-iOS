@@ -13,4 +13,5 @@ struct Storyboards {
     static let Trainer      = "TrainerMain"
     static let Client       = "ClientMain"
     static let Splash       = "Splash"
+    static let SideMenu     = "SideMenu"
 }

@@ -28,8 +28,10 @@ class SplashVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.performSegue(withIdentifier: checkIfUserLoggedIn() ? "ShowSideMenu"
+      //  DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        self.performSegue(withIdentifier: self.checkIfUserLoggedIn() ? "ShowSideMenu"
             : Constants.SeguesIDs.Login, sender: self)
+      //  }
     }
     
     //MARK: Private

@@ -47,6 +47,10 @@ extension UIStoryboard {
         return BaseStoryboardBuilder<UIStoryboard.ClientMain>.create()
     }
     
+    static var sideMenu: SideMenu {
+        return BaseStoryboardBuilder<UIStoryboard.SideMenu>.create()
+    }
+    
     //MARK: LoginStoryboard
     
     class Login: UIStoryboard {
@@ -72,6 +76,10 @@ extension UIStoryboard {
         
         var ForgotPassword: ForgotPasswordVC? {
             return self.instantiate(type: ForgotPasswordVC.self)
+        }
+        
+        var preloadNavigation: PreloadNavigation? {
+            return self.instantiate(type: PreloadNavigation.self)
         }
     }
     
@@ -116,6 +124,14 @@ extension UIStoryboard {
         
         var Training: TrainingVC? {
             return self.instantiate(type: TrainingVC.self)
+        }
+    }
+    
+    //MARK: SideMenuStoryboard
+    
+    class SideMenu: UIStoryboard {
+        var SideMenuNavigation: SWRevealViewController? {
+            return self.instantiate(type: SWRevealViewController.self)
         }
     }
     

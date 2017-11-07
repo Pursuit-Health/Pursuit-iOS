@@ -110,6 +110,8 @@ class MainAuthVC: UIViewController {
         controller.tabPageVCDelegate = self
         
         if let signInController = signInVC, let signUpController = signUpVC {
+            signInController.view.backgroundColor = .clear
+            signUpController.view.backgroundColor = .clear
             controller.tabItems = [(signInController, "SIGN IN"), (signUpController, "SIGN UP")]
         }
         

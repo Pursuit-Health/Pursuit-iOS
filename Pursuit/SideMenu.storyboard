@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxf-jP-tCa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxf-jP-tCa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -152,7 +152,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="pyB-4Z-Hj9">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxf-jP-tCa" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxf-jP-tCa" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <connections>
                         <segue destination="rZh-Cb-TAh" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="7nz-VW-vlP"/>
                         <segue destination="sxH-Ge-hB2" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="VwF-1F-KII"/>

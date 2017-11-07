@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupDeepLinking()
         
+        navigateControllers()
+        
         return true
     }
     
@@ -41,6 +43,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: Private
+    
+    private func navigateControllers() {
+        var rootController = UIViewController()
+        if self.checkIfUserLoggedIn() {
+            guard let controller = UIStoryboard.sideMenu.SideMenuNavigation else { return }
+            rootController = controller
+        }else {
+            guard  let controller = UIStoryboard.login.preloadNavigation else { return }
+            rootController = controller
+        }
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = rootController
+        self.window?.makeKeyAndVisible()
+    }
+    
+    private func checkIfUserLoggedIn() -> Bool {
+        return User.shared.token != nil
+    }
+    
     
     private func setupDeepLinking() {
 

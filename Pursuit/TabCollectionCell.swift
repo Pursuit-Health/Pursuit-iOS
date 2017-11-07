@@ -84,7 +84,7 @@ extension TabCollectionCell {
     }
 
     func highlightTitle() {
-        itemLabel.textColor = option.currentColor
+        itemLabel.textColor = .lightGray //option.currentColor
         itemLabel.font = UIFont.boldSystemFont(ofSize: option.fontSize)
     }
 

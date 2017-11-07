@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pev-2o-pMH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pev-2o-pMH">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,16 +34,19 @@
                                 <rect key="frame" x="0.0" y="-28" width="375" height="695"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Thz-p3-6tH">
-                                <rect key="frame" x="65" y="77.5" width="245" height="245"/>
+                                <rect key="frame" x="-12.5" y="33.5" width="400" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Thz-p3-6tH" secondAttribute="height" multiplier="1:1" id="aFu-SG-Kik"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PURSUIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rol-IJ-RJ7">
-                                <rect key="frame" x="90" y="322.5" width="196" height="67.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P U R S U I T" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rol-IJ-RJ7">
+                                <rect key="frame" x="45" y="403.5" width="286" height="67.5"/>
                                 <fontDescription key="fontDescription" name="MyanmarSangamMN" family="Myanmar Sangam MN" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEALTH TECHNOLOGIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkW-xh-3WE">
-                                <rect key="frame" x="53.5" y="370" width="270" height="32.5"/>
+                                <rect key="frame" x="53.5" y="451" width="270" height="32.5"/>
                                 <fontDescription key="fontDescription" name="MyanmarSangamMN" family="Myanmar Sangam MN" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -52,20 +56,21 @@
                         <constraints>
                             <constraint firstItem="Hdg-K8-dAu" firstAttribute="topMargin" secondItem="wa5-01-Qvm" secondAttribute="bottom" constant="-20" id="11T-eu-Ifr"/>
                             <constraint firstItem="KkW-xh-3WE" firstAttribute="top" secondItem="Rol-IJ-RJ7" secondAttribute="bottom" constant="-20" id="761-Tz-AcI"/>
-                            <constraint firstItem="Thz-p3-6tH" firstAttribute="centerY" secondItem="ayM-aK-hAA" secondAttribute="centerY" multiplier="0.6" id="7uM-jw-eKa"/>
+                            <constraint firstItem="Thz-p3-6tH" firstAttribute="centerY" secondItem="ayM-aK-hAA" secondAttribute="centerY" multiplier="0.7" id="7uM-jw-eKa"/>
                             <constraint firstItem="s1v-HK-Zkr" firstAttribute="top" secondItem="Hdg-K8-dAu" secondAttribute="bottom" id="AWX-GP-Tqg"/>
                             <constraint firstItem="Thz-p3-6tH" firstAttribute="centerX" secondItem="ayM-aK-hAA" secondAttribute="centerX" id="HNV-FC-LqG"/>
-                            <constraint firstItem="Rol-IJ-RJ7" firstAttribute="top" secondItem="Thz-p3-6tH" secondAttribute="bottom" id="IiB-oX-DaI"/>
+                            <constraint firstItem="Rol-IJ-RJ7" firstAttribute="top" secondItem="Thz-p3-6tH" secondAttribute="bottom" constant="-30" id="IiB-oX-DaI"/>
                             <constraint firstAttribute="trailing" secondItem="Hdg-K8-dAu" secondAttribute="trailing" id="Pw7-Xj-FzU"/>
                             <constraint firstItem="KkW-xh-3WE" firstAttribute="centerX" secondItem="Rol-IJ-RJ7" secondAttribute="centerX" id="ZO6-pC-rEY"/>
                             <constraint firstItem="Rol-IJ-RJ7" firstAttribute="centerX" secondItem="Thz-p3-6tH" secondAttribute="centerX" id="lgJ-tg-AHu"/>
                             <constraint firstItem="Hdg-K8-dAu" firstAttribute="leading" secondItem="ayM-aK-hAA" secondAttribute="leading" id="ukm-Pm-bHC"/>
+                            <constraint firstItem="Thz-p3-6tH" firstAttribute="height" secondItem="ayM-aK-hAA" secondAttribute="height" multiplier="0.6" id="zXN-xi-7XE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NyM-LH-DVz"/>
                     <connections>
-                        <segue destination="I2L-Kl-uI3" kind="show" identifier="ShowLoginStoryboard" id="lf2-W9-0vB"/>
-                        <segue destination="Bef-sR-jpL" kind="show" identifier="ShowSideMenu" id="zu5-G1-XN9"/>
+                        <segue destination="I2L-Kl-uI3" kind="show" identifier="ShowLoginStoryboard" animates="NO" id="lf2-W9-0vB"/>
+                        <segue destination="Bef-sR-jpL" kind="show" identifier="ShowSideMenu" animates="NO" id="zu5-G1-XN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XqA-oF-Tc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
