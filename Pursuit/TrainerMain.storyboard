@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yQA-i2-08w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yQA-i2-08w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -418,8 +418,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="mN4-bU-fwI">
                                 <rect key="frame" x="0.0" y="64" width="375" height="548"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eI-Vs-YDg">
+                                <rect key="frame" x="36" y="120" width="303" height="1"/>
+                                <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="IYa-Dr-ld5"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9RY-dc-74B">
-                                <rect key="frame" x="0.0" y="120" width="375" height="442"/>
+                                <rect key="frame" x="0.0" y="121" width="375" height="441"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -429,7 +436,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-Zd-5Xz">
-                                <rect key="frame" x="16" y="64" width="343" height="56"/>
+                                <rect key="frame" x="26" y="64" width="323" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <offsetWrapper key="searchTextPositionAdjustment" horizontal="5" vertical="0.0"/>
@@ -442,16 +449,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9RY-dc-74B" firstAttribute="leading" secondItem="Fh7-zY-Eqr" secondAttribute="leading" id="195-dO-2FZ"/>
+                            <constraint firstItem="2eI-Vs-YDg" firstAttribute="trailing" secondItem="TUG-Zd-5Xz" secondAttribute="trailing" constant="-10" id="31j-rK-MFb"/>
                             <constraint firstItem="mN4-bU-fwI" firstAttribute="top" secondItem="HwU-gk-ipM" secondAttribute="bottom" id="IOM-ST-7oD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TUG-Zd-5Xz" secondAttribute="trailing" id="JgF-cm-Y5f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TUG-Zd-5Xz" secondAttribute="trailing" constant="10" id="JgF-cm-Y5f"/>
+                            <constraint firstItem="2eI-Vs-YDg" firstAttribute="leading" secondItem="TUG-Zd-5Xz" secondAttribute="leading" constant="10" id="MKD-Jb-TAt"/>
                             <constraint firstAttribute="bottom" secondItem="mN4-bU-fwI" secondAttribute="bottom" constant="6" id="VBi-fd-Vaj"/>
                             <constraint firstItem="mN4-bU-fwI" firstAttribute="leading" secondItem="Fh7-zY-Eqr" secondAttribute="leading" id="VVs-2h-8jf"/>
-                            <constraint firstItem="TUG-Zd-5Xz" firstAttribute="leading" secondItem="Fh7-zY-Eqr" secondAttribute="leadingMargin" id="art-zQ-m9Y"/>
+                            <constraint firstItem="TUG-Zd-5Xz" firstAttribute="leading" secondItem="Fh7-zY-Eqr" secondAttribute="leadingMargin" constant="10" id="art-zQ-m9Y"/>
                             <constraint firstAttribute="trailing" secondItem="mN4-bU-fwI" secondAttribute="trailing" id="bAS-fh-qQX"/>
-                            <constraint firstItem="9RY-dc-74B" firstAttribute="top" secondItem="TUG-Zd-5Xz" secondAttribute="bottom" id="lX1-zN-OvA"/>
                             <constraint firstItem="TUG-Zd-5Xz" firstAttribute="top" secondItem="HwU-gk-ipM" secondAttribute="bottom" id="mWJ-MF-htj"/>
                             <constraint firstAttribute="trailing" secondItem="9RY-dc-74B" secondAttribute="trailing" id="ots-CU-h4y"/>
                             <constraint firstItem="ar5-uK-Bf9" firstAttribute="top" secondItem="9RY-dc-74B" secondAttribute="bottom" constant="56" id="t9h-Ke-p83"/>
+                            <constraint firstItem="2eI-Vs-YDg" firstAttribute="top" secondItem="TUG-Zd-5Xz" secondAttribute="bottom" id="xYC-Dq-Irk"/>
+                            <constraint firstItem="9RY-dc-74B" firstAttribute="top" secondItem="2eI-Vs-YDg" secondAttribute="bottom" id="xoP-Re-N41"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_list" selectedImage="ic_list" id="EMM-Jq-bM3"/>
@@ -479,7 +489,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="-2410" y="3681"/>
+            <point key="canvasLocation" x="-2410.4000000000001" y="3680.5097451274364"/>
         </scene>
         <!--Assign TemplateVC-->
         <scene sceneID="Nom-oa-ZGg">
