@@ -154,9 +154,9 @@ class AddExerceiseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.setAppearence()
+        //self.navigationController?.navigationBar.setAppearence()
         
-        setUpBackgroundImage()
+        //setUpBackgroundImage()
     }
     
     private func popViewController() {

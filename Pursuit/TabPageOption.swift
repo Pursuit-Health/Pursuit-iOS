@@ -30,13 +30,14 @@ public struct TabPageOption {
     public var pageBackgoundColor: UIColor = UIColor.white
     public var isTranslucent: Bool = true
     public var hidesTopViewOnSwipeType: HidesTopContentsOnSwipeType = .none
+    var tabBackgroundImage: UIImage?
 
     internal var tabBarAlpha: CGFloat {
         return isTranslucent ? 0.95 : 1.0
     }
-    internal var tabBackgroundImage: UIImage {
-        return convertImage()
-    }
+//    internal var tabBackgroundImage: UIImage {
+//        return convertImage()
+//    }
 
     fileprivate func convertImage() -> UIImage {
         let rect : CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)

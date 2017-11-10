@@ -50,6 +50,12 @@ class ClientsVC: UIViewController {
         return controller
     }()
     
+    lazy var clientInfoVC: ClientInfoVC? = {
+        guard let controller = UIStoryboard.trainer.ClientInfo else { return UIViewController() as? ClientInfoVC }
+        
+        return controller
+    }()
+    
     
     var client: [Client] = []
     
@@ -147,6 +153,16 @@ extension ClientsVC: UITableViewDataSource {
         
         cell.delegate = self
         return cell
+    }
+}
+
+extension ClientsVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let clientInfoVC = self.clientInfoVC else { return }
+
+        clientInfoVC.client = self.filteredClients[indexPath.row]
+        
+        self.navigationController?.pushViewController(clientInfoVC, animated: true)
     }
 }
 
@@ -280,7 +296,6 @@ extension ClientsVC: SwipeTableViewCellDelegate {
         }
         
     }
-    
 }
 
 

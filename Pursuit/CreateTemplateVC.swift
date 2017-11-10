@@ -64,11 +64,17 @@ class CreateTemplateVC: UIViewController {
         return controller
     }()
     
+    lazy var mainExercisesVC: MainExercisesVC? = {
+        guard let controller = UIStoryboard.trainer.MainExercises else { return UIViewController() as? MainExercisesVC }
+
+        return controller
+    }()
+    
     //MARK: IBActions
     
     @IBAction func addExercisesButtonPressed(_ sender: Any) {
         
-        guard let controller = addExercisesVC else { return }
+        guard let controller = mainExercisesVC else { return }
         
         self.navigationController?.pushViewController(controller, animated: true)
     }

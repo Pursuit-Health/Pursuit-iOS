@@ -113,6 +113,18 @@ extension UIStoryboard {
         var ScheduleClient: ScheduleClientVC? {
             return self.instantiate(type: ScheduleClientVC.self)
         }
+        
+        var ClientInfo: ClientInfoVC? {
+            return self.instantiate(type: ClientInfoVC.self)
+        }
+        
+        var SearchExercises: SearchExercisesVC? {
+            return self.instantiate(type: SearchExercisesVC.self)
+        }
+        
+        var MainExercises: MainExercisesVC? {
+            return self.instantiate(type: MainExercisesVC.self)
+        }
     }
     
     //MARK: ClientStoryboard
