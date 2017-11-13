@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExercisesCell: UITableViewCell {
+class ExerciseCategoryCell: UITableViewCell {
 
     @IBOutlet weak var exerciseLabel: UILabel!
     override func awakeFromNib() {

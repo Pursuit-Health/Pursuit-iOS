@@ -69,14 +69,12 @@ class TemplatesVC: UIViewController {
         super.viewDidLoad()
        
         setUpBackgroundImage()
-        
-        navigationController?.navigationBar.setAppearence()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        
+        navigationController?.navigationBar.setAppearence()
         loadTemplates()
     }
     
@@ -84,13 +82,10 @@ class TemplatesVC: UIViewController {
         super.viewDidAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+
     }
 
     //MARK: Private
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
     fileprivate func pushCreateTemplateVC() {
         guard let controller = createTemplateVC else { return }

@@ -8,13 +8,18 @@
 
 import UIKit
 
-class SearchExercisesVC: UIViewController {
+protocol ExerciseCategoryVCDelegate: class {
+    func didSelectExercise(exercise: Template.Exercises, on controller: ExerciseCategoryVC)
+}
+
+class ExerciseCategoryVC: UIViewController {
 
     //MARK: IBOutlets
     
     @IBOutlet weak var exercisesSearchBar: UISearchBar! {
         didSet {
             exercisesSearchBar.backgroundImage    = UIImage()
+            exercisesSearchBar.setImage(UIImage(named: "white_search_icon"), for: .search, state: .normal)
             if let searchField = exercisesSearchBar.value(forKey: "_searchField") as? UITextField {
                 searchField.borderStyle         = .none
                 searchField.backgroundColor     = .clear
@@ -33,9 +38,12 @@ class SearchExercisesVC: UIViewController {
     
     //MARK: Variables
     
-    var exercises: [String] = ["Chest", "Back", "Shoulders", "Arms", "Legs", "Abs", "Cardio"]
+    weak var delegate: ExerciseCategoryVCDelegate?
     
-    var filteredExercises: [String] = [] {
+    var exercisesNames: [String] = ["Chest", "Back", "Shoulders", "Arms", "Legs", "Abs", "Cardio"]
+    var exercises: [Template.Exercises] = []
+    
+    var filteredExercises: [Template.Exercises] = [] {
         didSet {
             self.exercisesTableView?.reloadData()
         }
@@ -44,36 +52,43 @@ class SearchExercisesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        for exerciseName in exercisesNames {
+            let exercise = Template.Exercises()
+            exercise.name = exerciseName
+            self.exercises.append(exercise)
+        }
+        
         self.filteredExercises = self.exercises
     }
 
 }
 
-extension SearchExercisesVC: UITableViewDataSource {
+extension ExerciseCategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredExercises.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.gc_dequeueReusableCell(type: ExercisesCell.self) else { return UITableViewCell() }
-        cell.exerciseLabel.text = filteredExercises[indexPath.row]
+        guard let cell = tableView.gc_dequeueReusableCell(type: ExerciseCategoryCell.self) else { return UITableViewCell() }
+        cell.exerciseLabel.text = filteredExercises[indexPath.row].name
         return cell
     }
 }
 
-extension SearchExercisesVC: UITableViewDelegate {
+extension ExerciseCategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let exercise = filteredExercises[indexPath.row]
+        self.delegate?.didSelectExercise(exercise: exercise, on: self)
     }
 }
 
-extension SearchExercisesVC: UISearchBarDelegate {
+extension ExerciseCategoryVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchText = searchBar.text else { return }
         if searchText == "" {
             self.filteredExercises = self.exercises
         }else {
-            self.filteredExercises = self.exercises.filter{ $0.lowercased().contains(searchText.lowercased()) }
+            self.filteredExercises = self.exercises.filter{ ($0.name?.lowercased().contains(searchText.lowercased())) ?? false }
         }
     }
 }

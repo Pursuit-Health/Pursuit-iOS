@@ -24,12 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         setUpTabBarAppearens()
         
         setupDeepLinking()
         
         navigateControllers()
+        
+        setUpStatusBarAppearence()
         
         return true
     }
@@ -43,6 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: Private
+    
+    private func setUpStatusBarAppearence() {
+        UIApplication.shared.delegate?.window!?.windowLevel = UIWindowLevelStatusBar
+        UIApplication.shared.isStatusBarHidden = true
+        let view = UIView()
+        view.frame = (UIApplication.shared.statusBarView?.frame)!
+        view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        window?.addSubview(view)
+    }
     
     private func navigateControllers() {
         var rootController = UIViewController()

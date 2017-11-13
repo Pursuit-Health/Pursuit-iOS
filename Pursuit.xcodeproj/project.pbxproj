@@ -69,6 +69,8 @@
 		783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 783A45721F8E6BB60048A0F9 /* SWRevealViewController.m */; };
 		783A45751F8E7A7C0048A0F9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */; };
 		783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45761F8E87000048A0F9 /* NavigatorVC.swift */; };
+		783D1A4A1FB9F1EF00C4B8D7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */; };
+		783D1A4C1FB9F22100C4B8D7 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */; };
 		783FBA6B1F8D223700BB26EC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBA6A1F8D223700BB26EC /* String.swift */; };
 		7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */; };
 		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
@@ -110,9 +112,13 @@
 		78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */; };
 		78F636221FB5EB4A009EB48D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636211FB5EB4A009EB48D /* Model.swift */; };
 		78F636251FB5FB32009EB48D /* MainExercisesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636241FB5FB32009EB48D /* MainExercisesVC.swift */; };
-		78F636281FB6049C009EB48D /* SearchExercisesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636271FB6049C009EB48D /* SearchExercisesVC.swift */; };
-		78F6362C1FB60584009EB48D /* ExercisesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F6362A1FB60584009EB48D /* ExercisesCell.swift */; };
-		78F6362D1FB60584009EB48D /* ExercisesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F6362B1FB60584009EB48D /* ExercisesCell.xib */; };
+		78F636281FB6049C009EB48D /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636271FB6049C009EB48D /* ExerciseCategoryVC.swift */; };
+		78F6362C1FB60584009EB48D /* ExerciseCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F6362A1FB60584009EB48D /* ExerciseCategoryCell.swift */; };
+		78F6362D1FB60584009EB48D /* ExerciseCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F6362B1FB60584009EB48D /* ExerciseCategoryCell.xib */; };
+		78F636301FB99EAF009EB48D /* UIApplication+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F6362F1FB99EAF009EB48D /* UIApplication+StatusBar.swift */; };
+		78F636361FB9C42D009EB48D /* ExercisesSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636351FB9C42D009EB48D /* ExercisesSearchVC.swift */; };
+		78F6363A1FB9C7B6009EB48D /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636381FB9C7B6009EB48D /* ExerciseCell.swift */; };
+		78F6363B1FB9C7B6009EB48D /* ExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F636391FB9C7B6009EB48D /* ExerciseCell.xib */; };
 		78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA53DE1F47794200C38413 /* DateFormater+formats.swift */; };
 		8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412E56A1F8E3C5C0064A499 /* PreloadNavigation.swift */; };
 		842CD37C1F8F62F400F756DC /* HideKeyboardTapGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD3791F8F621F00F756DC /* HideKeyboardTapGestureManager.swift */; };
@@ -239,6 +245,8 @@
 		783A45721F8E6BB60048A0F9 /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		783A45761F8E87000048A0F9 /* NavigatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorVC.swift; sourceTree = "<group>"; };
+		783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		783FBA6A1F8D223700BB26EC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRetrier.swift; sourceTree = "<group>"; };
 		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
@@ -282,9 +290,13 @@
 		78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientInfoCell.xib; sourceTree = "<group>"; };
 		78F636211FB5EB4A009EB48D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		78F636241FB5FB32009EB48D /* MainExercisesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainExercisesVC.swift; sourceTree = "<group>"; };
-		78F636271FB6049C009EB48D /* SearchExercisesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchExercisesVC.swift; sourceTree = "<group>"; };
-		78F6362A1FB60584009EB48D /* ExercisesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesCell.swift; sourceTree = "<group>"; };
-		78F6362B1FB60584009EB48D /* ExercisesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisesCell.xib; sourceTree = "<group>"; };
+		78F636271FB6049C009EB48D /* ExerciseCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryVC.swift; sourceTree = "<group>"; };
+		78F6362A1FB60584009EB48D /* ExerciseCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryCell.swift; sourceTree = "<group>"; };
+		78F6362B1FB60584009EB48D /* ExerciseCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCategoryCell.xib; sourceTree = "<group>"; };
+		78F6362F1FB99EAF009EB48D /* UIApplication+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIApplication+StatusBar.swift"; path = "UInavigationController+BBBRemoveController/UIApplication+StatusBar.swift"; sourceTree = "<group>"; };
+		78F636351FB9C42D009EB48D /* ExercisesSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesSearchVC.swift; sourceTree = "<group>"; };
+		78F636381FB9C7B6009EB48D /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
+		78F636391FB9C7B6009EB48D /* ExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCell.xib; sourceTree = "<group>"; };
 		78FA53DE1F47794200C38413 /* DateFormater+formats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormater+formats.swift"; sourceTree = "<group>"; };
 		8412E56A1F8E3C5C0064A499 /* PreloadNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadNavigation.swift; sourceTree = "<group>"; };
 		842CD3791F8F621F00F756DC /* HideKeyboardTapGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardTapGestureManager.swift; sourceTree = "<group>"; };
@@ -756,6 +768,15 @@
 			path = SWRewealViewController;
 			sourceTree = "<group>";
 		};
+		783D1A471FB9F1B200C4B8D7 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */,
+				783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */,
+			);
+			name = HeaderView;
+			sourceTree = "<group>";
+		};
 		783FBA691F8D222100BB26EC /* String */ = {
 			isa = PBXGroup;
 			children = (
@@ -897,6 +918,7 @@
 		788EE89E1F379A9F00DD8A98 /* CreateTemplateVC */ = {
 			isa = PBXGroup;
 			children = (
+				783D1A471FB9F1B200C4B8D7 /* HeaderView */,
 				788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */,
 			);
 			name = CreateTemplateVC;
@@ -957,26 +979,52 @@
 		78F636231FB5FB03009EB48D /* MainExercises */ = {
 			isa = PBXGroup;
 			children = (
+				78F636261FB60479009EB48D /* ExerciseCategory */,
 				78F636241FB5FB32009EB48D /* MainExercisesVC.swift */,
 			);
 			name = MainExercises;
 			sourceTree = "<group>";
 		};
-		78F636261FB60479009EB48D /* SearchExercises */ = {
+		78F636261FB60479009EB48D /* ExerciseCategory */ = {
 			isa = PBXGroup;
 			children = (
-				78F636271FB6049C009EB48D /* SearchExercisesVC.swift */,
+				78F636271FB6049C009EB48D /* ExerciseCategoryVC.swift */,
 			);
-			name = SearchExercises;
+			name = ExerciseCategory;
 			sourceTree = "<group>";
 		};
-		78F636291FB6054E009EB48D /* ExercisesCell */ = {
+		78F636291FB6054E009EB48D /* ExerciseCategoryCell */ = {
 			isa = PBXGroup;
 			children = (
-				78F6362A1FB60584009EB48D /* ExercisesCell.swift */,
-				78F6362B1FB60584009EB48D /* ExercisesCell.xib */,
+				78F6362A1FB60584009EB48D /* ExerciseCategoryCell.swift */,
+				78F6362B1FB60584009EB48D /* ExerciseCategoryCell.xib */,
 			);
-			name = ExercisesCell;
+			name = ExerciseCategoryCell;
+			sourceTree = "<group>";
+		};
+		78F6362E1FB99E74009EB48D /* UIApplication+StatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				78F6362F1FB99EAF009EB48D /* UIApplication+StatusBar.swift */,
+			);
+			name = "UIApplication+StatusBar";
+			sourceTree = "<group>";
+		};
+		78F636341FB9C40B009EB48D /* ExercisesSearch  */ = {
+			isa = PBXGroup;
+			children = (
+				78F636351FB9C42D009EB48D /* ExercisesSearchVC.swift */,
+			);
+			name = "ExercisesSearch ";
+			sourceTree = "<group>";
+		};
+		78F636371FB9C791009EB48D /* ExerciseCell */ = {
+			isa = PBXGroup;
+			children = (
+				78F636381FB9C7B6009EB48D /* ExerciseCell.swift */,
+				78F636391FB9C7B6009EB48D /* ExerciseCell.xib */,
+			);
+			name = ExerciseCell;
 			sourceTree = "<group>";
 		};
 		78FA53DD1F47792300C38413 /* Constants */ = {
@@ -1160,7 +1208,7 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				78F636261FB60479009EB48D /* SearchExercises */,
+				78F636341FB9C40B009EB48D /* ExercisesSearch  */,
 				78F636231FB5FB03009EB48D /* MainExercises */,
 				78EF485F1FB5BBA600813BA3 /* ClientInfoVC */,
 				784419AF1F7A2C66009CB350 /* AssignTemplateVC */,
@@ -1254,8 +1302,9 @@
 				842EBD2B1F33143A00A3169F /* TemplateCell */,
 				842EBD231F3313FB00A3169F /* ScheduleCell */,
 				BBDA2B581ECEA8DA001FB6AD /* ClientCell */,
-				78F636291FB6054E009EB48D /* ExercisesCell */,
+				78F636291FB6054E009EB48D /* ExerciseCategoryCell */,
 				78EF48621FB5BC3700813BA3 /* ClientInfoCell */,
+				78F636371FB9C791009EB48D /* ExerciseCell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1272,6 +1321,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				78F6362E1FB99E74009EB48D /* UIApplication+StatusBar */,
 				785FF4291FA1FF9500787CF4 /* UIStoryboard+Create */,
 				783FBA691F8D222100BB26EC /* String */,
 				780ECFDC1F58C0480009E6A6 /* UILabel */,
@@ -1624,12 +1674,14 @@
 				783484291F71804D00C58191 /* SignUpButtonCell.xib in Resources */,
 				78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */,
 				782B83001F71256D00A019AC /* SignUpDataCell.xib in Resources */,
+				783D1A4C1FB9F22100C4B8D7 /* HeaderView.xib in Resources */,
 				5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */,
 				78CE34C51F38FDF2002BD31D /* TabCollectionCell.xib in Resources */,
 				842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */,
+				78F6363B1FB9C7B6009EB48D /* ExerciseCell.xib in Resources */,
 				78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */,
 				842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */,
-				78F6362D1FB60584009EB48D /* ExercisesCell.xib in Resources */,
+				78F6362D1FB60584009EB48D /* ExerciseCategoryCell.xib in Resources */,
 				783A456F1F8E6A2E0048A0F9 /* SideMenu.storyboard in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
@@ -1718,12 +1770,14 @@
 				782E899D1F792168002AD54C /* ClientTabBarVC.swift in Sources */,
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
 				78179B891F54982C00520D08 /* User+API.swift in Sources */,
+				78F636301FB99EAF009EB48D /* UIApplication+StatusBar.swift in Sources */,
 				7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */,
 				783484221F7155CC00C58191 /* UserTypeView.swift in Sources */,
-				78F6362C1FB60584009EB48D /* ExercisesCell.swift in Sources */,
+				78F6362C1FB60584009EB48D /* ExerciseCategoryCell.swift in Sources */,
 				780D601D1F5EAA6C002A7303 /* GuestDeepLinkService.swift in Sources */,
 				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
 				78E426801F69B0FE00C12D94 /* UITextField+Effects.swift in Sources */,
+				78F636361FB9C42D009EB48D /* ExercisesSearchVC.swift in Sources */,
 				842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */,
 				782B82F01F704BC200A019AC /* Event.swift in Sources */,
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
@@ -1732,6 +1786,7 @@
 				78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */,
 				788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */,
 				7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */,
+				783D1A4A1FB9F1EF00C4B8D7 /* HeaderView.swift in Sources */,
 				782E89A51F797FD8002AD54C /* Workout.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */,
@@ -1758,7 +1813,7 @@
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
 				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
-				78F636281FB6049C009EB48D /* SearchExercisesVC.swift in Sources */,
+				78F636281FB6049C009EB48D /* ExerciseCategoryVC.swift in Sources */,
 				845883021F706E6000BE7D69 /* Error+Pursuit.swift in Sources */,
 				78F636221FB5EB4A009EB48D /* Model.swift in Sources */,
 				780D601F1F5F1588002A7303 /* Storyboards.swift in Sources */,
@@ -1810,6 +1865,7 @@
 				78473BD41F742D7E0067DA1F /* SelectClientCell.swift in Sources */,
 				78179B871F54977500520D08 /* User.swift in Sources */,
 				782B830F1F7126DC00A019AC /* ChooseTrainerCell.swift in Sources */,
+				78F6363A1FB9C7B6009EB48D /* ExerciseCell.swift in Sources */,
 				78EF48611FB5BC1700813BA3 /* ClientInfoVC.swift in Sources */,
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,

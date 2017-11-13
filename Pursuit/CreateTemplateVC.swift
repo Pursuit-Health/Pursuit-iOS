@@ -110,13 +110,11 @@ class CreateTemplateVC: UIViewController {
         super.viewDidLoad()
         
         setUpBackgroundImage()
-        
-        navigationController?.navigationBar.setAppearence()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
         if self.templateId == nil {
             self.templateNameTextField.text = ""
@@ -162,6 +160,11 @@ extension CreateTemplateVC {
 }
 
 extension CreateTemplateVC: UITableViewDataSource {
+    
+     func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.exercises.count
     }
@@ -183,6 +186,18 @@ extension CreateTemplateVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = HeaderView()
+        view.sectionNameLabel.text = "section".uppercased() + "\(section)"
+        
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
+    }
+    
 }
 
 extension CreateTemplateVC: AddExerceiseVCDelegate {

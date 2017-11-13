@@ -15,6 +15,7 @@ class Template: Mappable {
     class Exercises: Mappable {
         
         //MARK: Variables
+        var selected: Bool?
         var exerciseId  : Int?
         var name        : String?
         var type        : String?

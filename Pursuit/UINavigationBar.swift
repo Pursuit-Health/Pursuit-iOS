@@ -14,6 +14,8 @@ extension UINavigationBar {
         self.setBackgroundImage(UIImage(), for: .default)
         self.shadowImage        = UIImage()
         self.isTranslucent      = true
-        self.backgroundColor    = UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.1)
+        self.backgroundColor    = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        self.clipsToBounds = false
+        self.setBackgroundImage(UIImage(), for: .default)
     }
 }

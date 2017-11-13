@@ -15,12 +15,16 @@ class MainExercisesVC: UIViewController {
     @IBOutlet var viewForControllers: UIView!
     
     //MARK: Variables
+    lazy var exercisesSearchVC: ExercisesSearchVC? = {
+        guard let exercisesSearchVc = UIStoryboard.trainer.ExercisesSearch else { return UIViewController() as? ExercisesSearchVC }
+        return exercisesSearchVc
+    }()
     
-    lazy var searchExercisesVC: SearchExercisesVC? = {
-        guard let searchExercises = UIStoryboard.trainer.SearchExercises else { return UIViewController() as? SearchExercisesVC }
+    lazy var exercisesCategoryVC: ExerciseCategoryVC? = {
+        guard let exercisesCategory = UIStoryboard.trainer.ExerciseCategory else { return UIViewController() as? ExerciseCategoryVC }
     
         
-        return searchExercises
+        return exercisesCategory
     }()
     
     lazy var addExercisesVC: AddExerceiseVC? = {
@@ -29,6 +33,12 @@ class MainExercisesVC: UIViewController {
         
         return addExercises
     }()
+    
+    //MARK: IBActions
+    
+    @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
+       self.navigationController?.popViewController(animated: true)
+    }
     
     //MARK: Lifecycle
     
@@ -45,7 +55,6 @@ class MainExercisesVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        //self.navigationController?.navigationBar.setAppearence()
     }
     //MARK: Private
     
@@ -54,10 +63,11 @@ class MainExercisesVC: UIViewController {
         
         //controller.tabPageVCDelegate = self
         
-        if let searchVC = searchExercisesVC, let aaddExVC = addExercisesVC {
-            searchVC.view.backgroundColor = .clear
-            aaddExVC.view.backgroundColor = .clear
-            controller.tabItems = [(searchVC, "SEARCH"), (aaddExVC, "CUSTOM")]
+        if let exercisesVC = exercisesCategoryVC, let aaddExVC = addExercisesVC {
+            exercisesVC.delegate = self
+            exercisesVC.view.backgroundColor    = .clear
+            aaddExVC.view.backgroundColor       = .clear
+            controller.tabItems = [(exercisesVC, "SEARCH"), (aaddExVC, "CUSTOM")]
         }
         
         setUpOptions(controller)
@@ -82,5 +92,17 @@ class MainExercisesVC: UIViewController {
         self.viewForControllers.addConstraints(UIView.place(controller.view, onOtherView: viewForControllers))
         
         controller.didMove(toParentViewController: self)
+    }
+}
+
+extension MainExercisesVC: ExerciseCategoryVCDelegate {
+    func didSelectExercise(exercise: Template.Exercises, on controller: ExerciseCategoryVC) {
+        guard let searchExercisesVC = self.exercisesSearchVC else {
+            return
+        }
+        searchExercisesVC.exercise = exercise
+        
+        self.navigationController?.pushViewController(searchExercisesVC, animated: true)
+        
     }
 }

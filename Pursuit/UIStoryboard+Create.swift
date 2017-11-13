@@ -118,12 +118,16 @@ extension UIStoryboard {
             return self.instantiate(type: ClientInfoVC.self)
         }
         
-        var SearchExercises: SearchExercisesVC? {
-            return self.instantiate(type: SearchExercisesVC.self)
+        var ExerciseCategory: ExerciseCategoryVC? {
+            return self.instantiate(type: ExerciseCategoryVC.self)
         }
         
         var MainExercises: MainExercisesVC? {
             return self.instantiate(type: MainExercisesVC.self)
+        }
+        
+        var ExercisesSearch: ExercisesSearchVC? {
+            return self.instantiate(type: ExercisesSearchVC.self)
         }
     }
     
