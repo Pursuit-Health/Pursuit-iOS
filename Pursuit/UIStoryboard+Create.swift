@@ -129,6 +129,10 @@ extension UIStoryboard {
         var ExercisesSearch: ExercisesSearchVC? {
             return self.instantiate(type: ExercisesSearchVC.self)
         }
+        
+        var ExerciseDetails: ExerciseDetailsVC? {
+            return self.instantiate(type: ExerciseDetailsVC.self)
+        }
     }
     
     //MARK: ClientStoryboard

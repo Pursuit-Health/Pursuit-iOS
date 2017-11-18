@@ -71,6 +71,13 @@
 		783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45761F8E87000048A0F9 /* NavigatorVC.swift */; };
 		783D1A4A1FB9F1EF00C4B8D7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */; };
 		783D1A4C1FB9F22100C4B8D7 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */; };
+		783F80C01FC06CBB001FE169 /* ExerciseDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F80BF1FC06CBB001FE169 /* ExerciseDetailsVC.swift */; };
+		783F80C21FC06D72001FE169 /* ExercisesTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F80C11FC06D72001FE169 /* ExercisesTypeView.swift */; };
+		783F80C41FC06F18001FE169 /* ExercisesTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783F80C31FC06F18001FE169 /* ExercisesTypeView.xib */; };
+		783F80C71FC07015001FE169 /* ExercisesTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F80C51FC07015001FE169 /* ExercisesTypeCollectionViewCell.swift */; };
+		783F80C81FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783F80C61FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib */; };
+		783F80CD1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F80CB1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift */; };
+		783F80CE1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783F80CC1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib */; };
 		783FBA6B1F8D223700BB26EC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBA6A1F8D223700BB26EC /* String.swift */; };
 		7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */; };
 		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
@@ -247,6 +254,13 @@
 		783A45761F8E87000048A0F9 /* NavigatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorVC.swift; sourceTree = "<group>"; };
 		783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		783F80BF1FC06CBB001FE169 /* ExerciseDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsVC.swift; sourceTree = "<group>"; };
+		783F80C11FC06D72001FE169 /* ExercisesTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTypeView.swift; sourceTree = "<group>"; };
+		783F80C31FC06F18001FE169 /* ExercisesTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisesTypeView.xib; sourceTree = "<group>"; };
+		783F80C51FC07015001FE169 /* ExercisesTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		783F80C61FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisesTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		783F80CB1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTypeTableViewCell.swift; sourceTree = "<group>"; };
+		783F80CC1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisesTypeTableViewCell.xib; sourceTree = "<group>"; };
 		783FBA6A1F8D223700BB26EC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRetrier.swift; sourceTree = "<group>"; };
 		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
@@ -777,6 +791,51 @@
 			name = HeaderView;
 			sourceTree = "<group>";
 		};
+		783F80BC1FC06C1A001FE169 /* ExerciseDetails */ = {
+			isa = PBXGroup;
+			children = (
+				783F80BE1FC06C3F001FE169 /* Controllers */,
+				783F80BD1FC06C38001FE169 /* Views */,
+			);
+			name = ExerciseDetails;
+			sourceTree = "<group>";
+		};
+		783F80BD1FC06C38001FE169 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				783F80C91FC0707F001FE169 /* Cells */,
+				783F80C11FC06D72001FE169 /* ExercisesTypeView.swift */,
+				783F80C31FC06F18001FE169 /* ExercisesTypeView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		783F80BE1FC06C3F001FE169 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				783F80BF1FC06CBB001FE169 /* ExerciseDetailsVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		783F80C91FC0707F001FE169 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				783F80C51FC07015001FE169 /* ExercisesTypeCollectionViewCell.swift */,
+				783F80C61FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		783F80CA1FC075C3001FE169 /* ExercisesTypeCell */ = {
+			isa = PBXGroup;
+			children = (
+				783F80CB1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift */,
+				783F80CC1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib */,
+			);
+			name = ExercisesTypeCell;
+			sourceTree = "<group>";
+		};
 		783FBA691F8D222100BB26EC /* String */ = {
 			isa = PBXGroup;
 			children = (
@@ -1208,6 +1267,7 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				783F80BC1FC06C1A001FE169 /* ExerciseDetails */,
 				78F636341FB9C40B009EB48D /* ExercisesSearch  */,
 				78F636231FB5FB03009EB48D /* MainExercises */,
 				78EF485F1FB5BBA600813BA3 /* ClientInfoVC */,
@@ -1293,6 +1353,7 @@
 		84AB4D651F32810C00531740 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				783F80CA1FC075C3001FE169 /* ExercisesTypeCell */,
 				784419B21F7A7F03009CB350 /* SheduleClientsCollectionCell */,
 				78473BD91F745B930067DA1F /* AddExerciseCell */,
 				78473BD11F742D3D0067DA1F /* SelectClientsCell */,
@@ -1684,11 +1745,14 @@
 				78F6362D1FB60584009EB48D /* ExerciseCategoryCell.xib in Resources */,
 				783A456F1F8E6A2E0048A0F9 /* SideMenu.storyboard in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
+				783F80C41FC06F18001FE169 /* ExercisesTypeView.xib in Resources */,
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
 				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
+				783F80C81FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib in Resources */,
 				781110541F65932700457E8B /* SelectTrainer.xib in Resources */,
+				783F80CE1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1771,6 +1835,7 @@
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
 				78179B891F54982C00520D08 /* User+API.swift in Sources */,
 				78F636301FB99EAF009EB48D /* UIApplication+StatusBar.swift in Sources */,
+				783F80C21FC06D72001FE169 /* ExercisesTypeView.swift in Sources */,
 				7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */,
 				783484221F7155CC00C58191 /* UserTypeView.swift in Sources */,
 				78F6362C1FB60584009EB48D /* ExerciseCategoryCell.swift in Sources */,
@@ -1844,16 +1909,19 @@
 				BBDA2B571ECE7AA6001FB6AD /* ClientsVC.swift in Sources */,
 				782E89AA1F79A944002AD54C /* TrainerTemplatesVC.swift in Sources */,
 				84AB4D7E1F3282AC00531740 /* TableView+BBBExtension.swift in Sources */,
+				783F80C71FC07015001FE169 /* ExercisesTypeCollectionViewCell.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,
 				784419B81F7AD7A7009CB350 /* URL.swift in Sources */,
 				7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */,
 				78F636251FB5FB32009EB48D /* MainExercisesVC.swift in Sources */,
 				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
 				783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */,
+				783F80C01FC06CBB001FE169 /* ExerciseDetailsVC.swift in Sources */,
 				783484331F71B62100C58191 /* Trainer+API.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
+				783F80CD1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift in Sources */,
 				784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */,
 				845882F81F7067F000BE7D69 /* API.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,

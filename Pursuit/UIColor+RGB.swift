@@ -33,6 +33,9 @@ extension UIColor {
         return UIColor(colorLiteralRed: 140.0/255.0, green: 136.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
     
+    class func exerciseTypeRedColor() -> UIColor {
+        return UIColor(red: 231/255, green: 66/255, blue: 105/255, alpha: 1.0)
+    }
     /**
      Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
      

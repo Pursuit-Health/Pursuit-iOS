@@ -29,6 +29,15 @@ class ExercisesSearchVC: UIViewController {
             self.exercisesTableView.estimatedRowHeight = 100
         }
     }
+    
+    //MARK: Variables
+    
+    lazy var exercisesDetailsVC: ExerciseDetailsVC? = {
+        guard let controller = UIStoryboard.trainer.ExerciseDetails else {  return UIViewController() as? ExerciseDetailsVC }
+        
+        return controller
+        
+    }()
 
     var exercise = Template.Exercises()
     
@@ -92,6 +101,10 @@ extension ExercisesSearchVC: UITableViewDataSource {
 
 extension ExercisesSearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let controller = self.exercisesDetailsVC else { return }
+        let exerc = filteredExercises[indexPath.row]
+        controller.exerciseName = exerc.name
+       self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
