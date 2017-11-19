@@ -42,3 +42,31 @@ extension CellState {
         }
     }
 }
+
+extension CellState {
+    func handleCellTextColor(cell: CreateTemplateCalendarCell) {
+        let myCustomCell = cell
+        
+
+    }
+
+    func templateCalendarCellselected(cell: CreateTemplateCalendarCell) {
+        
+        var backGroundColor = UIColor()
+        var weekColor = UIColor()
+        var monthdayColor = UIColor()
+        if self.isSelected {
+            monthdayColor = UIColor.white
+            weekColor = UIColor.white
+            backGroundColor = UIColor.customAuthButtons()
+            
+        }else {
+             backGroundColor = UIColor.clear
+            monthdayColor = UIColor.white
+            weekColor = UIColor.lightGray
+        }
+        cell.backGroundView.backgroundColor = backGroundColor
+        cell.weekDayLabel.textColor = weekColor
+        cell.monthDayLabel.textColor = monthdayColor
+    }
+}

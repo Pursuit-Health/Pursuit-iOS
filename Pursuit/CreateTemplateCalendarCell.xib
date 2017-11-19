@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreateTemplateCalendarCellReuseID" id="gTV-IL-0wX" customClass="CreateTemplateCalendarCell" customModule="Pursuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="149" height="126"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="149" height="126"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OWZ-bP-CkL">
+                        <rect key="frame" x="0.0" y="0.0" width="149" height="126"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8d-5a-HdV">
+                                <rect key="frame" x="0.0" y="27" width="149" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-OT-gNi">
+                                        <rect key="frame" x="56" y="43" width="36.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaD-Ya-bEJ">
+                                        <rect key="frame" x="58" y="8" width="32" height="18"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Phz-OT-gNi" firstAttribute="centerX" secondItem="VaD-Ya-bEJ" secondAttribute="centerX" id="7Xk-Fc-DVk"/>
+                                    <constraint firstItem="VaD-Ya-bEJ" firstAttribute="centerX" secondItem="Q8d-5a-HdV" secondAttribute="centerX" id="7ni-1f-jz2"/>
+                                    <constraint firstItem="Phz-OT-gNi" firstAttribute="top" secondItem="VaD-Ya-bEJ" secondAttribute="bottom" constant="17" id="IcE-nQ-n0S"/>
+                                    <constraint firstAttribute="bottom" secondItem="Phz-OT-gNi" secondAttribute="bottom" constant="8.5" id="jGG-f1-DX3"/>
+                                    <constraint firstItem="VaD-Ya-bEJ" firstAttribute="top" secondItem="Q8d-5a-HdV" secondAttribute="top" constant="8" id="jsx-OC-AxM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q8d-5a-HdV" firstAttribute="centerY" secondItem="OWZ-bP-CkL" secondAttribute="centerY" id="Rsy-FP-rgC"/>
+                            <constraint firstItem="Q8d-5a-HdV" firstAttribute="leading" secondItem="OWZ-bP-CkL" secondAttribute="leading" id="Rwb-TF-Evq"/>
+                            <constraint firstAttribute="trailing" secondItem="Q8d-5a-HdV" secondAttribute="trailing" id="qOD-BH-DWM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="OWZ-bP-CkL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8Nk-bf-SPb"/>
+                <constraint firstAttribute="bottom" secondItem="OWZ-bP-CkL" secondAttribute="bottom" id="ADh-Zd-Mwk"/>
+                <constraint firstItem="OWZ-bP-CkL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jMp-L4-dW3"/>
+                <constraint firstAttribute="trailing" secondItem="OWZ-bP-CkL" secondAttribute="trailing" id="we9-FP-FwJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="149" height="126"/>
+            <connections>
+                <outlet property="backGroundView" destination="OWZ-bP-CkL" id="quB-Pw-aIG"/>
+                <outlet property="monthDayLabel" destination="Phz-OT-gNi" id="4Ze-43-eC0"/>
+                <outlet property="weekDayLabel" destination="VaD-Ya-bEJ" id="eiw-fG-iDp"/>
+            </connections>
+            <point key="canvasLocation" x="61.5" y="67"/>
+        </collectionViewCell>
+    </objects>
+</document>

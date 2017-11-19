@@ -105,7 +105,6 @@ class ScheduleVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calendarViewVisibleDates()
     }
     
     override func viewWillAppear(_ animated: Bool) {

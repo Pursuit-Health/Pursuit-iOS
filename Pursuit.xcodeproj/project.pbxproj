@@ -114,6 +114,10 @@
 		78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */; };
 		78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */; };
 		78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4438E1F40E3EB00525F7A /* CustomTextField.swift */; };
+		78E4BD271FC1E8EA00A069DC /* CreateTemplateCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4BD251FC1E8EA00A069DC /* CreateTemplateCalendarCell.swift */; };
+		78E4BD281FC1E8EA00A069DC /* CreateTemplateCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E4BD261FC1E8EA00A069DC /* CreateTemplateCalendarCell.xib */; };
+		78E4BD2B1FC2108900A069DC /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4BD291FC2108900A069DC /* HeaderCell.swift */; };
+		78E4BD2C1FC2108900A069DC /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E4BD2A1FC2108900A069DC /* HeaderCell.xib */; };
 		78EF48611FB5BC1700813BA3 /* ClientInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EF48601FB5BC1700813BA3 /* ClientInfoVC.swift */; };
 		78EF48651FB5BC9E00813BA3 /* ClientInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EF48631FB5BC9E00813BA3 /* ClientInfoCell.swift */; };
 		78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */; };
@@ -299,6 +303,10 @@
 		78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClienCell.swift; sourceTree = "<group>"; };
 		78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleClienCell.xib; sourceTree = "<group>"; };
 		78E4438E1F40E3EB00525F7A /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		78E4BD251FC1E8EA00A069DC /* CreateTemplateCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTemplateCalendarCell.swift; sourceTree = "<group>"; };
+		78E4BD261FC1E8EA00A069DC /* CreateTemplateCalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateTemplateCalendarCell.xib; sourceTree = "<group>"; };
+		78E4BD291FC2108900A069DC /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		78E4BD2A1FC2108900A069DC /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
 		78EF48601FB5BC1700813BA3 /* ClientInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoVC.swift; sourceTree = "<group>"; };
 		78EF48631FB5BC9E00813BA3 /* ClientInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoCell.swift; sourceTree = "<group>"; };
 		78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientInfoCell.xib; sourceTree = "<group>"; };
@@ -787,6 +795,8 @@
 			children = (
 				783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */,
 				783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */,
+				78E4BD291FC2108900A069DC /* HeaderCell.swift */,
+				78E4BD2A1FC2108900A069DC /* HeaderCell.xib */,
 			);
 			name = HeaderView;
 			sourceTree = "<group>";
@@ -977,6 +987,7 @@
 		788EE89E1F379A9F00DD8A98 /* CreateTemplateVC */ = {
 			isa = PBXGroup;
 			children = (
+				78E4BD241FC1E88000A069DC /* CalendarCell */,
 				783D1A471FB9F1B200C4B8D7 /* HeaderView */,
 				788EE89F1F379ACA00DD8A98 /* CreateTemplateVC.swift */,
 			);
@@ -1015,6 +1026,15 @@
 				78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */,
 			);
 			name = ScheduleClient;
+			sourceTree = "<group>";
+		};
+		78E4BD241FC1E88000A069DC /* CalendarCell */ = {
+			isa = PBXGroup;
+			children = (
+				78E4BD251FC1E8EA00A069DC /* CreateTemplateCalendarCell.swift */,
+				78E4BD261FC1E8EA00A069DC /* CreateTemplateCalendarCell.xib */,
+			);
+			name = CalendarCell;
 			sourceTree = "<group>";
 		};
 		78EF485F1FB5BBA600813BA3 /* ClientInfoVC */ = {
@@ -1722,6 +1742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */,
+				78E4BD281FC1E8EA00A069DC /* CreateTemplateCalendarCell.xib in Resources */,
 				782B83141F71278D00A019AC /* QuestionCell.xib in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
@@ -1732,6 +1753,7 @@
 				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
 				783484241F71560600C58191 /* UserTypeView.xib in Resources */,
 				782B83101F7126DC00A019AC /* ChooseTrainerCell.xib in Resources */,
+				78E4BD2C1FC2108900A069DC /* HeaderCell.xib in Resources */,
 				783484291F71804D00C58191 /* SignUpButtonCell.xib in Resources */,
 				78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */,
 				782B83001F71256D00A019AC /* SignUpDataCell.xib in Resources */,
@@ -1871,6 +1893,7 @@
 				84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */,
 				781110561F6672BD00457E8B /* Template+API.swift in Sources */,
 				78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */,
+				78E4BD271FC1E8EA00A069DC /* CreateTemplateCalendarCell.swift in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
 				785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */,
 				782E899B1F7911F5002AD54C /* ClientTemlatesVC.swift in Sources */,
@@ -1900,6 +1923,7 @@
 				782B82EB1F703E9400A019AC /* Client.swift in Sources */,
 				78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */,
 				78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */,
+				78E4BD2B1FC2108900A069DC /* HeaderCell.swift in Sources */,
 				78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
 				788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */,

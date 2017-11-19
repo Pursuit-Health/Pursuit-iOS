@@ -1,18 +1,14 @@
 //
-//  TrainingTableViewCell.swift
+//  HeaderCell.swift
 //  Pursuit
 //
-//  Created by ігор on 8/4/17.
+//  Created by ігор on 11/19/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
 import UIKit
 
-class TrainingTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var exercisesNameLabel: UILabel!
-    @IBOutlet weak var setsLabel: UILabel!
-    @IBOutlet weak var weightLabel: UILabel!
+class HeaderCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

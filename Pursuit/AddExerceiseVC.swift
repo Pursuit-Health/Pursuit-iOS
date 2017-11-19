@@ -131,6 +131,17 @@ class AddExerceiseVC: UIViewController {
     
     //MARK: IBOutlets
     
+    @IBOutlet weak var exerciseTypeView: UIView! {
+        didSet {
+            let types: [ExerciseType] = [.warmup, .workout, .cooldown]
+            let view = ExercisesTypeView()
+            view.configureCell(with: types)
+            view.delegate = self
+            self.exerciseTypeView.addSubview(view)
+            self.exerciseTypeView.addConstraints(UIView.place(view, onOtherView: self.exerciseTypeView))
+            
+        }
+    }
     @IBOutlet weak var exerceiseTableView: UITableView! {
         didSet {
             self.exerceiseTableView.rowHeight = 50
@@ -189,5 +200,11 @@ extension AddExerceiseVC: UITableViewDataSource {
         
         self.exercise.type = "count_exercise"
         return cell
+    }
+}
+
+extension AddExerceiseVC: ExercisesTypeViewDelegate {
+    func tappedOn(_ view: ExercisesTypeView, with type: ExerciseType) {
+        
     }
 }
