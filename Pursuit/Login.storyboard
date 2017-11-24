@@ -57,26 +57,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epc-Yd-Pbq">
-                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="-0.5" y="-20" width="375" height="707"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="MbQ-3l-pac">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="707"/>
                                             </imageView>
                                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-Sn-TRc">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
+                                                <rect key="frame" x="0.0" y="20" width="375" height="227.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txI-SW-hJz" userLabel="TopView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="247.5"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2G-LN-LG5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="247.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITV-Zb-j6z">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="232.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="246.5"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Aea-Zv-Qua">
-                                                                        <rect key="frame" x="71" y="0.0" width="232" height="232.5"/>
+                                                                        <rect key="frame" x="64" y="0.0" width="246" height="246.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="Aea-Zv-Qua" secondAttribute="height" multiplier="1:1" id="joy-yM-Mkn"/>
                                                                         </constraints>
@@ -90,7 +90,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EN-eH-zBo">
-                                                                <rect key="frame" x="375" y="0.0" width="375" height="232.5"/>
+                                                                <rect key="frame" x="375" y="0.0" width="375" height="246.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWT-by-Bdq">
                                                                         <rect key="frame" x="325" y="20" width="30" height="30"/>
@@ -106,7 +106,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera" translatesAutoresizingMaskIntoConstraints="NO" id="VFF-vM-szL">
-                                                                        <rect key="frame" x="106" y="35" width="162" height="162"/>
+                                                                        <rect key="frame" x="101" y="37" width="172" height="172"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="VFF-vM-szL" secondAttribute="height" id="Vbw-qN-Gua"/>
                                                                         </constraints>
@@ -152,7 +152,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baT-US-LIk" userLabel="ViewForPageController">
-                                                <rect key="frame" x="0.0" y="233.5" width="375" height="433.5"/>
+                                                <rect key="frame" x="0.0" y="247.5" width="375" height="459.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -167,7 +167,8 @@
                                             <constraint firstItem="ouz-Sn-TRc" firstAttribute="leading" secondItem="txI-SW-hJz" secondAttribute="leading" id="Ii3-9C-oKx"/>
                                             <constraint firstAttribute="bottom" secondItem="baT-US-LIk" secondAttribute="bottom" id="OQ9-6d-LwI"/>
                                             <constraint firstItem="ouz-Sn-TRc" firstAttribute="trailing" secondItem="txI-SW-hJz" secondAttribute="trailing" id="U0k-QV-uhg"/>
-                                            <constraint firstItem="ouz-Sn-TRc" firstAttribute="top" secondItem="txI-SW-hJz" secondAttribute="top" id="ii1-W5-6ZU"/>
+                                            <constraint firstItem="ouz-Sn-TRc" firstAttribute="top" secondItem="txI-SW-hJz" secondAttribute="top" constant="20" id="ii1-W5-6ZU"/>
+                                            <constraint firstAttribute="bottom" secondItem="MbQ-3l-pac" secondAttribute="bottom" id="qf2-wD-5Jv"/>
                                             <constraint firstItem="txI-SW-hJz" firstAttribute="leading" secondItem="Epc-Yd-Pbq" secondAttribute="leading" id="qvh-FT-UJh"/>
                                             <constraint firstItem="MbQ-3l-pac" firstAttribute="top" secondItem="Epc-Yd-Pbq" secondAttribute="top" id="rtI-FK-KMX"/>
                                             <constraint firstItem="baT-US-LIk" firstAttribute="leading" secondItem="Epc-Yd-Pbq" secondAttribute="leading" id="uCS-RQ-vNH"/>
@@ -180,7 +181,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Epc-Yd-Pbq" secondAttribute="bottom" id="4So-J6-wvV"/>
                                     <constraint firstAttribute="trailing" secondItem="Epc-Yd-Pbq" secondAttribute="trailing" constant="0.5" id="EWG-6G-3GG"/>
                                     <constraint firstItem="Epc-Yd-Pbq" firstAttribute="centerY" secondItem="AJQ-mE-IIy" secondAttribute="centerY" id="Qfn-td-cfs"/>
-                                    <constraint firstItem="Epc-Yd-Pbq" firstAttribute="top" secondItem="AJQ-mE-IIy" secondAttribute="top" id="hqA-Hf-Bfa"/>
+                                    <constraint firstItem="Epc-Yd-Pbq" firstAttribute="top" secondItem="AJQ-mE-IIy" secondAttribute="top" constant="-20" id="hqA-Hf-Bfa"/>
                                     <constraint firstItem="Epc-Yd-Pbq" firstAttribute="centerX" secondItem="AJQ-mE-IIy" secondAttribute="centerX" id="kUU-4Y-XxD"/>
                                     <constraint firstItem="Epc-Yd-Pbq" firstAttribute="leading" secondItem="AJQ-mE-IIy" secondAttribute="leading" id="tCY-Ba-83R"/>
                                 </constraints>

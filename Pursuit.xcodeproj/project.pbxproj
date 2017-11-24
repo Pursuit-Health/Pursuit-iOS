@@ -37,6 +37,10 @@
 		781110561F6672BD00457E8B /* Template+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110551F6672BD00457E8B /* Template+API.swift */; };
 		78179B871F54977500520D08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B861F54977500520D08 /* User.swift */; };
 		78179B891F54982C00520D08 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B881F54982C00520D08 /* User+API.swift */; };
+		78277D5A1FC84AD00064ABB8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78277D591FC84AD00064ABB8 /* AppCoordinator.swift */; };
+		78277D5C1FC8552D0064ABB8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78277D5B1FC8552D0064ABB8 /* Coordinator.swift */; };
+		78277D621FC8609A0064ABB8 /* TrainerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78277D611FC8609A0064ABB8 /* TrainerCoordinator.swift */; };
+		78277D641FC860AF0064ABB8 /* ClientCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78277D631FC860AF0064ABB8 /* ClientCoordinator.swift */; };
 		782B82EB1F703E9400A019AC /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EA1F703E9400A019AC /* Client.swift */; };
 		782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EC1F7044DA00A019AC /* Client+API.swift */; };
 		782B82F01F704BC200A019AC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B82EF1F704BC200A019AC /* Event.swift */; };
@@ -121,7 +125,6 @@
 		78EF48611FB5BC1700813BA3 /* ClientInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EF48601FB5BC1700813BA3 /* ClientInfoVC.swift */; };
 		78EF48651FB5BC9E00813BA3 /* ClientInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EF48631FB5BC9E00813BA3 /* ClientInfoCell.swift */; };
 		78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */; };
-		78F636221FB5EB4A009EB48D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636211FB5EB4A009EB48D /* Model.swift */; };
 		78F636251FB5FB32009EB48D /* MainExercisesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636241FB5FB32009EB48D /* MainExercisesVC.swift */; };
 		78F636281FB6049C009EB48D /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636271FB6049C009EB48D /* ExerciseCategoryVC.swift */; };
 		78F6362C1FB60584009EB48D /* ExerciseCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F6362A1FB60584009EB48D /* ExerciseCategoryCell.swift */; };
@@ -223,6 +226,10 @@
 		781110551F6672BD00457E8B /* Template+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+API.swift"; sourceTree = "<group>"; };
 		78179B861F54977500520D08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		78179B881F54982C00520D08 /* User+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
+		78277D591FC84AD00064ABB8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		78277D5B1FC8552D0064ABB8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		78277D611FC8609A0064ABB8 /* TrainerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerCoordinator.swift; sourceTree = "<group>"; };
+		78277D631FC860AF0064ABB8 /* ClientCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCoordinator.swift; sourceTree = "<group>"; };
 		782B82EA1F703E9400A019AC /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		782B82EC1F7044DA00A019AC /* Client+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+API.swift"; sourceTree = "<group>"; };
 		782B82EF1F704BC200A019AC /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -310,7 +317,6 @@
 		78EF48601FB5BC1700813BA3 /* ClientInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoVC.swift; sourceTree = "<group>"; };
 		78EF48631FB5BC9E00813BA3 /* ClientInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoCell.swift; sourceTree = "<group>"; };
 		78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientInfoCell.xib; sourceTree = "<group>"; };
-		78F636211FB5EB4A009EB48D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		78F636241FB5FB32009EB48D /* MainExercisesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainExercisesVC.swift; sourceTree = "<group>"; };
 		78F636271FB6049C009EB48D /* ExerciseCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryVC.swift; sourceTree = "<group>"; };
 		78F6362A1FB60584009EB48D /* ExerciseCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryCell.swift; sourceTree = "<group>"; };
@@ -585,6 +591,17 @@
 				78179B881F54982C00520D08 /* User+API.swift */,
 			);
 			name = User;
+			sourceTree = "<group>";
+		};
+		78277D581FC84A200064ABB8 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				78277D591FC84AD00064ABB8 /* AppCoordinator.swift */,
+				78277D5B1FC8552D0064ABB8 /* Coordinator.swift */,
+				78277D611FC8609A0064ABB8 /* TrainerCoordinator.swift */,
+				78277D631FC860AF0064ABB8 /* ClientCoordinator.swift */,
+			);
+			name = Coordinators;
 			sourceTree = "<group>";
 		};
 		782B82E91F703E7500A019AC /* Client */ = {
@@ -1041,7 +1058,6 @@
 			isa = PBXGroup;
 			children = (
 				78EF48601FB5BC1700813BA3 /* ClientInfoVC.swift */,
-				78F636211FB5EB4A009EB48D /* Model.swift */,
 			);
 			name = ClientInfoVC;
 			sourceTree = "<group>";
@@ -1245,6 +1261,7 @@
 		84AB4D531F327CFB00531740 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				78277D581FC84A200064ABB8 /* Coordinators */,
 				78FA53DD1F47792300C38413 /* Constants */,
 				84AB4D6B1F3281D400531740 /* Extensions */,
 				84AB4D631F3280CE00531740 /* Views */,
@@ -1847,6 +1864,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78277D621FC8609A0064ABB8 /* TrainerCoordinator.swift in Sources */,
 				842CD37C1F8F62F400F756DC /* HideKeyboardTapGestureManager.swift in Sources */,
 				842CD37D1F8F62F400F756DC /* UIView+SuperView.swift in Sources */,
 				8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */,
@@ -1869,6 +1887,7 @@
 				782B82F01F704BC200A019AC /* Event.swift in Sources */,
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
 				78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */,
+				78277D641FC860AF0064ABB8 /* ClientCoordinator.swift in Sources */,
 				842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */,
 				78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */,
 				788EE8A01F379ACA00DD8A98 /* CreateTemplateVC.swift in Sources */,
@@ -1903,7 +1922,6 @@
 				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
 				78F636281FB6049C009EB48D /* ExerciseCategoryVC.swift in Sources */,
 				845883021F706E6000BE7D69 /* Error+Pursuit.swift in Sources */,
-				78F636221FB5EB4A009EB48D /* Model.swift in Sources */,
 				780D601F1F5F1588002A7303 /* Storyboards.swift in Sources */,
 				780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */,
 				7804AF461F55FE7D00CE5780 /* CellState.swift in Sources */,
@@ -1962,10 +1980,12 @@
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
+				78277D5A1FC84AD00064ABB8 /* AppCoordinator.swift in Sources */,
 				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,
 				783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */,
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
+				78277D5C1FC8552D0064ABB8 /* Coordinator.swift in Sources */,
 				7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

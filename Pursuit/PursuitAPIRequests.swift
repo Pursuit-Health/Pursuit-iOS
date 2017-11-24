@@ -34,6 +34,7 @@ extension PSAPI {
         case assignTemplate(clientId: String, templateId: String, parameters: Parameters)
         case submitWorkout(workoutId: String)
         
+        case getClientTemplates(clientId: String)
         
         //MARK: RequestConvertible
         
@@ -106,6 +107,11 @@ extension PSAPI {
                 return "trainer/clients/" + clientId + "/assign/" + templateId
             case .submitWorkout(let workoutId):
                 return "client/workouts/" + workoutId + "/submit"
+                
+            case .getClientTemplates(let clientId):
+                return "trainer/clients/" + clientId + "/templates"
+                
+                
             }
         }
         
@@ -151,7 +157,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates:
                 return "Bearer" + token
             default:
                 return ""

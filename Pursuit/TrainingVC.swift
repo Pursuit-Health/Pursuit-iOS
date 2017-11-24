@@ -34,6 +34,8 @@ class TrainingVC: UIViewController {
     
     //MARK: Variables
     
+    var exerciseTypes: [ExerciseType] = [.warmup, .workout, .cooldown]
+    
     var dateformatter = DateFormatters.serverTimeFormatter
     
     var workoutId: String?
@@ -138,15 +140,29 @@ class TrainingVC: UIViewController {
 }
 
 extension TrainingVC: UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.exercises.count
+        return self.exercises.count + 1
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.gc_dequeueReusableCell(type: TrainingTableViewCell.self) else { return UITableViewCell() }
-        let exersiceInfo = self.exercises[indexPath.row]
+        
+        if indexPath.row == 0 {
+            guard let headercell = tableView.gc_dequeueReusableCell(type: HeaderCell.self) else { return UITableViewCell() }
+            let headerView = HeaderView()
+            headerView.sectionNameLabel.text = exerciseTypes[indexPath.section].rawValue.uppercased()
+            headercell.contentView.addSubview(headerView)
+            headercell.contentView.addConstraints(UIView.place(headerView, onOtherView: headercell.contentView))
+            return headercell
+        }
+        
+        let exersiceInfo = self.exercises[indexPath.row - 1]
         
         cell.exercisesNameLabel.text    = exersiceInfo.name
         cell.weightLabel.text           = "\(exersiceInfo.weight ?? 0)"

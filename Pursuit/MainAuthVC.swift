@@ -257,7 +257,8 @@ extension MainAuthVC: SignUpVCDelegate {
     
     func showSelectTrainerVC(on controller: SignUpVC) {
         if let controller = selectTrainerVC {
-            self.navigationController?.pushViewController(controller, animated: true)
+            controller.delegate = self
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
@@ -266,7 +267,6 @@ extension MainAuthVC: SelectTrainerVCDelegate {
     func trainerSelectedWithId(trainer: Trainer) {
         
         signUpVC?.trainerData = trainer
-        
         selectTrainerVC?.navigationController?.popViewController(animated: true)
     }
 }

@@ -411,6 +411,18 @@ class PSAPI: APIHandable {
         let request = Request.assignTemplate(clientId: clientId, templateId: templateId, parameters: [:])
         return self.simple(request: request, completion: completion)?.validate()
     }
+    
+    @discardableResult
+    func getClientTemplates(clientId: String, completion: @escaping GetClientTemplates) -> DataRequest? {
+        let request = Request.getClientTemplates(clientId: clientId)
+        return (self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Workout]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+            })
+    }
 }
 
 extension PSAPI {
@@ -455,11 +467,13 @@ extension PSAPI {
     
     typealias GetWorkoutsCompletion     = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
     
-    typealias GetWorkoutByIdCompletion = (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
+    typealias GetWorkoutByIdCompletion  = (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
     
     typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
     typealias SubmitWorkOutCompletion   = (_ error: ErrorProtocol?) -> Void
     
     typealias GetUserInfoCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetClientTemplates        = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
 }

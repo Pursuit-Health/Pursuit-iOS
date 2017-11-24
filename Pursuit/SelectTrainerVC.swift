@@ -64,7 +64,7 @@ class SelectTrainerVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: Lifecycle

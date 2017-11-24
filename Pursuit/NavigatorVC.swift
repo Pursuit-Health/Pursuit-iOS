@@ -24,8 +24,17 @@ class NavigatorVC: UIViewController {
             guard let controller = UIStoryboard.client.ClientTabBar else { return UIViewController() }
             return controller
         }else {
+            
             guard let controller = UIStoryboard.trainer.TrainerTabBar else { return UIViewController() }
             return controller
+        }
+    }
+    
+    var coordinator: Coordinator {
+        if isClientType() {
+            return ClientCoordinator()
+        }else {
+           return TrainerCoordinator()
         }
     }
     
@@ -33,9 +42,6 @@ class NavigatorVC: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.setAppearence()
-        
-
-        self.addController()
         
     }
     
@@ -49,16 +55,26 @@ class NavigatorVC: UIViewController {
         super.viewDidAppear(animated)
 //        self.performSegue(withIdentifier: checkUserType()
 //            , sender: self)
+         self.addController()
+        
     }
     
     //MARK: Private
     
+    func coordinate() {
+        
+    }
+    
     private func addController() {
-        let controller = self.userController
-        self.view.addSubview(controller.view)
-        self.view.addConstraints(UIView.place(controller.view, onOtherView: self.view))
-        controller.didMove(toParentViewController: self)
-        self.addChildViewController(controller)
+        let coordinator = self.coordinator
+        
+        coordinator.showController(on: self)
+        
+//        let controller = self.userController
+//        self.view.addSubview(controller.view)
+//        self.view.addConstraints(UIView.place(controller.view, onOtherView: self.view))
+//        controller.didMove(toParentViewController: self)
+//        self.addChildViewController(controller)
     }
     
     func addMenuBarButton() {
@@ -67,8 +83,8 @@ class NavigatorVC: UIViewController {
             let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.menuButtonPressed))
             
             menuButton.tintColor = .white
-//            self.navigationItem.leftBarButtonItem = menuButton
-            self.navigationItem.title = "Hello"
+        self.navigationItem.leftBarButtonItem = menuButton
+            //self.navigationItem.title = "Hello"
 //        }
     }
     

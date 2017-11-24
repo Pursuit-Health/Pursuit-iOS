@@ -26,15 +26,13 @@ class ClientInfoVC: UIViewController {
     
     var client: Client?
     
-    var model: [Model] = []
-    
-    struct TrainingData {
-        var name: String
-        var date: String
-        var selected: Bool = false
+    var workouts: [Workout] = [] {
+        didSet {
+            self.clientInfoTableView?.reloadData()
+        }
     }
     
-    var clientInfo: [TrainingData] = [TrainingData(name: "Core training", date: "11/01/2017", selected: false), TrainingData(name: "Cardio Burn", date: "11/01/2017", selected: false), TrainingData(name: "HIT Template", date: "11/01/2017", selected: false), TrainingData(name: "Intervals", date: "11/01/2017", selected: false)]
+    var dateFormatter = DateFormatter()
     
     //MARK: IBActions
 
@@ -46,46 +44,52 @@ class ClientInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.setAppearence()
-
+        setUpBackgroundImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.setAppearence()
+        
         self.fillUserData()
         
-        for info in clientInfo {
-            let mod = Model(name: info.name, date: info.date, selected: info.selected)
-            self.model.append(mod)
-        }
-        
-        
+        self.getClientTemplates()
     }
     
     private func fillUserData() {
          let url = client?.clientAvatar ?? ""
-            //profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
             profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()), placeholderImage: UIImage(named: "profile"))
         
         self.navigationItem.leftTitle = client?.name ?? ""
+    }
+    
+    private func getClientTemplates() {
+        guard let id = client?.id else { return }
+        Trainer.getClientTemplates(clientId: "\(id)") { (workout, error) in
+            self.workouts = workout ?? []
+        }
     }
 }
 
 extension ClientInfoVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        return workouts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: ClientInfoCell.self) else { return UITableViewCell() }
         cell.delegate = self
-        let trainigDate = model[indexPath.row]
+        let trainigDate = workouts[indexPath.row]
         
-        cell.selectedCell             = trainigDate.selected
+        cell.selectedCell             = trainigDate.isDone ?? false
         cell.templateNameLabel.text   = trainigDate.name
-        cell.dateLabel.text           = trainigDate.date
+        
+        let date = Date(timeIntervalSince1970: (trainigDate.startAt ?? 0))
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        
+        cell.dateLabel.text      = dateFormatter.string(from: date)
         
         return cell
     }
@@ -94,11 +98,7 @@ extension ClientInfoVC: UITableViewDataSource {
 extension ClientInfoVC: ClientInfoCellDelegate {
     func didTappedOnImage(cell: ClientInfoCell) {
         if let index = self.clientInfoTableView.indexPath(for: cell) {
-            let trainigDate = model[index.row]
-            trainigDate.selected = !trainigDate.selected
-            cell.selectedCell = trainigDate.selected
-            
-            //self.clientInfoTableView.reloadRows(at: [index], with: .automatic)
+
         }
     }
 }

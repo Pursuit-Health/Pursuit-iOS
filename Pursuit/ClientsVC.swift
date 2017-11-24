@@ -20,6 +20,8 @@ class ClientsVC: UIViewController {
     @IBOutlet weak var clientsSearchBar: UISearchBar! {
         didSet {
             clientsSearchBar.backgroundImage    = UIImage()
+            clientsSearchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .compact)
+            clientsSearchBar.setImage(UIImage(named: "white_search_icon"), for: .search, state: .normal)
             if let searchField = clientsSearchBar.value(forKey: "_searchField") as? UITextField {
                 searchField.borderStyle         = .none
                 searchField.backgroundColor     = .clear
@@ -86,6 +88,7 @@ class ClientsVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        
         
     }
     

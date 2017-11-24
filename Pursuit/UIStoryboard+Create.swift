@@ -133,6 +133,9 @@ extension UIStoryboard {
         var ExerciseDetails: ExerciseDetailsVC? {
             return self.instantiate(type: ExerciseDetailsVC.self)
         }
+        var TrainerClients: ClientsVC? {
+            return self.instantiate(type: ClientsVC.self)
+        }
     }
     
     //MARK: ClientStoryboard
