@@ -10,6 +10,8 @@ import ObjectMapper
 
 class Workout: Mappable {
     
+    var excersises: [ExcersiseData]?
+    
     var id                      : Int?
     var template                : Template?
     var currentWorkDay          : String?
@@ -33,35 +35,4 @@ class Workout: Mappable {
         
     }
 }
-
-//"data": {
-//    "id": 452,
-//    "name": "Test Template",
-//    "notes": null,
-//    "start_at": 1511481600,
-//    "templateExercises": {
-//        "data": [
-//        {
-//        "id": 2253,
-//        "type": 1,
-//        "name": "numquam temporibus sed",
-//        "sets": 1,
-//        "reps": 2,
-//        "rest": 4,
-//        "notes": null,
-//        "weight": 3,
-//        "exercise": {
-//        "data": {
-//        "id": 1,
-//        "name": "numquam temporibus sed",
-//        "image_url": "https://lorempixel.com/640/480/?55614",
-//        "description": "Nisi omnis et dolores pariatur expedita id. Ipsam sapiente aut sed dignissimos enim."
-//        }
-//        },
-//        "done": {
-//        "data": {
-//        "value": false
-//        }
-//        }
-//}
 

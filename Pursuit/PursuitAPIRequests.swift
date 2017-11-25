@@ -35,6 +35,8 @@ extension PSAPI {
         case submitWorkout(workoutId: String)
         
         case getClientTemplates(clientId: String)
+        case getDetailsForClient(workoutId: Int)
+        case submitExcersise(workoutId: Int, excersiseId: Int)
         
         //MARK: RequestConvertible
         
@@ -45,7 +47,7 @@ extension PSAPI {
         
         var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent, .assignTemplate, .submitWorkout:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise:
                 return .post
             case .changePassword, .editTemplate:
                 return .put
@@ -100,7 +102,7 @@ extension PSAPI {
             case .createEvent:
                 return "trainer/events"
             case .getWorkouts:
-                return "client/workouts"
+                return "client/templates"
             case .getWorkoutById(let workoutId):
                 return "client/workouts/" + workoutId
             case .assignTemplate(let clientId, let templateId, _):
@@ -110,8 +112,10 @@ extension PSAPI {
                 
             case .getClientTemplates(let clientId):
                 return "trainer/clients/" + clientId + "/templates"
-                
-                
+            case .getDetailsForClient(let workoutId):
+                return "client/templates/\(workoutId)"
+            case .submitExcersise(let workoutId, let excersiseId):
+                return "templates/\(workoutId)/\(excersiseId)/submit"
             }
         }
         

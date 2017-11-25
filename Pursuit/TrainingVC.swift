@@ -9,21 +9,57 @@
 import UIKit
 import SVProgressHUD
 
+protocol TrainingVCDelegate: class {
+    func select(excercise: ExcersiseData, on controller: TrainingVC)
+}
+
 class TrainingVC: UIViewController {
+    
+    enum Cell {
+        case header(name: String)
+        case excersise(excersise: ExcersiseData)
+        
+        var type: UITableViewCell.Type {
+            switch self {
+            case .header:
+                return HeaderCell.self
+            case .excersise:
+                return TrainingTableViewCell.self
+            }
+        }
+        
+        func fill(cell: UITableViewCell) {
+            switch self {
+            case .header(let name):
+                if let cell = cell as? HeaderCell {
+                    self.fillHeader(cell: cell, with: name)
+                }
+            case .excersise(let excersise):
+                if let cell = cell as? TrainingTableViewCell {
+                    self.fillExcersise(cell: cell, with: excersise)
+                }
+            }
+        }
+        
+        func fillExcersise(cell: TrainingTableViewCell, with excersise: ExcersiseData) {
+            cell.exercisesNameLabel.text    = excersise.name
+            cell.weightLabel.text           = "\(excersise.weight ?? 0) lbs"
+            cell.setsLabel.text             = "\(excersise.reps ?? 0)" + "x" + "\(excersise.sets ?? 0) reps"
+        }
+        
+        func fillHeader(cell: HeaderCell, with name: String) {
+            cell.headerView.sectionNameLabel.text = name.uppercased()
+        }
+    }
     
     //MARK: IBOutlets
     
+    @IBOutlet var headerView: UIView!
     @IBOutlet weak var todoLabel        : UILabel!
     @IBOutlet weak var completedLabel   : UILabel!
     @IBOutlet weak var monthYearLabel   : UILabel!
     @IBOutlet weak var dayDigitLabel    : UILabel!
     @IBOutlet weak var dayNameLabel     : UILabel!
-    
-    @IBOutlet weak var submitButton: UIButton! {
-        didSet {
-            self.submitButton.isEnabled = false
-        }
-    }
     
     @IBOutlet weak var trainingTableView: UITableView! {
         didSet{
@@ -34,36 +70,22 @@ class TrainingVC: UIViewController {
     
     //MARK: Variables
     
-    var exerciseTypes: [ExerciseType] = [.warmup, .workout, .cooldown]
+    var exercises: [ExcersiseData] {
+        return self.workout?.excersises ?? []
+    }
+    weak var delegate: TrainingVCDelegate?
     
     var dateformatter = DateFormatters.serverTimeFormatter
     
-    var workoutId: String?
-    
     var workout: Workout? {
         didSet {
-            self.completedLabel.text    = "0"
-            self.completedCount         = 0
-            
-            self.exercises = workout?.template?.exercises ?? []
-            self.fillWorkout()
+            self.recalculate()
         }
     }
     
-    var exercises: [Template.Exercises] = [] {
+    var sections: [Int : [Cell]] = [:] {
         didSet {
             self.trainingTableView?.reloadData()
-            self.todoLabel.text = "\(self.exercises.count)"
-            
-            if exercises.count == 0 {
-                self.submitButton.isEnabled = self.workout?.currentWorkDay == nil
-            }
-        }
-    }
-    
-    var completedCount: Int = 0 {
-        didSet {
-            self.completedLabel.text = "\(self.completedCount)"
         }
     }
     
@@ -71,123 +93,94 @@ class TrainingVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func submitButtonPressed(_ sender: Any) {
-        self.submitWorkout()
-    }
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.recalculate()
+        self.trainingTableView.tableHeaderView = self.headerView
         setUpBackgroundImage()
-        
-        self.navigationController?.navigationBar.setAppearence()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
-        self.submitButton.isEnabled = false
-        getWorkoutById()
     }
     
-    private func fillWorkout() {
-        
-        var date = Date()
-        if  self.workout?.currentWorkDay != nil{
-            self.exercises = []
-            SVProgressHUD.showSuccess(withStatus: "Workout completed for today.")
-            if let serDate = dateformatter.date(from: self.workout?.currentWorkDay ?? "") {
-                date = serDate
-            }
-        }
-        //TODO: Move to separate method
-        dateformatter.dateFormat = "EEEE"
-        let dayOfWeak: String = dateformatter.string(from: date)
-        dateformatter.dateFormat = "MMMM yyyy"
-        let monthYear: String = dateformatter.string(from: date)
-        dateformatter.dateFormat = "dd"
-        let digitOfDay: String = dateformatter.string(from: date)
-        
-        self.dayNameLabel.text = dayOfWeak
-        self.dayDigitLabel.text = digitOfDay
-        self.monthYearLabel.text = monthYear
-        
-        self.trainingTableView?.reloadData()
+    //MARK: Private.Methods
+    
+    private func recalculate() {
+        self.recalculateRows()
+        self.recalculateTexts()
     }
     
-    fileprivate func getWorkoutById() {
-        Workout.getWorkoutById(workoutId: workoutId ?? "") { (workout, error) in
-            if error == nil {
-                if let workoutUn = workout {
-                    self.workout = workoutUn
-                }
-            }
-        }
+    private func recalculateTexts() {
+        let done = self.exercises.filter{ $0.isDone ?? false }.count
+        let todo = self.exercises.count - done
+        
+        let date = Date(timeIntervalSince1970: (self.workout?.startAt ?? 0))
+        
+        let f = DateFormatter()
+        f.dateFormat = "MMMM yyyy"
+        self.dayNameLabel.text = f.weekdaySymbols[Calendar.current.component(.weekday, from: date)]
+        self.monthYearLabel.text = f.string(from: date)
+        
+        self.completedLabel?.text    = String(done)
+        self.todoLabel?.text         = String(todo)
+        
+        self.leftTitle = self.workout?.name
     }
     
-    fileprivate func submitWorkout() {
-        Client.submitWorkout(workoutId: workoutId ?? "") { (error) in
-            if let error = error {
-                let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                self.present(error.alert(action: action), animated: true, completion: nil)
-            }else {
-                self.navigationController?.popViewController(animated: true)
-            }
+    private func recalculateRows() {
+        var section = 0
+        var sections: [Int : [Cell]] = [:]
+        var warmups = self.exercises.filter{ $0.type == .warmup && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
+        var workouts = self.exercises.filter{ $0.type == .workout && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
+        var cooldowns = self.exercises.filter{ $0.type == .cooldown && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
+        
+        if !warmups.isEmpty {
+            warmups.insert(.header(name: ExcersiseData.ExcersiseType.warmup.name), at: 0)
+            sections[section] = warmups
+            section += 1
         }
+        if !workouts.isEmpty {
+            workouts.insert(.header(name: ExcersiseData.ExcersiseType.workout.name), at: 0)
+            sections[section] = workouts
+            section += 1
+        }
+        if !cooldowns.isEmpty {
+            cooldowns.insert(.header(name: ExcersiseData.ExcersiseType.cooldown.name), at: 0)
+            sections[section] = cooldowns
+            section += 1
+        }
+        
+        self.sections = sections
     }
 }
 
 extension TrainingVC: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return self.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.exercises.count + 1
-        
+        return self.sections[section]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.gc_dequeueReusableCell(type: TrainingTableViewCell.self) else { return UITableViewCell() }
-        
-        if indexPath.row == 0 {
-            guard let headercell = tableView.gc_dequeueReusableCell(type: HeaderCell.self) else { return UITableViewCell() }
-            let headerView = HeaderView()
-            headerView.sectionNameLabel.text = exerciseTypes[indexPath.section].rawValue.uppercased()
-            headercell.contentView.addSubview(headerView)
-            headercell.contentView.addConstraints(UIView.place(headerView, onOtherView: headercell.contentView))
-            return headercell
+        if let cellInfo = self.sections[indexPath.section]?[indexPath.row], let cell = tableView.gc_dequeueReusableCell(type: cellInfo.type) {
+            cellInfo.fill(cell: cell)
+            return cell
         }
-        
-        let exersiceInfo = self.exercises[indexPath.row - 1]
-        
-        cell.exercisesNameLabel.text    = exersiceInfo.name
-        cell.weightLabel.text           = "\(exersiceInfo.weight ?? 0)"
-        cell.setsLabel.text             = "\(exersiceInfo.times ?? 0)" + "x" + "\(exersiceInfo.count ?? 0)"
-        return cell
+        return UITableViewCell()
     }
 }
 
 extension TrainingVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.exercises.remove(at: indexPath.row)
-        self.completedCount += 1
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //        if editingStyle == .delete {
-        //            self.exercises.remove(at: indexPath.row)
-        //
-        //            if self.exercises.count == 0 {
-        //                submitWorkout()
-        //            }
-        //
-        //            tableView.deleteRows(at: [indexPath], with: .fade)
-        //        } else if editingStyle == .insert {
-        //
-        //        }
+        if let cellInfo = self.sections[indexPath.section]?[indexPath.row], case .excersise(let excersie) = cellInfo {
+            self.delegate?.select(excercise: excersie, on: self)
+        }
     }
 }

@@ -8,18 +8,7 @@
 
 import Foundation
 
-/// The Coordinator protocol
- class Coordinator {
-
-    init() {
-    }
-    
-    //var childCoordinators: [Coordinator] { get set }
-    
-    
-    public func showController(on superController: UIViewController) {
-    
-    }
+protocol Coordinator {
+    func start(from controller: UIViewController?)
 }
-
 

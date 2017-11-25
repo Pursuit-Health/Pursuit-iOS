@@ -22,16 +22,16 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjz-53-7AW">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                     <color key="backgroundColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="ZMS-8r-VWu">
-                    <rect key="frame" x="16" y="10" width="36.5" height="30"/>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <rect key="frame" x="25" y="19" width="29.5" height="25"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -40,15 +40,15 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="pjz-53-7AW" secondAttribute="top" id="D1d-dE-NRw"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pjz-53-7AW" secondAttribute="trailing" id="DIt-cF-aev"/>
-                <constraint firstItem="ZMS-8r-VWu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="DPe-ic-Iao"/>
+                <constraint firstItem="ZMS-8r-VWu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="DPe-ic-Iao"/>
                 <constraint firstItem="pjz-53-7AW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="J1l-Mw-LHJ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZMS-8r-VWu" secondAttribute="bottom" constant="10" id="SvJ-gC-oNV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZMS-8r-VWu" secondAttribute="bottom" constant="19" id="SvJ-gC-oNV"/>
                 <constraint firstItem="pjz-53-7AW" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="biF-iU-B63"/>
-                <constraint firstItem="ZMS-8r-VWu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="gON-Ui-RMP"/>
+                <constraint firstItem="ZMS-8r-VWu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="gON-Ui-RMP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="87.5" y="21"/>
+            <point key="canvasLocation" x="87.5" y="14.5"/>
         </view>
     </objects>
 </document>

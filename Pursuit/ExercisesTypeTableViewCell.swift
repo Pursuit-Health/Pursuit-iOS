@@ -9,24 +9,17 @@
 import UIKit
 
 protocol ExercisesTypeTableViewCellDelegate: class {
-    func tappedOn(_ cell: ExercisesTypeTableViewCell, with type: ExerciseType)
+    func tappedOn(_ cell: ExercisesTypeTableViewCell, with type: ExcersiseData.ExcersiseType)
 }
 
 class ExercisesTypeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var excersiseTypeView: ExercisesTypeView!
     @IBOutlet weak var mainView: UIView!
-    var view = ExercisesTypeView()
     
     //MARK: Variables
     
     weak var delegate: ExercisesTypeTableViewCellDelegate?
-    
-     func configureCell(with type: [ExerciseType]) {
-        view.configureCell(with: type)
-        view.delegate = self
-        self.mainView.addSubview(self.view)
-        self.mainView.addConstraints(UIView.place(self.view, onOtherView: self.mainView))
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,14 +28,11 @@ class ExercisesTypeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+     }
 }
 
 extension ExercisesTypeTableViewCell: ExercisesTypeViewDelegate {
-    func tappedOn(_ view: ExercisesTypeView, with type: ExerciseType) {
+    func tappedOn(_ view: ExercisesTypeView, with type: ExcersiseData.ExcersiseType) {
         self.delegate?.tappedOn(self, with: type)
         
     }

@@ -103,7 +103,6 @@ extension ExercisesSearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let controller = self.exercisesDetailsVC else { return }
         let exerc = filteredExercises[indexPath.row]
-        controller.exerciseName = exerc.name
        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

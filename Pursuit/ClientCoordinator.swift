@@ -10,23 +10,90 @@ import Foundation
 import UIKit
 
 class ClientCoordinator: Coordinator {
+    
+    //MARK: Properties
 
-    override init() {
-        super.init()
-    }
-    var childCoordinators: [Coordinator] = []
+    weak var infoVC: ClientInfoVC?
+    weak var excersisesVC: TrainingVC?
+    weak var excersisesDetailedVC: ExerciseDetailsVC?
     
-    var controller: UIViewController {
-        return  UIStoryboard.client.ClientTabBar ?? UIViewController()
+    //MARK: Coordinator
+    
+    func start(from controller: UIViewController?) {
+        if let controller = controller {
+            let clientInfo = UIStoryboard.trainer.ClientInfo!
+            clientInfo.delegate = self
+            clientInfo.dataSource = self
+            controller.view.addSubview(clientInfo.view)
+            controller.view.addConstraints(UIView.place(clientInfo.view, onOtherView: controller.view))
+            clientInfo.didMove(toParentViewController: controller)
+            controller.addChildViewController(clientInfo)
+            
+            self.infoVC = clientInfo
+        }
     }
     
-    override public func showController(on superController:  UIViewController) {
-        
-        let controller = self.controller
-        superController.view.addSubview(controller.view)
-        superController.view.addConstraints(UIView.place(controller.view, onOtherView: superController.view))
-        controller.didMove(toParentViewController: superController)
-        superController.addChildViewController(controller)
+}
+
+extension ClientCoordinator: ClientInfoVCDatasource {
+    func loadInfo(controller: ClientInfoVC, completion: @escaping (User, [Workout]?) -> Void) {
+        Workout.getWorkouts { (workouts, error) in
+            if error == nil {
+                if let work = workouts {
+                    completion(User.shared, work)
+                }
+            }
+        }
     }
-    
+}
+
+extension ClientCoordinator: ClientInfoVCDelegate {
+    func selected(workout: Workout, on controller: ClientInfoVC) {
+        User.shared.updateDetailsWorkout(workout: workout) { (excercises, error) in
+            if let error = error {
+                let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                controller.present(alert, animated: true, completion: nil)
+            } else {
+                let training = UIStoryboard.client.Training!
+                training.delegate = self
+                training.workout = workout
+                controller.navigationController?.pushViewController(training, animated: true)
+                self.excersisesVC = training
+            }
+        }
+    }
+}
+
+extension ClientCoordinator: TrainingVCDelegate {
+    func select(excercise: ExcersiseData, on controller: TrainingVC) {
+        let details = UIStoryboard.trainer.ExerciseDetails!
+        details.excersize = excercise
+        details.isInteractiv = false
+        details.delegate = self
+        controller.navigationController?.pushViewController(details, animated: true)
+        self.excersisesDetailedVC = details
+    }
+}
+
+extension ClientCoordinator: ExerciseDetailsVCDelegate {
+    func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC) {
+        if let workout = self.excersisesVC?.workout {
+            workout.submit(excersise: controller.excersize, completion: { (error) in
+                if let error = error {
+                    let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+                        controller.navigationController?.popViewController(animated: true)
+                    }))
+                    controller.present(alert, animated: true, completion: nil)
+                } else {
+                    self.excersisesVC?.trainingTableView.reloadData()
+                    controller.navigationController?.popViewController(animated: true)
+                }
+            })
+        } else {
+            let alert = PSError.somethingWentWrong.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+                controller.navigationController?.popViewController(animated: true)
+            }))
+            controller.present(alert, animated: true, completion: nil)
+        }
+    }
 }

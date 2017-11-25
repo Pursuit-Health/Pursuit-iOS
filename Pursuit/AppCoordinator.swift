@@ -16,6 +16,12 @@ class AppCoordinator: Coordinator {
         return self.navigationController
     }
     
+    //MARK: Coordinator
+    
+    func start(from controller: UIViewController?) {
+        
+    }
+    
     /// Window to manage
     let window: UIWindow
     

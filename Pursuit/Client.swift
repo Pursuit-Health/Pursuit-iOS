@@ -24,8 +24,15 @@ class Client: User, Equatable, Hashable {
     
     typealias RegisterClientCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
+    //MARK: Override
+    
+    override var coordinator: Coordinator? {
+        return self.clientCoordinator
+    }
+    
     //MARK: Private.Properties
     
+    var clientCoordinator = ClientCoordinator()
     var isSelected: Bool = false
     
     //MARK: Mappable
@@ -58,5 +65,8 @@ class Client: User, Equatable, Hashable {
     override func signUp(completion: @escaping RegisterClientCompletion) {
         let api = PSAPI()
         api.registerClient(personalData: self.createSignUpParameters(), completion: completion)
+    }
+    override func updateDetailsWorkout(workout: Workout, completion: Workout.GetClientsWorkoutDetails? = nil) {
+        workout.updateToClientoDetails(completion: completion)
     }
 }

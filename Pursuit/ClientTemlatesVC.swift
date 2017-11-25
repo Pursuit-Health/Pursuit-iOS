@@ -56,7 +56,7 @@ class ClientTemlatesVC: UIViewController {
     
     func pushClientWorkoutVC() {
         guard let controller = clientWorkoutVC else { return }
-        controller.workoutId = self.workoutId
+//        controller.workoutId = self.workoutId
         
         self.navigationController?.pushViewController(controller, animated: true)
     }

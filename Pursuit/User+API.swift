@@ -18,8 +18,6 @@ extension User {
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     typealias RefreshTokenCompletion    = (_ error: ErrorProtocol?) -> Void
-    
-    
 
     //MARK: Public
 
@@ -67,10 +65,15 @@ extension User {
         api.uploadAvatar(data: data, completion: completion)
     }
     
-    class func getUserInfo(completion: @escaping GetUserInfoCompletion) {
+    class func getUserInfo(completion: GetUserInfoCompletion? = nil) {
         let api = PSAPI()
         
-        api.getUserInfo(completion: completion)
+        api.getUserInfo() { user, error in
+            if let user = user, error == nil {
+                User.shared = user
+            }
+            completion?(user, error)
+        }
     }
 
  }

@@ -24,6 +24,9 @@ class User: Mappable {
             keychain.token      = newValue
         }
     }
+    var coordinator: Coordinator? {
+        return nil;
+    }
 
     //MARK: Mappable
     
@@ -41,6 +44,7 @@ class User: Mappable {
         self.password        <- map["user.data.password"]
         self.birthday        <- map["user.data.birthday"]
         self.id              <- map["user.data.userable.data.id"]
+        self.avatar          <- map["user.data.avatar"]
     }
     
     init() {}
@@ -63,6 +67,9 @@ class User: Mappable {
     typealias RegisterCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
     func signUp(completion: @escaping RegisterCompletion) {
+        
+    }
+    func updateDetailsWorkout(workout: Workout, completion: Workout.GetClientsWorkoutDetails? = nil) {
         
     }
 }

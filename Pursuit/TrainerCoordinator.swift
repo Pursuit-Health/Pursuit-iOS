@@ -11,19 +11,13 @@ import UIKit
 
 class TrainerCoordinator: Coordinator {
     
-    override init() {
-        super.init()
-    }
-    
-    var childCoordinators: [Coordinator] = []
-    
     var controller: UIViewController {
         return  UIStoryboard.trainer.TrainerClients ?? UIViewController()
     }
     
-    override public func showController(on superController:  UIViewController) {
+    func start(from controller: UIViewController?) {
         
-        superController.navigationController?.pushViewController(self.controller, animated: true)
+//        superController.navigationController?.pushViewController(self.controller, animated: true)
 //        let controller = self.controller
 //        superController.view.addSubview(controller.view)
 //        superController.view.addConstraints(UIView.place(controller.view, onOtherView: superController.view))

@@ -30,33 +30,16 @@ class NavigatorVC: UIViewController {
         }
     }
     
-    var coordinator: Coordinator {
-        if isClientType() {
-            return ClientCoordinator()
-        }else {
-           return TrainerCoordinator()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.navigationBar.setAppearence()
-        
+        self.addController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
         self.addMenuBarButton()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        self.performSegue(withIdentifier: checkUserType()
-//            , sender: self)
-         self.addController()
-        
     }
     
     //MARK: Private
@@ -66,10 +49,11 @@ class NavigatorVC: UIViewController {
     }
     
     private func addController() {
-        let coordinator = self.coordinator
-        
-        coordinator.showController(on: self)
-        
+        User.getUserInfo { (user, error) in
+            if error == nil {
+                User.shared.coordinator?.start(from: self)
+            }
+        }
 //        let controller = self.userController
 //        self.view.addSubview(controller.view)
 //        self.view.addConstraints(UIView.place(controller.view, onOtherView: self.view))
@@ -78,14 +62,10 @@ class NavigatorVC: UIViewController {
     }
     
     func addMenuBarButton() {
-        let deadlineTime = DispatchTime.now() + .seconds(10)
-//        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.menuButtonPressed))
             
             menuButton.tintColor = .white
         self.navigationItem.leftBarButtonItem = menuButton
-            //self.navigationItem.title = "Hello"
-//        }
     }
     
     func menuButtonPressed() {

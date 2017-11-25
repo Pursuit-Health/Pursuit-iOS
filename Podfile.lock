@@ -3,28 +3,28 @@ PODS:
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
-  - Crashlytics (3.8.6):
-    - Fabric (~> 1.6.3)
+  - Crashlytics (3.9.3):
+    - Fabric (~> 1.7.2)
   - DeepLinkKit (1.4.0)
   - ESTabBarController-swift (2.5)
-  - Fabric (1.6.13)
+  - Fabric (1.7.2)
   - HMSegmentedControl (1.5.4)
   - HTTPStatusCodes (3.1.2)
-  - JTAppleCalendar (7.0.6)
+  - JTAppleCalendar (7.1.4)
   - KeychainAccess (3.1.0)
   - KVNProgress (2.3.1)
   - ObjectMapper (2.2.9)
   - PIDatePicker (0.1.3)
   - pop (1.0.10)
   - RHDisplayLinkStepper (1.0.0)
-  - SDWebImage (4.1.0):
-    - SDWebImage/Core (= 4.1.0)
-  - SDWebImage/Core (4.1.0)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
+  - SDWebImage/Core (4.2.2)
   - SHTextFieldBlocks (1.1.1)
-  - SVProgressHUD (2.2.1)
+  - SVProgressHUD (2.2.2)
   - SwiftDate (4.1.11)
   - SwipeCellKit (1.9.1)
-  - TPKeyboardAvoiding (1.3.1)
+  - TPKeyboardAvoiding (1.3.2)
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 4.1)
@@ -44,32 +44,32 @@ DEPENDENCIES:
   - SHTextFieldBlocks (~> 1.1)
   - SVProgressHUD (~> 2.1)
   - SwiftDate (~> 4.1.11)
-  - SwipeCellKit
+  - SwipeCellKit (~> 1.9.1)
   - TPKeyboardAvoiding (~> 1.3)
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
-  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
+  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DeepLinkKit: bffd3b5e51549222f974d631b4e0e7484600b9d8
   ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
-  Fabric: 2fb5676bc811af011a04513451f463dac6803206
+  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
   HTTPStatusCodes: 88155ba36826366a898a7b4f34d311f49083d546
-  JTAppleCalendar: 6a942475e33b9ad4dee0a0e14aa4c63adcf4f543
+  JTAppleCalendar: aaeee95e939e0b0a381fb51eb77738bd26bb10f6
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
   ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
   PIDatePicker: 5044778bdd2ca2f62ca27263ae22c6f48fb74517
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   RHDisplayLinkStepper: 000ea5b06588eed23ffff66c8c8735f5e4e9a7c8
-  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SHTextFieldBlocks: 5ecaaff2051371e86ae4dffb7a6eab37b80aa56d
-  SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftDate: ab63a5f0299dbb57fc088c1a2e5314b4bc9c90bb
   SwipeCellKit: e9ff953c820394a4e641cfb0118b6c959506aec2
-  TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
+  TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 411e15e1cb9c438757ede10b2c2bac9b045e94b4
+PODFILE CHECKSUM: d3e337d8523faade62ba638eb89232ba3e68ec8e
 
 COCOAPODS: 1.1.1

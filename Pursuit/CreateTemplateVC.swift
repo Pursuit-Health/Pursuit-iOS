@@ -45,7 +45,7 @@ class CreateTemplateVC: UIViewController {
             self.calendarView.minimumInteritemSpacing   = 0
             self.calendarView.minimumLineSpacing        = 0
             
-            self.calendarView.scrollingMode             = .stopAtEachCalendarFrameWidth
+            self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
             self.calendarView.scrollToDate(Date())
             self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
         }
@@ -115,7 +115,7 @@ class CreateTemplateVC: UIViewController {
     
     var chnagedDate = DateInRegion(absoluteDate: Date())
     
-    var exerciseTypes: [ExerciseType] = [.warmup, .workout, .cooldown]
+    var exerciseTypes: [ExcersiseData.ExcersiseType] = [.warmup, .workout, .cooldown]
     
     //MARK: IBActions
     
@@ -256,7 +256,7 @@ extension CreateTemplateVC: UITableViewDataSource {
         if indexPath.row == 0 {
             guard let headercell = tableView.gc_dequeueReusableCell(type: HeaderCell.self) else { return UITableViewCell() }
             let headerView = HeaderView()
-            headerView.sectionNameLabel.text = exerciseTypes[indexPath.section].rawValue.uppercased()
+            headerView.sectionNameLabel.text = exerciseTypes[indexPath.section].name.uppercased()
             headercell.contentView.addSubview(headerView)
             headercell.contentView.addConstraints(UIView.place(headerView, onOtherView: headercell.contentView))
             return headercell
@@ -276,7 +276,6 @@ extension CreateTemplateVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let controller = exercisesDetailsVC {
             let exersiceInfo = self.exercises[indexPath.row - 1]
-            controller.exerciseName = exersiceInfo.name
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
@@ -329,6 +328,10 @@ extension CreateTemplateVC: JTAppleCalendarViewDataSource {
 }
 
 extension CreateTemplateVC: JTAppleCalendarViewDelegate {
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        
+    }
+    
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         

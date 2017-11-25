@@ -615,7 +615,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="bAP-xa-gkS">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rDV-SX-Qe2">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rDV-SX-Qe2" customClass="TPKeyboardAvoidingCollectionView">
                                 <rect key="frame" x="40" y="116" width="295" height="551"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZJX-UQ-WH0">
@@ -639,7 +639,7 @@
                                     <outlet property="delegate" destination="ybR-eh-cCa" id="r9A-Na-oma"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-0e-vrU">
+                            <searchBar contentMode="redraw" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ld-0e-vrU">
                                 <rect key="frame" x="40" y="20" width="295" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

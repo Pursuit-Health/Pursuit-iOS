@@ -9,10 +9,21 @@
 import UIKit
 import SDWebImage
 
+protocol ClientInfoVCDelegate: class {
+    func selected(workout: Workout, on controller: ClientInfoVC)
+}
+
+protocol ClientInfoVCDatasource: class {
+    typealias GetClientTemplates = (_ client: User, _ workout: [Workout]?) -> Void
+    func loadInfo(controller: ClientInfoVC, completion: @escaping GetClientTemplates)
+}
+
 class ClientInfoVC: UIViewController {
 
     //MARK: IBOutlets
     
+    @IBOutlet weak var todoLabel: UILabel!
+    @IBOutlet weak var completedLabel: UILabel!
     @IBOutlet weak var clientInfoTableView: UITableView! {
         didSet {
             self.clientInfoTableView.estimatedRowHeight = 100
@@ -24,11 +35,25 @@ class ClientInfoVC: UIViewController {
     
     //MARK: Variables
     
-    var client: Client?
-    
+    weak var delegate: ClientInfoVCDelegate?
+    weak var dataSource: ClientInfoVCDatasource?
+    var client: User? {
+        didSet {
+            if let url = client?.avatar {
+                profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
+                                             placeholderImage: UIImage(named: "profile"))
+            }
+            self.navigationItem.leftTitle = client?.name ?? ""
+        }
+    }
     var workouts: [Workout] = [] {
         didSet {
             self.clientInfoTableView?.reloadData()
+            let doneCount = workouts.filter{ $0.isDone ?? false }.count
+            let todoCount = workouts.count - doneCount
+            
+            self.completedLabel.text = String(doneCount)
+            self.todoLabel.text = String(todoCount)
         }
     }
     
@@ -53,23 +78,10 @@ class ClientInfoVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.navigationBar.setAppearence()
         
-        self.fillUserData()
-        
-        self.getClientTemplates()
-    }
-    
-    private func fillUserData() {
-         let url = client?.clientAvatar ?? ""
-            profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()), placeholderImage: UIImage(named: "profile"))
-        
-        self.navigationItem.leftTitle = client?.name ?? ""
-    }
-    
-    private func getClientTemplates() {
-        guard let id = client?.id else { return }
-        Trainer.getClientTemplates(clientId: "\(id)") { (workout, error) in
-            self.workouts = workout ?? []
-        }
+        self.dataSource?.loadInfo(controller: self, completion: { (client, workouts) in
+            self.client = client
+            self.workouts = workouts ?? []
+        })
     }
 }
 
@@ -92,6 +104,12 @@ extension ClientInfoVC: UITableViewDataSource {
         cell.dateLabel.text      = dateFormatter.string(from: date)
         
         return cell
+    }
+}
+
+extension ClientInfoVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.selected(workout: self.workouts[indexPath.row], on: self)
     }
 }
 

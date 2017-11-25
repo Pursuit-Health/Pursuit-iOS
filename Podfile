@@ -9,7 +9,7 @@ target 'Pursuit' do
   pod 'Crashlytics'
   pod 'HMSegmentedControl'
   pod 'ESTabBarController-swift'
-  pod 'SwipeCellKit'
+  pod 'SwipeCellKit', '~> 1.9.1'
   
   pod 'AlamofireObjectMapper', '~> 4.1'
   pod 'SDWebImage', '~> 4.1'

@@ -7,13 +7,9 @@
 //
 
 import UIKit
-enum ExerciseType: String {
-    case warmup = "Warmup"
-    case workout = "Workout"
-    case cooldown = "Cooldown"
-}
+
 protocol ExercisesTypeViewDelegate: class {
-    func tappedOn(_ view: ExercisesTypeView, with type: ExerciseType)
+    func tappedOn(_ view: ExercisesTypeView, with type: ExcersiseData.ExcersiseType)
 }
 
 class ExercisesTypeView: BBBXIBView {
@@ -42,40 +38,22 @@ class ExercisesTypeView: BBBXIBView {
     
     weak var delegate: ExercisesTypeViewDelegate?
     
-    var exercisesType: [ExerciseType] = []
+    var exercisesType: [ExcersiseData.ExcersiseType] = []
+    var selectedType: ExcersiseData.ExcersiseType? {
+        didSet {
+            self.exercisesTypeCollectionView.reloadData()
+        }
+    }
     
-    var currentIndexPath: IndexPath?
-    
-    func configureCell(with type: [ExerciseType]) {
-        self.exercisesType = type
+     func configureCell(with types: [ExcersiseData.ExcersiseType], selectedType: ExcersiseData.ExcersiseType?) {
+        self.exercisesType = types
+        self.selectedType = selectedType
+        if selectedType == nil {
+            self.selectedType = types.first
+        }
     }
     
     //MARK: Private
-    
-    fileprivate func updateCollectionView(_ collectionView: UICollectionView, indexPath: IndexPath) {
-        if currentIndexPath == nil {
-            guard let cell = collectionView.cellForItem(at: indexPath) as? ExercisesTypeCollectionViewCell else { return }
-            handleSelection(cell, for: indexPath, isSelected: true)
-            
-            currentIndexPath = indexPath
-            
-        } else if currentIndexPath == indexPath {
-            guard let cell = collectionView.cellForItem(at: indexPath) as? ExercisesTypeCollectionViewCell else { return }
-            handleSelection(cell, for: indexPath, isSelected: !cell.typeSelected)
-            
-            currentIndexPath = nil
-        } else if currentIndexPath != indexPath {
-            if let cell = collectionView.cellForItem(at: currentIndexPath!) as? ExercisesTypeCollectionViewCell {
-                cell.typeSelected = false
-                handleSelection(cell, for: currentIndexPath!, isSelected: false)
-            }
-            
-            guard let cell = collectionView.cellForItem(at: indexPath) as? ExercisesTypeCollectionViewCell else { return }
-            handleSelection(cell, for: indexPath, isSelected: true)
-            
-            currentIndexPath = indexPath
-        }
-    }
     
     private func handleSelection(_ cell: ExercisesTypeCollectionViewCell, for indexPath: IndexPath, isSelected: Bool) {
         
@@ -94,8 +72,8 @@ extension ExercisesTypeView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.ExercisesType.identifier, for: indexPath) as? ExercisesTypeCollectionViewCell else { return UICollectionViewCell() }
         cell.delegate = self
-        cell.typeSelected = false
-        cell.exerciseTypeButton.setTitle(self.exercisesType[indexPath.row].rawValue, for: .normal)
+        cell.typeSelected = (self.selectedType == self.exercisesType[indexPath.row])
+        cell.exerciseTypeButton.setTitle(self.exercisesType[indexPath.row].name, for: .normal)
         
         return cell
     }
@@ -120,6 +98,6 @@ extension ExercisesTypeView: UICollectionViewDelegateFlowLayout {
 extension ExercisesTypeView: ExercisesTypeCollectionViewCellDelegate {
     func tappedOn(_ cell: ExercisesTypeCollectionViewCell) {
         guard let indexPath = exercisesTypeCollectionView.indexPath(for: cell) else { return }
-        updateCollectionView(exercisesTypeCollectionView, indexPath: indexPath)
+        self.selectedType = self.exercisesType[indexPath.row]
     }
 }

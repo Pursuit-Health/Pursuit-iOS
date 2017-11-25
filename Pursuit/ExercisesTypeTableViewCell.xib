@@ -23,11 +23,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWB-Mr-lCI" customClass="ExercisesTypeView" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="-1" width="320" height="44"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dYl-At-Fdx" secondAttribute="trailing" id="64U-IF-rrF"/>
+                    <constraint firstItem="TWB-Mr-lCI" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="7ss-hP-SoC"/>
+                    <constraint firstItem="TWB-Mr-lCI" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="9Bh-ok-v0D"/>
                     <constraint firstItem="dYl-At-Fdx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PCm-O8-5Vy"/>
+                    <constraint firstItem="TWB-Mr-lCI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TKH-6E-B0E"/>
+                    <constraint firstItem="TWB-Mr-lCI" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VlN-gV-yaM"/>
                     <constraint firstItem="dYl-At-Fdx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aVO-U0-o0t"/>
                     <constraint firstAttribute="bottom" secondItem="dYl-At-Fdx" secondAttribute="bottom" id="woC-Vc-3G2"/>
                 </constraints>
@@ -35,6 +43,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="excersiseTypeView" destination="TWB-Mr-lCI" id="6Iv-dD-aBr"/>
                 <outlet property="mainView" destination="dYl-At-Fdx" id="pQr-Bf-XWa"/>
             </connections>
         </tableViewCell>

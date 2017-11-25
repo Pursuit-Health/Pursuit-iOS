@@ -133,9 +133,9 @@ class AddExerceiseVC: UIViewController {
     
     @IBOutlet weak var exerciseTypeView: UIView! {
         didSet {
-            let types: [ExerciseType] = [.warmup, .workout, .cooldown]
+            let types: [ExcersiseData.ExcersiseType] = [.warmup, .workout, .cooldown]
             let view = ExercisesTypeView()
-            view.configureCell(with: types)
+//            view.configureCell(with: types)
             view.delegate = self
             self.exerciseTypeView.addSubview(view)
             self.exerciseTypeView.addConstraints(UIView.place(view, onOtherView: self.exerciseTypeView))
@@ -204,7 +204,7 @@ extension AddExerceiseVC: UITableViewDataSource {
 }
 
 extension AddExerceiseVC: ExercisesTypeViewDelegate {
-    func tappedOn(_ view: ExercisesTypeView, with type: ExerciseType) {
+    func tappedOn(_ view: ExercisesTypeView, with type: ExcersiseData.ExcersiseType) {
         
     }
 }

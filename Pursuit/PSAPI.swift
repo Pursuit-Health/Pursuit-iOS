@@ -206,6 +206,8 @@ class PSAPI: APIHandable {
         
         //TODO: remove copypaste
         SVProgressHUD.show()
+        //TODO: WTF?
+        
         return self.service.request(request: request).validate().responseJSON { (response) in
             SVProgressHUD.dismiss()
             var error: ErrorProtocol?
@@ -215,16 +217,14 @@ class PSAPI: APIHandable {
             } else {
                 switch response.result {
                 case .success(let JSON):
-                    let userData = ((JSON as? [String : Any])?["data"] as? [String : Any])
+                    let userData = ((JSON as? [String : Any]))
                     let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
                     if let type = metaData?["user_type"], let userData = userData {
-                        let objectData = ["user" : userData]
-                        if let name = userData["name"] as? String, let email =  userData["email"] as? String {
-                            User.shared.name = name
-                            User.shared.email = email
-                            if let avatar = userData["avatar"] as? String {
-                                User.shared.avatar = avatar
-                            }
+                        let objectData = ["user" :userData]
+                        if type == "client" {
+                            user = Client(JSON: objectData)
+                        } else {
+                            user = Trainer(JSON: objectData)
                         }
                     }
                     
@@ -233,7 +233,9 @@ class PSAPI: APIHandable {
                 }
             }
             completion(user, error)
-        }
+            }.responseString(completionHandler: { (response) in
+                print("")
+            })
         
     }
     
@@ -385,7 +387,7 @@ class PSAPI: APIHandable {
                 error = responseError
             }
             completion(response.result.value, error)
-        }
+            }
     }
     
     @discardableResult
@@ -415,13 +417,31 @@ class PSAPI: APIHandable {
     @discardableResult
     func getClientTemplates(clientId: String, completion: @escaping GetClientTemplates) -> DataRequest? {
         let request = Request.getClientTemplates(clientId: clientId)
-        return (self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Workout]>) in
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Workout]>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
             }
             completion(response.result.value, error)
-            })
+            }
+    }
+    
+    @discardableResult
+    func getClientWorkountDetails(workoutId: Int, completion: @escaping GetClientsWorkoutDetails) -> DataRequest? {
+        let request = Request.getDetailsForClient(workoutId: workoutId)
+        return self.perform(request)?.responseArray(keyPath: "data.templateExercises.data") { (response: DataResponse<[ExcersiseData]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+            }
+    }
+    
+    @discardableResult
+    func submit(excersiseId: Int, for workoutId: Int, completion: SubmitExcersiseCompletion? = nil) -> DataRequest?{
+        let request = Request.submitExcersise(workoutId: workoutId, excersiseId: excersiseId)
+        return self.simple(request: request, completion: completion)
     }
 }
 
@@ -476,4 +496,6 @@ extension PSAPI {
     typealias GetUserInfoCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
     typealias GetClientTemplates        = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
+     typealias GetClientsWorkoutDetails = (_ excercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
+    typealias SubmitExcersiseCompletion    = (_ error: ErrorProtocol?) -> Void
 }
