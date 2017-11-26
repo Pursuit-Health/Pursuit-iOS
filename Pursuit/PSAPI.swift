@@ -415,7 +415,7 @@ class PSAPI: APIHandable {
     }
     
     @discardableResult
-    func getClientTemplates(clientId: String, completion: @escaping GetClientTemplates) -> DataRequest? {
+    func getClientTemplates(clientId: Int, completion: @escaping GetClientTemplates) -> DataRequest? {
         let request = Request.getClientTemplates(clientId: clientId)
         return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Workout]>) in
             var error: ErrorProtocol?

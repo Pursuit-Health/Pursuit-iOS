@@ -34,7 +34,7 @@ extension PSAPI {
         case assignTemplate(clientId: String, templateId: String, parameters: Parameters)
         case submitWorkout(workoutId: String)
         
-        case getClientTemplates(clientId: String)
+        case getClientTemplates(clientId: Int)
         case getDetailsForClient(workoutId: Int)
         case submitExcersise(workoutId: Int, excersiseId: Int)
         
@@ -111,7 +111,7 @@ extension PSAPI {
                 return "client/workouts/" + workoutId + "/submit"
                 
             case .getClientTemplates(let clientId):
-                return "trainer/clients/" + clientId + "/templates"
+                return "trainer/clients/\(clientId)/templates"
             case .getDetailsForClient(let workoutId):
                 return "client/templates/\(workoutId)"
             case .submitExcersise(let workoutId, let excersiseId):

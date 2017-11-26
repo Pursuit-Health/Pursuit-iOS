@@ -54,11 +54,6 @@ class NavigatorVC: UIViewController {
                 User.shared.coordinator?.start(from: self)
             }
         }
-//        let controller = self.userController
-//        self.view.addSubview(controller.view)
-//        self.view.addConstraints(UIView.place(controller.view, onOtherView: self.view))
-//        controller.didMove(toParentViewController: self)
-//        self.addChildViewController(controller)
     }
     
     func addMenuBarButton() {
