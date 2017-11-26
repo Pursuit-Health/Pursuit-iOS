@@ -9,7 +9,17 @@
 import UIKit
 import SDWebImage
 
+protocol SettingsVCDelegate: class {
+    func logoutPressed(on controller: SettingsVC)
+}
+
 class SettingsVC: UIViewController {
+    
+    //MARK: Properties
+    
+    weak var delegate: SettingsVCDelegate?
+    
+    //MARK: IBOutlets
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
@@ -35,10 +45,8 @@ class SettingsVC: UIViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        
         //TODO: Move to user
         User.shared.token = nil
-        
         guard let loginController = UIStoryboard.login.MainAuth else { return }
         let controller = self.navigationController
         controller?.viewControllers.insert(loginController, at: 0)
@@ -47,10 +55,6 @@ class SettingsVC: UIViewController {
     }
     
     func getUserInfo() {
-        User.getUserInfo { (user, error) in
-            if error == nil {
-                self.user = user
-            }
-        }
+        self.user = User.shared
     }
 }

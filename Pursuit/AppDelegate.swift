@@ -59,7 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var rootController = UIViewController()
         if self.checkIfUserLoggedIn() {
             guard let controller = UIStoryboard.sideMenu.SideMenuNavigation else { return }
-            rootController = controller
+            let navigation = UINavigationController(rootViewController: controller)
+            navigation.isNavigationBarHidden = true
+            rootController = navigation
+            
         }else {
             guard  let controller = UIStoryboard.login.preloadNavigation else { return }
             rootController = controller

@@ -40,7 +40,28 @@
                     <view key="view" contentMode="scaleToFill" id="Usr-pS-xLF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ptZ-Pk-JQ8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="E9a-XE-jiL">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="E9a-XE-jiL" secondAttribute="trailing" id="Oz7-in-ke2"/>
+                                    <constraint firstItem="E9a-XE-jiL" firstAttribute="leading" secondItem="ptZ-Pk-JQ8" secondAttribute="leading" id="VNU-qP-5cp"/>
+                                    <constraint firstItem="E9a-XE-jiL" firstAttribute="centerY" secondItem="ptZ-Pk-JQ8" secondAttribute="centerY" id="jeV-wX-XID"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ptZ-Pk-JQ8" firstAttribute="centerX" secondItem="Usr-pS-xLF" secondAttribute="centerX" id="Lxi-F1-aKK"/>
+                            <constraint firstItem="ptZ-Pk-JQ8" firstAttribute="width" secondItem="Usr-pS-xLF" secondAttribute="width" id="Ssd-jg-wdg"/>
+                            <constraint firstItem="ptZ-Pk-JQ8" firstAttribute="centerY" secondItem="Usr-pS-xLF" secondAttribute="centerY" id="qCw-ey-Nsm"/>
+                            <constraint firstItem="ptZ-Pk-JQ8" firstAttribute="height" secondItem="Usr-pS-xLF" secondAttribute="height" id="uoC-OI-JMf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="I5j-2l-xv3"/>
                     </view>
                     <navigationItem key="navigationItem" id="zmd-HX-Bil"/>
@@ -182,10 +203,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYv-Lb-scM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710" y="475"/>
+            <point key="canvasLocation" x="574" y="475"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="375" height="667"/>
         <image name="logout" width="512" height="512"/>
         <image name="photo-camera-2" width="512" height="512"/>
     </resources>
