@@ -97,6 +97,7 @@
 		78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
 		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
+		787EA0811FCADCDF000138BD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EA0801FCADCDF000138BD /* Category.swift */; };
 		78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78835C981F8B5D7400C28C76 /* BirthdayCell.swift */; };
 		78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78835C991F8B5D7500C28C76 /* BirthdayCell.xib */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
@@ -289,6 +290,7 @@
 		78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExerciseCell.xib; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
 		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
+		787EA0801FCADCDF000138BD /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		78835C981F8B5D7400C28C76 /* BirthdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayCell.swift; sourceTree = "<group>"; };
 		78835C991F8B5D7500C28C76 /* BirthdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayCell.xib; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
@@ -985,6 +987,14 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		787EA07F1FCADC1C000138BD /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				787EA0801FCADCDF000138BD /* Category.swift */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
 		78835C9C1F8B5D9F00C28C76 /* BirthdayCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1360,6 +1370,7 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				787EA07F1FCADC1C000138BD /* Category */,
 				846FBDAE1FC9AB1000873B53 /* ExcersiseData */,
 				782E89A31F797FBF002AD54C /* Workout */,
 				78383B431F72A89500AA75E3 /* SignInMapper */,
@@ -1991,6 +2002,7 @@
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				846FBDB01FC9AB6100873B53 /* ExcersiseData.swift in Sources */,
+				787EA0811FCADCDF000138BD /* Category.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
 				78277D5A1FC84AD00064ABB8 /* AppCoordinator.swift in Sources */,
 				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,

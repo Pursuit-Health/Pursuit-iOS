@@ -443,6 +443,44 @@ class PSAPI: APIHandable {
         let request = Request.submitExcersise(workoutId: workoutId, excersiseId: excersiseId)
         return self.simple(request: request, completion: completion)
     }
+    
+    @discardableResult
+    func getDetailedTemplateFor(clietnId: String, templateId: String, completion: @escaping GetDetailedTemplate) -> DataRequest? {
+        let request = Request.getDetailedTemplate(clietnId: clietnId, templateId: templateId)
+        return self.perform(request)?.responseObject(keyPath: "data") { (response: DataResponse<Template>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
+    }
+    
+    @discardableResult
+    func getCategories(completion: @escaping GetCategoriesCompletion) -> DataRequest? {
+        let request = Request.getCategories()
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Category]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
+    }
+    
+    @discardableResult
+    
+    func getExercisesByCategoryId(categoryId: String, completion: @escaping GetExercisesByCategoryIdCompletion) -> DataRequest? {
+        let request = Request.getExercisesByCategoryId(categoryId: categoryId)
+        
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[ExcersiseData]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
+    }
 }
 
 extension PSAPI {
@@ -496,6 +534,13 @@ extension PSAPI {
     typealias GetUserInfoCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
     typealias GetClientTemplates        = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
+    
      typealias GetClientsWorkoutDetails = (_ excercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
-    typealias SubmitExcersiseCompletion    = (_ error: ErrorProtocol?) -> Void
+    typealias SubmitExcersiseCompletion = (_ error: ErrorProtocol?) -> Void
+    
+    typealias GetDetailedTemplate       = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetCategoriesCompletion   = (_ categories: [Category]?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetExercisesByCategoryIdCompletion   = (_ exercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
 }
