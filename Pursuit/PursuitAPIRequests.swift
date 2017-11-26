@@ -38,6 +38,12 @@ extension PSAPI {
         case getDetailsForClient(workoutId: Int)
         case submitExcersise(workoutId: Int, excersiseId: Int)
         
+        case getDetailedTemplate(clietnId: String, templateId: String)
+        
+        case getCategories()
+        
+        case getExercisesByCategoryId(categoryId: String)
+        
         //MARK: RequestConvertible
         
         var baseURLString: String {
@@ -116,6 +122,14 @@ extension PSAPI {
                 return "client/templates/\(workoutId)"
             case .submitExcersise(let workoutId, let excersiseId):
                 return "client/templates/\(workoutId)/exercises/\(excersiseId)/submit"
+                
+            case .getDetailedTemplate(let clietnId, let templateId):
+                return "trainer/clients/" +  clietnId + "/templates/" + templateId
+            case .getCategories:
+                return "trainer/categories"
+            case .getExercisesByCategoryId(let categoryId):
+                return "trainer/categories/" + categoryId + "/exercises"
+                
             }
         }
         
@@ -161,7 +175,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId:
                 return "Bearer" + token
             default:
                 return ""
