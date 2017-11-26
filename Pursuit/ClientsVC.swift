@@ -10,6 +10,10 @@ import UIKit
 import SwipeCellKit
 import SDWebImage
 
+protocol ClientsVCDelegate: class {
+    func didSelect(client: Client, on controller: ClientsVC)
+}
+
 class ClientsVC: UIViewController {
     
     //MARK: IBOutlets
@@ -33,6 +37,7 @@ class ClientsVC: UIViewController {
 
     //MARK: Variables
     
+    weak var delegate: ClientsVCDelegate?
     var defaultOptions                          = SwipeTableOptions()
     var isSwipeRightEnabled                     = true
     var buttonDisplayMode: ButtonDisplayMode    = .titleAndImage
@@ -51,13 +56,6 @@ class ClientsVC: UIViewController {
         
         return controller
     }()
-    
-    lazy var clientInfoVC: ClientInfoVC? = {
-        guard let controller = UIStoryboard.trainer.ClientInfo else { return UIViewController() as? ClientInfoVC }
-        
-        return controller
-    }()
-    
     
     var client: [Client] = []
     
@@ -161,11 +159,7 @@ extension ClientsVC: UITableViewDataSource {
 
 extension ClientsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let clientInfoVC = self.clientInfoVC else { return }
-
-        clientInfoVC.client = self.filteredClients[indexPath.row]
-        
-        self.navigationController?.pushViewController(clientInfoVC, animated: true)
+        self.delegate?.didSelect(client: self.filteredClients[indexPath.row], on: self)
     }
 }
 

@@ -10,6 +10,14 @@ import ObjectMapper
 
 class Trainer: User {
     
+    override var coordinator: Coordinator? {
+        return self.trainerCoordinator
+    }
+    
+    //MARK: Private.Properties
+    
+    var trainerCoordinator = TrainerCoordinator()
+    
     //MARK: Typealias
     
     typealias RegisterTrainerCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void

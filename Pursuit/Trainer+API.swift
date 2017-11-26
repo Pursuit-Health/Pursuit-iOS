@@ -28,10 +28,4 @@ extension Trainer {
         
         api.getTrainerEvents(startDate: startdDate, endDate: endDate, completion: completion)
     }
-    
-    class func getClientTemplates(clientId: String, completion: @escaping GetClientTemplates) {
-        let api = PSAPI()
-        
-        api.getClientTemplates(clientId: clientId, completion: completion)
-    }
 }

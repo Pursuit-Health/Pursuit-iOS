@@ -19,6 +19,7 @@ extension Client {
     typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
     typealias SubmitWorkOutCompletion  = (_ error: ErrorProtocol?) -> Void
+    typealias GetClientTemplates        = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
     
     //MARK: Public 
     
@@ -44,5 +45,15 @@ extension Client {
         let api = PSAPI()
         
         api.submitWorkout(workoutId: workoutId, completion: completion)
+    }
+    
+    //TODO: Maybe save it to clients property
+    func getTemplatesAsTrainer(completion: @escaping GetClientTemplates) {
+        if let id = self.id {
+            let api = PSAPI()
+            api.getClientTemplates(clientId: id, completion: completion)
+        } else {
+            completion(nil, PSError.somethingWentWrong)
+        }
     }
 }
