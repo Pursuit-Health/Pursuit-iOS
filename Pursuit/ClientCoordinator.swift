@@ -85,7 +85,7 @@ extension ClientCoordinator: ExerciseDetailsVCDelegate {
                     }))
                     controller.present(alert, animated: true, completion: nil)
                 } else {
-                    self.excersisesVC?.trainingTableView.reloadData()
+                    self.excersisesVC?.recalculate()
                     controller.navigationController?.popViewController(animated: true)
                 }
             })

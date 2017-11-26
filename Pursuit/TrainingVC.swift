@@ -108,12 +108,14 @@ class TrainingVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    //MARK: Private.Methods
+    //MARK: Public.Methods
     
-    private func recalculate() {
+    func recalculate() {
         self.recalculateRows()
         self.recalculateTexts()
     }
+    
+    //MARK: Private.Methods
     
     private func recalculateTexts() {
         let done = self.exercises.filter{ $0.isDone ?? false }.count

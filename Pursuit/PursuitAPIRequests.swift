@@ -115,7 +115,7 @@ extension PSAPI {
             case .getDetailsForClient(let workoutId):
                 return "client/templates/\(workoutId)"
             case .submitExcersise(let workoutId, let excersiseId):
-                return "templates/\(workoutId)/\(excersiseId)/submit"
+                return "client/templates/\(workoutId)/exercises/\(excersiseId)/submit"
             }
         }
         
