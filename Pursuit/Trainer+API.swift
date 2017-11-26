@@ -16,6 +16,8 @@ extension Trainer {
     
     typealias GetClientTemplates        = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
     
+    typealias GetTrainerCategories      = (_ workout: [Category]?, _ error: ErrorProtocol?) -> Void
+    
     //MARK: Public
     class func getTrainers(completion: @escaping GetTrainersCompletion) {
         let api = PSAPI()
@@ -27,5 +29,12 @@ extension Trainer {
         let api = PSAPI()
         
         api.getTrainerEvents(startDate: startdDate, endDate: endDate, completion: completion)
+    }
+    
+    class func getCategories(completion: @escaping GetTrainerCategories) {
+        let api = PSAPI()
+        api.getCategories { (categories, error) in
+            completion(categories, error)
+        }
     }
 }

@@ -11,11 +11,16 @@ import SDWebImage
 
 protocol ClientInfoVCDelegate: class {
     func selected(workout: Workout, on controller: ClientInfoVC)
+    func addWorkoutButtonPressed(on controller: ClientInfoVC)
 }
 
 protocol ClientInfoVCDatasource: class {
     typealias GetClientTemplates = (_ client: User, _ workout: [Workout]?) -> Void
     func loadInfo(controller: ClientInfoVC, completion: @escaping GetClientTemplates)
+}
+
+extension ClientInfoVCDelegate {
+    func addWorkoutButtonPressed(on controller: ClientInfoVC) {}
 }
 
 class ClientInfoVC: UIViewController {
@@ -61,6 +66,9 @@ class ClientInfoVC: UIViewController {
     
     //MARK: IBActions
 
+    @IBAction func addWorkoutButtonPressed(_ sender: Any) {
+        self.delegate?.addWorkoutButtonPressed(on: self)
+    }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)

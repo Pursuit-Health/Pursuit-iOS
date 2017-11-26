@@ -1426,6 +1426,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic_plus" id="HLt-uh-eK3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addWorkoutButtonPressed:" destination="PIi-fk-7c4" id="jrt-zn-v9s"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

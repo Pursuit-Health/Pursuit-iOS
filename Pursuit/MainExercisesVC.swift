@@ -8,6 +8,16 @@
 
 import UIKit
 
+protocol MainExercisesVCDelegate: class  {
+    func categorySelected(category: Category, controller: MainExercisesVC)
+}
+
+protocol MainExercisesVCDatasource: class {
+    typealias GetTrainerCategories = (_ categories: [Category]?) -> Void
+    
+    func loadInfoFor(controller: ExerciseCategoryVC, completion: @escaping GetTrainerCategories)
+}
+
 class MainExercisesVC: UIViewController {
 
     //MARK: IBOutlets
@@ -15,6 +25,10 @@ class MainExercisesVC: UIViewController {
     @IBOutlet var viewForControllers: UIView!
     
     //MARK: Variables
+    
+    weak var delegate: MainExercisesVCDelegate?
+    weak var datasource: MainExercisesVCDatasource?
+    
     lazy var exercisesSearchVC: ExercisesSearchVC? = {
         guard let exercisesSearchVc = UIStoryboard.trainer.ExercisesSearch else { return UIViewController() as? ExercisesSearchVC }
         return exercisesSearchVc
@@ -65,6 +79,7 @@ class MainExercisesVC: UIViewController {
         
         if let exercisesVC = exercisesCategoryVC, let aaddExVC = addExercisesVC {
             exercisesVC.delegate = self
+            exercisesVC.datasource = self
             exercisesVC.view.backgroundColor    = .clear
             aaddExVC.view.backgroundColor       = .clear
             controller.tabItems = [(exercisesVC, "SEARCH"), (aaddExVC, "CUSTOM")]
@@ -96,13 +111,15 @@ class MainExercisesVC: UIViewController {
 }
 
 extension MainExercisesVC: ExerciseCategoryVCDelegate {
-    func didSelectExercise(exercise: Template.Exercises, on controller: ExerciseCategoryVC) {
-        guard let searchExercisesVC = self.exercisesSearchVC else {
-            return
-        }
-        searchExercisesVC.exercise = exercise
-        
-        self.navigationController?.pushViewController(searchExercisesVC, animated: true)
-        
+    func didSelectCategory(category: Category, on controller: ExerciseCategoryVC) {
+        self.delegate?.categorySelected(category: category, controller: self)
+    }
+}
+
+extension MainExercisesVC: ExerciseCategoryVCDatasource {
+    func loadInfo(controller: ExerciseCategoryVC, completion: @escaping ExerciseCategoryVCDatasource.GetTrainerCategories) {
+        self.datasource?.loadInfoFor(controller: controller, completion: { (categories) in
+            completion(categories)
+        })
     }
 }

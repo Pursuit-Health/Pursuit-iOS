@@ -12,6 +12,11 @@ import SwiftDate
 
 protocol CreateTemplateVCDelegate: class {
     func saveTemplate(_ template: Template, on controllers: CreateTemplateVC)
+    func addExercisesButtonPressed(on controller: CreateTemplateVC)
+}
+
+extension CreateTemplateVCDelegate {
+    func addExercisesButtonPressed(on controller: CreateTemplateVC) {}
 }
 
 class CreateTemplateVC: UIViewController {
@@ -121,9 +126,10 @@ class CreateTemplateVC: UIViewController {
     
     @IBAction func addExercisesButtonPressed(_ sender: Any) {
         
-        guard let controller = mainExercisesVC else { return }
+        self.delegate?.addExercisesButtonPressed(on: self)
+        //guard let controller = mainExercisesVC else { return }
         
-        self.navigationController?.pushViewController(controller, animated: true)
+        //self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {

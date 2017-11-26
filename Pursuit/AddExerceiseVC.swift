@@ -21,7 +21,7 @@ class AddExerceiseVC: UIViewController {
     
     weak var delegate: AddExerceiseVCDelegate?
     
-    lazy var cellsInfo: [CellType] = [.name, .sets, .reps, .weights]
+    lazy var cellsInfo: [CellType] = [.name, .sets, .reps, .weights, .rest, .notes]
     
     //MARK: Nested
     
@@ -30,6 +30,8 @@ class AddExerceiseVC: UIViewController {
         case sets
         case reps
         case weights
+        case rest
+        case notes
         
         var cellType: UITableViewCell.Type {
             switch self {
@@ -41,6 +43,11 @@ class AddExerceiseVC: UIViewController {
                 return AddExerciseCell.self
             case .weights:
                 return AddExerciseCell.self
+            case .rest:
+                return AddExerciseCell.self
+            case .notes:
+                return AddExerciseCell.self
+                
             }
         }
         
@@ -69,6 +76,18 @@ class AddExerceiseVC: UIViewController {
             case .weights:
                 if let castedCell = cell as? AddExerciseCell {
                     fillWeightsCell(cell: castedCell, completion: { text in
+                        completion(text)
+                    })
+                }
+            case .rest:
+                if let castedCell = cell as? AddExerciseCell {
+                    fillRetsCell(cell: castedCell, completion: { text in
+                        completion(text)
+                    })
+                }
+            case .notes:
+                if let castedCell = cell as? AddExerciseCell {
+                    fillNotesCell(cell: castedCell, completion: { text in
                         completion(text)
                     })
                 }
@@ -119,6 +138,28 @@ class AddExerceiseVC: UIViewController {
             }
         }
         
+        private func fillRetsCell(cell: AddExerciseCell, completion: @escaping TextFieldComletion) {
+            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
+            cell.exerciseImageView.image                    = imageFromName("weight")
+            cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
+                if let text = textField?.text {
+                    completion(text)
+                }
+            }
+        }
+        
+        private func fillNotesCell(cell: AddExerciseCell, completion: @escaping TextFieldComletion) {
+            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Notes")
+            cell.exerciseImageView.image                    = imageFromName("weight")
+            cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
+                if let text = textField?.text {
+                    completion(text)
+                }
+            }
+        }
+        
         private func placeHolderWithText(_ text: String) -> NSAttributedString {
             return  NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.white])
         }
@@ -135,7 +176,7 @@ class AddExerceiseVC: UIViewController {
         didSet {
             let types: [ExcersiseData.ExcersiseType] = [.warmup, .workout, .cooldown]
             let view = ExercisesTypeView()
-//            view.configureCell(with: types)
+            view.configureCell(with: types, selectedType: .workout)
             view.delegate = self
             self.exerciseTypeView.addSubview(view)
             self.exerciseTypeView.addConstraints(UIView.place(view, onOtherView: self.exerciseTypeView))
@@ -195,6 +236,10 @@ extension AddExerceiseVC: UITableViewDataSource {
                 self.exercise.count = Int(cellText)
             case .weights:
                 self.exercise.weight = Int(cellText)
+            case .rest:
+                break
+            case .notes:
+                break
             }
         }
         

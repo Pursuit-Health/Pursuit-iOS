@@ -66,6 +66,8 @@ class ExcersiseData: Mappable {
     
     var isDone: Bool?
     
+    var selected: Bool?
+    
     func mapping(map: Map) {
         self.id <- map["id"]
         self.type <- (map["type"], EnumTransform<ExcersiseType>())

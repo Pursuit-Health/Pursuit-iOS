@@ -26,4 +26,16 @@ class Category: Mappable {
     required init?(map: Map) {
         
     }
+    
+    typealias GetExerciseByCategoryIdCompletion = (_ exercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
+    func loadExercisesByCategoryId(completion: @escaping GetExerciseByCategoryIdCompletion) {
+        let api = PSAPI()
+        guard let id = self.categoryId else {
+            //coud not get id
+            return
+        }
+        api.getExercisesByCategoryId(categoryId: "\(id)") { (exercises, error) in
+            completion(exercises, error)
+        }
+    }
 }

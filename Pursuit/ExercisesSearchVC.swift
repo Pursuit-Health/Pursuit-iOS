@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ExercisesSearchVCDatasource: class  {
+    typealias GetExercisesByCategoryIdCompletion = (_ exercise: [ExcersiseData]?) -> Void
+    func loadExercisesByCategoryId(on controller: ExercisesSearchVC, completion: @escaping GetExercisesByCategoryIdCompletion)
+}
+
 class ExercisesSearchVC: UIViewController {
     
     @IBOutlet weak var exercisesSearchBar: UISearchBar! {
@@ -32,6 +37,8 @@ class ExercisesSearchVC: UIViewController {
     
     //MARK: Variables
     
+    weak var datasource: ExercisesSearchVCDatasource?
+    
     lazy var exercisesDetailsVC: ExerciseDetailsVC? = {
         guard let controller = UIStoryboard.trainer.ExerciseDetails else {  return UIViewController() as? ExerciseDetailsVC }
         
@@ -39,16 +46,15 @@ class ExercisesSearchVC: UIViewController {
         
     }()
 
-    var exercise = Template.Exercises()
+    var exercises: [ExcersiseData] = []
     
-    var exercisesNames: [String] = ["Pushups", "Dumbbell Bench Press", "Dumbbell Flyes", "Incline Dumbbell Press", "Low Cable Crossover"]
-    var exercises: [Template.Exercises] = []
-    
-    var filteredExercises: [Template.Exercises] = [] {
+    var filteredExercises: [ExcersiseData] = [] {
         didSet {
             self.exercisesTableView?.reloadData()
         }
     }
+    
+    var category: Category?
     
     //MARK: IBActions
     
@@ -60,14 +66,6 @@ class ExercisesSearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for exerciseName in exercisesNames {
-            let exercise = Template.Exercises()
-            exercise.name = exerciseName
-            exercise.selected = false
-            self.exercises.append(exercise)
-        }
-        
-        self.filteredExercises = self.exercises
         
         setUpBackgroundImage()
         
@@ -77,7 +75,12 @@ class ExercisesSearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationItem.leftTitle = self.exercise.name ?? ""
+        self.datasource?.loadExercisesByCategoryId(on: self, completion: { (exercises) in
+            self.exercises = exercises ?? []
+            self.filteredExercises = exercises ?? []
+        })
+        
+        self.navigationItem.leftTitle = self.category?.name ?? ""
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
 
@@ -111,10 +114,10 @@ extension ExercisesSearchVC: ExerciseCellDelegate {
     func didTappedOnImage(cell: ExerciseCell) {
         if let index = self.exercisesTableView.indexPath(for: cell) {
             let exerc = filteredExercises[index.row]
-            if let ex = exerc.selected {
-            exerc.selected = !ex 
+
+            exerc.selected = !(exerc.selected ?? false)
             cell.selectedCell = exerc.selected ?? false
-            }
+            
         }
     }
 }

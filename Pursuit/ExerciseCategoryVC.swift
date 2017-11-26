@@ -9,8 +9,15 @@
 import UIKit
 
 protocol ExerciseCategoryVCDelegate: class {
-    func didSelectExercise(exercise: Template.Exercises, on controller: ExerciseCategoryVC)
+    //func didSelectExercise(exercise: Template.Exercises, on controller: ExerciseCategoryVC)
+    func didSelectCategory(category: Category, on controller: ExerciseCategoryVC)
 }
+
+protocol ExerciseCategoryVCDatasource: class {
+    typealias GetTrainerCategories = (_ categories: [Category]?) -> Void
+    func loadInfo(controller: ExerciseCategoryVC, completion: @escaping GetTrainerCategories)
+}
+
 
 class ExerciseCategoryVC: UIViewController {
 
@@ -39,46 +46,54 @@ class ExerciseCategoryVC: UIViewController {
     //MARK: Variables
     
     weak var delegate: ExerciseCategoryVCDelegate?
+    weak var datasource: ExerciseCategoryVCDatasource?
     
-    var exercisesNames: [String] = ["Chest", "Back", "Shoulders", "Arms", "Legs", "Abs", "Cardio"]
-    var exercises: [Template.Exercises] = []
-    
-    var filteredExercises: [Template.Exercises] = [] {
+    var categories: [Category] = [] {
         didSet {
-            self.exercisesTableView?.reloadData()
+            
         }
     }
+    
+    var filteredCategories: [Category] = [] {
+        didSet {
+           self.exercisesTableView?.reloadData()
+        }
+    }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for exerciseName in exercisesNames {
-            let exercise = Template.Exercises()
-            exercise.name = exerciseName
-            self.exercises.append(exercise)
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.filteredExercises = self.exercises
+        self.datasource?.loadInfo(controller: self, completion: { (categories) in
+            self.categories = categories ?? []
+            self.filteredCategories = categories ?? []
+        })
     }
 
 }
 
 extension ExerciseCategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredExercises.count
+        return filteredCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: ExerciseCategoryCell.self) else { return UITableViewCell() }
-        cell.exerciseLabel.text = filteredExercises[indexPath.row].name
+        cell.exerciseLabel.text = filteredCategories[indexPath.row].name
         return cell
     }
 }
 
 extension ExerciseCategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let exercise = filteredExercises[indexPath.row]
-        self.delegate?.didSelectExercise(exercise: exercise, on: self)
+        let category = filteredCategories[indexPath.row]
+        //self.delegate?.didSelectExercise(exercise: exercise, on: self)
+        self.delegate?.didSelectCategory(category: category, on: self)
     }
 }
 
@@ -86,9 +101,9 @@ extension ExerciseCategoryVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchText = searchBar.text else { return }
         if searchText == "" {
-            self.filteredExercises = self.exercises
+            self.filteredCategories = self.categories
         }else {
-            self.filteredExercises = self.exercises.filter{ ($0.name?.lowercased().contains(searchText.lowercased())) ?? false }
+            self.filteredCategories = self.categories.filter{ ($0.name?.lowercased().contains(searchText.lowercased())) ?? false }
         }
     }
 }
