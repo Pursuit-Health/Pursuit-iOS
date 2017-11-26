@@ -73,11 +73,11 @@
                             <constraint firstItem="ic1-ep-Ov0" firstAttribute="top" secondItem="1Uk-vv-QKJ" secondAttribute="bottom" constant="-20" id="6xV-sW-nne"/>
                             <constraint firstItem="3tR-iy-seJ" firstAttribute="centerX" secondItem="Ter-ix-I68" secondAttribute="centerX" id="7BA-BI-J5n"/>
                             <constraint firstItem="3tR-iy-seJ" firstAttribute="centerY" secondItem="Ter-ix-I68" secondAttribute="centerY" multiplier="0.7" id="CaB-3L-UiF"/>
+                            <constraint firstItem="tKV-pj-SiL" firstAttribute="top" secondItem="c2b-wR-MKk" secondAttribute="bottom" id="L7h-wc-XmE"/>
                             <constraint firstAttribute="trailing" secondItem="c2b-wR-MKk" secondAttribute="trailing" id="O3H-4U-oQm"/>
-                            <constraint firstItem="tKV-pj-SiL" firstAttribute="top" secondItem="c2b-wR-MKk" secondAttribute="bottom" id="TGT-1R-cOc"/>
                             <constraint firstItem="3tR-iy-seJ" firstAttribute="height" secondItem="Ter-ix-I68" secondAttribute="height" multiplier="0.6" id="XIv-XK-fi2"/>
                             <constraint firstItem="1Uk-vv-QKJ" firstAttribute="centerX" secondItem="3tR-iy-seJ" secondAttribute="centerX" id="kNS-r2-hm0"/>
-                            <constraint firstItem="c2b-wR-MKk" firstAttribute="top" secondItem="cRU-iJ-EWJ" secondAttribute="bottom" constant="-20" id="lBN-CI-YsS"/>
+                            <constraint firstItem="c2b-wR-MKk" firstAttribute="top" secondItem="cRU-iJ-EWJ" secondAttribute="bottom" constant="-20" id="rGO-IQ-WWX"/>
                             <constraint firstItem="ic1-ep-Ov0" firstAttribute="centerX" secondItem="1Uk-vv-QKJ" secondAttribute="centerX" id="xg5-bG-EAG"/>
                             <constraint firstItem="c2b-wR-MKk" firstAttribute="leading" secondItem="Ter-ix-I68" secondAttribute="leading" id="xit-Cp-dNe"/>
                         </constraints>

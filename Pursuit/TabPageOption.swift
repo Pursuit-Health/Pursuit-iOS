@@ -20,8 +20,8 @@ public struct TabPageOption {
     public init() {}
 
     public var fontSize = UIFont.systemFontSize
-    public var currentColor = UIColor(red: 105/255, green: 182/255, blue: 245/255, alpha: 1.0)
-    public var defaultColor = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1.0)
+    public var currentColor = UIColor.white
+    public var defaultColor = UIColor.white
     public var tabHeight: CGFloat = 50.0
     public var tabMargin: CGFloat = 20.0
     public var tabWidth: CGFloat?

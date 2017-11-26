@@ -14,7 +14,7 @@ protocol SelectTrainerVCDelegate: class {
 //IGOR: Check
 class SelectTrainerVC: UIViewController {
     
-    //MARK: Constants
+    //MARK: Constants 
     
     struct Constants {
         struct Cell {
