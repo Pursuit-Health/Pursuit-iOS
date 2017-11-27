@@ -546,10 +546,10 @@
             </objects>
             <point key="canvasLocation" x="196" y="3681"/>
         </scene>
-        <!--Ib Calendar Data Source-->
+        <!--Create Template-->
         <scene sceneID="AED-un-UGN">
             <objects>
-                <viewController storyboardIdentifier="CreateTemplateVC" id="ZIe-AK-DC9" customClass="CreateTemplateVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateTemplateVC" id="ZIe-AK-DC9" userLabel="Create Template" customClass="CreateTemplateVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GvA-31-ay7"/>
                         <viewControllerLayoutGuide type="bottom" id="iMB-VJ-Tof"/>
@@ -572,12 +572,13 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="35"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0us-9n-yRN">
-                                <rect key="frame" x="168.5" y="93" width="37.5" height="13.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Piq-gu-9lO">
+                                <rect key="frame" x="20" y="93" width="335" height="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-U6-gLx">
                                 <rect key="frame" x="0.0" y="287" width="375" height="324"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -691,6 +692,7 @@
                         <constraints>
                             <constraint firstItem="Ja7-w1-h8G" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="0hj-zY-Nf6"/>
                             <constraint firstItem="qbW-ld-AyI" firstAttribute="top" secondItem="GvA-31-ay7" secondAttribute="bottom" id="ElJ-C1-OHJ"/>
+                            <constraint firstItem="Piq-gu-9lO" firstAttribute="top" secondItem="e5h-dJ-77i" secondAttribute="bottom" id="GSF-PX-vak"/>
                             <constraint firstItem="gnS-U6-gLx" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="Ia7-lQ-cMz"/>
                             <constraint firstItem="adP-cl-dj7" firstAttribute="height" secondItem="Tgo-RU-WM6" secondAttribute="height" multiplier="0.23" id="L9J-86-Emi"/>
                             <constraint firstAttribute="trailing" secondItem="qbW-ld-AyI" secondAttribute="trailing" id="M7T-v3-Bh1"/>
@@ -701,10 +703,10 @@
                             <constraint firstItem="akr-cc-M6A" firstAttribute="centerY" secondItem="Ja7-w1-h8G" secondAttribute="centerY" id="So3-ds-q67"/>
                             <constraint firstItem="5BE-cH-him" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="XJN-qw-vEC"/>
                             <constraint firstItem="adP-cl-dj7" firstAttribute="top" secondItem="qbW-ld-AyI" secondAttribute="bottom" id="Z8j-WC-jaB"/>
-                            <constraint firstItem="0us-9n-yRN" firstAttribute="centerX" secondItem="e5h-dJ-77i" secondAttribute="centerX" id="d2M-AG-I1G"/>
+                            <constraint firstItem="Piq-gu-9lO" firstAttribute="leading" secondItem="e5h-dJ-77i" secondAttribute="leading" id="af7-8d-pfF"/>
                             <constraint firstItem="Ja7-w1-h8G" firstAttribute="top" secondItem="gnS-U6-gLx" secondAttribute="bottom" id="f6j-Yb-xvW"/>
+                            <constraint firstItem="Piq-gu-9lO" firstAttribute="trailing" secondItem="e5h-dJ-77i" secondAttribute="trailing" id="gp5-Xr-YrX"/>
                             <constraint firstAttribute="trailing" secondItem="gnS-U6-gLx" secondAttribute="trailing" id="hyc-7u-mBV"/>
-                            <constraint firstItem="0us-9n-yRN" firstAttribute="top" secondItem="e5h-dJ-77i" secondAttribute="bottom" id="iOb-Nf-Zm0"/>
                             <constraint firstItem="adP-cl-dj7" firstAttribute="leading" secondItem="Tgo-RU-WM6" secondAttribute="leading" id="j9l-cE-k3F"/>
                             <constraint firstItem="5BE-cH-him" firstAttribute="top" secondItem="GvA-31-ay7" secondAttribute="bottom" id="jFy-B8-n8b"/>
                             <constraint firstItem="iMB-VJ-Tof" firstAttribute="top" secondItem="5BE-cH-him" secondAttribute="bottom" id="l5n-Ax-N5l"/>
@@ -737,6 +739,7 @@
                     <connections>
                         <outlet property="calendarView" destination="iPa-0u-BJk" id="Lbb-Qa-xqp"/>
                         <outlet property="monthLabel" destination="6vZ-C6-DN7" id="YHT-aF-V0w"/>
+                        <outlet property="notesTextField" destination="Piq-gu-9lO" id="eek-Z4-1ca"/>
                         <outlet property="templateNameTextField" destination="e5h-dJ-77i" id="3f7-9d-bFG"/>
                         <outlet property="templateTableView" destination="gnS-U6-gLx" id="dFB-V2-gkB"/>
                         <outlet property="yearLabel" destination="GUf-qW-h1k" id="065-ki-icA"/>

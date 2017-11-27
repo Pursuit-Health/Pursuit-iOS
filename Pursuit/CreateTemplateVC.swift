@@ -110,6 +110,12 @@ class CreateTemplateVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var notesTextField: UITextField! {
+        didSet {
+            self.notesTextField.attributedPlaceholder =  NSAttributedString(string: "Notes", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
+        }
+    }
+    
     //MARK: Variables
     
     weak var delegate: CreateTemplateVCDelegate?
@@ -156,10 +162,10 @@ class CreateTemplateVC: UIViewController {
             return
         }
 
-        self.workout.name = self.templateNameTextField.text
-        self.workout.excersises = self.exercises
-        self.workout.startAtForUpload = self.startAt
-        self.workout.notes = "new notes"
+        self.workout.name               = self.templateNameTextField.text
+        self.workout.excersises         = self.exercises
+        self.workout.startAtForUpload   = self.startAt
+        self.workout.notes              = self.notesTextField.text
         
         delegate?.saveWorkout(self.workout, on: self)
     }
