@@ -12,6 +12,7 @@ extension Workout {
     typealias GetClientsWorkoutDetails = (_ excercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
     typealias GetWorkoutByIdCompletion = (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
     typealias SubmitExcersiseCompletion    = (_ error: ErrorProtocol?) -> Void
+    typealias CreateWorkoutCompletion = (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
     
     class func getWorkouts(completion: @escaping GetWorkoutsCompletion) {
         let api = PSAPI()
@@ -61,5 +62,10 @@ extension Workout {
             }
             completion(exercises, error)
         }
+    }
+    
+    func createWorkout(clientId: String, completion: @escaping CreateWorkoutCompletion) {
+        let api = PSAPI()
+        api.createWorkout(clientId: clientId, templateData: self.toJSON(), completion: completion)
     }
 }

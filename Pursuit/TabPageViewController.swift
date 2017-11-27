@@ -12,7 +12,11 @@ protocol TabPageViewControllerDelegate: class {
     func dispayControllerWithIndex(_ index: Int)
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
-    
+}
+
+extension TabPageViewControllerDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) { }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) { }
 }
 
 open class TabPageViewController: UIPageViewController {

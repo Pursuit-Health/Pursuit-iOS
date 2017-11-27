@@ -20,17 +20,24 @@ class Workout: Mappable {
     var startAt: Double?
     var templateExercises: [Template.Exercises]?
     var isDone: Bool?
+    var notes: String?
+    var startAtForUpload: String?
     
     func mapping(map: Map) {
-        self.id                <- map["id"]
-        self.template          <- map["template.data"]
+        self.id                 <- map["id"]
+        self.template           <- map["template.data"]
         self.currentWorkDay     <- map["currentWorkoutDay.data.date"]
         
-        self.name           <- map["name"]
-        self.isDone         <- map["done.data.value"]
-        self.startAt        <- map["start_at"]
+        self.name               <- map["name"]
+        self.isDone             <- map["done.data.value"]
+        self.startAt            <- map["start_at"]
+        self.templateExercises  <- map["exercises"]
+        self.notes              <- map["notes"]
+        self.startAtForUpload   <- map["start_at"]
+        self.excersises         <- map["exercises"]
     }
     
+    init() {}
     required init?(map: Map) {
         
     }

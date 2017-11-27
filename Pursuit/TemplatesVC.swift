@@ -51,8 +51,7 @@ class TemplatesVC: UIViewController {
     @IBAction func createTemplateButtonPressed(_ sender: Any) {
         self.isEditTemplate = false
         guard let controller = createTemplateVC else { return }
-        
-        controller.templateId = nil
+    
         
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -89,8 +88,7 @@ class TemplatesVC: UIViewController {
     
     fileprivate func pushCreateTemplateVC() {
         guard let controller = createTemplateVC else { return }
-        
-        controller.templateId = self.templateId
+    
         
         self.navigationController?.pushViewController(controller, animated: true)
     }
@@ -153,6 +151,10 @@ extension TemplatesVC: UITableViewDelegate {
 }
 
 extension TemplatesVC: CreateTemplateVCDelegate {
+    func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
+    
+    }
+    
     func saveTemplate(_ template: Template, on controllers: CreateTemplateVC) {
         if isEditTemplate {
             editTemplate(template)

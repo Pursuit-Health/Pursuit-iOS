@@ -55,8 +55,7 @@ class ExercisesTypeView: BBBXIBView {
     
     //MARK: Private
     
-    private func handleSelection(_ cell: ExercisesTypeCollectionViewCell, for indexPath: IndexPath, isSelected: Bool) {
-        
+    fileprivate func handleSelection(_ cell: ExercisesTypeCollectionViewCell, for indexPath: IndexPath, isSelected: Bool) {
         cell.typeSelected = isSelected
         let type = self.exercisesType[indexPath.row]
         self.delegate?.tappedOn(self, with: type)
@@ -99,5 +98,6 @@ extension ExercisesTypeView: ExercisesTypeCollectionViewCellDelegate {
     func tappedOn(_ cell: ExercisesTypeCollectionViewCell) {
         guard let indexPath = exercisesTypeCollectionView.indexPath(for: cell) else { return }
         self.selectedType = self.exercisesType[indexPath.row]
+        handleSelection(cell, for: indexPath, isSelected: true)
     }
 }

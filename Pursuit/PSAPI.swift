@@ -276,9 +276,9 @@ class PSAPI: APIHandable {
     //MARK: Template
     
     @discardableResult
-    func createTemplate(templateData: [String: Any], completion: @escaping CreateTemplateCompletion) -> DataRequest? {
-        let request = Request.createTemplate(parameters: templateData)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
+    func createWorkout(clientId: String, templateData: [String: Any], completion: @escaping CreateWorkoutCompletion) -> DataRequest? {
+        let request = Request.createWorkout(clientId: clientId, parameters: templateData)
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Workout>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
@@ -505,7 +505,7 @@ extension PSAPI {
     
     typealias GetTrainersCompletion     = (_ user: [Trainer]?, _ error: ErrorProtocol?) -> Void
     
-    typealias CreateTemplateCompletion  = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    typealias CreateWorkoutCompletion  = (_ template: Workout?, _ error: ErrorProtocol?) -> Void
     
     typealias EditTemplateCompletion    = (_ template: Template?, _ error: ErrorProtocol?) -> Void
     

@@ -81,6 +81,7 @@ class ExcersiseData: Mappable {
         self.exDesc         <- map["exercise.data.description"]
         self.isDone         <- map["done.data.value"]
         self.exercise_id    <- map["exercise_id"]
+        self.rest           <- map["rest"]
     }
     
     init() {

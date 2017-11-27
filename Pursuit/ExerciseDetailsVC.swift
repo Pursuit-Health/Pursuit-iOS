@@ -189,6 +189,9 @@ class ExerciseDetailsVC: UIViewController {
     var isInteractiv: Bool = true
     weak var delegate: ExerciseDetailsVCDelegate?
     var excersize: ExcersiseData = ExcersiseData()
+    
+    var exerciseType: ExcersiseData.ExcersiseType?
+    
     lazy var cellsInfo: [CellType] = [.exerciseType(excersize: self.excersize, delegate: self),
                                       .name(excersize: self.excersize),
                                       .sets(excersize: self.excersize),
@@ -212,7 +215,14 @@ class ExerciseDetailsVC: UIViewController {
     
     @IBAction func confirmButtonPressed() {
         self.excersize.selected = true
-        self.delegate?.ended(with: self.excersize, on: self)
+        self.excersize.exercise_id = self.excersize.id
+        self.excersize.type = self.exerciseType
+        
+        var exerc = ExcersiseData()
+        exerc = self.excersize
+        exerc.id = nil
+        
+        self.delegate?.ended(with: exerc, on: self)
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -236,6 +246,7 @@ class ExerciseDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.exerciseType = .warmup
         self.leftTitle = self.excersize.name
     }
     
@@ -298,7 +309,7 @@ extension ExerciseDetailsVC: UITableViewDelegate {
 
 extension ExerciseDetailsVC: ExercisesTypeTableViewCellDelegate {
     func tappedOn(_ cell: ExercisesTypeTableViewCell, with type: ExcersiseData.ExcersiseType) {
-        
+        self.exerciseType = type
     }
 }
 

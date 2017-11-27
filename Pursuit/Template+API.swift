@@ -23,7 +23,7 @@ extension Template {
    class func createTemplate(templateData: Template, completion: @escaping CreateTemplateCompletion) {
         let api = PSAPI()
         
-        api.createTemplate(templateData: templateData.toJSON(), completion: completion)
+        //api.createTemplate(templateData: templateData.toJSON(), completion: completion)
     }
     
   class  func editTemplate(templateId: String, templateData: Template, completion: @escaping EditTemplateCompletion) {

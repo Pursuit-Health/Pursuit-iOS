@@ -25,8 +25,7 @@ class TrainerTemplatesVC: TemplatesVC {
     
     private func pushCreateTemplateVC() {
         guard let controller = createTemplateVC else { return }
-        
-        controller.templateId = self.templateId
+
         
         self.navigationController?.pushViewController(controller, animated: true)
     }

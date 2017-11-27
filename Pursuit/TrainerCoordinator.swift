@@ -15,10 +15,12 @@ class TrainerCoordinator: Coordinator {
     weak var clientProfileVC: ClientInfoVC?
     weak var selectedClient: Client?
     weak var createTemplate: CreateTemplateVC?
-    weak var addExercisesVC: MainExercisesVC?
+    weak var mainExercisesVC: MainExercisesVC?
     weak var searchExercisesVC: ExercisesSearchVC?
     
     var selectedCategory: Category?
+    var exercises: [ExcersiseData] = []
+    var customExercise: [ExcersiseData] = []
     
     func start(from controller: UIViewController?) {
         if let controller = controller {
@@ -99,11 +101,18 @@ extension TrainerCoordinator: TrainingVCDelegate {
 }
 
 extension TrainerCoordinator: CreateTemplateVCDelegate {
-    
-    func saveTemplate(_ template: Template, on controllers: CreateTemplateVC) {
+    func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
+        var work = workout
         
+        work.excersises = self.exercises
+        
+        work.createWorkout(clientId: "\(self.selectedClient?.id ?? 0)") { (workout, error) in
+            if error == nil {
+                controller.navigationController?.popViewController(animated: true)
+            }
+        }
     }
-    
+
     func addExercisesButtonPressed(on controller: CreateTemplateVC) {
         let mainExercises = UIStoryboard.trainer.MainExercises!
         
@@ -111,11 +120,33 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         mainExercises.datasource = self
         controller.navigationController?.pushViewController(mainExercises, animated: true)
         
-        self.addExercisesVC = mainExercises
+        self.mainExercisesVC = mainExercises
     }
 }
 
 extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasource {
+    func finished(on controller: MainExercisesVC, exercises: [ExcersiseData], state: ControllerState) {
+        
+        if state == .customExercise{
+            
+            if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
+            self.customExercise.append(ex)
+                let work = Workout()
+                work.excersises = self.customExercise
+                self.createTemplate?.workoutNew = work
+            }
+        }else {
+            let work = Workout()
+            work.excersises = self.exercises
+            self.createTemplate?.workoutNew = work
+        }
+        controller.navigationController?.popViewController(animated: true)
+    }
+    
+    func customexerciseAdded(exercise: ExcersiseData, on controller: MainExercisesVC, state: ControllerState) {
+        
+    }
+    
     
     func categorySelected(category: Category, controller: MainExercisesVC) {
         let exercisesSearchVc = UIStoryboard.trainer.ExercisesSearch!
@@ -147,7 +178,9 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
     }
     
     func endedWithExercises(_ exercises: [ExcersiseData], on controller: ExercisesSearchVC) {
-        Template.cre
+        //upload workout
+        //self.exercises = exercises
+        controller.navigationController?.popViewController(animated: true)
     }
 
     func loadExercisesByCategoryId(on controller: ExercisesSearchVC, completion: @escaping ExercisesSearchVCDatasource.GetExercisesByCategoryIdCompletion) {
@@ -163,6 +196,7 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
 
 extension TrainerCoordinator: ExerciseDetailsVCDelegate {
     func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC) {
+        self.exercises.append(info)
         self.searchExercisesVC?.exercise = info
         controller.navigationController?.popViewController(animated: true)
     }

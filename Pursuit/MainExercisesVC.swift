@@ -10,6 +10,8 @@ import UIKit
 
 protocol MainExercisesVCDelegate: class  {
     func categorySelected(category: Category, controller: MainExercisesVC)
+    func finished(on controller: MainExercisesVC, exercises: [ExcersiseData], state: ControllerState)
+    func customexerciseAdded(exercise: ExcersiseData, on controller: MainExercisesVC, state: ControllerState)
 }
 
 protocol MainExercisesVCDatasource: class {
@@ -18,8 +20,18 @@ protocol MainExercisesVCDatasource: class {
     func loadInfoFor(controller: ExerciseCategoryVC, completion: @escaping GetTrainerCategories)
 }
 
+enum ControllerState: Int {
+    case searchExercise = 0
+    case customExercise = 1
+}
+
 class MainExercisesVC: UIViewController {
 
+    
+    var exercises: [ExcersiseData] = []
+    
+    var state: ControllerState = .searchExercise
+    
     //MARK: IBOutlets
     
     @IBOutlet var viewForControllers: UIView!
@@ -55,8 +67,9 @@ class MainExercisesVC: UIViewController {
     }
     
     @IBAction func saveExercisesButtonPressed(_ sender: Any) {
-        
+        self.delegate?.finished(on: self, exercises: self.exercises, state: self.state)
     }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -77,12 +90,13 @@ class MainExercisesVC: UIViewController {
     
     private func setControllers(){
         let controller = TabPageViewController.create()
-        
+        controller.tabPageVCDelegate = self
         //controller.tabPageVCDelegate = self
         
         if let exercisesVC = exercisesCategoryVC, let aaddExVC = addExercisesVC {
             exercisesVC.delegate = self
             exercisesVC.datasource = self
+            aaddExVC.delegate = self
             exercisesVC.view.backgroundColor    = .clear
             aaddExVC.view.backgroundColor       = .clear
             controller.tabItems = [(exercisesVC, "SEARCH"), (aaddExVC, "CUSTOM")]
@@ -125,4 +139,19 @@ extension MainExercisesVC: ExerciseCategoryVCDatasource {
             completion(categories)
         })
     }
+}
+
+extension MainExercisesVC: AddExerceiseVCDelegate {
+    func customexerciseAdded(exercise: ExcersiseData, on controller: AddExerceiseVC) {
+        self.exercises.append(exercise)
+        //self.delegate?.customexerciseAdded(exercise: exercise, on: self, state: self.state)
+    }
+}
+
+extension MainExercisesVC: TabPageViewControllerDelegate {
+
+    func dispayControllerWithIndex(_ index: Int) {
+        self.state = ControllerState(rawValue: index) ?? .searchExercise
+    }
+
 }

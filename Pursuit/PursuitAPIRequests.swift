@@ -20,7 +20,7 @@ extension PSAPI {
         case getUserInfo()
         
         //MARK: Trainer
-        case createTemplate(parameters: Parameters)
+        case createWorkout(clientId: String, parameters: Parameters)
         case getAllTemplates()
         case getTemplateWithExercise(templateId: String)
         case editTemplate(templateId: String, parameters: Parameters)
@@ -53,7 +53,7 @@ extension PSAPI {
         
         var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createTemplate, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise:
                 return .post
             case .changePassword, .editTemplate:
                 return .put
@@ -89,8 +89,8 @@ extension PSAPI {
                 return "settings/info"
                 
             //Template
-            case .createTemplate:
-                return "trainer/templates"
+            case .createWorkout(let clietnId, _):
+                return "trainer/clients/" + clietnId + "/templates"
             case .getAllTemplates:
                 return "trainer/templates"
             case .getTemplateWithExercise(let templateId):
@@ -157,7 +157,7 @@ extension PSAPI {
                  .forgotPassword(let parameters),
                  .setPassword(let parameters),
                  .changePassword(let parameters),
-                 .createTemplate(let parameters),
+                 .createWorkout(_ , let parameters),
                  .editTemplate(_ , let parameters),
                  .deleteTemplate(_ , let parameters),
                  .createEvent(let parameters),
@@ -175,7 +175,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId:
+            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId:
                 return "Bearer" + token
             default:
                 return ""

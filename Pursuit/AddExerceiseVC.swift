@@ -10,18 +10,10 @@ import UIKit
 import SHTextFieldBlocks
 
 protocol AddExerceiseVCDelegate: class {
-    func saveExercises(_ exercise: Template.Exercises, on controller: AddExerceiseVC)
+    func customexerciseAdded(exercise: ExcersiseData, on controller: AddExerceiseVC)
 }
 
 class AddExerceiseVC: UIViewController {
-    
-    //MARK: Variables
-    
-    var exercise = Template.Exercises()
-    
-    weak var delegate: AddExerceiseVCDelegate?
-    
-    lazy var cellsInfo: [CellType] = [.name, .sets, .reps, .weights, .rest, .notes]
     
     //MARK: Nested
     
@@ -170,17 +162,27 @@ class AddExerceiseVC: UIViewController {
         }
     }
     
+    
+    //MARK: Variables
+    
+    var exercise = ExcersiseData()
+    
+    weak var delegate: AddExerceiseVCDelegate?
+    
+    lazy var cellsInfo: [CellType] = [.name, .sets, .reps, .weights, .rest, .notes]
+    
+    var exerciseType: ExcersiseData.ExcersiseType?
+    
     //MARK: IBOutlets
     
     @IBOutlet weak var exerciseTypeView: UIView! {
         didSet {
             let types: [ExcersiseData.ExcersiseType] = [.warmup, .workout, .cooldown]
             let view = ExercisesTypeView()
-            view.configureCell(with: types, selectedType: .workout)
+            view.configureCell(with: types, selectedType: .warmup)
             view.delegate = self
             self.exerciseTypeView.addSubview(view)
             self.exerciseTypeView.addConstraints(UIView.place(view, onOtherView: self.exerciseTypeView))
-            
         }
     }
     @IBOutlet weak var exerceiseTableView: UITableView! {
@@ -192,9 +194,8 @@ class AddExerceiseVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        
-        delegate?.saveExercises(self.exercise, on: self)
-        popViewController()
+        self.exercise.type = self.exerciseType
+        delegate?.customexerciseAdded(exercise: self.exercise, on: self)
     }
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
@@ -205,10 +206,12 @@ class AddExerceiseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.navigationController?.navigationBar.setAppearence()
-        
-        //setUpBackgroundImage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.exerciseType = .warmup
+        self.exercise.type = self.exerciseType
     }
     
     private func popViewController() {
@@ -231,9 +234,9 @@ extension AddExerceiseVC: UITableViewDataSource {
             case .name:
                 self.exercise.name = cellText
             case .sets:
-                self.exercise.times = Int(cellText)
+                self.exercise.sets = Int(cellText)
             case .reps:
-                self.exercise.count = Int(cellText)
+                self.exercise.reps = Int(cellText)
             case .weights:
                 self.exercise.weight = Int(cellText)
             case .rest:
@@ -242,14 +245,13 @@ extension AddExerceiseVC: UITableViewDataSource {
                 break
             }
         }
-        
-        self.exercise.type = "count_exercise"
         return cell
     }
 }
 
 extension AddExerceiseVC: ExercisesTypeViewDelegate {
     func tappedOn(_ view: ExercisesTypeView, with type: ExcersiseData.ExcersiseType) {
-        
+        self.exerciseType = type
+        self.exercise.type = self.exerciseType
     }
 }

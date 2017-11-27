@@ -11,7 +11,8 @@ import JTAppleCalendar
 import SwiftDate
 
 protocol CreateTemplateVCDelegate: class {
-    func saveTemplate(_ template: Template, on controllers: CreateTemplateVC)
+    
+    func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC)
     func addExercisesButtonPressed(on controller: CreateTemplateVC)
 }
 
@@ -20,6 +21,45 @@ extension CreateTemplateVCDelegate {
 }
 
 class CreateTemplateVC: UIViewController {
+    
+    //MARK: Enum
+    
+    enum Cell {
+        case header(name: String)
+        case excersise(excersise: ExcersiseData)
+        
+        var type: UITableViewCell.Type {
+            switch self {
+            case .header:
+                return HeaderCell.self
+            case .excersise:
+                return TrainingTableViewCell.self
+            }
+        }
+        
+        func fill(cell: UITableViewCell) {
+            switch self {
+            case .header(let name):
+                if let cell = cell as? HeaderCell {
+                    self.fillHeader(cell: cell, with: name)
+                }
+            case .excersise(let excersise):
+                if let cell = cell as? TrainingTableViewCell {
+                    self.fillExcersise(cell: cell, with: excersise)
+                }
+            }
+        }
+        
+        func fillExcersise(cell: TrainingTableViewCell, with excersise: ExcersiseData) {
+            cell.exercisesNameLabel.text    = excersise.name
+            cell.weightLabel.text           = "\(excersise.weight ?? 0) lbs"
+            cell.setsLabel.text             = "\(excersise.reps ?? 0)" + "x" + "\(excersise.sets ?? 0) reps"
+        }
+        
+        func fillHeader(cell: HeaderCell, with name: String) {
+            cell.headerView.sectionNameLabel.text = name.uppercased()
+        }
+    }
     
     //MARK: Constants
     
@@ -67,69 +107,43 @@ class CreateTemplateVC: UIViewController {
     @IBOutlet weak var templateNameTextField: UITextField! {
         didSet {
             self.templateNameTextField.attributedPlaceholder =  NSAttributedString(string: "Template Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
-            if self.templateId == nil {
-                self.templateNameTextField.text = ""
-            }
         }
     }
     
     //MARK: Variables
     
     weak var delegate: CreateTemplateVCDelegate?
+
+    var exercises: [ExcersiseData] {
+      return workoutNew?.excersises ?? []
+    }
     
-    lazy var exercisesDetailsVC: ExerciseDetailsVC? = {
-        guard let controller = UIStoryboard.trainer.ExerciseDetails else {  return UIViewController() as? ExerciseDetailsVC }
-        
-        return controller
-        
-    }()
+    var workout = Workout()
     
-    var templateId: String? {
+    var startAt = String()
+
+    var chnagedDate = DateInRegion(absoluteDate: Date())
+    
+    var exerciseTypes: [ExcersiseData.ExcersiseType] = [.warmup, .workout, .cooldown]
+    
+    var dateformatter = DateFormatters.serverTimeFormatter
+    
+    var workoutNew: Workout? {
         didSet {
-            loadTemplate()
+            self.recalculate()
         }
     }
     
-    var template: Template? {
-        didSet {
-            guard let name = self.template?.name else { return }
-            self.templateNameTextField.text = name
-        }
-    }
-    
-    var exercises: [Template.Exercises] = [] {
+    var sections: [Int : [Cell]] = [:] {
         didSet {
             self.templateTableView?.reloadData()
         }
     }
     
-    lazy var addExercisesVC: AddExerceiseVC? = {
-        
-        guard let controller = UIStoryboard.trainer.AddExercises else { return UIViewController() as? AddExerceiseVC }
-        
-        controller.delegate = self
-        
-        return controller
-    }()
-    
-    lazy var mainExercisesVC: MainExercisesVC? = {
-        guard let controller = UIStoryboard.trainer.MainExercises else { return UIViewController() as? MainExercisesVC }
-
-        return controller
-    }()
-    
-    var chnagedDate = DateInRegion(absoluteDate: Date())
-    
-    var exerciseTypes: [ExcersiseData.ExcersiseType] = [.warmup, .workout, .cooldown]
-    
     //MARK: IBActions
     
     @IBAction func addExercisesButtonPressed(_ sender: Any) {
-        
         self.delegate?.addExercisesButtonPressed(on: self)
-        //guard let controller = mainExercisesVC else { return }
-        
-        //self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
@@ -141,20 +155,13 @@ class CreateTemplateVC: UIViewController {
             showAlert()
             return
         }
-        let template = Template()
+
+        self.workout.name = self.templateNameTextField.text
+        self.workout.excersises = self.exercises
+        self.workout.startAtForUpload = self.startAt
+        self.workout.notes = "new notes"
         
-        template.name = self.templateNameTextField.text
-        template.imageId = 1
-        template.time = 60
-        template.exercisesForUpload = exercises
-        if let newExercises = template.exercisesForUpload {
-            if newExercises.count > 0 {
-                for index in 0...newExercises.count - 1 {
-                    template.exercisesForUpload?[index].exerciseId = nil
-                }
-            }
-        }
-        delegate?.saveTemplate(template, on: self)
+        delegate?.saveWorkout(self.workout, on: self)
     }
     
     
@@ -190,15 +197,48 @@ class CreateTemplateVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
-        if self.templateId == nil {
-            self.templateNameTextField.text = ""
-        }
-        
+
         calendarView.visibleDates { (visibleDates) in
             if let date = visibleDates.monthDates.first?.date {
+                let formatter       = DateFormatters.serverTimeFormatter
+                self.startAt = formatter.string(from: date)
                 self.fillMonthYearLabelsWith(date)
             }
         }
+    }
+    
+    //MARK: Public.Methods
+    
+    func recalculate() {
+        self.recalculateRows()
+    }
+    
+    //MARK: Private.Methods
+    
+    private func recalculateRows() {
+        var section = 0
+        var sections: [Int : [Cell]] = [:]
+        var warmups = self.exercises.filter{ $0.type == .warmup && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
+        var workouts = self.exercises.filter{ $0.type == .workout && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
+        var cooldowns = self.exercises.filter{ $0.type == .cooldown && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
+        
+        if !warmups.isEmpty {
+            warmups.insert(.header(name: ExcersiseData.ExcersiseType.warmup.name), at: 0)
+            sections[section] = warmups
+            section += 1
+        }
+        if !workouts.isEmpty {
+            workouts.insert(.header(name: ExcersiseData.ExcersiseType.workout.name), at: 0)
+            sections[section] = workouts
+            section += 1
+        }
+        if !cooldowns.isEmpty {
+            cooldowns.insert(.header(name: ExcersiseData.ExcersiseType.cooldown.name), at: 0)
+            sections[section] = cooldowns
+            section += 1
+        }
+        
+        self.sections = sections
     }
     
     func fillMonthYearLabelsWith(_ date: Date) {
@@ -220,70 +260,41 @@ class CreateTemplateVC: UIViewController {
 
 extension CreateTemplateVC {
     func loadTemplate() {
-        if templateId != nil {
-            loadTemplateById{ error in
-                if error == nil {
-                    
-                }else {
-                }
-            }
-        }else {
-            self.template = nil
-            self.exercises = []
-        }
+
     }
     
     private func loadTemplateById(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
-        Template.getTemplateWithExercises(templateId: templateId ?? "", completion: { template, error in
-            if let templateInfo = template {
-                self.template = templateInfo
-                if let exercise  = templateInfo.exercises {
-                    self.exercises = exercise
-                }
-            }
+        Template.getTemplateWithExercises(templateId: "", completion: { template, error in
+     
             completion(error)
         })
     }
 }
 
-extension CreateTemplateVC: UITableViewDataSource {
-    
-     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+extension CreateTemplateVC: UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.exercises.count + 1
+        return self.sections[section]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.gc_dequeueReusableCell(type: TrainingTableViewCell.self) else { return UITableViewCell()
+        if let cellInfo = self.sections[indexPath.section]?[indexPath.row], let cell = tableView.gc_dequeueReusableCell(type: cellInfo.type) {
+            cellInfo.fill(cell: cell)
+            return cell
         }
-        if indexPath.row == 0 {
-            guard let headercell = tableView.gc_dequeueReusableCell(type: HeaderCell.self) else { return UITableViewCell() }
-            let headerView = HeaderView()
-            headerView.sectionNameLabel.text = exerciseTypes[indexPath.section].name.uppercased()
-            headercell.contentView.addSubview(headerView)
-            headercell.contentView.addConstraints(UIView.place(headerView, onOtherView: headercell.contentView))
-            return headercell
-        }
-        
-        let exersiceInfo = self.exercises[indexPath.row - 1]
-        
-        cell.exercisesNameLabel.text    = exersiceInfo.name
-        cell.weightLabel.text           = "\(exersiceInfo.weight ?? 0)"
-        cell.setsLabel.text             = "\(exersiceInfo.times ?? 0)" + "x" + "\(exersiceInfo.count ?? 0)"
-        
-        return cell
+        return UITableViewCell()
     }
 }
 
 extension CreateTemplateVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let controller = exercisesDetailsVC {
-            let exersiceInfo = self.exercises[indexPath.row - 1]
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
+//        if let controller = exercisesDetailsVC {
+//            let exersiceInfo = self.exercises[indexPath.row - 1]
+//            self.navigationController?.pushViewController(controller, animated: true)
+//        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -305,10 +316,12 @@ extension CreateTemplateVC: UITableViewDelegate{
 }
 
 extension CreateTemplateVC: AddExerceiseVCDelegate {
-    func saveExercises(_ exercise: Template.Exercises, on controller: AddExerceiseVC) {
-        let exercise = self.exercises + [exercise]
-        self.exercises = exercise
+    func customexerciseAdded(exercise: ExcersiseData, on controller: AddExerceiseVC) {
         
+    }
+    
+    func saveExercises(_ exercise: Template.Exercises, on controller: AddExerceiseVC) {
+    
     }
 }
 
@@ -337,12 +350,12 @@ extension CreateTemplateVC: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         
     }
-    
-    
+
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         guard let calCell = cell as? CreateTemplateCalendarCell else { return }
-
+        let formatter       = DateFormatters.serverTimeFormatter
+        self.startAt = formatter.string(from: date)
         cellState.templateCalendarCellselected(cell: calCell)
     }
     

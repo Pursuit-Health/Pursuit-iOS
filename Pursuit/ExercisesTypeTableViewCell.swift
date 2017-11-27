@@ -14,7 +14,11 @@ protocol ExercisesTypeTableViewCellDelegate: class {
 
 class ExercisesTypeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var excersiseTypeView: ExercisesTypeView!
+    @IBOutlet weak var excersiseTypeView: ExercisesTypeView! {
+        didSet {
+            self.excersiseTypeView.delegate = self
+        }
+    }
     @IBOutlet weak var mainView: UIView!
     
     //MARK: Variables
