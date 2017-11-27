@@ -35,6 +35,8 @@
 		781110531F65932700457E8B /* SelectTrainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110511F65932700457E8B /* SelectTrainer.swift */; };
 		781110541F65932700457E8B /* SelectTrainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781110521F65932700457E8B /* SelectTrainer.xib */; };
 		781110561F6672BD00457E8B /* Template+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110551F6672BD00457E8B /* Template+API.swift */; };
+		7813E8861FCC332200B9B42C /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7813E8841FCC332200B9B42C /* NotesCell.swift */; };
+		7813E8871FCC332200B9B42C /* NotesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7813E8851FCC332200B9B42C /* NotesCell.xib */; };
 		78179B871F54977500520D08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B861F54977500520D08 /* User.swift */; };
 		78179B891F54982C00520D08 /* User+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78179B881F54982C00520D08 /* User+API.swift */; };
 		78277D5A1FC84AD00064ABB8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78277D591FC84AD00064ABB8 /* AppCoordinator.swift */; };
@@ -226,6 +228,8 @@
 		781110511F65932700457E8B /* SelectTrainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainer.swift; sourceTree = "<group>"; };
 		781110521F65932700457E8B /* SelectTrainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectTrainer.xib; sourceTree = "<group>"; };
 		781110551F6672BD00457E8B /* Template+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+API.swift"; sourceTree = "<group>"; };
+		7813E8841FCC332200B9B42C /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
+		7813E8851FCC332200B9B42C /* NotesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesCell.xib; sourceTree = "<group>"; };
 		78179B861F54977500520D08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		78179B881F54982C00520D08 /* User+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+API.swift"; sourceTree = "<group>"; };
 		78277D591FC84AD00064ABB8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -588,6 +592,15 @@
 			name = UILabel;
 			sourceTree = "<group>";
 		};
+		7813E8831FCC32FC00B9B42C /* NotesCell */ = {
+			isa = PBXGroup;
+			children = (
+				7813E8841FCC332200B9B42C /* NotesCell.swift */,
+				7813E8851FCC332200B9B42C /* NotesCell.xib */,
+			);
+			name = NotesCell;
+			sourceTree = "<group>";
+		};
 		782264451F507A3000EFD5F9 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,6 +847,7 @@
 		783F80BD1FC06C38001FE169 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7813E8831FCC32FC00B9B42C /* NotesCell */,
 				783F80C91FC0707F001FE169 /* Cells */,
 				783F80C11FC06D72001FE169 /* ExercisesTypeView.swift */,
 				783F80C31FC06F18001FE169 /* ExercisesTypeView.xib */,
@@ -1792,6 +1806,7 @@
 				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
 				783484241F71560600C58191 /* UserTypeView.xib in Resources */,
 				782B83101F7126DC00A019AC /* ChooseTrainerCell.xib in Resources */,
+				7813E8871FCC332200B9B42C /* NotesCell.xib in Resources */,
 				78E4BD2C1FC2108900A069DC /* HeaderCell.xib in Resources */,
 				783484291F71804D00C58191 /* SignUpButtonCell.xib in Resources */,
 				78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */,
@@ -1919,6 +1934,7 @@
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */,
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
+				7813E8861FCC332200B9B42C /* NotesCell.swift in Sources */,
 				784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */,
 				780D8E901F4360FE0030A992 /* Template.swift in Sources */,
 				783FBA6B1F8D223700BB26EC /* String.swift in Sources */,

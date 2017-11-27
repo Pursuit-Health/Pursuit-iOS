@@ -8,6 +8,15 @@
 
 import UIKit
 
+protocol ExercisesSearchVCDelegate: class  {
+    func didSelectExercise(exercise: ExcersiseData, on controller: ExercisesSearchVC)
+    func endedWithExercises(_ exercises: [ExcersiseData], on controller: ExercisesSearchVC)
+}
+
+extension ExercisesSearchVCDelegate {
+    func endedWithExercises(_ exercises: [ExcersiseData], on controller: ExercisesSearchVC) { }
+}
+
 protocol ExercisesSearchVCDatasource: class  {
     typealias GetExercisesByCategoryIdCompletion = (_ exercise: [ExcersiseData]?) -> Void
     func loadExercisesByCategoryId(on controller: ExercisesSearchVC, completion: @escaping GetExercisesByCategoryIdCompletion)
@@ -37,6 +46,7 @@ class ExercisesSearchVC: UIViewController {
     
     //MARK: Variables
     
+    weak var delegate: ExercisesSearchVCDelegate?
     weak var datasource: ExercisesSearchVCDatasource?
     
     lazy var exercisesDetailsVC: ExerciseDetailsVC? = {
@@ -45,6 +55,19 @@ class ExercisesSearchVC: UIViewController {
         return controller
         
     }()
+    
+    var shouldReload: Bool = true
+    var exercise: ExcersiseData = ExcersiseData() {
+        didSet {
+            self.shouldReload = false
+            for (index, exer) in self.filteredExercises.enumerated() {
+                if exer.id == self.exercise.id {
+                    self.filteredExercises[index] = self.exercise
+                }
+            }
+            self.exercisesTableView?.reloadData()
+        }
+    }
 
     var exercises: [ExcersiseData] = []
     
@@ -62,6 +85,11 @@ class ExercisesSearchVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func confirmButtonPressed(_ sender: Any) {
+        let exercisesDone = self.filteredExercises.filter{ $0.selected == true }
+        self.delegate?.endedWithExercises(exercisesDone, on: self)
+    }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -75,10 +103,12 @@ class ExercisesSearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if shouldReload {
         self.datasource?.loadExercisesByCategoryId(on: self, completion: { (exercises) in
             self.exercises = exercises ?? []
             self.filteredExercises = exercises ?? []
         })
+        }
         
         self.navigationItem.leftTitle = self.category?.name ?? ""
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -104,21 +134,20 @@ extension ExercisesSearchVC: UITableViewDataSource {
 
 extension ExercisesSearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let controller = self.exercisesDetailsVC else { return }
-        let exerc = filteredExercises[indexPath.row]
-       self.navigationController?.pushViewController(controller, animated: true)
+          let exerc = filteredExercises[indexPath.row]
+        self.delegate?.didSelectExercise(exercise: exerc, on: self)
     }
 }
 
 extension ExercisesSearchVC: ExerciseCellDelegate {
     func didTappedOnImage(cell: ExerciseCell) {
-        if let index = self.exercisesTableView.indexPath(for: cell) {
-            let exerc = filteredExercises[index.row]
-
-            exerc.selected = !(exerc.selected ?? false)
-            cell.selectedCell = exerc.selected ?? false
-            
-        }
+//        if let index = self.exercisesTableView.indexPath(for: cell) {
+//            let exerc = filteredExercises[index.row]
+//
+//            exerc.selected = !(exerc.selected ?? false)
+//            cell.selectedCell = exerc.selected ?? false
+//
+//        }
     }
 }
 

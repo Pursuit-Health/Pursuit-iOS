@@ -1463,7 +1463,7 @@
                                     <constraint firstAttribute="height" id="CZg-cT-vvS"/>
                                 </constraints>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="66O-Pa-KBp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="66O-Pa-KBp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="591"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1555,6 +1555,7 @@
                                         </constraints>
                                         <state key="normal" image="btn_add"/>
                                         <connections>
+                                            <action selector="saveExercisesButtonPressed:" destination="uwZ-ro-3Ok" eventType="touchUpInside" id="t4Q-KP-xJ3"/>
                                             <action selector="saveScheduleButtonPressed:" destination="8N2-Zq-TXC" eventType="touchUpInside" id="DEg-NC-4rs"/>
                                         </connections>
                                     </button>
@@ -1693,6 +1694,30 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="emB-eD-SNk">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhL-rA-z9k">
+                                <rect key="frame" x="10" y="611" width="365" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7A9-4g-460">
+                                        <rect key="frame" x="160" y="5.5" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="KaH-b3-dKj"/>
+                                            <constraint firstAttribute="width" constant="45" id="a4B-D2-sDG"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_add"/>
+                                        <connections>
+                                            <action selector="confirmButtonPressed:" destination="LXn-nF-7D4" eventType="touchUpInside" id="dNQ-Bp-3Tb"/>
+                                            <action selector="saveExercisesButtonPressed:" destination="uwZ-ro-3Ok" eventType="touchUpInside" id="5hN-R8-fjz"/>
+                                            <action selector="saveScheduleButtonPressed:" destination="8N2-Zq-TXC" eventType="touchUpInside" id="b64-ZE-b2d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Dho-Ah-Zzb"/>
+                                    <constraint firstItem="7A9-4g-460" firstAttribute="centerY" secondItem="yhL-rA-z9k" secondAttribute="centerY" id="deD-D5-Hdj"/>
+                                    <constraint firstItem="7A9-4g-460" firstAttribute="centerX" secondItem="yhL-rA-z9k" secondAttribute="centerX" id="wdz-MK-fLe"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3tQ-7D-rU6">
                                 <rect key="frame" x="36" y="96" width="303" height="1"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1701,7 +1726,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KJc-fp-Ung">
-                                <rect key="frame" x="0.0" y="97" width="375" height="570"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="514"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1729,13 +1754,16 @@
                             <constraint firstAttribute="bottom" secondItem="emB-eD-SNk" secondAttribute="bottom" id="D65-zV-9zH"/>
                             <constraint firstAttribute="trailing" secondItem="emB-eD-SNk" secondAttribute="trailing" id="Iq4-bm-bDc"/>
                             <constraint firstItem="KJc-fp-Ung" firstAttribute="top" secondItem="3tQ-7D-rU6" secondAttribute="bottom" id="JEB-oU-tw6"/>
-                            <constraint firstItem="BH4-Yv-HhA" firstAttribute="top" secondItem="KJc-fp-Ung" secondAttribute="bottom" id="JQ0-tB-fMF"/>
                             <constraint firstItem="erS-kj-0K7" firstAttribute="leading" secondItem="2oa-ck-ylv" secondAttribute="leadingMargin" constant="10" id="MoV-ST-YMd"/>
                             <constraint firstItem="erS-kj-0K7" firstAttribute="top" secondItem="4yA-cw-fha" secondAttribute="bottom" constant="20" id="Q3P-AC-fzy"/>
+                            <constraint firstAttribute="trailing" secondItem="yhL-rA-z9k" secondAttribute="trailing" id="RXc-J4-Liu"/>
+                            <constraint firstItem="yhL-rA-z9k" firstAttribute="top" secondItem="KJc-fp-Ung" secondAttribute="bottom" id="Xvb-IU-lSe"/>
                             <constraint firstItem="3tQ-7D-rU6" firstAttribute="trailing" secondItem="erS-kj-0K7" secondAttribute="trailing" constant="-10" id="XwI-1f-zi4"/>
                             <constraint firstItem="3tQ-7D-rU6" firstAttribute="top" secondItem="erS-kj-0K7" secondAttribute="bottom" id="d7n-S7-kap"/>
                             <constraint firstItem="3tQ-7D-rU6" firstAttribute="leading" secondItem="erS-kj-0K7" secondAttribute="leading" constant="10" id="gmU-f8-hLX"/>
                             <constraint firstItem="KJc-fp-Ung" firstAttribute="leading" secondItem="2oa-ck-ylv" secondAttribute="leading" id="lnI-PD-TMI"/>
+                            <constraint firstItem="BH4-Yv-HhA" firstAttribute="top" secondItem="yhL-rA-z9k" secondAttribute="bottom" id="v5Q-mL-rwG"/>
+                            <constraint firstItem="yhL-rA-z9k" firstAttribute="leading" secondItem="2oa-ck-ylv" secondAttribute="leading" constant="10" id="x6c-i1-DpU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="erS-kj-0K7" secondAttribute="trailing" constant="10" id="znZ-tf-Yui"/>
                         </constraints>
                     </view>
@@ -1760,7 +1788,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1367" y="4455"/>
+            <point key="canvasLocation" x="1365.5999999999999" y="4454.1229385307352"/>
         </scene>
     </scenes>
     <resources>

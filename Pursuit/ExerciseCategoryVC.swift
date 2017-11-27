@@ -9,7 +9,6 @@
 import UIKit
 
 protocol ExerciseCategoryVCDelegate: class {
-    //func didSelectExercise(exercise: Template.Exercises, on controller: ExerciseCategoryVC)
     func didSelectCategory(category: Category, on controller: ExerciseCategoryVC)
 }
 
@@ -92,7 +91,6 @@ extension ExerciseCategoryVC: UITableViewDataSource {
 extension ExerciseCategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = filteredCategories[indexPath.row]
-        //self.delegate?.didSelectExercise(exercise: exercise, on: self)
         self.delegate?.didSelectCategory(category: category, on: self)
     }
 }

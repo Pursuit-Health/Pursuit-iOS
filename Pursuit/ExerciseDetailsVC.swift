@@ -13,7 +13,7 @@ protocol ExerciseDetailsVCDelegate: class {
 }
 
 class ExerciseDetailsVC: UIViewController {
-
+    
     //MARK: Nested
     
     enum CellType {
@@ -22,6 +22,8 @@ class ExerciseDetailsVC: UIViewController {
         case sets(excersize: ExcersiseData)
         case reps(excersize: ExcersiseData)
         case weights(excersize: ExcersiseData)
+        case rest(excersize: ExcersiseData)
+        case notes(excersize: ExcersiseData, delegate: NotesCellDelegate)
         
         var cellType: UITableViewCell.Type {
             switch self {
@@ -35,6 +37,10 @@ class ExerciseDetailsVC: UIViewController {
                 return AddExerciseCell.self
             case .weights:
                 return AddExerciseCell.self
+            case .rest:
+                return AddExerciseCell.self
+            case .notes:
+                return NotesCell.self
             }
         }
         
@@ -69,6 +75,16 @@ class ExerciseDetailsVC: UIViewController {
                     fillWeightsCell(cell: castedCell, weight: excersize.weight, completion: { text in
                         completion(text)
                     })
+                }
+            case .rest(let excersize):
+                if let castedCell = cell as? AddExerciseCell {
+                    fillRetsCell(cell: castedCell, rets: excersize.rest, completion: { text in
+                        completion(text)
+                    })
+                }
+            case .notes(let excersize, let delegate):
+                if let castedCell = cell as? NotesCell {
+                    fillNotesCell(cell: castedCell, notes: excersize.notes, delegate: delegate)
                 }
             }
         }
@@ -139,6 +155,25 @@ class ExerciseDetailsVC: UIViewController {
             }
         }
         
+        private func fillRetsCell(cell: AddExerciseCell, rets: Int?, completion: @escaping TextFieldComletion) {
+            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
+            cell.exerciseImageView.image                    = imageFromName("weight")
+            cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
+                if let text = textField?.text {
+                    completion(text)
+                }
+            }
+        }
+        
+        private func fillNotesCell(cell: NotesCell, notes: String?, delegate: NotesCellDelegate){
+            cell.nameLabel.text             = "Notes"
+            cell.exerciseImageView.image    = imageFromName("weight")
+            cell.delegate = delegate
+            //cell.notesTextView.text = ""
+        }
+        
+        
         private func placeHolderWithText(_ text: String) -> NSAttributedString {
             return  NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.white])
         }
@@ -158,7 +193,9 @@ class ExerciseDetailsVC: UIViewController {
                                       .name(excersize: self.excersize),
                                       .sets(excersize: self.excersize),
                                       .reps(excersize: self.excersize),
-                                      .weights(excersize: self.excersize)]
+                                      .weights(excersize: self.excersize),
+                                      .rest(excersize: self.excersize),
+                                      .notes(excersize: self.excersize, delegate: self)]
     
     //MARK: IBOutlets
     
@@ -167,14 +204,17 @@ class ExerciseDetailsVC: UIViewController {
     @IBOutlet weak var exerceiseTableView: UITableView! {
         didSet {
             self.exerceiseTableView.rowHeight = UITableViewAutomaticDimension
+            self.exerceiseTableView.estimatedRowHeight = 100
         }
     }
     
     //MARK: IBActions
     
     @IBAction func confirmButtonPressed() {
+        self.excersize.selected = true
         self.delegate?.ended(with: self.excersize, on: self)
     }
+    
     @IBAction func addButtonPressed(_ sender: Any) {
         
     }
@@ -232,6 +272,9 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                 self.excersize.reps = Int(cellText)
             case .weights:
                 self.excersize.weight = Int(cellText)
+            case .rest:
+                self.excersize.rest = Int(cellText)
+
             default:
                 return
             }
@@ -245,16 +288,23 @@ extension ExerciseDetailsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.row == 0){
             return 80
+        } else if (indexPath.row == cellsInfo.count - 1){
+            return UITableViewAutomaticDimension
         } else {
             return 50
         }
     }
 }
 
-
 extension ExerciseDetailsVC: ExercisesTypeTableViewCellDelegate {
     func tappedOn(_ cell: ExercisesTypeTableViewCell, with type: ExcersiseData.ExcersiseType) {
         
+    }
+}
+
+extension ExerciseDetailsVC: NotesCellDelegate {
+    func textViewDidEndEditingWith(_ text: String) {
+        self.excersize.notes = text
     }
 }
 

@@ -52,4 +52,14 @@ extension Workout {
             completion?(PSError.somethingWentWrong)
         }
     }
+    
+     func getDetailedTemplateFor(clientId: String, templateId: String, completion: @escaping GetClientsWorkoutDetails) {
+        let api = PSAPI()
+        api.getDetailedTemplateFor(clietnId: clientId, templateId: templateId) { (exercises, error) in
+            if error == nil {
+                self.excersises = exercises
+            }
+            completion(exercises, error)
+        }
+    }
 }

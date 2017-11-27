@@ -54,6 +54,9 @@ class MainExercisesVC: UIViewController {
        self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func saveExercisesButtonPressed(_ sender: Any) {
+        
+    }
     //MARK: Lifecycle
     
     override func viewDidLoad() {

@@ -445,9 +445,9 @@ class PSAPI: APIHandable {
     }
     
     @discardableResult
-    func getDetailedTemplateFor(clietnId: String, templateId: String, completion: @escaping GetDetailedTemplate) -> DataRequest? {
+    func getDetailedTemplateFor(clietnId: String, templateId: String, completion: @escaping GetClientsWorkoutDetails) -> DataRequest? {
         let request = Request.getDetailedTemplate(clietnId: clietnId, templateId: templateId)
-        return self.perform(request)?.responseObject(keyPath: "data") { (response: DataResponse<Template>) in
+        return self.perform(request)?.responseArray(keyPath: "data.templateExercises.data") { (response: DataResponse<[ExcersiseData]>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
@@ -538,7 +538,7 @@ extension PSAPI {
      typealias GetClientsWorkoutDetails = (_ excercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
     typealias SubmitExcersiseCompletion = (_ error: ErrorProtocol?) -> Void
     
-    typealias GetDetailedTemplate       = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    typealias GetDetailedTemplate       = (_ template: Workout?, _ error: ErrorProtocol?) -> Void
     
     typealias GetCategoriesCompletion   = (_ categories: [Category]?, _ error: ErrorProtocol?) -> Void
     

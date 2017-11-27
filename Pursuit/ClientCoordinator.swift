@@ -48,7 +48,7 @@ extension ClientCoordinator: ClientInfoVCDatasource {
 }
 
 extension ClientCoordinator: ClientInfoVCDelegate {
-    func selected(workout: Workout, on controller: ClientInfoVC) {
+    func selected(workout: Workout, on controller: ClientInfoVC, client: Client?) {
         User.shared.updateDetailsWorkout(workout: workout) { (excercises, error) in
             if let error = error {
                 let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: nil))

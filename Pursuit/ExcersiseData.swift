@@ -52,33 +52,35 @@ class ExcersiseData: Mappable {
         }
     }
     
-    var id: Int?
-    var type: ExcersiseType?
-    var name: String?
-    var sets: Int?
-    var reps: Int?
+    var id          : Int?
+    var type        : ExcersiseType?
+    var name        : String?
+    var sets        : Int?
+    var reps        : Int?
     
-    var weight: Int?
-    var rest: Int?
-    var notes: String?
-    var imageUrl: URL?
-    var exDesc: String?
+    var weight      : Int?
+    var rest        : Int?
+    var notes       : String?
+    var imageUrl    : URL?
+    var exDesc      : String?
     
-    var isDone: Bool?
+    var exercise_id : Int?
     
-    var selected: Bool?
+    var isDone      : Bool?
+    var selected    : Bool?
     
     func mapping(map: Map) {
-        self.id <- map["id"]
-        self.type <- (map["type"], EnumTransform<ExcersiseType>())
-        self.name <- map["name"]
-        self.sets <- map["sets"]
-        self.reps <- map["reps"]
-        self.weight <- map["weight"]
-        self.notes <- map["notes"]
-        self.imageUrl <- (map["exercise.data.image_url"], URLTransform())
-        self.exDesc <- map["exercise.data.description"]
-        self.isDone <- map["done.data.value"]
+        self.id             <- map["id"]
+        self.type           <- (map["type"], EnumTransform<ExcersiseType>())
+        self.name           <- map["name"]
+        self.sets           <- map["sets"]
+        self.reps           <- map["reps"]
+        self.weight         <- map["weight"]
+        self.notes          <- map["notes"]
+        self.imageUrl       <- (map["exercise.data.image_url"], URLTransform())
+        self.exDesc         <- map["exercise.data.description"]
+        self.isDone         <- map["done.data.value"]
+        self.exercise_id    <- map["exercise_id"]
     }
     
     init() {

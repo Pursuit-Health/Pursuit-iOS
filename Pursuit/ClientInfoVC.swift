@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol ClientInfoVCDelegate: class {
-    func selected(workout: Workout, on controller: ClientInfoVC)
+    func selected(workout: Workout, on controller: ClientInfoVC, client: Client?)
     func addWorkoutButtonPressed(on controller: ClientInfoVC)
 }
 
@@ -117,7 +117,7 @@ extension ClientInfoVC: UITableViewDataSource {
 
 extension ClientInfoVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.selected(workout: self.workouts[indexPath.row], on: self)
+        self.delegate?.selected(workout: self.workouts[indexPath.row], on: self, client: self.client as! Client)
     }
 }
 

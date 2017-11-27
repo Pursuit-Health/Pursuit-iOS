@@ -53,6 +53,8 @@ class Template: Mappable {
     var imageId         : Int?
     var exercises       : [Exercises]?
     var exercisesForUpload : [Exercises]?
+    
+    var exercisesData: [ExcersiseData]?
 
     //MARK: Mappable
     
@@ -63,6 +65,8 @@ class Template: Mappable {
         self.templateId         <- map["id"]
         self.exercises          <- map["exercises.data"]
         self.exercisesForUpload <- map["exercises"]
+        
+        self.exercisesData      <- map["exercises"]
     }
     
    init() {}

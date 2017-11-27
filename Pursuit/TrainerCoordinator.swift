@@ -16,6 +16,7 @@ class TrainerCoordinator: Coordinator {
     weak var selectedClient: Client?
     weak var createTemplate: CreateTemplateVC?
     weak var addExercisesVC: MainExercisesVC?
+    weak var searchExercisesVC: ExercisesSearchVC?
     
     var selectedCategory: Category?
     
@@ -74,20 +75,27 @@ extension TrainerCoordinator: ClientInfoVCDatasource {
 }
 
 extension TrainerCoordinator: ClientInfoVCDelegate {
-    func selected(workout: Workout, on controller: ClientInfoVC) {
-//                User.shared.updateDetailsWorkout(workout: workout) { (excercises, error) in
-//                    if let error = error {
-//                        let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                        controller.present(alert, animated: true, completion: nil)
-//                    } else {
-//                        let training = UIStoryboard.client.Training!
-//                        training.delegate = self
-//                        training.workout = workout
-//                        controller.navigationController?.pushViewController(training, animated: true)
-//                        self.excersisesVC = training
-//                    }
-//                }
+    
+    func selected(workout: Workout, on controller: ClientInfoVC, client: Client?) {
+        workout.getDetailedTemplateFor(clientId: "\(client?.id ?? 0)", templateId: "\(workout.id ?? 0)") { (exercises, error) in
+            if error == nil {
+                
+                let training = UIStoryboard.client.Training!
+                training.delegate = self
+                training.workout = workout
+                controller.navigationController?.pushViewController(training, animated: true)
+            }else {
+                
+            }
+        }
     }
+}
+
+extension TrainerCoordinator: TrainingVCDelegate {
+    func select(excercise: ExcersiseData, on controller: TrainingVC) {
+   
+    }
+
 }
 
 extension TrainerCoordinator: CreateTemplateVCDelegate {
@@ -112,8 +120,10 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
     func categorySelected(category: Category, controller: MainExercisesVC) {
         let exercisesSearchVc = UIStoryboard.trainer.ExercisesSearch!
         self.selectedCategory = category
+        exercisesSearchVc.delegate = self
         exercisesSearchVc.category      = category
         exercisesSearchVc.datasource    = self
+        self.searchExercisesVC = exercisesSearchVc
         controller.navigationController?.pushViewController(exercisesSearchVc, animated: true)
     }
     
@@ -128,7 +138,18 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
     }
 }
 
-extension TrainerCoordinator: ExercisesSearchVCDatasource {
+extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDelegate {
+    func didSelectExercise(exercise: ExcersiseData, on controller: ExercisesSearchVC) {
+        let detailsController = UIStoryboard.trainer.ExerciseDetails!
+        detailsController.delegate = self
+        detailsController.excersize = exercise
+        controller.navigationController?.pushViewController(detailsController, animated: true)
+    }
+    
+    func endedWithExercises(_ exercises: [ExcersiseData], on controller: ExercisesSearchVC) {
+        Template.cre
+    }
+
     func loadExercisesByCategoryId(on controller: ExercisesSearchVC, completion: @escaping ExercisesSearchVCDatasource.GetExercisesByCategoryIdCompletion) {
         self.selectedCategory?.loadExercisesByCategoryId(completion: { (exercises, error) in
             if error == nil {
@@ -137,5 +158,12 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource {
                 completion(nil)
             }
         })
+    }
+}
+
+extension TrainerCoordinator: ExerciseDetailsVCDelegate {
+    func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC) {
+        self.searchExercisesVC?.exercise = info
+        controller.navigationController?.popViewController(animated: true)
     }
 }
