@@ -128,6 +128,9 @@ class TrainingVC: UIViewController {
         self.dayNameLabel.text = f.weekdaySymbols[Calendar.current.component(.weekday, from: date)]
         self.monthYearLabel.text = f.string(from: date)
         
+        f.dateFormat = "dd"
+        self.dayDigitLabel.text = f.string(from: date)
+        
         self.completedLabel?.text    = String(done)
         self.todoLabel?.text         = String(todo)
         

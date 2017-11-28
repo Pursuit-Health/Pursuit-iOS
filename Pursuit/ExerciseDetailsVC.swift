@@ -257,6 +257,12 @@ class ExerciseDetailsVC: UIViewController {
         var exerc = ExcersiseData()
         exerc = self.excersize
         exerc.id = nil
+        
+        if self.excersize.name == "" || self.excersize.sets == nil || self.excersize.reps == nil || self.excersize.weight == nil || self.excersize.rest == nil || self.excersize.notes == ""{
+            self.showError()
+            return
+        }
+        
         if !isEditExercise {
         self.delegate?.ended(with: exerc, on: self)
         }else {
@@ -289,6 +295,16 @@ class ExerciseDetailsVC: UIViewController {
         self.leftTitle = self.excersize.name
         
         self.loadImage()
+    }
+    
+    private func showError() {
+        let alert = UIAlertController(title: "Error", message: "All fields required for filling!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+        }
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func loadImage() {

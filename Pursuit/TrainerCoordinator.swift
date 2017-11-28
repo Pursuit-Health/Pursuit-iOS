@@ -42,6 +42,16 @@ class TrainerCoordinator: Coordinator {
         //        superController.addChildViewController(controller)
     }
     
+    fileprivate func showError() {
+        let alert = UIAlertController(title: "Error", message: "All fields required for filling!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+        }
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension TrainerCoordinator: ClientsVCDelegate {
@@ -96,7 +106,12 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
 
 extension TrainerCoordinator: TrainingVCDelegate {
     func select(excercise: ExcersiseData, on controller: TrainingVC) {
-   
+        let details = UIStoryboard.trainer.ExerciseDetails!
+        details.excersize = excercise
+        details.isInteractiv = true
+        details.delegate = self
+        controller.navigationController?.pushViewController(details, animated: true)
+        self.exerciseDetailsVC = details
     }
 
 }
@@ -145,6 +160,10 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         if state == .customExercise{
             
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
+                if self.ex.name == "" || self.ex.sets == nil || self.ex.reps == nil || self.ex.weight == nil || self.ex.rest == nil || self.ex.notes == ""{
+                    self.showError()
+                    return
+                }
             self.customExercise.append(ex)
                 let work = Workout()
                 work.excersises = self.customExercise
