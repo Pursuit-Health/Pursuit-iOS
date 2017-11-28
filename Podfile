@@ -27,5 +27,6 @@ target 'Pursuit' do
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'PIDatePicker', '~> 0.1'
   pod 'BlocksKit', '~> 2.2'
+  pod 'IQKeyboardManagerSwift', '~> 5.0'
   
 end

@@ -42,14 +42,14 @@ class TrainerCoordinator: Coordinator {
         //        superController.addChildViewController(controller)
     }
     
-    fileprivate func showError() {
+    fileprivate func showError(controller: UIViewController) {
         let alert = UIAlertController(title: "Error", message: "All fields required for filling!", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
             
         }
         
         alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        controller.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -160,13 +160,15 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         if state == .customExercise{
             
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
-                if self.ex.name == "" || self.ex.sets == nil || self.ex.reps == nil || self.ex.weight == nil || self.ex.rest == nil || self.ex.notes == ""{
-                    self.showError()
+                if ex.name == "" || ex.sets == nil || ex.reps == nil || ex.weight == nil || ex.rest == nil || ex.notes == ""{
+                    self.showError(controller: controller)
                     return
                 }
             self.customExercise.append(ex)
                 let work = Workout()
-                work.excersises = self.customExercise
+                self.exercises += self.customExercise
+                self.customExercise = []
+                work.excersises = self.exercises
                 self.createTemplate?.workoutNew = work
             }
         }else {

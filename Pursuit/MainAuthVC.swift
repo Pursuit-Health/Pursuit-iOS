@@ -8,6 +8,7 @@
 
 import UIKit
 import KVNProgress
+import IQKeyboardManagerSwift
 
 //IGOR: Check
 class MainAuthVC: UIViewController {
@@ -95,11 +96,19 @@ class MainAuthVC: UIViewController {
         super.viewDidLoad()
         
         getControllers()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = false
     }
     
     //MARK: Private

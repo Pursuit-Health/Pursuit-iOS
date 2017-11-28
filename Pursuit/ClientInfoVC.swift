@@ -45,8 +45,10 @@ class ClientInfoVC: UIViewController {
     var client: User? {
         didSet {
             if let url = client?.avatar {
-                profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
+                 DispatchQueue.main.async {
+                self.profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
                                              placeholderImage: UIImage(named: "profile"))
+                }
             }
             self.navigationItem.leftTitle = client?.name ?? ""
         }

@@ -247,6 +247,8 @@ class ExerciseDetailsVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func confirmButtonPressed() {
+        var exerc = ExcersiseData()
+        if isInteractiv {
         if self.excersize.name == nil {
             self.excersize.name = self.excersize.innerExercise?.name
         }
@@ -254,13 +256,14 @@ class ExerciseDetailsVC: UIViewController {
         self.excersize.exercise_id = self.excersize.id
         self.excersize.type = self.exerciseType
         
-        var exerc = ExcersiseData()
+        
         exerc = self.excersize
         exerc.id = nil
         
         if self.excersize.name == "" || self.excersize.sets == nil || self.excersize.reps == nil || self.excersize.weight == nil || self.excersize.rest == nil || self.excersize.notes == ""{
             self.showError()
             return
+        }
         }
         
         if !isEditExercise {

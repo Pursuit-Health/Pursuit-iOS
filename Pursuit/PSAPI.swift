@@ -88,8 +88,13 @@ class PSAPI: APIHandable {
                         if type == "trainer" {
                             UserDefaults.standard.set(false, forKey:"isClient")
                             user = Trainer(JSON: objectData)
+                            if let avatar = userData["avatar"] as? String {
+                                User.shared.avatar = avatar
+                            }
+                            User.shared = user!
                         }
                         User.shared.token = token
+                        
                     }
                     
                 case .failure(let serverError):
@@ -119,6 +124,10 @@ class PSAPI: APIHandable {
                         if type == "client" {
                             UserDefaults.standard.set(true, forKey:"isClient")
                             user = Client(JSON: objectData)
+                            if let avatar = userData["avatar"] as? String {
+                                User.shared.avatar = avatar
+                            }
+                            User.shared = user!
                         }
                         User.shared.token = token
                     }

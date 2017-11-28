@@ -29,19 +29,21 @@ class SettingsVC: UIViewController {
             userNameLabel.text = User.shared.name ?? ""
             emailLabel.text = User.shared.email ?? ""
             if User.shared.avatar != nil {
-                userImageView.sd_setImage(with: URL(string:  PSURL.BaseURL + User.shared.avatar! ?? ""))
+                DispatchQueue.main.async {
+                    self.userImageView.sd_setImage(with: URL(string:  PSURL.BaseURL + User.shared.avatar! ))
+                }
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.getUserInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
@@ -55,6 +57,11 @@ class SettingsVC: UIViewController {
     }
     
     func getUserInfo() {
-        self.user = User.shared
+        User.getUserInfo { (user, error) in
+            if error == nil {
+                self.user = User.shared
+            }
+        }
+        
     }
 }

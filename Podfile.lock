@@ -3,7 +3,21 @@ PODS:
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
-  - ClosureKit (1.0.0)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - DeepLinkKit (1.4.0)
@@ -11,6 +25,7 @@ PODS:
   - Fabric (1.7.2)
   - HMSegmentedControl (1.5.4)
   - HTTPStatusCodes (3.1.2)
+  - IQKeyboardManagerSwift (5.0.6)
   - JTAppleCalendar (7.1.4)
   - KeychainAccess (3.1.0)
   - KVNProgress (2.3.1)
@@ -29,13 +44,14 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 4.1)
-  - ClosureKit (~> 1.0)
+  - BlocksKit (~> 2.2)
   - Crashlytics
   - DeepLinkKit (~> 1.4)
   - ESTabBarController-swift
   - Fabric
   - HMSegmentedControl
   - HTTPStatusCodes (~> 3.1)
+  - IQKeyboardManagerSwift (~> 5.0)
   - JTAppleCalendar (~> 7.0)
   - KeychainAccess (~> 3.0)
   - KVNProgress
@@ -52,13 +68,14 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
-  ClosureKit: 537a300db832781001e1bcf3f2b6156600f8b847
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DeepLinkKit: bffd3b5e51549222f974d631b4e0e7484600b9d8
   ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
   HTTPStatusCodes: 88155ba36826366a898a7b4f34d311f49083d546
+  IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   JTAppleCalendar: aaeee95e939e0b0a381fb51eb77738bd26bb10f6
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
@@ -73,6 +90,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: e9ff953c820394a4e641cfb0118b6c959506aec2
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 824487e873aabcce5848f9087945373d932c8bc7
+PODFILE CHECKSUM: 3140ba507f22606db12c88b2efa1b7ec2b7448bc
 
 COCOAPODS: 1.2.1

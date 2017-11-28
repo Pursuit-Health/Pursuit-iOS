@@ -78,7 +78,7 @@ class ClientsVC: UIViewController {
         setUpBackgroundImage()
         
         navigationController?.navigationBar.setAppearence()
-        
+
         loadClients()
     }
     
@@ -86,7 +86,6 @@ class ClientsVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
-        
         
     }
     
