@@ -23,7 +23,7 @@ class AddExerceiseVC: UIViewController {
         case reps
         case weights
         case rest
-        case notes
+        case notes(delegate: NotesCellDelegate)
         
         var cellType: UITableViewCell.Type {
             switch self {
@@ -38,7 +38,7 @@ class AddExerceiseVC: UIViewController {
             case .rest:
                 return AddExerciseCell.self
             case .notes:
-                return AddExerciseCell.self
+                return NotesCell.self
                 
             }
         }
@@ -77,11 +77,9 @@ class AddExerceiseVC: UIViewController {
                         completion(text)
                     })
                 }
-            case .notes:
-                if let castedCell = cell as? AddExerciseCell {
-                    fillNotesCell(cell: castedCell, completion: { text in
-                        completion(text)
-                    })
+            case .notes(let delegate):
+                if let castedCell = cell as? NotesCell {
+                    fillNotesCell(cell: castedCell, delegate: delegate)
                 }
             }
         }
@@ -141,15 +139,16 @@ class AddExerceiseVC: UIViewController {
             }
         }
         
-        private func fillNotesCell(cell: AddExerciseCell, completion: @escaping TextFieldComletion) {
-            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Notes")
-            cell.exerciseImageView.image                    = imageFromName("weight")
-            cell.exerciseTextField.keyboardType             = .numberPad
-            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
-                if let text = textField?.text {
-                    completion(text)
-                }
-            }
+        private func fillNotesCell(cell: NotesCell, delegate: NotesCellDelegate) {
+            cell.nameLabel.text             = "Notes"
+            cell.exerciseImageView.image    = imageFromName("weight")
+            cell.delegate = delegate
+//            cell.exerciseTextField.keyboardType             = .default
+//            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
+//                if let text = textField?.text {
+//                    completion(text)
+//                }
+//            }
         }
         
         private func placeHolderWithText(_ text: String) -> NSAttributedString {
@@ -169,7 +168,7 @@ class AddExerceiseVC: UIViewController {
     
     weak var delegate: AddExerceiseVCDelegate?
     
-    lazy var cellsInfo: [CellType] = [.name, .sets, .reps, .weights, .rest, .notes]
+    lazy var cellsInfo: [CellType] = [.name, .sets, .reps, .weights, .rest, .notes(delegate: self)]
     
     var exerciseType: ExcersiseData.ExcersiseType?
     
@@ -187,7 +186,8 @@ class AddExerceiseVC: UIViewController {
     }
     @IBOutlet weak var exerceiseTableView: UITableView! {
         didSet {
-            self.exerceiseTableView.rowHeight = 50
+            self.exerceiseTableView.rowHeight = UITableViewAutomaticDimension
+            self.exerceiseTableView.estimatedRowHeight = 50
         }
     }
     
@@ -240,7 +240,7 @@ extension AddExerceiseVC: UITableViewDataSource {
             case .weights:
                 self.exercise.weight = Int(cellText)
             case .rest:
-                break
+                self.exercise.rest = Int(cellText)
             case .notes:
                 break
             }
@@ -249,9 +249,25 @@ extension AddExerceiseVC: UITableViewDataSource {
     }
 }
 
+extension AddExerceiseVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath.row >= cellsInfo.count - 1){
+            return UITableViewAutomaticDimension
+        } else {
+            return 50
+        }
+    }
+}
+
 extension AddExerceiseVC: ExercisesTypeViewDelegate {
     func tappedOn(_ view: ExercisesTypeView, with type: ExcersiseData.ExcersiseType) {
         self.exerciseType = type
         self.exercise.type = self.exerciseType
+    }
+}
+
+extension AddExerceiseVC: NotesCellDelegate {
+    func textViewDidEndEditingWith(_ text: String) {
+        self.exercise.notes = text
     }
 }

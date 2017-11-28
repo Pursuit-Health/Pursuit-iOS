@@ -109,15 +109,12 @@ class ExercisesSearchVC: UIViewController {
         
         if shouldReload {
         self.datasource?.loadExercisesByCategoryId(on: self, completion: { (innerexercises) in
-//            self.excersisew = innerexercises.map { obj in
-//                let ex = Excersise()
-//                ex.ex = obj
-//                return ex
-//            }
-//        }
+
             self.exercises = innerexercises?.map { obj in
                 let exer = ExcersiseData()
                 exer.innerExercise = obj
+                exer.name = obj.name
+                exer.id = obj.id
                 return exer
             } ?? []
             self.filteredExercises = self.exercises ?? []
@@ -140,7 +137,7 @@ extension ExercisesSearchVC: UITableViewDataSource {
         
         let exerc = filteredExercises[indexPath.row]
         cell.delegate  = self
-        cell.exerciseNameLabel.text = exerc.innerExercise?.name
+        cell.exerciseNameLabel.text = exerc.name
         cell.selectedCell = exerc.selected ?? false
         return cell
     }

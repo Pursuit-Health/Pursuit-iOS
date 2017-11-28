@@ -110,10 +110,10 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         
         work.createWorkout(clientId: "\(self.selectedClient?.id ?? 0)") { (workout, error) in
             if error == nil {
+                self.exercises = []
                 controller.navigationController?.popViewController(animated: true)
             }else {
                 let alert = error?.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
-                    controller.navigationController?.popViewController(animated: true)
                 }))
                 controller.present(alert!, animated: true, completion: nil)
             }

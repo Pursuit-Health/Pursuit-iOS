@@ -57,7 +57,7 @@ class ExerciseDetailsVC: UIViewController {
                 }
             case .name(let excersize):
                 if let castedCell = cell as? AddExerciseCell {
-                    fillNameCell(cell: castedCell, name: excersize.innerExercise?.name, completion: { text in
+                    fillNameCell(cell: castedCell, name: excersize.name, completion: { text in
                         completion(text)
                     })
                 }
@@ -286,7 +286,7 @@ class ExerciseDetailsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.exerciseType = .warmup
-        self.leftTitle = self.excersize.innerExercise?.name
+        self.leftTitle = self.excersize.name
         
         self.loadImage()
     }
