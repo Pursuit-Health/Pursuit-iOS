@@ -17,6 +17,7 @@ class TrainerCoordinator: Coordinator {
     weak var createTemplate: CreateTemplateVC?
     weak var mainExercisesVC: MainExercisesVC?
     weak var searchExercisesVC: ExercisesSearchVC?
+    weak var exerciseDetailsVC: ExerciseDetailsVC?
     
     var selectedCategory: Category?
     var exercises: [ExcersiseData] = []
@@ -101,6 +102,7 @@ extension TrainerCoordinator: TrainingVCDelegate {
 }
 
 extension TrainerCoordinator: CreateTemplateVCDelegate {
+    
     func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
         var work = workout
         
@@ -109,6 +111,11 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         work.createWorkout(clientId: "\(self.selectedClient?.id ?? 0)") { (workout, error) in
             if error == nil {
                 controller.navigationController?.popViewController(animated: true)
+            }else {
+                let alert = error?.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+                    controller.navigationController?.popViewController(animated: true)
+                }))
+                controller.present(alert!, animated: true, completion: nil)
             }
         }
     }
@@ -122,6 +129,14 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         
         self.mainExercisesVC = mainExercises
     }
+    
+    func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC) {
+        let detailsController = UIStoryboard.trainer.ExerciseDetails!
+        detailsController.excersize = exercise
+        detailsController.isEditExercise = true
+        controller.navigationController?.pushViewController(detailsController, animated: true)
+    }
+    
 }
 
 extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasource {
@@ -175,6 +190,7 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
         detailsController.delegate = self
         detailsController.excersize = exercise
         controller.navigationController?.pushViewController(detailsController, animated: true)
+        self.exerciseDetailsVC = detailsController
     }
     
     func endedWithExercises(_ exercises: [ExcersiseData], on controller: ExercisesSearchVC) {
@@ -184,9 +200,9 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
     }
 
     func loadExercisesByCategoryId(on controller: ExercisesSearchVC, completion: @escaping ExercisesSearchVCDatasource.GetExercisesByCategoryIdCompletion) {
-        self.selectedCategory?.loadExercisesByCategoryId(completion: { (exercises, error) in
+        self.selectedCategory?.loadExercisesByCategoryId(completion: { (innerexercises, error) in
             if error == nil {
-                completion(exercises)
+                completion(innerexercises)
             }else {
                 completion(nil)
             }

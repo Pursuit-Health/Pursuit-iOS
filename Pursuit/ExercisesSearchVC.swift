@@ -18,7 +18,7 @@ extension ExercisesSearchVCDelegate {
 }
 
 protocol ExercisesSearchVCDatasource: class  {
-    typealias GetExercisesByCategoryIdCompletion = (_ exercise: [ExcersiseData]?) -> Void
+    typealias GetExercisesByCategoryIdCompletion = (_ exercise: [ExcersiseData.InnerExcersise]?) -> Void
     func loadExercisesByCategoryId(on controller: ExercisesSearchVC, completion: @escaping GetExercisesByCategoryIdCompletion)
 }
 
@@ -61,7 +61,7 @@ class ExercisesSearchVC: UIViewController {
         didSet {
             self.shouldReload = false
             for (index, exer) in self.filteredExercises.enumerated() {
-                if exer.exercise_id == self.exercise.exercise_id {
+                if exer.innerExercise?.id == self.exercise.innerExercise?.id {
                     self.filteredExercises[index] = self.exercise
                 }
             }
@@ -108,9 +108,19 @@ class ExercisesSearchVC: UIViewController {
         super.viewWillAppear(animated)
         
         if shouldReload {
-        self.datasource?.loadExercisesByCategoryId(on: self, completion: { (exercises) in
-            self.exercises = exercises ?? []
-            self.filteredExercises = exercises ?? []
+        self.datasource?.loadExercisesByCategoryId(on: self, completion: { (innerexercises) in
+//            self.excersisew = innerexercises.map { obj in
+//                let ex = Excersise()
+//                ex.ex = obj
+//                return ex
+//            }
+//        }
+            self.exercises = innerexercises?.map { obj in
+                let exer = ExcersiseData()
+                exer.innerExercise = obj
+                return exer
+            } ?? []
+            self.filteredExercises = self.exercises ?? []
         })
         }
         
@@ -130,7 +140,7 @@ extension ExercisesSearchVC: UITableViewDataSource {
         
         let exerc = filteredExercises[indexPath.row]
         cell.delegate  = self
-        cell.exerciseNameLabel.text = exerc.name
+        cell.exerciseNameLabel.text = exerc.innerExercise?.name
         cell.selectedCell = exerc.selected ?? false
         return cell
     }

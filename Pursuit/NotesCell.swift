@@ -14,7 +14,13 @@ protocol NotesCellDelegate: class  {
 class NotesCell: UITableViewCell {
     
     @IBOutlet weak var exerciseImageView: UIImageView!
-    @IBOutlet weak var notesTextView: UITextView!
+    
+    @IBOutlet weak var notesTextView: UITextView! {
+        didSet {
+            self.notesTextView.delegate = self
+        }
+    }
+    
     @IBOutlet weak var nameLabel: UILabel!
     
     weak var delegate: NotesCellDelegate?
@@ -33,5 +39,9 @@ class NotesCell: UITableViewCell {
 extension NotesCell: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         self.delegate?.textViewDidEndEditingWith(textView.text ?? "")
+    }
+    
+    func  textViewDidBeginEditing(_ textView: UITextView) {
+        
     }
 }

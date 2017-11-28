@@ -473,7 +473,7 @@ class PSAPI: APIHandable {
     func getExercisesByCategoryId(categoryId: String, completion: @escaping GetExercisesByCategoryIdCompletion) -> DataRequest? {
         let request = Request.getExercisesByCategoryId(categoryId: categoryId)
         
-        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[ExcersiseData]>) in
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[ExcersiseData.InnerExcersise]>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
@@ -542,5 +542,5 @@ extension PSAPI {
     
     typealias GetCategoriesCompletion   = (_ categories: [Category]?, _ error: ErrorProtocol?) -> Void
     
-    typealias GetExercisesByCategoryIdCompletion   = (_ exercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
+    typealias GetExercisesByCategoryIdCompletion   = (_ exercises: [ExcersiseData.InnerExcersise]?, _ error: ErrorProtocol?) -> Void
 }

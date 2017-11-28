@@ -14,6 +14,8 @@ protocol CreateTemplateVCDelegate: class {
     
     func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC)
     func addExercisesButtonPressed(on controller: CreateTemplateVC)
+    
+    func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC)
 }
 
 extension CreateTemplateVCDelegate {
@@ -204,10 +206,12 @@ class CreateTemplateVC: UIViewController {
         navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
 
+        self.templateTableView?.reloadData()
+        
         calendarView.visibleDates { (visibleDates) in
             if let date = visibleDates.monthDates.first?.date {
                 let formatter       = DateFormatters.serverTimeFormatter
-                self.startAt = formatter.string(from: date)
+                self.startAt = formatter.string(from: Date())
                 self.fillMonthYearLabelsWith(date)
             }
         }
@@ -297,6 +301,10 @@ extension CreateTemplateVC: UITableViewDataSource{
 
 extension CreateTemplateVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let cellInfo = self.sections[indexPath.section]?[indexPath.row], case .excersise(let excersie) = cellInfo {
+            self.delegate?.exerciseSelected(exercise: excersie, on: self)
+        }
 //        if let controller = exercisesDetailsVC {
 //            let exersiceInfo = self.exercises[indexPath.row - 1]
 //            self.navigationController?.pushViewController(controller, animated: true)
@@ -333,9 +341,9 @@ extension CreateTemplateVC: AddExerceiseVCDelegate {
 
 extension CreateTemplateVC: JTAppleCalendarViewDataSource {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        let formatter       = DateFormatters.projectFormatFormatter
-        let start           = formatter.date(from: "2017 01 01")!
-        let end             = formatter.date(from: "2018 01 01")!
+        let formatter       = DateFormatters.serverTimeFormatter
+        let start           = formatter.date(from: "2017-01-01")!
+        let end             = formatter.date(from: "2018-01-01")!
         let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: nil, generateInDates: nil, generateOutDates: nil, firstDayOfWeek: nil, hasStrictBoundaries: nil)
         return parameters
     }
@@ -362,6 +370,7 @@ extension CreateTemplateVC: JTAppleCalendarViewDelegate {
         guard let calCell = cell as? CreateTemplateCalendarCell else { return }
         let formatter       = DateFormatters.serverTimeFormatter
         self.startAt = formatter.string(from: date)
+        
         cellState.templateCalendarCellselected(cell: calCell)
     }
     

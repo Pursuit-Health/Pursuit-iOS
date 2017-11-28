@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TPKeyboardAvoiding
 
 protocol ExerciseDetailsVCDelegate: class {
     func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC)
@@ -24,6 +25,7 @@ class ExerciseDetailsVC: UIViewController {
         case weights(excersize: ExcersiseData)
         case rest(excersize: ExcersiseData)
         case notes(excersize: ExcersiseData, delegate: NotesCellDelegate)
+        case description(excersize: ExcersiseData)
         
         var cellType: UITableViewCell.Type {
             switch self {
@@ -41,6 +43,8 @@ class ExerciseDetailsVC: UIViewController {
                 return AddExerciseCell.self
             case .notes:
                 return NotesCell.self
+            case .description:
+                return DescriptionCell.self
             }
         }
         
@@ -53,7 +57,7 @@ class ExerciseDetailsVC: UIViewController {
                 }
             case .name(let excersize):
                 if let castedCell = cell as? AddExerciseCell {
-                    fillNameCell(cell: castedCell, name: excersize.name, completion: { text in
+                    fillNameCell(cell: castedCell, name: excersize.innerExercise?.name, completion: { text in
                         completion(text)
                     })
                 }
@@ -85,6 +89,13 @@ class ExerciseDetailsVC: UIViewController {
             case .notes(let excersize, let delegate):
                 if let castedCell = cell as? NotesCell {
                     fillNotesCell(cell: castedCell, notes: excersize.notes, delegate: delegate)
+                }
+                
+            case .description(let excersize):
+                if let castedCell = cell as? DescriptionCell {
+                    if let desc = excersize.innerExercise?.description {
+                      fillDescriptionCell(cell: castedCell, description: desc)
+                    }
                 }
             }
         }
@@ -159,6 +170,11 @@ class ExerciseDetailsVC: UIViewController {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
             cell.exerciseImageView.image                    = imageFromName("weight")
             cell.exerciseTextField.keyboardType             = .numberPad
+            if let rets = rets {
+                cell.exerciseTextField.text = String(rets)
+            }else {
+                cell.exerciseTextField.text = ""
+            }
             cell.exerciseTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
@@ -170,7 +186,15 @@ class ExerciseDetailsVC: UIViewController {
             cell.nameLabel.text             = "Notes"
             cell.exerciseImageView.image    = imageFromName("weight")
             cell.delegate = delegate
-            //cell.notesTextView.text = ""
+            if let note = notes {
+            cell.notesTextView.text = note
+            }else {
+               cell.notesTextView.text = ""
+            }
+        }
+        
+        private func fillDescriptionCell(cell: DescriptionCell, description: String) {
+            cell.descriptionLabel.text = description
         }
         
         
@@ -192,9 +216,11 @@ class ExerciseDetailsVC: UIViewController {
     
     var excersize: ExcersiseData = ExcersiseData() {
         didSet {
-            
+            self.exerceiseTableView?.reloadData()
         }
     }
+    
+    var isEditExercise: Bool = false
     
     var exerciseType: ExcersiseData.ExcersiseType?
     
@@ -204,13 +230,14 @@ class ExerciseDetailsVC: UIViewController {
                                       .reps(excersize: self.excersize),
                                       .weights(excersize: self.excersize),
                                       .rest(excersize: self.excersize),
-                                      .notes(excersize: self.excersize, delegate: self)]
+                                      .notes(excersize: self.excersize, delegate: self),
+                                      .description(excersize: self.excersize)]
     
     //MARK: IBOutlets
     
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var excersiseImageView: UIImageView!
-    @IBOutlet weak var exerceiseTableView: UITableView! {
+    @IBOutlet  var exerceiseTableView: TPKeyboardAvoidingTableView! {
         didSet {
             self.exerceiseTableView.rowHeight = UITableViewAutomaticDimension
             self.exerceiseTableView.estimatedRowHeight = 100
@@ -220,6 +247,9 @@ class ExerciseDetailsVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func confirmButtonPressed() {
+        if self.excersize.name == nil {
+            self.excersize.name = self.excersize.innerExercise?.name
+        }
         self.excersize.selected = true
         self.excersize.exercise_id = self.excersize.id
         self.excersize.type = self.exerciseType
@@ -227,8 +257,11 @@ class ExerciseDetailsVC: UIViewController {
         var exerc = ExcersiseData()
         exerc = self.excersize
         exerc.id = nil
-        
+        if !isEditExercise {
         self.delegate?.ended(with: exerc, on: self)
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -247,17 +280,19 @@ class ExerciseDetailsVC: UIViewController {
         //self.navigationController?.navigationBar.setAppearence()
         
         setUpBackgroundImage()
-        self.loadImage()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.exerciseType = .warmup
-        self.leftTitle = self.excersize.name
+        self.leftTitle = self.excersize.innerExercise?.name
+        
+        self.loadImage()
     }
     
     private func loadImage() {
-        self.excersiseImageView.sd_setImage(with: self.excersize.imageUrl) { (image, error, _, _) in
+        self.excersiseImageView.sd_setImage(with: self.excersize.innerExercise?.imageURL) { (image, error, _, _) in
             if let image = image, error == nil {
                 self.imageHeightConstraint.constant = self.excersiseImageView.bounds.size.width * image.size.height / image.size.width
             }
@@ -305,7 +340,7 @@ extension ExerciseDetailsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(indexPath.row == 0){
             return 80
-        } else if (indexPath.row == cellsInfo.count - 1){
+        } else if (indexPath.row >= cellsInfo.count - 2){
             return UITableViewAutomaticDimension
         } else {
             return 50

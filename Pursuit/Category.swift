@@ -27,7 +27,7 @@ class Category: Mappable {
         
     }
     
-    typealias GetExerciseByCategoryIdCompletion = (_ exercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
+    typealias GetExerciseByCategoryIdCompletion = (_ exercises: [ExcersiseData.InnerExcersise]?, _ error: ErrorProtocol?) -> Void
     func loadExercisesByCategoryId(completion: @escaping GetExerciseByCategoryIdCompletion) {
         let api = PSAPI()
         guard let id = self.categoryId else {

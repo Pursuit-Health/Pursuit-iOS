@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
+  - ClosureKit (1.0.0)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - DeepLinkKit (1.4.0)
@@ -28,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 4.1)
+  - ClosureKit (~> 1.0)
   - Crashlytics
   - DeepLinkKit (~> 1.4)
   - ESTabBarController-swift
@@ -50,6 +52,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
+  ClosureKit: 537a300db832781001e1bcf3f2b6156600f8b847
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DeepLinkKit: bffd3b5e51549222f974d631b4e0e7484600b9d8
   ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
@@ -70,6 +73,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: e9ff953c820394a4e641cfb0118b6c959506aec2
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: d3e337d8523faade62ba638eb89232ba3e68ec8e
+PODFILE CHECKSUM: 824487e873aabcce5848f9087945373d932c8bc7
 
 COCOAPODS: 1.2.1

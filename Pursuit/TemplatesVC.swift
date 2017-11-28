@@ -151,6 +151,10 @@ extension TemplatesVC: UITableViewDelegate {
 }
 
 extension TemplatesVC: CreateTemplateVCDelegate {
+    func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC) {
+        
+    }
+    
     func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
     
     }

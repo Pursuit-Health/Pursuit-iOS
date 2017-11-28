@@ -33,6 +33,27 @@ import ObjectMapper
 
 class ExcersiseData: Mappable {
     
+    
+    class InnerExcersise: Mappable {
+        
+        var name: String?
+        var description: String?
+        var imageURL: URL?
+        var id: Int?
+        
+        required init?(map: Map) {
+            
+        }
+        
+        func mapping(map: Map) {
+            self.name           <- map["name"]
+            self.description    <- map["description"]
+            self.imageURL       <- map["image_url"]
+            self.id             <- map["id"]
+        }
+        
+
+    }
     //MARK: Nested
     
     enum ExcersiseType: Int {
@@ -61,13 +82,13 @@ class ExcersiseData: Mappable {
     var weight      : Int?
     var rest        : Int?
     var notes       : String?
-    var imageUrl    : URL?
     var exDesc      : String?
     
     var exercise_id : Int?
     
     var isDone      : Bool?
     var selected    : Bool?
+    var innerExercise: InnerExcersise?
     
     func mapping(map: Map) {
         self.id             <- map["id"]
@@ -77,11 +98,19 @@ class ExcersiseData: Mappable {
         self.reps           <- map["reps"]
         self.weight         <- map["weight"]
         self.notes          <- map["notes"]
-        self.imageUrl       <- (map["exercise.data.image_url"], URLTransform())
-        self.exDesc         <- map["exercise.data.description"]
+        self.innerExercise  <- map["exercise"]
         self.isDone         <- map["done.data.value"]
         self.exercise_id    <- map["exercise_id"]
         self.rest           <- map["rest"]
+/*
+         { inner, error in
+         self.excersise = inner.map { obj in
+         let ex = Excersise()
+         ex.ex = obj
+         return ex
+         }
+         }
+ */
     }
     
     init() {
