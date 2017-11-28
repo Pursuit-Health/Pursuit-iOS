@@ -61,7 +61,7 @@ class ExercisesSearchVC: UIViewController {
         didSet {
             self.shouldReload = false
             for (index, exer) in self.filteredExercises.enumerated() {
-                if exer.id == self.exercise.id {
+                if exer.exercise_id == self.exercise.exercise_id {
                     self.filteredExercises[index] = self.exercise
                 }
             }
@@ -69,7 +69,11 @@ class ExercisesSearchVC: UIViewController {
         }
     }
 
-    var exercises: [ExcersiseData] = []
+    var exercises: [ExcersiseData] = [] {
+        didSet {
+            self.exercisesTableView?.reloadData()
+        }
+    }
     
     var filteredExercises: [ExcersiseData] = [] {
         didSet {

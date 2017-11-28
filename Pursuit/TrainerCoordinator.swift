@@ -179,7 +179,7 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
     
     func endedWithExercises(_ exercises: [ExcersiseData], on controller: ExercisesSearchVC) {
         //upload workout
-        //self.exercises = exercises
+        self.exercises += exercises
         controller.navigationController?.popViewController(animated: true)
     }
 
@@ -196,7 +196,7 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
 
 extension TrainerCoordinator: ExerciseDetailsVCDelegate {
     func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC) {
-        self.exercises.append(info)
+        //self.exercises.append(info)
         self.searchExercisesVC?.exercise = info
         controller.navigationController?.popViewController(animated: true)
     }

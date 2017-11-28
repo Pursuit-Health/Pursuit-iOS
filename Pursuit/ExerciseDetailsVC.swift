@@ -187,8 +187,14 @@ class ExerciseDetailsVC: UIViewController {
     //MARK: Properties
     
     var isInteractiv: Bool = true
+    
     weak var delegate: ExerciseDetailsVCDelegate?
-    var excersize: ExcersiseData = ExcersiseData()
+    
+    var excersize: ExcersiseData = ExcersiseData() {
+        didSet {
+            
+        }
+    }
     
     var exerciseType: ExcersiseData.ExcersiseType?
     
