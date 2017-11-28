@@ -8,6 +8,7 @@
 
 import UIKit
 import SHTextFieldBlocks
+import IQKeyboardManagerSwift
 
 protocol AddExerceiseVCDelegate: class {
     func customexerciseAdded(exercise: ExcersiseData, on controller: AddExerceiseVC)
@@ -212,6 +213,13 @@ class AddExerceiseVC: UIViewController {
         super.viewWillAppear(animated)
         self.exerciseType = .warmup
         self.exercise.type = self.exerciseType
+        
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = false
     }
     
     private func popViewController() {

@@ -59,7 +59,7 @@
             <connections>
                 <outlet property="exerciseTypeButton" destination="gBc-OX-bwn" id="8GX-XX-HGb"/>
             </connections>
-            <point key="canvasLocation" x="39" y="39"/>
+            <point key="canvasLocation" x="38.5" y="39"/>
         </collectionViewCell>
     </objects>
 </document>

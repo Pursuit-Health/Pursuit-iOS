@@ -41,9 +41,12 @@ class ExercisesTypeView: BBBXIBView {
     var exercisesType: [ExcersiseData.ExcersiseType] = []
     var selectedType: ExcersiseData.ExcersiseType? {
         didSet {
-            self.exercisesTypeCollectionView.reloadData()
+            //self.exercisesTypeCollectionView.reloadData()
         }
     }
+    
+    var currentIndexPath: IndexPath?
+
     
      func configureCell(with types: [ExcersiseData.ExcersiseType], selectedType: ExcersiseData.ExcersiseType?) {
         self.exercisesType = types
@@ -54,6 +57,34 @@ class ExercisesTypeView: BBBXIBView {
     }
     
     //MARK: Private
+    fileprivate func updateCollectionView(_ collectionView: UICollectionView, indexPath: IndexPath) {
+        if currentIndexPath == nil {
+            guard let firstcell = collectionView.cellForItem(at: [0,0]) as? ExercisesTypeCollectionViewCell else { return }
+            handleSelection(firstcell, for: indexPath, isSelected: false)
+            
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ExercisesTypeCollectionViewCell else { return }
+            handleSelection(cell, for: indexPath, isSelected: true)
+            
+            currentIndexPath = indexPath
+            
+        } else if currentIndexPath == indexPath {
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ExercisesTypeCollectionViewCell else { return }
+            handleSelection(cell, for: indexPath, isSelected: cell.typeSelected)
+            
+            currentIndexPath = nil
+        } else if currentIndexPath != indexPath {
+            if let cell = collectionView.cellForItem(at: currentIndexPath!) as? ExercisesTypeCollectionViewCell {
+                cell.typeSelected = false
+                handleSelection(cell, for: currentIndexPath!, isSelected: false)
+            }
+            
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ExercisesTypeCollectionViewCell else { return }
+            handleSelection(cell, for: indexPath, isSelected: true)
+            cell.typeSelected = true
+            currentIndexPath = indexPath
+        }
+        
+    }
     
     fileprivate func handleSelection(_ cell: ExercisesTypeCollectionViewCell, for indexPath: IndexPath, isSelected: Bool) {
         cell.typeSelected = isSelected
@@ -98,6 +129,8 @@ extension ExercisesTypeView: ExercisesTypeCollectionViewCellDelegate {
     func tappedOn(_ cell: ExercisesTypeCollectionViewCell) {
         guard let indexPath = exercisesTypeCollectionView.indexPath(for: cell) else { return }
         self.selectedType = self.exercisesType[indexPath.row]
-        handleSelection(cell, for: indexPath, isSelected: true)
+        updateCollectionView(exercisesTypeCollectionView, indexPath: indexPath)
+
+        //handleSelection(cell, for: indexPath, isSelected: true)
     }
 }

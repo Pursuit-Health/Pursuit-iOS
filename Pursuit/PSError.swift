@@ -41,7 +41,7 @@ enum PSError: ErrorProtocol {
         case .custom(let error, _):
             return error.localizedDescription
         case .internetConnection:
-            return "There was an error connecting to userfeel.com. Please check your Internet connection or try again later."
+            return "There was an error connecting to HealthPersuit. Please check your Internet connection or try again later."
         case .somethingWentWrong:
             return "Something went wrong. Please try again later."
         case .versionUncheckable:
