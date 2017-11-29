@@ -64,9 +64,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I5j-2l-xv3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zmd-HX-Bil"/>
+                    <navigationItem key="navigationItem" id="zmd-HX-Bil">
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="tMH-Yz-81N">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="menuBarButtonPressed:" destination="sxH-Ge-hB2" id="kEh-Gf-PGP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="dfmgdkfgmkdfg"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Clients"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="ck3-ZJ-rt9" kind="presentation" identifier="ShowTrainerStoryboard" id="l0m-kA-2w0"/>
@@ -208,6 +215,7 @@
     </scenes>
     <resources>
         <image name="bg" width="375" height="667"/>
+        <image name="ic_menu" width="21" height="17"/>
         <image name="logout" width="512" height="512"/>
         <image name="photo-camera-2" width="512" height="512"/>
     </resources>

@@ -30,6 +30,10 @@ class NavigatorVC: UIViewController {
         }
     }
     
+    @IBAction func menuBarButtonPressed(_ sender: Any) {
+        self.menuButtonPressed()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setAppearence()
@@ -39,7 +43,8 @@ class NavigatorVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-        self.addMenuBarButton()
+        
+        //self.addMenuBarButton()
     }
     
     //MARK: Private
@@ -60,7 +65,7 @@ class NavigatorVC: UIViewController {
             let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.menuButtonPressed))
             
             menuButton.tintColor = .white
-        self.navigationItem.leftBarButtonItem = menuButton
+        self.navigationItem.leftBarButtonItems = [menuButton]
     }
     
     func menuButtonPressed() {
