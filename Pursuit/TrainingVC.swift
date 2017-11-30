@@ -127,8 +127,13 @@ class TrainingVC: UIViewController {
         f.dateFormat = "MMMM yyyy"
         f.timeZone = TimeZone(abbreviation: "UTC")
         let day = Calendar.current.component(.weekday, from: date)
+        // TODO: for fixing temporary bug
+        if day > 6 {
+          self.dayNameLabel.text = f.weekdaySymbols.last ?? ""
+        }else {
+            self.dayNameLabel.text = f.weekdaySymbols[day]
+        }
         
-        self.dayNameLabel.text = f.weekdaySymbols[day]
         self.monthYearLabel.text = f.string(from: date)
         
         f.dateFormat = "dd"

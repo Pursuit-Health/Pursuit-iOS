@@ -110,8 +110,8 @@ extension ClientInfoVC: UITableViewDataSource {
         
         let date = Date(timeIntervalSince1970: (trainigDate.startAt ?? 0))
         dateFormatter.dateFormat = "dd/MM/YYYY"
-        
-        cell.dateLabel.text      = dateFormatter.string(from: date)
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        cell.dateLabel.text     = dateFormatter.string(from: date)
         
         return cell
     }

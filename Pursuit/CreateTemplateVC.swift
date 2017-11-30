@@ -378,7 +378,7 @@ extension CreateTemplateVC: JTAppleCalendarViewDelegate {
         
         guard let calCell = cell as? CreateTemplateCalendarCell else { return }
         let formatter       = DateFormatters.serverTimeFormatter
-        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.timeZone = TimeZone(identifier: "UTC")
         self.startAt = formatter.string(from: date)
         
         cellState.templateCalendarCellselected(cell: calCell)
