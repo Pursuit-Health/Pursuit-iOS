@@ -35,6 +35,8 @@ class MainAuthVC: UIViewController {
     
     var services: [DeepLinkService]         = [GuestDeepLinkService()]
     
+    var selectedImage: UIImage?
+    
     
     var changeScrollViewOffSet: Bool = true {
         didSet {
@@ -52,6 +54,7 @@ class MainAuthVC: UIViewController {
         didSet {
         }
     }
+    
     @IBOutlet weak var addPhotoButton: UIButton! {
         didSet {
         }
@@ -171,12 +174,12 @@ class MainAuthVC: UIViewController {
     
     fileprivate func uploadImage() {
         
-        guard let image = profilePhotoImageView.image else { return }
+        guard let image = selectedImage else { return }
         
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
             if (error == nil) {
-                
+                self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
         }
     }
@@ -223,7 +226,7 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         profilePhotoImageView.image = chosenImage
-        
+        self.selectedImage = chosenImage
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -259,7 +262,6 @@ extension MainAuthVC: SignUpVCDelegate {
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
                 self.uploadImage()
-                self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
         })
     }

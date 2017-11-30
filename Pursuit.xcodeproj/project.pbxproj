@@ -2201,8 +2201,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "27838570-12e4-4d0f-80e8-6247da789130";
-				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Provision_Profile;
+				PROVISIONING_PROFILE = "38e64d1a-3ef4-4137-8e11-288a21ec4992";
+				PROVISIONING_PROFILE_SPECIFIER = Add_Hoc_Testing_Provision;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2221,8 +2221,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "27838570-12e4-4d0f-80e8-6247da789130";
-				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Provision_Profile;
+				PROVISIONING_PROFILE = "38e64d1a-3ef4-4137-8e11-288a21ec4992";
+				PROVISIONING_PROFILE_SPECIFIER = Add_Hoc_Testing_Provision;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;

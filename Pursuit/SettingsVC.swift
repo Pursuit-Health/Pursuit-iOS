@@ -57,11 +57,7 @@ class SettingsVC: UIViewController {
     }
     
     func getUserInfo() {
-        User.getUserInfo { (user, error) in
-            if error == nil {
-                self.user = User.shared
-            }
-        }
+        self.user = User.shared
         
-    }
+        }
 }
