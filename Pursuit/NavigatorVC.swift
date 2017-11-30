@@ -38,6 +38,8 @@ class NavigatorVC: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.setAppearence()
         self.addController()
+        
+        self.revealViewController().delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +92,13 @@ class NavigatorVC: UIViewController {
             return clientType
         }
         return false
+    }
+    
+}
+
+extension NavigatorVC: SWRevealViewControllerDelegate {
+    func setInteraction(_ enable: Bool) {
+        self.view.isUserInteractionEnabled = enable
     }
     
 }

@@ -47,6 +47,7 @@ class ForgotPasswordVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setAppearence()
         navigationController?.navigationBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
     
     private func submitEmail(){

@@ -82,7 +82,7 @@ class SelectTrainerVC: UIViewController {
         
         navigationController?.navigationBar.setAppearence()
         navigationController?.navigationBar.isHidden = false
-        //navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
