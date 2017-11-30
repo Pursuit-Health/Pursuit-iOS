@@ -160,7 +160,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         if state == .customExercise{
             
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
-                if ex.name == "" || ex.sets == nil || ex.reps == nil || ex.weight == nil || ex.rest == nil || ex.notes == ""{
+                if (ex.name?.isEmpty ?? true) || ex.sets == nil || ex.reps == nil || ex.weight == nil || ex.rest == nil || (ex.notes?.isEmpty ?? true) {
                     self.showError(controller: controller)
                     return
                 }

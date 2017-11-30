@@ -72,9 +72,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Clients"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="ck3-ZJ-rt9" kind="presentation" identifier="ShowTrainerStoryboard" id="l0m-kA-2w0"/>
                         <segue destination="hZg-Qu-zKK" kind="show" identifier="ShowClientStoryboard" id="4Mm-HY-Bqh"/>

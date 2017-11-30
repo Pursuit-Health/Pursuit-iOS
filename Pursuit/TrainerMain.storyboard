@@ -436,7 +436,7 @@
                                     <outlet property="delegate" destination="CnM-wx-Jhw" id="fle-Eu-wzk"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-Zd-5Xz">
+                            <searchBar contentMode="redraw" placeholder="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-Zd-5Xz">
                                 <rect key="frame" x="26" y="64" width="323" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

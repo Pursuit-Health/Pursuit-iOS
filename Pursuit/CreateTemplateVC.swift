@@ -151,6 +151,7 @@ class CreateTemplateVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func addExercisesButtonPressed(_ sender: Any) {
+        self.view.endEditing(true)
         self.delegate?.addExercisesButtonPressed(on: self)
     }
     
@@ -211,6 +212,7 @@ class CreateTemplateVC: UIViewController {
         calendarView.visibleDates { (visibleDates) in
             if let date = visibleDates.monthDates.first?.date {
                 let formatter       = DateFormatters.serverTimeFormatter
+                formatter.timeZone = TimeZone(identifier: "UTC")
                 self.startAt = formatter.string(from: Date())
                 self.fillMonthYearLabelsWith(date)
             }
@@ -253,6 +255,7 @@ class CreateTemplateVC: UIViewController {
     
     func fillMonthYearLabelsWith(_ date: Date) {
         let formatter                   = DateFormatters.monthYearFormat
+        formatter.timeZone = TimeZone(identifier: "UTC")
         let textToSee = formatter.string(from: date)
         let subText = textToSee.components(separatedBy: " ")
         self.monthLabel.text = subText[0]
@@ -341,10 +344,16 @@ extension CreateTemplateVC: AddExerceiseVCDelegate {
 
 extension CreateTemplateVC: JTAppleCalendarViewDataSource {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        
         let formatter       = DateFormatters.serverTimeFormatter
+        formatter.timeZone  = TimeZone(identifier: "UTC")
+        
         let start           = formatter.date(from: "2017-01-01")!
         let end             = formatter.date(from: "2018-01-01")!
-        let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: nil, generateInDates: nil, generateOutDates: nil, firstDayOfWeek: nil, hasStrictBoundaries: nil)
+        let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: calendar)
+        
         return parameters
     }
     
@@ -369,6 +378,7 @@ extension CreateTemplateVC: JTAppleCalendarViewDelegate {
         
         guard let calCell = cell as? CreateTemplateCalendarCell else { return }
         let formatter       = DateFormatters.serverTimeFormatter
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         self.startAt = formatter.string(from: date)
         
         cellState.templateCalendarCellselected(cell: calCell)

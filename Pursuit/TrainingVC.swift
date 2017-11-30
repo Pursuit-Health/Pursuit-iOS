@@ -125,7 +125,10 @@ class TrainingVC: UIViewController {
         
         let f = DateFormatter()
         f.dateFormat = "MMMM yyyy"
-        self.dayNameLabel.text = f.weekdaySymbols[Calendar.current.component(.weekday, from: date)]
+        f.timeZone = TimeZone(abbreviation: "UTC")
+        let day = Calendar.current.component(.weekday, from: date)
+        
+        self.dayNameLabel.text = f.weekdaySymbols[day]
         self.monthYearLabel.text = f.string(from: date)
         
         f.dateFormat = "dd"

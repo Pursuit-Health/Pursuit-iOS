@@ -58,6 +58,11 @@ class NavigatorVC: UIViewController {
     private func addController() {
         User.getUserInfo { (user, error) in
             if error == nil {
+                if User.shared.coordinator is TrainerCoordinator {
+                    self.leftTitle = "Clients"
+                }else {
+                    self.leftTitle = User.shared.name ?? ""
+                }
                 User.shared.coordinator?.start(from: self)
             }
         }
@@ -99,6 +104,7 @@ class NavigatorVC: UIViewController {
 extension NavigatorVC: SWRevealViewControllerDelegate {
     func setInteraction(_ enable: Bool) {
         self.view.isUserInteractionEnabled = enable
+        self.view.endEditing(true)
     }
     
 }

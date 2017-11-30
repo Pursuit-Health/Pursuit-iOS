@@ -87,6 +87,8 @@ class MainAuthVC: UIViewController {
         return forgotPVC
     }()
     
+    var isRunning: Bool  = false
+    
     //MARK: IBActions
     
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
@@ -237,7 +239,12 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 
 extension MainAuthVC: SignInVCDelegate {
     func loginButtonPressed(on controller: SignInVC, with user: User) {
+        if self.isRunning {
+            return
+        }
+        self.isRunning = true
         User.login(user: user, completion: { _, error in
+            self.isRunning = false
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
@@ -256,12 +263,22 @@ extension MainAuthVC: SignInVCDelegate {
 
 extension MainAuthVC: SignUpVCDelegate {
     func signUpButtonPressed(on controller: SignUpVC, with user: User) {
+        if self.isRunning {
+            return
+        }
+        self.isRunning = true
+        
         user.signUp(completion: { (user, error) in
+            self.isRunning = false
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
-                self.uploadImage()
+                if self.selectedImage == nil {
+                    self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
+                } else {
+                    self.uploadImage()
+                }
             }
         })
     }
