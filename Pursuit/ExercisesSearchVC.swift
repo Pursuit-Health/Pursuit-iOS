@@ -87,6 +87,7 @@ class ExercisesSearchVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func closeBarButtonPressed(_ sender: UIBarButtonItem) {
+        self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
     

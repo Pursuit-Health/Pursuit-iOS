@@ -260,7 +260,9 @@ extension MainAuthVC: SignInVCDelegate {
             }else {
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.isRunning = false
+            }
         })
     }
     
@@ -290,7 +292,9 @@ extension MainAuthVC: SignUpVCDelegate {
                     self.uploadImage()
                 }
             }
-            self.isRunning = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.isRunning = false
+            }
         })
     }
     
