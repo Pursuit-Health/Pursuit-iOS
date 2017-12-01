@@ -255,13 +255,11 @@ extension MainAuthVC: SignInVCDelegate {
         User.login(user: user, completion: { _, error in
         
             if let error = error {
+                self.isRunning = false
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.isRunning = false
             }
         })
     }
@@ -283,6 +281,7 @@ extension MainAuthVC: SignUpVCDelegate {
         user.signUp(completion: { (user, error) in
             
             if let error = error {
+                self.isRunning = false
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
@@ -291,9 +290,6 @@ extension MainAuthVC: SignUpVCDelegate {
                 } else {
                     self.uploadImage()
                 }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.isRunning = false
             }
         })
     }

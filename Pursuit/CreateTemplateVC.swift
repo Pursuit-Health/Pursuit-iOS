@@ -357,7 +357,7 @@ extension CreateTemplateVC: JTAppleCalendarViewDataSource {
         formatter.timeZone  = TimeZone(identifier: "UTC")
         
         let start           = formatter.date(from: "2017-01-01")!
-        let end             = formatter.date(from: "2018-01-01")!
+        let end             = formatter.date(from: "2022-01-01")!
         let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: calendar)
         
         return parameters
