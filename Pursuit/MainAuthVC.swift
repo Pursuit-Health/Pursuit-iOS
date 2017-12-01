@@ -109,6 +109,14 @@ class MainAuthVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         IQKeyboardManager.sharedManager().enable = true
+        
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            for view in window.subviews {
+                if view is TopStatusBarView {
+                    view.backgroundColor = .clear
+                }
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -239,18 +247,20 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 
 extension MainAuthVC: SignInVCDelegate {
     func loginButtonPressed(on controller: SignInVC, with user: User) {
+        
         if self.isRunning {
             return
         }
         self.isRunning = true
         User.login(user: user, completion: { _, error in
-            self.isRunning = false
+        
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
+            self.isRunning = false
         })
     }
     
@@ -269,7 +279,7 @@ extension MainAuthVC: SignUpVCDelegate {
         self.isRunning = true
         
         user.signUp(completion: { (user, error) in
-            self.isRunning = false
+            
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
@@ -280,6 +290,7 @@ extension MainAuthVC: SignUpVCDelegate {
                     self.uploadImage()
                 }
             }
+            self.isRunning = false
         })
     }
     

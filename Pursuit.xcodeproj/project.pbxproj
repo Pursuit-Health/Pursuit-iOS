@@ -139,6 +139,7 @@
 		78F6363A1FB9C7B6009EB48D /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636381FB9C7B6009EB48D /* ExerciseCell.swift */; };
 		78F6363B1FB9C7B6009EB48D /* ExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F636391FB9C7B6009EB48D /* ExerciseCell.xib */; };
 		78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA53DE1F47794200C38413 /* DateFormater+formats.swift */; };
+		78FE99241FD13AFA00CE5BF1 /* TopStatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE99231FD13AFA00CE5BF1 /* TopStatusBarView.swift */; };
 		8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412E56A1F8E3C5C0064A499 /* PreloadNavigation.swift */; };
 		842CD37C1F8F62F400F756DC /* HideKeyboardTapGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD3791F8F621F00F756DC /* HideKeyboardTapGestureManager.swift */; };
 		842CD37D1F8F62F400F756DC /* UIView+SuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD37A1F8F621F00F756DC /* UIView+SuperView.swift */; };
@@ -337,6 +338,7 @@
 		78F636381FB9C7B6009EB48D /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		78F636391FB9C7B6009EB48D /* ExerciseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseCell.xib; sourceTree = "<group>"; };
 		78FA53DE1F47794200C38413 /* DateFormater+formats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormater+formats.swift"; sourceTree = "<group>"; };
+		78FE99231FD13AFA00CE5BF1 /* TopStatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStatusBarView.swift; sourceTree = "<group>"; };
 		8412E56A1F8E3C5C0064A499 /* PreloadNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadNavigation.swift; sourceTree = "<group>"; };
 		842CD3791F8F621F00F756DC /* HideKeyboardTapGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardTapGestureManager.swift; sourceTree = "<group>"; };
 		842CD37A1F8F621F00F756DC /* UIView+SuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SuperView.swift"; sourceTree = "<group>"; };
@@ -1433,6 +1435,7 @@
 		84AB4D631F3280CE00531740 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78FE99231FD13AFA00CE5BF1 /* TopStatusBarView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2004,6 +2007,7 @@
 				BBDA2B541ECE6EFA001FB6AD /* ClientCell.swift in Sources */,
 				BBDA2B571ECE7AA6001FB6AD /* ClientsVC.swift in Sources */,
 				782E89AA1F79A944002AD54C /* TrainerTemplatesVC.swift in Sources */,
+				78FE99241FD13AFA00CE5BF1 /* TopStatusBarView.swift in Sources */,
 				84AB4D7E1F3282AC00531740 /* TableView+BBBExtension.swift in Sources */,
 				783F80C71FC07015001FE169 /* ExercisesTypeCollectionViewCell.swift in Sources */,
 				5B1F830D1E850E4100ABA24C /* AppDelegate.swift in Sources */,

@@ -63,7 +63,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="707"/>
                                             </imageView>
                                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-Sn-TRc">
-                                                <rect key="frame" x="0.0" y="20" width="375" height="213.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="txI-SW-hJz" userLabel="TopView">
@@ -167,7 +167,7 @@
                                             <constraint firstItem="ouz-Sn-TRc" firstAttribute="leading" secondItem="txI-SW-hJz" secondAttribute="leading" id="Ii3-9C-oKx"/>
                                             <constraint firstAttribute="bottom" secondItem="baT-US-LIk" secondAttribute="bottom" id="OQ9-6d-LwI"/>
                                             <constraint firstItem="ouz-Sn-TRc" firstAttribute="trailing" secondItem="txI-SW-hJz" secondAttribute="trailing" id="U0k-QV-uhg"/>
-                                            <constraint firstItem="ouz-Sn-TRc" firstAttribute="top" secondItem="txI-SW-hJz" secondAttribute="top" constant="20" id="ii1-W5-6ZU"/>
+                                            <constraint firstItem="ouz-Sn-TRc" firstAttribute="top" secondItem="txI-SW-hJz" secondAttribute="top" id="ii1-W5-6ZU"/>
                                             <constraint firstAttribute="bottom" secondItem="MbQ-3l-pac" secondAttribute="bottom" id="qf2-wD-5Jv"/>
                                             <constraint firstItem="txI-SW-hJz" firstAttribute="leading" secondItem="Epc-Yd-Pbq" secondAttribute="leading" id="qvh-FT-UJh"/>
                                             <constraint firstItem="MbQ-3l-pac" firstAttribute="top" secondItem="Epc-Yd-Pbq" secondAttribute="top" id="rtI-FK-KMX"/>

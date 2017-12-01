@@ -49,10 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setUpStatusBarAppearence() {
         UIApplication.shared.delegate?.window!?.windowLevel = UIWindowLevelStatusBar
         UIApplication.shared.isStatusBarHidden = true
-        let view = UIView()
+        let view = TopStatusBarView()
         view.frame = (UIApplication.shared.statusBarView?.frame)!
         view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
         window?.addSubview(view)
+    
     }
     
     private func navigateControllers() {

@@ -1638,7 +1638,7 @@
                                     <outlet property="delegate" destination="fOM-Y0-GEi" id="hy3-zZ-c4y"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVk-kh-aFI">
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVk-kh-aFI">
                                 <rect key="frame" x="26" y="76" width="323" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1686,7 +1686,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="734" y="4454"/>
+            <point key="canvasLocation" x="733.60000000000002" y="4453.223388305847"/>
         </scene>
         <!--Exercises SearchVC-->
         <scene sceneID="IvG-ya-pcc">
@@ -1744,7 +1744,7 @@
                                     <outlet property="delegate" destination="LXn-nF-7D4" id="yLh-f8-Qnd"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erS-kj-0K7">
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erS-kj-0K7">
                                 <rect key="frame" x="26" y="40" width="323" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
