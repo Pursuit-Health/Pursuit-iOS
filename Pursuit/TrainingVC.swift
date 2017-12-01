@@ -131,7 +131,7 @@ class TrainingVC: UIViewController {
         if day > 6 {
           self.dayNameLabel.text = f.weekdaySymbols.last ?? ""
         }else {
-            self.dayNameLabel.text = f.weekdaySymbols[day]
+            self.dayNameLabel.text = f.weekdaySymbols[day - 1]
         }
         
         self.monthYearLabel.text = f.string(from: date)

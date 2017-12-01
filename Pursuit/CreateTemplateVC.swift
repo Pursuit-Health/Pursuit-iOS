@@ -95,6 +95,9 @@ class CreateTemplateVC: UIViewController {
             self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
             self.calendarView.scrollToDate(Date())
             self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+            let formatter       = DateFormatters.serverTimeFormatter
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            self.startAt = formatter.string(from: Date())
         }
     }
     @IBOutlet weak var monthLabel: UILabel!
@@ -128,7 +131,11 @@ class CreateTemplateVC: UIViewController {
     
     var workout = Workout()
     
-    var startAt = String()
+    var startAt: String? {
+        didSet {
+            self.workout.startAtForUpload   = self.startAt
+        }
+    }
 
     var chnagedDate = DateInRegion(absoluteDate: Date())
     
@@ -213,7 +220,6 @@ class CreateTemplateVC: UIViewController {
             if let date = visibleDates.monthDates.first?.date {
                 let formatter       = DateFormatters.serverTimeFormatter
                 formatter.timeZone = TimeZone(identifier: "UTC")
-                self.startAt = formatter.string(from: Date())
                 self.fillMonthYearLabelsWith(date)
             }
         }

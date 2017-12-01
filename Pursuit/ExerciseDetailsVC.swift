@@ -260,7 +260,7 @@ class ExerciseDetailsVC: UIViewController {
         exerc = self.excersize
         exerc.id = nil
         
-        if self.excersize.name?.isEmpty ?? true || self.excersize.sets == nil || self.excersize.reps == nil || self.excersize.weight == nil || self.excersize.rest == nil || self.excersize.notes?.isEmpty ?? true {
+        if self.excersize.name?.isEmpty ?? true || self.excersize.sets == nil || self.excersize.reps == nil || self.excersize.weight == nil || self.excersize.rest == nil {
             self.showError()
             return
         }
