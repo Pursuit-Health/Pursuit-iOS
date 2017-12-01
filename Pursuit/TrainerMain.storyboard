@@ -393,7 +393,7 @@
                 <navigationController id="Lda-mY-OiH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="fT0-cl-Kwm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N4K-UP-02U">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -885,7 +885,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" id="b12-1u-NCK">
-                                        <rect key="frame" x="20" y="58.5" width="162" height="143"/>
+                                        <rect key="frame" x="20" y="56.5" width="162" height="143"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="162" height="143"/>
@@ -894,7 +894,7 @@
                                         <size key="customSize" width="162" height="143"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" id="FZn-ZK-hL0">
-                                        <rect key="frame" x="1182" y="58.5" width="162" height="143"/>
+                                        <rect key="frame" x="1182" y="56.5" width="162" height="143"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="162" height="143"/>
@@ -903,7 +903,7 @@
                                         <size key="customSize" width="162" height="143"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" id="A3m-2c-TG9">
-                                        <rect key="frame" x="2344" y="58.5" width="162" height="143"/>
+                                        <rect key="frame" x="2344" y="56.5" width="162" height="143"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="162" height="143"/>
@@ -1117,7 +1117,7 @@
                 <navigationController id="5fy-wa-JO5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_pursuit" id="sGg-gS-RKM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ext-CY-ltK">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="usU-o6-in1">
@@ -1137,7 +1137,7 @@
                 <navigationController id="tKi-fJ-SHE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="ic_schedule" id="x5Y-Bg-dZv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ea-OI-QAa">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="0.1044463087" colorSpace="calibratedWhite"/>
                     </navigationBar>
