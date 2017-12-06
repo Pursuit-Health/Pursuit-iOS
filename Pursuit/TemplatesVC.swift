@@ -108,11 +108,11 @@ class TemplatesVC: UIViewController {
     }
     
     fileprivate func editTemplate(_ template: Template) {
-        Template.editTemplate(templateId: self.templateId ?? "", templateData: template) { (template, error) in
-            if error == nil {
-                self.loadTemplates()
-            }
-        }
+//        Template.editTemplate(templateId: self.templateId ?? "", templateData: template) { (template, error) in
+//            if error == nil {
+//                self.loadTemplates()
+//            }
+//        }
     }
 }
 

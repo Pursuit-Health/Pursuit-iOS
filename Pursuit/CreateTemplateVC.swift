@@ -14,8 +14,12 @@ protocol CreateTemplateVCDelegate: class {
     
     func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC)
     func addExercisesButtonPressed(on controller: CreateTemplateVC)
-    
     func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC)
+    func editWorkout(_ workout: Workout, on controller: CreateTemplateVC)
+}
+
+extension CreateTemplateVCDelegate {
+    func editWorkout(_ workout: Workout, on controller: CreateTemplateVC) {}
 }
 
 extension CreateTemplateVCDelegate {
@@ -155,6 +159,10 @@ class CreateTemplateVC: UIViewController {
         }
     }
     
+    var isDone: Bool? {
+        return self.workoutNew?.isDone
+    }
+    
     //MARK: IBActions
     
     @IBAction func addExercisesButtonPressed(_ sender: Any) {
@@ -167,17 +175,28 @@ class CreateTemplateVC: UIViewController {
     }
     
     @IBAction func saveTemplateButtonPressed(_ sender: Any) {
+        
         if templateNameTextField.text == "" {
             showAlert()
             return
         }
 
         self.workout.name               = self.templateNameTextField.text
-        self.workout.excersises         = self.exercises
-        self.workout.startAtForUpload   = self.startAt
         self.workout.notes              = self.notesTextField.text
         
-        delegate?.saveWorkout(self.workout, on: self)
+        if let done = isDone {
+            if !done {
+                self.workout = self.workoutNew!
+                self.workout.name               = self.templateNameTextField.text
+                self.workout.notes              = self.notesTextField.text
+                self.workout.startAtForUpload  = nil
+                delegate?.editWorkout(self.workout, on: self)
+            }
+        }else {
+            self.workout.excersises         = self.exercises
+            self.workout.startAtForUpload   = self.startAt
+            delegate?.saveWorkout(self.workout, on: self)
+        }
     }
     
     
@@ -216,6 +235,25 @@ class CreateTemplateVC: UIViewController {
 
         self.templateTableView?.reloadData()
         
+        self.templateNameTextField.text = workoutNew?.name ?? ""
+        if let done = isDone {
+        if done {
+            self.templateNameTextField.isUserInteractionEnabled = false
+            self.calendarView.isUserInteractionEnabled = false
+            self.templateTableView.allowsSelection = false
+        }else {
+            self.calendarView.isUserInteractionEnabled = false
+            }
+        }else {
+           self.calendarView.isUserInteractionEnabled = true
+        }
+        
+        if let start = workoutNew?.startAt {
+            let date = Date(timeIntervalSince1970: start)
+          self.calendarView.scrollToDate(date)
+            self.calendarView.selectDates([date], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+        }
+
         calendarView.visibleDates { (visibleDates) in
             if let date = visibleDates.monthDates.first?.date {
                 let formatter       = DateFormatters.serverTimeFormatter

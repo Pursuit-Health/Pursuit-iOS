@@ -22,6 +22,7 @@ class TrainerCoordinator: Coordinator {
     var selectedCategory: Category?
     var exercises: [ExcersiseData] = []
     var customExercise: [ExcersiseData] = []
+    var selectedWorkout: Workout?
     
     func start(from controller: UIViewController?) {
         if let controller = controller {
@@ -90,13 +91,19 @@ extension TrainerCoordinator: ClientInfoVCDatasource {
 extension TrainerCoordinator: ClientInfoVCDelegate {
     
     func selected(workout: Workout, on controller: ClientInfoVC, client: Client?) {
+        self.selectedWorkout = workout
         workout.getDetailedTemplateFor(clientId: "\(client?.id ?? 0)", templateId: "\(workout.id ?? 0)") { (exercises, error) in
             if error == nil {
                 
-                let training = UIStoryboard.client.Training!
-                training.delegate = self
-                training.workout = workout
-                controller.navigationController?.pushViewController(training, animated: true)
+                let createTemplate = UIStoryboard.trainer.CreateTemplate!
+                
+                createTemplate.workoutNew = workout
+                createTemplate.delegate = self
+                
+                //let training = UIStoryboard.client.Training!
+                //training.delegate = self
+                //training.workout = workout
+                controller.navigationController?.pushViewController(createTemplate, animated: true)
             }else {
                 
             }
@@ -119,7 +126,7 @@ extension TrainerCoordinator: TrainingVCDelegate {
 extension TrainerCoordinator: CreateTemplateVCDelegate {
     
     func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
-        var work = workout
+        let work = workout
         
         work.excersises = self.exercises
         
@@ -131,6 +138,21 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
                 let alert = error?.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
                 }))
                 controller.present(alert!, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func editWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
+        let work = workout
+        //work.excersises = self.exercises
+        work.editWorkout(clientId: "\(self.selectedClient?.id ?? 0)", templateId: "\(self.selectedWorkout?.id ?? 0)") { (workout, error) in
+            if let error = error  {
+                let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+                    
+                }))
+                controller.present(alert, animated: true, completion: nil)
+            }else {
+                controller.navigationController?.popViewController(animated: true)
             }
         }
     }

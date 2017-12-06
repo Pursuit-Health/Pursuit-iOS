@@ -26,11 +26,11 @@ extension Template {
         //api.createTemplate(templateData: templateData.toJSON(), completion: completion)
     }
     
-  class  func editTemplate(templateId: String, templateData: Template, completion: @escaping EditTemplateCompletion) {
-        let api = PSAPI()
-        
-        api.editTemplate(templateId: templateId, templateData: templateData.toJSON(), completion: completion)
-    }
+//  class  func editTemplate(templateId: String, templateData: Template, completion: @escaping EditTemplateCompletion) {
+//        let api = PSAPI()
+//
+//        api.editTemplate(templateId: templateId, templateData: templateData.toJSON(), completion: completion)
+//    }
     
     class func getAllTemplates(completion: @escaping GetAllTemplatesCompletion) {
         let api = PSAPI()

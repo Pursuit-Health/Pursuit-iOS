@@ -298,9 +298,9 @@ class PSAPI: APIHandable {
     }
     
     @discardableResult
-    func editTemplate(templateId: String, templateData: [String: Any], completion: @escaping EditTemplateCompletion) -> DataRequest? {
-        let request = Request.editTemplate(templateId: templateId, parameters: templateData)
-        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Template>) in
+    func editTemplate(clientId: String, templateId: String, templateData: [String: Any], completion: @escaping EditTemplateCompletion) -> DataRequest? {
+        let request = Request.editTemplate(clientId: clientId, templateId: templateId, parameters: templateData)
+        return self.perform(request)?.responseObject(completionHandler: { (response: DataResponse<Workout>) in
             var error: ErrorProtocol?
             if let responseError = self.handle(response: response) {
                 error = responseError
@@ -516,7 +516,7 @@ extension PSAPI {
     
     typealias CreateWorkoutCompletion  = (_ template: Workout?, _ error: ErrorProtocol?) -> Void
     
-    typealias EditTemplateCompletion    = (_ template: Template?, _ error: ErrorProtocol?) -> Void
+    typealias EditTemplateCompletion    = (_ template: Workout?, _ error: ErrorProtocol?) -> Void
     
     typealias GetAllTemplatesCompletion = (_ template: [Template]?, _ error: ErrorProtocol?) -> Void
     

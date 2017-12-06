@@ -23,7 +23,7 @@ extension PSAPI {
         case createWorkout(clientId: String, parameters: Parameters)
         case getAllTemplates()
         case getTemplateWithExercise(templateId: String)
-        case editTemplate(templateId: String, parameters: Parameters)
+        case editTemplate(clientId: String, templateId: String, parameters: Parameters)
         case deleteTemplate(templateId: String, parameters: Parameters)
         case getAllClients()
         case getTrainerEvents(startDate: String, endDate: String)
@@ -95,8 +95,8 @@ extension PSAPI {
                 return "trainer/templates"
             case .getTemplateWithExercise(let templateId):
                 return "trainer/templates/" + templateId
-            case .editTemplate(let templateId, _):
-                return "trainer/templates/" + templateId
+            case .editTemplate(let clientId, let templateId, _):
+                return "trainer/clients/" + clientId + "/templates/" + templateId
             case .deleteTemplate(let templateId, _):
                 return "trainer/templates/" + templateId
             case .getAllClients:
@@ -158,7 +158,7 @@ extension PSAPI {
                  .setPassword(let parameters),
                  .changePassword(let parameters),
                  .createWorkout(_ , let parameters),
-                 .editTemplate(_ , let parameters),
+                 .editTemplate(_, _ , let parameters),
                  .deleteTemplate(_ , let parameters),
                  .createEvent(let parameters),
                  .assignTemplate(_ , _ , let parameters):

@@ -253,7 +253,9 @@ class ExerciseDetailsVC: UIViewController {
             self.excersize.name = self.excersize.innerExercise?.name
         }
         self.excersize.selected = true
+        if !isEditExercise {
         self.excersize.exercise_id = self.excersize.id
+        }
         self.excersize.type = self.exerciseType
         
         

@@ -119,7 +119,7 @@ extension ClientInfoVC: UITableViewDataSource {
 
 extension ClientInfoVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if workouts[indexPath.row].isDone ?? false { return }
+        //if workouts[indexPath.row].isDone ?? false { return }
         
         self.delegate?.selected(workout: self.workouts[indexPath.row], on: self, client: self.client as! Client)
     }
