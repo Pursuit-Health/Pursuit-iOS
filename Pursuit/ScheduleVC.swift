@@ -60,7 +60,7 @@ class ScheduleVC: UIViewController {
             self.calendarView.minimumInteritemSpacing   = 0
             self.calendarView.minimumLineSpacing        = 0
             
-            self.calendarView.scrollingMode             = .stopAtEachCalendarFrameWidth
+            self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
             self.calendarView.scrollToDate(Date())
             self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
         }
@@ -211,6 +211,10 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
 }
 
 extension ScheduleVC: JTAppleCalendarViewDelegate {
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        
+    }
+    
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         

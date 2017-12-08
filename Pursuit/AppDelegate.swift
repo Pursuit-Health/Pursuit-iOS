@@ -62,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return User.shared.token != nil
     }
     
-    
     private func setupDeepLinking() {
 
         self.services.forEach{ self.router?.register(service: $0) }
@@ -70,12 +69,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setUpTabBarAppearens() {
         let tabBar = UITabBar.appearance()
-        tabBar.barTintColor = UIColor.clear
+        //tabBar.barTintColor = .red
+        tabBar.isTranslucent = true
+
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
+        tabBar.tintColor = .white
+        tabBar.backgroundColor =  UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
         
         let view = UIView()
-        view.bounds = tabBar.frame
+        view.bounds = tabBar.bounds
         view.backgroundColor = .red
         tabBar.addSubview(view)
     }

@@ -113,6 +113,18 @@ extension UIStoryboard {
         var ScheduleClient: ScheduleClientVC? {
             return self.instantiate(type: ScheduleClientVC.self)
         }
+        
+        var ChatsList: ChatsListVC? {
+            return self.instantiate(type: ChatsListVC.self)
+        }
+        
+        var Chat: ChatVC? {
+            return self.instantiate(type: ChatVC.self)
+        }
+        
+        var ContainerChat: ContainerChatVC? {
+            return self.instantiate(type: ContainerChatVC.self)
+        }
     }
     
     //MARK: ClientStoryboard

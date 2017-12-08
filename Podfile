@@ -27,4 +27,8 @@ target 'Pursuit' do
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'PIDatePicker', '~> 0.1'
   
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  
 end

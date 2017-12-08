@@ -15,3 +15,5 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import "UITextField+BBBPattern.h"
 #import "SWRevealViewController.h"
+#import "JSQMessagesViewController.h"
+#import "JSQSystemSoundPlayer.h"
