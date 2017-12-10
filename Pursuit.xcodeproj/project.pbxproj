@@ -140,6 +140,9 @@
 		784C5E721FD9BCB00050C1E5 /* ChatsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C5E701FD9BCB00050C1E5 /* ChatsListCell.swift */; };
 		784C5E731FD9BCB00050C1E5 /* ChatsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C5E711FD9BCB00050C1E5 /* ChatsListCell.xib */; };
 		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
+		7869B79C1FDACAA600FA7DF8 /* FrontSenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7869B79A1FDACAA600FA7DF8 /* FrontSenderCell.swift */; };
+		7869B79D1FDACAA600FA7DF8 /* FrontSenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7869B79B1FDACAA600FA7DF8 /* FrontSenderCell.xib */; };
+		7869B7A01FDADBBD00FA7DF8 /* TalesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7869B79F1FDADBBD00FA7DF8 /* TalesView.swift */; };
 		78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78835C981F8B5D7400C28C76 /* BirthdayCell.swift */; };
 		78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78835C991F8B5D7500C28C76 /* BirthdayCell.xib */; };
 		788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788EE8971F34DD5500DD8A98 /* TrainingVC.swift */; };
@@ -161,6 +164,11 @@
 		78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */; };
 		78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */; };
 		78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4438E1F40E3EB00525F7A /* CustomTextField.swift */; };
+		78E5D3051FDB36C600096B46 /* FrontSenderWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E5D3031FDB36C600096B46 /* FrontSenderWithImageCell.swift */; };
+		78E5D3061FDB36C600096B46 /* FrontSenderWithImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E5D3041FDB36C600096B46 /* FrontSenderWithImageCell.xib */; };
+		78E5D3081FDB393A00096B46 /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E5D3071FDB393A00096B46 /* MaskView.swift */; };
+		78E5D30B1FDD9B8500096B46 /* SenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E5D3091FDD9B8500096B46 /* SenderCell.swift */; };
+		78E5D30C1FDD9B8500096B46 /* SenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E5D30A1FDD9B8500096B46 /* SenderCell.xib */; };
 		78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FA53DE1F47794200C38413 /* DateFormater+formats.swift */; };
 		8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412E56A1F8E3C5C0064A499 /* PreloadNavigation.swift */; };
 		842CD37C1F8F62F400F756DC /* HideKeyboardTapGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD3791F8F621F00F756DC /* HideKeyboardTapGestureManager.swift */; };
@@ -407,6 +415,9 @@
 		784C5E701FD9BCB00050C1E5 /* ChatsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListCell.swift; sourceTree = "<group>"; };
 		784C5E711FD9BCB00050C1E5 /* ChatsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsListCell.xib; sourceTree = "<group>"; };
 		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
+		7869B79A1FDACAA600FA7DF8 /* FrontSenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontSenderCell.swift; sourceTree = "<group>"; };
+		7869B79B1FDACAA600FA7DF8 /* FrontSenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrontSenderCell.xib; sourceTree = "<group>"; };
+		7869B79F1FDADBBD00FA7DF8 /* TalesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalesView.swift; sourceTree = "<group>"; };
 		78835C981F8B5D7400C28C76 /* BirthdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayCell.swift; sourceTree = "<group>"; };
 		78835C991F8B5D7500C28C76 /* BirthdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayCell.xib; sourceTree = "<group>"; };
 		788EE8971F34DD5500DD8A98 /* TrainingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingVC.swift; sourceTree = "<group>"; };
@@ -429,6 +440,11 @@
 		78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClienCell.swift; sourceTree = "<group>"; };
 		78E4438B1F40DFDF00525F7A /* ScheduleClienCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleClienCell.xib; sourceTree = "<group>"; };
 		78E4438E1F40E3EB00525F7A /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		78E5D3031FDB36C600096B46 /* FrontSenderWithImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontSenderWithImageCell.swift; sourceTree = "<group>"; };
+		78E5D3041FDB36C600096B46 /* FrontSenderWithImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrontSenderWithImageCell.xib; sourceTree = "<group>"; };
+		78E5D3071FDB393A00096B46 /* MaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
+		78E5D3091FDD9B8500096B46 /* SenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderCell.swift; sourceTree = "<group>"; };
+		78E5D30A1FDD9B8500096B46 /* SenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderCell.xib; sourceTree = "<group>"; };
 		78FA53DE1F47794200C38413 /* DateFormater+formats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormater+formats.swift"; sourceTree = "<group>"; };
 		8412E56A1F8E3C5C0064A499 /* PreloadNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadNavigation.swift; sourceTree = "<group>"; };
 		842CD3791F8F621F00F756DC /* HideKeyboardTapGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardTapGestureManager.swift; sourceTree = "<group>"; };
@@ -936,6 +952,8 @@
 		78450F101FD9CCC200285155 /* ChatVC */ = {
 			isa = PBXGroup;
 			children = (
+				7869B79E1FDADB8800FA7DF8 /* Views */,
+				7869B7991FDAC9B500FA7DF8 /* Cells */,
 				78450F111FD9CCE500285155 /* ChatVC.swift */,
 				784510571FDA969000285155 /* ContainerChatVC.swift */,
 			);
@@ -1238,6 +1256,28 @@
 				782E899C1F792168002AD54C /* ClientTabBarVC.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7869B7991FDAC9B500FA7DF8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7869B79A1FDACAA600FA7DF8 /* FrontSenderCell.swift */,
+				7869B79B1FDACAA600FA7DF8 /* FrontSenderCell.xib */,
+				78E5D3031FDB36C600096B46 /* FrontSenderWithImageCell.swift */,
+				78E5D3041FDB36C600096B46 /* FrontSenderWithImageCell.xib */,
+				78E5D3091FDD9B8500096B46 /* SenderCell.swift */,
+				78E5D30A1FDD9B8500096B46 /* SenderCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		7869B79E1FDADB8800FA7DF8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7869B79F1FDADBBD00FA7DF8 /* TalesView.swift */,
+				78E5D3071FDB393A00096B46 /* MaskView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		78835C9C1F8B5D9F00C28C76 /* BirthdayCell */ = {
@@ -1938,6 +1978,7 @@
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
 				784510551FD9E7EC00285155 /* LICENSE in Resources */,
 				7845104F1FD9E7EC00285155 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
+				78E5D30C1FDD9B8500096B46 /* SenderCell.xib in Resources */,
 				784419B61F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib in Resources */,
 				784510271FD9E7EB00285155 /* JSQMessagesAssets.bundle in Resources */,
 				78473BD51F742D7E0067DA1F /* SelectClientCell.xib in Resources */,
@@ -1953,11 +1994,13 @@
 				782B83001F71256D00A019AC /* SignUpDataCell.xib in Resources */,
 				5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */,
 				78450FBD1FD9E7E000285155 /* LICENSE in Resources */,
+				78E5D3061FDB36C600096B46 /* FrontSenderWithImageCell.xib in Resources */,
 				7845104A1FD9E7EC00285155 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				78CE34C51F38FDF2002BD31D /* TabCollectionCell.xib in Resources */,
 				842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */,
 				78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */,
 				842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */,
+				7869B79D1FDACAA600FA7DF8 /* FrontSenderCell.xib in Resources */,
 				783A456F1F8E6A2E0048A0F9 /* SideMenu.storyboard in Resources */,
 				784510561FD9E7EC00285155 /* README.md in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
@@ -2044,6 +2087,7 @@
 				8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */,
 				784510361FD9E7EB00285155 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */,
+				78E5D30B1FDD9B8500096B46 /* SenderCell.swift in Sources */,
 				78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */,
 				842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */,
 				782E899D1F792168002AD54C /* ClientTabBarVC.swift in Sources */,
@@ -2082,6 +2126,7 @@
 				780D60211F5F161E002A7303 /* ControllersIdentifiers.swift in Sources */,
 				784510341FD9E7EB00285155 /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,
 				84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */,
+				7869B79C1FDACAA600FA7DF8 /* FrontSenderCell.swift in Sources */,
 				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
 				784510401FD9E7EC00285155 /* JSQMessagesAvatarImage.m in Sources */,
 				78094A2B1F5BD9BE001325B4 /* PursuitKeychain.swift in Sources */,
@@ -2094,6 +2139,7 @@
 				782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
+				78E5D3081FDB393A00096B46 /* MaskView.swift in Sources */,
 				784510411FD9E7EC00285155 /* JSQMessagesBubbleImage.m in Sources */,
 				7845102D1FD9E7EB00285155 /* UIImage+JSQMessages.m in Sources */,
 				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
@@ -2116,10 +2162,12 @@
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				783484281F71804D00C58191 /* SignUpButtonCell.swift in Sources */,
+				7869B7A01FDADBBD00FA7DF8 /* TalesView.swift in Sources */,
 				783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */,
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				7845103F1FD9E7EC00285155 /* JSQMessage.m in Sources */,
 				784510581FDA969000285155 /* ContainerChatVC.swift in Sources */,
+				78E5D3051FDB36C600096B46 /* FrontSenderWithImageCell.swift in Sources */,
 				845882F91F7067F000BE7D69 /* Requests.swift in Sources */,
 				783A45751F8E7A7C0048A0F9 /* SettingsVC.swift in Sources */,
 				784510331FD9E7EB00285155 /* JSQMessagesBubbleImageFactory.m in Sources */,

@@ -651,13 +651,42 @@
                     <view key="view" contentMode="scaleToFill" id="q6N-I9-otY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WCt-Jj-N1C">
+                                <rect key="frame" x="0.0" y="20" width="375" height="587"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ccl-jn-CkE" id="LxP-kA-9nG"/>
+                                    <outlet property="delegate" destination="ccl-jn-CkE" id="doV-l2-PJn"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k31-zk-XbQ">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="svI-Mz-VtN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WCt-Jj-N1C" firstAttribute="leading" secondItem="q6N-I9-otY" secondAttribute="leading" id="6Nh-XG-pDc"/>
+                            <constraint firstItem="EpE-G1-M6U" firstAttribute="top" secondItem="k31-zk-XbQ" secondAttribute="bottom" id="E6m-zo-ykV"/>
+                            <constraint firstItem="k31-zk-XbQ" firstAttribute="leading" secondItem="q6N-I9-otY" secondAttribute="leading" id="Fmt-KJ-ZcR"/>
+                            <constraint firstAttribute="trailing" secondItem="k31-zk-XbQ" secondAttribute="trailing" id="Gf9-fz-hqZ"/>
+                            <constraint firstAttribute="trailing" secondItem="WCt-Jj-N1C" secondAttribute="trailing" id="ISi-Rj-5KD"/>
+                            <constraint firstItem="k31-zk-XbQ" firstAttribute="top" secondItem="WCt-Jj-N1C" secondAttribute="bottom" id="LVA-C5-Y3Z"/>
+                            <constraint firstItem="WCt-Jj-N1C" firstAttribute="top" secondItem="jLb-Oj-It0" secondAttribute="bottom" id="UCJ-5S-Kwk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="N1R-UA-A4B">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="btn_close" id="A7h-k4-zxf">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="messagesTableView" destination="WCt-Jj-N1C" id="bY8-E5-C4N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rN-4Y-fpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

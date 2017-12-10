@@ -9,15 +9,20 @@
 import UIKit
 import Firebase
 
-class ChatVC: JSQMessagesViewController {
+class ChatVC: UIViewController {
 
+    @IBOutlet weak var messagesTableView: UITableView! {
+        didSet {
+            self.messagesTableView.estimatedRowHeight = 100
+            self.messagesTableView.rowHeight = UITableViewAutomaticDimension
+        }
+    }
+    
+    let messages = ["Looooooooooooosfmismdfksdmfksdmfksdmfksmdfksmdfksdfmskdfmskdfmksdf", "skfsfsofkoskfosdkfosdkfoskfdoskfosdkfos", "skdfsfsdfsfjiuhgeuirgsdifisdjfisjf", "skfsidfsifisdjisdfjisfjsidf", "skdfksdmskdfms", "kdmsdmsdfijsd"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.senderId = ""
-        self.senderDisplayName = "Client"
-        
-        configureInputMessageBar()
       
     }
     
@@ -25,25 +30,27 @@ class ChatVC: JSQMessagesViewController {
         super.viewWillAppear(animated)
         
     }
-    
-    //MARK: Private
-    
-    private func configureInputMessageBar() {
-        self.inputToolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
-        
-        self.inputToolbar.contentView.rightBarButtonItem.titleLabel?.font = UIFont(name: "Avenir", size: 17.0)
-        self.inputToolbar.contentView.rightBarButtonItem.setTitle("SEND", for: .normal)
-        self.inputToolbar.contentView.rightBarButtonItem.isEnabled = true
-        self.inputToolbar.contentView.rightBarButtonItem.setTitleColor(.white, for: .normal)
-        
+}
 
-        self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "addMessage"), for: .normal)
+extension ChatVC : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        self.inputToolbar.contentView.textView.backgroundColor = .clear
-        self.inputToolbar.contentView.textView.layer.borderWidth = 0.0
-        self.inputToolbar.contentView.textView.changePlaceHolderText("Your message")
-        self.inputToolbar.contentView.textView.changeFont(UIFont(name: "Avenir", size: 17.0))
+        if indexPath.row == 0 {
+            guard let cell = tableView.gc_dequeueReusableCell(type: FrontSenderWithImageCell.self) else  { return UITableViewCell() }
+            return cell
+        }
+        guard let cell = tableView.gc_dequeueReusableCell(type: FrontSenderCell.self) else  { return UITableViewCell() }
+        cell.messageLabel.text = messages[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let castedCell = cell as? FrontSenderCell else { return }
+        //castedCell.setUpCornerRadius()
         
-        self.collectionView.backgroundColor = .clear
     }
 }

@@ -25,6 +25,7 @@ class ContainerChatVC: UIViewController {
 
     func addChatController() {
         let controller = self.chatVC
+        controller.view.backgroundColor = .clear
         self.containerView.addSubview(controller.view)
         self.containerView.addConstraints(UIView.place(controller.view, onOtherView: self.containerView))
         controller.didMove(toParentViewController: self)
