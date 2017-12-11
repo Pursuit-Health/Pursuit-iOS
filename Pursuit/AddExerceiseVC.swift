@@ -120,7 +120,7 @@ class AddExerceiseVC: UIViewController {
         }
         
         private func placeHolderWithText(_ text: String) -> NSAttributedString {
-            return  NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return  NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
         }
         
         private func imageFromName(_ imageName: String) -> UIImage {

@@ -63,7 +63,7 @@ extension Taskable {
         return task
     }
     
-    func notify(_ handler: @escaping (Void)->Void) {
+    func notify(_ handler: @escaping ()->Void) {
         self.group.notify(queue: .main, execute: handler)
     }
 }

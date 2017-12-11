@@ -99,6 +99,6 @@ extension TabCollectionCell {
 
 extension TabCollectionCell {
     @IBAction fileprivate func tabItemTouchUpInside(_ button: UIButton) {
-        tabItemButtonPressedBlock?()
+        tabItemButtonPressedBlock?(())
     }
 }

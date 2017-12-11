@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="KGk-i7-Jjw" customClass="SenderMessageCell" customModule="Pursuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="333" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="333" height="84.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejr-Cy-Ipa">
+                        <rect key="frame" x="113" y="11" width="200" height="40.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAc-bE-Oyb">
+                                <rect key="frame" x="10" y="10" width="179.5" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="KAc-bE-Oyb" firstAttribute="top" secondItem="ejr-Cy-Ipa" secondAttribute="top" constant="10" id="QzC-Za-o1o"/>
+                            <constraint firstItem="KAc-bE-Oyb" firstAttribute="leading" secondItem="ejr-Cy-Ipa" secondAttribute="leading" constant="10" id="bXw-UJ-j0k"/>
+                            <constraint firstAttribute="trailing" secondItem="KAc-bE-Oyb" secondAttribute="trailing" constant="10" id="efb-Bd-7G3"/>
+                            <constraint firstAttribute="bottom" secondItem="KAc-bE-Oyb" secondAttribute="bottom" constant="10" id="g0U-mS-aJp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="NO"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                <real key="value" value="30"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 secs ago." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50M-cD-W8U">
+                        <rect key="frame" x="229.5" y="53" width="83.5" height="20.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenCheckMark" translatesAutoresizingMaskIntoConstraints="NO" id="Svi-mL-KgA">
+                        <rect key="frame" x="199.5" y="55.5" width="22" height="16"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ejr-Cy-Ipa" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="3YX-ih-ukm"/>
+                    <constraint firstItem="50M-cD-W8U" firstAttribute="top" secondItem="ejr-Cy-Ipa" secondAttribute="bottom" constant="1.5" id="CrD-2H-oqP"/>
+                    <constraint firstItem="50M-cD-W8U" firstAttribute="trailing" secondItem="ejr-Cy-Ipa" secondAttribute="trailing" id="ceR-R2-0aA"/>
+                    <constraint firstItem="Svi-mL-KgA" firstAttribute="centerY" secondItem="50M-cD-W8U" secondAttribute="centerY" id="dob-YH-6D3"/>
+                    <constraint firstAttribute="bottom" secondItem="50M-cD-W8U" secondAttribute="bottom" constant="11" id="f2u-db-maN"/>
+                    <constraint firstAttribute="trailing" secondItem="ejr-Cy-Ipa" secondAttribute="trailing" constant="20" id="pzc-2w-Qoa"/>
+                    <constraint firstItem="50M-cD-W8U" firstAttribute="leading" secondItem="Svi-mL-KgA" secondAttribute="trailing" constant="8" id="vVu-Y1-AGd"/>
+                    <constraint firstItem="ejr-Cy-Ipa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="yb7-tL-i5B"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="messageLabel" destination="KAc-bE-Oyb" id="pAq-dJ-FtJ"/>
+            </connections>
+            <point key="canvasLocation" x="40.5" y="34.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="greenCheckMark" width="22" height="16"/>
+    </resources>
+</document>

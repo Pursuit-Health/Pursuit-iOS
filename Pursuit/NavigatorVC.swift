@@ -72,7 +72,7 @@ class NavigatorVC: UIViewController {
 //        }
     }
     
-    func menuButtonPressed() {
+    @objc func menuButtonPressed() {
         if self.revealViewController() != nil {
             self.revealViewController().revealToggle(self)
         }

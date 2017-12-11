@@ -20,7 +20,13 @@ class TrainerTemplatesVC: TemplatesVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadTemplates()
+        self.loadTemplates()
+    }
+    
+    override func loadTemplates() {
+        Template.getAllTemplates(completion: { template, error in
+            self.templatesData = template ?? []
+        })
     }
     
     private func pushCreateTemplateVC() {
@@ -37,13 +43,5 @@ class TrainerTemplatesVC: TemplatesVC {
         self.templateId = "\(id)"
         self.isEditTemplate = true
         pushCreateTemplateVC()
-    }
-}
-
-extension TrainerTemplatesVC {
-    override func loadTemplates() {
-        Template.getAllTemplates(completion: { template, error in
-            self.templatesData = template ?? []
-        })
     }
 }

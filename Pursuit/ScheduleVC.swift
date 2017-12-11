@@ -105,7 +105,7 @@ class ScheduleVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calendarViewVisibleDates()
+        setUpBackgroundImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,7 +113,7 @@ class ScheduleVC: UIViewController {
         
         calendarViewVisibleDates()
         
-        setUpBackgroundImage()
+        //setUpBackgroundImage()
         
         self.tabBarController?.tabBar.isHidden = false
         //TODO: this thing is unnecessary, need to think how to change it. Do it with me.
@@ -129,7 +129,7 @@ class ScheduleVC: UIViewController {
     //MARK: Override
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
     
     //MARK: Private

@@ -26,7 +26,7 @@ class SignUpDataCell: UITableViewCell {
         return datePickerView
     }
     
-    func datePickerValueChanged(sender: UIDatePicker) {
+    @objc func datePickerValueChanged(sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
         

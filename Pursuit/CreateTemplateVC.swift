@@ -25,7 +25,7 @@ class CreateTemplateVC: UIViewController {
     
     @IBOutlet weak var templateNameTextField: UITextField! {
         didSet {
-            self.templateNameTextField.attributedPlaceholder =  NSAttributedString(string: "Template Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            self.templateNameTextField.attributedPlaceholder =  NSAttributedString(string: "Template Name", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             if self.templateId == nil {
                 self.templateNameTextField.text = ""
             }

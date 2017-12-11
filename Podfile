@@ -3,6 +3,17 @@
 
 target 'Pursuit' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  
+  post_install do |installer|
+      installer.pods_project.targets.each do |target|
+          if target.name == 'SkyFloatingLabelTextField'
+              target.build_configurations.each do |config|
+                  config.build_settings['SWIFT_VERSION'] = '4.0'
+              end
+          end
+      end
+  end
+  
   use_frameworks!
   pod 'KVNProgress'
   pod 'Fabric'
@@ -11,7 +22,7 @@ target 'Pursuit' do
   pod 'ESTabBarController-swift'
   pod 'SwipeCellKit'
   
-  pod 'AlamofireObjectMapper', '~> 4.1'
+  pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'SDWebImage', '~> 4.1'
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'SVProgressHUD', '~> 2.1'
@@ -21,14 +32,15 @@ target 'Pursuit' do
   pod 'DeepLinkKit', '~> 1.4'
   pod 'RHDisplayLinkStepper', '~> 1.0'
   pod 'SHTextFieldBlocks', '~> 1.1'
-  pod 'SwiftDate', '~> 4.1.11 '
+  pod 'SwiftDate', '~> 4.5'
   pod 'SDWebImage', '~> 4.1'
   pod 'HTTPStatusCodes', '~> 3.1'
   pod 'TPKeyboardAvoiding', '~> 1.3'
-  pod 'PIDatePicker', '~> 0.1'
+  #pod 'PIDatePicker', '~> 0.1.3'
   
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'GrowingTextView', '~> 0.5.3'
   
 end

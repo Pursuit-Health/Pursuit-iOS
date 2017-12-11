@@ -21,25 +21,24 @@ extension UIViewController {
 import ObjectiveC
 extension UIViewController {
      func setUpBackgroundImage() {
-        let imageView = UIImageView(image: UIImage(named: "bg"))
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "bg")
        // imageView.bounds = self.view.bounds
         //imageView.frame = self.view.frame
         imageView.contentMode = .scaleToFill
-        self.view.translatesAutoresizingMaskIntoConstraints = false
+        //self.view.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         self.view.insertSubview(imageView, at: 0)
-        
-        
-        let leading = NSLayoutConstraint(item: imageView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leadingMargin, multiplier: 1.0, constant: -16.0)
 
-       let trailing = NSLayoutConstraint(item: imageView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailingMargin, multiplier: 1.0, constant: 0.0)
+       let top = NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0)
 
-       let top = NSLayoutConstraint(item: imageView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: -44.0)
-
-       let bottom = NSLayoutConstraint(item: imageView, attribute: .bottom, relatedBy: .equal, toItem: self.bottomLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 0.0)
+       let bottom = NSLayoutConstraint(item: imageView, attribute: .bottom, relatedBy: .equal, toItem: self.bottomLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 0)
+        //NSLayoutConstraint.activate([leading, trailing, top, bottom])
+        let equalWidth = NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0)
+        let centerX = NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0)
         
-        view.addConstraints([leading, trailing, top, bottom])
+        view.addConstraints([equalWidth, top, bottom, centerX])
     }
 }
 

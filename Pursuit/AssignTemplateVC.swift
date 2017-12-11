@@ -30,14 +30,16 @@ class AssignTemplateVC: TemplatesVC {
         
         self.tabBarController?.tabBar.isHidden = true
     }
-}
-
-extension AssignTemplateVC {
+    
     override func loadTemplates() {
         Template.getAllTemplates(completion: { template, error in
             self.templatesData = template ?? []
         })
     }
+}
+
+extension AssignTemplateVC {
+
 }
 
 extension AssignTemplateVC {

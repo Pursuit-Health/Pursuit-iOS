@@ -121,10 +121,7 @@ class TemplatesVC: UIViewController {
             }
         }
     }
-}
-
-//TODO: why it's repeating
-extension TemplatesVC {
+    
     func loadTemplates() {
         Template.getAllTemplates(completion: { template, error in
             self.templatesData = template ?? []

@@ -19,7 +19,7 @@ class ChatsListVC: UIViewController {
                 searchField.backgroundColor     = .clear
                 searchField.textColor           = .white
                 searchField.font                = UIFont(name: "Avenir", size: 15)
-                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSForegroundColorAttributeName : UIColor.white])
+                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             }
         }
     }
@@ -41,9 +41,12 @@ class ChatsListVC: UIViewController {
         return controller
     }()
     
+    //MARK: IBActions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpBackgroundImage()
         self.navigationController?.navigationBar.setAppearence()
     }
     
@@ -64,7 +67,7 @@ extension ChatsListVC: UITableViewDataSource {
 extension ChatsListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.navigationController?.pushViewController(chatContainerVC, animated: true)
+        self.navigationController?.pushViewController(chatVC, animated: true)
         
     }
 }
