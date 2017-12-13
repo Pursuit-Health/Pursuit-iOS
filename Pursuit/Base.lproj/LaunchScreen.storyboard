@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PGZ-he-b0Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PGZ-he-b0Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,18 +20,15 @@
         <!--View Controller-->
         <scene sceneID="4fC-k8-cRS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aKn-Fg-Ffl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="C2S-u4-0JD" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6yZ-R9-dte"/>
-                        <viewControllerLayoutGuide type="bottom" id="bTI-KP-zfL"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jh9-bi-YFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="xUg-VH-nTR"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKn-Fg-Ffl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-96" y="326"/>
         </scene>
@@ -38,10 +36,6 @@
         <scene sceneID="pC0-f1-j1w">
             <objects>
                 <viewController id="PGZ-he-b0Z" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cRU-iJ-EWJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="tKV-pj-SiL"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ter-ix-I68">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,16 +66,17 @@
                         <constraints>
                             <constraint firstItem="1Uk-vv-QKJ" firstAttribute="top" secondItem="3tR-iy-seJ" secondAttribute="bottom" constant="-30" id="4lS-hi-1iI"/>
                             <constraint firstItem="ic1-ep-Ov0" firstAttribute="top" secondItem="1Uk-vv-QKJ" secondAttribute="bottom" constant="-20" id="6xV-sW-nne"/>
-                            <constraint firstItem="3tR-iy-seJ" firstAttribute="centerX" secondItem="Ter-ix-I68" secondAttribute="centerX" id="7BA-BI-J5n"/>
+                            <constraint firstItem="3tR-iy-seJ" firstAttribute="centerX" secondItem="i1d-ie-Oat" secondAttribute="centerX" id="7BA-BI-J5n"/>
                             <constraint firstItem="3tR-iy-seJ" firstAttribute="centerY" secondItem="Ter-ix-I68" secondAttribute="centerY" multiplier="0.7" id="CaB-3L-UiF"/>
-                            <constraint firstAttribute="trailing" secondItem="c2b-wR-MKk" secondAttribute="trailing" id="O3H-4U-oQm"/>
-                            <constraint firstItem="c2b-wR-MKk" firstAttribute="top" secondItem="cRU-iJ-EWJ" secondAttribute="bottom" constant="-20" id="R38-BA-Kkd"/>
-                            <constraint firstItem="tKV-pj-SiL" firstAttribute="top" secondItem="c2b-wR-MKk" secondAttribute="bottom" id="TGT-1R-cOc"/>
                             <constraint firstItem="3tR-iy-seJ" firstAttribute="height" secondItem="Ter-ix-I68" secondAttribute="height" multiplier="0.6" id="XIv-XK-fi2"/>
+                            <constraint firstItem="c2b-wR-MKk" firstAttribute="trailing" secondItem="i1d-ie-Oat" secondAttribute="trailing" id="YWR-rf-S0h"/>
+                            <constraint firstItem="c2b-wR-MKk" firstAttribute="top" secondItem="Ter-ix-I68" secondAttribute="top" id="abP-iG-GmN"/>
+                            <constraint firstItem="c2b-wR-MKk" firstAttribute="leading" secondItem="i1d-ie-Oat" secondAttribute="leading" id="awf-gd-o4G"/>
                             <constraint firstItem="1Uk-vv-QKJ" firstAttribute="centerX" secondItem="3tR-iy-seJ" secondAttribute="centerX" id="kNS-r2-hm0"/>
+                            <constraint firstAttribute="bottom" secondItem="c2b-wR-MKk" secondAttribute="bottom" id="uLw-vg-GNv"/>
                             <constraint firstItem="ic1-ep-Ov0" firstAttribute="centerX" secondItem="1Uk-vv-QKJ" secondAttribute="centerX" id="xg5-bG-EAG"/>
-                            <constraint firstItem="c2b-wR-MKk" firstAttribute="leading" secondItem="Ter-ix-I68" secondAttribute="leading" id="xit-Cp-dNe"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="i1d-ie-Oat"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUC-ZI-wSt" userLabel="First Responder" sceneMemberID="firstResponder"/>

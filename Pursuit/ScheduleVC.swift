@@ -126,6 +126,10 @@ class ScheduleVC: UIViewController {
         self.delegate?.removeAuthController(on: self)
     }
     
+    override func prefersHomeIndicatorAutoHidden() -> Bool {
+        return true
+    }
+    
     //MARK: Private
     
     private func calendarViewVisibleDates() {

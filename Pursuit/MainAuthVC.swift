@@ -100,6 +100,19 @@ class MainAuthVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            for view in window.subviews {
+                if view is TopStatusBarView {
+                    view.backgroundColor = .clear
+                }
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+   
     }
     
     //MARK: Private
@@ -167,7 +180,18 @@ class MainAuthVC: UIViewController {
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
             if (error == nil) {
-                
+                self.setUpStatusBarView()
+                self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
+            }
+        }
+    }
+    
+    fileprivate func setUpStatusBarView() {
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            for view in window.subviews {
+                if view is TopStatusBarView {
+                    view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+                }
             }
         }
     }
@@ -230,6 +254,7 @@ extension MainAuthVC: SignInVCDelegate {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
+                self.setUpStatusBarView()
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
         })
@@ -250,7 +275,6 @@ extension MainAuthVC: SignUpVCDelegate {
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
                 self.uploadImage()
-                self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
         })
     }

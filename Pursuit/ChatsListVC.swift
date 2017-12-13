@@ -43,6 +43,14 @@ class ChatsListVC: UIViewController {
     
     //MARK: IBActions
     
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        if self.revealViewController() != nil {
+            self.revealViewController().revealToggle(self)
+        }
+    }
+    
+    //MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
