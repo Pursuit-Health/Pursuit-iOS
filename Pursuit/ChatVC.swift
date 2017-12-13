@@ -80,6 +80,7 @@ class ChatVC: UIViewController {
             messageTextView.trimWhiteSpaceWhenEndEditing = false
             messageTextView.placeHolder = "Your message"
             messageTextView.placeHolderColor = UIColor.lightGray
+            messageTextView.textColor = .white
             messageTextView.minHeight = 20.0
             messageTextView.maxHeight = 100.0
             messageTextView.backgroundColor = .clear

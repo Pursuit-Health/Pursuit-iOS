@@ -8,6 +8,7 @@
 
 import UIKit
 import DeepLinkKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,12 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setUpTabBarAppearens()
         
-        setUpTabBarAppearens()
-        
         setupDeepLinking()
         
         navigateControllers()
         
+        setUpStatusBarAppearence()
+        
+        IQKeyboardManager.sharedManager().enable = true
         
         return true
     }
@@ -51,8 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.delegate?.window!?.windowLevel = UIWindowLevelStatusBar
         UIApplication.shared.isStatusBarHidden = true
         let view = TopStatusBarView()
-        view.frame = (UIApplication.shared.statusBarFrame)
-        view.backgroundColor = .red//UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        view.frame = (UIApplication.shared.statusBarView?.frame)!
+        view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
         window?.addSubview(view)
     }
 

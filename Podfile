@@ -42,5 +42,6 @@ target 'Pursuit' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'GrowingTextView', '~> 0.5.3'
+  pod 'IQKeyboardManagerSwift', '~> 5.0'
   
 end

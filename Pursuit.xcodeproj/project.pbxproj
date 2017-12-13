@@ -131,6 +131,7 @@
 		7845F8451FDDA34600707FBB /* SendeMessageWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7845F8431FDDA34600707FBB /* SendeMessageWithImageCell.swift */; };
 		7845F8461FDDA34600707FBB /* SendeMessageWithImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7845F8441FDDA34600707FBB /* SendeMessageWithImageCell.xib */; };
 		7845F8481FDEE03200707FBB /* TopStatusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7845F8471FDEE03200707FBB /* TopStatusBarView.swift */; };
+		7845F84B1FDEE3E800707FBB /* UIApplication+StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7845F84A1FDEE3E800707FBB /* UIApplication+StatusBar.swift */; };
 		784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = 784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */; };
 		78473BD01F742CEA0067DA1F /* SelectClientsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BCF1F742CEA0067DA1F /* SelectClientsVC.swift */; };
 		78473BD41F742D7E0067DA1F /* SelectClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BD21F742D7D0067DA1F /* SelectClientCell.swift */; };
@@ -408,6 +409,7 @@
 		7845F8431FDDA34600707FBB /* SendeMessageWithImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendeMessageWithImageCell.swift; sourceTree = "<group>"; };
 		7845F8441FDDA34600707FBB /* SendeMessageWithImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendeMessageWithImageCell.xib; sourceTree = "<group>"; };
 		7845F8471FDEE03200707FBB /* TopStatusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStatusBarView.swift; sourceTree = "<group>"; };
+		7845F84A1FDEE3E800707FBB /* UIApplication+StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+StatusBar.swift"; sourceTree = "<group>"; };
 		784734F11F72FB9D00FE5B1C /* UITextField+BBBPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+BBBPattern.h"; sourceTree = "<group>"; };
 		784734F21F72FB9D00FE5B1C /* UITextField+BBBPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+BBBPattern.m"; sourceTree = "<group>"; };
 		78473BCF1F742CEA0067DA1F /* SelectClientsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientsVC.swift; sourceTree = "<group>"; };
@@ -1159,6 +1161,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7845F8491FDEE3C200707FBB /* UIApplication+StatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				7845F84A1FDEE3E800707FBB /* UIApplication+StatusBar.swift */,
+			);
+			name = "UIApplication+StatusBar";
+			sourceTree = "<group>";
+		};
 		784734F01F72FB9D00FE5B1C /* UITextField+BBBPattern */ = {
 			isa = PBXGroup;
 			children = (
@@ -1639,6 +1649,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7845F8491FDEE3C200707FBB /* UIApplication+StatusBar */,
 				785FF4291FA1FF9500787CF4 /* UIStoryboard+Create */,
 				783FBA691F8D222100BB26EC /* String */,
 				780ECFDC1F58C0480009E6A6 /* UILabel */,
@@ -2122,6 +2133,7 @@
 				782E89A51F797FD8002AD54C /* Workout.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */,
+				7845F84B1FDEE3E800707FBB /* UIApplication+StatusBar.swift in Sources */,
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
 				784734F31F72FB9D00FE5B1C /* UITextField+BBBPattern.m in Sources */,
 				780D8E901F4360FE0030A992 /* Template.swift in Sources */,

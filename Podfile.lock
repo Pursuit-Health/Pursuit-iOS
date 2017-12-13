@@ -54,6 +54,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.12)
   - HMSegmentedControl (1.5.4)
   - HTTPStatusCodes (3.1.2)
+  - IQKeyboardManagerSwift (5.0.6)
   - JTAppleCalendar (7.1.4)
   - KeychainAccess (3.1.0)
   - KVNProgress (2.3.1)
@@ -87,6 +88,7 @@ DEPENDENCIES:
   - GrowingTextView (~> 0.5.3)
   - HMSegmentedControl
   - HTTPStatusCodes (~> 3.1)
+  - IQKeyboardManagerSwift (~> 5.0)
   - JTAppleCalendar (~> 7.0)
   - KeychainAccess (~> 3.0)
   - KVNProgress
@@ -118,6 +120,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
   HTTPStatusCodes: 88155ba36826366a898a7b4f34d311f49083d546
+  IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   JTAppleCalendar: aaeee95e939e0b0a381fb51eb77738bd26bb10f6
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
@@ -133,6 +136,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: 349c61ffde96ac3ae51c2691a03e421b5b29ee98
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: d25a01d8da1d8a3e670b25bd5f540ebb34f38542
+PODFILE CHECKSUM: 2581bbfb2dc0b322b36426f34793fb7ffec59398
 
 COCOAPODS: 1.2.1

@@ -126,12 +126,6 @@ class ScheduleVC: UIViewController {
         self.delegate?.removeAuthController(on: self)
     }
     
-    //MARK: Override
-    
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
-    
     //MARK: Private
     
     private func calendarViewVisibleDates() {

@@ -651,6 +651,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Oe-41-b8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="IXD-QG-ICV" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="targets" destination="xpB-0j-Qmt" collectionClass="NSMutableArray" id="GPL-wH-Jkl"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-2654" y="4549"/>
         </scene>
@@ -770,6 +775,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rN-4Y-fpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="vtb-Vg-tjg" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="targets" destination="WCt-Jj-N1C" collectionClass="NSMutableArray" id="E2V-ta-wNY"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-983.20000000000005" y="4548.5757121439283"/>
         </scene>
