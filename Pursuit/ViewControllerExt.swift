@@ -40,6 +40,33 @@ extension UIViewController {
         
         view.addConstraints([equalWidth, top, bottom, centerX])
     }
+    
+    func addViewToBottom() {
+        
+        if #available(iOS 11, *) {
+            UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+        
+        }
+        
+        
+        let view = UIView()
+        
+        view.backgroundColor = .red//UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.1)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(view)
+        
+       // let top = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0.0)
+        
+        let bottom = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: self.bottomLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: 0)
+        //NSLayoutConstraint.activate([leading, trailing, top, bottom])
+        let equalWidth = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0)
+        let centerX = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0)
+        let height = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: 34)
+        //view.addConstraint(height)
+        //self.view.addConstraints([equalWidth, bottom, centerX, height])
+    }
 }
 
 
