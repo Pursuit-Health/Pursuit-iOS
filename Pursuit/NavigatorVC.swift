@@ -42,13 +42,12 @@ class NavigatorVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-        self.addMenuBarButton()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.performSegue(withIdentifier: checkUserType()
-//            , sender: self)
+
     }
     
     //MARK: Private

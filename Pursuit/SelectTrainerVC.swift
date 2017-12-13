@@ -81,6 +81,18 @@ class SelectTrainerVC: UIViewController {
         
         navigationController?.navigationBar.setAppearence()
         navigationController?.navigationBar.isHidden = false
+        
+        setUpStatusBarView()
+    }
+    
+    fileprivate func setUpStatusBarView() {
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            for view in window.subviews {
+                if view is TopStatusBarView {
+                    view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+                }
+            }
+        }
     }
 }
 
