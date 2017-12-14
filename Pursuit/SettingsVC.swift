@@ -39,11 +39,17 @@ class SettingsVC: UIViewController {
         //TODO: Move to user
         User.shared.token = nil
         
-        guard let loginController = UIStoryboard.login.MainAuth else { return }
-        let controller = navigationController
-        controller?.viewControllers.insert(loginController, at: 0)
-        
-        controller?.popToRootViewController(animated: true)
+        if navigationController != nil {
+            let loginController = UIStoryboard.login.MainAuth!
+            let controller = navigationController
+            controller?.viewControllers.insert(loginController, at: 0)
+            
+            controller?.popToRootViewController(animated: true)
+        }else {
+            let instantiate = UIStoryboard.login.preloadNavigation!
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = instantiate
+        }
     }
     
     func getUserInfo() {

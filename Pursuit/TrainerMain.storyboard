@@ -97,7 +97,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="2Ya-XW-iQ0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ya-XW-iQ0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5K-aA-vRg">
@@ -241,7 +241,7 @@
                                             <action selector="addClientButtonPressed:" destination="8N2-Zq-TXC" eventType="touchUpInside" id="40q-Dk-fGU"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Wu-ZU-e1b">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Wu-ZU-e1b">
                                         <rect key="frame" x="20" y="20" width="335" height="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -453,7 +453,7 @@
                                     <constraint firstAttribute="height" constant="12" id="el5-Ib-dz9"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-Zd-5Xz">
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUG-Zd-5Xz">
                                 <rect key="frame" x="26" y="64" width="323" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -577,7 +577,7 @@
                                     <constraint firstAttribute="height" constant="1" id="VRF-sH-lKq"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DV7-Yi-o85">
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DV7-Yi-o85">
                                 <rect key="frame" x="36" y="74" width="323" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -996,9 +996,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRH-Ee-rEg">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJP-zZ-JVc">
-                                        <rect key="frame" x="145" y="6" width="85" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJP-zZ-JVc">
+                                        <rect key="frame" x="165" y="6" width="45" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" image="btn_add">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1009,6 +1008,10 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="VJP-zZ-JVc" firstAttribute="top" secondItem="FRH-Ee-rEg" secondAttribute="top" constant="6" id="4Nu-gm-2PU"/>
+                                    <constraint firstItem="VJP-zZ-JVc" firstAttribute="centerX" secondItem="FRH-Ee-rEg" secondAttribute="centerX" id="R0U-MI-s7T"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1361,7 +1364,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Pi5-Tc-WdI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pi5-Tc-WdI">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="24D-Um-EgS">
@@ -1388,7 +1391,7 @@
                                     <outlet property="delegate" destination="jjK-3W-K6q" id="0wS-ke-dfi"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" text="Search" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v86-g2-g8g">
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v86-g2-g8g">
                                 <rect key="frame" x="40" y="20" width="295" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

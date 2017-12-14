@@ -41,6 +41,10 @@ class MainAuthVC: UIViewController {
         }
     }
     
+    var isRunning: Bool  = false
+    
+    var selectedImage: UIImage?
+
     //MARK: IBOutlets
     
     @IBOutlet weak var authStateScrollView: UIScrollView!
@@ -175,7 +179,8 @@ class MainAuthVC: UIViewController {
     
     fileprivate func uploadImage() {
         
-        guard let image = profilePhotoImageView.image else { return }
+        guard let image = selectedImage else { return }
+
         
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
@@ -249,7 +254,13 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 
 extension MainAuthVC: SignInVCDelegate {
     func loginButtonPressed(on controller: SignInVC, with user: User) {
+        if self.isRunning {
+            return
+        }
+        self.isRunning = true
         User.login(user: user, completion: { _, error in
+            self.isRunning = false
+
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
@@ -257,6 +268,7 @@ extension MainAuthVC: SignInVCDelegate {
                 self.setUpStatusBarView()
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
+            self.isRunning = false
         })
     }
     
@@ -269,13 +281,26 @@ extension MainAuthVC: SignInVCDelegate {
 
 extension MainAuthVC: SignUpVCDelegate {
     func signUpButtonPressed(on controller: SignUpVC, with user: User) {
+        if self.isRunning {
+            return
+        }
+        self.isRunning = true
+        
+
         user.signUp(completion: { (user, error) in
+            self.isRunning = false
+
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
-                self.uploadImage()
+                if self.selectedImage == nil {
+                    self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
+                } else {
+                    self.uploadImage()
+                }
             }
+            self.isRunning = false
         })
     }
     

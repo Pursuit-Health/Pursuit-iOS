@@ -25,6 +25,8 @@ class ClientsVC: UIViewController {
                 searchField.backgroundColor     = .clear
                 searchField.textColor           = .white
                 searchField.font                = UIFont(name: "Avenir", size: 15)
+                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+
             }
         }
     }
@@ -66,6 +68,7 @@ class ClientsVC: UIViewController {
     }
     
     @IBAction func menuButtonPressed(_ sender: Any) {
+        self.view.endEditing(true)
         if self.revealViewController() != nil {
             self.revealViewController().revealToggle(self)
         }

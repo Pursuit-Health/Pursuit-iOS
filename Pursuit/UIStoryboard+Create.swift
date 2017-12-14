@@ -145,6 +145,10 @@ extension UIStoryboard {
         var SideMenuNavigation: SWRevealViewController? {
             return self.instantiate(type: SWRevealViewController.self)
         }
+        
+        var SideMenuNavigationController: PreloadNavigation? {
+            return self.instantiate(type: PreloadNavigation.self)
+        }
     }
     
     //MARK: Instatiate

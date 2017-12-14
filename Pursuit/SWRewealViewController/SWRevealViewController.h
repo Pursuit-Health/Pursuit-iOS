@@ -332,6 +332,8 @@ typedef enum
 
 @optional
 
+- (void)setInteraction: (BOOL)enable;
+
 // The following delegate methods will be called before and after the front view moves to a position
 - (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position;
 - (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position;
@@ -377,6 +379,7 @@ typedef enum
 // to calls to 'setXXViewController' methods
 - (id<UIViewControllerAnimatedTransitioning>)revealController:(SWRevealViewController *)revealController
     animationControllerForOperation:(SWRevealControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC;
+
 
 // DEPRECATED - The following delegate methods will be removed some time in the future
 - (void)revealController:(SWRevealViewController *)revealController panGestureBeganFromLocation:(CGFloat)location progress:(CGFloat)progress; // (DEPRECATED)

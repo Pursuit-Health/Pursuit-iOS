@@ -31,7 +31,7 @@
                 <viewControllerPlaceholder storyboardName="ClientMain" id="hZg-Qu-zKK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nme-OT-jI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1303" y="591"/>
+            <point key="canvasLocation" x="1640.8" y="590.10494752623697"/>
         </scene>
         <!--NavigatorVC-->
         <scene sceneID="5I0-7x-Jjn">
@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7e-u8-i5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="477"/>
+            <point key="canvasLocation" x="1080.8" y="476.31184407796104"/>
         </scene>
         <!--SettingsVC-->
         <scene sceneID="Iln-OU-RLf">
@@ -146,12 +146,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv0-UL-6dB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709.60000000000002" y="1197.7511244377813"/>
+            <point key="canvasLocation" x="1048.8" y="1197.7511244377813"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="pyB-4Z-Hj9">
             <objects>
                 <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxf-jP-tCa" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Usz-Ox-A9U"/>
                     <connections>
                         <segue destination="rZh-Cb-TAh" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="7nz-VW-vlP"/>
                         <segue destination="sxH-Ge-hB2" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="VwF-1F-KII"/>
@@ -159,7 +160,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9of-yA-OK7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-177" y="940"/>
+            <point key="canvasLocation" x="160.80000000000001" y="939.58020989505258"/>
+        </scene>
+        <!--Preload Navigation-->
+        <scene sceneID="NMf-U3-Ub1">
+            <objects>
+                <navigationController storyboardIdentifier="PreloadNavigation" automaticallyAdjustsScrollViewInsets="NO" id="sz4-BG-s8F" customClass="PreloadNavigation" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jjb-7D-YBD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="npk-8p-pPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-678" y="940"/>
         </scene>
     </scenes>
     <resources>

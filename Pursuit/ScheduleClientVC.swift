@@ -130,6 +130,7 @@ class ScheduleClientVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         decreaseDate(nil)
+        setUpBackgroundImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
