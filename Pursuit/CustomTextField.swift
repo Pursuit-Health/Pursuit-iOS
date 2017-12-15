@@ -40,6 +40,7 @@ class CustomTextField: UITextField {
     }
     
     fileprivate func customLayout() {
+        self.attributedPlaceholder = NSAttributedString(string: "Location", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
         let clearButton = UIButton()
         clearButton.setImage( UIImage( named: "search" ), for: .normal )
         clearButton.contentMode = .scaleAspectFit

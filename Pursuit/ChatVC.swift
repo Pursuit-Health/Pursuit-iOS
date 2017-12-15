@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import GrowingTextView
+import IQKeyboardManagerSwift
+import TPKeyboardAvoiding
 
 class ChatVC: UIViewController {
     
@@ -87,7 +89,7 @@ class ChatVC: UIViewController {
             
         }
     }
-    @IBOutlet weak var messagesTableView: UITableView! {
+    @IBOutlet  var messagesTableView: TPKeyboardAvoidingTableView! {
         didSet {
             self.messagesTableView.estimatedRowHeight = 100
             self.messagesTableView.rowHeight = UITableViewAutomaticDimension
@@ -98,7 +100,9 @@ class ChatVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      setUpBackgroundImage()
+       setUpBackgroundImage()
+        
+        //IQKeyboardManager.sharedManager().enable = false
     }
     
     //MARK: IBActions
@@ -112,6 +116,12 @@ class ChatVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //IQKeyboardManager.sharedManager().enable = true
     }
 }
 

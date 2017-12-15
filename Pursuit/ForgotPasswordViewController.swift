@@ -47,6 +47,18 @@ class ForgotPasswordVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setAppearence()
         navigationController?.navigationBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
+        setUpStatusBarView()
+    }
+    
+    fileprivate func setUpStatusBarView() {
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            for view in window.subviews {
+                if view is TopStatusBarView {
+                    view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+                }
+            }
+        }
     }
     
     private func submitEmail(){

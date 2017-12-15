@@ -43,6 +43,7 @@ class NavigatorVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.revealViewController().delegate = self
         
+        NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

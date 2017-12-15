@@ -32,9 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         navigateControllers()
         
-        setUpStatusBarAppearence()
-        
         IQKeyboardManager.sharedManager().enable = true
+        
+        setUpStatusBarAppearence()
         
         return true
     }

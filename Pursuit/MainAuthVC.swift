@@ -99,6 +99,9 @@ class MainAuthVC: UIViewController {
         super.viewDidLoad()
         
         getControllers()
+        
+        //TODO: Reimplement using delegate
+        NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("NotificationIdentifier"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +120,10 @@ class MainAuthVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
    
+    }
+    
+    @objc func methodOfReceivedNotification(notification: Notification){
+        navigationController?.viewControllers.remove(at: 0)
     }
     
     //MARK: Private
@@ -184,6 +191,7 @@ class MainAuthVC: UIViewController {
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
             if (error == nil) {
+                self.setUpStatusBarView()
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
         }
@@ -257,16 +265,15 @@ extension MainAuthVC: SignInVCDelegate {
         }
         self.isRunning = true
         User.login(user: user, completion: { _, error in
-            self.isRunning = false
 
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
+                self.isRunning = false
             }else {
                 self.setUpStatusBarView()
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
-            self.isRunning = false
         })
     }
     
@@ -287,20 +294,19 @@ extension MainAuthVC: SignUpVCDelegate {
         }
         self.isRunning = true
         user.signUp(completion: { (user, error) in
-            self.isRunning = false
 
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
+                self.isRunning = false
             }else {
-                self.setUpStatusBarView()
                 if self.selectedImage == nil {
+                    self.setUpStatusBarView()
                     self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
                 } else {
                     self.uploadImage()
                 }
             }
-            self.isRunning = false
         })
     }
     
