@@ -181,11 +181,9 @@ class MainAuthVC: UIViewController {
         
         guard let image = selectedImage else { return }
 
-        
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
             if (error == nil) {
-                self.setUpStatusBarView()
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }
         }
@@ -281,12 +279,13 @@ extension MainAuthVC: SignInVCDelegate {
 
 extension MainAuthVC: SignUpVCDelegate {
     func signUpButtonPressed(on controller: SignUpVC, with user: User) {
+        
+        self.selectedImage = self.profilePhotoImageView.image
+        
         if self.isRunning {
             return
         }
         self.isRunning = true
-        
-
         user.signUp(completion: { (user, error) in
             self.isRunning = false
 
@@ -294,6 +293,7 @@ extension MainAuthVC: SignUpVCDelegate {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {
+                self.setUpStatusBarView()
                 if self.selectedImage == nil {
                     self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
                 } else {

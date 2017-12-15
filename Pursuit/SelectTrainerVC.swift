@@ -40,6 +40,7 @@ class SelectTrainerVC: UIViewController {
     @IBOutlet weak var trainerSearchBar: UISearchBar! {
         didSet {
             trainerSearchBar.backgroundImage    = UIImage()
+            trainerSearchBar.setImage(UIImage(named: "white_search_icon"), for: .search, state: .normal)
             if let searchField = trainerSearchBar.value(forKey: "_searchField") as? UITextField {
                 searchField.borderStyle         = .none
                 searchField.backgroundColor     = .clear

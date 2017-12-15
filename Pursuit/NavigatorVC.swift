@@ -36,15 +36,12 @@ class NavigatorVC: UIViewController {
         
 
         self.addController()
-        
-        self.revealViewController().delegate = self
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        self.revealViewController().delegate = self
         
     }
     
@@ -101,7 +98,7 @@ class NavigatorVC: UIViewController {
 
 extension NavigatorVC: SWRevealViewControllerDelegate {
     func setInteraction(_ enable: Bool) {
-        self.view.isUserInteractionEnabled = enable
+        //self.view.isUserInteractionEnabled = enable
     }
     
 }

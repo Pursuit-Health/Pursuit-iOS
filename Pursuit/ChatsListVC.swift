@@ -46,6 +46,7 @@ class ChatsListVC: UIViewController {
     @IBAction func menuButtonPressed(_ sender: Any) {
         if self.revealViewController() != nil {
             self.revealViewController().revealToggle(self)
+            self.view.endEditing(true)
         }
     }
     
