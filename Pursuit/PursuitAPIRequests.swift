@@ -33,6 +33,7 @@ extension PSAPI {
         case getWorkoutById(workoutId: String)
         case assignTemplate(clientId: String, templateId: String, parameters: Parameters)
         case submitWorkout(workoutId: String)
+        case getFireBaseToken()
         
         
         //MARK: RequestConvertible
@@ -106,6 +107,8 @@ extension PSAPI {
                 return "trainer/clients/" + clientId + "/assign/" + templateId
             case .submitWorkout(let workoutId):
                 return "client/workouts/" + workoutId + "/submit"
+            case .getFireBaseToken():
+                return "auth/firebase/token"
             }
         }
         
@@ -151,7 +154,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo:
+            case .changePassword, .uploadAvatar, .createTemplate, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getFireBaseToken:
                 return "Bearer" + token
             default:
                 return ""

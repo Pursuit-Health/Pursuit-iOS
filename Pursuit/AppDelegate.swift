@@ -9,6 +9,7 @@
 import UIKit
 import DeepLinkKit
 import IQKeyboardManagerSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        setUpFirebase()
+        
         setUpTabBarAppearens()
         
         setupDeepLinking()
@@ -35,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         setUpStatusBarAppearence()
+        
+        
+        
+        authWithFirebase()
         
         return true
     }
@@ -58,6 +65,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addSubview(view)
     }
 
+    private func setUpFirebase() {
+        FirebaseApp.configure()
+    }
+    
+    private func authWithFirebase() {
+        if let token = User.shared.firToken {
+            Auth.auth().signIn(withCustomToken: token) { (user, error) in
+               
+            }
+        }
+    }
     
     private func navigateControllers() {
         var rootController = UIViewController()

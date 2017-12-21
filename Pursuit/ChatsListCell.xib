@@ -67,6 +67,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="chatNameLabel" destination="6Ln-eS-ZDO" id="2LM-vc-4gt"/>
+                <outlet property="timeModifiedLabel" destination="XcE-t0-joe" id="0hX-vX-7cW"/>
+                <outlet property="userPhotoImageView" destination="KbL-32-XcO" id="1kg-BV-Lte"/>
+            </connections>
             <point key="canvasLocation" x="34" y="61.5"/>
         </tableViewCell>
     </objects>

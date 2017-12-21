@@ -29,6 +29,7 @@
                     <connections>
                         <segue destination="Zse-ay-6UA" kind="relationship" relationship="viewControllers" id="BV5-Aq-xPn"/>
                         <segue destination="fqd-2n-nec" kind="relationship" relationship="viewControllers" id="AXa-3e-UV8"/>
+                        <segue destination="JZZ-43-emW" kind="relationship" relationship="viewControllers" id="9c1-k5-yTU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="es6-KN-4D4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -622,10 +623,130 @@
             </objects>
             <point key="canvasLocation" x="2976.8000000000002" y="205.54722638680661"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Oh0-iC-lOC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JZZ-43-emW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="chat" id="Muu-eG-Esr">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l41-RY-hlC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Vc-r6-alv" kind="relationship" relationship="rootViewController" id="U3r-Il-5z6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v8d-pg-b8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1422" y="1306"/>
+        </scene>
+        <!--Chats ListVC-->
+        <scene sceneID="oIw-zh-fbh">
+            <objects>
+                <viewController storyboardIdentifier="ChatsListVC" wantsFullScreenLayout="YES" id="6Vc-r6-alv" customClass="ChatsListVC" customModule="Pursuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tny-d3-nTq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="q7O-hN-jEj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="542"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-5o-NXp">
+                                <rect key="frame" x="46" y="130" width="303" height="1"/>
+                                <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="W7Q-Ud-4jW"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9V-7Z-oJB">
+                                <rect key="frame" x="36" y="74" width="323" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <offsetWrapper key="searchTextPositionAdjustment" horizontal="5" vertical="0.0"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2cg-aR-pzd">
+                                <rect key="frame" x="0.0" y="177.5" width="375" height="428.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Vc-r6-alv" id="6b2-t9-Mpi"/>
+                                    <outlet property="delegate" destination="6Vc-r6-alv" id="ggp-DM-ut1"/>
+                                </connections>
+                            </tableView>
+                            <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1B7-rK-Ygi">
+                                <rect key="frame" x="0.0" y="606" width="375" height="12"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="mdK-DX-sk4"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLIENTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xON-N0-fRM">
+                                <rect key="frame" x="36" y="154" width="67.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="q7O-hN-jEj" secondAttribute="trailing" id="0OC-cn-eIH"/>
+                            <constraint firstItem="hHg-Ei-5zu" firstAttribute="bottom" secondItem="1B7-rK-Ygi" secondAttribute="bottom" id="8y8-t2-4JH"/>
+                            <constraint firstItem="qmZ-5o-NXp" firstAttribute="top" secondItem="y9V-7Z-oJB" secondAttribute="bottom" id="9R1-fe-mQc"/>
+                            <constraint firstItem="qmZ-5o-NXp" firstAttribute="leading" secondItem="y9V-7Z-oJB" secondAttribute="leading" constant="10" id="DmC-as-BGv"/>
+                            <constraint firstItem="qmZ-5o-NXp" firstAttribute="trailing" secondItem="y9V-7Z-oJB" secondAttribute="trailing" constant="-10" id="NUW-KF-wLd"/>
+                            <constraint firstItem="1B7-rK-Ygi" firstAttribute="top" secondItem="2cg-aR-pzd" secondAttribute="bottom" id="NVm-Qi-LzT"/>
+                            <constraint firstItem="q7O-hN-jEj" firstAttribute="top" secondItem="hHg-Ei-5zu" secondAttribute="top" id="Rk3-SV-A0s"/>
+                            <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="y9V-7Z-oJB" secondAttribute="trailing" constant="16" id="SsM-pa-5en"/>
+                            <constraint firstItem="xON-N0-fRM" firstAttribute="leading" secondItem="y9V-7Z-oJB" secondAttribute="leading" id="Tms-vR-zuS"/>
+                            <constraint firstItem="1B7-rK-Ygi" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" id="YH6-N7-8Xb"/>
+                            <constraint firstItem="2cg-aR-pzd" firstAttribute="top" secondItem="xON-N0-fRM" secondAttribute="bottom" id="YMe-1M-y6M"/>
+                            <constraint firstItem="2cg-aR-pzd" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" id="b1j-oh-amv"/>
+                            <constraint firstItem="y9V-7Z-oJB" firstAttribute="top" secondItem="hHg-Ei-5zu" secondAttribute="top" constant="10" id="d7c-tz-u1n"/>
+                            <constraint firstItem="y9V-7Z-oJB" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" constant="36" id="exU-7x-QFw"/>
+                            <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="1B7-rK-Ygi" secondAttribute="trailing" id="hsj-rs-Sgm"/>
+                            <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="2cg-aR-pzd" secondAttribute="trailing" id="iTw-Hg-UaG"/>
+                            <constraint firstItem="q7O-hN-jEj" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" id="ibM-te-O4d"/>
+                            <constraint firstItem="q7O-hN-jEj" firstAttribute="bottom" secondItem="2cg-aR-pzd" secondAttribute="bottom" id="xMO-fm-OWX"/>
+                            <constraint firstItem="xON-N0-fRM" firstAttribute="top" secondItem="y9V-7Z-oJB" secondAttribute="bottom" constant="24" id="yCt-fd-Lle"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hHg-Ei-5zu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YaT-RI-UJd">
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="Uy7-pi-22Z">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="6Vc-r6-alv" id="Dzo-aX-zvF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Chat"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="chatSearchBar" destination="y9V-7Z-oJB" id="LSx-eh-PZv"/>
+                        <outlet property="chatsTableView" destination="2cg-aR-pzd" id="yiP-TX-YB1"/>
+                        <outlet property="numberOfClientsLabel" destination="xON-N0-fRM" id="ReI-Ve-Zfp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i7z-ss-5Tq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="yDG-oA-hFz" customClass="HideKeyboardTapGestureManager" customModule="Pursuit" customModuleProvider="target">
+                    <connections>
+                        <outletCollection property="targets" destination="2cg-aR-pzd" collectionClass="NSMutableArray" id="AjE-vR-x7K"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="2126" y="1306"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="bg" width="375" height="667"/>
         <image name="btn_add" width="45" height="45"/>
         <image name="btn_close" width="25" height="25"/>
+        <image name="chat" width="22" height="19"/>
         <image name="ic_client_runner" width="21" height="25"/>
         <image name="ic_menu" width="21" height="17"/>
         <image name="ic_schedule" width="25" height="25"/>

@@ -44,7 +44,7 @@
                             <constraint firstAttribute="height" constant="20" id="kM1-On-ZI0"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1N8-my-18C">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1N8-my-18C">
                         <rect key="frame" x="76" y="15" width="56.5" height="64"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b5-qF-Yf7">
@@ -61,9 +61,8 @@
                             <constraint firstAttribute="bottom" secondItem="9b5-qF-Yf7" secondAttribute="bottom" constant="10" id="wcw-rR-y1W"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="NO"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
-                                <real key="value" value="30"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>

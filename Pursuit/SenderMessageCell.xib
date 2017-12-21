@@ -44,8 +44,8 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="" value="NO"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
-                                <real key="value" value="30"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -73,6 +73,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="createdAtLabel" destination="50M-cD-W8U" id="rxP-nO-BIR"/>
                 <outlet property="messageLabel" destination="KAc-bE-Oyb" id="pAq-dJ-FtJ"/>
             </connections>
             <point key="canvasLocation" x="40.5" y="34.5"/>

@@ -24,6 +24,18 @@ class User: Mappable {
             keychain.token      = newValue
         }
     }
+    
+    var firToken: String? {
+        get {
+            let keychain = PursuitKeychain()
+            return keychain.firToken
+        }
+        set(newValue) {
+            let keychain        = PursuitKeychain()
+            keychain.firToken      = newValue
+        }
+    }
+    
 
     //MARK: Mappable
     

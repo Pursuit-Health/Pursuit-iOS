@@ -1,22 +1,22 @@
 //
-//  SenderCell.swift
+//  TypingCell.swift
 //  Pursuit
 //
-//  Created by ігор on 12/10/17.
+//  Created by ігор on 12/20/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
 import UIKit
 
-class SenderMessageCell: UITableViewCell {
+class TypingCell: UITableViewCell {
 
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var createdAtLabel: UILabel!
+    @IBOutlet weak var dotsView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
 
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

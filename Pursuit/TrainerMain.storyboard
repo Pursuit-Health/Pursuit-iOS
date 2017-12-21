@@ -647,6 +647,7 @@
                     <connections>
                         <outlet property="chatSearchBar" destination="DV7-Yi-o85" id="noA-Kb-RTs"/>
                         <outlet property="chatsTableView" destination="xpB-0j-Qmt" id="iSF-oI-c95"/>
+                        <outlet property="numberOfClientsLabel" destination="DXG-MV-qFk" id="4Aa-76-eUH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Oe-41-b8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -672,7 +673,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="EDD-xD-oVt">
                                 <rect key="frame" x="0.0" y="20" width="375" height="635"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WCt-Jj-N1C" customClass="TPKeyboardAvoidingTableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WCt-Jj-N1C">
                                 <rect key="frame" x="0.0" y="20" width="375" height="581.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -696,6 +697,9 @@
                                         <state key="normal" title="SEND">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendButtonPressed:" destination="ccl-jn-CkE" eventType="touchUpInside" id="IaY-AW-yrx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qh-MI-Ldv">
                                         <rect key="frame" x="15" y="20.5" width="12" height="12"/>
@@ -710,6 +714,10 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ccl-jn-CkE" id="QxC-xE-G2i"/>
+                                            <outlet property="pasteDelegate" destination="ccl-jn-CkE" id="bwj-fW-wc7"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -766,10 +774,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Chat Name"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="bottomConstraint" destination="PG4-bc-tNX" id="ERC-sn-Hds"/>
                         <outlet property="messageTextView" destination="w4b-Zz-pK1" id="xc8-vg-WAK"/>
                         <outlet property="messagesTableView" destination="WCt-Jj-N1C" id="bY8-E5-C4N"/>
                     </connections>

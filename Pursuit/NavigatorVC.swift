@@ -79,7 +79,7 @@ class NavigatorVC: UIViewController {
     }
     
     private func checkUserType() -> String {
-        if let clientType = Auth.IsClient {
+        if let clientType = PSAuth.IsClient {
             if clientType {
                 return Constants.SeguesIDs.Client
             } else {

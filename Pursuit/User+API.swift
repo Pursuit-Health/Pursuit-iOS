@@ -7,6 +7,7 @@
 //
 
 //IGOR: Check
+import Firebase
 extension User {
     
     //MARK: Typealias
@@ -18,20 +19,24 @@ extension User {
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     typealias RefreshTokenCompletion    = (_ error: ErrorProtocol?) -> Void
+     typealias GetFireBaseTokenCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
     
 
     //MARK: Public
 
     
-    class func login(user: User, completion: @escaping LoginCompletion) {
+    class func login(username: String, password: String, user: User, completion: @escaping LoginCompletion) {
         let api = PSAPI()
         
-        api.login(email: user.email ?? "", password: user.password ?? "") { (user, error) in
+        api.login(email: username, password: password) { (user, error) in
             
             if let user = user {
                 if let token = user.token {
                   self.shared.token = token
+                    User.getFireBaseToken(completion: { (user, error) in
+                        
+                    })
                 }
             }
             completion(user, error)
@@ -73,4 +78,10 @@ extension User {
         api.getUserInfo(completion: completion)
     }
 
+    class func getFireBaseToken(completion: @escaping GetFireBaseTokenCompletion) {
+        let api = PSAPI()
+        api.getFireBaseToken { (user, error) in
+
+        }
+    }
  }

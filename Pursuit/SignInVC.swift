@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SignInVCDelegate: class {
-    func loginButtonPressed(on controller: SignInVC, with user: User)
+    func loginButtonPressed(on controller: SignInVC, with user: User, username: String, password: String)
     func forgotPasswordButtonPressed(on controller: SignInVC)
 }
 
@@ -39,9 +39,11 @@ class SignInVC: UIViewController {
 
 extension SignInVC {
      func makeSignIn() {
-        user.email      = emailTeaxtField.text ?? ""
-        user.password   = passwordTextField.text ?? ""
-        self.delegate?.loginButtonPressed(on: self, with: self.user)
+        let email = emailTeaxtField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        user.email      = email
+        user.password   = password
+        self.delegate?.loginButtonPressed(on: self, with: self.user, username: email, password: password)
     }
 }
 

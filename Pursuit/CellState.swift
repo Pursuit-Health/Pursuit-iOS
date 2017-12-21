@@ -23,8 +23,6 @@ extension CellState {
     
     func handleSpecialDates(cell: CalendarCell, specialDates: [String], formatter: DateFormatter){
         cell.isSpecialDate = specialDates.contains(formatter.string(from: self.date))
-        print(formatter.string(from: self.date))
-        print(cell.isSpecialDate)
     }
     
     func handleCellSelection(cell: CalendarCell) {

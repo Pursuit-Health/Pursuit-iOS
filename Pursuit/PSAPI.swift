@@ -11,6 +11,7 @@ import Alamofire
 import ObjectMapper
 import SVProgressHUD
 import Foundation
+import Firebase
 
 class PSAPI: APIHandable {
     
@@ -257,7 +258,7 @@ class PSAPI: APIHandable {
                 multipartFormData.append(data, withName: "avatar", fileName: "image.jpg", mimeType: "image/jpeg")
                 
         },
-            to: PSURL.BaseURL + "/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
+            to: PSURL.BaseURL + "/v1/settings/avatar", method : .post, headers: ["Authorization" : "Bearer" + token],
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
@@ -411,6 +412,34 @@ class PSAPI: APIHandable {
         let request = Request.assignTemplate(clientId: clientId, templateId: templateId, parameters: [:])
         return self.simple(request: request, completion: completion)?.validate()
     }
+    
+    @discardableResult
+    func getFireBaseToken(completion: @escaping GetFireBaseTokenCompletion) -> DataRequest? {
+        let request = Request.getFireBaseToken()
+        return self.perform(request)?.responseJSON { (response) in
+            var error: ErrorProtocol?
+            var user: User?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            } else {
+                switch response.result {
+                case .success(let JSON):
+                    
+                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
+                    if let token = metaData?["token"] {
+                   
+                        User.shared.firToken = token
+                        Auth.auth().signIn(withCustomToken:  token) { (user, error) in
+                            
+                        }
+                    }
+                case .failure(let serverError):
+                    error = serverError.psError
+                }
+            }
+            completion(user, error)
+        }
+    }
 }
 
 extension PSAPI {
@@ -462,4 +491,6 @@ extension PSAPI {
     typealias SubmitWorkOutCompletion   = (_ error: ErrorProtocol?) -> Void
     
     typealias GetUserInfoCompletion     = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetFireBaseTokenCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
 }

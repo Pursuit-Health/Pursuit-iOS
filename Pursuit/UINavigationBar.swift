@@ -16,4 +16,12 @@ extension UINavigationBar {
         self.isTranslucent      = true
         self.backgroundColor    = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
     }
+    
+    func setTitleColor(_ color: UIColor) {
+        let attributes = [
+            NSAttributedStringKey.font : UIFont(name: "Avenir-Book", size: 18.0),
+            NSAttributedStringKey.foregroundColor : color
+        ]
+        titleTextAttributes = attributes
+    }
 }

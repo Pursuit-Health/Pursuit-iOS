@@ -259,12 +259,14 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
 }
 
 extension MainAuthVC: SignInVCDelegate {
-    func loginButtonPressed(on controller: SignInVC, with user: User) {
+    
+    func loginButtonPressed(on controller: SignInVC, with user: User, username: String, password: String) {
+        
         if self.isRunning {
             return
         }
         self.isRunning = true
-        User.login(user: user, completion: { _, error in
+        User.login(username: username, password: password, user: user, completion: { _, error in
 
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)

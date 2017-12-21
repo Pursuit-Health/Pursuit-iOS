@@ -9,7 +9,7 @@
 
 //TODO: Use enum, make User.shared.auth.token
 
-struct Auth {
+struct PSAuth {
     static let Token: String?   = User.shared.token
     static let IsClient: Bool?  = UserDefaults.standard.value(forKey: "isClient") as? Bool
 }
