@@ -171,6 +171,7 @@
 		78CE34C51F38FDF2002BD31D /* TabCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BF1F38FDF2002BD31D /* TabCollectionCell.xib */; };
 		78CE34C61F38FDF2002BD31D /* TabCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34C01F38FDF2002BD31D /* TabCollectionCell.swift */; };
 		78E39F391FEC35AB0047A0A6 /* DotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E39F381FEC35AB0047A0A6 /* DotsView.swift */; };
+		78E39F5B1FEDBFB90047A0A6 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E39F5A1FEDBFB90047A0A6 /* ProgressView.swift */; };
 		78E426801F69B0FE00C12D94 /* UITextField+Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4267F1F69B0FE00C12D94 /* UITextField+Effects.swift */; };
 		78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E426811F69B14C00C12D94 /* TextFieldEffects.swift */; };
 		78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */; };
@@ -459,6 +460,7 @@
 		78CE34BF1F38FDF2002BD31D /* TabCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabCollectionCell.xib; path = Pursuit/TabCollectionCell.xib; sourceTree = SOURCE_ROOT; };
 		78CE34C01F38FDF2002BD31D /* TabCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabCollectionCell.swift; path = Pursuit/TabCollectionCell.swift; sourceTree = SOURCE_ROOT; };
 		78E39F381FEC35AB0047A0A6 /* DotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsView.swift; sourceTree = "<group>"; };
+		78E39F5A1FEDBFB90047A0A6 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		78E4267F1F69B0FE00C12D94 /* UITextField+Effects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Effects.swift"; sourceTree = "<group>"; };
 		78E426811F69B14C00C12D94 /* TextFieldEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		78E4438A1F40DFDF00525F7A /* ScheduleClienCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClienCell.swift; sourceTree = "<group>"; };
@@ -1329,6 +1331,7 @@
 				7869B79F1FDADBBD00FA7DF8 /* TalesView.swift */,
 				78E5D3071FDB393A00096B46 /* MaskView.swift */,
 				786F2D2E1FEAA7A500E3B347 /* ChatCornerView.swift */,
+				78E39F5A1FEDBFB90047A0A6 /* ProgressView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2286,6 +2289,7 @@
 				784419B81F7AD7A7009CB350 /* URL.swift in Sources */,
 				7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */,
 				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
+				78E39F5B1FEDBFB90047A0A6 /* ProgressView.swift in Sources */,
 				783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */,
 				783484331F71B62100C58191 /* Trainer+API.swift in Sources */,
 				784510461FD9E7EC00285155 /* JSQMessagesCollectionViewCell.m in Sources */,

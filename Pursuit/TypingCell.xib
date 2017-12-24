@@ -20,8 +20,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWY-AX-uCd">
-                        <rect key="frame" x="10" y="0.0" width="100" height="52"/>
-                        <color key="backgroundColor" red="1" green="0.33221340069999999" blue="0.31107199619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="52"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="LXR-d9-FZK"/>
                         </constraints>
@@ -31,7 +31,7 @@
                 <constraints>
                     <constraint firstItem="cWY-AX-uCd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3DM-Qe-CLU"/>
                     <constraint firstAttribute="bottom" secondItem="cWY-AX-uCd" secondAttribute="bottom" id="OjU-wY-5ug"/>
-                    <constraint firstItem="cWY-AX-uCd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="XNI-uy-vzx"/>
+                    <constraint firstItem="cWY-AX-uCd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XNI-uy-vzx"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

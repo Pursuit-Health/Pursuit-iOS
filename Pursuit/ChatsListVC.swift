@@ -87,8 +87,9 @@ class ChatsListVC: UIViewController {
     
     func getDialogs() {
         let queryRef = chatRef
-        
-        SVProgressHUD.show()
+        DispatchQueue.main.async {
+             SVProgressHUD.show()
+        }
         queryRef.observe(.childAdded) { (snapshot) in
          SVProgressHUD.dismiss()
             let userSnap = snapshot as! DataSnapshot

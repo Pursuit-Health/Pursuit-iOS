@@ -22,6 +22,7 @@ class Message: Mappable, Hashable, Equatable{
     var senderId: String?
     var created: TimeInterval?
     var messageId: String = ""
+    var photo: String?
     
     //MARK: Mappable
     
@@ -30,6 +31,7 @@ class Message: Mappable, Hashable, Equatable{
         self.text <- map["text"]
         self.created <- map["created_at"]
         self.senderId <- map["sender_id"]
+        self.photo  <- map["photo"]
     }
     
     required init?(map: Map) {
