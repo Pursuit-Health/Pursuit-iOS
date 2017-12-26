@@ -91,6 +91,10 @@ class PSAPI: APIHandable {
                             user = Trainer(JSON: objectData)
                         }
                         User.shared.token = token
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                            User.getFireBaseToken(completion: completion)
+                        }
                     }
                     
                 case .failure(let serverError):
@@ -122,6 +126,10 @@ class PSAPI: APIHandable {
                             user = Client(JSON: objectData)
                         }
                         User.shared.token = token
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                        User.getFireBaseToken(completion: completion)
+                        }
                     }
                     
                 case .failure(let serverError):
@@ -159,6 +167,12 @@ class PSAPI: APIHandable {
                             user = Client(JSON: objectData)
                         }
                         User.shared.token = token
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                            User.getFireBaseToken(completion: { (user, error) in
+                                
+                            })
+                        }
                     }
                     
                 case .failure(let serverError):
@@ -429,6 +443,7 @@ class PSAPI: APIHandable {
                     if let token = metaData?["token"] {
                    
                         User.shared.firToken = token
+                        
                         Auth.auth().signIn(withCustomToken:  token) { (user, error) in
                             
                         }

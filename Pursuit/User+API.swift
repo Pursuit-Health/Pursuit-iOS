@@ -19,7 +19,7 @@ extension User {
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     typealias RefreshTokenCompletion    = (_ error: ErrorProtocol?) -> Void
-     typealias GetFireBaseTokenCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    typealias GetFireBaseTokenCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
     
     
 
@@ -34,9 +34,6 @@ extension User {
             if let user = user {
                 if let token = user.token {
                   self.shared.token = token
-                    User.getFireBaseToken(completion: { (user, error) in
-                        
-                    })
                 }
             }
             completion(user, error)
