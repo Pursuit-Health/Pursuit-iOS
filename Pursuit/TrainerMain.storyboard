@@ -369,6 +369,7 @@
                         <outlet property="dayOfWeakLabel" destination="BsJ-2j-z6R" id="Mg5-QJ-yU0"/>
                         <outlet property="endDateTextField" destination="KQn-HW-3sc" id="XrD-1N-7kl"/>
                         <outlet property="eventTitleTextField" destination="6Wu-ZU-e1b" id="rJd-aU-j8R"/>
+                        <outlet property="locationTextField" destination="pwO-d2-tsH" id="RhF-NH-3Bl"/>
                         <outlet property="monthYearLabel" destination="IWP-Td-ool" id="JwN-kt-CDC"/>
                         <outlet property="startDateTextField" destination="5i3-Ba-c1j" id="sN6-GM-x3o"/>
                     </connections>

@@ -51,6 +51,8 @@ class ScheduleClientVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var locationTextField: CustomTextField!
+    
     var clients: [Client] = [] {
         didSet {
         }
@@ -116,7 +118,7 @@ class ScheduleClientVC: UIViewController {
         //            return
         //        }
         
-        event.location = "SomeWhere"
+        event.location = self.locationTextField.text!
         event.startAt = self.startTime
         event.endAt = self.endTime
         event.date = date

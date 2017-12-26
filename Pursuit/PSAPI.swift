@@ -167,12 +167,10 @@ class PSAPI: APIHandable {
                             user = Client(JSON: objectData)
                         }
                         User.shared.token = token
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        
                             User.getFireBaseToken(completion: { (user, error) in
                                 
                             })
-                        }
                     }
                     
                 case .failure(let serverError):

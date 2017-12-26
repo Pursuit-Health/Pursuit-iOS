@@ -361,6 +361,7 @@ class ChatVC: UIViewController {
             return
         }
         
+        
         var photoKey = String()
         var photoUrl = String()
         
@@ -369,7 +370,7 @@ class ChatVC: UIViewController {
         let otherUserRef = receiverMessageRef.childByAutoId()
         let ref = self.senderMessageRef.childByAutoId()
         var messageItem = [
-            "text" : messsage,
+            "text" : messsage.condensedWhitespace,
             "created_at": Date().timeIntervalSince1970,
             "sender_id": self.senderId
             
@@ -420,8 +421,7 @@ class ChatVC: UIViewController {
         }
         
         present(picker, animated: true, completion:nil)
-    }
-    
+    }    
 }
 
 extension ChatVC : UITableViewDataSource, UITableViewDelegate {

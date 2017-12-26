@@ -85,8 +85,6 @@ class ChatsListVC: UIViewController {
         if let _ = self.chat {
             self.chat = nil
         }
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -108,7 +106,7 @@ class ChatsListVC: UIViewController {
                 dialog.dialogId = chatId
                 self.dialogs.append(dialog)
             }
-            self.numberOfClientsLabel.text = "\(self.dialogs.count)" + " CLIENTS"
+            self.numberOfClientsLabel.text = self.isClientType() ? "TRAINER" : ("\(self.dialogs.count)" + " CLIENTS")
             self.chatsTableView?.reloadData()
         }
     }
@@ -140,6 +138,13 @@ class ChatsListVC: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YY"
         return dateFormatter.string(from: date)
+    }
+    
+    private func isClientType() -> Bool {
+        if let clientType = UserDefaults.standard.value(forKey: "isClient") as? Bool {
+            return clientType
+        }
+        return false
     }
 }
 
