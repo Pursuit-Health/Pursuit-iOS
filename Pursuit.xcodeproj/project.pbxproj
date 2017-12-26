@@ -146,6 +146,12 @@
 		784C5E6E1FD9AA590050C1E5 /* ChatsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C5E6D1FD9AA590050C1E5 /* ChatsListVC.swift */; };
 		784C5E721FD9BCB00050C1E5 /* ChatsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C5E701FD9BCB00050C1E5 /* ChatsListCell.swift */; };
 		784C5E731FD9BCB00050C1E5 /* ChatsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784C5E711FD9BCB00050C1E5 /* ChatsListCell.xib */; };
+		784E3D381FF116A60096DFD8 /* SeenMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E3D371FF116A60096DFD8 /* SeenMessagesView.swift */; };
+		784E3D3A1FF116CD0096DFD8 /* SeenMessagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784E3D391FF116CD0096DFD8 /* SeenMessagesView.xib */; };
+		784E3D401FF14B140096DFD8 /* SameMessageImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E3D3E1FF14B140096DFD8 /* SameMessageImageCell.swift */; };
+		784E3D411FF14B140096DFD8 /* SameMessageImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784E3D3F1FF14B140096DFD8 /* SameMessageImageCell.xib */; };
+		784E3D441FF14B320096DFD8 /* SameMessageTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784E3D421FF14B320096DFD8 /* SameMessageTextCell.swift */; };
+		784E3D451FF14B320096DFD8 /* SameMessageTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784E3D431FF14B320096DFD8 /* SameMessageTextCell.xib */; };
 		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
 		7869B79C1FDACAA600FA7DF8 /* FrontSenderMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7869B79A1FDACAA600FA7DF8 /* FrontSenderMessageCell.swift */; };
 		7869B79D1FDACAA600FA7DF8 /* FrontSenderMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7869B79B1FDACAA600FA7DF8 /* FrontSenderMessageCell.xib */; };
@@ -434,6 +440,12 @@
 		784C5E6D1FD9AA590050C1E5 /* ChatsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListVC.swift; sourceTree = "<group>"; };
 		784C5E701FD9BCB00050C1E5 /* ChatsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsListCell.swift; sourceTree = "<group>"; };
 		784C5E711FD9BCB00050C1E5 /* ChatsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsListCell.xib; sourceTree = "<group>"; };
+		784E3D371FF116A60096DFD8 /* SeenMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeenMessagesView.swift; sourceTree = "<group>"; };
+		784E3D391FF116CD0096DFD8 /* SeenMessagesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeenMessagesView.xib; sourceTree = "<group>"; };
+		784E3D3E1FF14B140096DFD8 /* SameMessageImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameMessageImageCell.swift; sourceTree = "<group>"; };
+		784E3D3F1FF14B140096DFD8 /* SameMessageImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SameMessageImageCell.xib; sourceTree = "<group>"; };
+		784E3D421FF14B320096DFD8 /* SameMessageTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameMessageTextCell.swift; sourceTree = "<group>"; };
+		784E3D431FF14B320096DFD8 /* SameMessageTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SameMessageTextCell.xib; sourceTree = "<group>"; };
 		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
 		7869B79A1FDACAA600FA7DF8 /* FrontSenderMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontSenderMessageCell.swift; sourceTree = "<group>"; };
 		7869B79B1FDACAA600FA7DF8 /* FrontSenderMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrontSenderMessageCell.xib; sourceTree = "<group>"; };
@@ -1250,6 +1262,7 @@
 		784C5E6C1FD9AA320050C1E5 /* ChatsListsVC */ = {
 			isa = PBXGroup;
 			children = (
+				784E3D361FF116630096DFD8 /* Views */,
 				784C5E6F1FD9BC920050C1E5 /* Cells */,
 				784C5E6D1FD9AA590050C1E5 /* ChatsListVC.swift */,
 			);
@@ -1263,6 +1276,50 @@
 				784C5E711FD9BCB00050C1E5 /* ChatsListCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		784E3D361FF116630096DFD8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				784E3D371FF116A60096DFD8 /* SeenMessagesView.swift */,
+				784E3D391FF116CD0096DFD8 /* SeenMessagesView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		784E3D3B1FF14A850096DFD8 /* ReceiverCell */ = {
+			isa = PBXGroup;
+			children = (
+				7869B79A1FDACAA600FA7DF8 /* FrontSenderMessageCell.swift */,
+				7869B79B1FDACAA600FA7DF8 /* FrontSenderMessageCell.xib */,
+				78E5D3031FDB36C600096B46 /* FrontSenderMessageWithImageCell.swift */,
+				78E5D3041FDB36C600096B46 /* FrontSenderMessageWithImageCell.xib */,
+				784E3D3E1FF14B140096DFD8 /* SameMessageImageCell.swift */,
+				784E3D3F1FF14B140096DFD8 /* SameMessageImageCell.xib */,
+				784E3D421FF14B320096DFD8 /* SameMessageTextCell.swift */,
+				784E3D431FF14B320096DFD8 /* SameMessageTextCell.xib */,
+			);
+			name = ReceiverCell;
+			sourceTree = "<group>";
+		};
+		784E3D3C1FF14A900096DFD8 /* SenderCell */ = {
+			isa = PBXGroup;
+			children = (
+				78E5D3091FDD9B8500096B46 /* SenderMessageCell.swift */,
+				78E5D30A1FDD9B8500096B46 /* SenderMessageCell.xib */,
+				7845F8431FDDA34600707FBB /* SendeMessageWithImageCell.swift */,
+				7845F8441FDDA34600707FBB /* SendeMessageWithImageCell.xib */,
+			);
+			name = SenderCell;
+			sourceTree = "<group>";
+		};
+		784E3D3D1FF14AAB0096DFD8 /* TypingCell */ = {
+			isa = PBXGroup;
+			children = (
+				786F2D331FEAC10E00E3B347 /* TypingCell.swift */,
+				786F2D341FEAC10E00E3B347 /* TypingCell.xib */,
+			);
+			name = TypingCell;
 			sourceTree = "<group>";
 		};
 		785FF4271FA1DFAA00787CF4 /* Controllers */ = {
@@ -1311,16 +1368,9 @@
 		7869B7991FDAC9B500FA7DF8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				7869B79A1FDACAA600FA7DF8 /* FrontSenderMessageCell.swift */,
-				7869B79B1FDACAA600FA7DF8 /* FrontSenderMessageCell.xib */,
-				78E5D3031FDB36C600096B46 /* FrontSenderMessageWithImageCell.swift */,
-				78E5D3041FDB36C600096B46 /* FrontSenderMessageWithImageCell.xib */,
-				78E5D3091FDD9B8500096B46 /* SenderMessageCell.swift */,
-				78E5D30A1FDD9B8500096B46 /* SenderMessageCell.xib */,
-				7845F8431FDDA34600707FBB /* SendeMessageWithImageCell.swift */,
-				7845F8441FDDA34600707FBB /* SendeMessageWithImageCell.xib */,
-				786F2D331FEAC10E00E3B347 /* TypingCell.swift */,
-				786F2D341FEAC10E00E3B347 /* TypingCell.xib */,
+				784E3D3D1FF14AAB0096DFD8 /* TypingCell */,
+				784E3D3C1FF14A900096DFD8 /* SenderCell */,
+				784E3D3B1FF14A850096DFD8 /* ReceiverCell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2053,9 +2103,11 @@
 				7845F8461FDDA34600707FBB /* SendeMessageWithImageCell.xib in Resources */,
 				784510541FD9E7EC00285155 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				782B83141F71278D00A019AC /* QuestionCell.xib in Resources */,
+				784E3D451FF14B320096DFD8 /* SameMessageTextCell.xib in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				784C5E731FD9BCB00050C1E5 /* ChatsListCell.xib in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
+				784E3D411FF14B140096DFD8 /* SameMessageImageCell.xib in Resources */,
 				784510551FD9E7EC00285155 /* LICENSE in Resources */,
 				786F2D361FEAC10E00E3B347 /* TypingCell.xib in Resources */,
 				7845104F1FD9E7EC00285155 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
@@ -2092,6 +2144,7 @@
 				781110541F65932700457E8B /* SelectTrainer.xib in Resources */,
 				784510311FD9E7EB00285155 /* JSQMessagesViewController.xib in Resources */,
 				78428EB31FE82A36003C38D0 /* GoogleService-Info.plist in Resources */,
+				784E3D3A1FF116CD0096DFD8 /* SeenMessagesView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2187,6 +2240,7 @@
 				842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */,
 				782B82F01F704BC200A019AC /* Event.swift in Sources */,
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
+				784E3D381FF116A60096DFD8 /* SeenMessagesView.swift in Sources */,
 				78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */,
 				842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */,
 				78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */,
@@ -2295,9 +2349,11 @@
 				784510461FD9E7EC00285155 /* JSQMessagesCollectionViewCell.m in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
+				784E3D401FF14B140096DFD8 /* SameMessageImageCell.swift in Sources */,
 				78E39F391FEC35AB0047A0A6 /* DotsView.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
 				784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */,
+				784E3D441FF14B320096DFD8 /* SameMessageTextCell.swift in Sources */,
 				845882F81F7067F000BE7D69 /* API.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				7845104C1FD9E7EC00285155 /* JSQMessagesInputToolbar.m in Sources */,

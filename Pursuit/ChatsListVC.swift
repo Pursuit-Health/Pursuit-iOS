@@ -76,6 +76,8 @@ class ChatsListVC: UIViewController {
         self.navigationController?.navigationBar.setAppearence()
         
         getDialogs()
+        
+        observeUnreadMessages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +85,13 @@ class ChatsListVC: UIViewController {
         if let _ = self.chat {
             self.chat = nil
         }
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        chatRefHandle = nil
     }
     
     func getDialogs() {
@@ -90,7 +99,7 @@ class ChatsListVC: UIViewController {
         DispatchQueue.main.async {
              SVProgressHUD.show()
         }
-        queryRef.observe(.childAdded) { (snapshot) in
+      queryRef.observe(.childAdded) { (snapshot) in
          SVProgressHUD.dismiss()
             let userSnap = snapshot as! DataSnapshot
             let chatId = userSnap.key
@@ -101,6 +110,27 @@ class ChatsListVC: UIViewController {
             }
             self.numberOfClientsLabel.text = "\(self.dialogs.count)" + " CLIENTS"
             self.chatsTableView?.reloadData()
+        }
+    }
+    
+    func observeUnreadMessages() {
+        
+        let unseenDialogsRef = chatRef
+        unseenDialogsRef.observe(.childChanged) { (snapshot) in
+
+            let userSnap = snapshot as! DataSnapshot
+            let chatId = userSnap.key
+            let userDict = userSnap.value as! [String:AnyObject]
+            if let  dialog = Dialog(JSON: userDict) {
+                dialog.dialogId = chatId
+                for (index, dialg) in self.dialogs.enumerated() {
+                    if dialg.dialogId == dialog.dialogId {
+                        dialg.unseenMessages = dialog.unseenMessages
+                        let indexPath = IndexPath(row: index, section: 0)
+                        self.chatsTableView.reloadRows(at: [indexPath], with: .fade)
+                    }
+                }
+            }
         }
     }
     
@@ -124,6 +154,7 @@ extension ChatsListVC: UITableViewDataSource {
         let dialog = dialogs[indexPath.row]
         cell.chatNameLabel.text = dialog.userName
         cell.timeModifiedLabel.text = setDateFromTimeInterval(dialog.lastChange)
+        cell.unseenMessagesView.isHidden = !(dialog.unseenMessages ?? false)
         if let  image = dialog.userPhoto {
         cell.userPhotoImageView.sd_setImage(with: URL(string: image))
         }

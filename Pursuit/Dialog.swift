@@ -18,6 +18,7 @@ class Dialog: Mappable {
     var messages: [Message]?
     var userPhoto: String?
     var lastChange: TimeInterval?
+    var unseenMessages: Bool?
     
     
     //MARK: Mappable
@@ -28,6 +29,7 @@ class Dialog: Mappable {
         self.userUID        <- map["user.uid"]
         self.messages       <- map["messages"]
         self.lastChange     <- map["last_change"]
+        self.unseenMessages <- map["unseen"]
     }
     
     init(){}

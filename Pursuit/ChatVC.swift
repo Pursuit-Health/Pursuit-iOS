@@ -22,6 +22,8 @@ class ChatVC: UIViewController {
         case sender(message: Message)
         case senderWithImage(message: Message)
         case typing()
+        case sameFrontMessageWithText(message: Message)
+        case sameFrontMesssageWithImage(message: Message)
         
         var cellType: UITableViewCell.Type {
             switch self {
@@ -35,6 +37,10 @@ class ChatVC: UIViewController {
                 return SendeMessageWithImageCell.self
             case .typing:
                 return TypingCell.self
+            case .sameFrontMessageWithText:
+                return SameMessageTextCell.self
+            case .sameFrontMesssageWithImage:
+                return SameMessageImageCell.self
             }
         }
         
@@ -62,7 +68,18 @@ class ChatVC: UIViewController {
                 if let castedCell = cell as? TypingCell {
                     fillTypingCell(cell: castedCell)
                 }
+                
+            case .sameFrontMessageWithText(let message):
+                if let castedCell = cell as? SameMessageTextCell {
+                    fillSameFrontMessageWithText(cell: castedCell, message: message)
+                }
+                
+            case .sameFrontMesssageWithImage(let message):
+                if let castedCell = cell as? SameMessageImageCell {
+                    fillSameFrontMessageWithImage(cell: castedCell, message: message)
+                }
             }
+            
         }
         
         private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message) {
@@ -83,6 +100,14 @@ class ChatVC: UIViewController {
         private func fillSenderWithImageCell(cell: SendeMessageWithImageCell, message: Message) {
             cell.messageLabel.text = message.text
             cell.messagePhoto.sd_setImage(with: URL(string: message.photo ?? ""))
+        }
+        
+        private func fillSameFrontMessageWithImage(cell: SameMessageImageCell, message: Message) {
+            cell.messageImageView.sd_setImage(with: URL(string: message.photo ?? ""))
+        }
+        
+        private func fillSameFrontMessageWithText(cell: SameMessageTextCell, message: Message) {
+            cell.textMessageLabel.text = message.text ?? ""
         }
         
         private func fillTypingCell(cell: TypingCell) {
@@ -147,16 +172,16 @@ class ChatVC: UIViewController {
     
     //MARK: Sender References
     
-    lazy var senderDialogRef: DatabaseReference = self.usersDialogsRef.child(self.senderId)
-    lazy var senderMessageRef: DatabaseReference = self.senderDialogRef.child(self.dialog?.dialogId ?? "").child("messages")
+    lazy var senderDialogRef: DatabaseReference = self.usersDialogsRef.child(self.senderId).child(self.dialog?.dialogId ?? "")
+    lazy var senderMessageRef: DatabaseReference = self.senderDialogRef.child("messages")
     
     lazy var sendTypingRef: DatabaseReference = self.receiverDialogRef.child("typingIndicator").child(self.senderId)
-    lazy var receiveTypingRef: DatabaseReference = self.senderDialogRef.child((self.dialog?.dialogId ?? "")).child("typingIndicator")
+    lazy var receiveTypingRef: DatabaseReference = self.senderDialogRef.child("typingIndicator")
     
     //MARK: Receiver References
     
-    lazy var receiverDialogRef: DatabaseReference = self.usersDialogsRef.child(self.receiverId)
-    lazy var receiverMessageRef: DatabaseReference = self.receiverDialogRef.child((self.dialog?.dialogId ?? "")).child("messages")
+    lazy var receiverDialogRef: DatabaseReference = self.usersDialogsRef.child(self.receiverId).child((self.dialog?.dialogId ?? ""))
+    lazy var receiverMessageRef: DatabaseReference = self.receiverDialogRef.child("messages")
     
     
     var chatRef: DatabaseHandle?
@@ -179,8 +204,11 @@ class ChatVC: UIViewController {
         }
     }
     
+    var lastMessage: Message?
+    
     var message: Message? {
         didSet {
+            
             if message?.senderId == (self.senderId) {
                 if message?.photo != nil {
                     self.cellsInfo.append(.senderWithImage(message: message!))
@@ -188,12 +216,35 @@ class ChatVC: UIViewController {
                     self.cellsInfo.append(.sender(message: message!))
                 }
             }else {
-                if message?.photo != nil {
-                    self.cellsInfo.append(.frontSenderWithImage(message: message!))
+                if lastMessage != nil {
+
+                    if lastMessage?.senderId == self.dialog?.userUID {
+                        if self.message?.photo != nil && self.message?.text != nil {
+                            self.cellsInfo.append(.frontSenderWithImage(message: self.message!))
+                        }else if self.message?.photo != nil {
+                            self.cellsInfo.append(.sameFrontMesssageWithImage(message: self.message!))
+                        }else if self.message?.text != nil {
+                            self.cellsInfo.append(.sameFrontMessageWithText(message: self.message!))
+                        }
+                    }else {
+                        if self.message?.photo != nil {
+                            self.cellsInfo.append(.frontSenderWithImage(message: self.message!))
+                        }else {
+                            self.cellsInfo.append(.frontSender(message: self.message!))
+                        }
+                    }
                 }else {
-                    self.cellsInfo.append(.frontSender(message: message!))
+                
+                    if self.message?.photo != nil {
+                        self.cellsInfo.append(.frontSenderWithImage(message: self.message!))
+                    }else {
+                        self.cellsInfo.append(.frontSender(message: self.message!))
+                    }
                 }
+                
             }
+            
+            self.lastMessage = message
             let indexPath = IndexPath(row: self.cellsInfo.count - 1, section: 0)
             self.messagesTableView?.insertRows(at: [indexPath], with: .automatic)
             self.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
@@ -242,12 +293,8 @@ class ChatVC: UIViewController {
         self.navigationItem.title = dialog?.userName ?? ""
         self.navigationController?.navigationBar.setTitleColor(.white)
         
-        let progressView = ProgressView()
-        progressView.frame.size.height = 50
-        progressView.frame.size.width = 50
-        progressView.center = self.view.center
-        progressView.backgroundColor = .clear
-        self.view.addSubview(progressView)
+        let unsenReference = self.senderDialogRef.child("unseen")
+        unsenReference.setValue(false)
     }
     
     private func reloadTableView() {
@@ -269,7 +316,6 @@ class ChatVC: UIViewController {
     //MARK: Typing Indicator
     private func observeTyping() {
         var firstentry = true
-        
         receiveTypingRef.onDisconnectRemoveValue()
         let usersTypingQuery = (receiveTypingRef.queryOrderedByValue().queryEqual(toValue: true))
         
@@ -293,21 +339,21 @@ class ChatVC: UIViewController {
     }
     
     func createMesageWith(_ text: String?, and image: UIImage) {
-       self.progressView.show(on: self.view)
-
-            uploadImage(image, progressBlock: { (progress) in
-                
-            }, completionBlock: { (url, urlString) in
-                //send message
-                
-                guard let photoUrl = url?.absoluteString else { return }
-                
-                self.sendMessageWith(text, photoURL: photoUrl)
-                
-                self.messageImageView.image = nil
-                self.photoHeightConstraint.constant = 0
-                self.progressView.dissmiss(form: self.view)
-            })
+        self.progressView.show(on: self.view)
+        
+        uploadImage(image, progressBlock: { (progress) in
+            
+        }, completionBlock: { (url, urlString) in
+            //send message
+            
+            guard let photoUrl = url?.absoluteString else { return }
+            
+            self.sendMessageWith(text, photoURL: photoUrl)
+            
+            self.messageImageView.image = nil
+            self.photoHeightConstraint.constant = 0
+            self.progressView.dissmiss(form: self.view)
+        })
     }
     
     func sendMessageWith(_ text: String?, photoURL: String?) {
@@ -318,7 +364,7 @@ class ChatVC: UIViewController {
         
         var photoKey = String()
         var photoUrl = String()
-
+        
         self.isTyping = false
         
         let otherUserRef = receiverMessageRef.childByAutoId()
@@ -338,17 +384,21 @@ class ChatVC: UIViewController {
         ref.setValue(messageItem)
         otherUserRef.setValue(messageItem)
         
-        let senderlastChange = ref.child ("last_change")
+        let senderlastChange = self.senderDialogRef.child ("last_change")
         senderlastChange.setValue(Date().timeIntervalSince1970)
         
-        let receiverLastChange = otherUserRef.child("last_change")
+        let receiverLastChange = receiverDialogRef.child("last_change")
+        
+        let receiverUnseenMessages = receiverDialogRef.child("unseen")
+        receiverUnseenMessages.setValue(true)
+        
         receiverLastChange.setValue(Date().timeIntervalSince1970)
         self.messageTextView.text = nil
     }
     
     
     func observeMessages() {
-   self.senderMessageRef.observe(.childAdded) { (snapshot) in
+        self.senderMessageRef.observe(.childAdded) { (snapshot) in
             self.downloadGroup.enter()
             let chatId = snapshot.key
             let userDict = snapshot.value as! [String : AnyObject]
