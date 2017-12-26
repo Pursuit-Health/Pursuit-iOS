@@ -121,7 +121,7 @@ class ScheduleVC: UIViewController {
         
         //self.navigationController?.isNavigationBarHidden = false
 
-        //updateEvents()
+        updateEvents()
         
         self.delegate?.removeAuthController(on: self)
     }

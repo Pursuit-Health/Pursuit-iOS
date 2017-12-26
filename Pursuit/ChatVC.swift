@@ -154,10 +154,9 @@ class ChatVC: UIViewController {
         }
     }
     
-    @IBOutlet weak var messageImageView: UIImageView!
-    
-    @IBOutlet  var bottomConstraint     : NSLayoutConstraint!
-    @IBOutlet  var photoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var messageImageView     : UIImageView!
+    @IBOutlet  var bottomConstraint         : NSLayoutConstraint!
+    @IBOutlet  var photoHeightConstraint    : NSLayoutConstraint!
     
     //MARK: Properties
     
@@ -165,14 +164,14 @@ class ChatVC: UIViewController {
     
     var dialog: Dialog?
     
-    lazy var senderId: String = Auth.auth().currentUser?.uid ?? ""
-    lazy var receiverId: String = self.dialog?.userUID ?? ""
+    lazy var senderId: String = Auth.auth().currentUser?.uid ?? " "
+    lazy var receiverId: String = self.dialog?.userUID ?? " "
     
     lazy var usersDialogsRef: DatabaseReference = Database.database().reference().child("user_dialogs")
     
     //MARK: Sender References
     
-    lazy var senderDialogRef: DatabaseReference = self.usersDialogsRef.child(self.senderId).child(self.dialog?.dialogId ?? "")
+    lazy var senderDialogRef: DatabaseReference = self.usersDialogsRef.child(self.senderId).child(self.dialog?.dialogId ?? " ")
     lazy var senderMessageRef: DatabaseReference = self.senderDialogRef.child("messages")
     
     lazy var sendTypingRef: DatabaseReference = self.receiverDialogRef.child("typingIndicator").child(self.senderId)
@@ -180,7 +179,7 @@ class ChatVC: UIViewController {
     
     //MARK: Receiver References
     
-    lazy var receiverDialogRef: DatabaseReference = self.usersDialogsRef.child(self.receiverId).child((self.dialog?.dialogId ?? ""))
+    lazy var receiverDialogRef: DatabaseReference = self.usersDialogsRef.child(self.receiverId).child((self.dialog?.dialogId ?? " "))
     lazy var receiverMessageRef: DatabaseReference = self.receiverDialogRef.child("messages")
     
     

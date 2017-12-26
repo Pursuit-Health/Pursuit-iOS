@@ -58,6 +58,11 @@ class ClientsVC: UIViewController {
         return controller
     }()
     
+    var chatVC: ChatVC = {
+        let controller = UIStoryboard.trainer.Chat!
+        
+        return controller
+    }()
     
     var client: [Client] = []
     
@@ -198,7 +203,7 @@ extension ClientsVC: SwipeTableViewCellDelegate {
             let chat = SwipeAction(style: .default, title: nil){ action, indexPath in
                 print("chat pressed")
                 
-                self.navigationController?.pushViewController(self.chatsListVC, animated: true)
+                self.navigationController?.pushViewController(self.chatVC, animated: true)
                 //action for chat press
             }
             chat.hidesWhenSelected = true
