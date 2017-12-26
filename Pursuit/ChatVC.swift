@@ -88,8 +88,13 @@ class ChatVC: UIViewController {
         
         private func fillFrontSernderWithImageCell(cell: FrontSenderMessageWithImageCell, message: Message) {
             cell.messageLabe.text = message.text
-            
+            if message.isHideAvatar ?? false {
+                cell.avatarImageView.image = UIImage()
+            }else {
+                cell.avatarImageView.image = UIImage(named: "avatar1")
+            }
             cell.sendPhotoImageView.sd_setImage(with: URL(string: message.photo ?? ""))
+            
         }
         
         private func fillSenderCell(cell: SenderMessageCell, message: Message) {
@@ -219,6 +224,7 @@ class ChatVC: UIViewController {
 
                     if lastMessage?.senderId == self.dialog?.userUID {
                         if self.message?.photo != nil && self.message?.text != nil {
+                            self.message?.isHideAvatar = true
                             self.cellsInfo.append(.frontSenderWithImage(message: self.message!))
                         }else if self.message?.photo != nil {
                             self.cellsInfo.append(.sameFrontMesssageWithImage(message: self.message!))
@@ -357,10 +363,9 @@ class ChatVC: UIViewController {
     
     func sendMessageWith(_ text: String?, photoURL: String?) {
         guard let messsage = text else { return }
-        if messsage.isEmpty && photoURL == nil {
+        if messsage.isEmpty && photoURL == nil || messsage.trimmingCharacters(in: .whitespaces).isEmpty{
             return
         }
-        
         
         var photoKey = String()
         var photoUrl = String()

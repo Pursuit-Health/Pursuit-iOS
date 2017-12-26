@@ -1256,8 +1256,11 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ah6-5T-N04">
-                                                            <rect key="frame" x="5" y="0.0" width="95" height="101"/>
+                                                            <rect key="frame" x="2" y="0.0" width="101" height="101"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="Ah6-5T-N04" secondAttribute="height" id="0JP-kR-IUw"/>
+                                                            </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXz-Ib-IdS">
                                                             <rect key="frame" x="36.5" y="41.5" width="32" height="18"/>
@@ -1269,14 +1272,13 @@
                                                 </view>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="Ah6-5T-N04" firstAttribute="centerX" secondItem="3Pd-t7-b1s" secondAttribute="centerX" id="8KU-uM-Jig"/>
                                                     <constraint firstItem="3Pd-t7-b1s" firstAttribute="height" secondItem="Bdy-bP-JM3" secondAttribute="height" id="C6h-S7-3WJ"/>
                                                     <constraint firstItem="3Pd-t7-b1s" firstAttribute="centerX" secondItem="Bdy-bP-JM3" secondAttribute="centerX" id="CLt-ld-BcZ"/>
-                                                    <constraint firstItem="Ah6-5T-N04" firstAttribute="top" secondItem="Bdy-bP-JM3" secondAttribute="top" id="G6s-wo-Mkf"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Ah6-5T-N04" secondAttribute="bottom" id="Jpl-3N-PAZ"/>
                                                     <constraint firstItem="wXz-Ib-IdS" firstAttribute="centerY" secondItem="Bdy-bP-JM3" secondAttribute="centerY" id="L7d-2m-87R"/>
+                                                    <constraint firstItem="Ah6-5T-N04" firstAttribute="height" secondItem="3Pd-t7-b1s" secondAttribute="height" id="SQm-SL-X6O"/>
                                                     <constraint firstItem="3Pd-t7-b1s" firstAttribute="centerY" secondItem="Bdy-bP-JM3" secondAttribute="centerY" id="VhM-Fw-Iaz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Ah6-5T-N04" secondAttribute="trailing" constant="5" id="aWm-Jj-05d"/>
-                                                    <constraint firstItem="Ah6-5T-N04" firstAttribute="leading" secondItem="Bdy-bP-JM3" secondAttribute="leading" constant="5" id="kTi-Qn-9lc"/>
+                                                    <constraint firstItem="Ah6-5T-N04" firstAttribute="centerY" secondItem="3Pd-t7-b1s" secondAttribute="centerY" id="e12-fq-HNE"/>
                                                     <constraint firstItem="wXz-Ib-IdS" firstAttribute="centerX" secondItem="Bdy-bP-JM3" secondAttribute="centerX" id="zTe-GQ-80o"/>
                                                 </constraints>
                                                 <connections>

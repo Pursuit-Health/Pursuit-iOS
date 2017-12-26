@@ -38,9 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         setUpStatusBarAppearence()
-        
-        
-        
+
         authWithFirebase()
         
         return true

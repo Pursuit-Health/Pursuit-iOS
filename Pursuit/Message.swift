@@ -23,6 +23,7 @@ class Message: Mappable, Hashable, Equatable{
     var created: TimeInterval?
     var messageId: String = ""
     var photo: String?
+    var isHideAvatar: Bool?
     
     //MARK: Mappable
     

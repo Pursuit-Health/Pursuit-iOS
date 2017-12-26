@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,18 +19,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="193" id="KGk-i7-Jjw" customClass="SendeMessageWithImageCell" customModule="Pursuit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="193"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="230" id="KGk-i7-Jjw" customClass="SendeMessageWithImageCell" customModule="Pursuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="192.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="229.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dwj-RC-B8Y">
-                        <rect key="frame" x="108" y="10" width="192" height="40.5"/>
+                        <rect key="frame" x="108" y="10" width="192" height="27"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8O-xR-3Hg">
-                                <rect key="frame" x="10" y="10" width="172" height="20.5"/>
+                                <rect key="frame" x="10" y="10" width="172" height="7"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -49,22 +50,22 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zbx-XU-2u1">
-                        <rect key="frame" x="108" y="60.5" width="182" height="116"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zbx-XU-2u1">
+                        <rect key="frame" x="108" y="47" width="210" height="157.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="116" id="KMR-1X-xP6"/>
+                            <constraint firstAttribute="width" secondItem="zbx-XU-2u1" secondAttribute="height" multiplier="4:3" id="0v8-N9-tkX"/>
+                            <constraint firstAttribute="width" constant="210" id="yAq-Bc-8Za"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="zbx-XU-2u1" secondAttribute="bottom" constant="25" id="19w-lU-BtC"/>
                     <constraint firstItem="Dwj-RC-B8Y" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="1tw-ZN-YpE"/>
                     <constraint firstItem="zbx-XU-2u1" firstAttribute="top" secondItem="Dwj-RC-B8Y" secondAttribute="bottom" constant="10" id="9GM-Gq-gDH"/>
                     <constraint firstItem="Dwj-RC-B8Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Chr-G6-kIq"/>
-                    <constraint firstAttribute="trailing" secondItem="zbx-XU-2u1" secondAttribute="trailing" constant="30" id="Dqk-JW-TSD"/>
-                    <constraint firstItem="zbx-XU-2u1" firstAttribute="leading" secondItem="Dwj-RC-B8Y" secondAttribute="leading" id="eml-Ao-QJp"/>
+                    <constraint firstItem="zbx-XU-2u1" firstAttribute="leading" secondItem="Dwj-RC-B8Y" secondAttribute="leading" id="Zn2-Oe-wrU"/>
                     <constraint firstAttribute="trailing" secondItem="Dwj-RC-B8Y" secondAttribute="trailing" constant="20" id="wrP-jM-OTt"/>
-                    <constraint firstAttribute="bottom" secondItem="zbx-XU-2u1" secondAttribute="bottom" constant="16" id="z67-Gc-VQd"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -73,7 +74,7 @@
                 <outlet property="messageLabel" destination="G8O-xR-3Hg" id="2IH-7r-2Tw"/>
                 <outlet property="messagePhoto" destination="zbx-XU-2u1" id="1yP-rO-Ej6"/>
             </connections>
-            <point key="canvasLocation" x="34" y="70.5"/>
+            <point key="canvasLocation" x="34" y="40"/>
         </tableViewCell>
     </objects>
 </document>

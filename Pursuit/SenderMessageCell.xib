@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -56,7 +57,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenCheckMark" translatesAutoresizingMaskIntoConstraints="NO" id="Svi-mL-KgA">
-                        <rect key="frame" x="199.5" y="55.5" width="22" height="16"/>
+                        <rect key="frame" x="205.5" y="57.5" width="16" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="CIh-ob-F7H"/>
+                            <constraint firstAttribute="width" secondItem="Svi-mL-KgA" secondAttribute="height" multiplier="11:8" id="H0f-jk-q1k"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>

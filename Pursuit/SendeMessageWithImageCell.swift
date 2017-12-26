@@ -42,6 +42,7 @@ class SendeMessageWithImageCell: UITableViewCell {
     
     func createBezierPath() -> UIBezierPath {
         
+        self.layoutIfNeeded()
         let width = messagePhoto.bounds.maxX
         let height = messagePhoto.bounds.maxY
         
@@ -75,7 +76,7 @@ class SendeMessageWithImageCell: UITableViewCell {
                     clockwise: true)
         
         
-        path.close() // draws the final line to close the path
+        path.close()
         
         return path
     }

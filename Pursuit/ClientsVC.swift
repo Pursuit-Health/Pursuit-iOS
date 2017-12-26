@@ -20,6 +20,7 @@ class ClientsVC: UIViewController {
     @IBOutlet weak var clientsSearchBar: UISearchBar! {
         didSet {
             clientsSearchBar.backgroundImage    = UIImage()
+            clientsSearchBar.setImage(UIImage(named: "white_search_icon"), for: .search, state: .normal)
             if let searchField = clientsSearchBar.value(forKey: "_searchField") as? UITextField {
                 searchField.borderStyle         = .none
                 searchField.backgroundColor     = .clear
