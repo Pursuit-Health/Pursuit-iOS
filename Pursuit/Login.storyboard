@@ -342,7 +342,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Z3e-gW-lsg"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="trainer1@gmail.com" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzy-jd-8AL" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rzy-jd-8AL" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
                                 <rect key="frame" x="49" y="76" width="290" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ixA-Zp-Onc"/>
@@ -378,7 +378,7 @@
                                     <constraint firstAttribute="height" constant="1" id="fZE-fC-mYO"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddL-Oq-hge" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddL-Oq-hge" customClass="AnimatedTextField" customModule="Pursuit" customModuleProvider="target">
                                 <rect key="frame" x="49" y="159" width="290" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wI8-kB-jFQ"/>
