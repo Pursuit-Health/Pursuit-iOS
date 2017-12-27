@@ -64,7 +64,17 @@ class ChatsListVC: UIViewController {
     }
     
     var lastSeen: [String] = []
-    var dialogs: [Dialog] = []
+    var dialogs: [Dialog] = [] {
+        didSet {
+            self.filteredDialogs = dialogs
+        }
+    }
+    
+    var filteredDialogs: [Dialog] = [] {
+        didSet {
+            self.chatsTableView?.reloadData()
+        }
+    }
     
     //MARK: Lifecycle
     
@@ -124,6 +134,7 @@ class ChatsListVC: UIViewController {
                 for (index, dialg) in self.dialogs.enumerated() {
                     if dialg.dialogId == dialog.dialogId {
                         dialg.unseenMessages = dialog.unseenMessages
+                        dialg.lastChange = dialog.lastChange
                         let indexPath = IndexPath(row: index, section: 0)
                         self.chatsTableView.reloadRows(at: [indexPath], with: .fade)
                     }
@@ -136,7 +147,7 @@ class ChatsListVC: UIViewController {
         guard let time = timeInterval else { return "" }
         let date = Date(timeIntervalSince1970: time)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/YY"
+        dateFormatter.dateFormat = "MM/dd/YY"
         return dateFormatter.string(from: date)
     }
     
@@ -151,12 +162,12 @@ class ChatsListVC: UIViewController {
 extension ChatsListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dialogs.count
+        return filteredDialogs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: ChatsListCell.self) else { return UITableViewCell()}
-        let dialog = dialogs[indexPath.row]
+        let dialog = filteredDialogs[indexPath.row]
         cell.chatNameLabel.text = dialog.userName
         cell.timeModifiedLabel.text = setDateFromTimeInterval(dialog.lastChange)
         cell.unseenMessagesView.isHidden = !(dialog.unseenMessages ?? false)
@@ -175,5 +186,21 @@ extension ChatsListVC: UITableViewDelegate {
         self.chat?.dialog = dialog
         self.navigationController?.pushViewController(chat!, animated: true)
         
+    }
+}
+
+extension ChatsListVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchText = searchBar.text else { return }
+        if searchText == "" {
+            self.filteredDialogs = self.dialogs
+        }else {
+            self.filteredDialogs = self.dialogs.filter{ $0.userName?.lowercased().contains(searchText.lowercased()) ?? false }
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
     }
 }

@@ -24,6 +24,7 @@ class Message: Mappable, Hashable, Equatable{
     var messageId: String = ""
     var photo: String?
     var isHideAvatar: Bool?
+    var isHideMessageView: Bool?
     var userPhoto: String?
     
     //MARK: Mappable

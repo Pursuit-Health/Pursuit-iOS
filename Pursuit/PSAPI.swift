@@ -92,9 +92,9 @@ class PSAPI: APIHandable {
                         }
                         User.shared.token = token
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                       // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                             User.getFireBaseToken(completion: completion)
-                        }
+                        //}
                     }
                     
                 case .failure(let serverError):
@@ -127,9 +127,9 @@ class PSAPI: APIHandable {
                         }
                         User.shared.token = token
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                        //DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                         User.getFireBaseToken(completion: completion)
-                        }
+                       // }
                     }
                     
                 case .failure(let serverError):

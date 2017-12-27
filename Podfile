@@ -44,6 +44,7 @@ target 'Pursuit' do
   pod 'GrowingTextView', '~> 0.5.3'
   pod 'IQKeyboardManagerSwift', '~> 5.0'
   pod 'KeyboardWrapper', '~> 4.0'
+  pod 'NSDate+TimeAgo', '~> 1.0'
   
   
 end

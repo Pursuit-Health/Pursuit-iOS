@@ -250,6 +250,7 @@ extension MainAuthVC: UIImagePickerControllerDelegate, UINavigationControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         profilePhotoImageView.image = chosenImage
+        self.selectedImage = chosenImage
         
         picker.dismiss(animated: true, completion: nil)
     }
@@ -290,11 +291,11 @@ extension MainAuthVC: SignInVCDelegate {
 extension MainAuthVC: SignUpVCDelegate {
     func signUpButtonPressed(on controller: SignUpVC, with user: User) {
         
-        self.selectedImage = self.profilePhotoImageView.image
-        
         if self.isRunning {
             return
         }
+        let progressView = ProgressView()
+        progressView.show(on: self.view)
         self.isRunning = true
         user.signUp(completion: { (user, error) in
 
@@ -304,8 +305,12 @@ extension MainAuthVC: SignUpVCDelegate {
                 self.isRunning = false
             }else {
                 if self.selectedImage == nil {
-                    self.setUpStatusBarView()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                         progressView.dissmiss(form: self.view)
+                        self.setUpStatusBarView()
                     self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
+                    }
                 } else {
                     self.uploadImage()
                 }

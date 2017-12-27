@@ -11,19 +11,20 @@ import Firebase
 import GrowingTextView
 import IQKeyboardManagerSwift
 import KeyboardWrapper
+import NSDate_TimeAgo
 
 class ChatVC: UIViewController {
     
     var cellsInfo: [CellType] = []
     
     enum CellType {
-        case frontSender(message: Message)
-        case frontSenderWithImage(message: Message)
-        case sender(message: Message)
-        case senderWithImage(message: Message)
+        case frontSender(message: Message?)
+        case frontSenderWithImage(message: Message?)
+        case sender(message: Message?)
+        case senderWithImage(message: Message?)
         case typing()
-        case sameFrontMessageWithText(message: Message)
-        case sameFrontMesssageWithImage(message: Message)
+        case sameFrontMessageWithText(message: Message?)
+        case sameFrontMesssageWithImage(message: Message?)
         
         var cellType: UITableViewCell.Type {
             switch self {
@@ -82,38 +83,40 @@ class ChatVC: UIViewController {
             
         }
         
-        private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message) {
-            cell.messageLabel.text = message.text ?? "" + stringFromTimeInterval(interval: message.created ?? 0)
-            cell.userAvatarImageView.sd_setImage(with: URL(string: message.userPhoto ?? ""))
+        private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message?) {
+            cell.messageLabel.text = message?.text ?? ""
+            cell.userAvatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""))
         }
         
-        private func fillFrontSernderWithImageCell(cell: FrontSenderMessageWithImageCell, message: Message) {
-            cell.messageLabe.text = message.text
-            if message.isHideAvatar ?? false {
+        private func fillFrontSernderWithImageCell(cell: FrontSenderMessageWithImageCell, message: Message?) {
+            cell.messageLabe.text = message?.text
+            if message?.isHideAvatar ?? false {
                 cell.avatarImageView.image = UIImage()
             }else {
-                cell.avatarImageView.sd_setImage(with: URL(string: message.userPhoto ?? ""))
+                cell.avatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""))
             }
-            cell.sendPhotoImageView.sd_setImage(with: URL(string: message.photo ?? ""))
+            cell.sendPhotoImageView.sd_setImage(with: URL(string: message?.photo ?? ""))
             
         }
         
-        private func fillSenderCell(cell: SenderMessageCell, message: Message) {
-            cell.messageLabel.text = message.text ?? ""
-            cell.createdAtLabel.text  = stringFromTimeInterval(interval: message.created ?? 0)
+        private func fillSenderCell(cell: SenderMessageCell, message: Message?) {
+            cell.messageLabel.text = message?.text ?? ""
+            let date = NSDate(timeIntervalSince1970: message?.created ?? 0)
+            cell.createdAtLabel.text  = date.timeAgo()//stringFromTimeInterval(interval: message?.created ?? 0)
         }
         
-        private func fillSenderWithImageCell(cell: SendeMessageWithImageCell, message: Message) {
-            cell.messageLabel.text = message.text
-            cell.messagePhoto.sd_setImage(with: URL(string: message.photo ?? ""))
+        private func fillSenderWithImageCell(cell: SendeMessageWithImageCell, message: Message?) {
+            cell.messageLabel.text = message?.text
+            cell.messageView.isHidden = message?.isHideMessageView ?? false
+            cell.messagePhoto.sd_setImage(with: URL(string: message?.photo ?? ""))
         }
         
-        private func fillSameFrontMessageWithImage(cell: SameMessageImageCell, message: Message) {
-            cell.messageImageView.sd_setImage(with: URL(string: message.photo ?? ""))
+        private func fillSameFrontMessageWithImage(cell: SameMessageImageCell, message: Message?) {
+            cell.messageImageView.sd_setImage(with: URL(string: message?.photo ?? ""))
         }
         
-        private func fillSameFrontMessageWithText(cell: SameMessageTextCell, message: Message) {
-            cell.textMessageLabel.text = message.text ?? ""
+        private func fillSameFrontMessageWithText(cell: SameMessageTextCell, message: Message?) {
+            cell.textMessageLabel.text = message?.text ?? ""
         }
         
         private func fillTypingCell(cell: TypingCell) {
@@ -216,7 +219,10 @@ class ChatVC: UIViewController {
             
             if message?.senderId == (self.senderId) {
                 if message?.photo != nil {
-                    self.cellsInfo.append(.senderWithImage(message: message!))
+                    if message?.text == nil {
+                        message?.isHideMessageView = true
+                    }
+                    self.cellsInfo.append(.senderWithImage(message: self.message))
                 }else {
                     self.cellsInfo.append(.sender(message: message!))
                 }
@@ -226,25 +232,25 @@ class ChatVC: UIViewController {
                     if lastMessage?.senderId == self.dialog?.userUID {
                         if self.message?.photo != nil && self.message?.text != nil {
                             self.message?.isHideAvatar = true
-                            self.cellsInfo.append(.frontSenderWithImage(message: self.message!))
+                            self.cellsInfo.append(.frontSenderWithImage(message: self.message))
                         }else if self.message?.photo != nil {
-                            self.cellsInfo.append(.sameFrontMesssageWithImage(message: self.message!))
+                            self.cellsInfo.append(.sameFrontMesssageWithImage(message: self.message))
                         }else if self.message?.text != nil {
-                            self.cellsInfo.append(.sameFrontMessageWithText(message: self.message!))
+                            self.cellsInfo.append(.sameFrontMessageWithText(message: self.message))
                         }
                     }else {
                         if self.message?.photo != nil {
-                            self.cellsInfo.append(.frontSenderWithImage(message: self.message!))
+                            self.cellsInfo.append(.frontSenderWithImage(message: self.message))
                         }else {
-                            self.cellsInfo.append(.frontSender(message: self.message!))
+                            self.cellsInfo.append(.frontSender(message: self.message))
                         }
                     }
                 }else {
                 
                     if self.message?.photo != nil {
-                        self.cellsInfo.append(.frontSenderWithImage(message: self.message!))
+                        self.cellsInfo.append(.frontSenderWithImage(message: self.message))
                     }else {
-                        self.cellsInfo.append(.frontSender(message: self.message!))
+                        self.cellsInfo.append(.frontSender(message: self.message))
                     }
                 }
                 
@@ -354,13 +360,15 @@ class ChatVC: UIViewController {
             
             guard let photoUrl = url?.absoluteString else { return }
             
-            self.sendMessageWith(text, photoURL: photoUrl)
+            self.sendMessageWith(photoURL: photoUrl)
             
             self.messageImageView.image = nil
             self.photoHeightConstraint.constant = 0
             self.progressView.dissmiss(form: self.view)
         })
     }
+    
+    //TODO: Reimplement using one function
     
     func sendMessageWith(_ text: String?, photoURL: String?) {
         guard let messsage = text else { return }
@@ -386,6 +394,41 @@ class ChatVC: UIViewController {
             photoUrl = url
             messageItem[photoKey] = photoUrl
         }
+        
+        ref.setValue(messageItem)
+        otherUserRef.setValue(messageItem)
+        
+        let senderlastChange = self.senderDialogRef.child ("last_change")
+        senderlastChange.setValue(Date().timeIntervalSince1970)
+        
+        let receiverLastChange = receiverDialogRef.child("last_change")
+        
+        let receiverUnseenMessages = receiverDialogRef.child("unseen")
+        receiverUnseenMessages.setValue(true)
+        
+        receiverLastChange.setValue(Date().timeIntervalSince1970)
+        self.messageTextView.text = nil
+    }
+    
+    func sendMessageWith(photoURL: String) {
+
+        var photoKey = String()
+        var photoUrl = String()
+        
+        self.isTyping = false
+        
+        let otherUserRef = receiverMessageRef.childByAutoId()
+        let ref = self.senderMessageRef.childByAutoId()
+        var messageItem = [
+            "created_at": Date().timeIntervalSince1970,
+            "sender_id": self.senderId
+            
+            ] as [String : Any]
+  
+            photoKey = "photo"
+            photoUrl = photoURL
+            messageItem[photoKey] = photoUrl
+        
         
         ref.setValue(messageItem)
         otherUserRef.setValue(messageItem)

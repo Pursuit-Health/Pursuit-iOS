@@ -656,21 +656,21 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="542"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmZ-5o-NXp">
-                                <rect key="frame" x="46" y="130" width="303" height="1"/>
+                                <rect key="frame" x="45" y="120" width="304" height="1"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="W7Q-Ud-4jW"/>
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9V-7Z-oJB">
-                                <rect key="frame" x="36" y="74" width="323" height="56"/>
+                                <rect key="frame" x="30" y="74" width="329" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <offsetWrapper key="searchTextPositionAdjustment" horizontal="5" vertical="0.0"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2cg-aR-pzd">
-                                <rect key="frame" x="0.0" y="177.5" width="375" height="428.5"/>
+                                <rect key="frame" x="0.0" y="165" width="375" height="441"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="6Vc-r6-alv" id="6b2-t9-Mpi"/>
@@ -684,8 +684,8 @@
                                     <constraint firstAttribute="height" constant="12" id="mdK-DX-sk4"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLIENTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xON-N0-fRM">
-                                <rect key="frame" x="36" y="154" width="67.5" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xON-N0-fRM">
+                                <rect key="frame" x="45" y="160" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -695,23 +695,23 @@
                         <constraints>
                             <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="q7O-hN-jEj" secondAttribute="trailing" id="0OC-cn-eIH"/>
                             <constraint firstItem="hHg-Ei-5zu" firstAttribute="bottom" secondItem="1B7-rK-Ygi" secondAttribute="bottom" id="8y8-t2-4JH"/>
-                            <constraint firstItem="qmZ-5o-NXp" firstAttribute="top" secondItem="y9V-7Z-oJB" secondAttribute="bottom" id="9R1-fe-mQc"/>
-                            <constraint firstItem="qmZ-5o-NXp" firstAttribute="leading" secondItem="y9V-7Z-oJB" secondAttribute="leading" constant="10" id="DmC-as-BGv"/>
+                            <constraint firstItem="qmZ-5o-NXp" firstAttribute="top" secondItem="y9V-7Z-oJB" secondAttribute="bottom" constant="-10" id="9R1-fe-mQc"/>
+                            <constraint firstItem="qmZ-5o-NXp" firstAttribute="leading" secondItem="y9V-7Z-oJB" secondAttribute="leading" constant="15" id="DmC-as-BGv"/>
                             <constraint firstItem="qmZ-5o-NXp" firstAttribute="trailing" secondItem="y9V-7Z-oJB" secondAttribute="trailing" constant="-10" id="NUW-KF-wLd"/>
                             <constraint firstItem="1B7-rK-Ygi" firstAttribute="top" secondItem="2cg-aR-pzd" secondAttribute="bottom" id="NVm-Qi-LzT"/>
                             <constraint firstItem="q7O-hN-jEj" firstAttribute="top" secondItem="hHg-Ei-5zu" secondAttribute="top" id="Rk3-SV-A0s"/>
                             <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="y9V-7Z-oJB" secondAttribute="trailing" constant="16" id="SsM-pa-5en"/>
-                            <constraint firstItem="xON-N0-fRM" firstAttribute="leading" secondItem="y9V-7Z-oJB" secondAttribute="leading" id="Tms-vR-zuS"/>
+                            <constraint firstItem="xON-N0-fRM" firstAttribute="leading" secondItem="y9V-7Z-oJB" secondAttribute="leading" constant="15" id="Tms-vR-zuS"/>
                             <constraint firstItem="1B7-rK-Ygi" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" id="YH6-N7-8Xb"/>
-                            <constraint firstItem="2cg-aR-pzd" firstAttribute="top" secondItem="xON-N0-fRM" secondAttribute="bottom" id="YMe-1M-y6M"/>
+                            <constraint firstItem="2cg-aR-pzd" firstAttribute="top" secondItem="xON-N0-fRM" secondAttribute="bottom" constant="5" id="YMe-1M-y6M"/>
                             <constraint firstItem="2cg-aR-pzd" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" id="b1j-oh-amv"/>
                             <constraint firstItem="y9V-7Z-oJB" firstAttribute="top" secondItem="hHg-Ei-5zu" secondAttribute="top" constant="10" id="d7c-tz-u1n"/>
-                            <constraint firstItem="y9V-7Z-oJB" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" constant="36" id="exU-7x-QFw"/>
+                            <constraint firstItem="y9V-7Z-oJB" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" constant="30" id="exU-7x-QFw"/>
                             <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="1B7-rK-Ygi" secondAttribute="trailing" id="hsj-rs-Sgm"/>
                             <constraint firstItem="hHg-Ei-5zu" firstAttribute="trailing" secondItem="2cg-aR-pzd" secondAttribute="trailing" id="iTw-Hg-UaG"/>
                             <constraint firstItem="q7O-hN-jEj" firstAttribute="leading" secondItem="hHg-Ei-5zu" secondAttribute="leading" id="ibM-te-O4d"/>
                             <constraint firstItem="q7O-hN-jEj" firstAttribute="bottom" secondItem="2cg-aR-pzd" secondAttribute="bottom" id="xMO-fm-OWX"/>
-                            <constraint firstItem="xON-N0-fRM" firstAttribute="top" secondItem="y9V-7Z-oJB" secondAttribute="bottom" constant="24" id="yCt-fd-Lle"/>
+                            <constraint firstItem="xON-N0-fRM" firstAttribute="top" secondItem="y9V-7Z-oJB" secondAttribute="bottom" constant="30" id="yCt-fd-Lle"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hHg-Ei-5zu"/>
                     </view>
@@ -739,7 +739,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="2126" y="1306"/>
+            <point key="canvasLocation" x="2125.5999999999999" y="1305.697151424288"/>
         </scene>
     </scenes>
     <resources>

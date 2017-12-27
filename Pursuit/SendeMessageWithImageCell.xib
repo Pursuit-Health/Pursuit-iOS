@@ -63,6 +63,7 @@
                     <constraint firstAttribute="bottom" secondItem="zbx-XU-2u1" secondAttribute="bottom" constant="25" id="19w-lU-BtC"/>
                     <constraint firstItem="Dwj-RC-B8Y" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.6" id="1tw-ZN-YpE"/>
                     <constraint firstItem="zbx-XU-2u1" firstAttribute="top" secondItem="Dwj-RC-B8Y" secondAttribute="bottom" constant="10" id="9GM-Gq-gDH"/>
+                    <constraint firstItem="zbx-XU-2u1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="AEq-Su-2DL"/>
                     <constraint firstItem="Dwj-RC-B8Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Chr-G6-kIq"/>
                     <constraint firstItem="zbx-XU-2u1" firstAttribute="leading" secondItem="Dwj-RC-B8Y" secondAttribute="leading" id="Zn2-Oe-wrU"/>
                     <constraint firstAttribute="trailing" secondItem="Dwj-RC-B8Y" secondAttribute="trailing" constant="20" id="wrP-jM-OTt"/>
@@ -73,6 +74,7 @@
             <connections>
                 <outlet property="messageLabel" destination="G8O-xR-3Hg" id="2IH-7r-2Tw"/>
                 <outlet property="messagePhoto" destination="zbx-XU-2u1" id="1yP-rO-Ej6"/>
+                <outlet property="messageView" destination="Dwj-RC-B8Y" id="gU7-Rf-kLL"/>
             </connections>
             <point key="canvasLocation" x="34" y="40"/>
         </tableViewCell>

@@ -10,6 +10,7 @@ import UIKit
 
 class SendeMessageWithImageCell: UITableViewCell {
 
+    @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var messagePhoto: UIImageView! {
         didSet {

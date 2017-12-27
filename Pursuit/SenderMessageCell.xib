@@ -80,6 +80,7 @@
             <connections>
                 <outlet property="createdAtLabel" destination="50M-cD-W8U" id="rxP-nO-BIR"/>
                 <outlet property="messageLabel" destination="KAc-bE-Oyb" id="pAq-dJ-FtJ"/>
+                <outlet property="messageView" destination="ejr-Cy-Ipa" id="dbW-4z-k92"/>
             </connections>
             <point key="canvasLocation" x="40.5" y="34.5"/>
         </tableViewCell>
