@@ -34,6 +34,7 @@ class Client: User, Equatable, Hashable {
     
     var clientName          : String?
     var clientAvatar        : String?
+    var clietnUID          : String?
     
     //MARK: Mappable
     
@@ -47,6 +48,7 @@ class Client: User, Equatable, Hashable {
         
         self.clientName         <- map["user.data.name"]
         self.clientAvatar       <- map["user.data.avatar"]
+        self.clietnUID          <- map["user.data.uid"]
     }
     
     override func createSignUpParameters() -> [String : String] {

@@ -6,7 +6,6 @@ PODS:
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - DeepLinkKit (1.4.0)
-  - DYDotsView-Swift (1.0.0)
   - ESTabBarController-swift (2.5)
   - Fabric (1.7.2)
   - Firebase/Auth (4.7.0):
@@ -82,7 +81,6 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.0)
   - Crashlytics
   - DeepLinkKit (~> 1.4)
-  - DYDotsView-Swift (~> 1.0)
   - ESTabBarController-swift
   - Fabric
   - Firebase/Auth
@@ -110,7 +108,6 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DeepLinkKit: bffd3b5e51549222f974d631b4e0e7484600b9d8
-  DYDotsView-Swift: 1f07c355a8f13d095c010fd811308a041c383f72
   ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   Firebase: dbfb98ccec2dcfcd21ab9cc1b4981a3f3c8c5e26
@@ -142,6 +139,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: 349c61ffde96ac3ae51c2691a03e421b5b29ee98
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 53c6b3745cc671b0773aaba70d0de054b71d673a
+PODFILE CHECKSUM: e2633ba612e6a019e6064a740b5e6300be3d54d4
 
 COCOAPODS: 1.2.1

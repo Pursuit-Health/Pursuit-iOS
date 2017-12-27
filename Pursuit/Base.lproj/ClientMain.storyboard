@@ -199,7 +199,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghV-37-Pts">
-                                                            <rect key="frame" x="5" y="0.0" width="95" height="101"/>
+                                                            <rect key="frame" x="2" y="0.0" width="101" height="101"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qy-v4-aX1">
@@ -214,12 +214,12 @@
                                                 <constraints>
                                                     <constraint firstItem="4Qy-v4-aX1" firstAttribute="centerY" secondItem="xWT-Nh-M0g" secondAttribute="centerY" id="Dff-bE-EJL"/>
                                                     <constraint firstItem="eFJ-lg-cJ5" firstAttribute="centerY" secondItem="xWT-Nh-M0g" secondAttribute="centerY" id="JHT-BO-N9j"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ghV-37-Pts" secondAttribute="trailing" constant="5" id="WzO-4F-95b"/>
+                                                    <constraint firstItem="ghV-37-Pts" firstAttribute="height" secondItem="eFJ-lg-cJ5" secondAttribute="height" id="OWK-NQ-IY4"/>
+                                                    <constraint firstItem="ghV-37-Pts" firstAttribute="centerY" secondItem="eFJ-lg-cJ5" secondAttribute="centerY" id="Ows-OL-v7S"/>
+                                                    <constraint firstItem="ghV-37-Pts" firstAttribute="width" secondItem="eFJ-lg-cJ5" secondAttribute="width" id="U3n-YN-KbV"/>
+                                                    <constraint firstItem="ghV-37-Pts" firstAttribute="centerX" secondItem="eFJ-lg-cJ5" secondAttribute="centerX" id="Yxj-ah-5sd"/>
                                                     <constraint firstItem="4Qy-v4-aX1" firstAttribute="centerX" secondItem="xWT-Nh-M0g" secondAttribute="centerX" id="mz3-Cv-nST"/>
                                                     <constraint firstItem="eFJ-lg-cJ5" firstAttribute="centerX" secondItem="xWT-Nh-M0g" secondAttribute="centerX" id="qeD-Oh-xcp"/>
-                                                    <constraint firstItem="ghV-37-Pts" firstAttribute="leading" secondItem="xWT-Nh-M0g" secondAttribute="leading" constant="5" id="vFB-bZ-Q5D"/>
-                                                    <constraint firstItem="ghV-37-Pts" firstAttribute="top" secondItem="xWT-Nh-M0g" secondAttribute="top" id="vkC-zI-Ssl"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ghV-37-Pts" secondAttribute="bottom" id="y51-jr-sw1"/>
                                                     <constraint firstItem="eFJ-lg-cJ5" firstAttribute="height" secondItem="xWT-Nh-M0g" secondAttribute="height" id="y6a-5N-D3P"/>
                                                 </constraints>
                                                 <connections>

@@ -9,6 +9,7 @@
 import UIKit
 import SwipeCellKit
 import SDWebImage
+import Firebase
 
 class ClientsVC: UIViewController {
     
@@ -59,11 +60,7 @@ class ClientsVC: UIViewController {
         return controller
     }()
     
-    var chatVC: ChatVC = {
-        let controller = UIStoryboard.trainer.Chat!
-        
-        return controller
-    }()
+    var chatVC: ChatVC?
     
     var client: [Client] = []
     
@@ -72,6 +69,10 @@ class ClientsVC: UIViewController {
             self.clientsTable.reloadData()
         }
     }
+    
+     private lazy var chatRef: DatabaseReference = Database.database().reference().child("user_dialogs").child((Auth.auth().currentUser?.uid)!)
+    
+    var dialogs: [Dialog] = []
     
     @IBAction func menuButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
@@ -89,12 +90,18 @@ class ClientsVC: UIViewController {
         navigationController?.navigationBar.setAppearence()
         
         loadClients()
+        
+        getDialogs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        
+        if let _ = self.chatVC {
+            self.chatVC = nil
+        }
         
     }
     
@@ -104,6 +111,20 @@ class ClientsVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    
+    }
+    
+    func getDialogs() {
+        let queryRef = chatRef
+        queryRef.observe(.childAdded) { (snapshot) in
+            let userSnap = snapshot as! DataSnapshot
+            let chatId = userSnap.key
+            let userDict = userSnap.value as! [String:AnyObject]
+            if let dialog = Dialog(JSON: userDict) {
+                dialog.dialogId = chatId
+                self.dialogs.append(dialog)
+            }
+        }
     }
     
     fileprivate func loadClients(){
@@ -203,8 +224,15 @@ extension ClientsVC: SwipeTableViewCellDelegate {
             //DISPLAY OPTIONS UPON LEFT SWIPE
             let chat = SwipeAction(style: .default, title: nil){ action, indexPath in
                 print("chat pressed")
-                
-                self.navigationController?.pushViewController(self.chatVC, animated: true)
+                let selectedClient = self.filteredClients[indexPath.row]
+                for dialog in self.dialogs {
+                    if dialog.userUID == selectedClient.clietnUID {
+                        self.chatVC = UIStoryboard.trainer.Chat!
+                        self.chatVC?.dialog = dialog
+                         self.navigationController?.pushViewController(self.chatVC!, animated: true)
+                        return
+                    }
+                }
                 //action for chat press
             }
             chat.hidesWhenSelected = true

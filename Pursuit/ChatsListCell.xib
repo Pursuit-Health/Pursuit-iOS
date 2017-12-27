@@ -24,21 +24,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="76.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pursuit" translatesAutoresizingMaskIntoConstraints="NO" id="KbL-32-XcO">
-                        <rect key="frame" x="25" y="13" width="44" height="44"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pursuit" translatesAutoresizingMaskIntoConstraints="NO" id="KbL-32-XcO">
+                        <rect key="frame" x="40" y="13" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="Xwj-0K-aPn"/>
                             <constraint firstAttribute="width" constant="44" id="kvs-Do-KkZ"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                <real key="value" value="50"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ln-eS-ZDO">
-                        <rect key="frame" x="83" y="13" width="42" height="23.5"/>
+                        <rect key="frame" x="98" y="13" width="42" height="23.5"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcE-t0-joe">
-                        <rect key="frame" x="83" y="36.5" width="34" height="19.5"/>
+                        <rect key="frame" x="98" y="36.5" width="34" height="19.5"/>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -69,7 +74,7 @@
                     <constraint firstItem="KbL-32-XcO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Nmj-MV-b1N"/>
                     <constraint firstItem="6Ln-eS-ZDO" firstAttribute="leading" secondItem="KbL-32-XcO" secondAttribute="trailing" constant="14" id="b0I-yw-cYh"/>
                     <constraint firstItem="rPA-AE-yaP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="g8w-SN-riZ"/>
-                    <constraint firstItem="KbL-32-XcO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="j4L-02-9xo"/>
+                    <constraint firstItem="KbL-32-XcO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="j4L-02-9xo"/>
                     <constraint firstItem="6Ln-eS-ZDO" firstAttribute="top" secondItem="KbL-32-XcO" secondAttribute="top" id="pt8-CF-51U"/>
                     <constraint firstItem="rPA-AE-yaP" firstAttribute="top" secondItem="KbL-32-XcO" secondAttribute="bottom" constant="15" id="wRW-Y0-nik"/>
                     <constraint firstAttribute="bottom" secondItem="rPA-AE-yaP" secondAttribute="bottom" constant="3.5" id="yel-b8-9rA"/>
