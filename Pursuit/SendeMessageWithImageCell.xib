@@ -56,6 +56,11 @@
                             <constraint firstAttribute="width" secondItem="zbx-XU-2u1" secondAttribute="height" multiplier="4:3" id="0v8-N9-tkX"/>
                             <constraint firstAttribute="width" constant="210" id="yAq-Bc-8Za"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

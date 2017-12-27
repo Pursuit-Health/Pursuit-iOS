@@ -9,6 +9,9 @@
 import UIKit
 
 class FrontSenderMessageWithImageCell: UITableViewCell {
+    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var talesView: TalesView!
+    @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var messageLabe: UILabel!
     

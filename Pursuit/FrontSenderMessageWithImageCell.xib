@@ -117,8 +117,11 @@
             <viewLayoutGuide key="safeArea" id="3PQ-VE-nTS"/>
             <connections>
                 <outlet property="avatarImageView" destination="kpZ-PW-zR6" id="45e-n2-XmY"/>
+                <outlet property="bgView" destination="kYa-5j-jOK" id="a8w-OX-FJe"/>
                 <outlet property="messageLabe" destination="FeV-zM-n1S" id="9fM-sq-Kdu"/>
+                <outlet property="messageView" destination="qb3-vL-dqM" id="Zdc-qU-3Xr"/>
                 <outlet property="sendPhotoImageView" destination="dJ6-rW-0r0" id="OdC-wg-bed"/>
+                <outlet property="talesView" destination="sNA-H8-MqQ" id="99N-0r-Kdz"/>
             </connections>
             <point key="canvasLocation" x="16.5" y="64"/>
         </tableViewCell>

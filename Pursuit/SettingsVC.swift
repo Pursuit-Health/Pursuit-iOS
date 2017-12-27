@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Firebase
 
 class SettingsVC: UIViewController {
     
@@ -39,6 +40,13 @@ class SettingsVC: UIViewController {
         //TODO: Move to user
         User.shared.token = nil
         User.shared.firToken = nil
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
         
         if navigationController != nil {
             let loginController = UIStoryboard.login.MainAuth!

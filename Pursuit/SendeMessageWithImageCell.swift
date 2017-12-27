@@ -14,7 +14,7 @@ class SendeMessageWithImageCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var messagePhoto: UIImageView! {
         didSet {
-            setup()
+            //setup()
         }
     }
     

@@ -85,15 +85,20 @@ class ChatVC: UIViewController {
         
         private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message?) {
             cell.messageLabel.text = message?.text ?? ""
-            cell.userAvatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""))
+            cell.userAvatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""), placeholderImage: UIImage(named: "ic_username"))
         }
         
         private func fillFrontSernderWithImageCell(cell: FrontSenderMessageWithImageCell, message: Message?) {
+            if message?.text == nil {
+                cell.messageView.isHidden = true
+                cell.talesView.isHidden = true
+                cell.bgView.isHidden = true 
+            }
             cell.messageLabe.text = message?.text
             if message?.isHideAvatar ?? false {
                 cell.avatarImageView.image = UIImage()
             }else {
-                cell.avatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""))
+                cell.avatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""), placeholderImage: UIImage(named: "ic_username"))
             }
             cell.sendPhotoImageView.sd_setImage(with: URL(string: message?.photo ?? ""))
             
@@ -139,8 +144,6 @@ class ChatVC: UIViewController {
             let minutes = Int(newInterval/60.0)
             return "\(minutes)" + " minutes"
         }
-        
-        
     }
     
     @IBOutlet weak var messageTextView: GrowingTextView! {
@@ -420,7 +423,7 @@ class ChatVC: UIViewController {
         let otherUserRef = receiverMessageRef.childByAutoId()
         let ref = self.senderMessageRef.childByAutoId()
         var messageItem = [
-            "created_at": Date().timeIntervalSince1970,
+            "created_at": Date().timeIntervalSince1970 * 1000,
             "sender_id": self.senderId
             
             ] as [String : Any]
@@ -434,14 +437,14 @@ class ChatVC: UIViewController {
         otherUserRef.setValue(messageItem)
         
         let senderlastChange = self.senderDialogRef.child ("last_change")
-        senderlastChange.setValue(Date().timeIntervalSince1970)
+        senderlastChange.setValue(Date().timeIntervalSince1970 * 1000)
         
         let receiverLastChange = receiverDialogRef.child("last_change")
         
         let receiverUnseenMessages = receiverDialogRef.child("unseen")
         receiverUnseenMessages.setValue(true)
         
-        receiverLastChange.setValue(Date().timeIntervalSince1970)
+        receiverLastChange.setValue(Date().timeIntervalSince1970 * 1000)
         self.messageTextView.text = nil
     }
     
@@ -510,6 +513,8 @@ extension ChatVC: KeyboardWrapperDelegate {
         
         if info.state == .willShow || info.state == .visible {
             bottomConstraint.constant = info.endFrame.size.height - 60
+            let indexPath = IndexPath(row: self.cellsInfo.count - 1, section: 0)
+            self.scrollToRowAt(at: indexPath)
         } else {
             bottomConstraint.constant = 0.0
         }
