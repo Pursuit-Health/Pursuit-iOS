@@ -101,7 +101,7 @@ class ChatVC: UIViewController {
         
         private func fillSenderCell(cell: SenderMessageCell, message: Message?) {
             cell.messageLabel.text = message?.text ?? ""
-            let date = NSDate(timeIntervalSince1970: message?.created ?? 0)
+            let date = NSDate(timeIntervalSince1970: (message?.created ?? 0) / 1000)
             cell.createdAtLabel.text  = date.timeAgo()//stringFromTimeInterval(interval: message?.created ?? 0)
         }
         
@@ -385,7 +385,7 @@ class ChatVC: UIViewController {
         let ref = self.senderMessageRef.childByAutoId()
         var messageItem = [
             "text" : messsage.condensedWhitespace,
-            "created_at": Date().timeIntervalSince1970,
+            "created_at": Date().timeIntervalSince1970 * 1000,
             "sender_id": self.senderId
             
             ] as [String : Any]
@@ -399,14 +399,14 @@ class ChatVC: UIViewController {
         otherUserRef.setValue(messageItem)
         
         let senderlastChange = self.senderDialogRef.child ("last_change")
-        senderlastChange.setValue(Date().timeIntervalSince1970)
+        senderlastChange.setValue(Date().timeIntervalSince1970 * 1000)
         
         let receiverLastChange = receiverDialogRef.child("last_change")
         
         let receiverUnseenMessages = receiverDialogRef.child("unseen")
         receiverUnseenMessages.setValue(true)
         
-        receiverLastChange.setValue(Date().timeIntervalSince1970)
+        receiverLastChange.setValue(Date().timeIntervalSince1970 * 1000)
         self.messageTextView.text = nil
     }
     

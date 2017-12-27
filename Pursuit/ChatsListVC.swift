@@ -169,10 +169,10 @@ extension ChatsListVC: UITableViewDataSource {
         guard let cell = tableView.gc_dequeueReusableCell(type: ChatsListCell.self) else { return UITableViewCell()}
         let dialog = filteredDialogs[indexPath.row]
         cell.chatNameLabel.text = dialog.userName
-        cell.timeModifiedLabel.text = setDateFromTimeInterval(dialog.lastChange)
+        cell.timeModifiedLabel.text = setDateFromTimeInterval((dialog.lastChange ?? 0)/1000)
         cell.unseenMessagesView.isHidden = !(dialog.unseenMessages ?? false)
         if let  image = dialog.userPhoto {
-        cell.userPhotoImageView.sd_setImage(with: URL(string: image))
+            cell.userPhotoImageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "ic_username"))
         }
         return cell
     }

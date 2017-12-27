@@ -38,6 +38,7 @@ class SettingsVC: UIViewController {
         
         //TODO: Move to user
         User.shared.token = nil
+        User.shared.firToken = nil
         
         if navigationController != nil {
             let loginController = UIStoryboard.login.MainAuth!

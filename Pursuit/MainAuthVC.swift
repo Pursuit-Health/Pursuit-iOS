@@ -306,11 +306,11 @@ extension MainAuthVC: SignUpVCDelegate {
             }else {
                 if self.selectedImage == nil {
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                   // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                          progressView.dissmiss(form: self.view)
                         self.setUpStatusBarView()
                     self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
-                    }
+                   // }
                 } else {
                     self.uploadImage()
                 }
