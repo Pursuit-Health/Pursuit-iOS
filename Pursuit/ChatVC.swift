@@ -84,6 +84,7 @@ class ChatVC: UIViewController {
         
         private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message) {
             cell.messageLabel.text = message.text ?? "" + stringFromTimeInterval(interval: message.created ?? 0)
+            cell.userAvatarImageView.sd_setImage(with: URL(string: message.userPhoto ?? ""))
         }
         
         private func fillFrontSernderWithImageCell(cell: FrontSenderMessageWithImageCell, message: Message) {
@@ -91,7 +92,7 @@ class ChatVC: UIViewController {
             if message.isHideAvatar ?? false {
                 cell.avatarImageView.image = UIImage()
             }else {
-                cell.avatarImageView.image = UIImage(named: "avatar1")
+                cell.avatarImageView.sd_setImage(with: URL(string: message.userPhoto ?? ""))
             }
             cell.sendPhotoImageView.sd_setImage(with: URL(string: message.photo ?? ""))
             
@@ -407,10 +408,12 @@ class ChatVC: UIViewController {
             self.downloadGroup.enter()
             let chatId = snapshot.key
             let userDict = snapshot.value as! [String : AnyObject]
-            if let dialog = Message(JSON: userDict) {
-                dialog.messageId = chatId
+            if let mess = Message(JSON: userDict) {
+                mess.messageId = chatId
+                mess.userPhoto = self.dialog?.userPhoto
+                
                 //self.messages.append(dialog)
-                self.message = dialog
+                self.message = mess
             }
             self.downloadGroup.leave()
         }
