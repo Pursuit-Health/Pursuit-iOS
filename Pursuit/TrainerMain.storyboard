@@ -726,7 +726,6 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="ccl-jn-CkE" id="QxC-xE-G2i"/>
-                                            <outlet property="pasteDelegate" destination="ccl-jn-CkE" id="bwj-fW-wc7"/>
                                         </connections>
                                     </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MzZ-g3-pC7">
