@@ -194,7 +194,6 @@ class ChatVC: UIViewController {
     lazy var receiverDialogRef: DatabaseReference = self.usersDialogsRef.child(self.receiverId).child((self.dialog?.dialogId ?? " "))
     lazy var receiverMessageRef: DatabaseReference = self.receiverDialogRef.child("messages")
     
-    
     var chatRef: DatabaseHandle?
     
     var myMessageRefHandle: DatabaseReference?
@@ -269,6 +268,7 @@ class ChatVC: UIViewController {
     var progressView = ProgressView()
     
     //MARK: IBActions
+    
     @IBAction func addPhotoButtonPressed(_ sender: Any) {
         showImagePicker()
     }
@@ -312,6 +312,12 @@ class ChatVC: UIViewController {
         unsenReference.setValue(false)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let unsenReference = self.senderDialogRef.child("unseen")
+        unsenReference.setValue(false)
+    }
+
     private func reloadTableView() {
         let indexPath = IndexPath(row: self.cellsInfo.count - 1, section: 0)
         self.messagesTableView?.insertRows(at: [indexPath], with: .automatic)
@@ -513,8 +519,10 @@ extension ChatVC: KeyboardWrapperDelegate {
         
         if info.state == .willShow || info.state == .visible {
             bottomConstraint.constant = info.endFrame.size.height - 60
+            if self.cellsInfo.count > 0 {
             let indexPath = IndexPath(row: self.cellsInfo.count - 1, section: 0)
             self.scrollToRowAt(at: indexPath)
+            }
         } else {
             bottomConstraint.constant = 0.0
         }

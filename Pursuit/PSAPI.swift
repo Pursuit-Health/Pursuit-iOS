@@ -168,9 +168,7 @@ class PSAPI: APIHandable {
                         }
                         User.shared.token = token
         
-                            User.getFireBaseToken(completion: { (user, error) in
-                                
-                            })
+                            User.getFireBaseToken(completion: completion)
                     }
                     
                 case .failure(let serverError):

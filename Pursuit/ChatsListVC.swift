@@ -15,7 +15,7 @@ class ChatsListVC: UIViewController {
     
     //MARK: Firebase.Properties
     
-    private lazy var chatRef: DatabaseReference = Database.database().reference().child("user_dialogs").child((Auth.auth().currentUser?.uid)!)
+    private lazy var chatRef: DatabaseReference = Database.database().reference().child("user_dialogs").child(Auth.auth().currentUser?.uid ?? "")
     private var chatRefHandle: DatabaseHandle?
     
     //MARK: Variables
