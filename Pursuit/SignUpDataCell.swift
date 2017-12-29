@@ -34,6 +34,8 @@ class SignUpDataCell: UITableViewCell {
         
         dateFormatter.timeStyle = .none
         
+        dateFormatter.locale = Calendar.current.locale
+        
         userDataTextField.text = dateFormatter.string(from: sender.date)
         
     }

@@ -14,6 +14,7 @@ class FrontSenderMessageCell: UITableViewCell {
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var userAvatarImageView: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

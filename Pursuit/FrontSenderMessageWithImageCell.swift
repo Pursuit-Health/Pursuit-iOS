@@ -14,6 +14,7 @@ class FrontSenderMessageWithImageCell: UITableViewCell {
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var messageLabe: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var sendPhotoImageView: UIImageView! {
         didSet {

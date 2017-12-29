@@ -85,6 +85,7 @@ class ChatVC: UIViewController {
         
         private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message?) {
             cell.messageLabel.text = message?.text ?? ""
+            cell.timeLabel.text = createTimeString(timeInterval: (message?.created ?? 0))
             cell.userAvatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""), placeholderImage: UIImage(named: "ic_username"))
         }
         
@@ -101,19 +102,22 @@ class ChatVC: UIViewController {
                 cell.avatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""), placeholderImage: UIImage(named: "ic_username"))
             }
             cell.sendPhotoImageView.sd_setImage(with: URL(string: message?.photo ?? ""))
-            
         }
         
         private func fillSenderCell(cell: SenderMessageCell, message: Message?) {
             cell.messageLabel.text = message?.text ?? ""
-            let date = NSDate(timeIntervalSince1970: (message?.created ?? 0) / 1000)
-            cell.createdAtLabel.text  = date.timeAgo()//stringFromTimeInterval(interval: message?.created ?? 0)
+            cell.createdAtLabel.text  = createTimeString(timeInterval: (message?.created ?? 0))
         }
         
         private func fillSenderWithImageCell(cell: SendeMessageWithImageCell, message: Message?) {
             cell.messageLabel.text = message?.text
-            cell.messageView.isHidden = message?.isHideMessageView ?? false
+            if message?.isHideMessageView ?? false {
+              cell.messageView.isHidden = true
+            }else {
+              cell.messageView.isHidden = false
+            }
             cell.messagePhoto.sd_setImage(with: URL(string: message?.photo ?? ""))
+            cell.timeLabel.text = createTimeString(timeInterval: (message?.created ?? 0))
         }
         
         private func fillSameFrontMessageWithImage(cell: SameMessageImageCell, message: Message?) {
@@ -122,6 +126,7 @@ class ChatVC: UIViewController {
         
         private func fillSameFrontMessageWithText(cell: SameMessageTextCell, message: Message?) {
             cell.textMessageLabel.text = message?.text ?? ""
+            cell.timeLabel.text =  createTimeString(timeInterval: (message?.created ?? 0))
         }
         
         private func fillTypingCell(cell: TypingCell) {
@@ -139,10 +144,16 @@ class ChatVC: UIViewController {
             cell.dotsView.addSubview(dots)
         }
         
-        func stringFromTimeInterval(interval: TimeInterval) -> String {
+        private func stringFromTimeInterval(interval: TimeInterval) -> String {
             let newInterval = Date().timeIntervalSince1970 - interval
             let minutes = Int(newInterval/60.0)
             return "\(minutes)" + " minutes"
+        }
+        
+        private func createTimeString(timeInterval: TimeInterval) -> String {
+            let date = NSDate(timeIntervalSince1970: (timeInterval) / 1000)
+            
+            return date.timeAgo()
         }
     }
     
@@ -369,7 +380,11 @@ class ChatVC: UIViewController {
             
             guard let photoUrl = url?.absoluteString else { return }
             
-            self.sendMessageWith(photoURL: photoUrl)
+            if let mesText = text{
+                self.sendMessageWith(mesText, photoURL: photoUrl)
+            }else {
+              self.sendMessageWith(photoURL: photoUrl)
+            }
             
             self.messageImageView.image = nil
             self.photoHeightConstraint.constant = 0

@@ -19,6 +19,7 @@ class SameMessageTextCell: UITableViewCell {
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var textMessageLabel: UILabel!
     
+    @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

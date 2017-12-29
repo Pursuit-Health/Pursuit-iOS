@@ -303,6 +303,7 @@ extension MainAuthVC: SignUpVCDelegate {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
                 self.isRunning = false
+                progressView.dissmiss(form: self.view)
             }else {
                 if self.selectedImage == nil {
                     

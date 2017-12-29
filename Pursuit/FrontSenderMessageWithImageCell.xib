@@ -19,11 +19,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="236" id="Kgu-ey-fN4" customClass="FrontSenderMessageWithImageCell" customModule="Pursuit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="355" height="236"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="251" id="Kgu-ey-fN4" customClass="FrontSenderMessageWithImageCell" customModule="Pursuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="251"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kgu-ey-fN4" id="Jc9-IZ-VJ1">
-                <rect key="frame" x="0.0" y="0.0" width="355" height="235.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="355" height="250.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="kpZ-PW-zR6">
@@ -76,14 +76,15 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature" translatesAutoresizingMaskIntoConstraints="NO" id="dJ6-rW-0r0">
                         <rect key="frame" x="61" y="55.5" width="210" height="157.5"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="157.5" id="0jg-2Q-ver"/>
                             <constraint firstAttribute="width" constant="210" id="EaI-Kv-Us1"/>
                             <constraint firstAttribute="width" secondItem="dJ6-rW-0r0" secondAttribute="height" multiplier="4:3" id="NoE-tC-qkK"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiv-pp-nG3">
-                        <rect key="frame" x="81" y="218" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvO-vo-fM1">
+                        <rect key="frame" x="241.5" y="221" width="29.5" height="16.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -95,13 +96,13 @@
                     <constraint firstItem="kYa-5j-jOK" firstAttribute="top" secondItem="sNA-H8-MqQ" secondAttribute="top" id="CJ4-38-1qh"/>
                     <constraint firstItem="kYa-5j-jOK" firstAttribute="height" secondItem="qb3-vL-dqM" secondAttribute="height" multiplier="0.5" id="Dcw-Zr-F6i"/>
                     <constraint firstItem="qb3-vL-dqM" firstAttribute="leading" secondItem="kpZ-PW-zR6" secondAttribute="trailing" constant="20" id="Fn4-0a-uGu"/>
-                    <constraint firstItem="wiv-pp-nG3" firstAttribute="top" secondItem="dJ6-rW-0r0" secondAttribute="bottom" constant="5" id="HOr-JT-kgd"/>
                     <constraint firstItem="kYa-5j-jOK" firstAttribute="leading" secondItem="sNA-H8-MqQ" secondAttribute="trailing" id="KWk-VB-FUn"/>
                     <constraint firstItem="dJ6-rW-0r0" firstAttribute="leading" secondItem="sNA-H8-MqQ" secondAttribute="leading" constant="10" id="Lip-g6-7GB"/>
                     <constraint firstItem="kYa-5j-jOK" firstAttribute="width" secondItem="qb3-vL-dqM" secondAttribute="width" multiplier="0.5" id="RIM-tw-1Bz"/>
-                    <constraint firstAttribute="bottom" secondItem="dJ6-rW-0r0" secondAttribute="bottom" constant="22.5" id="WP0-JF-OxH"/>
+                    <constraint firstItem="NvO-vo-fM1" firstAttribute="trailing" secondItem="dJ6-rW-0r0" secondAttribute="trailing" id="Vx9-Er-tFG"/>
+                    <constraint firstItem="NvO-vo-fM1" firstAttribute="top" secondItem="dJ6-rW-0r0" secondAttribute="bottom" constant="8" id="YgM-GN-qUs"/>
                     <constraint firstItem="sNA-H8-MqQ" firstAttribute="top" secondItem="qb3-vL-dqM" secondAttribute="top" id="cxH-c4-PpR"/>
-                    <constraint firstItem="wiv-pp-nG3" firstAttribute="leading" secondItem="dJ6-rW-0r0" secondAttribute="leading" constant="20" id="edY-F2-LzG"/>
+                    <constraint firstAttribute="bottom" secondItem="NvO-vo-fM1" secondAttribute="bottom" constant="13" id="ekP-Vx-gNp"/>
                     <constraint firstItem="qb3-vL-dqM" firstAttribute="top" secondItem="Jc9-IZ-VJ1" secondAttribute="top" constant="15" id="enL-l5-ad9"/>
                     <constraint firstItem="qb3-vL-dqM" firstAttribute="leading" secondItem="sNA-H8-MqQ" secondAttribute="trailing" id="gYb-Eu-pJc"/>
                     <constraint firstItem="dJ6-rW-0r0" firstAttribute="top" secondItem="qb3-vL-dqM" secondAttribute="bottom" id="kL8-FZ-gj6"/>
@@ -122,8 +123,9 @@
                 <outlet property="messageView" destination="qb3-vL-dqM" id="Zdc-qU-3Xr"/>
                 <outlet property="sendPhotoImageView" destination="dJ6-rW-0r0" id="OdC-wg-bed"/>
                 <outlet property="talesView" destination="sNA-H8-MqQ" id="99N-0r-Kdz"/>
+                <outlet property="timeLabel" destination="NvO-vo-fM1" id="Fug-Ge-lkl"/>
             </connections>
-            <point key="canvasLocation" x="16.5" y="64"/>
+            <point key="canvasLocation" x="16.5" y="71.5"/>
         </tableViewCell>
     </objects>
     <resources>
