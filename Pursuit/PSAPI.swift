@@ -93,7 +93,7 @@ class PSAPI: APIHandable {
                         User.shared.token = token
                         
                         //DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                            User.getFireBaseToken(completion: completion)
+                            //User.getFireBaseToken(completion: completion)
                        // }
                     }
                     
@@ -101,7 +101,11 @@ class PSAPI: APIHandable {
                     error = serverError.psError
                 }
             }
-            completion(user, error)
+            if error == nil {
+                User.getFireBaseToken(completionHandler: { (user, error) in
+                    completion(user, error)
+                })
+            }
         }
     }
     
@@ -128,7 +132,7 @@ class PSAPI: APIHandable {
                         User.shared.token = token
                         
                         //DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                        User.getFireBaseToken(completion: completion)
+                        //User.getFireBaseToken(completion: completion)
                         //}
                     }
                     
@@ -136,7 +140,12 @@ class PSAPI: APIHandable {
                     error = serverError.psError
                 }
             }
-            completion(user, error)
+            
+            if error == nil {
+                User.getFireBaseToken(completionHandler: { (user, error) in
+                    completion(user, error)
+                })
+            }
         }
     }
     
@@ -168,7 +177,9 @@ class PSAPI: APIHandable {
                         }
                         User.shared.token = token
         
-                            User.getFireBaseToken(completion: completion)
+                        User.getFireBaseToken(completionHandler: { (user, error) in
+                            
+                        })
                     }
                     
                 case .failure(let serverError):
@@ -424,14 +435,14 @@ class PSAPI: APIHandable {
     }
     
     @discardableResult
-    func getFireBaseToken(completion: @escaping GetFireBaseTokenCompletion) -> DataRequest? {
+    func getFireBaseToken(completionHandler: @escaping GetFireBaseTokenCompletion) -> DataRequest? {
         let request = Request.getFireBaseToken()
         return self.perform(request)?.responseJSON { (response) in
             var error: ErrorProtocol?
             var user: User?
             if response.response?.statusCode == 202 {
-                User.getFireBaseToken(completion: completion)
-                return
+               // User.getFireBaseToken(completion: completion)
+               // return
             }
             if let responseError = self.handle(response: response) {
                 error = responseError
@@ -452,7 +463,7 @@ class PSAPI: APIHandable {
                     error = serverError.psError
                 }
             }
-            completion(user, error)
+            completionHandler(user, error)
         }
     }
 }

@@ -75,10 +75,8 @@ extension User {
         api.getUserInfo(completion: completion)
     }
 
-    class func getFireBaseToken(completion: @escaping GetFireBaseTokenCompletion) {
+    class func getFireBaseToken(completionHandler: @escaping GetFireBaseTokenCompletion) {
         let api = PSAPI()
-        api.getFireBaseToken { (user, error) in
-
-        }
+        api.getFireBaseToken(completionHandler: completionHandler)
     }
  }

@@ -21,6 +21,8 @@ class SettingsVC: UIViewController {
             emailLabel.text = User.shared.email ?? ""
             if User.shared.avatar != nil {
                 userImageView.sd_setImage(with: URL(string:  PSURL.BaseURL + User.shared.avatar! ?? ""))
+            }else {
+                userImageView.image = UIImage(named: "photo-camera-2")
             }
         }
     }

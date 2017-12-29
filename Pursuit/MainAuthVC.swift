@@ -44,7 +44,7 @@ class MainAuthVC: UIViewController {
     var isRunning: Bool  = false
     
     var selectedImage: UIImage?
-
+    
     //MARK: IBOutlets
     
     @IBOutlet weak var authStateScrollView: UIScrollView!
@@ -82,7 +82,7 @@ class MainAuthVC: UIViewController {
     }()
     
     lazy var forgotPasswordVC: ForgotPasswordVC? = {
-
+        
         guard let forgotPVC = UIStoryboard.login.ForgotPassword else { return UIViewController() as? ForgotPasswordVC }
         return forgotPVC
     }()
@@ -119,7 +119,7 @@ class MainAuthVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-   
+        
     }
     
     @objc func methodOfReceivedNotification(notification: Notification){
@@ -187,7 +187,7 @@ class MainAuthVC: UIViewController {
     fileprivate func uploadImage() {
         
         guard let image = selectedImage else { return }
-
+        
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
             if (error == nil) {
@@ -269,7 +269,7 @@ extension MainAuthVC: SignInVCDelegate {
         }
         self.isRunning = true
         User.login(username: username, password: password, user: user, completion: { _, error in
-
+            
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
@@ -298,7 +298,7 @@ extension MainAuthVC: SignUpVCDelegate {
         progressView.show(on: self.view)
         self.isRunning = true
         user.signUp(completion: { (user, error) in
-
+            
             if let error = error {
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
@@ -306,12 +306,10 @@ extension MainAuthVC: SignUpVCDelegate {
                 progressView.dissmiss(form: self.view)
             }else {
                 if self.selectedImage == nil {
-                    
-                   // DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                         progressView.dissmiss(form: self.view)
-                        self.setUpStatusBarView()
+                    progressView.dissmiss(form: self.view)
+                    self.setUpStatusBarView()
                     self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
-                   // }
+                    
                 } else {
                     self.uploadImage()
                 }
