@@ -9,5 +9,5 @@
 import Foundation
 
 struct PSURL {
-    static let BaseURL = "http://dev.nerdzlab.com"
+    static let BaseURL = "https://pursuit.nerdzlab.com/v1/"
 }

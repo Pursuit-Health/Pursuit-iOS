@@ -48,7 +48,7 @@ extension PSAPI {
         
         var baseURLString: String {
             //return "https://pursuithealthtech.com/v1/"
-            return "https://dev.nerdzlab.com/v1/"
+            return PSURL.BaseURL
         }
         
         var method: HTTPMethod {
