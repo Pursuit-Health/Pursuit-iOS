@@ -21,6 +21,12 @@ class SignUpDataCell: UITableViewCell {
         
         datePickerView.datePickerMode = .date
         
+        datePickerView.maximumDate = Date()
+        
+        let locale: Locale = NSLocale(localeIdentifier: "en_US") as Locale
+        
+        datePickerView.locale = locale
+        
         datePickerView.addTarget(self, action: #selector(SignUpDataCell.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
         return datePickerView
@@ -33,6 +39,10 @@ class SignUpDataCell: UITableViewCell {
         dateFormatter.dateStyle = .medium
         
         dateFormatter.timeStyle = .none
+        
+        let locale: Locale = NSLocale(localeIdentifier: "en_US") as Locale
+        
+        dateFormatter.locale = locale
         
         userDataTextField.text = dateFormatter.string(from: sender.date)
         

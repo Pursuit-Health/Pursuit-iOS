@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK: Private
     
-    private func setUpStatusBarAppearence() {
+     func setUpStatusBarAppearence() {
         UIApplication.shared.delegate?.window!?.windowLevel = UIWindowLevelStatusBar
         UIApplication.shared.isStatusBarHidden = true
         let view = TopStatusBarView()
