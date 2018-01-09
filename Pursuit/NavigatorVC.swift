@@ -72,6 +72,8 @@ class NavigatorVC: UIViewController {
                     self.leftTitle = User.shared.name ?? ""
                 }
                 User.shared.coordinator?.start(from: self)
+            }else {
+                AppCoordinator.showController(controller: self)
             }
         }
     }
@@ -114,5 +116,4 @@ extension NavigatorVC: SWRevealViewControllerDelegate {
         self.view.isUserInteractionEnabled = enable
         self.view.endEditing(true)
     }
-    
 }

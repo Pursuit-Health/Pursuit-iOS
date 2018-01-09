@@ -696,6 +696,11 @@ const int FrontViewPositionNone = 0xff;
 
 - (void)loadView
 {
+    
+    if ([_delegate respondsToSelector: @selector(removePreviosController)]) {
+        
+        [_delegate removePreviosController];
+    }
     // Do not call super, to prevent the apis from unfruitful looking for inexistent xibs!
     //[super loadView];
     

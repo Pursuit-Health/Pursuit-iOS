@@ -171,6 +171,7 @@ class CreateTemplateVC: UIViewController {
     }
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
+        self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -234,8 +235,9 @@ class CreateTemplateVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
 
         self.templateTableView?.reloadData()
+      
+        //self.templateNameTextField.text = workoutNew?.name ?? ""
         
-        self.templateNameTextField.text = workoutNew?.name ?? ""
         if let done = isDone {
         if done {
             self.templateNameTextField.isUserInteractionEnabled = false

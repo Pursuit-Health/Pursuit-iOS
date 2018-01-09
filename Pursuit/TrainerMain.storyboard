@@ -1450,46 +1450,58 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="66O-Pa-KBp" customClass="TPKeyboardAvoidingTableView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="587"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="kZH-aH-shw" id="C0f-0v-9bm"/>
                                     <outlet property="delegate" destination="kZH-aH-shw" id="8Cd-cn-Ean"/>
                                 </connections>
                             </tableView>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlv-Bt-2Cq">
-                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlv-Bt-2Cq">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRn-A2-9FM">
+                                        <rect key="frame" x="165" y="5" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="T3y-aJ-FUY"/>
+                                            <constraint firstAttribute="width" constant="45" id="uTW-2S-tYi"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_add"/>
+                                        <connections>
+                                            <action selector="confirmButtonPressed" destination="kZH-aH-shw" eventType="touchUpInside" id="Dti-Rs-3n0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="5Vn-zA-aMy"/>
+                                    <constraint firstItem="WRn-A2-9FM" firstAttribute="top" secondItem="xlv-Bt-2Cq" secondAttribute="top" constant="5" id="ZXb-Zs-M8p"/>
+                                    <constraint firstItem="WRn-A2-9FM" firstAttribute="centerX" secondItem="xlv-Bt-2Cq" secondAttribute="centerX" id="yfs-Lq-2rG"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRn-A2-9FM">
-                                <rect key="frame" x="165" y="616.5" width="45" height="45"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAH-8d-Jbd">
+                                <rect key="frame" x="0.0" y="607" width="375" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="T3y-aJ-FUY"/>
-                                    <constraint firstAttribute="width" constant="45" id="uTW-2S-tYi"/>
+                                    <constraint firstAttribute="height" id="z1x-L3-xRi"/>
                                 </constraints>
-                                <state key="normal" image="btn_add"/>
-                                <connections>
-                                    <action selector="confirmButtonPressed" destination="kZH-aH-shw" eventType="touchUpInside" id="Dti-Rs-3n0"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sOM-3P-h8d" firstAttribute="bottom" secondItem="rAH-8d-Jbd" secondAttribute="bottom" constant="60" id="DEq-9u-Fsx"/>
+                            <constraint firstItem="xlv-Bt-2Cq" firstAttribute="top" secondItem="rAH-8d-Jbd" secondAttribute="bottom" id="GQK-jO-yaP"/>
+                            <constraint firstItem="rAH-8d-Jbd" firstAttribute="leading" secondItem="sOM-3P-h8d" secondAttribute="leading" id="JMH-nc-Cal"/>
                             <constraint firstItem="66O-Pa-KBp" firstAttribute="top" secondItem="0eA-73-hAh" secondAttribute="bottom" id="R4n-vS-1OI"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="bottom" secondItem="xlv-Bt-2Cq" secondAttribute="bottom" id="Z0B-DI-lXe"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="trailing" secondItem="66O-Pa-KBp" secondAttribute="trailing" id="dx9-5r-UqS"/>
+                            <constraint firstItem="sOM-3P-h8d" firstAttribute="trailing" secondItem="rAH-8d-Jbd" secondAttribute="trailing" id="gTV-UG-hOk"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="trailing" secondItem="xlv-Bt-2Cq" secondAttribute="trailing" id="hpM-4q-mqQ"/>
-                            <constraint firstItem="WRn-A2-9FM" firstAttribute="centerX" secondItem="xlv-Bt-2Cq" secondAttribute="centerX" id="jbR-IF-IDe"/>
                             <constraint firstItem="xlv-Bt-2Cq" firstAttribute="leading" secondItem="sOM-3P-h8d" secondAttribute="leading" id="ldD-Zu-Wo1"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="bottom" secondItem="Iqr-zF-Ihf" secondAttribute="bottom" id="pxG-Gr-fKe"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="trailing" secondItem="0eA-73-hAh" secondAttribute="trailing" id="qc9-Gr-wLq"/>
-                            <constraint firstItem="WRn-A2-9FM" firstAttribute="centerY" secondItem="xlv-Bt-2Cq" secondAttribute="centerY" id="r80-5R-aKn"/>
+                            <constraint firstItem="rAH-8d-Jbd" firstAttribute="top" secondItem="66O-Pa-KBp" secondAttribute="bottom" id="rkf-FM-sAd"/>
                             <constraint firstItem="Iqr-zF-Ihf" firstAttribute="leading" secondItem="sOM-3P-h8d" secondAttribute="leading" id="tGg-tM-fBj"/>
                             <constraint firstItem="Iqr-zF-Ihf" firstAttribute="top" secondItem="sOM-3P-h8d" secondAttribute="top" id="u19-gy-aAc"/>
-                            <constraint firstItem="xlv-Bt-2Cq" firstAttribute="top" secondItem="66O-Pa-KBp" secondAttribute="bottom" id="u6c-bG-Gqe"/>
                             <constraint firstItem="0eA-73-hAh" firstAttribute="top" secondItem="sOM-3P-h8d" secondAttribute="top" id="ulZ-eW-uIV"/>
                             <constraint firstItem="0eA-73-hAh" firstAttribute="leading" secondItem="sOM-3P-h8d" secondAttribute="leading" id="vT5-Db-zNU"/>
                             <constraint firstItem="66O-Pa-KBp" firstAttribute="leading" secondItem="sOM-3P-h8d" secondAttribute="leading" id="x1Y-rN-FeR"/>
@@ -1519,7 +1531,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="-668" y="5221"/>
+            <point key="canvasLocation" x="-668" y="5220.5397301349331"/>
         </scene>
         <!--Main ExercisesVC-->
         <scene sceneID="Gl9-V2-SLC">

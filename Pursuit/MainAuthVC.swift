@@ -193,6 +193,14 @@ class MainAuthVC: UIViewController {
             }
         }
     }
+    
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowSideMenu" {
+            if let destination = segue.destination as? SWRevealViewController {
+                destination.delegate = self
+            }
+        }
+    }
 }
 
 extension MainAuthVC: TabPageViewControllerDelegate {
@@ -316,4 +324,10 @@ extension MainAuthVC: ScheduleVCDelegate {
     }
 }
 
+extension MainAuthVC: SWRevealViewControllerDelegate {
+    func  removePreviosController() {
+        self.navigationController?.viewControllers.remove(at: 0)
+        
+    }
+}
 

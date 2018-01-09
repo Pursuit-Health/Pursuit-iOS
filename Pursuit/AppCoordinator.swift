@@ -51,5 +51,13 @@ class AppCoordinator: Coordinator {
     private func checkIfUserLoggedIn() -> Bool {
         return User.shared.token != nil
     }
+    
+    class func showController(controller: UIViewController) {
+        let clientsList = UIStoryboard.trainer.TrainerClients!
+        controller.view.addSubview(clientsList.view)
+        controller.view.addConstraints(UIView.place(clientsList.view, onOtherView: controller.view))
+        clientsList.didMove(toParentViewController: controller)
+        controller.addChildViewController(clientsList)
+    }
 }
 

@@ -198,6 +198,8 @@ extension ClientsVC: SwipeTableViewCellDelegate {
         
         //let client = clientList[indexPath.row]
         
+        return nil
+        
         if orientation == .left {
             
             //DISPLAY OPTIONS UPON LEFT SWIPE
