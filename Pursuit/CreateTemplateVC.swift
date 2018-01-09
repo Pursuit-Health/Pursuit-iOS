@@ -163,6 +163,8 @@ class CreateTemplateVC: UIViewController {
         return self.workoutNew?.isDone
     }
     
+    var shouldClear: Bool = true
+    
     //MARK: IBActions
     
     @IBAction func addExercisesButtonPressed(_ sender: Any) {
@@ -234,9 +236,12 @@ class CreateTemplateVC: UIViewController {
         navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
 
+       
         self.templateTableView?.reloadData()
       
-        //self.templateNameTextField.text = workoutNew?.name ?? ""
+         if !shouldClear {
+            self.templateNameTextField.text = workoutNew?.name ?? ""
+        }
         
         if let done = isDone {
         if done {

@@ -99,6 +99,7 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
                 
                 createTemplate.workoutNew = workout
                 createTemplate.delegate = self
+                createTemplate.shouldClear = false
                 
                 //let training = UIStoryboard.client.Training!
                 //training.delegate = self
