@@ -1440,7 +1440,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Iqr-zF-Ihf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iqr-zF-Ihf">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="workout" translatesAutoresizingMaskIntoConstraints="NO" id="0eA-73-hAh">
@@ -1488,11 +1488,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xlv-Bt-2Cq" secondAttribute="bottom" id="6ub-VA-MIs"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="bottom" secondItem="rAH-8d-Jbd" secondAttribute="bottom" constant="60" id="DEq-9u-Fsx"/>
                             <constraint firstItem="xlv-Bt-2Cq" firstAttribute="top" secondItem="rAH-8d-Jbd" secondAttribute="bottom" id="GQK-jO-yaP"/>
                             <constraint firstItem="rAH-8d-Jbd" firstAttribute="leading" secondItem="sOM-3P-h8d" secondAttribute="leading" id="JMH-nc-Cal"/>
                             <constraint firstItem="66O-Pa-KBp" firstAttribute="top" secondItem="0eA-73-hAh" secondAttribute="bottom" id="R4n-vS-1OI"/>
-                            <constraint firstItem="sOM-3P-h8d" firstAttribute="bottom" secondItem="xlv-Bt-2Cq" secondAttribute="bottom" id="Z0B-DI-lXe"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="trailing" secondItem="66O-Pa-KBp" secondAttribute="trailing" id="dx9-5r-UqS"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="trailing" secondItem="rAH-8d-Jbd" secondAttribute="trailing" id="gTV-UG-hOk"/>
                             <constraint firstItem="sOM-3P-h8d" firstAttribute="trailing" secondItem="xlv-Bt-2Cq" secondAttribute="trailing" id="hpM-4q-mqQ"/>
@@ -1569,7 +1569,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euG-UV-idb">
                                 <rect key="frame" x="0.0" y="607" width="375" height="0.0"/>
-                                <color key="backgroundColor" red="1" green="0.093315692739999997" blue="0.097960172220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="Mg3-gK-P6Z"/>
                                 </constraints>
