@@ -29,6 +29,10 @@ class MainAuthVC: UIViewController {
             static let Trainer  = "ShowTrainerStoryboard"
             static let Client   = "ShowClientStoryboard"
         }
+        
+        struct URLs {
+            static let TermsAndConditions = "http://pursuithealthtech.com/about/terms/"
+        }
     }
     //MARK: Variables
     var lastOffSetX = CGFloat()
@@ -201,6 +205,20 @@ class MainAuthVC: UIViewController {
             }
         }
     }
+    
+    fileprivate func showInvalidCodeAlert() {
+        let alert = UIAlertController(title: "Error", message: "Your code is invalid, please check it and try again!", preferredStyle: .alert)
+
+        let cancel = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func openBrowserWithURL(_ url: String){
+        UIApplication.shared.openURL(URL(string: url)!)
+    }
 }
 
 extension MainAuthVC: TabPageViewControllerDelegate {
@@ -280,11 +298,20 @@ extension MainAuthVC: SignInVCDelegate {
 }
 
 extension MainAuthVC: SignUpVCDelegate {
+    func termsButtonPressed(on controller: SignUpVC) {
+        self.openBrowserWithURL(Constants.URLs.TermsAndConditions)
+    }
+    
     func signUpButtonPressed(on controller: SignUpVC, with user: User) {
         if self.isRunning {
             return
         }
         self.isRunning = true
+        
+        if !(user.isValidCode() ?? false) {
+            self.showInvalidCodeAlert()
+            return
+        }
         
         user.signUp(completion: { (user, error) in
             

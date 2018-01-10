@@ -65,15 +65,6 @@ extension TrainerCoordinator: ClientsVCDelegate {
         
         self.clientProfileVC = clientInfo
     }
-    
-    func addWorkoutButtonPressed(on controller: ClientInfoVC) {
-        let createTemplate = UIStoryboard.trainer.CreateTemplate!
-        createTemplate.delegate = self
-        
-        controller.navigationController?.pushViewController(createTemplate, animated: true)
-        
-        self.createTemplate = createTemplate
-    }
 }
 
 extension TrainerCoordinator: ClientInfoVCDatasource {
@@ -100,7 +91,8 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
                 createTemplate.workoutNew = workout
                 createTemplate.delegate = self
                 createTemplate.shouldClear = false
-                
+                createTemplate.isEditTemplate = true
+                self.createTemplate = createTemplate
                 //let training = UIStoryboard.client.Training!
                 //training.delegate = self
                 //training.workout = workout
@@ -109,6 +101,15 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
                 
             }
         }
+    }
+    
+    func addWorkoutButtonPressed(on controller: ClientInfoVC) {
+        let createTemplate = UIStoryboard.trainer.CreateTemplate!
+        createTemplate.delegate = self
+        
+        controller.navigationController?.pushViewController(createTemplate, animated: true)
+        
+        self.createTemplate = createTemplate
     }
 }
 
@@ -145,6 +146,9 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
     
     func editWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
         let work = workout
+    
+        work.excersises = self.createTemplate?.workoutNew?.excersises
+        
         //work.excersises = self.exercises
         work.editWorkout(clientId: "\(self.selectedClient?.id ?? 0)", templateId: "\(self.selectedWorkout?.id ?? 0)") { (workout, error) in
             if let error = error  {
@@ -153,6 +157,7 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
                 }))
                 controller.present(alert, animated: true, completion: nil)
             }else {
+                 self.exercises = []
                 controller.navigationController?.popViewController(animated: true)
             }
         }
@@ -172,6 +177,7 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         let detailsController = UIStoryboard.trainer.ExerciseDetails!
         detailsController.excersize = exercise
         detailsController.isEditExercise = true
+        detailsController.isEdittemplate = self.createTemplate?.isEditTemplate ?? false
         controller.navigationController?.pushViewController(detailsController, animated: true)
     }
     
@@ -190,13 +196,26 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
             self.customExercise.append(ex)
                 let work = Workout()
                 self.exercises += self.customExercise
+                
+                if self.createTemplate?.isEditTemplate ?? false {
+                    work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
+                }else {
+                    work.excersises = self.exercises
+                }
                 self.customExercise = []
-                work.excersises = self.exercises
+                work.name = self.createTemplate?.workoutNew?.name
+                work.isDone = self.createTemplate?.workoutNew?.isDone
                 self.createTemplate?.workoutNew = work
             }
         }else {
             let work = Workout()
-            work.excersises = self.exercises
+            if self.createTemplate?.isEditTemplate ?? false {
+                work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
+            }else {
+                work.excersises = self.exercises
+            }
+            work.name = self.createTemplate?.workoutNew?.name
+            work.isDone = self.createTemplate?.workoutNew?.isDone
             self.createTemplate?.workoutNew = work
         }
         controller.navigationController?.popViewController(animated: true)

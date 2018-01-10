@@ -137,7 +137,7 @@ class CreateTemplateVC: UIViewController {
     
     var startAt: String? {
         didSet {
-            self.workout.startAtForUpload   = self.startAt
+            self.workout.startAtForUpload  = self.startAt
         }
     }
 
@@ -165,6 +165,7 @@ class CreateTemplateVC: UIViewController {
     
     var shouldClear: Bool = true
     
+    var isEditTemplate: Bool = false
     //MARK: IBActions
     
     @IBAction func addExercisesButtonPressed(_ sender: Any) {
@@ -192,7 +193,8 @@ class CreateTemplateVC: UIViewController {
                 self.workout = self.workoutNew!
                 self.workout.name               = self.templateNameTextField.text
                 self.workout.notes              = self.notesTextField.text
-                self.workout.startAtForUpload  = nil
+                self.workout.startAtForUpload   = nil
+                self.workout.excersises         = self.exercises
                 delegate?.editWorkout(self.workout, on: self)
             }
         }else {
@@ -357,7 +359,9 @@ extension CreateTemplateVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cellInfo = self.sections[indexPath.section]?[indexPath.row], case .excersise(let excersie) = cellInfo {
+
             self.delegate?.exerciseSelected(exercise: excersie, on: self)
+            
         }
 //        if let controller = exercisesDetailsVC {
 //            let exersiceInfo = self.exercises[indexPath.row - 1]

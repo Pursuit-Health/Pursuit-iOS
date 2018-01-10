@@ -28,6 +28,7 @@ class User: Mappable {
         return nil;
     }
 
+    var code: String?
     //MARK: Mappable
     
     var id                  : Int?
@@ -69,6 +70,11 @@ class User: Mappable {
     func signUp(completion: @escaping RegisterCompletion) {
         
     }
+    
+    func isValidCode() -> Bool? {
+        return nil
+    }
+    
     func updateDetailsWorkout(workout: Workout, completion: Workout.GetClientsWorkoutDetails? = nil) {
         
     }

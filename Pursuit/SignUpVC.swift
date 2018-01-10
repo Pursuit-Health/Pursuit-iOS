@@ -14,6 +14,7 @@ import SHTextFieldBlocks
 protocol SignUpVCDelegate: class {
     func showSelectTrainerVC(on controller: SignUpVC)
     func signUpButtonPressed(on controller: SignUpVC, with user: User)
+    func termsButtonPressed(on controller: SignUpVC)
 }
 class SignUpVC: UIViewController {
     
@@ -63,7 +64,7 @@ class SignUpVC: UIViewController {
         }
     }
     
-    lazy var cellsInfo: [CellType] = [.question(delegate: self, isTrainer: true), .name, .email, .password, .birthday, .signup(delegate: self)]
+    lazy var cellsInfo: [CellType] = [.question(delegate: self, isTrainer: true), .name, .email, .password, .code, .birthday, .signup(delegate: self)]
     
     //MARK: Nested
     
@@ -71,6 +72,7 @@ class SignUpVC: UIViewController {
         case name
         case email
         case password
+        case code
         case birthday
         case question(delegate: QuestionCellDelegate, isTrainer: Bool)
         case selectTrainer(trainerName: String?)
@@ -92,6 +94,8 @@ class SignUpVC: UIViewController {
                 return ChooseTrainerCell.self
             case .signup:
                 return SignUpButtonCell.self
+            case .code:
+                return SignUpDataCell.self
             }
         }
         
@@ -113,6 +117,12 @@ class SignUpVC: UIViewController {
             case .password:
                 if let castedCell = cell as? SignUpDataCell {
                     fillPasswordCell(cell: castedCell, completion: { text in
+                        completion(text)
+                    })
+                }
+            case .code:
+                if let castedCell = cell as? SignUpDataCell {
+                    fillCodeCell(cell: castedCell, complation: { text in
                         completion(text)
                     })
                 }
@@ -209,6 +219,25 @@ class SignUpVC: UIViewController {
             }
         }
         
+        private func fillCodeCell(cell: SignUpDataCell, complation: @escaping TextFieldComletion) {
+            cell.userDataTextField.placeholder  = "Code"
+            if cell.userDataTextField.text != "" {
+                let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
+                cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
+            }
+            cell.cellImageview.image            = UIImage(named: "gift")
+            
+            //TODO: Reimplement
+            cell.userDataTextField.bbb_reactFromCodeChange = true
+            cell.userDataTextField.isSecureTextEntry    = false
+            cell.userDataTextField.inputView = cell.datePicker()
+            cell.userDataTextField.bbb_changedBlock = { (textfield) in
+                if let text = textfield.text {
+                    complation(text)
+                }
+            }
+        }
+        
         private func fill(cell: QuestionCell, delegate: QuestionCellDelegate, isTrainer: Bool) {
             cell.delegate = delegate
             if isTrainer {
@@ -270,6 +299,9 @@ extension SignUpVC: UITableViewDataSource {
                 
                 self.client.email       = text
                 self.trainer.email      = text
+            case .code:
+                self.client.code    = text
+                self.trainer.code   = text
             case .birthday:
                 
                 //TODO: Move date formatter to constants
@@ -305,7 +337,7 @@ extension SignUpVC: UITableViewDelegate {
 extension SignUpVC: SignUpButtonCellDelegate {
     
     func termsButtonPressed(on cell: SignUpButtonCell) {
-        
+        self.delegate?.termsButtonPressed(on: self)
     }
     
     func signUpButtonPressed(on cell: SignUpButtonCell) {

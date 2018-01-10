@@ -33,6 +33,10 @@ class Trainer: User {
         self.trainerAvatar       <- map["user.data.avatar"]
     }
     
+    override func isValidCode() -> Bool? {
+        return self.code == "2"
+    }
+    
     override func signUp(completion: @escaping RegisterTrainerCompletion) {
         let api = PSAPI()
         

@@ -56,6 +56,10 @@ class Client: User, Equatable, Hashable {
         self.clientAvatar       <- map["user.data.avatar"]
     }
     
+    override func isValidCode() -> Bool? {
+        return self.code == "1"
+    }
+    
     override func createSignUpParameters() -> [String : String] {
         var parameters = super.createSignUpParameters()
         parameters["trainer_id"] = "\(self.id ?? 0)"
@@ -66,6 +70,7 @@ class Client: User, Equatable, Hashable {
         let api = PSAPI()
         api.registerClient(personalData: self.createSignUpParameters(), completion: completion)
     }
+    
     override func updateDetailsWorkout(workout: Workout, completion: Workout.GetClientsWorkoutDetails? = nil) {
         workout.updateToClientoDetails(completion: completion)
     }

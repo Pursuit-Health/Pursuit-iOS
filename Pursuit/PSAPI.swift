@@ -217,7 +217,7 @@ class PSAPI: APIHandable {
         SVProgressHUD.show()
         //TODO: WTF?
         
-        return self.service.request(request: request).validate().responseJSON { (response) in
+        return self.perform(request)?.responseJSON { (response) in
             SVProgressHUD.dismiss()
             var error: ErrorProtocol?
             var user: User?

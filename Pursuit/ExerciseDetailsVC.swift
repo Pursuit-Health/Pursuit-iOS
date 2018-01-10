@@ -221,6 +221,7 @@ class ExerciseDetailsVC: UIViewController {
     }
     
     var isEditExercise: Bool = false
+    var isEdittemplate: Bool = false
     
     var exerciseType: ExcersiseData.ExcersiseType?
     
@@ -247,6 +248,10 @@ class ExerciseDetailsVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func confirmButtonPressed() {
+        if self.isEdittemplate {
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
         var exerc = ExcersiseData()
         if isInteractiv {
         if self.excersize.name == nil {
@@ -269,7 +274,7 @@ class ExerciseDetailsVC: UIViewController {
         }
         
         if !isEditExercise {
-        self.delegate?.ended(with: exerc, on: self)
+            self.delegate?.ended(with: exerc, on: self)
         }else {
             self.navigationController?.popViewController(animated: true)
         }
