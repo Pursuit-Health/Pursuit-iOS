@@ -736,6 +736,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Create Template"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="addworkoutButton" destination="eR1-0H-qsu" id="dhb-Rs-5Mi"/>
                         <outlet property="calendarView" destination="iPa-0u-BJk" id="Lbb-Qa-xqp"/>
                         <outlet property="monthLabel" destination="6vZ-C6-DN7" id="YHT-aF-V0w"/>
                         <outlet property="notesTextField" destination="Piq-gu-9lO" id="eek-Z4-1ca"/>

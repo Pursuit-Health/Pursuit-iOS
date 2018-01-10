@@ -153,7 +153,7 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         work.editWorkout(clientId: "\(self.selectedClient?.id ?? 0)", templateId: "\(self.selectedWorkout?.id ?? 0)") { (workout, error) in
             if let error = error  {
                 let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
-                    
+                  self.exercises = []
                 }))
                 controller.present(alert, animated: true, completion: nil)
             }else {

@@ -125,6 +125,7 @@ class CreateTemplateVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var addworkoutButton: UIBarButtonItem!
     //MARK: Variables
     
     weak var delegate: CreateTemplateVCDelegate?
@@ -237,9 +238,6 @@ class CreateTemplateVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
-
-       
-        self.templateTableView?.reloadData()
       
          if !shouldClear {
             self.templateNameTextField.text = workoutNew?.name ?? ""
@@ -247,11 +245,13 @@ class CreateTemplateVC: UIViewController {
         
         if let done = isDone {
         if done {
+            self.addworkoutButton.isEnabled = false
             self.templateNameTextField.isUserInteractionEnabled = false
             self.calendarView.isUserInteractionEnabled = false
             self.templateTableView.allowsSelection = false
         }else {
             self.calendarView.isUserInteractionEnabled = false
+            self.addworkoutButton.isEnabled = true
             }
         }else {
            self.calendarView.isUserInteractionEnabled = true
@@ -283,9 +283,9 @@ class CreateTemplateVC: UIViewController {
     private func recalculateRows() {
         var section = 0
         var sections: [Int : [Cell]] = [:]
-        var warmups = self.exercises.filter{ $0.type == .warmup && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
-        var workouts = self.exercises.filter{ $0.type == .workout && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
-        var cooldowns = self.exercises.filter{ $0.type == .cooldown && !($0.isDone ?? false) }.map{ Cell.excersise(excersise: $0) }
+        var warmups = self.exercises.filter{ $0.type == .warmup }.map{ Cell.excersise(excersise: $0) }
+        var workouts = self.exercises.filter{ $0.type == .workout }.map{ Cell.excersise(excersise: $0) }
+        var cooldowns = self.exercises.filter{ $0.type == .cooldown }.map{ Cell.excersise(excersise: $0) }
         
         if !warmups.isEmpty {
             warmups.insert(.header(name: ExcersiseData.ExcersiseType.warmup.name), at: 0)
