@@ -219,7 +219,7 @@ class MainAuthVC: UIViewController {
     }
     
     fileprivate func openBrowserWithURL(_ url: String) {
-        UIApplication.shared.openURL(URL(string: url)!)
+        UIApplication.shared.open(URL(string: url)!)
     }
 }
 

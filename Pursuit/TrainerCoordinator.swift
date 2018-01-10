@@ -122,7 +122,7 @@ extension TrainerCoordinator: TrainingVCDelegate {
         controller.navigationController?.pushViewController(details, animated: true)
         self.exerciseDetailsVC = details
     }
-
+    
 }
 
 extension TrainerCoordinator: CreateTemplateVCDelegate {
@@ -146,7 +146,7 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
     
     func editWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
         let work = workout
-    
+        
         work.excersises = self.createTemplate?.workoutNew?.excersises
         
         //work.excersises = self.exercises
@@ -157,12 +157,12 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
                 }))
                 controller.present(alert, animated: true, completion: nil)
             }else {
-                 self.exercises = []
+                self.exercises = []
                 controller.navigationController?.popViewController(animated: true)
             }
         }
     }
-
+    
     func addExercisesButtonPressed(on controller: CreateTemplateVC) {
         let mainExercises = UIStoryboard.trainer.MainExercises!
         
@@ -185,16 +185,15 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
 
 extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasource {
     func finished(on controller: MainExercisesVC, exercises: [ExcersiseData], state: ControllerState) {
-        
+        let work = Workout()
         if state == .customExercise{
             
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
-                if (ex.name?.isEmpty ?? true) || ex.sets == nil || ex.reps == nil || ex.weight == nil || ex.rest == nil {
-                    self.showError(controller: controller)
-                    return
-                }
-            self.customExercise.append(ex)
-                let work = Workout()
+                
+                self.checkExerciseRequiredFields(ex, controller: controller)
+                
+                self.customExercise.append(ex)
+                
                 self.exercises += self.customExercise
                 
                 if self.createTemplate?.isEditTemplate ?? false {
@@ -203,21 +202,20 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
                     work.excersises = self.exercises
                 }
                 self.customExercise = []
-                work.name = self.createTemplate?.workoutNew?.name
-                work.isDone = self.createTemplate?.workoutNew?.isDone
-                self.createTemplate?.workoutNew = work
             }
         }else {
-            let work = Workout()
+            
             if self.createTemplate?.isEditTemplate ?? false {
                 work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
             }else {
                 work.excersises = self.exercises
             }
-            work.name = self.createTemplate?.workoutNew?.name
-            work.isDone = self.createTemplate?.workoutNew?.isDone
-            self.createTemplate?.workoutNew = work
+            
         }
+        
+        work.name = self.createTemplate?.workoutNew?.name
+        work.isDone = self.createTemplate?.workoutNew?.isDone
+        self.createTemplate?.workoutNew = work
         controller.navigationController?.popViewController(animated: true)
     }
     
@@ -261,7 +259,7 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
         self.exercises += exercises
         controller.navigationController?.popViewController(animated: true)
     }
-
+    
     func loadExercisesByCategoryId(on controller: ExercisesSearchVC, completion: @escaping ExercisesSearchVCDatasource.GetExercisesByCategoryIdCompletion) {
         self.selectedCategory?.loadExercisesByCategoryId(completion: { (innerexercises, error) in
             if error == nil {
@@ -278,5 +276,14 @@ extension TrainerCoordinator: ExerciseDetailsVCDelegate {
         //self.exercises.append(info)
         self.searchExercisesVC?.exercise = info
         controller.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension TrainerCoordinator {
+    func checkExerciseRequiredFields(_ ex: ExcersiseData, controller: UIViewController) {
+        if (ex.name?.isEmpty ?? true) || ex.sets == nil || ex.reps == nil || ex.weight == nil || ex.rest == nil {
+            self.showError(controller: controller)
+            return
+        }
     }
 }
