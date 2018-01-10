@@ -80,7 +80,7 @@ extension PSAPI {
                 return "auth/set-password"
             case .getTrainers:
                 return "auth/register/trainers"
-                
+
             case .changePassword:
                 return "settings/password"
             case .uploadAvatar:

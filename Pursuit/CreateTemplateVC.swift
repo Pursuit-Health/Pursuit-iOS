@@ -180,7 +180,7 @@ class CreateTemplateVC: UIViewController {
     }
     
     @IBAction func saveTemplateButtonPressed(_ sender: Any) {
-        
+        //TODO: Reimplament
         if templateNameTextField.text == "" {
             showAlert()
             return
@@ -238,7 +238,7 @@ class CreateTemplateVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
-      
+        //TODO: Reimplament
          if !shouldClear {
             self.templateNameTextField.text = workoutNew?.name ?? ""
         }

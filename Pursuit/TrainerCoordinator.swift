@@ -35,12 +35,6 @@ class TrainerCoordinator: Coordinator {
             
             self.clientsListVC = clientsList
         }
-        //        superController.navigationController?.pushViewController(self.controller, animated: true)
-        //        let controller = self.controller
-        //        superController.view.addSubview(controller.view)
-        //        superController.view.addConstraints(UIView.place(controller.view, onOtherView: superController.view))
-        //        controller.didMove(toParentViewController: superController)
-        //        superController.addChildViewController(controller)
     }
     
     fileprivate func showError(controller: UIViewController) {
@@ -148,8 +142,6 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         let work = workout
         
         work.excersises = self.createTemplate?.workoutNew?.excersises
-        
-        //work.excersises = self.exercises
         work.editWorkout(clientId: "\(self.selectedClient?.id ?? 0)", templateId: "\(self.selectedWorkout?.id ?? 0)") { (workout, error) in
             if let error = error  {
                 let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
@@ -187,7 +179,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
     func finished(on controller: MainExercisesVC, exercises: [ExcersiseData], state: ControllerState) {
         let work = Workout()
         if state == .customExercise{
-            
+            //TODO: Reimplament
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
                 
                 self.checkExerciseRequiredFields(ex, controller: controller)

@@ -268,7 +268,7 @@ class PSAPI: APIHandable {
                 multipartFormData.append(data, withName: "avatar", fileName: "image.jpg", mimeType: "image/jpeg")
                 
         },
-            to: PSURL.BaseURL + "/v1/settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
+            to: PSURL.BaseURL + "settings/avatar", method : .post, headers: ["Authorization":"Bearer" + token],
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
