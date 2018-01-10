@@ -209,14 +209,16 @@ class MainAuthVC: UIViewController {
     fileprivate func showInvalidCodeAlert() {
         let alert = UIAlertController(title: "Error", message: "Your code is invalid, please check it and try again!", preferredStyle: .alert)
 
-        let cancel = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+          self.isRunning = false
+        })
         
         alert.addAction(cancel)
         
         self.present(alert, animated: true, completion: nil)
     }
     
-    fileprivate func openBrowserWithURL(_ url: String){
+    fileprivate func openBrowserWithURL(_ url: String) {
         UIApplication.shared.openURL(URL(string: url)!)
     }
 }

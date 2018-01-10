@@ -230,7 +230,7 @@ class SignUpVC: UIViewController {
             //TODO: Reimplement
             cell.userDataTextField.bbb_reactFromCodeChange = true
             cell.userDataTextField.isSecureTextEntry    = false
-            cell.userDataTextField.inputView = cell.datePicker()
+            cell.userDataTextField.keyboardType         = .numberPad
             cell.userDataTextField.bbb_changedBlock = { (textfield) in
                 if let text = textfield.text {
                     complation(text)
