@@ -10,6 +10,6 @@ import Foundation
 
 extension String {
     func persuitImageUrl() -> String {
-        return "https://dev.nerdzlab.com" + self
+        return PSURL.BasePhotoURL + self
     }
 }

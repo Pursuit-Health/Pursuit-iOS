@@ -30,7 +30,7 @@ class SettingsVC: UIViewController {
             emailLabel.text = User.shared.email ?? ""
             if User.shared.avatar != nil {
                 DispatchQueue.main.async {
-                    self.userImageView.sd_setImage(with: URL(string:  PSURL.BaseURL + User.shared.avatar!))
+                    self.userImageView.sd_setImage(with: URL(string:  PSURL.BasePhotoURL + User.shared.avatar!))
                 }
             }
         }
