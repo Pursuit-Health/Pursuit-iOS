@@ -71,7 +71,7 @@ class ExercisesTypeView: BBBXIBView {
             guard let cell = collectionView.cellForItem(at: indexPath) as? ExercisesTypeCollectionViewCell else { return }
             handleSelection(cell, for: indexPath, isSelected: cell.typeSelected)
             
-            currentIndexPath = nil
+            currentIndexPath = indexPath
         } else if currentIndexPath != indexPath {
             if let cell = collectionView.cellForItem(at: currentIndexPath!) as? ExercisesTypeCollectionViewCell {
                 cell.typeSelected = false
