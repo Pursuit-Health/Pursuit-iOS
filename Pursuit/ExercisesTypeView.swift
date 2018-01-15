@@ -51,8 +51,14 @@ class ExercisesTypeView: BBBXIBView {
      func configureCell(with types: [ExcersiseData.ExcersiseType], selectedType: ExcersiseData.ExcersiseType?) {
         self.exercisesType = types
         self.selectedType = selectedType
-        if selectedType == nil {
+        
+        guard let type = selectedType else {
             self.selectedType = types.first
+            self.currentIndexPath = [0, 0]
+            return
+        }
+        if let index = exercisesType.index(of: type) {
+            self.currentIndexPath = [0, index]
         }
     }
     
