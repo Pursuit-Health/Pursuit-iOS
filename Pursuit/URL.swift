@@ -9,6 +9,6 @@
 import Foundation
 
 struct PSURL {
-    static let BaseURL = "https://pursuit.nerdzlab.com/v1/"
-    static let BasePhotoURL = "https://pursuit.nerdzlab.com"
+    static let BaseURL = "https://api.pursuithealthtech.com/v1/"
+    static let BasePhotoURL = ""
 }
