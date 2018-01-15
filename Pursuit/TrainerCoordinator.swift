@@ -168,6 +168,7 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
     func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC) {
         let detailsController = UIStoryboard.trainer.ExerciseDetails!
         detailsController.excersize = exercise
+        detailsController.delegate = self
         detailsController.isEditExercise = true
         detailsController.isEdittemplate = self.createTemplate?.isEditTemplate ?? false
         controller.navigationController?.pushViewController(detailsController, animated: true)

@@ -248,6 +248,9 @@ class ExerciseDetailsVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func confirmButtonPressed() {
+        
+        self.excersize.type = self.exerciseType
+        
         if self.isEdittemplate {
             self.navigationController?.popViewController(animated: true)
             return
@@ -261,8 +264,6 @@ class ExerciseDetailsVC: UIViewController {
         if !isEditExercise {
         self.excersize.exercise_id = self.excersize.id
         }
-        self.excersize.type = self.exerciseType
-        
         
         exerc = self.excersize
         exerc.id = nil

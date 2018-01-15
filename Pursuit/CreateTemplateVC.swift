@@ -270,6 +270,8 @@ class CreateTemplateVC: UIViewController {
                 self.fillMonthYearLabelsWith(date)
             }
         }
+        
+        self.recalculate()
     }
     
     //MARK: Public.Methods
