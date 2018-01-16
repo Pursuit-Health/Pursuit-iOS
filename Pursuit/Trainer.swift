@@ -34,7 +34,7 @@ class Trainer: User {
     }
     
     override func isValidCode() -> Bool? {
-        return self.code == "0202"
+        return self.code == "v7vnc6"
     }
     
     override func signUp(completion: @escaping RegisterTrainerCompletion) {

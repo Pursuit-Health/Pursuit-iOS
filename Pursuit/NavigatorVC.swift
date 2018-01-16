@@ -41,6 +41,8 @@ class NavigatorVC: UIViewController {
         
         self.revealViewController().delegate = self
         
+        self.setUpBackgroundImage()
+        
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
             for view in window.subviews {
                 if view is TopStatusBarView {

@@ -57,7 +57,7 @@ class Client: User, Equatable, Hashable {
     }
     
     override func isValidCode() -> Bool? {
-        return self.code == "0101"
+        return self.code == "fxsg3x"
     }
     
     override func createSignUpParameters() -> [String : String] {
