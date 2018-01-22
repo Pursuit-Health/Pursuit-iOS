@@ -81,7 +81,7 @@ class ExcersiseData: Mappable {
     var reps        : Int?
     
     var weight      : Int?
-    var rest        : Int?
+    var rest        : String?
     var notes       : String?
     var exDesc      : String?
     

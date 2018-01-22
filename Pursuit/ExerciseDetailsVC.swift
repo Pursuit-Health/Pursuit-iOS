@@ -177,12 +177,12 @@ class ExerciseDetailsVC: UIViewController {
             }
         }
         
-        private func fillRetsCell(cell: AddExerciseCell, rets: Int?, completion: @escaping TextFieldComletion) {
+        private func fillRetsCell(cell: AddExerciseCell, rets: String?, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
             cell.exerciseImageView.image                    = imageFromName("weight")
-            cell.exerciseTextField.keyboardType             = .numberPad
+            //cell.exerciseTextField.keyboardType             = .numberPad
             if let rets = rets {
-                cell.exerciseTextField.text = String(rets)
+                cell.exerciseTextField.text = rets
             }else {
                 cell.exerciseTextField.text = ""
             }
@@ -227,9 +227,9 @@ class ExerciseDetailsVC: UIViewController {
     
     var excersize: ExcersiseData = ExcersiseData() {
         didSet {
-//            if self.excersize.innerExercise?.imageURL != nil {
-//                self.cellsInfo.insert(.exercisePhoto(exercize: self.excersize), at: 0)
-//            }
+            if self.excersize.innerExercise?.imageURL != nil {
+                self.cellsInfo.insert(.exercisePhoto(exercize: self.excersize), at: 0)
+            }
             self.exerceiseTableView?.reloadData()
         }
     }
@@ -319,7 +319,7 @@ class ExerciseDetailsVC: UIViewController {
         self.exerciseType = .warmup
         self.leftTitle = self.excersize.name
         
-        self.loadImage()
+        //self.loadImage()
     }
     
     private func showError() {
@@ -366,7 +366,7 @@ extension ExerciseDetailsVC: UITableViewDataSource {
             case .weights:
                 self.excersize.weight = Int(cellText)
             case .rest:
-                self.excersize.rest = Int(cellText)
+                self.excersize.rest = cellText
 
             default:
                 return
@@ -380,21 +380,22 @@ extension ExerciseDetailsVC: UITableViewDataSource {
 extension ExerciseDetailsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      
-//        if self.excersize.innerExercise?.imageURL == nil {
-//            if(indexPath.row == 0){
-//                return 80
-//            }
-//        }else {
-//            if(indexPath.row == 0){
-//               return UITableViewAutomaticDimension
-//            }else if (indexPath.row == 1) {
-//                return 80
-//            }
-//        }
+        if self.excersize.innerExercise?.imageURL == nil {
+            if(indexPath.row == 0){
+                return 80
+            }
+        }else {
+            if(indexPath.row == 0){
+               return UITableViewAutomaticDimension
+            }else if (indexPath.row == 1) {
+                return 80
+            }
+        }
         
-        if(indexPath.row == 0){
-            return 80
-        }else if (indexPath.row >= cellsInfo.count - 2){
+//        if(indexPath.row == 0){
+//            return 80
+//        }else
+            if (indexPath.row >= cellsInfo.count - 2){
             return UITableViewAutomaticDimension
         } else {
             return 50

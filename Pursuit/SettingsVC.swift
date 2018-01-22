@@ -36,6 +36,16 @@ class SettingsVC: UIViewController {
         }
     }
     
+    var selectedImage: UIImage?
+    
+    //MARK: IBActions
+    
+    @IBAction func changeAvatarButtonPressed(_ sender: Any) {
+        self.showActionSheetForUploadingPhoto()
+    }
+    
+    //MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getUserInfo()
@@ -56,8 +66,62 @@ class SettingsVC: UIViewController {
         controller?.popToRootViewController(animated: true)
     }
     
+  fileprivate func uploadImage() {
+        
+        guard let image = selectedImage else { return }
+        
+        let data = UIImagePNGRepresentation(image) as NSData?
+        User.uploadAvatar(data: data! as Data) { error in
+        }
+    }
+    
     func getUserInfo() {
         self.user = User.shared
         
         }
+    
+    private func showActionSheetForUploadingPhoto() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cameraSheet = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
+            self.showImagePickerControllerWithType(.camera)
+        })
+        
+        let librarySheet = UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
+            self.showImagePickerControllerWithType(.photoLibrary)
+        })
+        
+        let cancelSheet = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(cameraSheet)
+        }
+        actionSheet.addAction(librarySheet)
+        actionSheet.addAction(cancelSheet)
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+}
+
+extension SettingsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func showImagePickerControllerWithType(_ type: UIImagePickerControllerSourceType) {
+        let picker              = UIImagePickerController()
+        picker.delegate         = self
+        picker.allowsEditing    = true
+        picker.sourceType       = type
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        userImageView.image = chosenImage
+        self.selectedImage = chosenImage
+        self.uploadImage()
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

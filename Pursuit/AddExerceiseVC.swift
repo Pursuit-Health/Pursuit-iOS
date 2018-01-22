@@ -248,7 +248,7 @@ extension AddExerceiseVC: UITableViewDataSource {
             case .weights:
                 self.exercise.weight = Int(cellText)
             case .rest:
-                self.exercise.rest = Int(cellText)
+                self.exercise.rest = cellText
             case .notes:
                 break
             }
