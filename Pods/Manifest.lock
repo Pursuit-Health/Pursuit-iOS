@@ -58,7 +58,7 @@ DEPENDENCIES:
   - PIDatePicker (~> 0.1)
   - pop (~> 1.0)
   - RHDisplayLinkStepper (~> 1.0)
-  - SDWebImage (~> 4.1)
+  - SDWebImage (~> 4.2.2)
   - SHTextFieldBlocks (~> 1.1)
   - SVProgressHUD (~> 2.1)
   - SwiftDate (~> 4.1.11)
@@ -90,6 +90,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: e9ff953c820394a4e641cfb0118b6c959506aec2
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 3140ba507f22606db12c88b2efa1b7ec2b7448bc
+PODFILE CHECKSUM: 0c993be674cab8d8e1a4c345587193189cdf1329
 
 COCOAPODS: 1.2.1

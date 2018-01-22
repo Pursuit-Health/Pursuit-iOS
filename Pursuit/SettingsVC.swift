@@ -72,6 +72,9 @@ class SettingsVC: UIViewController {
         
         let data = UIImagePNGRepresentation(image) as NSData?
         User.uploadAvatar(data: data! as Data) { error in
+            if error == nil {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AvatarUpdated"), object: nil)
+            }
         }
     }
     

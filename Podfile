@@ -12,7 +12,7 @@ target 'Pursuit' do
   pod 'SwipeCellKit', '~> 1.9.1'
   
   pod 'AlamofireObjectMapper', '~> 4.1'
-  pod 'SDWebImage', '~> 4.1'
+  pod 'SDWebImage', '~> 4.2.2'
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'SVProgressHUD', '~> 2.1'
   pod 'pop', '~> 1.0'
@@ -22,11 +22,9 @@ target 'Pursuit' do
   pod 'RHDisplayLinkStepper', '~> 1.0'
   pod 'SHTextFieldBlocks', '~> 1.1'
   pod 'SwiftDate', '~> 4.1.11 '
-  pod 'SDWebImage', '~> 4.1'
   pod 'HTTPStatusCodes', '~> 3.1'
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'PIDatePicker', '~> 0.1'
   pod 'BlocksKit', '~> 2.2'
   pod 'IQKeyboardManagerSwift', '~> 5.0'
-  
 end

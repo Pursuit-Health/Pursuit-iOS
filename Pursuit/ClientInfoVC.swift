@@ -46,8 +46,10 @@ class ClientInfoVC: UIViewController {
         didSet {
             if let url = client?.avatar {
                  DispatchQueue.main.async {
+                    self.profileImageView.sd_addActivityIndicator()
+                    self.profileImageView.sd_setIndicatorStyle(.gray)
                 self.profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
-                                             placeholderImage: UIImage(named: "profile"))
+                                             placeholderImage: UIImage(named: "user"))
                 }
             }
             self.navigationItem.leftTitle = client?.name ?? ""
@@ -79,7 +81,10 @@ class ClientInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpBackgroundImage()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ClientInfoVC.avatarUpdated(_:)), name: NSNotification.Name(rawValue: "AvatarUpdated"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,6 +97,20 @@ class ClientInfoVC: UIViewController {
             self.client = client
             self.workouts = workouts ?? []
         })
+    }
+    
+    func avatarUpdated(_ notification: Notification) {
+            self.updateInfo()
+    }
+    
+    private func updateInfo() {
+        User.getUserInfo { (user, error) in
+                self.client = user
+            }
+    }
+    
+    private func unsubscribeForNotifications() {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
