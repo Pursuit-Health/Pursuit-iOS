@@ -52,6 +52,7 @@ class ExcersiseData: Mappable {
             self.id             <- map["id"]
         }
         
+        init () {}
 
     }
     //MARK: Nested
@@ -89,6 +90,7 @@ class ExcersiseData: Mappable {
     var isDone      : Bool?
     var selected    : Bool?
     var innerExercise: InnerExcersise?
+    var description : String?
     
     func mapping(map: Map) {
         self.id             <- map["id"]
@@ -98,10 +100,11 @@ class ExcersiseData: Mappable {
         self.reps           <- map["reps"]
         self.weight         <- map["weight"]
         self.notes          <- map["notes"]
-        self.innerExercise  <- map["exercise"]
+        self.innerExercise  <- map["exercise.data"]
         self.isDone         <- map["done.data.value"]
         self.exercise_id    <- map["exercise_id"]
         self.rest           <- map["rest"]
+        self.description    <- map["description"]
 /*
          { inner, error in
          self.excersise = inner.map { obj in

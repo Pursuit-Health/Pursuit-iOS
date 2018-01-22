@@ -111,6 +111,8 @@
 		7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7892A8901F4B411400BDCD79 /* UINavigationItem+leftTitle.swift */; };
 		78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */; };
 		78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */; };
+		78C6DAE32010EF4400A0BD41 /* ExercisePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */; };
+		78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */; };
 		78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34B81F38FDDE002BD31D /* TabPageOption.swift */; };
 		78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BA1F38FDF2002BD31D /* TabView.xib */; };
 		78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34BB1F38FDF2002BD31D /* TabView.swift */; };
@@ -309,6 +311,8 @@
 		7892A8901F4B411400BDCD79 /* UINavigationItem+leftTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+leftTitle.swift"; sourceTree = "<group>"; };
 		78A422EA1F3CBF2000597913 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+label.swift"; sourceTree = "<group>"; };
+		78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotoCell.swift; sourceTree = "<group>"; };
+		78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisePhotoCell.xib; sourceTree = "<group>"; };
 		78CE34B81F38FDDE002BD31D /* TabPageOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabPageOption.swift; path = Pursuit/TabPageOption.swift; sourceTree = SOURCE_ROOT; };
 		78CE34BA1F38FDF2002BD31D /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabView.xib; path = Pursuit/TabView.xib; sourceTree = SOURCE_ROOT; };
 		78CE34BB1F38FDF2002BD31D /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Pursuit/TabView.swift; sourceTree = SOURCE_ROOT; };
@@ -853,6 +857,7 @@
 		783F80BD1FC06C38001FE169 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78C6DAE02010EF1B00A0BD41 /* PhotoCell */,
 				7845678C1FCD9481007FE1B5 /* DescriptionCell */,
 				7813E8831FCC32FC00B9B42C /* NotesCell */,
 				783F80C91FC0707F001FE169 /* Cells */,
@@ -1067,6 +1072,15 @@
 				78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */,
 			);
 			name = "UIBarButtonItem+label";
+			sourceTree = "<group>";
+		};
+		78C6DAE02010EF1B00A0BD41 /* PhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */,
+				78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */,
+			);
+			name = PhotoCell;
 			sourceTree = "<group>";
 		};
 		78E4267E1F69B0DA00C12D94 /* UITextField+Effects */ = {
@@ -1842,6 +1856,7 @@
 				783F80C41FC06F18001FE169 /* ExercisesTypeView.xib in Resources */,
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
+				78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */,
 				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
 				783F80C81FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib in Resources */,
@@ -1983,6 +1998,7 @@
 				780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */,
 				7804AF461F55FE7D00CE5780 /* CellState.swift in Sources */,
 				780D601B1F5EAA63002A7303 /* DeepLinkService.swift in Sources */,
+				78C6DAE32010EF4400A0BD41 /* ExercisePhotoCell.swift in Sources */,
 				78473BD81F745B7F0067DA1F /* AddExerceiseVC.swift in Sources */,
 				78CE34C31F38FDF2002BD31D /* TabPageViewController.swift in Sources */,
 				7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */,

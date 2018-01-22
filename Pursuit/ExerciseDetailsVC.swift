@@ -18,6 +18,7 @@ class ExerciseDetailsVC: UIViewController {
     //MARK: Nested
     
     enum CellType {
+        case exercisePhoto(exercize: ExcersiseData)
         case exerciseType(excersize: ExcersiseData, delegate: ExercisesTypeTableViewCellDelegate)
         case name(excersize: ExcersiseData)
         case sets(excersize: ExcersiseData)
@@ -29,6 +30,8 @@ class ExerciseDetailsVC: UIViewController {
         
         var cellType: UITableViewCell.Type {
             switch self {
+            case .exercisePhoto:
+                return ExercisePhotoCell.self
             case .exerciseType:
                 return ExercisesTypeTableViewCell.self
             case .name:
@@ -51,6 +54,10 @@ class ExerciseDetailsVC: UIViewController {
         typealias TextFieldComletion = (_ text: String) -> Void
         func fillCell(cell: UITableViewCell, completion: @escaping TextFieldComletion) {
             switch self {
+            case .exercisePhoto(let exercize):
+                if let castedCell = cell as? ExercisePhotoCell {
+                    fillExercisePhotoCell(cell: castedCell, exerciseUrl: exercize.innerExercise?.imageURL)
+                }
             case .exerciseType(let excersise, let delegate):
                 if let castedCell = cell as? ExercisesTypeTableViewCell {
                     fillExerciseTypeCell(cell: castedCell, type: excersise.type, delegate: delegate)
@@ -98,6 +105,10 @@ class ExerciseDetailsVC: UIViewController {
                     }
                 }
             }
+        }
+        
+        private func fillExercisePhotoCell(cell: ExercisePhotoCell, exerciseUrl: URL?) {
+            //cell.exercisePhotoImageView.sd_setImage(with: exerciseUrl)
         }
         
         private func fillExerciseTypeCell(cell: ExercisesTypeTableViewCell, type: ExcersiseData.ExcersiseType?, delegate: ExercisesTypeTableViewCellDelegate) {
@@ -216,6 +227,9 @@ class ExerciseDetailsVC: UIViewController {
     
     var excersize: ExcersiseData = ExcersiseData() {
         didSet {
+//            if self.excersize.innerExercise?.imageURL != nil {
+//                self.cellsInfo.insert(.exercisePhoto(exercize: self.excersize), at: 0)
+//            }
             self.exerceiseTableView?.reloadData()
         }
     }
@@ -250,7 +264,7 @@ class ExerciseDetailsVC: UIViewController {
     @IBAction func confirmButtonPressed() {
         
         self.excersize.type = self.exerciseType
-        
+        self.excersize.description = self.excersize.innerExercise?.description
         if self.isEdittemplate {
             self.navigationController?.popViewController(animated: true)
             return
@@ -365,9 +379,22 @@ extension ExerciseDetailsVC: UITableViewDataSource {
 
 extension ExerciseDetailsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     
+//        if self.excersize.innerExercise?.imageURL == nil {
+//            if(indexPath.row == 0){
+//                return 80
+//            }
+//        }else {
+//            if(indexPath.row == 0){
+//               return UITableViewAutomaticDimension
+//            }else if (indexPath.row == 1) {
+//                return 80
+//            }
+//        }
+        
         if(indexPath.row == 0){
             return 80
-        } else if (indexPath.row >= cellsInfo.count - 2){
+        }else if (indexPath.row >= cellsInfo.count - 2){
             return UITableViewAutomaticDimension
         } else {
             return 50

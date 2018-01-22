@@ -167,6 +167,8 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
     
     func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC) {
         let detailsController = UIStoryboard.trainer.ExerciseDetails!
+       
+        exercise.innerExercise?.imageURL =  URL(string:"https://static.pexels.com/photos/34950/pexels-photo.jpg")
         detailsController.excersize = exercise
         detailsController.delegate = self
         detailsController.isEditExercise = true
