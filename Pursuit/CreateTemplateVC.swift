@@ -215,7 +215,11 @@ class CreateTemplateVC: UIViewController {
     }
     
     private func decreaseDate(_ decrease: Bool?) {
-        
+         if let done = isDone {
+            if !done {
+               return
+            }
+        }
         if let decrease = decrease {
             if decrease {
                 chnagedDate = chnagedDate - 1.month
@@ -241,6 +245,7 @@ class CreateTemplateVC: UIViewController {
         //TODO: Reimplament
          if !shouldClear {
             self.templateNameTextField.text = workoutNew?.name ?? ""
+            self.notesTextField.text = workoutNew?.notes ?? ""
         }
         
         if let done = isDone {
@@ -272,6 +277,10 @@ class CreateTemplateVC: UIViewController {
         }
         
         self.recalculate()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.workoutNew?.notes = self.notesTextField.text
     }
     
     //MARK: Public.Methods

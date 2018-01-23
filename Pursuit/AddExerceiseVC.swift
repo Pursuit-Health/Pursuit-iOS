@@ -132,7 +132,7 @@ class AddExerceiseVC: UIViewController {
         private func fillRetsCell(cell: AddExerciseCell, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
             cell.exerciseImageView.image                    = imageFromName("weight")
-            cell.exerciseTextField.keyboardType             = .numberPad
+            //cell.exerciseTextField.keyboardType             = .numberPad
             cell.exerciseTextField.sh_setDidEndEditing { (textField) in
                 if let text = textField?.text {
                     completion(text)
