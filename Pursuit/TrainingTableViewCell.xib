@@ -58,8 +58,15 @@
                             <constraint firstAttribute="height" constant="1" id="JDI-BC-UFp"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_right" translatesAutoresizingMaskIntoConstraints="NO" id="oqr-4E-lmZ">
-                        <rect key="frame" x="269" y="36.5" width="25" height="25"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="oqr-4E-lmZ">
+                        <rect key="frame" x="287" y="43" width="7" height="12"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="Zzv-sO-IEY">
+                        <rect key="frame" x="0.0" y="39" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="4Tc-cc-MtQ"/>
+                            <constraint firstAttribute="height" constant="20" id="72W-Ds-XQm"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -79,6 +86,8 @@
                     <constraint firstItem="BYo-6d-YFq" firstAttribute="leading" secondItem="bDT-8x-kXF" secondAttribute="trailing" constant="16" id="aUB-1f-PHB"/>
                     <constraint firstItem="1hM-mm-3kl" firstAttribute="leading" secondItem="BYo-6d-YFq" secondAttribute="trailing" constant="8" id="gkp-EL-YEH"/>
                     <constraint firstAttribute="trailingMargin" secondItem="oqr-4E-lmZ" secondAttribute="trailing" constant="10" id="jIJ-8v-Q9B"/>
+                    <constraint firstItem="Zzv-sO-IEY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pXP-6L-atr"/>
+                    <constraint firstItem="Zzv-sO-IEY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rxR-av-LiL"/>
                     <constraint firstItem="bDT-8x-kXF" firstAttribute="leading" secondItem="Ogu-Ab-ANF" secondAttribute="trailing" constant="8" id="xkv-gP-lWJ"/>
                     <constraint firstAttribute="trailing" secondItem="Ba4-1g-d0g" secondAttribute="trailing" id="zzE-bg-jTQ"/>
                 </constraints>
@@ -86,6 +95,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="completedExImageView" destination="Zzv-sO-IEY" id="L8f-lf-hn5"/>
                 <outlet property="exercisesNameLabel" destination="Dwy-Se-IqF" id="RKZ-qM-hn6"/>
                 <outlet property="setsLabel" destination="bDT-8x-kXF" id="hLL-pW-KKt"/>
                 <outlet property="weightLabel" destination="1hM-mm-3kl" id="nru-PF-giF"/>
@@ -94,8 +104,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="btn_right" width="25" height="25"/>
+        <image name="ic_arrow_right" width="7" height="12"/>
         <image name="location 2" width="18" height="30"/>
+        <image name="success" width="64" height="64"/>
         <image name="time_clock" width="30" height="31"/>
     </resources>
 </document>

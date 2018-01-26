@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 protocol ClientInfoCellDelegate: class {
     func didTappedOnImage(cell: ClientInfoCell)
 }
-class ClientInfoCell: UITableViewCell {
+class ClientInfoCell: SwipeTableViewCell {
 
     //MARK: IBOutlets
     
@@ -20,8 +21,6 @@ class ClientInfoCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     //MARK: Variables
-    
-    var delegate: ClientInfoCellDelegate?
     
     var selectedCell: Bool = false {
         didSet {
@@ -34,7 +33,7 @@ class ClientInfoCell: UITableViewCell {
     //MARK: IBActions
     
     @IBAction func didTapOnImage(_ sender: Any) {
-        self.delegate?.didTappedOnImage(cell: self)
+        //self.clientInfoDelegate?.didTappedOnImage(cell: self)
     }
     override func awakeFromNib() {
         super.awakeFromNib()

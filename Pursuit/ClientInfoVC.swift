@@ -8,10 +8,13 @@
 
 import UIKit
 import SDWebImage
+import MBProgressHUD
+import SwipeCellKit
 
 protocol ClientInfoVCDelegate: class {
     func selected(workout: Workout, on controller: ClientInfoVC, client: Client?)
     func addWorkoutButtonPressed(on controller: ClientInfoVC)
+    func deleteWorkout(_ workout: Workout, on controller: ClientInfoVC)
 }
 
 protocol ClientInfoVCDatasource: class {
@@ -77,36 +80,54 @@ class ClientInfoVC: UIViewController {
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpBackgroundImage()
+        self.setUpBackgroundImage()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ClientInfoVC.avatarUpdated(_:)), name: NSNotification.Name(rawValue: "AvatarUpdated"), object: nil)
+        self.subscribeForNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.navigationBar.setAppearence()
+        self.setUpNavigationBar()
         
+        self.updateWorkouts()
+    }
+    
+    deinit {
+        self.unsubscribeForNotifications()
+    }
+    
+    //MARK: Private
+    
+    func avatarUpdated(_ notification: Notification) {
+            self.updateInfo()
+    }
+    
+    func updateWorkouts() {
         self.dataSource?.loadInfo(controller: self, completion: { (client, workouts) in
             self.client = client
             self.workouts = workouts ?? []
         })
     }
     
-    func avatarUpdated(_ notification: Notification) {
-            self.updateInfo()
-    }
-    
     private func updateInfo() {
         User.getUserInfo { (user, error) in
                 self.client = user
             }
+    }
+    
+    private func setUpNavigationBar() {
+        self.navigationController?.navigationBar.setAppearence()
+    }
+    
+    private func subscribeForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(ClientInfoVC.avatarUpdated(_:)), name: NSNotification.Name(rawValue: "AvatarUpdated"), object: nil)
     }
     
     private func unsubscribeForNotifications() {
@@ -121,11 +142,11 @@ extension ClientInfoVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.gc_dequeueReusableCell(type: ClientInfoCell.self) else { return UITableViewCell() }
-        cell.delegate = self
         let trainigDate = workouts[indexPath.row]
         
         cell.selectedCell             = trainigDate.isDone ?? false
         cell.templateNameLabel.text   = trainigDate.name
+        cell.delegate = self
         
         let date = Date(timeIntervalSince1970: (trainigDate.startAt ?? 0))
         dateFormatter.dateFormat = "dd/MM/YYYY"
@@ -145,10 +166,41 @@ extension ClientInfoVC: UITableViewDelegate {
     }
 }
 
-extension ClientInfoVC: ClientInfoCellDelegate {
-    func didTappedOnImage(cell: ClientInfoCell) {
-        if let index = self.clientInfoTableView.indexPath(for: cell) {
-
+extension ClientInfoVC: SwipeTableViewCellDelegate {
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?, for orientation: SwipeActionsOrientation){
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+             let workout = self.workouts[indexPath.row]
+             self.delegate?.deleteWorkout(workout, on: self)
+            
         }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.hidesWhenSelected = true
+        
+        return [deleteAction]
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        
+        var options = SwipeTableOptions()
+        
+        options.transitionStyle = .border
+        options.expansionStyle = .none
+        options.buttonPadding = 0
+        
+        return options
     }
 }

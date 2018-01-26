@@ -10,6 +10,7 @@ import UIKit
 
 protocol ExerciseCategoryVCDelegate: class {
     func didSelectCategory(category: Category, on controller: ExerciseCategoryVC)
+    func didSelectExercise(exercise: ExcersiseData.InnerExcersise, on controller: ExerciseCategoryVC)
 }
 
 protocol ExerciseCategoryVCDatasource: class {
@@ -60,29 +61,83 @@ class ExerciseCategoryVC: UIViewController {
         }
     }
     
+    var exercises: [ExcersiseData.InnerExcersise] = [] {
+        didSet {
+            self.exercisesTableView?.reloadData()
+        }
+    }
+    
+    var lastChange: TimeInterval? {
+        didSet {
+        
+        }
+    }
+    
+    var isExercisesSearch: Bool = false
+    
+    var timer: Timer!
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+     self.loadInfo()
+        
+    }
+    
+    private func loadInfo() {
         self.datasource?.loadInfo(controller: self, completion: { (categories) in
             self.categories = categories ?? []
             self.filteredCategories = categories ?? []
         })
     }
-
+    
+    func loadExercisesWithPhrase(phrase: String) {
+         self.timer.invalidate()
+        ExcersiseData.searchExercise(phrase: phrase) { (exercises, error) in
+            if error == nil {
+                self.isExercisesSearch = true
+                self.exercises = exercises!
+                
+                self.lastChange = nil
+            }
+        }
+    }
+    
+    func startTimer() {
+        self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(checkIfUserTyping), userInfo: nil, repeats: true)
+    }
+    
+    func checkIfUserTyping() {
+        guard let last = self.lastChange else { return }
+        if Date().timeIntervalSince1970 - Double(last) > 4 {
+            guard let searchText = exercisesSearchBar.text else { return }
+            
+            self.loadExercisesWithPhrase(phrase: searchText)
+        }
+    }
 }
 
 extension ExerciseCategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredCategories.count
+        return self.isExercisesSearch ? self.exercises.count : self.filteredCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if self.isExercisesSearch {
+            guard let cell = tableView.gc_dequeueReusableCell(type: ExerciseCell.self) else { return UITableViewCell() }
+            
+             let exerc = exercises[indexPath.row]
+                cell.exerciseNameLabel.text = exerc.name
+            
+          return cell
+        }
         guard let cell = tableView.gc_dequeueReusableCell(type: ExerciseCategoryCell.self) else { return UITableViewCell() }
         cell.exerciseLabel.text = filteredCategories[indexPath.row].name
         return cell
@@ -91,18 +146,41 @@ extension ExerciseCategoryVC: UITableViewDataSource {
 
 extension ExerciseCategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = filteredCategories[indexPath.row]
-        self.delegate?.didSelectCategory(category: category, on: self)
+        if self.isExercisesSearch {
+            let exercise = self.exercises[indexPath.row]
+            self.delegate?.didSelectExercise(exercise: exercise, on: self)
+        }else {
+            let category = filteredCategories[indexPath.row]
+            self.delegate?.didSelectCategory(category: category, on: self)
+        }
     }
 }
 
 extension ExerciseCategoryVC: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.startTimer()
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchText = searchBar.text else { return }
+         self.lastChange = Date().timeIntervalSince1970
         if searchText == "" {
             self.filteredCategories = self.categories
         }else {
-            self.filteredCategories = self.categories.filter{ ($0.name?.lowercased().contains(searchText.lowercased())) ?? false }
+            //self.filteredCategories = self.categories.filter{ ($0.name?.lowercased().contains(searchText.lowercased())) ?? false }
         }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+
+        self.loadExercisesWithPhrase(phrase: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+       self.view.endEditing(true)
+        self.loadExercisesWithPhrase(phrase: searchText)
     }
 }

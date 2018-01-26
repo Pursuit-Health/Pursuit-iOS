@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
+import SVProgressHUD
 
 class TrainerCoordinator: Coordinator {
     
@@ -23,6 +25,7 @@ class TrainerCoordinator: Coordinator {
     var exercises: [ExcersiseData] = []
     var customExercise: [ExcersiseData] = []
     var selectedWorkout: Workout?
+    var isExerciseSelectedOnCategory: Bool = false
     
     func start(from controller: UIViewController?) {
         if let controller = controller {
@@ -74,6 +77,15 @@ extension TrainerCoordinator: ClientInfoVCDatasource {
 }
 
 extension TrainerCoordinator: ClientInfoVCDelegate {
+    func deleteWorkout(_ workout: Workout, on controller: ClientInfoVC) {
+        workout.delete(clientId: "\(self.selectedClient?.id ?? 0)") { (error) in
+            if error == nil {
+                //MBProgressHUD.showAdded(to: controller.view, animated: true).label.text = "Deleted"
+                self.clientProfileVC?.updateWorkouts()
+            }
+        }
+    }
+    
     
     func selected(workout: Workout, on controller: ClientInfoVC, client: Client?) {
         self.selectedWorkout = workout
@@ -145,7 +157,7 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         work.editWorkout(clientId: "\(self.selectedClient?.id ?? 0)", templateId: "\(self.selectedWorkout?.id ?? 0)") { (workout, error) in
             if let error = error  {
                 let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
-                  self.exercises = []
+                    self.exercises = []
                 }))
                 controller.present(alert, animated: true, completion: nil)
             }else {
@@ -174,9 +186,33 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         controller.navigationController?.pushViewController(detailsController, animated: true)
     }
     
+    func deleteWorkoutExercise(_ workout: Workout, exercise: ExcersiseData, on controller: CreateTemplateVC){
+        
+        workout.deleteExerciseWithId(clientId: "\(self.selectedClient?.id ?? 0)", exerciseId: "\(exercise.id ?? 0)") { (error) in
+            if error == nil {
+                self.createTemplate?.updateTemplate(client: self.selectedClient)
+            }
+        }
+    }
 }
 
 extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasource {
+    func exerciseSelected(exercise: ExcersiseData.InnerExcersise, controller: MainExercisesVC) {
+        let detailsController = UIStoryboard.trainer.ExerciseDetails!
+        
+        
+        let exer = ExcersiseData()
+        exer.innerExercise = exercise
+        exer.name = exercise.name
+        exer.id = exercise.id
+        self.isExerciseSelectedOnCategory = true
+        detailsController.delegate = self
+        
+        detailsController.excersize = exer
+        controller.navigationController?.pushViewController(detailsController, animated: true)
+        self.exerciseDetailsVC = detailsController
+    }
+    
     func finished(on controller: MainExercisesVC, exercises: [ExcersiseData], state: ControllerState) {
         let work = Workout()
         if state == .customExercise{
@@ -267,7 +303,12 @@ extension TrainerCoordinator: ExercisesSearchVCDatasource, ExercisesSearchVCDele
 extension TrainerCoordinator: ExerciseDetailsVCDelegate {
     func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC) {
         //self.exercises.append(info)
-        self.searchExercisesVC?.exercise = info
+        if self.isExerciseSelectedOnCategory {
+            self.exercises.append(info)
+            self.isExerciseSelectedOnCategory = false
+        }else {
+            self.searchExercisesVC?.exercise = info
+        }
         controller.navigationController?.popViewController(animated: true)
     }
 }

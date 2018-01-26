@@ -48,6 +48,11 @@ extension ClientCoordinator: ClientInfoVCDatasource {
 }
 
 extension ClientCoordinator: ClientInfoVCDelegate {
+    
+    func deleteWorkout(_ workout: Workout, on controller: ClientInfoVC) {
+        
+    }
+    
     func selected(workout: Workout, on controller: ClientInfoVC, client: Client?) {
         User.shared.updateDetailsWorkout(workout: workout) { (excercises, error) in
             if let error = error {

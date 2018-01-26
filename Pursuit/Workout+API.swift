@@ -16,6 +16,10 @@ extension Workout {
     
     typealias EditWorkoutCompletion  =  (_ workout: Workout?, _ error: ErrorProtocol?) -> Void
     
+    typealias DeleteWorkoutCompletion = (_ error: ErrorProtocol?) -> Void
+    
+    typealias DeleteWorkoutExerciseCompletion = (_ error: ErrorProtocol?) -> Void
+    
     class func getWorkouts(completion: @escaping GetWorkoutsCompletion) {
         let api = PSAPI()
         
@@ -75,5 +79,17 @@ extension Workout {
         let api = PSAPI()
         
         api.editTemplate(clientId: clientId, templateId: templateId, templateData: self.toJSON(), completion: completion)
+    }
+    
+    func delete(clientId: String, completion: @escaping DeleteWorkoutCompletion) {
+        let api = PSAPI()
+        
+        api.deleteTemplate(clientId: clientId, templateId: "\(self.id ?? 0)", completion: completion)
+    }
+    
+    func deleteExerciseWithId(clientId: String, exerciseId: String, completion: @escaping DeleteWorkoutExerciseCompletion) {
+        let api = PSAPI()
+        
+        api.deleteTemplateExercise(clientId: clientId, templateId: "\(self.id ?? 0)", exerciseId: exerciseId, completion: completion)
     }
 }

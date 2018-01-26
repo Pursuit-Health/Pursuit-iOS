@@ -1,5 +1,6 @@
 import Alamofire
 import SVProgressHUD
+import MBProgressHUD
 
 protocol APIHandable: Taskable {
     var service: ServiceProtocol { get }
@@ -27,15 +28,19 @@ extension APIHandable {
     func perform(_ request: RequestConvertible) -> DataRequest? {
         let shouldStart = self.tasks.isEmpty
         
+        var window :UIWindow = UIApplication.shared.keyWindow!
+        
         if shouldStart {
+            MBProgressHUD.showAdded(to: window, animated: true)
             UIApplication.shared.keyWindow?.isUserInteractionEnabled = false
-            SVProgressHUD.show()
         }
+        
         let task = self.addTask()
         
         if shouldStart {
             self.notify {
-                SVProgressHUD.dismiss()
+                
+            MBProgressHUD.hide(for: window, animated: true)
                 UIApplication.shared.keyWindow?.isUserInteractionEnabled = true
             }
         }

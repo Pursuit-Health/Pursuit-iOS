@@ -337,8 +337,15 @@ class PSAPI: APIHandable {
     }
     
     @discardableResult
-    func deleteTemplate(templateId: String, personalData: [String: Any], completion: @escaping DeleteTemplateCompletion) -> DataRequest?{
-        let request = Request.deleteTemplate(templateId: templateId, parameters: personalData)
+    func deleteTemplate(clientId: String, templateId: String, completion: @escaping DeleteTemplateCompletion) -> DataRequest?{
+        let request = Request.deleteTemplate(clientId: clientId, templateId: templateId)
+        return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func deleteTemplateExercise(clientId: String, templateId: String, exerciseId: String, completion: @escaping DeleteTemplateExerciseCompletion) -> DataRequest? {
+        let request = Request.deleteTemplateExercise(clientId: clientId, templateId: templateId
+            , exerciseId: exerciseId)
         return self.simple(request: request, completion: completion)
     }
     
@@ -490,6 +497,18 @@ class PSAPI: APIHandable {
             completion(response.result.value, error)
         }
     }
+    
+    @discardableResult
+    func searchExercises(phrase: String, completion: @escaping SearchExerciseCompletion) -> DataRequest? {
+        let request = Request.searchExercises(parameters: ["phrase": phrase])
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[ExcersiseData.InnerExcersise]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
+    }
 }
 
 extension PSAPI {
@@ -524,6 +543,8 @@ extension PSAPI {
     
     typealias DeleteTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
+    typealias DeleteTemplateExerciseCompletion = (_ error: ErrorProtocol?) -> Void
+    
     typealias GetAllClientsComletion    = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
     
     typealias GetTrainerEvents          = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
@@ -552,4 +573,5 @@ extension PSAPI {
     typealias GetCategoriesCompletion   = (_ categories: [Category]?, _ error: ErrorProtocol?) -> Void
     
     typealias GetExercisesByCategoryIdCompletion   = (_ exercises: [ExcersiseData.InnerExcersise]?, _ error: ErrorProtocol?) -> Void
+    typealias SearchExerciseCompletion  = (_ exercises: [ExcersiseData.InnerExcersise]?, _ error: ErrorProtocol?) -> Void
 }

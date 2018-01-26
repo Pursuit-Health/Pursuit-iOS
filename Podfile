@@ -14,7 +14,7 @@ target 'Pursuit' do
   pod 'AlamofireObjectMapper', '~> 4.1'
   pod 'SDWebImage', '~> 4.2.2'
   pod 'TPKeyboardAvoiding', '~> 1.3'
-  pod 'SVProgressHUD', '~> 2.1'
+  pod 'SVProgressHUD', '~> 2.2.2'
   pod 'pop', '~> 1.0'
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'KeychainAccess', '~> 3.0'
@@ -27,4 +27,5 @@ target 'Pursuit' do
   pod 'PIDatePicker', '~> 0.1'
   pod 'BlocksKit', '~> 2.2'
   pod 'IQKeyboardManagerSwift', '~> 5.0'
+  pod 'MBProgressHUD', '~> 1.1'
 end

@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class TrainingTableViewCell: UITableViewCell {
+class TrainingTableViewCell: SwipeTableViewCell {
 
     @IBOutlet weak var exercisesNameLabel: UILabel!
     @IBOutlet weak var setsLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
-
+    @IBOutlet weak var completedExImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

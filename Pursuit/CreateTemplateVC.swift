@@ -9,6 +9,7 @@
 import UIKit
 import JTAppleCalendar
 import SwiftDate
+import SwipeCellKit
 
 protocol CreateTemplateVCDelegate: class {
     
@@ -16,14 +17,13 @@ protocol CreateTemplateVCDelegate: class {
     func addExercisesButtonPressed(on controller: CreateTemplateVC)
     func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC)
     func editWorkout(_ workout: Workout, on controller: CreateTemplateVC)
+    func deleteWorkoutExercise(_ workout: Workout, exercise: ExcersiseData, on controller: CreateTemplateVC)
 }
 
 extension CreateTemplateVCDelegate {
     func editWorkout(_ workout: Workout, on controller: CreateTemplateVC) {}
-}
-
-extension CreateTemplateVCDelegate {
     func addExercisesButtonPressed(on controller: CreateTemplateVC) {}
+    func deleteWorkoutExercise(_ workout: Workout, exercise: ExcersiseData, on controller: CreateTemplateVC){}
 }
 
 class CreateTemplateVC: UIViewController {
@@ -32,7 +32,7 @@ class CreateTemplateVC: UIViewController {
     
     enum Cell {
         case header(name: String)
-        case excersise(excersise: ExcersiseData)
+        case excersise(excersise: ExcersiseData, delegate: SwipeTableViewCellDelegate)
         
         var type: UITableViewCell.Type {
             switch self {
@@ -49,17 +49,19 @@ class CreateTemplateVC: UIViewController {
                 if let cell = cell as? HeaderCell {
                     self.fillHeader(cell: cell, with: name)
                 }
-            case .excersise(let excersise):
+            case .excersise(let excersise, let delegate):
                 if let cell = cell as? TrainingTableViewCell {
-                    self.fillExcersise(cell: cell, with: excersise)
+                    self.fillExcersise(cell: cell, with: excersise, delegate: delegate)
                 }
             }
         }
         
-        func fillExcersise(cell: TrainingTableViewCell, with excersise: ExcersiseData) {
+        func fillExcersise(cell: TrainingTableViewCell, with excersise: ExcersiseData, delegate: SwipeTableViewCellDelegate) {
             cell.exercisesNameLabel.text    = excersise.name
             cell.weightLabel.text           = "\(excersise.weight ?? 0) lbs"
             cell.setsLabel.text             = "\(excersise.reps ?? 0)" + "x" + "\(excersise.sets ?? 0) reps"
+            cell.completedExImageView.isHidden = !(excersise.isDone ?? false)
+            cell.delegate = delegate
         }
         
         func fillHeader(cell: HeaderCell, with name: String) {
@@ -124,14 +126,17 @@ class CreateTemplateVC: UIViewController {
             self.notesTextField.attributedPlaceholder =  NSAttributedString(string: "Notes", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
         }
     }
-    
+    @IBOutlet weak var increaseDateButton: UIButton!
+    @IBOutlet weak var decreaseDateButton: UIButton!
     @IBOutlet weak var addworkoutButton: UIBarButtonItem!
+    
+    @IBOutlet weak var bottomViewWithButton: UIView!
     //MARK: Variables
     
     weak var delegate: CreateTemplateVCDelegate?
-
+    
     var exercises: [ExcersiseData] {
-      return workoutNew?.excersises ?? []
+        return workoutNew?.excersises ?? []
     }
     
     var workout = Workout()
@@ -141,7 +146,7 @@ class CreateTemplateVC: UIViewController {
             self.workout.startAtForUpload  = self.startAt
         }
     }
-
+    
     var chnagedDate = DateInRegion(absoluteDate: Date())
     
     var exerciseTypes: [ExcersiseData.ExcersiseType] = [.warmup, .workout, .cooldown]
@@ -185,7 +190,7 @@ class CreateTemplateVC: UIViewController {
             showAlert()
             return
         }
-
+        
         self.workout.name               = self.templateNameTextField.text
         self.workout.notes              = self.notesTextField.text
         
@@ -215,11 +220,6 @@ class CreateTemplateVC: UIViewController {
     }
     
     private func decreaseDate(_ decrease: Bool?) {
-         if let done = isDone {
-            if !done {
-               return
-            }
-        }
         if let decrease = decrease {
             if decrease {
                 chnagedDate = chnagedDate - 1.month
@@ -243,31 +243,37 @@ class CreateTemplateVC: UIViewController {
         navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
         //TODO: Reimplament
-         if !shouldClear {
+        if !shouldClear {
             self.templateNameTextField.text = workoutNew?.name ?? ""
             self.notesTextField.text = workoutNew?.notes ?? ""
         }
         
         if let done = isDone {
-        if done {
-            self.addworkoutButton.isEnabled = false
-            self.templateNameTextField.isUserInteractionEnabled = false
-            self.calendarView.isUserInteractionEnabled = false
-            self.templateTableView.allowsSelection = false
-        }else {
-            self.calendarView.isUserInteractionEnabled = false
-            self.addworkoutButton.isEnabled = true
+            if done {
+                self.leftTitle = "Completed Template"
+                self.addworkoutButton.isEnabled = false
+                self.templateNameTextField.isUserInteractionEnabled = false
+                self.calendarView.isUserInteractionEnabled = false
+                //self.templateTableView.allowsSelection = false
+                self.bottomViewWithButton.isHidden = true
+            }else {
+                self.calendarView.isUserInteractionEnabled = false
+                self.addworkoutButton.isEnabled = true
             }
+            increaseDateButton.isEnabled = false
+            decreaseDateButton.isEnabled = false
         }else {
-           self.calendarView.isUserInteractionEnabled = true
+            self.calendarView.isUserInteractionEnabled = true
+            increaseDateButton.isEnabled = true
+            decreaseDateButton.isEnabled = true
         }
         
         if let start = workoutNew?.startAt {
             let date = Date(timeIntervalSince1970: start)
-          self.calendarView.scrollToDate(date)
+            self.calendarView.scrollToDate(date)
             self.calendarView.selectDates([date], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
         }
-
+        
         calendarView.visibleDates { (visibleDates) in
             if let date = visibleDates.monthDates.first?.date {
                 let formatter       = DateFormatters.serverTimeFormatter
@@ -289,14 +295,22 @@ class CreateTemplateVC: UIViewController {
         self.recalculateRows()
     }
     
+    func updateTemplate(client: Client?) {
+        self.workoutNew?.getDetailedTemplateFor(clientId: "\(client?.id ?? 0)", templateId: "\(workoutNew?.id ?? 0)") { (exercises, error) in
+            if error == nil {
+                self.recalculate()
+            }
+        }
+    }
+    
     //MARK: Private.Methods
     
     private func recalculateRows() {
         var section = 0
         var sections: [Int : [Cell]] = [:]
-        var warmups = self.exercises.filter{ $0.type == .warmup }.map{ Cell.excersise(excersise: $0) }
-        var workouts = self.exercises.filter{ $0.type == .workout }.map{ Cell.excersise(excersise: $0) }
-        var cooldowns = self.exercises.filter{ $0.type == .cooldown }.map{ Cell.excersise(excersise: $0) }
+        var warmups = self.exercises.filter{ $0.type == .warmup }.map{ Cell.excersise(excersise: $0, delegate: self) }
+        var workouts = self.exercises.filter{ $0.type == .workout }.map{ Cell.excersise(excersise: $0, delegate: self) }
+        var cooldowns = self.exercises.filter{ $0.type == .cooldown }.map{ Cell.excersise(excersise: $0, delegate: self) }
         
         if !warmups.isEmpty {
             warmups.insert(.header(name: ExcersiseData.ExcersiseType.warmup.name), at: 0)
@@ -337,12 +351,12 @@ class CreateTemplateVC: UIViewController {
 
 extension CreateTemplateVC {
     func loadTemplate() {
-
+        
     }
     
     private func loadTemplateById(completion: @escaping (_ error: ErrorProtocol?) -> Void) {
         Template.getTemplateWithExercises(templateId: "", completion: { template, error in
-     
+            
             completion(error)
         })
     }
@@ -369,19 +383,19 @@ extension CreateTemplateVC: UITableViewDataSource{
 extension CreateTemplateVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let cellInfo = self.sections[indexPath.section]?[indexPath.row], case .excersise(let excersie) = cellInfo {
-
+        if let cellInfo = self.sections[indexPath.section]?[indexPath.row], case .excersise(let excersie, _) = cellInfo {
+            
             self.delegate?.exerciseSelected(exercise: excersie, on: self)
             
         }
-//        if let controller = exercisesDetailsVC {
-//            let exersiceInfo = self.exercises[indexPath.row - 1]
-//            self.navigationController?.pushViewController(controller, animated: true)
-//        }
+        //        if let controller = exercisesDetailsVC {
+        //            let exersiceInfo = self.exercises[indexPath.row - 1]
+        //            self.navigationController?.pushViewController(controller, animated: true)
+        //        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-      
+        
         return UIView()
     }
     
@@ -404,7 +418,7 @@ extension CreateTemplateVC: AddExerceiseVCDelegate {
     }
     
     func saveExercises(_ exercise: Template.Exercises, on controller: AddExerceiseVC) {
-    
+        
     }
 }
 
@@ -429,7 +443,7 @@ extension CreateTemplateVC: JTAppleCalendarViewDataSource {
         
         cell.monthDayLabel.text = cellState.text
         cell.weekDayLabel.text =  cellState.date.dayOfWeek()
-
+        
         cellState.templateCalendarCellselected(cell: cell)
         return cell
     }
@@ -439,7 +453,7 @@ extension CreateTemplateVC: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         
     }
-
+    
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         guard let calCell = cell as? CreateTemplateCalendarCell else { return }
@@ -453,7 +467,7 @@ extension CreateTemplateVC: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         guard let calCell = cell as? CreateTemplateCalendarCell else { return }
-
+        
         cellState.templateCalendarCellselected(cell: calCell)
     }
     
@@ -471,3 +485,49 @@ extension Date {
         return String(dateFormatter.string(from: self).capitalized.prefix(3))
     }
 }
+
+extension CreateTemplateVC: SwipeTableViewCellDelegate {
+    
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?, for orientation: SwipeActionsOrientation){
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            if let cellInfo = self.sections[indexPath.section]?[indexPath.row], case .excersise(let excersie, _) = cellInfo {
+                
+                if let workout = self.workoutNew {
+                    self.delegate?.deleteWorkoutExercise(workout, exercise: excersie, on: self)
+            }
+        }
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.hidesWhenSelected = true
+        
+        return [deleteAction]
+        
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        
+        var options = SwipeTableOptions()
+        
+        options.transitionStyle = .border //or drag/reveal/border
+        options.expansionStyle = .none
+        options.buttonPadding = 0
+        
+        return options
+    }
+}
+

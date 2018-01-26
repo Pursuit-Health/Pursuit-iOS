@@ -9,6 +9,7 @@
 import UIKit
 import SwipeCellKit
 import SDWebImage
+import SVProgressHUD
 
 protocol ClientsVCDelegate: class {
     func didSelect(client: Client, on controller: ClientsVC)
@@ -89,7 +90,6 @@ class ClientsVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainExercisesVCDelegate: class  {
     func categorySelected(category: Category, controller: MainExercisesVC)
+    func exerciseSelected(exercise: ExcersiseData.InnerExcersise, controller: MainExercisesVC)
     func finished(on controller: MainExercisesVC, exercises: [ExcersiseData], state: ControllerState)
     func customexerciseAdded(exercise: ExcersiseData, on controller: MainExercisesVC, state: ControllerState)
 }
@@ -128,6 +129,10 @@ class MainExercisesVC: UIViewController {
 }
 
 extension MainExercisesVC: ExerciseCategoryVCDelegate {
+    func didSelectExercise(exercise: ExcersiseData.InnerExcersise, on controller: ExerciseCategoryVC) {
+        self.delegate?.exerciseSelected(exercise: exercise, controller: self)
+    }
+    
     func didSelectCategory(category: Category, on controller: ExerciseCategoryVC) {
         self.delegate?.categorySelected(category: category, controller: self)
     }

@@ -308,7 +308,7 @@ class ExerciseDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.navigationController?.navigationBar.setAppearence()
+        self.navigationController?.navigationBar.setAppearence()
         
         setUpBackgroundImage()
         
@@ -319,6 +319,8 @@ class ExerciseDetailsVC: UIViewController {
         self.exerciseType = .warmup
         self.leftTitle = self.excersize.name
         
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         //self.loadImage()
     }
     

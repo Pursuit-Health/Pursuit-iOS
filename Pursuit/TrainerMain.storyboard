@@ -737,7 +737,10 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="addworkoutButton" destination="eR1-0H-qsu" id="dhb-Rs-5Mi"/>
+                        <outlet property="bottomViewWithButton" destination="Ja7-w1-h8G" id="Axm-1h-QD6"/>
                         <outlet property="calendarView" destination="iPa-0u-BJk" id="Lbb-Qa-xqp"/>
+                        <outlet property="decreaseDateButton" destination="xv2-uF-w4B" id="KqU-Ve-CCk"/>
+                        <outlet property="increaseDateButton" destination="J19-Dx-Qpt" id="URS-qX-Pzz"/>
                         <outlet property="monthLabel" destination="6vZ-C6-DN7" id="YHT-aF-V0w"/>
                         <outlet property="notesTextField" destination="Piq-gu-9lO" id="eek-Z4-1ca"/>
                         <outlet property="templateNameTextField" destination="e5h-dJ-77i" id="3f7-9d-bFG"/>

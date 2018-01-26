@@ -8,29 +8,6 @@
 
 import ObjectMapper
 
-//"id": 2253,
-//"type": 1,
-//"name": "quibusdam aut eaque",
-//"sets": 1,
-//"reps": 2,
-//"rest": 4,
-//"notes": null,
-//"weight": 3,
-//"exercise": {
-//    "data": {
-//        "id": 1,
-//        "name": "quibusdam aut eaque",
-//        "image_url": "https://lorempixel.com/640/480/?...",
-//        "description": "Qui aut assumenda id. Ab id totam ut hic et alias deleniti. Similique mollitia quo et ex alias dolorum. Nihil nisi quam dolore autem animi."
-//    }
-//},
-//"done": {
-//    "data": {
-//        "value": false
-//    }
-//}
-//}
-
 class ExcersiseData: Mappable {
     
     
@@ -105,15 +82,6 @@ class ExcersiseData: Mappable {
         self.exercise_id    <- map["exercise_id"]
         self.rest           <- map["rest"]
         self.description    <- map["description"]
-/*
-         { inner, error in
-         self.excersise = inner.map { obj in
-         let ex = Excersise()
-         ex.ex = obj
-         return ex
-         }
-         }
- */
     }
     
     init() {

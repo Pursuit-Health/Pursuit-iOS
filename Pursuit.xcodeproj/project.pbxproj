@@ -101,6 +101,8 @@
 		78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
 		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
+		787A99272019E20800E69B5F /* ExersiseData+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A99262019E20800E69B5F /* ExersiseData+API.swift */; };
+		787A992D201A2FBD00E69B5F /* UFView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A992C201A2FBD00E69B5F /* UFView+Extension.swift */; };
 		787EA0811FCADCDF000138BD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EA0801FCADCDF000138BD /* Category.swift */; };
 		78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78835C981F8B5D7400C28C76 /* BirthdayCell.swift */; };
 		78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78835C991F8B5D7500C28C76 /* BirthdayCell.xib */; };
@@ -301,6 +303,8 @@
 		78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExerciseCell.xib; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
 		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
+		787A99262019E20800E69B5F /* ExersiseData+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExersiseData+API.swift"; sourceTree = "<group>"; };
+		787A992C201A2FBD00E69B5F /* UFView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UFView+Extension.swift"; sourceTree = "<group>"; };
 		787EA0801FCADCDF000138BD /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		78835C981F8B5D7400C28C76 /* BirthdayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayCell.swift; sourceTree = "<group>"; };
 		78835C991F8B5D7500C28C76 /* BirthdayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayCell.xib; sourceTree = "<group>"; };
@@ -1015,6 +1019,7 @@
 		785FF42D1FA31E7900787CF4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				788EE8991F34E65900DD8A98 /* TrainingCell */,
 				788EE8971F34DD5500DD8A98 /* TrainingVC.swift */,
 				782E899A1F7911F5002AD54C /* ClientTemlatesVC.swift */,
 				782E899C1F792168002AD54C /* ClientTabBarVC.swift */,
@@ -1279,6 +1284,7 @@
 			isa = PBXGroup;
 			children = (
 				846FBDAF1FC9AB6100873B53 /* ExcersiseData.swift */,
+				787A99262019E20800E69B5F /* ExersiseData+API.swift */,
 			);
 			name = ExcersiseData;
 			sourceTree = "<group>";
@@ -1462,7 +1468,6 @@
 				78473BD91F745B930067DA1F /* AddExerciseCell */,
 				78473BD11F742D3D0067DA1F /* SelectClientsCell */,
 				78E443871F40DF9200525F7A /* ScheduleClient */,
-				788EE8991F34E65900DD8A98 /* TrainingCell */,
 				842EBD2D1F33162B00A3169F /* CalendarCell */,
 				842EBD2B1F33143A00A3169F /* TemplateCell */,
 				842EBD231F3313FB00A3169F /* ScheduleCell */,
@@ -1597,6 +1602,7 @@
 		84AB4D831F32831400531740 /* UIView+BBBProperty */ = {
 			isa = PBXGroup;
 			children = (
+				787A992C201A2FBD00E69B5F /* UFView+Extension.swift */,
 				84AB4D841F32831400531740 /* UIView+BBBProperty.h */,
 				84AB4D851F32831400531740 /* UIView+BBBProperty.m */,
 			);
@@ -1964,6 +1970,7 @@
 				7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */,
 				783D1A4A1FB9F1EF00C4B8D7 /* HeaderView.swift in Sources */,
 				782E89A51F797FD8002AD54C /* Workout.swift in Sources */,
+				787A99272019E20800E69B5F /* ExersiseData+API.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */,
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
@@ -2040,6 +2047,7 @@
 				783F80CD1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift in Sources */,
 				784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */,
 				845882F81F7067F000BE7D69 /* API.swift in Sources */,
+				787A992D201A2FBD00E69B5F /* UFView+Extension.swift in Sources */,
 				842EBD291F33143200A3169F /* TemplateCell.swift in Sources */,
 				783484311F71B05100C58191 /* Trainer.swift in Sources */,
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,
@@ -2225,6 +2233,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2246,6 +2255,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

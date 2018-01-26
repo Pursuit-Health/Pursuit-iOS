@@ -24,7 +24,9 @@ extension PSAPI {
         case getAllTemplates()
         case getTemplateWithExercise(templateId: String)
         case editTemplate(clientId: String, templateId: String, parameters: Parameters)
-        case deleteTemplate(templateId: String, parameters: Parameters)
+        case deleteTemplate(clientId: String, templateId: String)
+        case deleteTemplateExercise(clientId: String, templateId: String, exerciseId: String)
+        case searchExercises(parameters: Parameters)
         case getAllClients()
         case getTrainerEvents(startDate: String, endDate: String)
         case getClientEvents(startDate: String, endDate: String)
@@ -53,11 +55,11 @@ extension PSAPI {
         
         var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise:
+            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises:
                 return .post
             case .changePassword, .editTemplate:
                 return .put
-            case .deleteTemplate:
+            case .deleteTemplate, .deleteTemplateExercise:
                 return .delete
             default:
                 return .get
@@ -97,8 +99,12 @@ extension PSAPI {
                 return "trainer/templates/" + templateId
             case .editTemplate(let clientId, let templateId, _):
                 return "trainer/clients/" + clientId + "/templates/" + templateId
-            case .deleteTemplate(let templateId, _):
-                return "trainer/templates/" + templateId
+            case .deleteTemplate(let clientId, let templateId):
+                return "trainer/clients/\(clientId)/templates/\(templateId)"
+            case .deleteTemplateExercise(let clientId,let templateId,let exerciseId):
+                return "trainer/clients/\(clientId)/templates/\(templateId)/exercises/\(exerciseId)"
+            case .searchExercises(_):
+                return "trainer/exercises/search"
             case .getAllClients:
                 return "trainer/clients"
             case .getTrainerEvents:
@@ -129,7 +135,6 @@ extension PSAPI {
                 return "trainer/categories"
             case .getExercisesByCategoryId(let categoryId):
                 return "trainer/categories/" + categoryId + "/exercises"
-                
             }
         }
         
@@ -159,9 +164,9 @@ extension PSAPI {
                  .changePassword(let parameters),
                  .createWorkout(_ , let parameters),
                  .editTemplate(_, _ , let parameters),
-                 .deleteTemplate(_ , let parameters),
                  .createEvent(let parameters),
-                 .assignTemplate(_ , _ , let parameters):
+                 .assignTemplate(_ , _ , let parameters),
+                 .searchExercises(let parameters):
                 return parameters
             default:
                 return nil
@@ -175,7 +180,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId:
+            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises:
                 return "Bearer" + token
             default:
                 return ""
