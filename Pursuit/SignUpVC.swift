@@ -225,7 +225,7 @@ class SignUpVC: UIViewController {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
-            cell.cellImageview.image            = UIImage(named: "gift")
+            cell.cellImageview.image            = UIImage(named: "code")
             
             //TODO: Reimplement
             cell.userDataTextField.bbb_reactFromCodeChange = true

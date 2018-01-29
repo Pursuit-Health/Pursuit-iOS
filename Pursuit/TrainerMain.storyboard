@@ -1354,7 +1354,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cN8-o8-9xb">
                                         <rect key="frame" x="0.0" y="20" width="375" height="213.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="AbP-Zi-1Xt">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="AbP-Zi-1Xt">
                                                 <rect key="frame" x="102.5" y="21.5" width="170.5" height="170.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="AbP-Zi-1Xt" secondAttribute="height" id="QxA-8p-EZr"/>
@@ -1824,7 +1824,7 @@
         <image name="ic_schedule" width="25" height="25"/>
         <image name="leftBack" width="9" height="17"/>
         <image name="pluss" width="42" height="42"/>
-        <image name="profile" width="48" height="48"/>
+        <image name="user" width="256" height="256"/>
         <image name="workout" width="400" height="254"/>
     </resources>
 </document>

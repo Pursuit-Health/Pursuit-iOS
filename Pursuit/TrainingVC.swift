@@ -130,12 +130,12 @@ class TrainingVC: UIViewController {
         let day = Calendar.current.component(.weekday, from: date)
         // TODO: for fixing temporary bug
         if day > 6 {
-          self.dayNameLabel.text = f.weekdaySymbols.last ?? ""
+          self.dayNameLabel.text = (f.weekdaySymbols.last ?? "").uppercased()
         }else {
-            self.dayNameLabel.text = f.weekdaySymbols[day - 1]
+            self.dayNameLabel.text = f.weekdaySymbols[day - 1].uppercased()
         }
         
-        self.monthYearLabel.text = f.string(from: date)
+        self.monthYearLabel.text = f.string(from: date).uppercased()
         
         f.dateFormat = "dd"
         self.dayDigitLabel.text = f.string(from: date)

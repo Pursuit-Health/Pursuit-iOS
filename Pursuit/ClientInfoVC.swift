@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import MBProgressHUD
 import SwipeCellKit
+import EmptyKit
 
 protocol ClientInfoVCDelegate: class {
     func selected(workout: Workout, on controller: ClientInfoVC, client: Client?)
@@ -36,6 +37,7 @@ class ClientInfoVC: UIViewController {
         didSet {
             self.clientInfoTableView.estimatedRowHeight = 100
             self.clientInfoTableView.rowHeight = UITableViewAutomaticDimension
+            self.clientInfoTableView.ept.dataSource = self
         }
     }
     
@@ -146,10 +148,11 @@ extension ClientInfoVC: UITableViewDataSource {
         
         cell.selectedCell             = trainigDate.isDone ?? false
         cell.templateNameLabel.text   = trainigDate.name
-        cell.delegate = self
-        
+          if !(Auth.IsClient ?? false){
+            cell.delegate = self
+        }
         let date = Date(timeIntervalSince1970: (trainigDate.startAt ?? 0))
-        dateFormatter.dateFormat = "dd/MM/YYYY"
+        dateFormatter.dateFormat = "MM/dd/YYYY"
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
         cell.dateLabel.text     = dateFormatter.string(from: date)
         
@@ -204,3 +207,22 @@ extension ClientInfoVC: SwipeTableViewCellDelegate {
         return options
     }
 }
+
+extension ClientInfoVC: PSEmptyDatasource {
+    var emptyTitle: String {
+         return "No more exercises to complete!"
+    }
+    
+    var emptyImageName: String {
+        return "check_mark_empty_dataSet"
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
+    }
+}
+

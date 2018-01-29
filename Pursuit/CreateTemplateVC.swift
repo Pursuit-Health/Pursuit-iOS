@@ -61,7 +61,9 @@ class CreateTemplateVC: UIViewController {
             cell.weightLabel.text           = "\(excersise.weight ?? 0) lbs"
             cell.setsLabel.text             = "\(excersise.reps ?? 0)" + "x" + "\(excersise.sets ?? 0) reps"
             cell.completedExImageView.isHidden = !(excersise.isDone ?? false)
-            cell.delegate = delegate
+            if !(Auth.IsClient ?? false){
+                cell.delegate = delegate
+            }
         }
         
         func fillHeader(cell: HeaderCell, with name: String) {
@@ -112,6 +114,7 @@ class CreateTemplateVC: UIViewController {
         didSet {
             templateTableView.rowHeight             = UITableViewAutomaticDimension
             templateTableView.estimatedRowHeight    = 200
+            templateTableView.ept.dataSource        = self
         }
     }
     
@@ -256,6 +259,7 @@ class CreateTemplateVC: UIViewController {
                 self.calendarView.isUserInteractionEnabled = false
                 //self.templateTableView.allowsSelection = false
                 self.bottomViewWithButton.isHidden = true
+                self.notesTextField.isUserInteractionEnabled = false
             }else {
                 self.calendarView.isUserInteractionEnabled = false
                 self.addworkoutButton.isEnabled = true
@@ -339,6 +343,7 @@ class CreateTemplateVC: UIViewController {
         self.monthLabel.text = subText[0]
         self.yearLabel.text = subText[1]
     }
+
     //MARK: Private
     
     private func showAlert() {
@@ -528,6 +533,24 @@ extension CreateTemplateVC: SwipeTableViewCellDelegate {
         options.buttonPadding = 0
         
         return options
+    }
+}
+
+extension CreateTemplateVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return "Press the + to add exercises"
+    }
+    
+    var emptyImageName: String {
+        return  "pluss_empty_dataSet"
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
     }
 }
 

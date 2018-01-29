@@ -101,7 +101,7 @@ class ExerciseDetailsVC: UIViewController {
             case .description(let excersize):
                 if let castedCell = cell as? DescriptionCell {
                     if let desc = excersize.innerExercise?.description {
-                      fillDescriptionCell(cell: castedCell, description: desc)
+                        fillDescriptionCell(cell: castedCell, description: desc)
                     }
                 }
             }
@@ -179,7 +179,7 @@ class ExerciseDetailsVC: UIViewController {
         
         private func fillRetsCell(cell: AddExerciseCell, rets: String?, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
-            cell.exerciseImageView.image                    = imageFromName("weight")
+            cell.exerciseImageView.image                    = imageFromName("rest")
             //cell.exerciseTextField.keyboardType             = .numberPad
             if let rets = rets {
                 cell.exerciseTextField.text = rets
@@ -195,12 +195,12 @@ class ExerciseDetailsVC: UIViewController {
         
         private func fillNotesCell(cell: NotesCell, notes: String?, delegate: NotesCellDelegate){
             cell.nameLabel.text             = "Notes"
-            cell.exerciseImageView.image    = imageFromName("weight")
+            cell.exerciseImageView.image    = imageFromName("notes")
             cell.delegate = delegate
             if let note = notes {
-            cell.notesTextView.text = note
+                cell.notesTextView.text = note
             }else {
-               cell.notesTextView.text = ""
+                cell.notesTextView.text = ""
             }
         }
         
@@ -271,21 +271,21 @@ class ExerciseDetailsVC: UIViewController {
         }
         var exerc = ExcersiseData()
         if isInteractiv {
-        if self.excersize.name == nil {
-            self.excersize.name = self.excersize.innerExercise?.name
-        }
-        self.excersize.selected = true
-        if !isEditExercise {
-        self.excersize.exercise_id = self.excersize.id
-        }
-        
-        exerc = self.excersize
-        exerc.id = nil
-        
-        if self.excersize.name?.isEmpty ?? true || self.excersize.sets == nil || self.excersize.reps == nil || self.excersize.weight == nil || self.excersize.rest == nil {
-            self.showError()
-            return
-        }
+            if self.excersize.name == nil {
+                self.excersize.name = self.excersize.innerExercise?.name
+            }
+            self.excersize.selected = true
+            if !isEditExercise {
+                self.excersize.exercise_id = self.excersize.id
+            }
+            
+            exerc = self.excersize
+            exerc.id = nil
+            
+            if self.excersize.name?.isEmpty ?? true || self.excersize.sets == nil || self.excersize.reps == nil || self.excersize.weight == nil || self.excersize.rest == nil {
+                self.showError()
+                return
+            }
         }
         
         if !isEditExercise {
@@ -319,6 +319,9 @@ class ExerciseDetailsVC: UIViewController {
         self.exerciseType = .warmup
         self.leftTitle = self.excersize.name
         
+        if (self.excersize.isDone ?? false) {
+            self.isInteractiv = false
+        }
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         //self.loadImage()
@@ -369,7 +372,7 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                 self.excersize.weight = Int(cellText)
             case .rest:
                 self.excersize.rest = cellText
-
+                
             default:
                 return
             }
@@ -381,23 +384,23 @@ extension ExerciseDetailsVC: UITableViewDataSource {
 
 extension ExerciseDetailsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-     
+        
         if self.excersize.innerExercise?.imageURL == nil {
             if(indexPath.row == 0){
                 return 80
             }
         }else {
             if(indexPath.row == 0){
-               return UITableViewAutomaticDimension
+                return UITableViewAutomaticDimension
             }else if (indexPath.row == 1) {
                 return 80
             }
         }
         
-//        if(indexPath.row == 0){
-//            return 80
-//        }else
-            if (indexPath.row >= cellsInfo.count - 2){
+        //        if(indexPath.row == 0){
+        //            return 80
+        //        }else
+        if (indexPath.row >= cellsInfo.count - 2){
             return UITableViewAutomaticDimension
         } else {
             return 50

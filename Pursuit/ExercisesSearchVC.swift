@@ -42,6 +42,7 @@ class ExercisesSearchVC: UIViewController {
         didSet {
             self.exercisesTableView.rowHeight = UITableViewAutomaticDimension
             self.exercisesTableView.estimatedRowHeight = 100
+            self.exercisesTableView.ept.dataSource = self
         }
     }
     
@@ -172,5 +173,23 @@ extension ExercisesSearchVC: UISearchBarDelegate {
         }else {
             self.filteredExercises = self.exercises.filter{ ($0.name?.lowercased().contains(searchText.lowercased())) ?? false }
         }
+    }
+}
+
+extension ExercisesSearchVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return "No match search results"
+    }
+    
+    var emptyImageName: String {
+        return ""
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
     }
 }

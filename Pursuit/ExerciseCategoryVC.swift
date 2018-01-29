@@ -41,6 +41,7 @@ class ExerciseCategoryVC: UIViewController {
         didSet {
             self.exercisesTableView.rowHeight = UITableViewAutomaticDimension
             self.exercisesTableView.estimatedRowHeight = 100
+            self.exercisesTableView.ept.dataSource = self
         }
     }
     
@@ -73,7 +74,11 @@ class ExerciseCategoryVC: UIViewController {
         }
     }
     
-    var isExercisesSearch: Bool = false
+    var isExercisesSearch: Bool = false {
+        didSet {
+            self.exercisesTableView?.reloadData()
+        }
+    }
     
     var timer: Timer!
     
@@ -106,6 +111,8 @@ class ExerciseCategoryVC: UIViewController {
                 self.exercises = exercises!
                 
                 self.lastChange = nil
+            }else {
+                self.isExercisesSearch = false;
             }
         }
     }
@@ -115,9 +122,10 @@ class ExerciseCategoryVC: UIViewController {
     }
     
     func checkIfUserTyping() {
-        guard let last = self.lastChange else { return }
+        guard let last = self.lastChange else {  self.isExercisesSearch = false; return }
         if Date().timeIntervalSince1970 - Double(last) > 4 {
-            guard let searchText = exercisesSearchBar.text else { return }
+            guard let searchText = exercisesSearchBar.text else { self.isExercisesSearch = false; return }
+            if searchText.isEmpty { return }
             
             self.loadExercisesWithPhrase(phrase: searchText)
         }
@@ -174,13 +182,34 @@ extension ExerciseCategoryVC: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-
+        
+        if searchText.isEmpty { self.isExercisesSearch = false; return }
+        
         self.loadExercisesWithPhrase(phrase: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
-       self.view.endEditing(true)
+        self.view.endEditing(true)
+        if searchText.isEmpty { self.isExercisesSearch = false; return }
         self.loadExercisesWithPhrase(phrase: searchText)
+    }
+}
+
+extension ExerciseCategoryVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return "No match search results"
+    }
+    
+    var emptyImageName: String {
+        return ""
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
     }
 }

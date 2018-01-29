@@ -134,6 +134,7 @@
 		78EF48611FB5BC1700813BA3 /* ClientInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EF48601FB5BC1700813BA3 /* ClientInfoVC.swift */; };
 		78EF48651FB5BC9E00813BA3 /* ClientInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EF48631FB5BC9E00813BA3 /* ClientInfoCell.swift */; };
 		78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */; };
+		78F4D767201F57D300E4CCA9 /* EmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4D766201F57D300E4CCA9 /* EmptyDataSet.swift */; };
 		78F636251FB5FB32009EB48D /* MainExercisesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636241FB5FB32009EB48D /* MainExercisesVC.swift */; };
 		78F636281FB6049C009EB48D /* ExerciseCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F636271FB6049C009EB48D /* ExerciseCategoryVC.swift */; };
 		78F6362C1FB60584009EB48D /* ExerciseCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F6362A1FB60584009EB48D /* ExerciseCategoryCell.swift */; };
@@ -337,6 +338,7 @@
 		78EF48601FB5BC1700813BA3 /* ClientInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoVC.swift; sourceTree = "<group>"; };
 		78EF48631FB5BC9E00813BA3 /* ClientInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInfoCell.swift; sourceTree = "<group>"; };
 		78EF48641FB5BC9E00813BA3 /* ClientInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientInfoCell.xib; sourceTree = "<group>"; };
+		78F4D766201F57D300E4CCA9 /* EmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDataSet.swift; sourceTree = "<group>"; };
 		78F636241FB5FB32009EB48D /* MainExercisesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainExercisesVC.swift; sourceTree = "<group>"; };
 		78F636271FB6049C009EB48D /* ExerciseCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryVC.swift; sourceTree = "<group>"; };
 		78F6362A1FB60584009EB48D /* ExerciseCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCategoryCell.swift; sourceTree = "<group>"; };
@@ -1132,6 +1134,14 @@
 			name = ClientInfoCell;
 			sourceTree = "<group>";
 		};
+		78F4D765201F566D00E4CCA9 /* EmptyDataSet */ = {
+			isa = PBXGroup;
+			children = (
+				78F4D766201F57D300E4CCA9 /* EmptyDataSet.swift */,
+			);
+			name = EmptyDataSet;
+			sourceTree = "<group>";
+		};
 		78F636231FB5FB03009EB48D /* MainExercises */ = {
 			isa = PBXGroup;
 			children = (
@@ -1331,6 +1341,7 @@
 		84AB4D531F327CFB00531740 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				78F4D765201F566D00E4CCA9 /* EmptyDataSet */,
 				78277D581FC84A200064ABB8 /* Coordinators */,
 				78FA53DD1F47792300C38413 /* Constants */,
 				84AB4D6B1F3281D400531740 /* Extensions */,
@@ -1942,6 +1953,7 @@
 			files = (
 				78277D621FC8609A0064ABB8 /* TrainerCoordinator.swift in Sources */,
 				842CD37C1F8F62F400F756DC /* HideKeyboardTapGestureManager.swift in Sources */,
+				78F4D767201F57D300E4CCA9 /* EmptyDataSet.swift in Sources */,
 				842CD37D1F8F62F400F756DC /* UIView+SuperView.swift in Sources */,
 				8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */,
 				780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */,

@@ -536,29 +536,28 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="213.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yst-R1-Gqd">
-                                    <rect key="frame" x="169.5" y="63" width="36" height="89"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="65"/>
+                                    <rect key="frame" x="168" y="59.5" width="39" height="96"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="70"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUNDAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heb-kB-kd3">
-                                    <rect key="frame" x="163.5" y="25" width="47.5" height="28"/>
+                                    <rect key="frame" x="164.5" y="43" width="47.5" height="16.5"/>
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARY 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-69-L2E">
-                                    <rect key="frame" x="152" y="162" width="70" height="14"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
+                                    <rect key="frame" x="145.5" y="165.5" width="84" height="16.5"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="yst-R1-Gqd" firstAttribute="top" secondItem="heb-kB-kd3" secondAttribute="bottom" constant="10" id="DJG-QT-FpD"/>
+                                <constraint firstItem="yst-R1-Gqd" firstAttribute="top" secondItem="heb-kB-kd3" secondAttribute="bottom" id="DJG-QT-FpD"/>
                                 <constraint firstItem="heb-kB-kd3" firstAttribute="centerX" secondItem="yst-R1-Gqd" secondAttribute="centerX" id="IoO-ED-96f"/>
-                                <constraint firstItem="heb-kB-kd3" firstAttribute="top" secondItem="PLM-JL-9vm" secondAttribute="top" constant="25" id="TBZ-Dd-hqg"/>
                                 <constraint firstItem="yst-R1-Gqd" firstAttribute="centerY" secondItem="PLM-JL-9vm" secondAttribute="centerY" id="eSC-fD-9ci"/>
                                 <constraint firstItem="eUh-69-L2E" firstAttribute="centerX" secondItem="yst-R1-Gqd" secondAttribute="centerX" id="xqX-qw-e41"/>
                                 <constraint firstItem="eUh-69-L2E" firstAttribute="top" secondItem="yst-R1-Gqd" secondAttribute="bottom" constant="10" id="y1y-wC-Kwr"/>

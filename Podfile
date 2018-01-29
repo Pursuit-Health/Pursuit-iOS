@@ -28,4 +28,5 @@ target 'Pursuit' do
   pod 'BlocksKit', '~> 2.2'
   pod 'IQKeyboardManagerSwift', '~> 5.0'
   pod 'MBProgressHUD', '~> 1.1'
+  pod 'EmptyKit', '~> 4.0'
 end

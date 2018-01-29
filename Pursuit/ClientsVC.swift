@@ -10,6 +10,7 @@ import UIKit
 import SwipeCellKit
 import SDWebImage
 import SVProgressHUD
+import EmptyKit
 
 protocol ClientsVCDelegate: class {
     func didSelect(client: Client, on controller: ClientsVC)
@@ -20,7 +21,11 @@ class ClientsVC: UIViewController {
     //MARK: IBOutlets
     
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var clientsTable: UITableView!
+    @IBOutlet weak var clientsTable: UITableView! {
+        didSet {
+           self.clientsTable.ept.dataSource = self
+        }
+    }
     
     @IBOutlet weak var clientsSearchBar: UISearchBar! {
         didSet {
@@ -144,7 +149,7 @@ extension ClientsVC: UITableViewDataSource {
         if let url = clientData.clientAvatar {
          cell.clientImage.sd_setImage(with: URL(string: url.persuitImageUrl()))            
         }else {
-            cell.clientImage.image = UIImage(named: "profile")
+            cell.clientImage.image = UIImage(named: "user")
         }
         
         cell.clientName.text = clientData.name
@@ -356,6 +361,20 @@ enum ButtonStyle {
     case backgroundColor, circular
 }
 
-
-
-
+extension ClientsVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return "No Clients"
+    }
+    
+    var emptyImageName: String {
+        return "no_clients_empty_dataset"
+    }
+    
+    var fontSize: CGFloat {
+        return 32.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
+    }
+}

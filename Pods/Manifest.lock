@@ -21,6 +21,7 @@ PODS:
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - DeepLinkKit (1.4.0)
+  - EmptyKit (4.0.1)
   - ESTabBarController-swift (2.5)
   - Fabric (1.7.2)
   - HMSegmentedControl (1.5.4)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - BlocksKit (~> 2.2)
   - Crashlytics
   - DeepLinkKit (~> 1.4)
+  - EmptyKit (~> 4.0)
   - ESTabBarController-swift
   - Fabric
   - HMSegmentedControl
@@ -73,6 +75,7 @@ SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DeepLinkKit: bffd3b5e51549222f974d631b4e0e7484600b9d8
+  EmptyKit: edb93c20499f8d64615a71afdc7d71e3b020a0c3
   ESTabBarController-swift: 8daa432f2a9be8ebd25101dc46c84472fd760512
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   HMSegmentedControl: b25bc4ec44766e073d62c473188fb354ee244b76
@@ -93,6 +96,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: e9ff953c820394a4e641cfb0118b6c959506aec2
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 1bbcb50006a2555eff7571d7b47d57377673c561
+PODFILE CHECKSUM: 8d0fdb81aff1b3cb62a25677824b07ce55bd4c0c
 
 COCOAPODS: 1.2.1
