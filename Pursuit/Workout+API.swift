@@ -60,13 +60,15 @@ extension Workout {
         }
     }
     
-     func getDetailedTemplateFor(clientId: String, templateId: String, completion: @escaping GetClientsWorkoutDetails) {
+     func getDetailedTemplateFor(clientId: String, templateId: String, completion: @escaping GetWorkoutByIdCompletion) {
         let api = PSAPI()
-        api.getDetailedTemplateFor(clietnId: clientId, templateId: templateId) { (exercises, error) in
+        api.getDetailedTemplateFor(clietnId: clientId, templateId: templateId) { (workout, error) in
             if error == nil {
-                self.excersises = exercises
+                self.excersises = workout?.workoutExercises
+                 self.isDone = workout?.isDone
+                
             }
-            completion(exercises, error)
+            completion(workout, error)
         }
     }
     

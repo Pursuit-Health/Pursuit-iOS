@@ -246,32 +246,8 @@ class CreateTemplateVC: UIViewController {
         navigationController?.navigationBar.setAppearence()
         self.tabBarController?.tabBar.isHidden = true
         //TODO: Reimplament
-        if !shouldClear {
-            self.templateNameTextField.text = workoutNew?.name ?? ""
-            self.notesTextField.text = workoutNew?.notes ?? ""
-        }
-        
-        if let done = isDone {
-            if done {
-                self.leftTitle = "Completed Template"
-                self.addworkoutButton.isEnabled = false
-                self.templateNameTextField.isUserInteractionEnabled = false
-                self.calendarView.isUserInteractionEnabled = false
-                //self.templateTableView.allowsSelection = false
-                self.bottomViewWithButton.isHidden = true
-                self.notesTextField.isUserInteractionEnabled = false
-            }else {
-                self.calendarView.isUserInteractionEnabled = false
-                self.addworkoutButton.isEnabled = true
-                self.leftTitle = workoutNew?.name ?? ""
-            }
-            increaseDateButton.isEnabled = false
-            decreaseDateButton.isEnabled = false
-        }else {
-            self.calendarView.isUserInteractionEnabled = true
-            increaseDateButton.isEnabled = true
-            decreaseDateButton.isEnabled = true
-        }
+
+        self.updateUI()
         
         if let start = workoutNew?.startAt {
             let date = Date(timeIntervalSince1970: start)
@@ -296,6 +272,36 @@ class CreateTemplateVC: UIViewController {
     
     //MARK: Public.Methods
     
+    func updateUI() {
+        if !shouldClear {
+            self.templateNameTextField.text = workoutNew?.name ?? ""
+            self.notesTextField.text = workoutNew?.notes ?? ""
+        }
+        
+        if let done = isDone {
+            if done {
+                self.leftTitle = "Completed Template"
+                self.addworkoutButton.isEnabled = false
+                self.templateNameTextField.isUserInteractionEnabled = false
+                self.calendarView.isUserInteractionEnabled = false
+                //self.templateTableView.allowsSelection = false
+                self.bottomViewWithButton.isHidden = true
+                self.notesTextField.isUserInteractionEnabled = false
+            }else {
+                self.calendarView.isUserInteractionEnabled = false
+                self.addworkoutButton.isEnabled = true
+                self.leftTitle = workoutNew?.name ?? ""
+                self.bottomViewWithButton.isHidden = false
+            }
+            increaseDateButton.isEnabled = false
+            decreaseDateButton.isEnabled = false
+        }else {
+            self.calendarView.isUserInteractionEnabled = true
+            increaseDateButton.isEnabled = true
+            decreaseDateButton.isEnabled = true
+        }
+    }
+    
     func recalculate() {
         self.recalculateRows()
     }
@@ -303,6 +309,7 @@ class CreateTemplateVC: UIViewController {
     func updateTemplate(client: Client?) {
         self.workoutNew?.getDetailedTemplateFor(clientId: "\(client?.id ?? 0)", templateId: "\(workoutNew?.id ?? 0)") { (exercises, error) in
             if error == nil {
+                self.updateUI()
                 self.recalculate()
             }
         }
