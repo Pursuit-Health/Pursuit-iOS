@@ -18,6 +18,7 @@ protocol CreateTemplateVCDelegate: class {
     func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC)
     func editWorkout(_ workout: Workout, on controller: CreateTemplateVC)
     func deleteWorkoutExercise(_ workout: Workout, exercise: ExcersiseData, on controller: CreateTemplateVC)
+    func closeBarButtonPressed(on controller: CreateTemplateVC)
 }
 
 extension CreateTemplateVCDelegate {
@@ -184,7 +185,7 @@ class CreateTemplateVC: UIViewController {
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
         self.view.endEditing(true)
-        self.navigationController?.popViewController(animated: true)
+        self.delegate?.closeBarButtonPressed(on: self)
     }
     
     @IBAction func saveTemplateButtonPressed(_ sender: Any) {

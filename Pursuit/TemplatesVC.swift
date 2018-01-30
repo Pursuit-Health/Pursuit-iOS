@@ -151,6 +151,10 @@ extension TemplatesVC: UITableViewDelegate {
 }
 
 extension TemplatesVC: CreateTemplateVCDelegate {
+    func closeBarButtonPressed(on controller: CreateTemplateVC) {
+        
+    }
+    
     func exerciseSelected(exercise: ExcersiseData, on controller: CreateTemplateVC) {
         
     }

@@ -136,7 +136,7 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
     func saveWorkout(_ workout: Workout, on controller: CreateTemplateVC) {
         let work = workout
         
-        work.excersises = self.exercises
+        work.excersises = self.createTemplate?.workoutNew?.excersises
         
         work.createWorkout(clientId: "\(self.selectedClient?.id ?? 0)") { (workout, error) in
             if error == nil {
@@ -161,7 +161,6 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
                 }))
                 controller.present(alert, animated: true, completion: nil)
             }else {
-                self.exercises = []
                 controller.navigationController?.popViewController(animated: true)
             }
         }
@@ -193,6 +192,11 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
                 self.createTemplate?.updateTemplate(client: self.selectedClient)
             }
         }
+    }
+    
+    func closeBarButtonPressed(on controller: CreateTemplateVC) {
+        self.exercises = []
+        controller.navigationController?.popViewController(animated: true)
     }
 }
 
