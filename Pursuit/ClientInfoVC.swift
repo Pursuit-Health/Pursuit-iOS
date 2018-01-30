@@ -53,7 +53,7 @@ class ClientInfoVC: UIViewController {
                  DispatchQueue.main.async {
                     self.profileImageView.sd_addActivityIndicator()
                     self.profileImageView.sd_setIndicatorStyle(.gray)
-                self.profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
+                    self.profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
                                              placeholderImage: UIImage(named: "user"))
                 }
             }
@@ -61,7 +61,7 @@ class ClientInfoVC: UIViewController {
         }
     }
     var workouts: [Workout] = [] {
-        didSet {
+        didSet {            
             self.clientInfoTableView?.reloadData()
             let doneCount = workouts.filter{ $0.isDone ?? false }.count
             let todoCount = workouts.count - doneCount
@@ -146,12 +146,7 @@ extension ClientInfoVC: UITableViewDataSource {
         guard let cell = tableView.gc_dequeueReusableCell(type: ClientInfoCell.self) else { return UITableViewCell() }
         let trainigDate = workouts[indexPath.row]
         
-        if (trainigDate.isDone ?? false) && ((trainigDate.excersises?.count ?? 0) > 0) {
-             cell.selectedCell = true
-        }else {
-           cell.selectedCell = false
-        }
-       
+        cell.selectedCell = trainigDate.isDone ?? false
         cell.templateNameLabel.text   = trainigDate.name
         if User.shared.type == .trainer {
             cell.delegate = self
