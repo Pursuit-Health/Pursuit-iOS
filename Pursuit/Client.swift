@@ -56,6 +56,10 @@ class Client: User, Equatable, Hashable {
         self.clientAvatar       <- map["user.data.avatar"]
     }
     
+    override var type: UserType? {
+        return .client
+    }
+    
     override func isValidCode() -> Bool? {
         return self.code == "fxsg3x"
     }

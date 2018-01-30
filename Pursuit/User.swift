@@ -8,6 +8,11 @@
 
 import ObjectMapper
 
+enum UserType: String {
+    case client = "client"
+    case trainer = "trainer"
+}
+
 class User: Mappable {
     
     //MARK: Private.Properties
@@ -29,6 +34,7 @@ class User: Mappable {
     }
 
     var code: String?
+    
     //MARK: Mappable
     
     var id                  : Int?
@@ -66,6 +72,11 @@ class User: Mappable {
     //MARK: Public
     
     typealias RegisterCompletion  = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    var type: UserType? {
+        return nil
+    }
+
     
     func signUp(completion: @escaping RegisterCompletion) {
         

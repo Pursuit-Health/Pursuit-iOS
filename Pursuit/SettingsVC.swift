@@ -80,8 +80,7 @@ class SettingsVC: UIViewController {
     
     func getUserInfo() {
         self.user = User.shared
-        
-        }
+    }
     
     private func showActionSheetForUploadingPhoto() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

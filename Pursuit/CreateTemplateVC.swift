@@ -61,7 +61,7 @@ class CreateTemplateVC: UIViewController {
             cell.weightLabel.text           = "\(excersise.weight ?? 0) lbs"
             cell.setsLabel.text             = "\(excersise.reps ?? 0)" + "x" + "\(excersise.sets ?? 0) reps"
             cell.completedExImageView.isHidden = !(excersise.isDone ?? false)
-            if !(Auth.IsClient ?? false){
+            if User.shared.type == .trainer{ 
                 cell.delegate = delegate
             }
         }
@@ -263,6 +263,7 @@ class CreateTemplateVC: UIViewController {
             }else {
                 self.calendarView.isUserInteractionEnabled = false
                 self.addworkoutButton.isEnabled = true
+                self.leftTitle = workoutNew?.name ?? ""
             }
             increaseDateButton.isEnabled = false
             decreaseDateButton.isEnabled = false

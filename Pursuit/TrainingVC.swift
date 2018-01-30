@@ -66,6 +66,7 @@ class TrainingVC: UIViewController {
         didSet{
             trainingTableView.rowHeight             = UITableViewAutomaticDimension
             trainingTableView.estimatedRowHeight    = 200
+            trainingTableView.ept.dataSource        = self
         }
     }
     
@@ -198,3 +199,27 @@ extension TrainingVC: UITableViewDelegate{
         }
     }
 }
+
+extension TrainingVC: PSEmptyDatasource {
+    
+    var emptyTitle: String {
+        return "No more exercises to complete!"
+    }
+    
+    var emptyImageName: String {
+        return "check_mark_empty_dataSet"
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
+    }
+    
+    var verticalOffSet: CGFloat {
+        return self.headerView.frame.size.height/2
+    }
+}
+

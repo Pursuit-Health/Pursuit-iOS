@@ -33,6 +33,10 @@ class Trainer: User {
         self.trainerAvatar       <- map["user.data.avatar"]
     }
     
+    override var type: UserType? {
+        return .trainer
+    }
+    
     override func isValidCode() -> Bool? {
         return self.code == "v7vnc6"
     }

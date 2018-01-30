@@ -146,9 +146,14 @@ extension ClientInfoVC: UITableViewDataSource {
         guard let cell = tableView.gc_dequeueReusableCell(type: ClientInfoCell.self) else { return UITableViewCell() }
         let trainigDate = workouts[indexPath.row]
         
-        cell.selectedCell             = trainigDate.isDone ?? false
+        if (trainigDate.isDone ?? false) && ((trainigDate.excersises?.count ?? 0) > 0) {
+             cell.selectedCell = true
+        }else {
+           cell.selectedCell = false
+        }
+       
         cell.templateNameLabel.text   = trainigDate.name
-          if !(Auth.IsClient ?? false){
+        if User.shared.type == .trainer {
             cell.delegate = self
         }
         let date = Date(timeIntervalSince1970: (trainigDate.startAt ?? 0))
