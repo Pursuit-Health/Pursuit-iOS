@@ -240,6 +240,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
             
             if self.createTemplate?.isEditTemplate ?? false {
                 work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
+                work.id = self.createTemplate?.workoutNew?.id
             }else {
                 work.excersises = self.exercises
             }
@@ -249,6 +250,8 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         work.name = self.createTemplate?.workoutNew?.name
         work.isDone = self.createTemplate?.workoutNew?.isDone
         self.createTemplate?.workoutNew = work
+        
+        self.exercises = []
         controller.navigationController?.popViewController(animated: true)
     }
     

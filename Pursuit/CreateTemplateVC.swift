@@ -519,7 +519,16 @@ extension CreateTemplateVC: SwipeTableViewCellDelegate {
             if let cellInfo = self.sections[indexPath.section]?[indexPath.row], case .excersise(let excersie, _) = cellInfo {
                 
                 if let workout = self.workoutNew {
-                    self.delegate?.deleteWorkoutExercise(workout, exercise: excersie, on: self)
+                    if excersie.id == nil {
+                        for (index, exe) in (self.workoutNew?.excersises?.enumerated())! {
+                            if exe === excersie {
+                                self.workoutNew?.excersises?.remove(at: index)
+                            }
+                        }
+                        self.recalculate()
+                    }else {
+                        self.delegate?.deleteWorkoutExercise(workout, exercise: excersie, on: self)
+                    }
             }
         }
         }
