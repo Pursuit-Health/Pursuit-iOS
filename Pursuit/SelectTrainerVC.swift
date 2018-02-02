@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 protocol SelectTrainerVCDelegate: class {
     func trainerSelectedWithId(trainer: Trainer)
@@ -62,6 +63,7 @@ class SelectTrainerVC: UIViewController {
     
     var filteredTrainers: [Trainer] = [] {
         didSet {
+            self.selectTrainerCollectionView.ept.reloadData()
             self.selectTrainerCollectionView.reloadData()
         }
     }
@@ -166,13 +168,7 @@ extension SelectTrainerVC: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.view.endEditing(true)
-        guard let searchText = searchBar.text else { return }
-        if searchText == "" {
-            self.filteredTrainers = self.trainers
-        }else {
-            self.filteredTrainers = self.trainers.filter{ $0.name?.lowercased().contains(searchText.lowercased()) ?? false }
-        }
+        searchBar.resignFirstResponder()
     }
 }
 
