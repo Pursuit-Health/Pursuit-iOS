@@ -164,6 +164,16 @@ extension SelectTrainerVC: UISearchBarDelegate {
             self.filteredTrainers = self.trainers.filter{ $0.name?.lowercased().contains(searchText.lowercased()) ?? false }
         }
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        guard let searchText = searchBar.text else { return }
+        if searchText == "" {
+            self.filteredTrainers = self.trainers
+        }else {
+            self.filteredTrainers = self.trainers.filter{ $0.name?.lowercased().contains(searchText.lowercased()) ?? false }
+        }
+    }
 }
 
 extension SelectTrainerVC: PSEmptyDatasource {

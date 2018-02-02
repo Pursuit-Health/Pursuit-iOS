@@ -624,14 +624,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vZ-C6-DN7">
-                                                <rect key="frame" x="145.5" y="8" width="85" height="48"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="35"/>
+                                                <rect key="frame" x="151.5" y="5" width="73" height="41"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUf-qW-h1k">
-                                                <rect key="frame" x="174" y="55.5" width="28.5" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <rect key="frame" x="171" y="56" width="33" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -655,11 +655,11 @@
                                             <constraint firstItem="J19-Dx-Qpt" firstAttribute="centerY" secondItem="Cbx-gv-MzS" secondAttribute="centerY" id="Dx1-bh-QfN"/>
                                             <constraint firstItem="xv2-uF-w4B" firstAttribute="centerY" secondItem="Cbx-gv-MzS" secondAttribute="centerY" id="GPY-mp-5cC"/>
                                             <constraint firstItem="xv2-uF-w4B" firstAttribute="leading" secondItem="Cbx-gv-MzS" secondAttribute="leading" constant="20" id="NDg-jI-ajB"/>
-                                            <constraint firstAttribute="bottom" secondItem="GUf-qW-h1k" secondAttribute="bottom" constant="8" id="iBL-lB-7a9"/>
                                             <constraint firstItem="6vZ-C6-DN7" firstAttribute="centerX" secondItem="Cbx-gv-MzS" secondAttribute="centerX" id="pZX-LS-mo8"/>
                                             <constraint firstAttribute="trailing" secondItem="J19-Dx-Qpt" secondAttribute="trailing" constant="20" id="sHh-yz-GtL"/>
                                             <constraint firstItem="GUf-qW-h1k" firstAttribute="centerX" secondItem="Cbx-gv-MzS" secondAttribute="centerX" id="w9Y-ah-rvw"/>
-                                            <constraint firstItem="6vZ-C6-DN7" firstAttribute="top" secondItem="Cbx-gv-MzS" secondAttribute="top" constant="8" id="xGP-CH-0Bs"/>
+                                            <constraint firstAttribute="bottom" secondItem="GUf-qW-h1k" secondAttribute="bottom" constant="5" id="wND-2K-9tH"/>
+                                            <constraint firstItem="6vZ-C6-DN7" firstAttribute="top" secondItem="Cbx-gv-MzS" secondAttribute="top" constant="5" id="xGP-CH-0Bs"/>
                                         </constraints>
                                     </view>
                                 </subviews>

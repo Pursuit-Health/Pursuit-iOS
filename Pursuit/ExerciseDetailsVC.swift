@@ -316,7 +316,12 @@ class ExerciseDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.exerciseType = .warmup
+        if self.excersize.type == nil {
+            self.exerciseType = .warmup
+        }else {
+            self.exerciseType = self.excersize.type
+        }
+        
         self.leftTitle = self.excersize.name
         
         if (self.excersize.isDone ?? false) {
