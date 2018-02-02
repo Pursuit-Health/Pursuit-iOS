@@ -33,6 +33,8 @@ class SelectTrainerVC: UIViewController {
             let nib         = UINib(nibName: cellData.nibName, bundle: .main)
             
             selectTrainerCollectionView.register(nib, forCellWithReuseIdentifier: cellData.identifier)
+            
+            self.selectTrainerCollectionView.ept.dataSource = self
         }
     }
     
@@ -40,6 +42,7 @@ class SelectTrainerVC: UIViewController {
     @IBOutlet weak var trainerSearchBar: UISearchBar! {
         didSet {
             trainerSearchBar.backgroundImage    = UIImage()
+            trainerSearchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .compact)
             trainerSearchBar.setImage(UIImage(named: "white_search_icon"), for: .search, state: .normal)
             if let searchField = trainerSearchBar.value(forKey: "_searchField") as? UITextField {
                 searchField.borderStyle         = .none
@@ -160,5 +163,23 @@ extension SelectTrainerVC: UISearchBarDelegate {
         }else {
             self.filteredTrainers = self.trainers.filter{ $0.name?.lowercased().contains(searchText.lowercased()) ?? false }
         }
+    }
+}
+
+extension SelectTrainerVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return "No Trainers"
+    }
+    
+    var emptyImageName: String {
+        return "no_clients_empty_dataset"
+    }
+    
+    var fontSize: CGFloat {
+        return 32.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
     }
 }

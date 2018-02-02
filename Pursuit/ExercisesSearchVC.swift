@@ -178,11 +178,11 @@ extension ExercisesSearchVC: UISearchBarDelegate {
 
 extension ExercisesSearchVC: PSEmptyDatasource {
     var emptyTitle: String {
-        return "No match search results"
+        return "No Exercises"
     }
     
     var emptyImageName: String {
-        return ""
+        return "no_exercises_empty_dataSet"
     }
     
     var fontSize: CGFloat {
