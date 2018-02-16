@@ -242,7 +242,8 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
                 work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
                 work.id = self.createTemplate?.workoutNew?.id
             }else {
-                work.excersises = self.exercises
+                
+                work.excersises  = (self.createTemplate?.exercises ?? []) + self.exercises
             }
             
         }
