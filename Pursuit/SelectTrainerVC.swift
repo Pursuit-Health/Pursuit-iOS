@@ -52,6 +52,15 @@ class SelectTrainerVC: UIViewController {
                 searchField.font                = UIFont(name: "Avenir", size: 15)
                 searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSForegroundColorAttributeName : UIColor.white])
             }
+            guard let UISearchBarBackground: AnyClass = NSClassFromString("UISearchBarBackground") else { return }
+            
+            for view in trainerSearchBar.subviews {
+                for subview in view.subviews {
+                    if subview.isKind(of: UISearchBarBackground) {
+                        subview.alpha = 0
+                    }
+                }
+            }
         }
     }
     
