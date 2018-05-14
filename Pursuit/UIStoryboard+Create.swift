@@ -47,8 +47,8 @@ extension UIStoryboard {
         return BaseStoryboardBuilder<UIStoryboard.ClientMain>.create()
     }
     
-    static var sideMenu: SideMenu {
-        return BaseStoryboardBuilder<UIStoryboard.SideMenu>.create()
+    static var sideMenu: Settings {
+        return BaseStoryboardBuilder<UIStoryboard.Settings>.create()
     }
     
     //MARK: LoginStoryboard
@@ -152,7 +152,7 @@ extension UIStoryboard {
     
     //MARK: SideMenuStoryboard
     
-    class SideMenu: UIStoryboard {
+    class Settings: UIStoryboard {
         var SideMenuNavigation: SWRevealViewController? {
             return self.instantiate(type: SWRevealViewController.self)
         }

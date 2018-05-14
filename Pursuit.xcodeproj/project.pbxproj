@@ -60,6 +60,14 @@
 		782E89A51F797FD8002AD54C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A41F797FD8002AD54C /* Workout.swift */; };
 		782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A61F7980D2002AD54C /* Workout+API.swift */; };
 		782E89AA1F79A944002AD54C /* TrainerTemplatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A91F79A944002AD54C /* TrainerTemplatesVC.swift */; };
+		782E9C0020A985D90034A51B /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9BFE20A985D90034A51B /* LogoutTableViewCell.swift */; };
+		782E9C0120A985D90034A51B /* LogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9BFF20A985D90034A51B /* LogoutTableViewCell.xib */; };
+		782E9C0420A988D10034A51B /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9C0220A988D10034A51B /* UserInfoTableViewCell.swift */; };
+		782E9C0520A988D10034A51B /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9C0320A988D10034A51B /* UserInfoTableViewCell.xib */; };
+		782E9C0920A9A60E0034A51B /* WeightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9C0720A9A60E0034A51B /* WeightsTableViewCell.swift */; };
+		782E9C0A20A9A60E0034A51B /* WeightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9C0820A9A60E0034A51B /* WeightsTableViewCell.xib */; };
+		782E9C1120A9B0D10034A51B /* RoundedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9C1020A9B0D10034A51B /* RoundedSegmentedControl.swift */; };
+		782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9C1320A9DFA90034A51B /* PSUserDefaults.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -71,7 +79,7 @@
 		783484331F71B62100C58191 /* Trainer+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783484321F71B62100C58191 /* Trainer+API.swift */; };
 		78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78383B441F72A8BF00AA75E3 /* SignInMapper.swift */; };
 		783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A456B1F8E50580048A0F9 /* TokenAdapter.swift */; };
-		783A456F1F8E6A2E0048A0F9 /* SideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 783A456E1F8E6A2E0048A0F9 /* SideMenu.storyboard */; };
+		783A456F1F8E6A2E0048A0F9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 783A456E1F8E6A2E0048A0F9 /* Settings.storyboard */; };
 		783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 783A45721F8E6BB60048A0F9 /* SWRevealViewController.m */; };
 		783A45751F8E7A7C0048A0F9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */; };
 		783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45761F8E87000048A0F9 /* NavigatorVC.swift */; };
@@ -261,6 +269,14 @@
 		782E89A41F797FD8002AD54C /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		782E89A61F7980D2002AD54C /* Workout+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+API.swift"; sourceTree = "<group>"; };
 		782E89A91F79A944002AD54C /* TrainerTemplatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTemplatesVC.swift; sourceTree = "<group>"; };
+		782E9BFE20A985D90034A51B /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
+		782E9BFF20A985D90034A51B /* LogoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutTableViewCell.xib; sourceTree = "<group>"; };
+		782E9C0220A988D10034A51B /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
+		782E9C0320A988D10034A51B /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		782E9C0720A9A60E0034A51B /* WeightsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsTableViewCell.swift; sourceTree = "<group>"; };
+		782E9C0820A9A60E0034A51B /* WeightsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightsTableViewCell.xib; sourceTree = "<group>"; };
+		782E9C1020A9B0D10034A51B /* RoundedSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSegmentedControl.swift; sourceTree = "<group>"; };
+		782E9C1320A9DFA90034A51B /* PSUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSUserDefaults.swift; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -272,7 +288,7 @@
 		783484321F71B62100C58191 /* Trainer+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trainer+API.swift"; sourceTree = "<group>"; };
 		78383B441F72A8BF00AA75E3 /* SignInMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInMapper.swift; sourceTree = "<group>"; };
 		783A456B1F8E50580048A0F9 /* TokenAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAdapter.swift; sourceTree = "<group>"; };
-		783A456E1F8E6A2E0048A0F9 /* SideMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SideMenu.storyboard; sourceTree = "<group>"; };
+		783A456E1F8E6A2E0048A0F9 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		783A45711F8E6BB60048A0F9 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		783A45721F8E6BB60048A0F9 /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
@@ -729,6 +745,53 @@
 			name = TrainerTemplatesVC;
 			sourceTree = "<group>";
 		};
+		782E9BFB20A984C70034A51B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
+				782E9C0F20A9B09A0034A51B /* RoundedSegmentedControl */,
+				782E9BFD20A984E80034A51B /* Cells */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		782E9BFC20A984D20034A51B /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				783A45761F8E87000048A0F9 /* NavigatorVC.swift */,
+			);
+			name = Navigator;
+			sourceTree = "<group>";
+		};
+		782E9BFD20A984E80034A51B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				782E9BFE20A985D90034A51B /* LogoutTableViewCell.swift */,
+				782E9BFF20A985D90034A51B /* LogoutTableViewCell.xib */,
+				782E9C0220A988D10034A51B /* UserInfoTableViewCell.swift */,
+				782E9C0320A988D10034A51B /* UserInfoTableViewCell.xib */,
+				782E9C0720A9A60E0034A51B /* WeightsTableViewCell.swift */,
+				782E9C0820A9A60E0034A51B /* WeightsTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		782E9C0F20A9B09A0034A51B /* RoundedSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				782E9C1020A9B0D10034A51B /* RoundedSegmentedControl.swift */,
+			);
+			name = RoundedSegmentedControl;
+			sourceTree = "<group>";
+		};
+		782E9C1220A9DF8A0034A51B /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				782E9C1320A9DFA90034A51B /* PSUserDefaults.swift */,
+			);
+			name = Defaults;
+			sourceTree = "<group>";
+		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -822,13 +885,14 @@
 			name = TokenAdapter;
 			sourceTree = "<group>";
 		};
-		783A456D1F8E69F80048A0F9 /* SideMenu */ = {
+		783A456D1F8E69F80048A0F9 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				785FF42C1FA31E6500787CF4 /* Controllers */,
-				783A456E1F8E6A2E0048A0F9 /* SideMenu.storyboard */,
+				783A456E1F8E6A2E0048A0F9 /* Settings.storyboard */,
+				782E9BFC20A984D20034A51B /* Navigator */,
+				782E9BFB20A984C70034A51B /* Settings */,
 			);
-			name = SideMenu;
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		783A45701F8E6B960048A0F9 /* SWRewealViewController */ = {
@@ -1007,15 +1071,6 @@
 				785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */,
 			);
 			name = "UIStoryboard+Create";
-			sourceTree = "<group>";
-		};
-		785FF42C1FA31E6500787CF4 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
-				783A45761F8E87000048A0F9 /* NavigatorVC.swift */,
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 		785FF42D1FA31E7900787CF4 /* Controllers */ = {
@@ -1330,7 +1385,7 @@
 			isa = PBXGroup;
 			children = (
 				78094A2C1F5BF99F001325B4 /* Splash */,
-				783A456D1F8E69F80048A0F9 /* SideMenu */,
+				783A456D1F8E69F80048A0F9 /* Settings */,
 				84AB4D5C1F327FDC00531740 /* ClientMain */,
 				84AB4D581F327F5E00531740 /* TrainerMain */,
 				84AB4D551F327E6300531740 /* Login */,
@@ -1632,6 +1687,7 @@
 		84AB4D8F1F32871C00531740 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				782E9C1220A9DF8A0034A51B /* Defaults */,
 				780D60171F5EAA1B002A7303 /* DeepLink */,
 				78094A201F5BD860001325B4 /* Keychain */,
 				84AB4D901F3287B000531740 /* Network */,
@@ -1845,9 +1901,11 @@
 				78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */,
 				78E4BD281FC1E8EA00A069DC /* CreateTemplateCalendarCell.xib in Resources */,
 				782B83141F71278D00A019AC /* QuestionCell.xib in Resources */,
+				782E9C0120A985D90034A51B /* LogoutTableViewCell.xib in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				784567901FCD94D2007FE1B5 /* DescriptionCell.xib in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
+				782E9C0A20A9A60E0034A51B /* WeightsTableViewCell.xib in Resources */,
 				784419B61F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib in Resources */,
 				78473BD51F742D7E0067DA1F /* SelectClientCell.xib in Resources */,
 				78CE34C41F38FDF2002BD31D /* TabPageViewController.storyboard in Resources */,
@@ -1866,9 +1924,10 @@
 				842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */,
 				78F6363B1FB9C7B6009EB48D /* ExerciseCell.xib in Resources */,
 				78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */,
+				782E9C0520A988D10034A51B /* UserInfoTableViewCell.xib in Resources */,
 				842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */,
 				78F6362D1FB60584009EB48D /* ExerciseCategoryCell.xib in Resources */,
-				783A456F1F8E6A2E0048A0F9 /* SideMenu.storyboard in Resources */,
+				783A456F1F8E6A2E0048A0F9 /* Settings.storyboard in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				783F80C41FC06F18001FE169 /* ExercisesTypeView.xib in Resources */,
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
@@ -1954,6 +2013,7 @@
 				78277D621FC8609A0064ABB8 /* TrainerCoordinator.swift in Sources */,
 				842CD37C1F8F62F400F756DC /* HideKeyboardTapGestureManager.swift in Sources */,
 				78F4D767201F57D300E4CCA9 /* EmptyDataSet.swift in Sources */,
+				782E9C0920A9A60E0034A51B /* WeightsTableViewCell.swift in Sources */,
 				842CD37D1F8F62F400F756DC /* UIView+SuperView.swift in Sources */,
 				8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */,
 				780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */,
@@ -2021,6 +2081,7 @@
 				78473BD81F745B7F0067DA1F /* AddExerceiseVC.swift in Sources */,
 				78CE34C31F38FDF2002BD31D /* TabPageViewController.swift in Sources */,
 				7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */,
+				782E9C0020A985D90034A51B /* LogoutTableViewCell.swift in Sources */,
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				783484281F71804D00C58191 /* SignUpButtonCell.swift in Sources */,
@@ -2034,6 +2095,7 @@
 				78E4438F1F40E3EB00525F7A /* CustomTextField.swift in Sources */,
 				78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */,
 				78E4BD2B1FC2108900A069DC /* HeaderCell.swift in Sources */,
+				782E9C0420A988D10034A51B /* UserInfoTableViewCell.swift in Sources */,
 				78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
 				788EE89C1F34E68300DD8A98 /* TrainingTableViewCell.swift in Sources */,
@@ -2081,7 +2143,9 @@
 				783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */,
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
+				782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */,
 				78277D5C1FC8552D0064ABB8 /* Coordinator.swift in Sources */,
+				782E9C1120A9B0D10034A51B /* RoundedSegmentedControl.swift in Sources */,
 				7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

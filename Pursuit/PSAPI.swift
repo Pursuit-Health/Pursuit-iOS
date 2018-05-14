@@ -274,7 +274,9 @@ class PSAPI: APIHandable {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
                         completion(nil)
-                        debugPrint(response)
+                        if let JSON = response.result.value as? NSDictionary, let data = JSON["data"] as? [String : Any] {
+                            User.shared.avatar = data["avatar"] as? String ?? ""
+                        }
                     }
                 case .failure(let encodingError):
                     completion(encodingError.psError)

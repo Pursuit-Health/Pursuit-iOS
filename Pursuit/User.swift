@@ -35,6 +35,17 @@ class User: Mappable {
 
     var code: String?
     
+    var defaults = PSUserDefaults()
+    
+    var weightsType: WeightsType {
+        get {
+            return defaults.weightsType ?? .lbs
+        }
+        set (newValue) {
+            defaults.weightsType = newValue
+        }
+    }
+    
     //MARK: Mappable
     
     var id                  : Int?

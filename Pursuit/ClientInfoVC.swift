@@ -120,8 +120,8 @@ class ClientInfoVC: UIViewController {
     
     private func updateInfo() {
         User.getUserInfo { (user, error) in
-                self.client = user
-            }
+            self.client = user
+        }
     }
     
     private func setUpNavigationBar() {
