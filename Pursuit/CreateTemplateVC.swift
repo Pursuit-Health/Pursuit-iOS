@@ -58,8 +58,10 @@ class CreateTemplateVC: UIViewController {
         }
         
         func fillExcersise(cell: TrainingTableViewCell, with excersise: ExcersiseData, delegate: SwipeTableViewCellDelegate) {
+            let weightsType = UserSettings.shared.weightsType
+            let weight = Double(excersise.weight ?? 0)
             cell.exercisesNameLabel.text    = excersise.name
-            cell.weightLabel.text           = "\(excersise.weight ?? 0) lbs"
+            cell.weightLabel.text           = weightsType.getWeightsFrom(weight: weight)
             cell.setsLabel.text             = "\(excersise.reps ?? 0)" + "x" + "\(excersise.sets ?? 0) reps"
             cell.completedExImageView.isHidden = !(excersise.isDone ?? false)
             if User.shared.type == .trainer{ 

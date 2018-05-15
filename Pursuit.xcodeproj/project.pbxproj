@@ -68,6 +68,7 @@
 		782E9C0A20A9A60E0034A51B /* WeightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9C0820A9A60E0034A51B /* WeightsTableViewCell.xib */; };
 		782E9C1120A9B0D10034A51B /* RoundedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9C1020A9B0D10034A51B /* RoundedSegmentedControl.swift */; };
 		782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9C1320A9DFA90034A51B /* PSUserDefaults.swift */; };
+		782E9EE520AB54C90034A51B /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9EE420AB54C90034A51B /* UserSettings.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -277,6 +278,7 @@
 		782E9C0820A9A60E0034A51B /* WeightsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightsTableViewCell.xib; sourceTree = "<group>"; };
 		782E9C1020A9B0D10034A51B /* RoundedSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSegmentedControl.swift; sourceTree = "<group>"; };
 		782E9C1320A9DFA90034A51B /* PSUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSUserDefaults.swift; sourceTree = "<group>"; };
+		782E9EE420AB54C90034A51B /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -790,6 +792,14 @@
 				782E9C1320A9DFA90034A51B /* PSUserDefaults.swift */,
 			);
 			name = Defaults;
+			sourceTree = "<group>";
+		};
+		782E9EE320AB54B10034A51B /* UserSettings */ = {
+			isa = PBXGroup;
+			children = (
+				782E9EE420AB54C90034A51B /* UserSettings.swift */,
+			);
+			name = UserSettings;
 			sourceTree = "<group>";
 		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
@@ -1486,6 +1496,7 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				782E9EE320AB54B10034A51B /* UserSettings */,
 				787EA07F1FCADC1C000138BD /* Category */,
 				846FBDAE1FC9AB1000873B53 /* ExcersiseData */,
 				782E89A31F797FBF002AD54C /* Workout */,
@@ -1979,9 +1990,56 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/BlocksKit/BlocksKit.framework",
+				"${BUILT_PRODUCTS_DIR}/DeepLinkKit/DeepLinkKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/EmptyKit/EmptyKit.framework",
+				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/HTTPStatusCodes/HTTPStatusCodes.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/KVNProgress/KVNProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PIDatePicker/PIDatePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/RHDisplayLinkStepper/RHDisplayLinkStepper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SHTextFieldBlocks/SHTextFieldBlocks.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepLinkKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTTPStatusCodes.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVNProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PIDatePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RHDisplayLinkStepper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHTextFieldBlocks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1994,13 +2052,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pursuit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2071,6 +2132,7 @@
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
 				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
+				782E9EE520AB54C90034A51B /* UserSettings.swift in Sources */,
 				78F636281FB6049C009EB48D /* ExerciseCategoryVC.swift in Sources */,
 				845883021F706E6000BE7D69 /* Error+Pursuit.swift in Sources */,
 				780D601F1F5F1588002A7303 /* Storyboards.swift in Sources */,

@@ -36,9 +36,9 @@ class UserInfoTableViewCell: UITableViewCell {
     func configureWith(user: User) {
         userNameLabel.text = User.shared.name ?? ""
         userEmailLabel.text = User.shared.email ?? ""
-        if User.shared.avatar != nil {
+        if let avatar = User.shared.avatar {
             DispatchQueue.main.async {
-                self.userPhotoImageView.sd_setImage(with: URL(string:  PSURL.BasePhotoURL + User.shared.avatar!))
+                self.userPhotoImageView.sd_setImage(with: URL(string:  PSURL.BasePhotoURL + avatar))
             }
         }
     }

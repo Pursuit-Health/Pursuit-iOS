@@ -86,7 +86,6 @@ class SettingsVC: UIViewController {
     }
     
     private func reloadUserInfo() {
-        self.getUserInfo()
         let indexPath = IndexPath(row: 0, section: 0)
         self.settingsTableView.reloadRows(at: [indexPath], with: .automatic)
     }
@@ -178,7 +177,7 @@ extension SettingsVC: UserInfoTableViewCellDelegate {
 
 extension SettingsVC: WeightsTableViewCellDelegate {
     func userDidChangeWeightsType(type: WeightsType, on cell: WeightsTableViewCell) {
-        User.shared.weightsType = type
+        UserSettings.shared.weightsType = type
     }
 }
 

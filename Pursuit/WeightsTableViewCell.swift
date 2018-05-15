@@ -11,10 +11,26 @@ protocol WeightsTableViewCellDelegate: class {
     func userDidChangeWeightsType(type: WeightsType, on cell: WeightsTableViewCell)
 }
 
+//TODO: Move to separate file
+
 enum WeightsType: Int {
     case lbs = 0
     case kgs = 1
 }
+
+extension WeightsType {
+    func getWeightsFrom(weight: Double) -> String {
+        let unit: UnitMass = (self.rawValue == 0) ? UnitMass.pounds : UnitMass.kilograms
+        let convertedWeight = Measurement(value: weight, unit: UnitMass.pounds).converted(to: unit)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 1
+        let messurementFormatter = MeasurementFormatter()
+        messurementFormatter.unitOptions = .providedUnit
+        messurementFormatter.numberFormatter = numberFormatter
+        return messurementFormatter.string(from: convertedWeight)
+    }
+}
+
 
 class WeightsTableViewCell: UITableViewCell {
 
@@ -23,7 +39,7 @@ class WeightsTableViewCell: UITableViewCell {
     @IBOutlet weak var weigntsSegmentedControl: RoundedSegmentedControl! {
         didSet {
             weigntsSegmentedControl.items = ["Lbs", "Kgs"]
-            weigntsSegmentedControl.selectedSegmentIndex = User.shared.weightsType.rawValue
+            weigntsSegmentedControl.selectedSegmentIndex = UserSettings.shared.weightsType.rawValue
             weigntsSegmentedControl.addTarget(self, action: #selector(weightsSegmentControlChangedValue), for: .valueChanged)
         }
     }
