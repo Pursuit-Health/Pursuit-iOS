@@ -10,7 +10,7 @@ import UIKit
 
 class TabCollectionCell: UICollectionViewCell {
 
-    var tabItemButtonPressedBlock: ((Void) -> Void)?
+    var tabItemButtonPressedBlock: (() -> Void)?
     var option: TabPageOption = TabPageOption() {
         didSet {
             currentBarViewHeightConstraint.constant = option.currentBarHeight
@@ -99,6 +99,6 @@ extension TabCollectionCell {
 
 extension TabCollectionCell {
     @IBAction fileprivate func tabItemTouchUpInside(_ button: UIButton) {
-        tabItemButtonPressedBlock?(())
+        tabItemButtonPressedBlock?()
     }
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="62" id="KGk-i7-Jjw" customClass="WeightsTableViewCell" customModule="Pursuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKI-q0-THR">
+                        <rect key="frame" x="40" y="26" width="62.5" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHF-Sn-s2a" userLabel="switchBg">
+                        <rect key="frame" x="210" y="16" width="90" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HH9-tH-cnZ" customClass="RoundedSegmentedControl" customModule="Pursuit" customModuleProvider="target">
+                        <rect key="frame" x="210" y="16" width="90" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="QNy-8a-pfn"/>
+                            <constraint firstAttribute="height" constant="30" id="yJO-JP-7ia"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RHF-Sn-s2a" firstAttribute="bottom" secondItem="HH9-tH-cnZ" secondAttribute="bottom" id="2h5-ma-xDE"/>
+                    <constraint firstItem="RHF-Sn-s2a" firstAttribute="top" secondItem="HH9-tH-cnZ" secondAttribute="top" id="4NT-yW-ndy"/>
+                    <constraint firstItem="cKI-q0-THR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="6LP-kS-2R9"/>
+                    <constraint firstItem="cKI-q0-THR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Hd-q4-8Uw"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="cKI-q0-THR" secondAttribute="bottom" constant="15" id="A51-Ir-38M"/>
+                    <constraint firstItem="RHF-Sn-s2a" firstAttribute="leading" secondItem="HH9-tH-cnZ" secondAttribute="leading" id="MfR-me-7cY"/>
+                    <constraint firstAttribute="trailing" secondItem="HH9-tH-cnZ" secondAttribute="trailing" constant="20" id="kii-lu-NzB"/>
+                    <constraint firstItem="cKI-q0-THR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="neP-Gj-fXg"/>
+                    <constraint firstItem="HH9-tH-cnZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="t71-OM-zmQ"/>
+                    <constraint firstItem="RHF-Sn-s2a" firstAttribute="trailing" secondItem="HH9-tH-cnZ" secondAttribute="trailing" id="yJs-Qi-L9J"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="weigntsSegmentedControl" destination="HH9-tH-cnZ" id="zfu-n0-Zga"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="45"/>
+        </tableViewCell>
+    </objects>
+</document>

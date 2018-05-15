@@ -52,6 +52,7 @@ class User: Mappable {
         self.email           <- map["user.data.email"]
         self.password        <- map["user.data.password"]
         self.birthday        <- map["user.data.birthday"]
+        self.avatar          <- map["user.data.avatar"]
         self.id              <- map["user.data.userable.data.id"]
     }
     

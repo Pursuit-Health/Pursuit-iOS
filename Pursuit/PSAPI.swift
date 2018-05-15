@@ -90,6 +90,7 @@ class PSAPI: APIHandable {
                             UserDefaults.standard.set(false, forKey:"isClient")
                             user = Trainer(JSON: objectData)
                         }
+                        User.shared.avatar = user?.avatar
                         User.shared.token = token
                         
                         //DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
@@ -130,7 +131,7 @@ class PSAPI: APIHandable {
                             user = Client(JSON: objectData)
                         }
                         User.shared.token = token
-                        
+                        User.shared.avatar = user?.avatar
                         //DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                         //User.getFireBaseToken(completion: completion)
                         //}
@@ -168,6 +169,9 @@ class PSAPI: APIHandable {
                     let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
                     if let type = metaData?["user_type"], let token = metaData?["token"], let userData = userData {
                         let objectData = ["user" : userData]
+                        
+                        print(objectData)
+
                         if type == "trainer" {
                             UserDefaults.standard.set(false, forKey:"isClient")
                             user = Trainer(JSON: objectData)
@@ -176,7 +180,7 @@ class PSAPI: APIHandable {
                             user = Client(JSON: objectData)
                         }
                         User.shared.token = token
-        
+                        User.shared.avatar = user?.avatar
                         User.getFireBaseToken(completionHandler: { (user, error) in
                             
                         })
@@ -231,25 +235,26 @@ class PSAPI: APIHandable {
         return self.service.request(request: request).validate().responseJSON { (response) in
             SVProgressHUD.dismiss()
             var error: ErrorProtocol?
-            var user: User?
+            var user: User? = User()
             if let responseError = self.handle(response: response) {
                 error = responseError
             } else {
                 switch response.result {
                 case .success(let JSON):
-                    let userData = ((JSON as? [String : Any])?["data"] as? [String : Any])
+                    let userData = (JSON as? [String : Any])
                     let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
                     if let type = metaData?["user_type"], let userData = userData {
                         let objectData = ["user" : userData]
-                        if let name = userData["name"] as? String, let email =  userData["email"] as? String {
-                            User.shared.name = name
-                            User.shared.email = email
-                            if let avatar = userData["avatar"] as? String {
-                                User.shared.avatar = avatar
-                            }
+                        print(objectData)
+                        
+                        if type == "trainer" {
+                            user = Trainer(JSON: objectData)
+                        } else if type == "client" {
+                            user = Client(JSON: objectData)
                         }
+                        User.shared.avatar = user?.avatar
                     }
-                    
+                    completion(user, error)
                 case .failure(let serverError):
                     error = serverError.psError
                 }
@@ -284,8 +289,11 @@ class PSAPI: APIHandable {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
+                        
+                        if let JSON = response.result.value as? NSDictionary, let data = JSON["data"] as? [String : Any] {
+                            User.shared.avatar = data["avatar"] as? String ?? ""
+                        }
                         completion(nil)
-                        debugPrint(response)
                     }
                 case .failure(let encodingError):
                     completion(encodingError.psError)

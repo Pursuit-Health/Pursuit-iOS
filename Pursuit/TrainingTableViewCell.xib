@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,46 +19,54 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="97.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Bench press" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwy-Se-IqF">
-                        <rect key="frame" x="27" y="14" width="95" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bench press" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dwy-Se-IqF">
+                        <rect key="frame" x="35" y="17" width="92" height="9"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="time_clock" translatesAutoresizingMaskIntoConstraints="NO" id="Ogu-Ab-ANF">
-                        <rect key="frame" x="27" y="50" width="30" height="31"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_clock" translatesAutoresizingMaskIntoConstraints="NO" id="Ogu-Ab-ANF">
+                        <rect key="frame" x="35" y="41" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="6RJ-6Z-8YP"/>
+                            <constraint firstAttribute="width" constant="30" id="ELC-Zd-IDc"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="3*10 sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-8x-kXF">
-                        <rect key="frame" x="78" y="55" width="73" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3*10 sets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDT-8x-kXF">
+                        <rect key="frame" x="86" y="46.5" width="62" height="20.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="BYo-6d-YFq">
-                        <rect key="frame" x="167" y="49" width="13" height="33"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="BYo-6d-YFq">
+                        <rect key="frame" x="164" y="42.5" width="16" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="Ru1-iz-YhM"/>
+                            <constraint firstAttribute="height" constant="27" id="wn5-rR-uIB"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="125 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hM-mm-3kl">
-                        <rect key="frame" x="195" y="55" width="50.5" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hM-mm-3kl">
+                        <rect key="frame" x="195" y="46.5" width="46" height="20.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ba4-1g-d0g">
-                        <rect key="frame" x="0.0" y="88.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="86" width="320" height="1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="JDI-BC-UFp"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_right" translatesAutoresizingMaskIntoConstraints="NO" id="oqr-4E-lmZ">
-                        <rect key="frame" x="264" y="36.5" width="25" height="25"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="oqr-4E-lmZ">
+                        <rect key="frame" x="274" y="43" width="7" height="12"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="Ogu-Ab-ANF" firstAttribute="top" secondItem="Dwy-Se-IqF" secondAttribute="bottom" constant="15" id="9cw-HV-qVR"/>
                     <constraint firstItem="oqr-4E-lmZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EVg-Y8-v1D"/>
-                    <constraint firstItem="Ba4-1g-d0g" firstAttribute="top" secondItem="Ogu-Ab-ANF" secondAttribute="bottom" constant="5" id="KGC-Fs-4a9"/>
+                    <constraint firstItem="Ba4-1g-d0g" firstAttribute="top" secondItem="Ogu-Ab-ANF" secondAttribute="bottom" constant="15" id="KGC-Fs-4a9"/>
                     <constraint firstItem="Ogu-Ab-ANF" firstAttribute="leading" secondItem="Dwy-Se-IqF" secondAttribute="leading" id="LJy-Hi-OcS"/>
                     <constraint firstItem="bDT-8x-kXF" firstAttribute="centerY" secondItem="Ogu-Ab-ANF" secondAttribute="centerY" id="Mce-gd-ih3"/>
                     <constraint firstItem="Ba4-1g-d0g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="N6k-1e-7RI"/>
@@ -85,8 +93,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="btn_right" width="25" height="25"/>
-        <image name="location" width="13" height="33"/>
+        <image name="location" width="18" height="30"/>
+        <image name="right_arrow" width="7" height="12"/>
         <image name="time_clock" width="30" height="31"/>
     </resources>
 </document>

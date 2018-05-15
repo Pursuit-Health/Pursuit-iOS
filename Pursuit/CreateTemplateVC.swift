@@ -164,9 +164,11 @@ extension CreateTemplateVC: UITableViewDataSource {
         guard let cell = tableView.gc_dequeueReusableCell(type: TrainingTableViewCell.self) else { return UITableViewCell()
         }
         let exersiceInfo = self.exercises[indexPath.row]
-        
+        let weightstype = UserSettings.shared.weightsType
+        let weight = Double(exersiceInfo.weight ?? 0)
         cell.exercisesNameLabel.text    = exersiceInfo.name
-        cell.weightLabel.text           = "\(exersiceInfo.weight ?? 0)"
+        cell.weightLabel.text           = weightstype.getWeightsFrom(weight: weight)
+        cell.exercisesNameLabel.text    = exersiceInfo.name
         cell.setsLabel.text             = "\(exersiceInfo.times ?? 0)" + "x" + "\(exersiceInfo.count ?? 0)"
         
         return cell
@@ -175,7 +177,10 @@ extension CreateTemplateVC: UITableViewDataSource {
 
 extension CreateTemplateVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let exersiceInfo = self.exercises[indexPath.row]
+        guard let controller = addExercisesVC else { return }
+        controller.exercise = exersiceInfo
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="416" id="KGk-i7-Jjw" customClass="UserInfoTableViewCell" customModule="Pursuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="360"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="359.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-camera-2" translatesAutoresizingMaskIntoConstraints="NO" id="Lg1-2t-5ZZ">
+                        <rect key="frame" x="50" y="12" width="220" height="220"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Lg1-2t-5ZZ" secondAttribute="height" multiplier="1:1" id="hvD-f6-L0V"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="BBB_percentCorner">
+                                <real key="value" value="50"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhC-cz-A49">
+                        <rect key="frame" x="50" y="12" width="220" height="220"/>
+                        <connections>
+                            <action selector="changePhofilePhotoButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3M4-dT-p6m"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wj-3Y-6FU">
+                        <rect key="frame" x="120" y="252" width="80" height="24"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YbX-TD-Knu">
+                        <rect key="frame" x="139" y="296" width="42" height="24"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYf-NE-2MH">
+                        <rect key="frame" x="20" y="348" width="280" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="dYL-h7-Uek"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zYf-NE-2MH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1ou-tq-Im4"/>
+                    <constraint firstItem="YbX-TD-Knu" firstAttribute="centerX" secondItem="9Wj-3Y-6FU" secondAttribute="centerX" id="ATN-cR-wGR"/>
+                    <constraint firstItem="Lg1-2t-5ZZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="AXo-qc-WTA"/>
+                    <constraint firstItem="BhC-cz-A49" firstAttribute="bottom" secondItem="Lg1-2t-5ZZ" secondAttribute="bottom" id="AzE-ta-Yvg"/>
+                    <constraint firstItem="YbX-TD-Knu" firstAttribute="top" secondItem="9Wj-3Y-6FU" secondAttribute="bottom" constant="20" id="E11-iP-uAc"/>
+                    <constraint firstItem="Lg1-2t-5ZZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="GnY-3Q-dlz"/>
+                    <constraint firstItem="BhC-cz-A49" firstAttribute="top" secondItem="Lg1-2t-5ZZ" secondAttribute="top" id="W5P-05-Q6i"/>
+                    <constraint firstItem="9Wj-3Y-6FU" firstAttribute="top" secondItem="Lg1-2t-5ZZ" secondAttribute="bottom" constant="20" id="WCF-fv-Xuh"/>
+                    <constraint firstItem="zYf-NE-2MH" firstAttribute="top" secondItem="YbX-TD-Knu" secondAttribute="bottom" constant="20" id="XXP-pK-pqM"/>
+                    <constraint firstItem="BhC-cz-A49" firstAttribute="trailing" secondItem="Lg1-2t-5ZZ" secondAttribute="trailing" id="ZnP-l4-h9g"/>
+                    <constraint firstAttribute="trailing" secondItem="Lg1-2t-5ZZ" secondAttribute="trailing" constant="50" id="ag5-iR-LnT"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="zYf-NE-2MH" secondAttribute="bottom" id="jZN-MJ-r7K"/>
+                    <constraint firstItem="BhC-cz-A49" firstAttribute="leading" secondItem="Lg1-2t-5ZZ" secondAttribute="leading" id="m51-oT-vuo"/>
+                    <constraint firstItem="Lg1-2t-5ZZ" firstAttribute="width" secondItem="Lg1-2t-5ZZ" secondAttribute="height" multiplier="1:1" id="q2x-nm-jRK"/>
+                    <constraint firstAttribute="trailing" secondItem="zYf-NE-2MH" secondAttribute="trailing" constant="20" id="vIt-KU-idD"/>
+                    <constraint firstItem="9Wj-3Y-6FU" firstAttribute="centerX" secondItem="Lg1-2t-5ZZ" secondAttribute="centerX" id="w0d-cW-jyZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="userEmailLabel" destination="YbX-TD-Knu" id="zmn-qO-ddj"/>
+                <outlet property="userNameLabel" destination="9Wj-3Y-6FU" id="uM7-g4-eOe"/>
+                <outlet property="userPhotoImageView" destination="Lg1-2t-5ZZ" id="e3K-K2-GwY"/>
+            </connections>
+            <point key="canvasLocation" x="24" y="84"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="photo-camera-2" width="512" height="512"/>
+    </resources>
+</document>

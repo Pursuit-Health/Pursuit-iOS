@@ -54,6 +54,15 @@
 		782E89A51F797FD8002AD54C /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A41F797FD8002AD54C /* Workout.swift */; };
 		782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A61F7980D2002AD54C /* Workout+API.swift */; };
 		782E89AA1F79A944002AD54C /* TrainerTemplatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E89A91F79A944002AD54C /* TrainerTemplatesVC.swift */; };
+		782E9DC620AA30F90034A51B /* WeightsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9C1720AA30F50034A51B /* WeightsTableViewCell.xib */; };
+		782E9DC720AA30F90034A51B /* WeightsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9C1820AA30F50034A51B /* WeightsTableViewCell.swift */; };
+		782E9DC820AA30F90034A51B /* UserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9C1920AA30F50034A51B /* UserInfoTableViewCell.xib */; };
+		782E9ED320AA30FA0034A51B /* UserInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9DC520AA30F90034A51B /* UserInfoTableViewCell.swift */; };
+		782E9ED620AA31360034A51B /* LogoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9ED420AA31360034A51B /* LogoutTableViewCell.xib */; };
+		782E9ED720AA31360034A51B /* LogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9ED520AA31360034A51B /* LogoutTableViewCell.swift */; };
+		782E9ED920AA31B50034A51B /* RoundedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9ED820AA31B50034A51B /* RoundedSegmentedControl.swift */; };
+		782E9EDE20AAF68C0034A51B /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9EDD20AAF68C0034A51B /* UserSettings.swift */; };
+		782E9EE120AAF72A0034A51B /* PSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9EE020AAF72A0034A51B /* PSUserDefaults.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -298,6 +307,15 @@
 		782E89A41F797FD8002AD54C /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		782E89A61F7980D2002AD54C /* Workout+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Workout+API.swift"; sourceTree = "<group>"; };
 		782E89A91F79A944002AD54C /* TrainerTemplatesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerTemplatesVC.swift; sourceTree = "<group>"; };
+		782E9C1720AA30F50034A51B /* WeightsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightsTableViewCell.xib; sourceTree = "<group>"; };
+		782E9C1820AA30F50034A51B /* WeightsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightsTableViewCell.swift; sourceTree = "<group>"; };
+		782E9C1920AA30F50034A51B /* UserInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoTableViewCell.xib; sourceTree = "<group>"; };
+		782E9DC520AA30F90034A51B /* UserInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewCell.swift; sourceTree = "<group>"; };
+		782E9ED420AA31360034A51B /* LogoutTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoutTableViewCell.xib; sourceTree = "<group>"; };
+		782E9ED520AA31360034A51B /* LogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutTableViewCell.swift; sourceTree = "<group>"; };
+		782E9ED820AA31B50034A51B /* RoundedSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedSegmentedControl.swift; sourceTree = "<group>"; };
+		782E9EDD20AAF68C0034A51B /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		782E9EE020AAF72A0034A51B /* PSUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSUserDefaults.swift; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -843,6 +861,43 @@
 			name = TrainerTemplatesVC;
 			sourceTree = "<group>";
 		};
+		782E9EDA20AA32270034A51B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				782E9DC520AA30F90034A51B /* UserInfoTableViewCell.swift */,
+				782E9C1920AA30F50034A51B /* UserInfoTableViewCell.xib */,
+				782E9ED520AA31360034A51B /* LogoutTableViewCell.swift */,
+				782E9ED420AA31360034A51B /* LogoutTableViewCell.xib */,
+				782E9C1820AA30F50034A51B /* WeightsTableViewCell.swift */,
+				782E9C1720AA30F50034A51B /* WeightsTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		782E9EDB20AA323D0034A51B /* CustomSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				782E9ED820AA31B50034A51B /* RoundedSegmentedControl.swift */,
+			);
+			name = CustomSwitch;
+			sourceTree = "<group>";
+		};
+		782E9EDC20AAF6760034A51B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				782E9EDD20AAF68C0034A51B /* UserSettings.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		782E9EDF20AAF7010034A51B /* PSUserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				782E9EE020AAF72A0034A51B /* PSUserDefaults.swift */,
+			);
+			name = PSUserDefaults;
+			sourceTree = "<group>";
+		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1349,6 +1404,8 @@
 		785FF42C1FA31E6500787CF4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				782E9EDB20AA323D0034A51B /* CustomSwitch */,
+				782E9EDA20AA32270034A51B /* Cells */,
 				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
 				783A45761F8E87000048A0F9 /* NavigatorVC.swift */,
 			);
@@ -1687,6 +1744,7 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				782E9EDC20AAF6760034A51B /* Settings */,
 				78428EB41FE831EB003C38D0 /* Dialog */,
 				782E89A31F797FBF002AD54C /* Workout */,
 				78383B431F72A89500AA75E3 /* SignInMapper */,
@@ -1889,6 +1947,7 @@
 		84AB4D8F1F32871C00531740 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				782E9EDF20AAF7010034A51B /* PSUserDefaults */,
 				780D60171F5EAA1B002A7303 /* DeepLink */,
 				78094A201F5BD860001325B4 /* Keychain */,
 				84AB4D901F3287B000531740 /* Network */,
@@ -2107,6 +2166,7 @@
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				784C5E731FD9BCB00050C1E5 /* ChatsListCell.xib in Resources */,
 				788EE89D1F34E68300DD8A98 /* TrainingTableViewCell.xib in Resources */,
+				782E9DC620AA30F90034A51B /* WeightsTableViewCell.xib in Resources */,
 				784E3D411FF14B140096DFD8 /* SameMessageImageCell.xib in Resources */,
 				784510551FD9E7EC00285155 /* LICENSE in Resources */,
 				786F2D361FEAC10E00E3B347 /* TypingCell.xib in Resources */,
@@ -2138,8 +2198,10 @@
 				784510561FD9E7EC00285155 /* README.md in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
+				782E9DC820AA30F90034A51B /* UserInfoTableViewCell.xib in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
 				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
+				782E9ED620AA31360034A51B /* LogoutTableViewCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
 				781110541F65932700457E8B /* SelectTrainer.xib in Resources */,
 				784510311FD9E7EB00285155 /* JSQMessagesViewController.xib in Resources */,
@@ -2186,9 +2248,62 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/DeepLinkKit/DeepLinkKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
+				"${BUILT_PRODUCTS_DIR}/HTTPStatusCodes/HTTPStatusCodes.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/KVNProgress/KVNProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/KeyboardWrapper/KeyboardWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/NSDate+TimeAgo/NSDate_TimeAgo.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RHDisplayLinkStepper/RHDisplayLinkStepper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SHTextFieldBlocks/SHTextFieldBlocks.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepLinkKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTTPStatusCodes.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVNProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeyboardWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_TimeAgo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RHDisplayLinkStepper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SHTextFieldBlocks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2201,13 +2316,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pursuit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2230,6 +2348,7 @@
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
 				78179B891F54982C00520D08 /* User+API.swift in Sources */,
 				7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */,
+				782E9EE120AAF72A0034A51B /* PSUserDefaults.swift in Sources */,
 				783484221F7155CC00C58191 /* UserTypeView.swift in Sources */,
 				780D601D1F5EAA6C002A7303 /* GuestDeepLinkService.swift in Sources */,
 				786F2D2F1FEAA7A500E3B347 /* ChatCornerView.swift in Sources */,
@@ -2276,12 +2395,14 @@
 				785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */,
 				782E899B1F7911F5002AD54C /* ClientTemlatesVC.swift in Sources */,
 				782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */,
+				782E9ED320AA30FA0034A51B /* UserInfoTableViewCell.swift in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
 				78E5D3081FDB393A00096B46 /* MaskView.swift in Sources */,
 				784510411FD9E7EC00285155 /* JSQMessagesBubbleImage.m in Sources */,
 				7845102D1FD9E7EB00285155 /* UIImage+JSQMessages.m in Sources */,
 				78094A271F5BD94E001325B4 /* KeychainAccessService.swift in Sources */,
+				782E9ED920AA31B50034A51B /* RoundedSegmentedControl.swift in Sources */,
 				845883021F706E6000BE7D69 /* Error+Pursuit.swift in Sources */,
 				784510441FD9E7EC00285155 /* JSQMessagesCellTextView.m in Sources */,
 				784510281FD9E7EB00285155 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
@@ -2300,6 +2421,7 @@
 				784510501FD9E7EC00285155 /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				7845103A1FD9E7EB00285155 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				784510381FD9E7EB00285155 /* JSQMessagesBubblesSizeCalculator.m in Sources */,
+				782E9EDE20AAF68C0034A51B /* UserSettings.swift in Sources */,
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				783484281F71804D00C58191 /* SignUpButtonCell.swift in Sources */,
@@ -2320,6 +2442,7 @@
 				78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */,
 				78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */,
 				784510471FD9E7EC00285155 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
+				782E9ED720AA31360034A51B /* LogoutTableViewCell.swift in Sources */,
 				7845104E1FD9E7EC00285155 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				7845F8451FDDA34600707FBB /* SendeMessageWithImageCell.swift in Sources */,
 				784510321FD9E7EB00285155 /* JSQMessagesAvatarImageFactory.m in Sources */,
@@ -2379,6 +2502,7 @@
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				784C5E721FD9BCB00050C1E5 /* ChatsListCell.swift in Sources */,
 				784510351FD9E7EB00285155 /* JSQMessagesTimestampFormatter.m in Sources */,
+				782E9DC720AA30F90034A51B /* WeightsTableViewCell.swift in Sources */,
 				7845103E1FD9E7EC00285155 /* JSQMediaItem.m in Sources */,
 				7845103C1FD9E7EC00285155 /* JSQAudioMediaItem.m in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
@@ -2537,6 +2661,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HEL7S68QC6;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Crashlytics",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Crashlytics/iOS",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Fabric",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Fabric/iOS",
+				);
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
@@ -2557,6 +2688,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HEL7S68QC6;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Crashlytics",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Crashlytics/iOS",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Fabric",
+					"$(PROJECT_DIR)/Pursuit/Pursuit-iOS-mvp_v2/Pods/Fabric/iOS",
+				);
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
