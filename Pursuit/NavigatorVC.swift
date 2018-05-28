@@ -55,8 +55,7 @@ class NavigatorVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
-        
-        //self.addMenuBarButton()
+
     }
     
     //MARK: Private
@@ -91,17 +90,6 @@ class NavigatorVC: UIViewController {
         if self.revealViewController() != nil {
             self.revealViewController().revealToggle(self)
         }
-    }
-    
-    private func checkUserType() -> String {
-        if let clientType = Auth.IsClient {
-            if clientType {
-                return Constants.SeguesIDs.Client
-            } else {
-                return Constants.SeguesIDs.Trainer
-            }
-        }
-        return ""
     }
     
     func isClientType() -> Bool {

@@ -51,29 +51,32 @@ class ExcersiseData: Mappable {
         }
     }
     
-    var id          : Int?
-    var type        : ExcersiseType?
-    var name        : String?
-    var sets        : Int?
-    var reps        : Int?
+    var id              : Int?
+    var type            : ExcersiseType?
+    var name            : String?
+    var sets_count      : Int?
+    var reps            : Int?
     
-    var weight      : Int?
-    var rest        : String?
-    var notes       : String?
-    var exDesc      : String?
+    var weight          : Int?
+    var rest            : String?
+    var notes           : String?
+    var exDesc          : String?
     
-    var exercise_id : Int?
+    var exercise_id     : Int?
     
-    var isDone      : Bool?
-    var selected    : Bool?
-    var innerExercise: InnerExcersise?
-    var description : String?
+    var isDone          : Bool?
+    var selected        : Bool?
+    var innerExercise   : InnerExcersise?
+    var description     : String?
+    var sets            : [SetsData]?
+    var isStraitSets    : Bool?
+    var isWeighted      : Bool?
     
     func mapping(map: Map) {
         self.id             <- map["id"]
         self.type           <- (map["type"], EnumTransform<ExcersiseType>())
         self.name           <- map["name"]
-        self.sets           <- map["sets"]
+        self.sets_count     <- map["sets_count"]
         self.reps           <- map["reps"]
         self.weight         <- map["weight"]
         self.notes          <- map["notes"]
@@ -82,6 +85,11 @@ class ExcersiseData: Mappable {
         self.exercise_id    <- map["exercise_id"]
         self.rest           <- map["rest"]
         self.description    <- map["description"]
+        self.sets           <- map["sets"]
+        if self.sets == nil {
+           self.sets           <- map["sets.data"]
+        }
+    
     }
     
     init() {

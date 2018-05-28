@@ -20,12 +20,25 @@ class SettingsVC: UIViewController {
     enum SettingsType: Int {
         case profile    = 0
         case weight     = 1
-        case logout     = 2
+        case template   = 2
+        case logout     = 3
     }
     
     //MARK: Properties
     
     weak var delegate: SettingsVCDelegate?
+    
+    var cells: [SettingsType] {
+        if self.isClient() {
+            return [.profile, .weight, .logout]
+        } else {
+            return [.profile, .weight, .template, .logout]
+        }
+    }
+    
+    var templatesListVC: SavedTemplatesVC {
+        return UIStoryboard.trainer.SavedTemplatesList!
+    }
     
     //MARK: IBOutlets
     
@@ -90,6 +103,10 @@ class SettingsVC: UIViewController {
         self.settingsTableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
+    private func isClient() -> Bool {
+        return User.shared.coordinator is ClientCoordinator
+    }
+    
     func getUserInfo() {
         self.user = User.shared
     }
@@ -117,17 +134,31 @@ class SettingsVC: UIViewController {
     }
     
     fileprivate func typeForIndex(_ index: Int) -> SettingsType {
+        if isClient() && index == 2 {
+            return .logout
+        }
         return SettingsType(rawValue: index) ?? .profile
     }
 }
 
 extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return buildTableView(tableView, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let type = SettingsType(rawValue: indexPath.row)
+        if type == .template {
+            if self.revealViewController() != nil {
+                self.revealViewController().revealToggle(self)
+            }
+            (User.shared.coordinator as?
+                TrainerCoordinator)?.clientsListVC?.showSavedTemplatesVC()
+        }
     }
     
     func buildTableView(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -144,8 +175,12 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
                 cell = fillWeightCell(castedCell)
             }
         case .logout:
-            if let castedCell = tableView.gc_dequeueReusableCell(type: LogoutTableViewCell.self){
+            if let castedCell = tableView.gc_dequeueReusableCell(type: LogoutTableViewCell.self) {
                 cell = fillLogoutCell(castedCell)
+            }
+        case .template:
+            if let castedCell = tableView.gc_dequeueReusableCell(type: TemplateSettingsCell.self) {
+                cell = fillTemplateSettingCell(castedCell)
             }
         }
         return cell ?? UITableViewCell()
@@ -165,6 +200,10 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     
     func fillLogoutCell(_ cell: LogoutTableViewCell) -> LogoutTableViewCell{
         cell.delegate = self
+        return cell
+    }
+    
+    func fillTemplateSettingCell(_ cell: TemplateSettingsCell) -> TemplateSettingsCell {
         return cell
     }
 }

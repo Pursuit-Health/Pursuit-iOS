@@ -23,11 +23,18 @@ extension WeightsType {
         let unit: UnitMass = (self.rawValue == 0) ? UnitMass.pounds : UnitMass.kilograms
         let convertedWeight = Measurement(value: weight, unit: UnitMass.pounds).converted(to: unit)
         let numberFormatter = NumberFormatter()
-        numberFormatter.maximumFractionDigits = 1
+        numberFormatter.maximumFractionDigits = 0
         let messurementFormatter = MeasurementFormatter()
         messurementFormatter.unitOptions = .providedUnit
         messurementFormatter.numberFormatter = numberFormatter
         return messurementFormatter.string(from: convertedWeight)
+    }
+    
+    func convertToServerUnit(weight: Double) -> Int {
+        let unit: UnitMass = (self.rawValue == 0) ? UnitMass.pounds : UnitMass.kilograms
+        let convertedWeight = Measurement(value: weight, unit: unit)
+
+        return Int(convertedWeight.converted(to: UnitMass.pounds).value)
     }
 }
 

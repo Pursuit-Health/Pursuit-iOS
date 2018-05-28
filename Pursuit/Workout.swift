@@ -36,7 +36,12 @@ class Workout: Mappable {
         self.notes              <- map["notes"]
         self.startAtForUpload   <- map["start_at"]
         self.excersises         <- map["exercises"]
-        self.workoutExercises   <- map["templateExercises.data"]
+        
+        self.workoutExercises   <- map["templateExercises"]
+        
+        if workoutExercises == nil {
+            self.workoutExercises   <- map["templateExercises.data"]
+        }
         
     }
     

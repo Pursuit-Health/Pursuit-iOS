@@ -46,20 +46,27 @@ extension PSAPI {
         
         case getExercisesByCategoryId(categoryId: String)
         
+        case getSavedTemlates(templateNamePhrase: String, page: Int)
+        
+        case saveSavedTemplate(parameters: Parameters)
+        
+        case editSavedTemplate(templateId: String, parameters: Parameters)
+        
+        case deleteSavedTemplate(templateId: String)
+        
         //MARK: RequestConvertible
         
         var baseURLString: String {
-            //return "https://pursuithealthtech.com/v1/"
             return PSURL.BaseURL
         }
         
         var method: HTTPMethod {
             switch self {
-            case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises:
+        case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises, .saveSavedTemplate:
                 return .post
-            case .changePassword, .editTemplate:
+            case .changePassword, .editTemplate, .editSavedTemplate:
                 return .put
-            case .deleteTemplate, .deleteTemplateExercise:
+            case .deleteTemplate, .deleteTemplateExercise, .deleteSavedTemplate:
                 return .delete
             default:
                 return .get
@@ -135,6 +142,15 @@ extension PSAPI {
                 return "trainer/categories"
             case .getExercisesByCategoryId(let categoryId):
                 return "trainer/categories/" + categoryId + "/exercises"
+                
+            case .getSavedTemlates(_, _):
+                return "trainer/saved-templates"
+            case .saveSavedTemplate:
+                return "trainer/saved-templates"
+            case .editSavedTemplate(let templateId, _):
+                return "trainer/saved-templates/" + templateId
+            case .deleteSavedTemplate(let templateId):
+                return "trainer/saved-templates/" + templateId
             }
         }
         
@@ -149,6 +165,8 @@ extension PSAPI {
                 return ["start_date":startDate, "end_date": endDate]
             case .getClientEvents(let startDate, let endDate):
                 return ["start_date":startDate, "end_date": endDate]
+            case .getSavedTemlates(let templateNamePhrase, let page):
+                return ["search" : templateNamePhrase, "page" : "\(page)"]
             default:
                 return nil
             }
@@ -166,7 +184,9 @@ extension PSAPI {
                  .editTemplate(_, _ , let parameters),
                  .createEvent(let parameters),
                  .assignTemplate(_ , _ , let parameters),
-                 .searchExercises(let parameters):
+                 .searchExercises(let parameters),
+                 .saveSavedTemplate(let parameters),
+                 .editSavedTemplate(_, let parameters):
                 return parameters
             default:
                 return nil
@@ -180,7 +200,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises:
+            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates:
                 return "Bearer" + token
             default:
                 return ""

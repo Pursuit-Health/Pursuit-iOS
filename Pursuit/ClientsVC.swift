@@ -14,6 +14,7 @@ import EmptyKit
 
 protocol ClientsVCDelegate: class {
     func didSelect(client: Client, on controller: ClientsVC)
+    func showSavedTemplatesVC(on controller: ClientsVC)
 }
 
 class ClientsVC: UIViewController {
@@ -51,6 +52,8 @@ class ClientsVC: UIViewController {
     var isSwipeRightEnabled                     = true
     var buttonDisplayMode: ButtonDisplayMode    = .titleAndImage
     var buttonStyle: ButtonStyle                = .backgroundColor
+    
+    var savedTemplatesCoordinator: SavedTemplatesCoordinator = SavedTemplatesCoordinator()
     
     
     lazy var assignTemplateVC: AssignTemplateVC? = {
@@ -103,6 +106,10 @@ class ClientsVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func showSavedTemplatesVC() {
+        self.savedTemplatesCoordinator.start(from: self)
     }
     
     fileprivate func loadClients(){

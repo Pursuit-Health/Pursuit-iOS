@@ -77,6 +77,8 @@ class ClientInfoVC: UIViewController {
 
     @IBAction func addWorkoutButtonPressed(_ sender: Any) {
         self.delegate?.addWorkoutButtonPressed(on: self)
+        //Create action sheet for selecting templates
+        
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {

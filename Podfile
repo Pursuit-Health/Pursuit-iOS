@@ -29,4 +29,7 @@ target 'Pursuit' do
   pod 'IQKeyboardManagerSwift', '~> 5.0'
   pod 'MBProgressHUD', '~> 1.1'
   pod 'EmptyKit', '~> 4.0'
+  pod 'JTMaterialSwitch'
+  pod 'SwiftyTimer'
+  pod 'SimpleAlert'
 end

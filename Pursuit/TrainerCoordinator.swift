@@ -10,19 +10,28 @@ import Foundation
 import UIKit
 import MBProgressHUD
 import SVProgressHUD
+import SimpleAlert
 
 class TrainerCoordinator: Coordinator {
     
     weak var clientsListVC: ClientsVC?
     weak var clientProfileVC: ClientInfoVC?
     weak var selectedClient: Client?
-    weak var createTemplate: CreateTemplateVC?
+    weak var createTemplate: CreateNewTemplateVC?
     weak var mainExercisesVC: MainExercisesVC?
     weak var searchExercisesVC: ExercisesSearchVC?
     weak var exerciseDetailsVC: ExerciseDetailsVC?
+    weak var savedTemplateVC: SavedTemplateVC?
     
     var selectedCategory: Category?
     var exercises: [ExcersiseData] = []
+    var savedTemplateExercises: [ExcersiseData] = [] {
+        didSet {
+            let temp = SavedTemplateModel()
+            temp.exercises = self.savedTemplateExercises
+            savedTemplateVC?.savedTemplate = temp
+        }
+    }
     var customExercise: [ExcersiseData] = []
     var selectedWorkout: Workout?
     var isExerciseSelectedOnCategory: Bool = false
@@ -61,6 +70,13 @@ extension TrainerCoordinator: ClientsVCDelegate {
         controller.navigationController?.pushViewController(clientInfo, animated: true)
         
         self.clientProfileVC = clientInfo
+        
+    }
+    
+    func showSavedTemplatesVC(on controller: ClientsVC) {
+        let savedTemplatesVC = UIStoryboard.trainer.SavedTemplatesList!
+        savedTemplatesVC.delegate = self
+        controller.navigationController?.pushViewController(savedTemplatesVC, animated: true)
     }
 }
 
@@ -92,7 +108,7 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
         workout.getDetailedTemplateFor(clientId: "\(client?.id ?? 0)", templateId: "\(workout.id ?? 0)") { (exercises, error) in
             if error == nil {
                 
-                let createTemplate = UIStoryboard.trainer.CreateTemplate!
+                let createTemplate = UIStoryboard.trainer.CreateNewTemplate!
                 
                 createTemplate.workoutNew = workout
                 createTemplate.delegate = self
@@ -110,12 +126,23 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
     }
     
     func addWorkoutButtonPressed(on controller: ClientInfoVC) {
-        let createTemplate = UIStoryboard.trainer.CreateTemplate!
-        createTemplate.delegate = self
         
-        controller.navigationController?.pushViewController(createTemplate, animated: true)
+        let action = PSActionSheet(title: nil, message: "Add Template", style: .actionSheet).addAction(action: AlertAction(title: "Create New", style: .default, handler: { _ in
+            let createTemplate = UIStoryboard.trainer.CreateNewTemplate!
+            createTemplate.delegate = self
+            createTemplate.shouldClear = true
+            self.createTemplate = createTemplate
+            controller.navigationController?.pushViewController(createTemplate, animated: true)
+        })).addAction(action: AlertAction(title: "Use Saved Template", style: .default, handler: { _ in
+            let savedTemplatesVC = UIStoryboard.trainer.SavedTemplatesList!
+            savedTemplatesVC.delegate = self
+            
+            controller.navigationController?.pushViewController(savedTemplatesVC, animated: true)
+            
+        })).addAction(action: AlertAction(title: "Cancel", style: .cancel, handler: { _ in }))
+        controller.present(action, animated: true, completion: nil)
         
-        self.createTemplate = createTemplate
+
     }
 }
 
@@ -204,7 +231,6 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
     func exerciseSelected(exercise: ExcersiseData.InnerExcersise, controller: MainExercisesVC) {
         let detailsController = UIStoryboard.trainer.ExerciseDetails!
         
-        
         let exer = ExcersiseData()
         exer.innerExercise = exercise
         exer.name = exercise.name
@@ -218,10 +244,18 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
     }
     
     func finished(on controller: MainExercisesVC, exercises: [ExcersiseData], state: ControllerState) {
+        for exerc in exercises {
+            if exerc.sets_count == nil {
+                exerc.sets = []
+            }
+        }
         let work = Workout()
         if state == .customExercise{
             //TODO: Reimplament
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
+                if  ex.sets_count == nil {
+                    ex.sets = []
+                }
                 
                 self.checkExerciseRequiredFields(ex, controller: controller)
                 
@@ -251,7 +285,6 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         work.name = self.createTemplate?.workoutNew?.name
         work.isDone = self.createTemplate?.workoutNew?.isDone
         self.createTemplate?.workoutNew = work
-        
         self.exercises = []
         controller.navigationController?.popViewController(animated: true)
     }
@@ -323,9 +356,47 @@ extension TrainerCoordinator: ExerciseDetailsVCDelegate {
 
 extension TrainerCoordinator {
     func checkExerciseRequiredFields(_ ex: ExcersiseData, controller: UIViewController) {
-        if (ex.name?.isEmpty ?? true) || ex.sets == nil || ex.reps == nil || ex.weight == nil || ex.rest == nil {
+        if (ex.name?.isEmpty ?? true) || ex.sets == nil || ex.rest == nil {
             self.showError(controller: controller)
             return
         }
+    }
+}
+
+extension TrainerCoordinator: SavedTemplatesVCDelegate {
+
+    func addNewTemplate(on controller: SavedTemplatesVC) {
+
+    }
+    
+    func didSelectTemplate(_ template: SavedTemplateModel, on controller: SavedTemplatesVC) {
+
+            let createNewTemplate = UIStoryboard.trainer.CreateNewTemplate!
+        
+            createNewTemplate.delegate = self
+            createNewTemplate.workoutNew = Workout()
+            createNewTemplate.workoutNew?.name = template.name
+            createNewTemplate.workoutNew?.notes = template.notes
+            createNewTemplate.workoutNew?.excersises = template.exercises
+            createNewTemplate.workoutNew?.isDone = nil
+            createNewTemplate.shouldClear = false
+            createNewTemplate.isEditTemplate = true
+            self.createTemplate = createNewTemplate
+            controller.navigationController?.pushViewController(createNewTemplate, animated: true)
+    }
+    
+    func deleteTemplate(template: SavedTemplateModel, on controller: SavedTemplatesVC) {
+        SavedTemplateModel.deleteSavedTemplate(templateId: "\(template.id ?? 0)") { error in
+            if let error = error {
+                let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                controller.present(alert, animated: true, completion: nil)
+            }else {
+                controller.updateDataSource()
+            }
+        }
+    }
+
+    func closeBarButtonPressed(on controller: SavedTemplatesVC) {
+        controller.navigationController?.popViewController(animated: true)
     }
 }

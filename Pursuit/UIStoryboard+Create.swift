@@ -98,10 +98,6 @@ extension UIStoryboard {
             return self.instantiate(type: AddExerceiseVC.self)
         }
         
-        var CreateTemplate: CreateTemplateVC? {
-            return self.instantiate(type: CreateTemplateVC.self)
-        }
-        
         var SelectClients: SelectClientsVC? {
             return self.instantiate(type: SelectClientsVC.self)
         }
@@ -135,6 +131,15 @@ extension UIStoryboard {
         }
         var TrainerClients: ClientsVC? {
             return self.instantiate(type: ClientsVC.self)
+        }
+        var SavedTemplatesList: SavedTemplatesVC? {
+            return self.instantiate(type: SavedTemplatesVC.self)
+        }
+        var SavedTemplate: SavedTemplateVC? {
+            return self.instantiate(type: SavedTemplateVC.self)
+        }
+        var CreateNewTemplate: CreateNewTemplateVC? {
+            return self.instantiate(type: CreateNewTemplateVC.self)
         }
     }
     

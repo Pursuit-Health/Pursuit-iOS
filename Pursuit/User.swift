@@ -32,7 +32,7 @@ class User: Mappable {
     var coordinator: Coordinator? {
         return nil;
     }
-
+    
     var code: String?
     
     //MARK: Mappable

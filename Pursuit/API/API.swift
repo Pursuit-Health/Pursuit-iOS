@@ -4,6 +4,7 @@ import MBProgressHUD
 
 protocol APIHandable: Taskable {
     var service: ServiceProtocol { get }
+    var showProgress: Bool { get set }
     
     func simple(request: RequestConvertible, completion: ((_ error: ErrorProtocol?) -> Void)?) -> DataRequest?
     func perform(_ request: RequestConvertible) -> DataRequest?
@@ -31,8 +32,11 @@ extension APIHandable {
         var window :UIWindow = UIApplication.shared.keyWindow!
         
         if shouldStart {
-            MBProgressHUD.showAdded(to: window, animated: true)
-            UIApplication.shared.keyWindow?.isUserInteractionEnabled = false
+            if showProgress {
+                MBProgressHUD.showAdded(to: window, animated: true)
+                UIApplication.shared.keyWindow?.isUserInteractionEnabled = false
+            }
+            
         }
         
         let task = self.addTask()

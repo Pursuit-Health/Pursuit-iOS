@@ -18,6 +18,8 @@ class PSAPI: APIHandable {
     
     var service: ServiceProtocol = AlamofireService()
     
+    var showProgress: Bool = true
+
     func error<T>(response: DataResponse<T>) -> ErrorProtocol? {
         guard let data = response.data, data.count > 0 else {
             if let error = response.error {
@@ -511,6 +513,38 @@ class PSAPI: APIHandable {
             completion(response.result.value, error)
         }
     }
+    
+    //MARK: SavedTemplates
+    @discardableResult
+    func getSavedTemplates(templateNamePhrase: String, page: Int, completion: @escaping GetSavedTemplatesCompletion) -> DataRequest? {
+        let request = Request.getSavedTemlates(templateNamePhrase: templateNamePhrase, page: page)
+        
+        return self.perform(request)?.responseObject() { (response: DataResponse<SavedTemplatesObject>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
+    }
+    
+    @discardableResult
+    func saveSavedTemplate(templateData: [String:Any], completion: @escaping SaveSavedTemplateCompletion) -> DataRequest? {
+        let request = Request.saveSavedTemplate(parameters: templateData)
+        return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func editSavedTemplate(templateId: String, templateData: [String:Any], completion: @escaping EditSavedTemplateCompletion) -> DataRequest? {
+        let request = Request.editSavedTemplate(templateId: templateId, parameters: templateData)
+        return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func deleteSavedTemplate(templateId: String, completion: @escaping EditSavedTemplateCompletion) -> DataRequest? {
+        let request = Request.deleteSavedTemplate(templateId: templateId)
+        return self.simple(request: request, completion: completion)
+    }
 }
 
 extension PSAPI {
@@ -576,4 +610,10 @@ extension PSAPI {
     
     typealias GetExercisesByCategoryIdCompletion   = (_ exercises: [ExcersiseData.InnerExcersise]?, _ error: ErrorProtocol?) -> Void
     typealias SearchExerciseCompletion  = (_ exercises: [ExcersiseData.InnerExcersise]?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetSavedTemplatesCompletion = (_ savedTemplates: SavedTemplatesObject?, _ error: ErrorProtocol?) -> Void
+    
+    typealias SaveSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
+    typealias EditSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
+    typealias DeleteSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
 }

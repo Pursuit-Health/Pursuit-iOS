@@ -108,7 +108,7 @@ class ExerciseCategoryVC: UIViewController {
         ExcersiseData.searchExercise(phrase: phrase) { (exercises, error) in
             if error == nil {
                 self.isExercisesSearch = true
-                self.exercises = exercises!
+                self.exercises = exercises ?? []
                 
                 self.lastChange = nil
             }else {
