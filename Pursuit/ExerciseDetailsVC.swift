@@ -200,7 +200,7 @@ class ExerciseDetailsVC: UIViewController {
             cell.exerciseImageView.image                    = imageFromName("timeline")
             cell.exerciseTextField.keyboardType             = .numberPad
             if (excersize.isStraitSets ?? false) {
-                cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_max ?? 0)"
+                cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_min ?? 0)"
             }else if let rep = excersize.reps {
                 cell.exerciseTextField.text                 = String(rep)
             } else {
@@ -218,7 +218,7 @@ class ExerciseDetailsVC: UIViewController {
             cell.exerciseImageView.image                    = imageFromName("weight")
             cell.exerciseTextField.keyboardType             = .numberPad
             if (excersize.isStraitSets ?? false) {
-                let weight = Double(excersize.sets?.first?.weight_max ?? 0) 
+                let weight = Double(excersize.sets?.first?.weight_min ?? 0)
                 cell.exerciseTextField.text = UserSettings.shared.weightsType.getWeightsFrom(weight: weight)
             }else if let weight = excersize.weight {
                 cell.exerciseTextField.text                 = String(weight)
@@ -330,12 +330,14 @@ class ExerciseDetailsVC: UIViewController {
             cell.delegate = delegate
             cell.titleLabel.text = "Weighted exercise?"
             cell.stateSwitch?.setOn(exercise.isWeighted ?? false, animated: false)
+            cell.stateSwitch?.isHidden = (User.shared.coordinator is ClientCoordinator)
         }
         
         private func fillStraightExerciseStateCell(cell: StraightExerciseStateCell,exercise: ExcersiseData, delegate: StraightExerciseStateCellDelegate) {
             cell.delegate = delegate
             cell.titleLabel.text = "Straight sets?"
             cell.stateSwitch?.setOn(exercise.isStraitSets ?? false, animated: false)
+            cell.stateSwitch?.isHidden = (User.shared.coordinator is ClientCoordinator)
             //cell.stateSwitch?.setOn(!((exercise.sets_count ?? 0) == (exercise.sets?.count ?? 0)), animated: false)
         }
         
@@ -453,6 +455,8 @@ class ExerciseDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //TODO: Need refactoring
         if self.excersize.type == nil {
             self.exerciseType = .warmup
         }else {
@@ -467,7 +471,12 @@ class ExerciseDetailsVC: UIViewController {
         
         self.excersize.isWeighted = self.excersize.sets_count != nil
         self.excersize.isStraitSets = (excersize.sets_count ?? 0) == 0
-        if excersize.sets?.first?.reps_min == 10000 {
+        
+        if (excersize.sets_count ?? 0) == 0 || excersize.sets?.count  == 0 || excersize.sets?.count == nil {
+           self.excersize.isStraitSets = true
+        }
+        
+        if excersize.sets?.first?.reps_max == nil {
             self.excersize.isStraitSets = true
         }
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -527,8 +536,8 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                         self.excersize.sets?.append(SetsData())
                     }
                     let rep = Int(text1 ?? "")
-                    self.excersize.sets?.first?.reps_max = rep
-                    self.excersize.sets?.first?.reps_min = 10000
+                    self.excersize.sets?.first?.reps_min = nil
+                    self.excersize.sets?.first?.reps_min = rep
                 }
             case .weights:
                 self.excersize.weight = Int(text1 ?? "")
@@ -540,8 +549,8 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                     }
             
                     let weigt = Double(text1 ?? "") ?? 0
-                    self.excersize.sets?.first?.weight_max = UserSettings.shared.weightsType.convertToServerUnit(weight: weigt)
-                    self.excersize.sets?.first?.weight_min = 10000
+                    self.excersize.sets?.first?.weight_max = nil
+                    self.excersize.sets?.first?.weight_min = UserSettings.shared.weightsType.convertToServerUnit(weight: weigt)
                 }
             case .rest:
                 self.excersize.rest = text1
@@ -655,7 +664,7 @@ extension ExerciseDetailsVC: WeightedExerciseStateCellDelegate {
     
     func recalculateSets() {
         self.excersize.sets = []
-        let setsCount = self.excersize.sets_count ?? 0
+        let setsCount = self.excersize.sets_count ?? 1
         cellsInfo = [.exerciseType(excersize: self.excersize, delegate: self),
                      .name(excersize: self.excersize),
                      .weightedExerciseStateCell(delegate: self, exercise:self.excersize),
@@ -710,7 +719,7 @@ extension ExerciseDetailsVC: StraightExerciseStateCellDelegate {
 
         if !(self.excersize.isStraitSets ?? false) {
 
-            if (self.excersize.sets?.count ?? 0) > 0 && (self.excersize.sets?.first?.reps_min ?? 0) == 10000 {
+            if (self.excersize.sets?.count ?? 0) > 0 && (self.excersize.sets?.first?.reps_max) == nil {
                 for i in 0..<setsCount {
                     cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
                     cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))

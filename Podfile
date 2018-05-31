@@ -32,4 +32,5 @@ target 'Pursuit' do
   pod 'JTMaterialSwitch'
   pod 'SwiftyTimer'
   pod 'SimpleAlert'
+  pod 'PullToRefreshSwift'
 end

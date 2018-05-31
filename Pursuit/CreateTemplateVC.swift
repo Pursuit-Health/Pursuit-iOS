@@ -62,9 +62,12 @@ class CreateTemplateVC: UIViewController {
             var weight = Double(excersise.weight ?? 0)
             var reps = excersise.reps ?? 0
             cell.exercisesNameLabel.text    = excersise.name
-            if excersise.sets?.first?.reps_min == 10000 {
-                weight = Double(excersise.sets?.first?.weight_max ?? 0)
-                reps = excersise.sets?.first?.reps_max ?? 0
+            if excersise.sets?.first?.reps_max == nil {
+                weight = Double(excersise.sets?.first?.weight_min ?? 0)
+                reps = excersise.sets?.first?.reps_min ?? 0
+            }else {
+                weight = Double(excersise.sets?.first?.weight_min ?? 0)
+                reps = excersise.sets?.first?.reps_min ?? 0
             }
             cell.weightLabel.text           = weightsType.getWeightsFrom(weight: weight)
             cell.setsLabel.text             = "\(excersise.sets_count ?? 0)" + "x" + "\(reps) reps"
@@ -361,8 +364,8 @@ extension CreateTemplateVC: SwipeTableViewCellDelegate {
                     }else {
                         self.delegate?.deleteWorkoutExercise(workout, exercise: excersie, on: self)
                     }
+                }
             }
-        }
         }
         
         // customize the action appearance

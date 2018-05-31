@@ -11,6 +11,7 @@ import SDWebImage
 import MBProgressHUD
 import SwipeCellKit
 import EmptyKit
+import PullToRefreshSwift
 
 protocol ClientInfoVCDelegate: class {
     func selected(workout: Workout, on controller: ClientInfoVC, client: Client?)
@@ -90,6 +91,10 @@ class ClientInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.clientInfoTableView.addPullRefresh { _ in
+            self.updateWorkouts()
+        }
+    
         self.setUpBackgroundImage()
         
         self.subscribeForNotifications()
@@ -117,6 +122,7 @@ class ClientInfoVC: UIViewController {
         self.dataSource?.loadInfo(controller: self, completion: { (client, workouts) in
             self.client = client
             self.workouts = workouts ?? []
+           self.clientInfoTableView?.stopPullRefreshEver()
         })
     }
     

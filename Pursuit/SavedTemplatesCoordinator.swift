@@ -158,9 +158,15 @@ extension SavedTemplatesCoordinator: MainExercisesVCDelegate,  MainExercisesVCDa
         }else {
             self.exercises.append(contentsOf: exercises)
         }
+        
         if self.savedTemplateVC?.savedTemplate?.exercises == nil {
             self.savedTemplateVC?.savedTemplate?.exercises = []
         }
+        
+        for ex in self.exercises {
+            ex.sets = ex.sets.flatMap{ $0 }
+        }
+        
         self.savedTemplateVC?.savedTemplate?.exercises?.append(contentsOf: self.exercises)
         //self.savedTemplateVC?.recalculate()
         self.exercises = []

@@ -28,7 +28,7 @@ class CreateNewTemplateVC: CreateTemplateVC {
             
             self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
             self.calendarView.scrollToDate(Date())
-            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: false)
             let formatter       = DateFormatters.serverTimeFormatter
             formatter.timeZone = TimeZone(identifier: "UTC")
             self.startAt = formatter.string(from: Date())
@@ -186,7 +186,7 @@ extension CreateNewTemplateVC: JTAppleCalendarViewDataSource {
         
         let start           = formatter.date(from: "2017-01-01")!
         let end             = formatter.date(from: "2022-01-01")!
-        let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: calendar)
+        let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: calendar, generateInDates: .forFirstMonthOnly, generateOutDates: .off)
         
         return parameters
     }
@@ -205,7 +205,7 @@ extension CreateNewTemplateVC: JTAppleCalendarViewDataSource {
 
 extension CreateNewTemplateVC: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        
+
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

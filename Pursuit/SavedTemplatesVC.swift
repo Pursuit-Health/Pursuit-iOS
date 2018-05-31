@@ -52,6 +52,12 @@ class SavedTemplatesVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var addTemplateBarButton: UIBarButtonItem! {
+        didSet {
+            //self.addTemplateBarButton.isEnabled = self.canAddNewTemplate
+        }
+    }
+    
     //MARK: IBActons
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
@@ -72,7 +78,11 @@ class SavedTemplatesVC: UIViewController {
         }
     }
     
-    var isUseSaved: Bool = false
+    var canAddNewTemplate: Bool = true {
+        didSet {
+            //self.addTemplateBarButton.isEnabled = self.canAddNewTemplate
+        }
+    }
     
     fileprivate var currentWorkoutsPage: Int = 1
     
@@ -91,6 +101,8 @@ class SavedTemplatesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateDataSource()
+        
+        configureNavigationItems()
     }
     
     func updateDataSource() {
@@ -111,6 +123,11 @@ class SavedTemplatesVC: UIViewController {
                 self.currentWorkoutsPage    = savedTamplates?.current_page ?? 1
             }
         }
+    }
+    
+    func configureNavigationItems() {
+        let image = UIImage(named: canAddNewTemplate ? "ic_plus" : "")
+        self.addTemplateBarButton.image = image
     }
 }
 
@@ -136,7 +153,7 @@ extension SavedTemplatesVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchText = searchBar.text else { return }
         typingTimer?.invalidate()
-        typingTimer = Timer.every(1.seconds) { (timer: Timer) in
+        typingTimer = Timer.every(0.7.seconds) { (timer: Timer) in
             self.loadTemplatesBy(phraseName: searchText, page: 0)
         }
     }

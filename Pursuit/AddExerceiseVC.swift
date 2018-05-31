@@ -244,13 +244,13 @@ class AddExerceiseVC: UIViewController {
         private func fillWeightedExerciseStateCell(cell: WeightedExerciseStateCell, exersize: ExcersiseData, delegate: WeightedExerciseStateCellDelegate) {
             cell.delegate = delegate
             cell.titleLabel.text = "Weighted exercise?"
-            cell.stateSwitch?.setOn(exersize.sets_count != nil, animated: true)
+            cell.stateSwitch?.setOn(exersize.isWeighted ?? true, animated: true)
         }
         
         private func fillStraightExerciseStateCell(cell: StraightExerciseStateCell, exersize: ExcersiseData, delegate: StraightExerciseStateCellDelegate) {
             cell.delegate = delegate
             cell.titleLabel.text = "Straight sets?"
-            cell.stateSwitch?.setOn(((exersize.sets_count ?? 0) == 0), animated: false)
+            cell.stateSwitch?.setOn(exersize.isStraitSets ?? false, animated: false)
         }
         
         private func placeHolderWithText(_ text: String) -> NSAttributedString {
@@ -314,6 +314,8 @@ class AddExerceiseVC: UIViewController {
         super.viewWillAppear(animated)
         self.exerciseType = .warmup
         self.exercise.type = self.exerciseType
+        self.exercise.sets_count = 1
+        self.exercise.sets = [SetsData()]
         
         IQKeyboardManager.sharedManager().enable = true
     }
@@ -357,8 +359,8 @@ extension AddExerceiseVC: UITableViewDataSource {
                     }else {
                         self.exercise.sets?.append(SetsData())
                     }
-                    self.exercise.sets?.first?.reps_max = Int(text1 ?? "")
-                    self.exercise.sets?.first?.reps_min = 10000
+                    self.exercise.sets?.first?.reps_max = nil
+                    self.exercise.sets?.first?.reps_min = Int(text1 ?? "")
                 }
 
             case .weights:
@@ -370,8 +372,8 @@ extension AddExerceiseVC: UITableViewDataSource {
                     }else {
                         self.exercise.sets?.append(SetsData())
                     }
-                    self.exercise.sets?.first?.weight_max = Int(text1 ?? "")
-                    self.exercise.sets?.first?.weight_min = 10000
+                    self.exercise.sets?.first?.weight_max = nil
+                    self.exercise.sets?.first?.weight_min = Int(text1 ?? "")
                 }
             case .rest:
                 self.exercise.rest = text1 ?? ""
@@ -426,7 +428,6 @@ extension AddExerceiseVC: StraightExerciseStateCellDelegate {
     func straightStateDidChnaged(on cell: StraightExerciseStateCell, to state: Bool) {
         self.exercise.isStraitSets = state
         if state {
-            self.exercise.sets_count = 0
             straitSets()
         }else {
             unstraitSets()
@@ -474,6 +475,7 @@ extension AddExerceiseVC: StraightExerciseStateCellDelegate {
 
 extension AddExerceiseVC: WeightedExerciseStateCellDelegate {
     func weightStateDidChnaged(on cell: WeightedExerciseStateCell, to state: Bool) {
+        self.exercise.isWeighted = state
         if state {
             weightedExerciseRecalculate()
         }else {
