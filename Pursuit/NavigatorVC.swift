@@ -54,7 +54,7 @@ class NavigatorVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
 
     }
     
@@ -68,7 +68,7 @@ class NavigatorVC: UIViewController {
         User.getUserInfo { (user, error) in
             if error == nil {
                 if User.shared.coordinator is TrainerCoordinator {
-                    self.leftTitle = "Clients"
+                    //self.leftTitle = "Clients"
                 }else {
                     self.leftTitle = User.shared.name ?? ""
                 }
@@ -77,13 +77,6 @@ class NavigatorVC: UIViewController {
                 AppCoordinator.showController(controller: self)
             }
         }
-    }
-    
-    func addMenuBarButton() {
-            let menuButton = UIBarButtonItem(image: UIImage(named: "ic_menu"), style: .plain, target: self, action: #selector(self.menuButtonPressed))
-            
-            menuButton.tintColor = .white
-        self.navigationItem.leftBarButtonItems = [menuButton]
     }
     
     func menuButtonPressed() {
@@ -103,7 +96,7 @@ class NavigatorVC: UIViewController {
 
 extension NavigatorVC: SWRevealViewControllerDelegate {
     func setInteraction(_ enable: Bool) {
-        self.view.isUserInteractionEnabled = enable
+        //self.view.isUserInteractionEnabled = enable
         self.view.endEditing(true)
     }
 }

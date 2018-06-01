@@ -8,6 +8,7 @@
 
 import UIKit
 import DeepLinkKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        //FirebaseApp.configure()
+        
         setUpTabBarAppearens()
         
         setupDeepLinking()
@@ -50,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.delegate?.window!?.windowLevel = UIWindowLevelStatusBar
         UIApplication.shared.isStatusBarHidden = true
         let view = TopStatusBarView()
-        view.frame = (UIApplication.shared.statusBarView?.frame)!
+        view.frame = (UIApplication.shared.statusBarView?.frame) ?? .zero
         view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
         window?.addSubview(view)
     

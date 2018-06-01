@@ -32,7 +32,7 @@ class ExerciseCategoryVC: UIViewController {
                 searchField.backgroundColor     = .clear
                 searchField.textColor           = .white
                 searchField.font                = UIFont(name: "Avenir", size: 15)
-                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSForegroundColorAttributeName : UIColor.white])
+                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             }
         }
     }
@@ -121,7 +121,7 @@ class ExerciseCategoryVC: UIViewController {
         self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(checkIfUserTyping), userInfo: nil, repeats: true)
     }
     
-    func checkIfUserTyping() {
+    @objc func checkIfUserTyping() {
         guard let last = self.lastChange else {  self.isExercisesSearch = false; return }
         if Date().timeIntervalSince1970 - Double(last) > 4 {
             guard let searchText = exercisesSearchBar.text else { self.isExercisesSearch = false; return }

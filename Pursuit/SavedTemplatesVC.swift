@@ -37,7 +37,7 @@ class SavedTemplatesVC: UIViewController {
                 searchField.textColor           = .white
                 searchField.font                = UIFont(name: "Avenir", size: 15)
                 
-                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSForegroundColorAttributeName : UIColor.white])
+                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             }
         }
     }

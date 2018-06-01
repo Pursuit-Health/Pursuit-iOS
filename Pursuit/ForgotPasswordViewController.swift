@@ -18,7 +18,7 @@ class ForgotPasswordVC: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField! {
         didSet {
-            self.emailTextField.attributedPlaceholder =  NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            self.emailTextField.attributedPlaceholder =  NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
         }
     }
     

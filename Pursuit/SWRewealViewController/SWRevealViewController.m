@@ -866,11 +866,11 @@ const int FrontViewPositionNone = 0xff;
 
 - (void)rightRevealToggleAnimated:(BOOL)animated
 {
-//    FrontViewPosition toggledFrontViewPosition = FrontViewPositionLeft;
-//    if (_frontViewPosition >= FrontViewPositionLeft)
-//        toggledFrontViewPosition = FrontViewPositionLeftSide;
-//    
-//    [self setFrontViewPosition:toggledFrontViewPosition animated:animated];
+    FrontViewPosition toggledFrontViewPosition = FrontViewPositionLeft;
+    if (_frontViewPosition >= FrontViewPositionLeft)
+        toggledFrontViewPosition = FrontViewPositionLeftSide;
+    
+    [self setFrontViewPosition:toggledFrontViewPosition animated:animated];
 }
 
 

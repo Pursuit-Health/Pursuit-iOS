@@ -77,8 +77,6 @@ class ScheduleVC: UIViewController {
             self.calendarView.reloadData()
             self.calendarView.scrollToDate(Date())
             self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
-            
-     
         }
     }
     
@@ -104,7 +102,7 @@ class ScheduleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addGestureRecognizer(revealViewController().panGestureRecognizer())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,8 +119,7 @@ class ScheduleVC: UIViewController {
         //self.navigationController?.isNavigationBarHidden = false
 
         updateEvents()
-        
-        self.delegate?.removeAuthController(on: self)
+
     }
     
     //MARK: Override

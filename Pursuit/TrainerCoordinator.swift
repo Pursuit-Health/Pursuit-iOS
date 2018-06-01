@@ -38,14 +38,23 @@ class TrainerCoordinator: Coordinator {
     
     func start(from controller: UIViewController?) {
         if let controller = controller {
-            let clientsList = UIStoryboard.trainer.TrainerClients!
-            clientsList.delegate = self
-            controller.view.addSubview(clientsList.view)
-            controller.view.addConstraints(UIView.place(clientsList.view, onOtherView: controller.view))
-            clientsList.didMove(toParentViewController: controller)
-            controller.addChildViewController(clientsList)
             
-            self.clientsListVC = clientsList
+            let trainerTabBar = UIStoryboard.trainer.TrainerTabBar!
+            
+            controller.addChildViewController(trainerTabBar)
+            controller.view.addSubview(trainerTabBar.view)
+            controller.view.addConstraints(UIView.place(trainerTabBar.view, onOtherView: controller.view))
+            trainerTabBar.didMove(toParentViewController: controller)
+            
+            
+//            let clientsList = UIStoryboard.trainer.TrainerClients!
+//            clientsList.delegate = self
+//            controller.view.addSubview(clientsList.view)
+//            controller.view.addConstraints(UIView.place(clientsList.view, onOtherView: controller.view))
+//            clientsList.didMove(toParentViewController: controller)
+//            controller.addChildViewController(clientsList)
+//
+//            self.clientsListVC = clientsList
         }
     }
     
@@ -136,6 +145,7 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
         })).addAction(action: AlertAction(title: "Use Saved Template", style: .default, handler: { _ in
             let savedTemplatesVC = UIStoryboard.trainer.SavedTemplatesList!
             savedTemplatesVC.delegate = self
+            savedTemplatesVC.canAddNewTemplate = false
             
             controller.navigationController?.pushViewController(savedTemplatesVC, animated: true)
             
@@ -248,7 +258,9 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
             if exerc.sets_count == nil {
                 exerc.sets = []
             }
+            exerc.sets = exerc.sets.flatMap{ $0 }
         }
+        
         let work = Workout()
         if state == .customExercise{
             //TODO: Reimplament
@@ -256,6 +268,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
                 if  ex.sets_count == nil {
                     ex.sets = []
                 }
+                ex.sets = ex.sets.flatMap{ $0 }
                 
                 self.checkExerciseRequiredFields(ex, controller: controller)
                 
@@ -366,7 +379,10 @@ extension TrainerCoordinator {
 extension TrainerCoordinator: SavedTemplatesVCDelegate {
 
     func addNewTemplate(on controller: SavedTemplatesVC) {
-
+//        let createSavedTemplate = UIStoryboard.trainer.SavedTemplate!
+//        createSavedTemplate.delegate = self
+//        //self.savedTemplateVC = createSavedTemplate
+//        controller.navigationController?.pushViewController(createSavedTemplate, animated: true)
     }
     
     func didSelectTemplate(_ template: SavedTemplateModel, on controller: SavedTemplatesVC) {

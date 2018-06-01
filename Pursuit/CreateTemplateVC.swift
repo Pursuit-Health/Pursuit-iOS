@@ -107,13 +107,13 @@ class CreateTemplateVC: UIViewController {
     
     @IBOutlet weak var templateNameTextField: UITextField! {
         didSet {
-            self.templateNameTextField.attributedPlaceholder =  NSAttributedString(string: "Template Name", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            self.templateNameTextField.attributedPlaceholder =  NSAttributedString(string: "Template Name", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
         }
     }
     
     @IBOutlet weak var notesTextField: UITextField! {
         didSet {
-            self.notesTextField.attributedPlaceholder =  NSAttributedString(string: "Notes", attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
+            self.notesTextField.attributedPlaceholder =  NSAttributedString(string: "Notes", attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
         }
     }
     

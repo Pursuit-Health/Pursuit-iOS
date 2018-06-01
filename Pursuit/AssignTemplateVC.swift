@@ -33,11 +33,11 @@ class AssignTemplateVC: TemplatesVC {
 }
 
 extension AssignTemplateVC {
-    override func loadTemplates() {
-        Template.getAllTemplates(completion: { template, error in
-            self.templatesData = template ?? []
-        })
-    }
+//    override func loadTemplates() {
+//        Template.getAllTemplates(completion: { template, error in
+//            self.templatesData = template ?? []
+//        })
+//    }
 }
 
 extension AssignTemplateVC {

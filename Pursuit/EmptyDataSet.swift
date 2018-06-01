@@ -33,7 +33,7 @@ extension PSEmptyDatasource {
     }
     
     func titleForEmpty(in view: UIView) -> NSAttributedString? {
-        let attributes: [String : Any] = [NSFontAttributeName : UIFont(name: "Avenir-Book", size: self.fontSize)!, NSForegroundColorAttributeName : self.titleColor]
+        let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font : UIFont(name: "Avenir-Book", size: self.fontSize)!, NSAttributedStringKey.foregroundColor : self.titleColor]
         return NSAttributedString(string: self.emptyTitle, attributes: attributes)
     }
     

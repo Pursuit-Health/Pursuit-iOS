@@ -342,7 +342,7 @@ class ExerciseDetailsVC: UIViewController {
         }
         
         private func placeHolderWithText(_ text: String) -> NSAttributedString {
-            return  NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName : UIColor.lightGray])
+            return  NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
         }
         
         private func imageFromName(_ imageName: String) -> UIImage {

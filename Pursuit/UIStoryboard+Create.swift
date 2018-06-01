@@ -141,6 +141,17 @@ extension UIStoryboard {
         var CreateNewTemplate: CreateNewTemplateVC? {
             return self.instantiate(type: CreateNewTemplateVC.self)
         }
+        var ChatsList: ChatsListVC? {
+            return self.instantiate(type: ChatsListVC.self)
+        }
+        
+        var Chat: ChatVC? {
+            return self.instantiate(type: ChatVC.self)
+        }
+        
+        var ContainerChat: ContainerChatVC? {
+            return self.instantiate(type: ContainerChatVC.self)
+        }
     }
     
     //MARK: ClientStoryboard

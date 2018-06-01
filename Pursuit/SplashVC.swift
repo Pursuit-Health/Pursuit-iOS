@@ -42,7 +42,7 @@ class SplashVC: UIViewController {
     }
     
     private func checkUserType() -> String {
-        if let clientType = Auth.IsClient {
+        if let clientType = AppAuth.IsClient {
             if clientType {
                 return Constants.SeguesIDs.Client
             } else {

@@ -33,4 +33,12 @@ target 'Pursuit' do
   pod 'SwiftyTimer'
   pod 'SimpleAlert'
   pod 'PullToRefreshSwift'
+  
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'GrowingTextView', '~> 0.4.0'
+  pod 'KeyboardWrapper'
+  pod 'NSDate+TimeAgo', '~> 1.0'
+   
 end

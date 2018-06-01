@@ -30,7 +30,7 @@ extension UIColor {
     }
     
     class func cellSelection() -> UIColor {
-        return UIColor(colorLiteralRed: 140.0/255.0, green: 136.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        return UIColor.init(red: 140.0/255.0, green: 136.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
     
     class func exerciseTypeRedColor() -> UIColor {

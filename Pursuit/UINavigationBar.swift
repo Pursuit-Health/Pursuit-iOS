@@ -17,7 +17,15 @@ extension UINavigationBar {
         self.clipsToBounds      = false
         self.tintColor          = .white
         self.setBackgroundImage(UIImage(), for: .default)
-        let attributes: [String : Any] = [NSFontAttributeName : UIFont(name: "Avenir-Book", size: 17.0)!, NSForegroundColorAttributeName : UIColor.white]
+        let attributes: [NSAttributedStringKey : Any] = [NSAttributedStringKey.font : UIFont(name: "Avenir-Book", size: 17.0)!, NSAttributedStringKey.foregroundColor : UIColor.white]
         self.titleTextAttributes = attributes
+    }
+    
+    func setTitleColor(_ color: UIColor) {
+        let attributes = [
+            NSAttributedStringKey.font : UIFont(name: "Avenir-Book", size: 18.0),
+            NSAttributedStringKey.foregroundColor : color
+        ]
+        titleTextAttributes = attributes
     }
 }

@@ -145,6 +145,34 @@
 		78BAC2F920B5F9A900C0EDD2 /* SavedTemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BAC2F820B5F9A900C0EDD2 /* SavedTemplateModel.swift */; };
 		78BAC2FB20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BAC2FA20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift */; };
 		78BAC2FD20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BAC2FC20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift */; };
+		78BB174D20C01FB7006AB7C3 /* SeenMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB174B20C01FB6006AB7C3 /* SeenMessagesView.swift */; };
+		78BB174E20C01FB7006AB7C3 /* SeenMessagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB174C20C01FB6006AB7C3 /* SeenMessagesView.xib */; };
+		78BB175120C01FC5006AB7C3 /* ChatsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB174F20C01FC5006AB7C3 /* ChatsListCell.xib */; };
+		78BB175220C01FC5006AB7C3 /* ChatsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB175020C01FC5006AB7C3 /* ChatsListCell.swift */; };
+		78BB175420C01FCE006AB7C3 /* ChatsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB175320C01FCE006AB7C3 /* ChatsListVC.swift */; };
+		78BB175A20C02010006AB7C3 /* ContainerChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB175820C02010006AB7C3 /* ContainerChatVC.swift */; };
+		78BB175B20C02010006AB7C3 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB175920C02010006AB7C3 /* ChatVC.swift */; };
+		78BB176320C0201D006AB7C3 /* ChatCornerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB175D20C0201D006AB7C3 /* ChatCornerView.swift */; };
+		78BB176520C0201D006AB7C3 /* TalesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB175F20C0201D006AB7C3 /* TalesView.swift */; };
+		78BB176620C0201D006AB7C3 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB176020C0201D006AB7C3 /* ProgressView.swift */; };
+		78BB176720C0201D006AB7C3 /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB176120C0201D006AB7C3 /* MaskView.swift */; };
+		78BB176F20C020C3006AB7C3 /* TypingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB176D20C020C3006AB7C3 /* TypingCell.swift */; };
+		78BB177020C020C3006AB7C3 /* TypingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB176E20C020C3006AB7C3 /* TypingCell.xib */; };
+		78BB177520C020D6006AB7C3 /* SenderMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB177120C020D6006AB7C3 /* SenderMessageCell.swift */; };
+		78BB177620C020D6006AB7C3 /* SendeMessageWithImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB177220C020D6006AB7C3 /* SendeMessageWithImageCell.xib */; };
+		78BB177720C020D6006AB7C3 /* SenderMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB177320C020D6006AB7C3 /* SenderMessageCell.xib */; };
+		78BB177820C020D6006AB7C3 /* SendeMessageWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB177420C020D6006AB7C3 /* SendeMessageWithImageCell.swift */; };
+		78BB178120C020EA006AB7C3 /* FrontSenderMessageWithImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB177920C020E9006AB7C3 /* FrontSenderMessageWithImageCell.xib */; };
+		78BB178220C020EA006AB7C3 /* FrontSenderMessageWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB177A20C020E9006AB7C3 /* FrontSenderMessageWithImageCell.swift */; };
+		78BB178320C020EA006AB7C3 /* FrontSenderMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB177B20C020E9006AB7C3 /* FrontSenderMessageCell.swift */; };
+		78BB178420C020EA006AB7C3 /* SameMessageTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB177C20C020E9006AB7C3 /* SameMessageTextCell.xib */; };
+		78BB178520C020EA006AB7C3 /* SameMessageImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB177D20C020E9006AB7C3 /* SameMessageImageCell.swift */; };
+		78BB178620C020EA006AB7C3 /* FrontSenderMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB177E20C020E9006AB7C3 /* FrontSenderMessageCell.xib */; };
+		78BB178720C020EA006AB7C3 /* SameMessageTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB177F20C020EA006AB7C3 /* SameMessageTextCell.swift */; };
+		78BB178820C020EA006AB7C3 /* SameMessageImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB178020C020EA006AB7C3 /* SameMessageImageCell.xib */; };
+		78BB178C20C027F4006AB7C3 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB178B20C027F4006AB7C3 /* Dialog.swift */; };
+		78BB178E20C02804006AB7C3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB178D20C02804006AB7C3 /* Message.swift */; };
+		78BB179020C0291B006AB7C3 /* DotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB178F20C0291B006AB7C3 /* DotsView.swift */; };
 		78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */; };
 		78C6DAE32010EF4400A0BD41 /* ExercisePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */; };
 		78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */; };
@@ -381,6 +409,34 @@
 		78BAC2F820B5F9A900C0EDD2 /* SavedTemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTemplateModel.swift; sourceTree = "<group>"; };
 		78BAC2FA20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedTemplateModel+API.swift"; sourceTree = "<group>"; };
 		78BAC2FC20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTemplatesCoordinator.swift; sourceTree = "<group>"; };
+		78BB174B20C01FB6006AB7C3 /* SeenMessagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeenMessagesView.swift; sourceTree = "<group>"; };
+		78BB174C20C01FB6006AB7C3 /* SeenMessagesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeenMessagesView.xib; sourceTree = "<group>"; };
+		78BB174F20C01FC5006AB7C3 /* ChatsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatsListCell.xib; sourceTree = "<group>"; };
+		78BB175020C01FC5006AB7C3 /* ChatsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsListCell.swift; sourceTree = "<group>"; };
+		78BB175320C01FCE006AB7C3 /* ChatsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsListVC.swift; sourceTree = "<group>"; };
+		78BB175820C02010006AB7C3 /* ContainerChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerChatVC.swift; sourceTree = "<group>"; };
+		78BB175920C02010006AB7C3 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		78BB175D20C0201D006AB7C3 /* ChatCornerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCornerView.swift; sourceTree = "<group>"; };
+		78BB175F20C0201D006AB7C3 /* TalesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TalesView.swift; sourceTree = "<group>"; };
+		78BB176020C0201D006AB7C3 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		78BB176120C0201D006AB7C3 /* MaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
+		78BB176D20C020C3006AB7C3 /* TypingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingCell.swift; sourceTree = "<group>"; };
+		78BB176E20C020C3006AB7C3 /* TypingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TypingCell.xib; sourceTree = "<group>"; };
+		78BB177120C020D6006AB7C3 /* SenderMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderMessageCell.swift; sourceTree = "<group>"; };
+		78BB177220C020D6006AB7C3 /* SendeMessageWithImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendeMessageWithImageCell.xib; sourceTree = "<group>"; };
+		78BB177320C020D6006AB7C3 /* SenderMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SenderMessageCell.xib; sourceTree = "<group>"; };
+		78BB177420C020D6006AB7C3 /* SendeMessageWithImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendeMessageWithImageCell.swift; sourceTree = "<group>"; };
+		78BB177920C020E9006AB7C3 /* FrontSenderMessageWithImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrontSenderMessageWithImageCell.xib; sourceTree = "<group>"; };
+		78BB177A20C020E9006AB7C3 /* FrontSenderMessageWithImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontSenderMessageWithImageCell.swift; sourceTree = "<group>"; };
+		78BB177B20C020E9006AB7C3 /* FrontSenderMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrontSenderMessageCell.swift; sourceTree = "<group>"; };
+		78BB177C20C020E9006AB7C3 /* SameMessageTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SameMessageTextCell.xib; sourceTree = "<group>"; };
+		78BB177D20C020E9006AB7C3 /* SameMessageImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SameMessageImageCell.swift; sourceTree = "<group>"; };
+		78BB177E20C020E9006AB7C3 /* FrontSenderMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrontSenderMessageCell.xib; sourceTree = "<group>"; };
+		78BB177F20C020EA006AB7C3 /* SameMessageTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SameMessageTextCell.swift; sourceTree = "<group>"; };
+		78BB178020C020EA006AB7C3 /* SameMessageImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SameMessageImageCell.xib; sourceTree = "<group>"; };
+		78BB178B20C027F4006AB7C3 /* Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		78BB178D20C02804006AB7C3 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		78BB178F20C0291B006AB7C3 /* DotsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotsView.swift; sourceTree = "<group>"; };
 		78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+label.swift"; sourceTree = "<group>"; };
 		78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotoCell.swift; sourceTree = "<group>"; };
 		78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisePhotoCell.xib; sourceTree = "<group>"; };
@@ -1291,6 +1347,118 @@
 			name = Transforms;
 			sourceTree = "<group>";
 		};
+		78BB174A20C01F9F006AB7C3 /* ChatListVC */ = {
+			isa = PBXGroup;
+			children = (
+				78BB175620C01FE0006AB7C3 /* Cells */,
+				78BB175520C01FD8006AB7C3 /* Views */,
+				78BB175320C01FCE006AB7C3 /* ChatsListVC.swift */,
+			);
+			name = ChatListVC;
+			sourceTree = "<group>";
+		};
+		78BB175520C01FD8006AB7C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				78BB174B20C01FB6006AB7C3 /* SeenMessagesView.swift */,
+				78BB174C20C01FB6006AB7C3 /* SeenMessagesView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		78BB175620C01FE0006AB7C3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				78BB175020C01FC5006AB7C3 /* ChatsListCell.swift */,
+				78BB174F20C01FC5006AB7C3 /* ChatsListCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		78BB175720C01FFE006AB7C3 /* ChatVC */ = {
+			isa = PBXGroup;
+			children = (
+				78BB176920C02053006AB7C3 /* Cells */,
+				78BB176820C02021006AB7C3 /* Views */,
+				78BB175920C02010006AB7C3 /* ChatVC.swift */,
+				78BB175820C02010006AB7C3 /* ContainerChatVC.swift */,
+			);
+			name = ChatVC;
+			sourceTree = "<group>";
+		};
+		78BB176820C02021006AB7C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				78BB178F20C0291B006AB7C3 /* DotsView.swift */,
+				78BB175F20C0201D006AB7C3 /* TalesView.swift */,
+				78BB176120C0201D006AB7C3 /* MaskView.swift */,
+				78BB175D20C0201D006AB7C3 /* ChatCornerView.swift */,
+				78BB176020C0201D006AB7C3 /* ProgressView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		78BB176920C02053006AB7C3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				78BB176C20C020B2006AB7C3 /* TypingCell */,
+				78BB176B20C02078006AB7C3 /* SenderCell */,
+				78BB176A20C0206B006AB7C3 /* ReceiverCell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		78BB176A20C0206B006AB7C3 /* ReceiverCell */ = {
+			isa = PBXGroup;
+			children = (
+				78BB177B20C020E9006AB7C3 /* FrontSenderMessageCell.swift */,
+				78BB177E20C020E9006AB7C3 /* FrontSenderMessageCell.xib */,
+				78BB177A20C020E9006AB7C3 /* FrontSenderMessageWithImageCell.swift */,
+				78BB177920C020E9006AB7C3 /* FrontSenderMessageWithImageCell.xib */,
+				78BB177D20C020E9006AB7C3 /* SameMessageImageCell.swift */,
+				78BB178020C020EA006AB7C3 /* SameMessageImageCell.xib */,
+				78BB177F20C020EA006AB7C3 /* SameMessageTextCell.swift */,
+				78BB177C20C020E9006AB7C3 /* SameMessageTextCell.xib */,
+			);
+			name = ReceiverCell;
+			sourceTree = "<group>";
+		};
+		78BB176B20C02078006AB7C3 /* SenderCell */ = {
+			isa = PBXGroup;
+			children = (
+				78BB177120C020D6006AB7C3 /* SenderMessageCell.swift */,
+				78BB177320C020D6006AB7C3 /* SenderMessageCell.xib */,
+				78BB177420C020D6006AB7C3 /* SendeMessageWithImageCell.swift */,
+				78BB177220C020D6006AB7C3 /* SendeMessageWithImageCell.xib */,
+			);
+			name = SenderCell;
+			sourceTree = "<group>";
+		};
+		78BB176C20C020B2006AB7C3 /* TypingCell */ = {
+			isa = PBXGroup;
+			children = (
+				78BB176D20C020C3006AB7C3 /* TypingCell.swift */,
+				78BB176E20C020C3006AB7C3 /* TypingCell.xib */,
+			);
+			name = TypingCell;
+			sourceTree = "<group>";
+		};
+		78BB178920C027D1006AB7C3 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				78BB178D20C02804006AB7C3 /* Message.swift */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		78BB178A20C027D7006AB7C3 /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				78BB178B20C027F4006AB7C3 /* Dialog.swift */,
+			);
+			name = Dialog;
+			sourceTree = "<group>";
+		};
 		78BBA6831F4B639A0037E7DF /* UIBarButtonItem+label */ = {
 			isa = PBXGroup;
 			children = (
@@ -1605,6 +1773,8 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				78BB175720C01FFE006AB7C3 /* ChatVC */,
+				78BB174A20C01F9F006AB7C3 /* ChatListVC */,
 				78BAC2D620B466A100C0EDD2 /* SavedTemplates */,
 				783F80BC1FC06C1A001FE169 /* ExerciseDetails */,
 				78F636341FB9C40B009EB48D /* ExercisesSearch  */,
@@ -1652,6 +1822,8 @@
 		84AB4D5E1F32802800531740 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				78BB178A20C027D7006AB7C3 /* Dialog */,
+				78BB178920C027D1006AB7C3 /* Message */,
 				78BAC2FE20B71BB900C0EDD2 /* Transforms */,
 				78BAC2E920B58F4000C0EDD2 /* SavedTemplate */,
 				78BAC2D120B4243300C0EDD2 /* Set */,
@@ -2072,6 +2244,7 @@
 				78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */,
 				78E4BD281FC1E8EA00A069DC /* CreateTemplateCalendarCell.xib in Resources */,
 				782B83141F71278D00A019AC /* QuestionCell.xib in Resources */,
+				78BB177620C020D6006AB7C3 /* SendeMessageWithImageCell.xib in Resources */,
 				782E9C0120A985D90034A51B /* LogoutTableViewCell.xib in Resources */,
 				5BE3A1B81EB314F9005B35CD /* Login.storyboard in Resources */,
 				78BAC2D520B43ED100C0EDD2 /* TemplateSettingsCell.xib in Resources */,
@@ -2080,12 +2253,17 @@
 				782E9C0A20A9A60E0034A51B /* WeightsTableViewCell.xib in Resources */,
 				784419B61F7A7F36009CB350 /* ScheduleClientCollectionViewCell.xib in Resources */,
 				78473BD51F742D7E0067DA1F /* SelectClientCell.xib in Resources */,
+				78BB177020C020C3006AB7C3 /* TypingCell.xib in Resources */,
+				78BB177720C020D6006AB7C3 /* SenderMessageCell.xib in Resources */,
+				78BB178120C020EA006AB7C3 /* FrontSenderMessageWithImageCell.xib in Resources */,
 				78CE34C41F38FDF2002BD31D /* TabPageViewController.storyboard in Resources */,
 				782E9EEC20AB77EC0034A51B /* ConfigureSetsCell.xib in Resources */,
 				78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */,
 				782E9EF220AC1BBB0034A51B /* ExerciseStateCell.xib in Resources */,
 				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
 				783484241F71560600C58191 /* UserTypeView.xib in Resources */,
+				78BB178420C020EA006AB7C3 /* SameMessageTextCell.xib in Resources */,
+				78BB175120C01FC5006AB7C3 /* ChatsListCell.xib in Resources */,
 				78BAC2E120B55FEB00C0EDD2 /* SavedTemplateCell.xib in Resources */,
 				782B83101F7126DC00A019AC /* ChooseTrainerCell.xib in Resources */,
 				7813E8871FCC332200B9B42C /* NotesCell.xib in Resources */,
@@ -2093,12 +2271,14 @@
 				783484291F71804D00C58191 /* SignUpButtonCell.xib in Resources */,
 				78BAC2CC20AED3BF00C0EDD2 /* WeightedExerciseStateCell.xib in Resources */,
 				78EF48661FB5BC9E00813BA3 /* ClientInfoCell.xib in Resources */,
+				78BB174E20C01FB7006AB7C3 /* SeenMessagesView.xib in Resources */,
 				782B83001F71256D00A019AC /* SignUpDataCell.xib in Resources */,
 				783D1A4C1FB9F22100C4B8D7 /* HeaderView.xib in Resources */,
 				5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */,
 				78CE34C51F38FDF2002BD31D /* TabCollectionCell.xib in Resources */,
 				842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */,
 				78F6363B1FB9C7B6009EB48D /* ExerciseCell.xib in Resources */,
+				78BB178820C020EA006AB7C3 /* SameMessageImageCell.xib in Resources */,
 				78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */,
 				782E9C0520A988D10034A51B /* UserInfoTableViewCell.xib in Resources */,
 				842EBD2A1F33143200A3169F /* TemplateCell.xib in Resources */,
@@ -2114,6 +2294,7 @@
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
 				783F80C81FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib in Resources */,
 				781110541F65932700457E8B /* SelectTrainer.xib in Resources */,
+				78BB178620C020EA006AB7C3 /* FrontSenderMessageCell.xib in Resources */,
 				783F80CE1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2163,14 +2344,19 @@
 				"${BUILT_PRODUCTS_DIR}/DeepLinkKit/DeepLinkKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/EmptyKit/EmptyKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/HMSegmentedControl/HMSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/HTTPStatusCodes/HTTPStatusCodes.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/JTMaterialSwitch/JTMaterialSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/KVNProgress/KVNProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/KeyboardWrapper/KeyboardWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/NSDate+TimeAgo/NSDate_TimeAgo.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PIDatePicker/PIDatePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/PullToRefreshSwift/PullToRefreshSwift.framework",
@@ -2183,6 +2369,8 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2193,14 +2381,19 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeepLinkKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HMSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTTPStatusCodes.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTMaterialSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVNProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeyboardWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_TimeAgo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PIDatePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefreshSwift.framework",
@@ -2213,6 +2406,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2251,27 +2446,34 @@
 				78BAC2D820B466C700C0EDD2 /* SavedTemplatesVC.swift in Sources */,
 				78F4D767201F57D300E4CCA9 /* EmptyDataSet.swift in Sources */,
 				782E9C0920A9A60E0034A51B /* WeightsTableViewCell.swift in Sources */,
+				78BB177520C020D6006AB7C3 /* SenderMessageCell.swift in Sources */,
 				842CD37D1F8F62F400F756DC /* UIView+SuperView.swift in Sources */,
 				8412E56B1F8E3E6D0064A499 /* PreloadNavigation.swift in Sources */,
 				780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */,
 				78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */,
 				842EBD2F1F33163800A3169F /* CalendarCell.swift in Sources */,
 				782E899D1F792168002AD54C /* ClientTabBarVC.swift in Sources */,
+				78BB178220C020EA006AB7C3 /* FrontSenderMessageWithImageCell.swift in Sources */,
 				84AB4D731F32826700531740 /* BBBXIBView.m in Sources */,
+				78BB175220C01FC5006AB7C3 /* ChatsListCell.swift in Sources */,
 				782E9EEB20AB77EC0034A51B /* ConfigureSetsCell.swift in Sources */,
+				78BB178C20C027F4006AB7C3 /* Dialog.swift in Sources */,
 				78179B891F54982C00520D08 /* User+API.swift in Sources */,
 				78F636301FB99EAF009EB48D /* UIApplication+StatusBar.swift in Sources */,
 				783F80C21FC06D72001FE169 /* ExercisesTypeView.swift in Sources */,
+				78BB176520C0201D006AB7C3 /* TalesView.swift in Sources */,
 				7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */,
 				783484221F7155CC00C58191 /* UserTypeView.swift in Sources */,
 				78F6362C1FB60584009EB48D /* ExerciseCategoryCell.swift in Sources */,
 				780D601D1F5EAA6C002A7303 /* GuestDeepLinkService.swift in Sources */,
+				78BB175420C01FCE006AB7C3 /* ChatsListVC.swift in Sources */,
 				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
 				78E426801F69B0FE00C12D94 /* UITextField+Effects.swift in Sources */,
 				78F636361FB9C42D009EB48D /* ExercisesSearchVC.swift in Sources */,
 				842EBD1F1F3313E100A3169F /* ScheduleCell.swift in Sources */,
 				782B82F01F704BC200A019AC /* Event.swift in Sources */,
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
+				78BB178E20C02804006AB7C3 /* Message.swift in Sources */,
 				78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */,
 				78277D641FC860AF0064ABB8 /* ClientCoordinator.swift in Sources */,
 				842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */,
@@ -2297,17 +2499,22 @@
 				7845678F1FCD94D2007FE1B5 /* DescriptionCell.swift in Sources */,
 				782B83131F71278D00A019AC /* QuestionCell.swift in Sources */,
 				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
+				78BB176620C0201D006AB7C3 /* ProgressView.swift in Sources */,
 				780D60211F5F161E002A7303 /* ControllersIdentifiers.swift in Sources */,
 				84AB4D7B1F3282A400531740 /* NSObject+BBBMultyThhreading.m in Sources */,
 				5B1F833C1E851B5600ABA24C /* UIColor+RGB.swift in Sources */,
+				78BB175B20C02010006AB7C3 /* ChatVC.swift in Sources */,
 				78094A2B1F5BD9BE001325B4 /* PursuitKeychain.swift in Sources */,
 				84AB4D861F32831400531740 /* UIView+BBBProperty.m in Sources */,
+				78BB178320C020EA006AB7C3 /* FrontSenderMessageCell.swift in Sources */,
 				781110561F6672BD00457E8B /* Template+API.swift in Sources */,
+				78BB174D20C01FB7006AB7C3 /* SeenMessagesView.swift in Sources */,
 				78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */,
 				78E4BD271FC1E8EA00A069DC /* CreateTemplateCalendarCell.swift in Sources */,
 				84AB4D821F3282C300531740 /* UINavigationController+removeController.m in Sources */,
 				785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */,
 				782E899B1F7911F5002AD54C /* ClientTemlatesVC.swift in Sources */,
+				78BB178520C020EA006AB7C3 /* SameMessageImageCell.swift in Sources */,
 				782E89A71F7980D2002AD54C /* Workout+API.swift in Sources */,
 				84AB4D9D1F32884B00531740 /* PSAPI.swift in Sources */,
 				78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */,
@@ -2323,6 +2530,7 @@
 				78473BD81F745B7F0067DA1F /* AddExerceiseVC.swift in Sources */,
 				78CE34C31F38FDF2002BD31D /* TabPageViewController.swift in Sources */,
 				7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */,
+				78BB178720C020EA006AB7C3 /* SameMessageTextCell.swift in Sources */,
 				782E9C0020A985D90034A51B /* LogoutTableViewCell.swift in Sources */,
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
@@ -2338,6 +2546,7 @@
 				78BAC2EB20B591F500C0EDD2 /* SavedTemplatesObject.swift in Sources */,
 				78835C9A1F8B5D7500C28C76 /* BirthdayCell.swift in Sources */,
 				78E4BD2B1FC2108900A069DC /* HeaderCell.swift in Sources */,
+				78BB176320C0201D006AB7C3 /* ChatCornerView.swift in Sources */,
 				782E9C0420A988D10034A51B /* UserInfoTableViewCell.swift in Sources */,
 				78E426821F69B14C00C12D94 /* TextFieldEffects.swift in Sources */,
 				842EBD221F3313EE00A3169F /* ScheduleClientVC.swift in Sources */,
@@ -2362,6 +2571,7 @@
 				783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */,
 				783F80C01FC06CBB001FE169 /* ExerciseDetailsVC.swift in Sources */,
 				783484331F71B62100C58191 /* Trainer+API.swift in Sources */,
+				78BB177820C020D6006AB7C3 /* SendeMessageWithImageCell.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
@@ -2382,18 +2592,22 @@
 				78BAC2F220B5CFA600C0EDD2 /* SavedTemplateVC.swift in Sources */,
 				78179B871F54977500520D08 /* User.swift in Sources */,
 				782B830F1F7126DC00A019AC /* ChooseTrainerCell.swift in Sources */,
+				78BB175A20C02010006AB7C3 /* ContainerChatVC.swift in Sources */,
 				78BAC2F420B5CFC600C0EDD2 /* CreateNewTemplateVC.swift in Sources */,
 				78F6363A1FB9C7B6009EB48D /* ExerciseCell.swift in Sources */,
 				78EF48611FB5BC1700813BA3 /* ClientInfoVC.swift in Sources */,
+				78BB179020C0291B006AB7C3 /* DotsView.swift in Sources */,
 				7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */,
 				78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */,
 				846FBDB01FC9AB6100873B53 /* ExcersiseData.swift in Sources */,
 				787EA0811FCADCDF000138BD /* Category.swift in Sources */,
 				78BAC2F720B5F61100C0EDD2 /* Date.swift in Sources */,
+				78BB176720C0201D006AB7C3 /* MaskView.swift in Sources */,
 				782B82F21F704BD600A019AC /* Event+API.swift in Sources */,
 				78277D5A1FC84AD00064ABB8 /* AppCoordinator.swift in Sources */,
 				845882FF1F706C2600BE7D69 /* Taskable.swift in Sources */,
 				783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */,
+				78BB176F20C020C3006AB7C3 /* TypingCell.swift in Sources */,
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
 				782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */,
@@ -2563,7 +2777,7 @@
 				PROVISIONING_PROFILE = "c3e0e81f-6965-46ab-baa5-a1acd86fb690";
 				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Dev_Provision;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2586,7 +2800,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Provision_Profile;
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -114,7 +114,7 @@ class ClientInfoVC: UIViewController {
     
     //MARK: Private
     
-    func avatarUpdated(_ notification: Notification) {
+    @objc func avatarUpdated(_ notification: Notification) {
             self.updateInfo()
     }
     

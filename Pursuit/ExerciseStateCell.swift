@@ -30,7 +30,7 @@ class ExerciseStateCell: UITableViewCell {
         }
     }
     
-    func switchChangedState(_ exSwitch: UISwitch) {
+    @objc func switchChangedState(_ exSwitch: UISwitch) {
        
     }
 
