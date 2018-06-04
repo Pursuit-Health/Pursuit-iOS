@@ -152,7 +152,8 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let type = SettingsType(rawValue: indexPath.row)
-        if type == .template {
+        if type == .template && User.shared.coordinator is
+            TrainerCoordinator {
             if self.revealViewController() != nil {
                 self.revealViewController().revealToggle(self)
             }

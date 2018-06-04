@@ -145,6 +145,14 @@
 		78BAC2F920B5F9A900C0EDD2 /* SavedTemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BAC2F820B5F9A900C0EDD2 /* SavedTemplateModel.swift */; };
 		78BAC2FB20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BAC2FA20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift */; };
 		78BAC2FD20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BAC2FC20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift */; };
+		78BB17AA20C520CD006AB7C3 /* SetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB17A920C520CD006AB7C3 /* SetsCell.xib */; };
+		78BB17AC20C520DE006AB7C3 /* SetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB17AB20C520DE006AB7C3 /* SetsCell.swift */; };
+		78BB17AE20C521F0006AB7C3 /* MinMaxRepsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB17AD20C521EF006AB7C3 /* MinMaxRepsCell.swift */; };
+		78BB17B020C52210006AB7C3 /* MinMaxSetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB17AF20C52210006AB7C3 /* MinMaxSetsCell.swift */; };
+		78BB17B420C52414006AB7C3 /* RepsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB17B220C52414006AB7C3 /* RepsCell.swift */; };
+		78BB17B520C52414006AB7C3 /* RepsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB17B320C52414006AB7C3 /* RepsCell.xib */; };
+		78BB17B920C52F7E006AB7C3 /* WeightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB17B720C52F7E006AB7C3 /* WeightsCell.swift */; };
+		78BB17BA20C52F7E006AB7C3 /* WeightsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78BB17B820C52F7E006AB7C3 /* WeightsCell.xib */; };
 		78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */; };
 		78C6DAE32010EF4400A0BD41 /* ExercisePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */; };
 		78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */; };
@@ -381,6 +389,14 @@
 		78BAC2F820B5F9A900C0EDD2 /* SavedTemplateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTemplateModel.swift; sourceTree = "<group>"; };
 		78BAC2FA20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedTemplateModel+API.swift"; sourceTree = "<group>"; };
 		78BAC2FC20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTemplatesCoordinator.swift; sourceTree = "<group>"; };
+		78BB17A920C520CD006AB7C3 /* SetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetsCell.xib; sourceTree = "<group>"; };
+		78BB17AB20C520DE006AB7C3 /* SetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetsCell.swift; sourceTree = "<group>"; };
+		78BB17AD20C521EF006AB7C3 /* MinMaxRepsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MinMaxRepsCell.swift; path = ../../../../../.Trash/MinMaxRepsCell.swift; sourceTree = "<group>"; };
+		78BB17AF20C52210006AB7C3 /* MinMaxSetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMaxSetsCell.swift; sourceTree = "<group>"; };
+		78BB17B220C52414006AB7C3 /* RepsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsCell.swift; sourceTree = "<group>"; };
+		78BB17B320C52414006AB7C3 /* RepsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepsCell.xib; sourceTree = "<group>"; };
+		78BB17B720C52F7E006AB7C3 /* WeightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightsCell.swift; sourceTree = "<group>"; };
+		78BB17B820C52F7E006AB7C3 /* WeightsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightsCell.xib; sourceTree = "<group>"; };
 		78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+label.swift"; sourceTree = "<group>"; };
 		78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotoCell.swift; sourceTree = "<group>"; };
 		78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisePhotoCell.xib; sourceTree = "<group>"; };
@@ -856,6 +872,8 @@
 		782E9EE820AB77960034A51B /* ConfigureSetsCell */ = {
 			isa = PBXGroup;
 			children = (
+				78BB179220C1A9F9006AB7C3 /* ConfigureReps */,
+				78BB179120C1A9E9006AB7C3 /* ConfigureSets */,
 				782E9EE920AB77EC0034A51B /* ConfigureSetsCell.swift */,
 				782E9EEA20AB77EC0034A51B /* ConfigureSetsCell.xib */,
 			);
@@ -1009,6 +1027,9 @@
 		783F80BD1FC06C38001FE169 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78BB17B620C52F4D006AB7C3 /* WeightsCell */,
+				78BB17B120C523F2006AB7C3 /* RepsCell */,
+				78BB179720C1ADC3006AB7C3 /* SetsCell */,
 				782E9EED20AC1B8F0034A51B /* ExerciseStateCell */,
 				782E9EE820AB77960034A51B /* ConfigureSetsCell */,
 				78C6DAE02010EF1B00A0BD41 /* PhotoCell */,
@@ -1289,6 +1310,49 @@
 			children = (
 			);
 			name = Transforms;
+			sourceTree = "<group>";
+		};
+		78BB179120C1A9E9006AB7C3 /* ConfigureSets */ = {
+			isa = PBXGroup;
+			children = (
+				78BB17AF20C52210006AB7C3 /* MinMaxSetsCell.swift */,
+			);
+			name = ConfigureSets;
+			sourceTree = "<group>";
+		};
+		78BB179220C1A9F9006AB7C3 /* ConfigureReps */ = {
+			isa = PBXGroup;
+			children = (
+				78BB17AD20C521EF006AB7C3 /* MinMaxRepsCell.swift */,
+			);
+			name = ConfigureReps;
+			sourceTree = "<group>";
+		};
+		78BB179720C1ADC3006AB7C3 /* SetsCell */ = {
+			isa = PBXGroup;
+			children = (
+				78BB17AB20C520DE006AB7C3 /* SetsCell.swift */,
+				78BB17A920C520CD006AB7C3 /* SetsCell.xib */,
+			);
+			name = SetsCell;
+			sourceTree = "<group>";
+		};
+		78BB17B120C523F2006AB7C3 /* RepsCell */ = {
+			isa = PBXGroup;
+			children = (
+				78BB17B220C52414006AB7C3 /* RepsCell.swift */,
+				78BB17B320C52414006AB7C3 /* RepsCell.xib */,
+			);
+			name = RepsCell;
+			sourceTree = "<group>";
+		};
+		78BB17B620C52F4D006AB7C3 /* WeightsCell */ = {
+			isa = PBXGroup;
+			children = (
+				78BB17B720C52F7E006AB7C3 /* WeightsCell.swift */,
+				78BB17B820C52F7E006AB7C3 /* WeightsCell.xib */,
+			);
+			name = WeightsCell;
 			sourceTree = "<group>";
 		};
 		78BBA6831F4B639A0037E7DF /* UIBarButtonItem+label */ = {
@@ -2105,13 +2169,16 @@
 				78F6362D1FB60584009EB48D /* ExerciseCategoryCell.xib in Resources */,
 				783A456F1F8E6A2E0048A0F9 /* Settings.storyboard in Resources */,
 				78BAC2CE20AED40100C0EDD2 /* StraightExerciseStateCell.xib in Resources */,
+				78BB17AA20C520CD006AB7C3 /* SetsCell.xib in Resources */,
 				5B1F83121E850E4100ABA24C /* ClientMain.storyboard in Resources */,
 				783F80C41FC06F18001FE169 /* ExercisesTypeView.xib in Resources */,
+				78BB17B520C52414006AB7C3 /* RepsCell.xib in Resources */,
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
 				78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */,
 				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
+				78BB17BA20C52F7E006AB7C3 /* WeightsCell.xib in Resources */,
 				783F80C81FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib in Resources */,
 				781110541F65932700457E8B /* SelectTrainer.xib in Resources */,
 				783F80CE1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib in Resources */,
@@ -2248,6 +2315,7 @@
 				78277D621FC8609A0064ABB8 /* TrainerCoordinator.swift in Sources */,
 				842CD37C1F8F62F400F756DC /* HideKeyboardTapGestureManager.swift in Sources */,
 				78BAC2DB20B4ACFD00C0EDD2 /* PSActionSheet.swift in Sources */,
+				78BB17B420C52414006AB7C3 /* RepsCell.swift in Sources */,
 				78BAC2D820B466C700C0EDD2 /* SavedTemplatesVC.swift in Sources */,
 				78F4D767201F57D300E4CCA9 /* EmptyDataSet.swift in Sources */,
 				782E9C0920A9A60E0034A51B /* WeightsTableViewCell.swift in Sources */,
@@ -2273,6 +2341,7 @@
 				782B82F01F704BC200A019AC /* Event.swift in Sources */,
 				84AB4D771F32829900531740 /* CALayer+BBBProperty.m in Sources */,
 				78E4438C1F40DFDF00525F7A /* ScheduleClienCell.swift in Sources */,
+				78BB17AE20C521F0006AB7C3 /* MinMaxRepsCell.swift in Sources */,
 				78277D641FC860AF0064ABB8 /* ClientCoordinator.swift in Sources */,
 				842EBD1C1F3313C300A3169F /* ScheduleVC.swift in Sources */,
 				78383B451F72A8BF00AA75E3 /* SignInMapper.swift in Sources */,
@@ -2315,6 +2384,7 @@
 				782E9EE520AB54C90034A51B /* UserSettings.swift in Sources */,
 				78F636281FB6049C009EB48D /* ExerciseCategoryVC.swift in Sources */,
 				845883021F706E6000BE7D69 /* Error+Pursuit.swift in Sources */,
+				78BB17AC20C520DE006AB7C3 /* SetsCell.swift in Sources */,
 				780D601F1F5F1588002A7303 /* Storyboards.swift in Sources */,
 				780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */,
 				7804AF461F55FE7D00CE5780 /* CellState.swift in Sources */,
@@ -2331,6 +2401,7 @@
 				84AB4D9B1F32883D00531740 /* PursuitAPIRequests.swift in Sources */,
 				845882F91F7067F000BE7D69 /* Requests.swift in Sources */,
 				783A45751F8E7A7C0048A0F9 /* SettingsVC.swift in Sources */,
+				78BB17B920C52F7E006AB7C3 /* WeightsCell.swift in Sources */,
 				84AB4D8E1F32845400531740 /* UIView+BBBPlaceWithConstraint.m in Sources */,
 				784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */,
 				782B82EB1F703E9400A019AC /* Client.swift in Sources */,
@@ -2396,6 +2467,7 @@
 				783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */,
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
+				78BB17B020C52210006AB7C3 /* MinMaxSetsCell.swift in Sources */,
 				782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */,
 				78277D5C1FC8552D0064ABB8 /* Coordinator.swift in Sources */,
 				782E9C1120A9B0D10034A51B /* RoundedSegmentedControl.swift in Sources */,
@@ -2551,7 +2623,7 @@
 			baseConfigurationReference = 1A9414D73EF8AD2ED81CD96A /* Pods-Pursuit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HEL7S68QC6;

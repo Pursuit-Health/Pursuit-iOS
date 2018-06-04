@@ -16,18 +16,30 @@ protocol WeightsTableViewCellDelegate: class {
 enum WeightsType: Int {
     case lbs = 0
     case kgs = 1
+    
+    var name: String {
+        switch self {
+        case .lbs:
+            return "lbs"
+        case .kgs:
+            return "kgs"
+        }
+    }
 }
 
 extension WeightsType {
     func getWeightsFrom(weight: Double) -> String {
         let unit: UnitMass = (self.rawValue == 0) ? UnitMass.pounds : UnitMass.kilograms
         let convertedWeight = Measurement(value: weight, unit: UnitMass.pounds).converted(to: unit)
-        let numberFormatter = NumberFormatter()
-        numberFormatter.maximumFractionDigits = 0
-        let messurementFormatter = MeasurementFormatter()
-        messurementFormatter.unitOptions = .providedUnit
-        messurementFormatter.numberFormatter = numberFormatter
-        return messurementFormatter.string(from: convertedWeight)
+//        let numberFormatter = NumberFormatter()
+//        numberFormatter.maximumFractionDigits = 1
+//        let messurementFormatter = MeasurementFormatter()
+//        messurementFormatter.unitOptions = .providedUnit
+//        messurementFormatter.numberFormatter = numberFormatter
+//        return messurementFormatter.string(from: convertedWeight)
+        let rounded = round(convertedWeight.value * 10) / 10
+        return String(rounded) + ((self.rawValue == 0) ? " lbs" : " kgs")
+        
     }
     
     func convertToServerUnit(weight: Double) -> Int {

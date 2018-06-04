@@ -11,20 +11,18 @@ import UIKit
 class ConfigureSetsCell: UITableViewCell {
 
     @IBOutlet var headerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var exImageView: UIImageView!
-    @IBOutlet weak var minTextField: UITextField!
-    @IBOutlet weak var maxTextField: UITextField!
-    @IBOutlet weak var headerNameLabel: UILabel!
+    @IBOutlet weak var exImageView      : UIImageView!
+    @IBOutlet weak var minTextField     : UITextField!
+    @IBOutlet weak var maxTextField     : UITextField!
+    @IBOutlet weak var headerNameLabel  : UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
-    
 }

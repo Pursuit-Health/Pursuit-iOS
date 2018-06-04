@@ -53,11 +53,11 @@ class ExerciseDetailsVC: UIViewController {
             case .name:
                 return AddExerciseCell.self
             case .sets:
-                return AddExerciseCell.self
+                return SetsCell.self
             case .reps:
-                return AddExerciseCell.self
+                return RepsCell.self
             case .weights:
-                return AddExerciseCell.self
+                return WeightsCell.self
             case .rest:
                 return AddExerciseCell.self
             case .notes:
@@ -95,20 +95,20 @@ class ExerciseDetailsVC: UIViewController {
                     })
                 }
             case .sets(let excersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? SetsCell {
                     fillSetsCell(cell: castedCell, sets: excersize.sets_count, completion: { text1, text2 in
                         completion(text1, text2)
                     })
                 }
                 
             case .reps(let excersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? RepsCell {
                     fillRepsCell(cell: castedCell, excersize: excersize, completion: { text1, text2 in
                         completion(text1, text2)
                     })
                 }
             case .weights(let excersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? WeightsCell {
                     fillWeightsCell(cell: castedCell, excersize: excersize, completion: { text1, text2 in
                         completion(text1, text2)
                     })
@@ -169,9 +169,10 @@ class ExerciseDetailsVC: UIViewController {
         }
         
         private func fillNameCell(cell: AddExerciseCell, name: String?, completion: @escaping TextFieldComletion) {
-            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Name")
+            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Exercise Name")
             cell.exerciseImageView.image                    = imageFromName("ic_username")
             cell.exerciseTextField.text                     = name
+            cell.exerciseTextField.keyboardType             = .namePhonePad
             cell.exerciseTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
                     completion(text, nil)
@@ -179,12 +180,12 @@ class ExerciseDetailsVC: UIViewController {
             }
         }
         
-        private func fillSetsCell(cell: AddExerciseCell, sets: Int?, completion: @escaping TextFieldComletion) {
+        private func fillSetsCell(cell: SetsCell, sets: Int?, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Sets")
             cell.exerciseImageView.image                    = imageFromName("time")
             cell.exerciseTextField.keyboardType             = .numberPad
             if let sets = sets {
-                cell.exerciseTextField.text                 = String(sets)
+                cell.exerciseTextField.text                 = String(sets) + " sets"
             } else {
                 cell.exerciseTextField.text                 = ""
             }
@@ -195,14 +196,14 @@ class ExerciseDetailsVC: UIViewController {
             }
         }
         
-        private func fillRepsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
+        private func fillRepsCell(cell: RepsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Reps")
             cell.exerciseImageView.image                    = imageFromName("timeline")
             cell.exerciseTextField.keyboardType             = .numberPad
             if (excersize.isStraitSets ?? false) {
-                cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_min ?? 0)"
+                cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_min ?? 0)" + " reps"
             }else if let rep = excersize.reps {
-                cell.exerciseTextField.text                 = String(rep)
+                cell.exerciseTextField.text                 = String(rep) + " reps"
             } else {
                 cell.exerciseTextField.text                 = ""
             }
@@ -213,7 +214,7 @@ class ExerciseDetailsVC: UIViewController {
             }
         }
         
-        private func fillWeightsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
+        private func fillWeightsCell(cell: WeightsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Weights")
             cell.exerciseImageView.image                    = imageFromName("weight")
             cell.exerciseTextField.keyboardType             = .numberPad
@@ -236,7 +237,7 @@ class ExerciseDetailsVC: UIViewController {
         private func fillRetsCell(cell: AddExerciseCell, rets: String?, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
             cell.exerciseImageView.image                    = imageFromName("rest")
-            //cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.keyboardType             = .namePhonePad
             if let rets = rets {
                 cell.exerciseTextField.text = rets
             }else {
@@ -588,19 +589,10 @@ extension ExerciseDetailsVC: UITableViewDelegate {
         }else {
             if(indexPath.row == 0){
                 return UITableViewAutomaticDimension
-            }else if (indexPath.row == 1) {
-                return 80
             }
         }
+        
         return UITableViewAutomaticDimension
-        //        if(indexPath.row == 0){
-        //            return 80
-        //        }else
-//        if (indexPath.row >= cellsInfo.count - 4){
-//            return UITableViewAutomaticDimension
-//        } else {
-//            return 50
-//        }
     }
 }
 

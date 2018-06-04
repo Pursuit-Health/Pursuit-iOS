@@ -47,11 +47,11 @@ class AddExerceiseVC: UIViewController {
             case .name:
                 return AddExerciseCell.self
             case .sets:
-                return AddExerciseCell.self
+                return SetsCell.self
             case .reps:
-                return AddExerciseCell.self
+                return RepsCell.self
             case .weights:
-                return AddExerciseCell.self
+                return WeightsCell.self
             case .rest:
                 return AddExerciseCell.self
             case .notes:
@@ -79,19 +79,19 @@ class AddExerceiseVC: UIViewController {
                     })
                 }
             case .sets(let exersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? SetsCell {
                     fillSetsCell(cell: castedCell, excersize: exersize, completion: { text1, text2 in
                         completion(text1, text2)
                     })
                 }
             case .reps(let exersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? RepsCell {
                     fillRepsCell(cell: castedCell, excersize: exersize, completion: { text1, text2 in
                         completion(text1, text2)
                     })
                 }
             case .weights(let exersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? WeightsCell {
                     fillWeightsCell(cell: castedCell, excersize: exersize, completion: { text1, text2 in
                         completion(text1, text2)
                     })
@@ -137,6 +137,7 @@ class AddExerceiseVC: UIViewController {
         private func fillNameCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Name")
             cell.exerciseImageView.image                    = imageFromName("ic_username")
+            cell.exerciseTextField.keyboardType             = .namePhonePad
             cell.exerciseTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
                     completion(text,nil)
@@ -144,11 +145,11 @@ class AddExerceiseVC: UIViewController {
             }
         }
         
-        private func fillSetsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
+        private func fillSetsCell(cell: SetsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Sets")
             cell.exerciseImageView.image                    = imageFromName("time")
             cell.exerciseTextField.keyboardType             = .numberPad
-            cell.exerciseTextField.text                     = "\(excersize.sets_count ?? 1)"
+            cell.exerciseTextField.text                     = "\(excersize.sets_count ?? 1)" + " sets"
             cell.exerciseTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
                     completion(text, nil)
@@ -156,7 +157,7 @@ class AddExerceiseVC: UIViewController {
             }
         }
         
-        private func fillRepsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
+        private func fillRepsCell(cell: RepsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Reps")
             cell.exerciseImageView.image                    = imageFromName("timeline")
             cell.exerciseTextField.keyboardType             = .numberPad
@@ -170,7 +171,7 @@ class AddExerceiseVC: UIViewController {
             }
         }
         
-        private func fillWeightsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
+        private func fillWeightsCell(cell: WeightsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Weights")
             cell.exerciseImageView.image                    = imageFromName("weight")
             cell.exerciseTextField.keyboardType             = .numberPad
@@ -187,7 +188,7 @@ class AddExerceiseVC: UIViewController {
         private func fillRetsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
             cell.exerciseImageView.image                    = imageFromName("rest")
-            //cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.keyboardType             = .namePhonePad
             cell.exerciseTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
                     completion(text, nil)
