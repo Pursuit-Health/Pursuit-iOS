@@ -68,11 +68,20 @@ class NavigatorVC: UIViewController {
         User.getUserInfo { (user, error) in
             if error == nil {
                 if User.shared.coordinator is TrainerCoordinator {
+                    
+                    
+                    let trainerTabBar = UIStoryboard.trainer.TrainerTabBar!
+                    
+                    self.addChildViewController(trainerTabBar)
+                    self.view.addSubview(trainerTabBar.view)
+                    self.view.addConstraints(UIView.place(trainerTabBar.view, onOtherView: self.view))
+                    trainerTabBar.didMove(toParentViewController: self)
                     //self.leftTitle = "Clients"
                 }else {
                     self.leftTitle = User.shared.name ?? ""
+                    User.shared.coordinator?.start(from: self)
                 }
-                User.shared.coordinator?.start(from: self)
+                
             }else {
                 AppCoordinator.showController(controller: self)
             }

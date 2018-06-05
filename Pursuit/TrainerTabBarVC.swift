@@ -15,6 +15,13 @@ class TrainerTabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.tabBar.backgroundImage = UIImage(named: "bg")
+        
+        let view = UIView()
+        view.frame = self.tabBar.frame
+        view.backgroundColor = .red
+        self.tabBar.addSubview(view)
+        
         if let scheduleVC = (self.viewControllers?[0] as? UINavigationController)?.visibleViewController as? ScheduleVC {
             scheduleVC.datasource = self
             
@@ -31,5 +38,22 @@ extension TrainerTabBarVC: ClientScheduleDataSource {
                 complation(events, error)
             }
         }
+    }
+}
+
+
+extension UITabBar {
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        super.sizeThatFits(size)
+        guard let window = UIApplication.shared.keyWindow else {
+            return super.sizeThatFits(size)
+        }
+        var sizeThatFits = super.sizeThatFits(size)
+        if #available(iOS 11.0, *) {
+            sizeThatFits.height = window.safeAreaInsets.bottom + 64
+        } else {
+            // Fallback on earlier versions
+        }
+        return sizeThatFits
     }
 }

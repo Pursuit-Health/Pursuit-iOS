@@ -10,11 +10,13 @@ import Foundation
 
 protocol Coordinator {
     func start(from controller: UIViewController?)
+    func start(from: ClientsVC, with client: Client)
     static func start(from controller: UIViewController?)
 }
 
 extension Coordinator {
     func start(from controller: UIViewController?){}
+    func start(from: ClientsVC, with client: Client){}
     static func start(from controller: UIViewController?){}
 }
 

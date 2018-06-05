@@ -174,7 +174,9 @@ extension ClientsVC: UITableViewDataSource {
 
 extension ClientsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.didSelect(client: self.filteredClients[indexPath.row], on: self)
+        //Start coordinator after selecting client
+        User.shared.coordinator?.start(from: self, with: self.filteredClients[indexPath.row])
+        //self.delegate?.didSelect(client: self.filteredClients[indexPath.row], on: self)
     }
 }
 

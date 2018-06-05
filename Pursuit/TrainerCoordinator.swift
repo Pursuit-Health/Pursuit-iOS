@@ -46,7 +46,6 @@ class TrainerCoordinator: Coordinator {
             controller.view.addConstraints(UIView.place(trainerTabBar.view, onOtherView: controller.view))
             trainerTabBar.didMove(toParentViewController: controller)
             
-            
 //            let clientsList = UIStoryboard.trainer.TrainerClients!
 //            clientsList.delegate = self
 //            controller.view.addSubview(clientsList.view)
@@ -56,6 +55,16 @@ class TrainerCoordinator: Coordinator {
 //
 //            self.clientsListVC = clientsList
         }
+    }
+    
+    func start(from: ClientsVC, with client: Client) {
+        let clientInfo = UIStoryboard.trainer.ClientInfo!
+        clientInfo.delegate = self
+        clientInfo.dataSource = self
+        self.selectedClient = client
+        from.navigationController?.pushViewController(clientInfo, animated: true)
+        
+        self.clientProfileVC = clientInfo
     }
     
     fileprivate func showError(controller: UIViewController) {
