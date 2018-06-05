@@ -8,6 +8,7 @@
 
 import UIKit
 import TPKeyboardAvoiding
+import IQKeyboardManagerSwift
 
 protocol ExerciseDetailsVCDelegate: class {
     func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC)
@@ -189,11 +190,16 @@ class ExerciseDetailsVC: UIViewController {
             } else {
                 cell.exerciseTextField.text                 = ""
             }
-            cell.exerciseTextField.bbb_changedBlock = { (textField) in
-                if let text = textField.text {
+            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
+                if let text = textField?.text {
                     completion(text, nil)
                 }
             }
+//            cell.exerciseTextField.bbb_changedBlock = { (textField) in
+//                if let text = textField.text {
+//                    completion(text, nil)
+//                }
+//            }
         }
         
         private func fillRepsCell(cell: RepsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
@@ -201,7 +207,11 @@ class ExerciseDetailsVC: UIViewController {
             cell.exerciseImageView.image                    = imageFromName("timeline")
             cell.exerciseTextField.keyboardType             = .numberPad
             if (excersize.isStraitSets ?? false) {
-                cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_min ?? 0)" + " reps"
+                if let rep = excersize.sets?.first?.reps_min {
+                    cell.exerciseTextField.text = "\(rep)" + " reps"
+                }else {
+                    cell.exerciseTextField.text = ""
+                }
             }else if let rep = excersize.reps {
                 cell.exerciseTextField.text                 = String(rep) + " reps"
             } else {
@@ -217,10 +227,13 @@ class ExerciseDetailsVC: UIViewController {
         private func fillWeightsCell(cell: WeightsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Weights")
             cell.exerciseImageView.image                    = imageFromName("weight")
-            cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.keyboardType             = .decimalPad
             if (excersize.isStraitSets ?? false) {
-                let weight = Double(excersize.sets?.first?.weight_min ?? 0)
-                cell.exerciseTextField.text = UserSettings.shared.weightsType.getWeightsFrom(weight: weight)
+                if let weight = excersize.sets?.first?.weight_min {
+                cell.exerciseTextField.text = UserSettings.shared.weightsType.getWeightsFrom(weight: Double(weight))
+                }else {
+                  cell.exerciseTextField.text = ""
+                }
             }else if let weight = excersize.weight {
                 cell.exerciseTextField.text                 = String(weight)
             } else {
@@ -274,7 +287,7 @@ class ExerciseDetailsVC: UIViewController {
             cell.headerNameLabel.text                  = ""
             cell.headerHeightConstraint.constant       = 0
             if let min = exersize.sets?[index].weight_min {
-                cell.minTextField.text = "\(min)"
+                cell.minTextField.text = "\(Int(min))"
             }else {
                 cell.minTextField.text = ""
             }
@@ -447,15 +460,13 @@ class ExerciseDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.setAppearence()
-        
         setUpBackgroundImage()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.setAppearence()
         
         //TODO: Need refactoring
         if self.excersize.type == nil {
@@ -480,8 +491,13 @@ class ExerciseDetailsVC: UIViewController {
         if excersize.sets?.first?.reps_max == nil {
             self.excersize.isStraitSets = true
         }
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = false
     }
     
     private func showError() {
@@ -549,7 +565,7 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                         self.excersize.sets?.append(SetsData())
                     }
             
-                    let weigt = Double(text1 ?? "") ?? 0
+                    let weigt = (Double(text1 ?? "") ?? 0)
                     self.excersize.sets?.first?.weight_max = nil
                     self.excersize.sets?.first?.weight_min = UserSettings.shared.weightsType.convertToServerUnit(weight: weigt)
                 }
@@ -564,7 +580,7 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                 }
             case .configureWeights(let index, _):
                 if let text1 = text1 {
-                    self.excersize.sets?[index].weight_min = Int(text1)
+                    self.excersize.sets?[index].weight_min = Double(text1)
                 }
                 if let text2 = text2 {
                     self.excersize.sets?[index].weight_max = Int(text2)

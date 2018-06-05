@@ -42,11 +42,11 @@ extension WeightsType {
         
     }
     
-    func convertToServerUnit(weight: Double) -> Int {
+    func convertToServerUnit(weight: Double) -> Double {
         let unit: UnitMass = (self.rawValue == 0) ? UnitMass.pounds : UnitMass.kilograms
         let convertedWeight = Measurement(value: weight, unit: unit)
 
-        return Int(convertedWeight.converted(to: UnitMass.pounds).value)
+        return convertedWeight.converted(to: UnitMass.pounds).value
     }
 }
 

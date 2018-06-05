@@ -23,6 +23,7 @@
 		78094A2F1F5BF9D2001325B4 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78094A2E1F5BF9D2001325B4 /* Splash.storyboard */; };
 		78094A311F5BFA40001325B4 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A301F5BFA40001325B4 /* SplashVC.swift */; };
 		78094A351F5C0CAA001325B4 /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */; };
+		780A8B4020C6BD5800D421D4 /* DoubleTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780A8B3F20C6BD5800D421D4 /* DoubleTransform.swift */; };
 		780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D26841F5C92D900FA1558 /* RegexExpression.swift */; };
 		780D601B1F5EAA63002A7303 /* DeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D601A1F5EAA63002A7303 /* DeepLinkService.swift */; };
 		780D601D1F5EAA6C002A7303 /* GuestDeepLinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D601C1F5EAA6C002A7303 /* GuestDeepLinkService.swift */; };
@@ -264,6 +265,7 @@
 		78094A301F5BFA40001325B4 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		78094A331F5BFDAD001325B4 /* mksanstallx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mksanstallx.ttf; sourceTree = "<group>"; };
 		78094A341F5C0CAA001325B4 /* ResetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
+		780A8B3F20C6BD5800D421D4 /* DoubleTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleTransform.swift; sourceTree = "<group>"; };
 		780D26841F5C92D900FA1558 /* RegexExpression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexExpression.swift; sourceTree = "<group>"; };
 		780D601A1F5EAA63002A7303 /* DeepLinkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepLinkService.swift; sourceTree = "<group>"; };
 		780D601C1F5EAA6C002A7303 /* GuestDeepLinkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestDeepLinkService.swift; sourceTree = "<group>"; };
@@ -1306,6 +1308,7 @@
 		78BAC2FE20B71BB900C0EDD2 /* Transforms */ = {
 			isa = PBXGroup;
 			children = (
+				780A8B3F20C6BD5800D421D4 /* DoubleTransform.swift */,
 			);
 			name = Transforms;
 			sourceTree = "<group>";
@@ -2391,6 +2394,7 @@
 				7892A8911F4B411400BDCD79 /* UINavigationItem+leftTitle.swift in Sources */,
 				782E9C0020A985D90034A51B /* LogoutTableViewCell.swift in Sources */,
 				78FA53DF1F47794200C38413 /* DateFormater+formats.swift in Sources */,
+				780A8B4020C6BD5800D421D4 /* DoubleTransform.swift in Sources */,
 				842EBD261F33142B00A3169F /* TemplatesVC.swift in Sources */,
 				783484281F71804D00C58191 /* SignUpButtonCell.swift in Sources */,
 				783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */,

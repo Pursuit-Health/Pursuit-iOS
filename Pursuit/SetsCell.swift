@@ -26,7 +26,12 @@ extension SetsCell: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let text = (textField.text ?? "") + " sets"
+        var text = String()
+        if textField.text?.isEmpty ?? true {
+            text = ""
+        }else {
+            text = (textField.text ?? "") + " sets"
+        }
         textField.text = text
     }
 }

@@ -26,7 +26,12 @@ extension RepsCell: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let text = (textField.text ?? "") + " reps"
+        var text = String()
+        if textField.text?.isEmpty ?? true {
+            text = ""
+        }else {
+            text = (textField.text ?? "") + " reps"
+        }
         textField.text = text
     }
 }

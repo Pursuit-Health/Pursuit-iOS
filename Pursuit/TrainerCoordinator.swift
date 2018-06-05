@@ -250,7 +250,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
             }
         }
         let work = Workout()
-        if state == .customExercise{
+        if state == .customExercise {
             //TODO: Reimplament
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
                 if  ex.sets_count == nil {
@@ -263,11 +263,8 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
                 
                 self.exercises += self.customExercise
                 
-                if self.createTemplate?.isEditTemplate ?? false {
-                    work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
-                }else {
-                    work.excersises = self.exercises
-                }
+                work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
+                
                 self.customExercise = []
             }
         }else {

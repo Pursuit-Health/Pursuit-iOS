@@ -15,7 +15,7 @@ class SetsData: Mappable {
     
     var reps_min: Int?
     var reps_max: Int?
-    var weight_min: Int?
+    var weight_min: Double?
     var weight_max: Int?
     
     //MARK: Mappable
@@ -24,7 +24,7 @@ class SetsData: Mappable {
         self.id             <- map["id"]
         self.reps_min       <- map["reps_min"]
         self.reps_max       <- map["reps_max"]
-        self.weight_min     <- map["weight_min"]
+        self.weight_min     <- (map["weight_min"], DoubleTransform(multiplier: 1000))
         self.weight_max     <- map["weight_max"]
     }
     

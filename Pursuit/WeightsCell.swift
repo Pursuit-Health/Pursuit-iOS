@@ -28,7 +28,12 @@ extension WeightsCell: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         let sub = UserSettings.shared.weightsType.name
-        let text = (textField.text ?? "") + " \(sub)"
+        var text = String()
+        if textField.text?.isEmpty ?? true {
+            text = ""
+        }else {
+            text = (textField.text ?? "") + " \(sub)"
+        }
         textField.text = text
     }
 }

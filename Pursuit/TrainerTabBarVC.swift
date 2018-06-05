@@ -19,12 +19,6 @@ class TrainerTabBarVC: UITabBarController {
             scheduleVC.datasource = self
             
         }
-        
-        
-        //TODO: Check
-        if let templatesVC = (self.viewControllers?[1] as? UINavigationController)?.visibleViewController as? TemplatesVC {
-            
-        }
     }
 }
 
