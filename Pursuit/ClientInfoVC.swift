@@ -94,6 +94,7 @@ class ClientInfoVC: UIViewController {
         self.clientInfoTableView.addPullRefresh { _ in
             self.updateWorkouts()
         }
+        self.clientInfoTableView?.startPullRefresh()
     
         self.setUpBackgroundImage()
         
@@ -105,7 +106,7 @@ class ClientInfoVC: UIViewController {
         
         self.setUpNavigationBar()
         
-        self.updateWorkouts()
+        //self.updateWorkouts()
     }
     
     deinit {
@@ -115,7 +116,7 @@ class ClientInfoVC: UIViewController {
     //MARK: Private
     
     func avatarUpdated(_ notification: Notification) {
-            self.updateInfo()
+        self.updateInfo()
     }
     
     func updateWorkouts() {

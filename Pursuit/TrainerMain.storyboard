@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yQA-i2-08w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yQA-i2-08w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -629,15 +629,23 @@
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J19-Dx-Qpt">
-                                                <rect key="frame" x="330" y="26" width="25" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J19-Dx-Qpt">
+                                                <rect key="frame" x="305" y="13.5" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="Gh6-nN-mUz"/>
+                                                    <constraint firstAttribute="height" constant="50" id="M7b-Jc-LfF"/>
+                                                </constraints>
                                                 <state key="normal" image="btn_right"/>
                                                 <connections>
                                                     <action selector="increaseButtonPressed:" destination="ZIe-AK-DC9" eventType="touchUpInside" id="kI4-Ga-5GE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv2-uF-w4B">
-                                                <rect key="frame" x="20" y="26" width="25" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xv2-uF-w4B">
+                                                <rect key="frame" x="20" y="13.5" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="U5e-XE-urY"/>
+                                                    <constraint firstAttribute="width" constant="50" id="eba-IY-LOF"/>
+                                                </constraints>
                                                 <state key="normal" image="btn_left"/>
                                                 <connections>
                                                     <action selector="decreaseDateButtonPressed:" destination="ZIe-AK-DC9" eventType="touchUpInside" id="ulz-mn-Trd"/>
@@ -1869,6 +1877,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTemplateBarButton" destination="ave-09-J8w" id="F1b-3Y-Kpy"/>
                         <outlet property="savedTemplatesSearchBar" destination="zFb-sy-QRr" id="bAk-KZ-fsH"/>
                         <outlet property="savedTemplatesTableView" destination="rqa-fV-Eca" id="3nf-Co-rKK"/>
                     </connections>

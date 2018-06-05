@@ -161,8 +161,8 @@ class AddExerceiseVC: UIViewController {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Reps")
             cell.exerciseImageView.image                    = imageFromName("timeline")
             cell.exerciseTextField.keyboardType             = .numberPad
-            if excersize.sets?.count == 1 {
-               cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_max ?? 0)"
+            if (excersize.isStraitSets ?? false) {
+                cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_min ?? 0)" + " reps"
             }
             cell.exerciseTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
@@ -175,8 +175,9 @@ class AddExerceiseVC: UIViewController {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Weights")
             cell.exerciseImageView.image                    = imageFromName("weight")
             cell.exerciseTextField.keyboardType             = .numberPad
-            if excersize.sets?.count == 1 {
-                cell.exerciseTextField.text = "\(excersize.sets?.first?.weight_max ?? 0)"
+            if (excersize.isStraitSets ?? false) {
+                let weight = Double(excersize.sets?.first?.weight_min ?? 0)
+                cell.exerciseTextField.text = UserSettings.shared.weightsType.getWeightsFrom(weight: weight)
             }
             cell.exerciseTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
@@ -374,7 +375,8 @@ extension AddExerceiseVC: UITableViewDataSource {
                         self.exercise.sets?.append(SetsData())
                     }
                     self.exercise.sets?.first?.weight_max = nil
-                    self.exercise.sets?.first?.weight_min = Int(text1 ?? "")
+                    let weigt = Double(text1 ?? "") ?? 0
+                    self.exercise.sets?.first?.weight_min = UserSettings.shared.weightsType.convertToServerUnit(weight: weigt)
                 }
             case .rest:
                 self.exercise.rest = text1 ?? ""

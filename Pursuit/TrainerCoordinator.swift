@@ -136,7 +136,7 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
         })).addAction(action: AlertAction(title: "Use Saved Template", style: .default, handler: { _ in
             let savedTemplatesVC = UIStoryboard.trainer.SavedTemplatesList!
             savedTemplatesVC.delegate = self
-            
+            savedTemplatesVC.canAddNewTemplate = false
             controller.navigationController?.pushViewController(savedTemplatesVC, animated: true)
             
         })).addAction(action: AlertAction(title: "Cancel", style: .cancel, handler: { _ in }))
@@ -356,7 +356,7 @@ extension TrainerCoordinator: ExerciseDetailsVCDelegate {
 
 extension TrainerCoordinator {
     func checkExerciseRequiredFields(_ ex: ExcersiseData, controller: UIViewController) {
-        if (ex.name?.isEmpty ?? true) || ex.sets == nil || ex.rest == nil {
+        if (ex.name?.isEmpty ?? true) || ex.sets == nil {
             self.showError(controller: controller)
             return
         }
