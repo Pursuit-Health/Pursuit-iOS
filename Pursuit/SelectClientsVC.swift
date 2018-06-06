@@ -41,11 +41,25 @@ class SelectClientsVC: UIViewController {
     @IBOutlet weak var clientSearchBar: UISearchBar! {
         didSet {
             clientSearchBar.backgroundImage    = UIImage()
+            clientSearchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .compact)
+            clientSearchBar.setImage(UIImage(named: "white_search_icon"), for: .search, state: .normal)
             if let searchField = clientSearchBar.value(forKey: "_searchField") as? UITextField {
                 searchField.borderStyle         = .none
                 searchField.backgroundColor     = .clear
                 searchField.textColor           = .white
                 searchField.font                = UIFont(name: "Avenir", size: 15)
+                
+                searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+                guard let UISearchBarBackground: AnyClass = NSClassFromString("UISearchBarBackground") else { return }
+                
+                for view in clientSearchBar.subviews {
+                    for subview in view.subviews {
+                        if subview.isKind(of: UISearchBarBackground) {
+                            subview.alpha = 0
+                        }
+                    }
+                }
+                
             }
         }
     }

@@ -90,6 +90,8 @@
 		783A45771F8E87000048A0F9 /* NavigatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783A45761F8E87000048A0F9 /* NavigatorVC.swift */; };
 		783D1A4A1FB9F1EF00C4B8D7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */; };
 		783D1A4C1FB9F22100C4B8D7 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */; };
+		783E315F20C81CA400952790 /* UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E315E20C81CA400952790 /* UIColor+HEX.swift */; };
+		783E316220C831D300952790 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E316120C831D300952790 /* UIImage+Color.swift */; };
 		783F80C01FC06CBB001FE169 /* ExerciseDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F80BF1FC06CBB001FE169 /* ExerciseDetailsVC.swift */; };
 		783F80C21FC06D72001FE169 /* ExercisesTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F80C11FC06D72001FE169 /* ExercisesTypeView.swift */; };
 		783F80C41FC06F18001FE169 /* ExercisesTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783F80C31FC06F18001FE169 /* ExercisesTypeView.xib */; };
@@ -353,6 +355,8 @@
 		783A45761F8E87000048A0F9 /* NavigatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorVC.swift; sourceTree = "<group>"; };
 		783D1A491FB9F1EF00C4B8D7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		783D1A4B1FB9F22100C4B8D7 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		783E315E20C81CA400952790 /* UIColor+HEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HEX.swift"; sourceTree = "<group>"; };
+		783E316120C831D300952790 /* UIImage+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
 		783F80BF1FC06CBB001FE169 /* ExerciseDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailsVC.swift; sourceTree = "<group>"; };
 		783F80C11FC06D72001FE169 /* ExercisesTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTypeView.swift; sourceTree = "<group>"; };
 		783F80C31FC06F18001FE169 /* ExercisesTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisesTypeView.xib; sourceTree = "<group>"; };
@@ -1051,6 +1055,14 @@
 				78E4BD2A1FC2108900A069DC /* HeaderCell.xib */,
 			);
 			name = HeaderView;
+			sourceTree = "<group>";
+		};
+		783E316020C831BC00952790 /* UIImage+Color */ = {
+			isa = PBXGroup;
+			children = (
+				783E316120C831D300952790 /* UIImage+Color.swift */,
+			);
+			name = "UIImage+Color";
 			sourceTree = "<group>";
 		};
 		783F80BC1FC06C1A001FE169 /* ExerciseDetails */ = {
@@ -1899,6 +1911,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				783E316020C831BC00952790 /* UIImage+Color */,
 				78BAC2F520B5F5FF00C0EDD2 /* Date */,
 				78F6362E1FB99E74009EB48D /* UIApplication+StatusBar */,
 				785FF4291FA1FF9500787CF4 /* UIStoryboard+Create */,
@@ -1927,6 +1940,7 @@
 			isa = PBXGroup;
 			children = (
 				5B1F833B1E851B5600ABA24C /* UIColor+RGB.swift */,
+				783E315E20C81CA400952790 /* UIColor+HEX.swift */,
 			);
 			name = "UIColor+RGB";
 			sourceTree = "<group>";
@@ -2200,7 +2214,7 @@
 					5B1F83081E850E4100ABA24C = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HEL7S68QC6;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					5B1F831C1E850E4100ABA24C = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -2574,6 +2588,7 @@
 				78BB177820C020D6006AB7C3 /* SendeMessageWithImageCell.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
+				783E316220C831D300952790 /* UIImage+Color.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
 				78BAC2FD20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift in Sources */,
 				783F80CD1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift in Sources */,
@@ -2609,6 +2624,7 @@
 				783A45731F8E78120048A0F9 /* SWRevealViewController.m in Sources */,
 				78BB176F20C020C3006AB7C3 /* TypingCell.swift in Sources */,
 				782E89A21F793D86002AD54C /* Auth.swift in Sources */,
+				783E315F20C81CA400952790 /* UIColor+HEX.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
 				782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */,
 				78277D5C1FC8552D0064ABB8 /* Coordinator.swift in Sources */,
@@ -2765,17 +2781,17 @@
 			baseConfigurationReference = 1A9414D73EF8AD2ED81CD96A /* Pods-Pursuit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HEL7S68QC6;
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HealthPursuit-v2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c3e0e81f-6965-46ab-baa5-a1acd86fb690";
-				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Dev_Provision;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2789,15 +2805,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HEL7S68QC6;
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HealthPursuit;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HealthPursuit-v2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "27838570-12e4-4d0f-80e8-6247da789130";
-				PROVISIONING_PROFILE_SPECIFIER = Pursuit_Provision_Profile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pursuit/Pursuit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;

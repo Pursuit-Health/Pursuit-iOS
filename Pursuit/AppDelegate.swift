@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //FirebaseApp.configure()
         
-        //setUpTabBarAppearens()
+        setUpTabBarAppearens()
         
         setupDeepLinking()
         
@@ -89,9 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setUpTabBarAppearens() {
         let tabBar = UITabBar.appearance()
         tabBar.barTintColor = UIColor.clear
-        tabBar.backgroundImage = UIImage(named: "bg")
+        tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
-
     }
 }
 

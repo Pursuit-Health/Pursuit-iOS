@@ -47,7 +47,7 @@ class ScheduleVC: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView! {
         didSet {
-            collectionView.contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             let cell    = Constants.Cell.schedule
             let nib     = UINib(nibName: cell.nibName, bundle: .main)
@@ -86,9 +86,10 @@ class ScheduleVC: UIViewController {
         }
     }
     
-    @IBAction func logoutButtonPressed(_ sender: Any) {
-  
-            //controller?.viewControllers.removeLast()
+    @IBAction func addEventButtonPressed(_ sender: Any) {
+        if let controller = UIStoryboard.trainer.ScheduleClient {
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     @IBAction func menuButtonPressed(_ sender: Any) {
@@ -111,13 +112,11 @@ class ScheduleVC: UIViewController {
         calendarViewVisibleDates()
         
         setUpBackgroundImage()
+    
+        configureNavigation()
         
-        self.tabBarController?.tabBar.isHidden = false
-        //TODO: this thing is unnecessary, need to think how to change it. Do it with me.
-        navigationController?.navigationBar.setAppearence()
+        configureTabBar()
         
-        //self.navigationController?.isNavigationBarHidden = false
-
         updateEvents()
 
     }
@@ -129,6 +128,18 @@ class ScheduleVC: UIViewController {
     }
     
     //MARK: Private
+    
+    private func configureNavigation() {
+        navigationController?.navigationBar.setAppearence()
+        
+        if User.shared.coordinator is ClientCoordinator {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    private func configureTabBar() {
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     private func calendarViewVisibleDates() {
         calendarView.visibleDates { (visibleDates) in
@@ -156,6 +167,19 @@ class ScheduleVC: UIViewController {
             }
         })
     }
+    
+    func colorForRow(_ row: Int) -> UIColor {
+        switch row % 3{
+        case 0:
+            return UIColor.eventRed()
+        case 1:
+            return UIColor.eventOrange()
+        case 2:
+            return UIColor.eventBlue()
+        default:
+            return UIColor.eventRed()
+        }
+    }
 }
 
 extension ScheduleVC: UICollectionViewDataSource {
@@ -174,6 +198,7 @@ extension ScheduleVC: UICollectionViewDataSource {
         cell.dateLabel.text         = (iventInfo.startAt ?? "") + "-" + (iventInfo.endAt ?? "")
         
         cell.clientsCountLabel.text = "\(iventInfo.clients?.count ?? 0)"
+        cell.categoryView.backgroundColor = colorForRow(indexPath.row)
         cell.fillImages(clients: iventInfo.clients ?? [])
         
         return cell
@@ -248,7 +273,7 @@ private extension ScheduleVC {
         let start           = formatter.date(from: Constants.Dates.StartDate)!
         let end             = formatter.date(from: Constants.Dates.EndDate)!
         
-        let params          = ConfigurationParameters(startDate: start, endDate: end)
+        let params          = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 6)
         return params
     }
     

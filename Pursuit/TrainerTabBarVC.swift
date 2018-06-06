@@ -2,25 +2,18 @@
 //  TrainerTabBarVC.swift
 //  Pursuit
 //
-//  Created by ігор on 9/25/17.
+//  Created by Igor on 9/25/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
 import UIKit
 
-
-
 class TrainerTabBarVC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.tabBar.backgroundImage = UIImage(named: "bg")
-        
-        let view = UIView()
-        view.frame = self.tabBar.frame
-        view.backgroundColor = .red
-        self.tabBar.addSubview(view)
+    
+        tabBar.tintColor        = .white
         
         if let scheduleVC = (self.viewControllers?[0] as? UINavigationController)?.visibleViewController as? ScheduleVC {
             scheduleVC.datasource = self
@@ -50,7 +43,7 @@ extension UITabBar {
         }
         var sizeThatFits = super.sizeThatFits(size)
         if #available(iOS 11.0, *) {
-            sizeThatFits.height = window.safeAreaInsets.bottom + 64
+            sizeThatFits.height = window.safeAreaInsets.bottom + 70
         } else {
             // Fallback on earlier versions
         }

@@ -40,6 +40,18 @@ extension UIColor {
     class func customGreenColor() -> UIColor {
         return UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 1)
     }
+    
+    class func eventRed() -> UIColor {
+        return UIColor.init(red: 255/255, green: 51/255, blue: 102/255, alpha: 1)
+    }
+    
+    class func eventOrange() -> UIColor {
+        return UIColor.init(red: 238/255, green: 143/255, blue: 110/255, alpha: 1)
+    }
+    
+    class func eventBlue() -> UIColor {
+        return UIColor.init(red: 80/255, green: 210/255, blue: 194/255, alpha: 1)
+    }
     /**
      Construct a UIColor using an HTML/CSS RGB formatted value and an alpha value
      

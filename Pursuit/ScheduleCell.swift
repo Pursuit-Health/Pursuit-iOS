@@ -13,6 +13,7 @@ class ScheduleCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var clientsCountLabel: UILabel!
     @IBOutlet weak var imagesStackView: UIStackView!

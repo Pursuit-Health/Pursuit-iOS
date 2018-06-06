@@ -21,15 +21,22 @@ class ClientCoordinator: Coordinator {
     
     func start(from controller: UIViewController?) {
         if let controller = controller {
-            let clientInfo = UIStoryboard.trainer.ClientInfo!
-            clientInfo.delegate = self
-            clientInfo.dataSource = self
-            controller.view.addSubview(clientInfo.view)
-            controller.view.addConstraints(UIView.place(clientInfo.view, onOtherView: controller.view))
-            clientInfo.didMove(toParentViewController: controller)
-            controller.addChildViewController(clientInfo)
             
-            self.infoVC = clientInfo
+            let clientTabBar = UIStoryboard.client.ClientTabBar!
+            
+            controller.addChildViewController(clientTabBar)
+            controller.view.addSubview(clientTabBar.view)
+            controller.view.addConstraints(UIView.place(clientTabBar.view, onOtherView: controller.view))
+            clientTabBar.didMove(toParentViewController: controller)
+//            let clientInfo = UIStoryboard.trainer.ClientInfo!
+//            clientInfo.delegate = self
+//            clientInfo.dataSource = self
+//            controller.view.addSubview(clientInfo.view)
+//            controller.view.addConstraints(UIView.place(clientInfo.view, onOtherView: controller.view))
+//            clientInfo.didMove(toParentViewController: controller)
+//            controller.addChildViewController(clientInfo)
+//
+//            self.infoVC = clientInfo
         }
     }
     

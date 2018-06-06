@@ -78,8 +78,14 @@ class NavigatorVC: UIViewController {
                     trainerTabBar.didMove(toParentViewController: self)
                     //self.leftTitle = "Clients"
                 }else {
+                    let clientTabBar = UIStoryboard.client.ClientTabBar!
+                    
+                    self.addChildViewController(clientTabBar)
+                    self.view.addSubview(clientTabBar.view)
+                    self.view.addConstraints(UIView.place(clientTabBar.view, onOtherView: self.view))
+                    clientTabBar.didMove(toParentViewController: self)
                     self.leftTitle = User.shared.name ?? ""
-                    User.shared.coordinator?.start(from: self)
+                    //User.shared.coordinator?.start(from: self)
                 }
                 
             }else {

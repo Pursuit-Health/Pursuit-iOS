@@ -2,18 +2,18 @@
 //  ClientTabBarVC.swift
 //  Pursuit
 //
-//  Created by ігор on 9/25/17.
+//  Created by Igor on 9/25/17.
 //  Copyright © 2017 Pursuit Health Technologies. All rights reserved.
 //
 
 import UIKit
 
-
-
 class ClientTabBarVC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBar.tintColor = .white
         
         if let scheduleVC = (self.viewControllers?[0] as? UINavigationController)?.visibleViewController as? ScheduleVC {
         scheduleVC.datasource = self
