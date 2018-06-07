@@ -151,8 +151,8 @@ class AddExerceiseVC: UIViewController {
             cell.exerciseImageView.image                    = imageFromName("time")
             cell.exerciseTextField.keyboardType             = .numberPad
             cell.exerciseTextField.text                     = "\(excersize.sets_count ?? 1)" + " sets"
-            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
-                if let text = textField?.text {
+            cell.exerciseTextField.bbb_textFieldDidEndEditing_changeBlock = { (textField) in
+                if let text = textField.text {
                     completion(text, nil)
                 }
             }

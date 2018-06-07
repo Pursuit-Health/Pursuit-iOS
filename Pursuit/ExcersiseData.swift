@@ -8,8 +8,16 @@
 
 import ObjectMapper
 
-class ExcersiseData: Mappable {
+class ExcersiseData: Mappable, Equatable, Hashable {
+    //MARK: Hashable
     
+    var hashValue: Int = 0
+    
+    //MARK: Equatable
+    
+    static func ==(lhs: ExcersiseData, rhs: ExcersiseData) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     class InnerExcersise: Mappable {
         

@@ -257,8 +257,9 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
                     ex.sets = []
                 }
                 
-                self.checkExerciseRequiredFields(ex, controller: controller)
-                
+                if self.checkExerciseRequiredFields(ex, controller: controller) {
+                    return
+                }
                 self.customExercise.append(ex)
                 
                 self.exercises += self.customExercise
@@ -281,6 +282,9 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         
         work.name = self.createTemplate?.workoutNew?.name
         work.isDone = self.createTemplate?.workoutNew?.isDone
+//        if let exerc = work.excersises {
+//            work.excersises = Array(Set(exerc))
+//        }
         self.createTemplate?.workoutNew = work
         self.exercises = []
         controller.navigationController?.popViewController(animated: true)
@@ -352,11 +356,12 @@ extension TrainerCoordinator: ExerciseDetailsVCDelegate {
 }
 
 extension TrainerCoordinator {
-    func checkExerciseRequiredFields(_ ex: ExcersiseData, controller: UIViewController) {
+    func checkExerciseRequiredFields(_ ex: ExcersiseData, controller: UIViewController) -> Bool {
         if (ex.name?.isEmpty ?? true) || ex.sets == nil {
             self.showError(controller: controller)
-            return
+            return true
         }
+        return false
     }
 }
 

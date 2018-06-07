@@ -190,8 +190,8 @@ class ExerciseDetailsVC: UIViewController {
             } else {
                 cell.exerciseTextField.text                 = ""
             }
-            cell.exerciseTextField.sh_setDidEndEditing { (textField) in
-                if let text = textField?.text {
+            cell.exerciseTextField.bbb_textFieldDidEndEditing_changeBlock = { (textField) in
+                if let text = textField.text {
                     completion(text, nil)
                 }
             }
