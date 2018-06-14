@@ -72,19 +72,17 @@ class ScheduleVC: UIViewController {
     
     weak var delegate: ScheduleVCDelegate?
     
-    var events: [Event] = [] {
-        didSet {
-            self.calendarView.reloadData()
-            self.calendarView.scrollToDate(Date())
-            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
-        }
-    }
+    lazy var formatter       = DateFormatters.serverTimeFormatter
+    
+    var events: [Event] = []
     
     var filteredEvents: [Event] = [] {
         didSet {
-            self.collectionView.reloadData()
+            self.collectionView?.reloadData()
         }
     }
+    
+    var savedTemplatesCoordinator: SavedTemplatesCoordinator = SavedTemplatesCoordinator()
     
     @IBAction func addEventButtonPressed(_ sender: Any) {
         if let controller = UIStoryboard.trainer.ScheduleClient {
@@ -103,7 +101,7 @@ class ScheduleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+        configureSideMenuController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,6 +139,13 @@ class ScheduleVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    private func configureSideMenuController() {
+        if self.revealViewController() != nil {
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
+    }
+    
     private func calendarViewVisibleDates() {
         calendarView.visibleDates { (visibleDates) in
             if let date = visibleDates.monthDates.first?.date {
@@ -150,7 +155,7 @@ class ScheduleVC: UIViewController {
         }
     }
     
-    func updateEvents() {
+    private func updateEvents() {
         var changedDate = DateInRegion(absoluteDate: Date())
         let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "yyyy-MM-dd"
@@ -161,8 +166,8 @@ class ScheduleVC: UIViewController {
         self.datasource?.updateDataSource(self, startDate, endDate: endDate, complation: { (events, error) in
             if error == nil {
                 if let events = events {
-                    self.filteredEvents = events
                     self.events = events
+                    self.filteredEvents = self.events.filter{ $0.date?.contains(self.formatter.string(from: Date())) ?? false }
                 }
             }
         })
@@ -179,6 +184,10 @@ class ScheduleVC: UIViewController {
         default:
             return UIColor.eventRed()
         }
+    }
+    
+    func showSavedTemplates() {
+        self.savedTemplatesCoordinator.start(from: self)
     }
 }
 
@@ -244,10 +253,9 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         cellState.handleCellTextColor(cell: calCell)
         cellState.handleCellSelection(cell: calCell)
         
-        let formatter       = DateFormatters.serverTimeFormatter
         
         self.filteredEvents = self.events.filter{ $0.date?.contains(formatter.string(from: cellState.date)) ?? false }
-        
+        self.collectionView.reloadData()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

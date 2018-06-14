@@ -23,7 +23,7 @@ class ExerciseStateCell: UITableViewCell {
             stateSwitch?.thumbOffTintColor = UIColor.customGreenColor()
             
             stateSwitch?.trackOnTintColor = UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 0.7)
-            stateSwitch?.trackOffTintColor = UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 0.7)
+            stateSwitch?.trackOffTintColor = UIColor.white//UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 0.7)
             stateSwitch?.isBounceEnabled = true
             switchContainerView.addSubview(stateSwitch ?? UIView())
             switchContainerView.addConstraints(UIView.place(stateSwitch, onOtherView: switchContainerView))

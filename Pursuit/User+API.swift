@@ -18,6 +18,7 @@ extension User {
     typealias ChangePasswordCompletion  = (_ error: ErrorProtocol?) -> Void
     typealias ChangeAvatarCompletion    = (_ error: ErrorProtocol?) -> Void
     typealias RefreshTokenCompletion    = (_ error: ErrorProtocol?) -> Void
+    typealias GetFireBaseTokenCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
 
     //MARK: Public
 
@@ -74,6 +75,11 @@ extension User {
             }
             completion?(user, error)
         }
+    }
+    
+    class func getFireBaseToken(completionHandler: @escaping GetFireBaseTokenCompletion) {
+        let api = PSAPI()
+        api.getFireBaseToken(completionHandler: completionHandler)
     }
 
  }

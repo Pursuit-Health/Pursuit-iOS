@@ -43,6 +43,7 @@ class SelectTrainerVC: UIViewController {
     @IBOutlet weak var trainerSearchBar: UISearchBar! {
         didSet {
             trainerSearchBar.backgroundImage    = UIImage()
+            trainerSearchBar.delegate = self
             trainerSearchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .compact)
             trainerSearchBar.setImage(UIImage(named: "white_search_icon"), for: .search, state: .normal)
             if let searchField = trainerSearchBar.value(forKey: "_searchField") as? UITextField {

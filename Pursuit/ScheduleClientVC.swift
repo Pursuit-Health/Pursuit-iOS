@@ -129,6 +129,7 @@ class ScheduleClientVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpBackgroundImage()
         decreaseDate(nil)
     }
     
@@ -160,22 +161,21 @@ class ScheduleClientVC: UIViewController {
     }
     
     @objc private func startPickerValueChanged(sender: UIDatePicker) {
-        self.startDateTextField.text = self.datePickerFormatter(start: true, sender: sender)
+        self.startDateTextField.text = self.datePickerFormatter(start: true, date: sender.date)
     }
     
     @objc private func endPickerValueChanged(sender: UIDatePicker) {
-        self.endDateTextField.text = self.datePickerFormatter(start: false, sender: sender)
+        self.endDateTextField.text = self.datePickerFormatter(start: false, date: sender.date)
     }
     
-    private func datePickerFormatter(start: Bool, sender: UIDatePicker) -> String {
+    private func datePickerFormatter(start: Bool, date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         
-        let dateAsString = dateFormatter.string(from: sender.date)
-        let date = dateFormatter.date(from:dateAsString)
+        let dateAsString = dateFormatter.string(from: date)
         
         dateFormatter.dateFormat = "HH:mm"
-        let date24 = dateFormatter.string(from:date!)
+        let date24 = dateFormatter.string(from: date)
         if start {
             self.startTime = date24
         }else {
@@ -243,6 +243,18 @@ class ScheduleClientVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+extension ScheduleClientVC: UITextFieldDelegate {
+     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.inputView is UIDatePicker {
+            if textField == startDateTextField {
+                self.startDateTextField.text = self.datePickerFormatter(start: true, date: Date())
+            }else {
+                self.endDateTextField.text = self.datePickerFormatter(start: false, date: Date())
+            }
+        }
     }
 }
 

@@ -11,6 +11,8 @@ import Alamofire
 import ObjectMapper
 import SVProgressHUD
 import Foundation
+import Firebase
+import SwiftyTimer
 
 class PSAPI: APIHandable {
     
@@ -70,7 +72,7 @@ class PSAPI: APIHandable {
             completion(error)
         }
     }
-    
+    var timer: Timer?
     @discardableResult
     func registerTrainer(personalData: [String : String], completion: @escaping RegisterTrainerCompletion) -> DataRequest? {
         
@@ -103,7 +105,18 @@ class PSAPI: APIHandable {
                     error = serverError.psError
                 }
             }
-            completion(user, error)
+            if error == nil {
+                self.timer = Timer.every(1.second) {
+                    User.getFireBaseToken(completionHandler: { (user, error) in
+                        if error == nil {
+                            self.timer?.invalidate()
+                            completion(user, error)
+                        }else {
+                            return
+                        }
+                    })
+                }
+            }
         }
     }
     
@@ -138,7 +151,18 @@ class PSAPI: APIHandable {
                     error = serverError.psError
                 }
             }
-            completion(user, error)
+            if error == nil {
+                self.timer = Timer.every(1.second) {
+                    User.getFireBaseToken(completionHandler: { (user, error) in
+                        if error == nil {
+                            self.timer?.invalidate()
+                            completion(user, error)
+                        }else {
+                            return
+                        }
+                    })
+                }
+            }
         }
     }
     
@@ -169,6 +193,9 @@ class PSAPI: APIHandable {
                             user = Client(JSON: objectData)
                         }
                         User.shared.token = token
+                        User.getFireBaseToken(completionHandler: { (user, error) in
+                            
+                        })
                     }
                     
                 case .failure(let serverError):
@@ -545,6 +572,39 @@ class PSAPI: APIHandable {
         let request = Request.deleteSavedTemplate(templateId: templateId)
         return self.simple(request: request, completion: completion)
     }
+    
+    @discardableResult
+    func getFireBaseToken(completionHandler: @escaping GetFireBaseTokenCompletion) -> DataRequest? {
+        let request = Request.getFireBaseToken()
+        return self.perform(request)?.responseJSON { (response) in
+            var error: ErrorProtocol?
+            var user: User?
+            if response.response?.statusCode == 202 {
+                // User.getFireBaseToken(completion: completion)
+                // return
+            }
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            } else {
+                switch response.result {
+                case .success(let JSON):
+                    
+                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
+                    if let token = metaData?["token"] {
+                        
+                        User.shared.firToken = token
+                        
+                        Auth.auth().signIn(withCustomToken:  token) { (user, error) in
+                            
+                        }
+                    }
+                case .failure(let serverError):
+                    error = serverError.psError
+                }
+            }
+            completionHandler(user, error)
+        }
+    }
 }
 
 extension PSAPI {
@@ -616,4 +676,6 @@ extension PSAPI {
     typealias SaveSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
     typealias EditSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
     typealias DeleteSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
+    
+    typealias GetFireBaseTokenCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
 }

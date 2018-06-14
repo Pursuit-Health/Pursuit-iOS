@@ -11,12 +11,13 @@ import Firebase
 import FirebaseDatabase
 import SVProgressHUD
 import SDWebImage
+import PullToRefreshSwift
 
 class ChatsListVC: UIViewController {
     
     //MARK: Firebase.Properties
     
-    private lazy var chatRef: DatabaseReference = Database.database().reference().child("user_dialogs").child(Auth.auth().currentUser?.uid ?? "")
+    private lazy var chatRef: DatabaseReference = Database.database().reference().child("user_dialogs").child(Auth.auth().currentUser?.uid ?? " ")
     private var chatRefHandle: DatabaseHandle?
     
     //MARK: Variables
@@ -39,6 +40,7 @@ class ChatsListVC: UIViewController {
         didSet {
             self.chatsTableView.estimatedRowHeight  = 100
             self.chatsTableView.rowHeight           = UITableViewAutomaticDimension
+            self.chatsTableView.ept.dataSource     = self
         }
     }
     @IBOutlet weak var numberOfClientsLabel: UILabel!
@@ -85,9 +87,9 @@ class ChatsListVC: UIViewController {
         setUpBackgroundImage()
         
         self.navigationController?.navigationBar.setAppearence()
-        
-        getDialogs()
-        
+
+        self.getDialogs()
+
         observeUnreadMessages()
     }
     
@@ -105,6 +107,7 @@ class ChatsListVC: UIViewController {
     
     func getDialogs() {
         let queryRef = chatRef
+        self.dialogs = []
         DispatchQueue.main.async {
              SVProgressHUD.show()
         }
@@ -173,7 +176,9 @@ extension ChatsListVC: UITableViewDataSource {
         cell.timeModifiedLabel.text = setDateFromTimeInterval((dialog.lastChange ?? 0)/1000)
         cell.unseenMessagesView.isHidden = !(dialog.unseenMessages ?? false)
         if let  image = dialog.userPhoto {
-            cell.userPhotoImageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "ic_username"))
+            cell.userPhotoImageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named:"user"), options: .avoidAutoSetImage)
+        }else {
+            cell.userPhotoImageView.image = UIImage(named: "photo-camera-2")
         }
         return cell
     }
@@ -203,5 +208,23 @@ extension ChatsListVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.resignFirstResponder()
+    }
+}
+
+extension ChatsListVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return ""
+    }
+    
+    var emptyImageName: String {
+        return  ""
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
     }
 }

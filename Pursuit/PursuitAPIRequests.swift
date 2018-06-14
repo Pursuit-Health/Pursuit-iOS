@@ -54,6 +54,8 @@ extension PSAPI {
         
         case deleteSavedTemplate(templateId: String)
         
+        case getFireBaseToken()
+        
         //MARK: RequestConvertible
         
         var baseURLString: String {
@@ -151,6 +153,9 @@ extension PSAPI {
                 return "trainer/saved-templates/" + templateId
             case .deleteSavedTemplate(let templateId):
                 return "trainer/saved-templates/" + templateId
+                
+            case .getFireBaseToken():
+                return "auth/firebase/token"
             }
         }
         
@@ -200,7 +205,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates:
+            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates, .getFireBaseToken:
                 return "Bearer" + token
             default:
                 return ""

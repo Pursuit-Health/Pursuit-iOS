@@ -51,6 +51,7 @@ extension Client {
     func getTemplatesAsTrainer(completion: @escaping GetClientTemplates) {
         if let id = self.id {
             let api = PSAPI()
+            api.showProgress = false
             api.getClientTemplates(clientId: id, completion: completion)
         } else {
             completion(nil, PSError.somethingWentWrong)

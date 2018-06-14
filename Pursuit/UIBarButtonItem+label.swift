@@ -20,10 +20,15 @@ extension UIBarButtonItem {
             guard let leftLabel = objc_getAssociatedObject(self, &UIBarButtonItem.label_key) as? UILabel else {
                 let titleLabel          = UILabel()
                 titleLabel.font         = UIFont(name: "Avenir-Book", size: 17.0)
-                titleLabel.bounds       = CGRect(x: 0, y: 0, width: 200, height: 40)
+                titleLabel.bounds       = CGRect(x: 0, y: 0, width: 0, height: 20)
                 titleLabel.textColor    = .white
                 
-                self.customView         = titleLabel
+                let view = UIView()
+                view.addSubview(titleLabel)
+                view.addConstraints(UIView.place(titleLabel, onOtherView: view))
+                view.backgroundColor = .clear
+                view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+                self.customView         = view
                 self.hp_label           = titleLabel
                 
                 return titleLabel

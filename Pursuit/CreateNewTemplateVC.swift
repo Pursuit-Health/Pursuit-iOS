@@ -101,8 +101,11 @@ class CreateNewTemplateVC: CreateTemplateVC {
             if decrease {
                 chnagedDate = chnagedDate - 1.month
             }else {
-                chnagedDate = chnagedDate + 1.month            }
-            self.calendarView.scrollToDate(chnagedDate.absoluteDate)
+                chnagedDate = chnagedDate + 1.month
+            }
+            self.calendarView.scrollToDate(chnagedDate.absoluteDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
+                self.fillMonthYearLabelsWith(self.chnagedDate.absoluteDate)
+            }
         }
     }
     
@@ -167,6 +170,7 @@ class CreateNewTemplateVC: CreateTemplateVC {
     }
     
     func fillMonthYearLabelsWith(_ date: Date) {
+        self.chnagedDate = DateInRegion(absoluteDate: date)
         let formatter                   = DateFormatters.monthYearFormat
         formatter.timeZone = TimeZone(identifier: "UTC")
         let textToSee = formatter.string(from: date)
@@ -183,9 +187,7 @@ extension CreateNewTemplateVC: JTAppleCalendarViewDataSource {
         
         let formatter       = DateFormatters.serverTimeFormatter
         formatter.timeZone  = TimeZone(identifier: "UTC")
-        
-        let start           = formatter.date(from: "2017-01-01")!
-        let end             = formatter.date(from: "2022-01-01")!
+        guard let start = formatter.date(from: "2017-01-01"), let end = formatter.date(from: "2022-01-01") else { return ConfigurationParameters(startDate: Date(), endDate: Date()) }
         let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: calendar, generateInDates: .forFirstMonthOnly, generateOutDates: .off)
         
         return parameters
@@ -205,17 +207,18 @@ extension CreateNewTemplateVC: JTAppleCalendarViewDataSource {
 
 extension CreateNewTemplateVC: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-
+        cellState.templateCalendarCellselected(cell: cell as! CreateTemplateCalendarCell)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        
         guard let calCell = cell as? CreateTemplateCalendarCell else { return }
         let formatter       = DateFormatters.serverTimeFormatter
         formatter.timeZone = TimeZone(identifier: "UTC")
         self.startAt = formatter.string(from: date)
         
         cellState.templateCalendarCellselected(cell: calCell)
+        
+        fillMonthYearLabelsWith(date)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -226,8 +229,14 @@ extension CreateNewTemplateVC: JTAppleCalendarViewDelegate {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        for date in visibleDates.monthDates {
+            if (calendar.cellStatus(for: date.date)?.isSelected) ?? false {
+                fillMonthYearLabelsWith(date.date)
+                return
+            }
+        }
         guard  let date = visibleDates.monthDates.first?.date else { return }
-        self.chnagedDate = DateInRegion(absoluteDate: date)
+        //self.chnagedDate = DateInRegion(absoluteDate: date)
         self.fillMonthYearLabelsWith(date)
     }
 }

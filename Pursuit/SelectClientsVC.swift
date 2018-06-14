@@ -59,7 +59,6 @@ class SelectClientsVC: UIViewController {
                         }
                     }
                 }
-                
             }
         }
     }
@@ -155,6 +154,7 @@ extension SelectClientsVC: UICollectionViewDelegate {
         
         selectedClients.append(clientData.id ?? 0)
         
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

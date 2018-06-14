@@ -343,7 +343,9 @@ static inline BOOL BBB_selector_belongsToProtocol(SEL selector, Protocol * proto
     [self addTarget:self
              action:@selector(BBB_textFieldDidChange:)
    forControlEvents:UIControlEventEditingChanged];
-    
+    [self addTarget:self
+             action:@selector(BBB_textFieldDidEndEditing:)
+   forControlEvents:UIControlEventEditingChanged];
     [self BBB_setDelegate: self];
 }
 
@@ -352,6 +354,12 @@ static inline BOOL BBB_selector_belongsToProtocol(SEL selector, Protocol * proto
 - (void)BBB_textFieldDidChange:(UITextField*)textField {
     if (textField.BBB_changedBlock != nil) {
         textField.BBB_changedBlock(self);
+    }
+}
+
+-(void)BBB_textFieldDidEndEditing:(UITextField*)textField {
+    if (textField.BBB_textFieldDidEndEditing_changeBlock != nil) {
+        textField.BBB_textFieldDidEndEditing_changeBlock(self);
     }
 }
 
@@ -418,6 +426,15 @@ replacementString:(NSString *)string {
     return YES;
 }
 
+-(void) textFieldDidEndEditing:(UITextField *)textField {
+    [UITextField BBB_calculateText:textField.text
+                      forTextField:textField
+                       changeBlock:textField.BBB_textFieldDidEndEditing_changeBlock
+                         withRange:NSMakeRange(-1, -1)];
+    if ([self.delegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
+        return [self.delegate textFieldDidEndEditing:textField];
+    }
+}
 @end
 
 #pragma mark - Public
@@ -486,11 +503,23 @@ replacementString:(NSString *)string {
     return objc_getAssociatedObject(self,
                                     @selector(BBB_changedBlock));
 }
+- (BBB_PatternTextFieldChangedBlock)BBB_textFieldDidEndEditing_changeBlock {
+    return objc_getAssociatedObject(self,
+                                    @selector(BBB_textFieldDidEndEditing_changeBlock));
+}
 
 - (void)setBBB_changedBlock:(BBB_PatternTextFieldChangedBlock)BBB_changedBlock {
     objc_setAssociatedObject(self,
                              @selector(BBB_changedBlock),
                              BBB_changedBlock,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self BBB_registerListener];
+}
+
+- (void)setBBB_textFieldDidEndEditing_changeBlock:(BBB_PatternTextFieldChangedBlock)BBB_textFieldDidEndEditing_changeBlock {
+    objc_setAssociatedObject(self,
+                             @selector(BBB_textFieldDidEndEditing_changeBlock),
+                             BBB_textFieldDidEndEditing_changeBlock,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self BBB_registerListener];
 }

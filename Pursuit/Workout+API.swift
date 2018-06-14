@@ -22,7 +22,7 @@ extension Workout {
     
     class func getWorkouts(completion: @escaping GetWorkoutsCompletion) {
         let api = PSAPI()
-        
+        api.showProgress = false
         api.getWorkouts(completion: completion)
     }
     

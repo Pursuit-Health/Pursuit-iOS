@@ -8,6 +8,7 @@
 
 import UIKit
 import TPKeyboardAvoiding
+import IQKeyboardManagerSwift
 
 protocol ExerciseDetailsVCDelegate: class {
     func ended(with info: ExcersiseData, on controller: ExerciseDetailsVC)
@@ -53,11 +54,11 @@ class ExerciseDetailsVC: UIViewController {
             case .name:
                 return AddExerciseCell.self
             case .sets:
-                return AddExerciseCell.self
+                return SetsCell.self
             case .reps:
-                return AddExerciseCell.self
+                return RepsCell.self
             case .weights:
-                return AddExerciseCell.self
+                return WeightsCell.self
             case .rest:
                 return AddExerciseCell.self
             case .notes:
@@ -95,20 +96,20 @@ class ExerciseDetailsVC: UIViewController {
                     })
                 }
             case .sets(let excersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? SetsCell {
                     fillSetsCell(cell: castedCell, sets: excersize.sets_count, completion: { text1, text2 in
                         completion(text1, text2)
                     })
                 }
                 
             case .reps(let excersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? RepsCell {
                     fillRepsCell(cell: castedCell, excersize: excersize, completion: { text1, text2 in
                         completion(text1, text2)
                     })
                 }
             case .weights(let excersize):
-                if let castedCell = cell as? AddExerciseCell {
+                if let castedCell = cell as? WeightsCell {
                     fillWeightsCell(cell: castedCell, excersize: excersize, completion: { text1, text2 in
                         completion(text1, text2)
                     })
@@ -169,9 +170,10 @@ class ExerciseDetailsVC: UIViewController {
         }
         
         private func fillNameCell(cell: AddExerciseCell, name: String?, completion: @escaping TextFieldComletion) {
-            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Name")
+            cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Exercise Name")
             cell.exerciseImageView.image                    = imageFromName("ic_username")
             cell.exerciseTextField.text                     = name
+            cell.exerciseTextField.keyboardType             = .namePhonePad
             cell.exerciseTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
                     completion(text, nil)
@@ -179,30 +181,39 @@ class ExerciseDetailsVC: UIViewController {
             }
         }
         
-        private func fillSetsCell(cell: AddExerciseCell, sets: Int?, completion: @escaping TextFieldComletion) {
+        private func fillSetsCell(cell: SetsCell, sets: Int?, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Sets")
             cell.exerciseImageView.image                    = imageFromName("time")
             cell.exerciseTextField.keyboardType             = .numberPad
             if let sets = sets {
-                cell.exerciseTextField.text                 = String(sets)
+                cell.exerciseTextField.text                 = String(sets) + " sets"
             } else {
                 cell.exerciseTextField.text                 = ""
             }
-            cell.exerciseTextField.bbb_changedBlock = { (textField) in
+            cell.exerciseTextField.bbb_textFieldDidEndEditing_changeBlock = { (textField) in
                 if let text = textField.text {
                     completion(text, nil)
                 }
             }
+//            cell.exerciseTextField.bbb_changedBlock = { (textField) in
+//                if let text = textField.text {
+//                    completion(text, nil)
+//                }
+//            }
         }
         
-        private func fillRepsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
+        private func fillRepsCell(cell: RepsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Reps")
             cell.exerciseImageView.image                    = imageFromName("timeline")
             cell.exerciseTextField.keyboardType             = .numberPad
             if (excersize.isStraitSets ?? false) {
-                cell.exerciseTextField.text = "\(excersize.sets?.first?.reps_min ?? 0)"
+                if let rep = excersize.sets?.first?.reps_min {
+                    cell.exerciseTextField.text = "\(rep)" + " reps"
+                }else {
+                    cell.exerciseTextField.text = ""
+                }
             }else if let rep = excersize.reps {
-                cell.exerciseTextField.text                 = String(rep)
+                cell.exerciseTextField.text                 = String(rep) + " reps"
             } else {
                 cell.exerciseTextField.text                 = ""
             }
@@ -213,13 +224,16 @@ class ExerciseDetailsVC: UIViewController {
             }
         }
         
-        private func fillWeightsCell(cell: AddExerciseCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
+        private func fillWeightsCell(cell: WeightsCell, excersize: ExcersiseData, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Weights")
             cell.exerciseImageView.image                    = imageFromName("weight")
-            cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.keyboardType             = .decimalPad
             if (excersize.isStraitSets ?? false) {
-                let weight = Double(excersize.sets?.first?.weight_min ?? 0)
-                cell.exerciseTextField.text = UserSettings.shared.weightsType.getWeightsFrom(weight: weight)
+                if let weight = excersize.sets?.first?.weight_min {
+                cell.exerciseTextField.text = UserSettings.shared.weightsType.getWeightsFrom(weight: Double(weight))
+                }else {
+                  cell.exerciseTextField.text = ""
+                }
             }else if let weight = excersize.weight {
                 cell.exerciseTextField.text                 = String(weight)
             } else {
@@ -236,7 +250,7 @@ class ExerciseDetailsVC: UIViewController {
         private func fillRetsCell(cell: AddExerciseCell, rets: String?, completion: @escaping TextFieldComletion) {
             cell.exerciseTextField.attributedPlaceholder    = placeHolderWithText("Rest")
             cell.exerciseImageView.image                    = imageFromName("rest")
-            //cell.exerciseTextField.keyboardType             = .numberPad
+            cell.exerciseTextField.keyboardType             = .namePhonePad
             if let rets = rets {
                 cell.exerciseTextField.text = rets
             }else {
@@ -272,17 +286,6 @@ class ExerciseDetailsVC: UIViewController {
             cell.exImageView.image                     = imageFromName("weight")
             cell.headerNameLabel.text                  = ""
             cell.headerHeightConstraint.constant       = 0
-            if let min = exersize.sets?[index].weight_min {
-                cell.minTextField.text = "\(min)"
-            }else {
-                cell.minTextField.text = ""
-            }
-            
-            if let max = exersize.sets?[index].weight_max {
-               cell.maxTextField.text = "\(max)"
-            }else {
-                cell.maxTextField.text = ""
-            }
             cell.minTextField.bbb_changedBlock = { (textField) in
                 if let text = textField.text {
                     completion(text, nil)
@@ -293,6 +296,21 @@ class ExerciseDetailsVC: UIViewController {
                     completion(nil, text)
                 }
             }
+            if exersize.sets?.count ?? 0 > index {
+                return
+            }
+            if let min = exersize.sets?[index].weight_min {
+                cell.minTextField.text = "\(Int(min))"
+            }else {
+                cell.minTextField.text = ""
+            }
+            
+            if let max = exersize.sets?[index].weight_max {
+               cell.maxTextField.text = "\(max)"
+            }else {
+                cell.maxTextField.text = ""
+            }
+
         }
         
         private func fillMinMaxRepsCell(cell: ConfigureSetsCell, index: Int, exersize: ExcersiseData, completion: @escaping TextFieldComletion) {
@@ -303,6 +321,19 @@ class ExerciseDetailsVC: UIViewController {
             cell.exImageView.image                     = imageFromName("timeline")
             cell.headerNameLabel.text                  = "SET \(index + 1)"
             cell.headerHeightConstraint.constant       = 30
+            cell.minTextField.bbb_changedBlock = { (textField) in
+                if let text = textField.text {
+                    completion(text, nil)
+                }
+            }
+            cell.maxTextField.bbb_changedBlock = { (textField) in
+                if let text = textField.text {
+                    completion(nil, text)
+                }
+            }
+            if exersize.sets?.count ?? 0 > index {
+                return
+            }
             if let min = exersize.sets?[index].reps_min {
                 cell.minTextField.text = "\(min)"
             }else {
@@ -313,16 +344,6 @@ class ExerciseDetailsVC: UIViewController {
                 cell.maxTextField.text = "\(max)"
             }else {
                 cell.maxTextField.text = ""
-            }
-            cell.minTextField.bbb_changedBlock = { (textField) in
-                if let text = textField.text {
-                    completion(text, nil)
-                }
-            }
-            cell.maxTextField.bbb_changedBlock = { (textField) in
-                if let text = textField.text {
-                    completion(nil, text)
-                }
             }
         }
         
@@ -446,15 +467,13 @@ class ExerciseDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.setAppearence()
-        
         setUpBackgroundImage()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.setAppearence()
         
         //TODO: Need refactoring
         if self.excersize.type == nil {
@@ -469,18 +488,26 @@ class ExerciseDetailsVC: UIViewController {
             self.isInteractiv = false
         }
         
+        configureExercise()
+        
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = false
+    }
+    
+    private func configureExercise() {
         self.excersize.isWeighted = self.excersize.sets_count != nil
-        self.excersize.isStraitSets = (excersize.sets_count ?? 0) == 0
         
-        if (excersize.sets_count ?? 0) == 0 || excersize.sets?.count  == 0 || excersize.sets?.count == nil {
-           self.excersize.isStraitSets = true
-        }
-        
-        if excersize.sets?.first?.reps_max == nil {
+        if (excersize.sets_count ?? 0) == 0 || excersize.sets?.count  == 0 || excersize.sets?.count == nil || excersize.sets?.first?.reps_max == nil {
             self.excersize.isStraitSets = true
         }
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
+        if !(excersize.isWeighted ?? false) {
+            self.excersize.isStraitSets = false
+        }
     }
     
     private func showError() {
@@ -548,7 +575,7 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                         self.excersize.sets?.append(SetsData())
                     }
             
-                    let weigt = Double(text1 ?? "") ?? 0
+                    let weigt = (Double(text1 ?? "") ?? 0)
                     self.excersize.sets?.first?.weight_max = nil
                     self.excersize.sets?.first?.weight_min = UserSettings.shared.weightsType.convertToServerUnit(weight: weigt)
                 }
@@ -563,7 +590,7 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                 }
             case .configureWeights(let index, _):
                 if let text1 = text1 {
-                    self.excersize.sets?[index].weight_min = Int(text1)
+                    self.excersize.sets?[index].weight_min = Double(text1)
                 }
                 if let text2 = text2 {
                     self.excersize.sets?[index].weight_max = Int(text2)
@@ -588,19 +615,10 @@ extension ExerciseDetailsVC: UITableViewDelegate {
         }else {
             if(indexPath.row == 0){
                 return UITableViewAutomaticDimension
-            }else if (indexPath.row == 1) {
-                return 80
             }
         }
+        
         return UITableViewAutomaticDimension
-        //        if(indexPath.row == 0){
-        //            return 80
-        //        }else
-//        if (indexPath.row >= cellsInfo.count - 4){
-//            return UITableViewAutomaticDimension
-//        } else {
-//            return 50
-//        }
     }
 }
 
@@ -641,6 +659,7 @@ extension ExerciseDetailsVC: WeightedExerciseStateCellDelegate {
     func weightedExerciseRecalculate() {
         if self.excersize.sets_count  == nil {
             self.excersize.sets_count = 1
+            self.excersize.isStraitSets = false
         }
         let setsCount = self.excersize.sets_count ?? 1
         cellsInfo = [.exerciseType(excersize: self.excersize, delegate: self),

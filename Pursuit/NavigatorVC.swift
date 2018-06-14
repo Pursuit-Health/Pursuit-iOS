@@ -19,7 +19,7 @@ class NavigatorVC: UIViewController {
         }
     }
     
-    var userController: UIViewController {
+    private var userController: UIViewController {
         if isClientType() {
             guard let controller = UIStoryboard.client.ClientTabBar else { return UIViewController() }
             return controller
@@ -29,6 +29,8 @@ class NavigatorVC: UIViewController {
             return controller
         }
     }
+    
+     var tabBarVC: UITabBarController?
     
     @IBAction func menuBarButtonPressed(_ sender: Any) {
         self.menuButtonPressed()
@@ -71,7 +73,7 @@ class NavigatorVC: UIViewController {
                     
                     
                     let trainerTabBar = UIStoryboard.trainer.TrainerTabBar!
-                    
+                    self.tabBarVC = trainerTabBar
                     self.addChildViewController(trainerTabBar)
                     self.view.addSubview(trainerTabBar.view)
                     self.view.addConstraints(UIView.place(trainerTabBar.view, onOtherView: self.view))

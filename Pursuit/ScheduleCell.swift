@@ -28,7 +28,7 @@ class ScheduleCell: UICollectionViewCell {
         
     }
     
-    //TODO: Find Grater solution
+    //TODO: Find Grater solution/Use stackView instead
     func fillImages(clients: [Client]) {
         
         if clients.count >= 3 {

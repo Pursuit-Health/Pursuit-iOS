@@ -13,7 +13,11 @@ class AddExerciseCell: UITableViewCell {
     //MARK: IBOutlets
     
     @IBOutlet weak var exerciseImageView: UIImageView!
-    @IBOutlet weak var exerciseTextField: UITextField!
+    @IBOutlet weak var exerciseTextField: UITextField! {
+        didSet {
+            exerciseTextField.keyboardAppearance = UIKeyboardAppearance.default
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

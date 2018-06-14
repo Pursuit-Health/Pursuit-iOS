@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        //FirebaseApp.configure()
+        FirebaseApp.configure()
         
         setUpTabBarAppearens()
         
@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigateControllers()
         
         setUpStatusBarAppearence()
+        
+        authWithFirebase()
         
         return true
     }
@@ -78,6 +80,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func checkIfUserLoggedIn() -> Bool {
         return User.shared.token != nil
+    }
+    
+    private func authWithFirebase() {
+        if let token = User.shared.firToken {
+            Auth.auth().signIn(withCustomToken: token) { (user, error) in
+                
+            }
+        }
     }
     
     

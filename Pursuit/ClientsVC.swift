@@ -11,6 +11,7 @@ import SwipeCellKit
 import SDWebImage
 import SVProgressHUD
 import EmptyKit
+import PullToRefreshSwift
 
 protocol ClientsVCDelegate: class {
     func didSelect(client: Client, on controller: ClientsVC)
@@ -88,11 +89,15 @@ class ClientsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.clientsTable.addPullRefresh { _ in
+            self.loadClients()
+        }
+        self.clientsTable.startPullRefresh()
+        
         setUpBackgroundImage()
         
         navigationController?.navigationBar.setAppearence()
 
-        loadClients()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,6 +123,7 @@ class ClientsVC: UIViewController {
             if let data = trainersInfo {
                 self.client             = data
                 self.filteredClients    = data
+                self.clientsTable.stopPullRefreshEver()
             }
         })
     }

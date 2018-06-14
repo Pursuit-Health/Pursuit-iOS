@@ -55,7 +55,7 @@ class ClientInfoVC: UIViewController {
                     self.profileImageView.sd_addActivityIndicator()
                     self.profileImageView.sd_setIndicatorStyle(.gray)
                     self.profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
-                                             placeholderImage: UIImage(named: "user"))
+                                                      placeholderImage: UIImage(named: "user"), options: .avoidAutoSetImage)
                 }
             }
             self.navigationItem.leftTitle = client?.name ?? ""
@@ -83,7 +83,13 @@ class ClientInfoVC: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        if User.shared.coordinator is ClientCoordinator {
+            if self.revealViewController() != nil {
+                self.revealViewController().revealToggle(self)
+            }
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     //MARK: Lifecycle
@@ -106,6 +112,8 @@ class ClientInfoVC: UIViewController {
         self.setUpNavigationBar()
         
         self.updateWorkouts()
+        
+        self.setUpTabBar()
     }
     
     deinit {
@@ -132,8 +140,15 @@ class ClientInfoVC: UIViewController {
         }
     }
     
+    private func setUpTabBar() {
+        if User.shared.coordinator is ClientCoordinator {
+            self.tabBarController?.tabBar.isHidden = false
+        }
+    }
+    
     private func setUpNavigationBar() {
         self.navigationController?.navigationBar.setAppearence()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     private func subscribeForNotifications() {

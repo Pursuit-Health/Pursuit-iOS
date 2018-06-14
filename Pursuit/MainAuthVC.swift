@@ -316,9 +316,9 @@ extension MainAuthVC: SignUpVCDelegate {
         }
         
         user.signUp(completion: { (user, error) in
-            
+            self.isRunning = false
             if let error = error {
-                self.isRunning = false
+                
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {

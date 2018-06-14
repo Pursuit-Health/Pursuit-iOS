@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Firebase
 
 protocol SettingsVCDelegate: class {
     func logoutPressed(on controller: SettingsVC)
@@ -57,6 +58,8 @@ class SettingsVC: UIViewController {
     
     var selectedImage: UIImage?
     
+    var savedTemplatesCoordinator: SavedTemplatesCoordinator = SavedTemplatesCoordinator()
+    
     //MARK: IBActions
     
     @IBAction func changeAvatarButtonPressed(_ sender: Any) {
@@ -78,6 +81,13 @@ class SettingsVC: UIViewController {
     fileprivate func logOut() {
         //TODO: Move to user
         User.shared.token = nil
+        User.shared.firToken = nil
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
         guard let loginController = UIStoryboard.login.MainAuth else { return }
         let controller = self.navigationController
         controller?.viewControllers.insert(loginController, at: 0)
@@ -152,12 +162,17 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let type = SettingsType(rawValue: indexPath.row)
-        if type == .template {
+        if type == .template && User.shared.coordinator is
+            TrainerCoordinator {
             if self.revealViewController() != nil {
                 self.revealViewController().revealToggle(self)
             }
-            (User.shared.coordinator as?
-                TrainerCoordinator)?.clientsListVC?.showSavedTemplatesVC()
+            //(User.shared.coordinator as?TrainerCoordinator)?.clientsListVC?.showSavedTemplatesVC()
+//            (self.revealViewController().rearViewController as? ScheduleVC)?.showSavedTemplates()
+            
+            let last = (self.revealViewController().frontViewController as? UINavigationController)?.viewControllers.last as? NavigatorVC
+            let tabBarSelectedVC = last?.tabBarVC?.selectedViewController
+            savedTemplatesCoordinator.start(from: tabBarSelectedVC)
         }
     }
     

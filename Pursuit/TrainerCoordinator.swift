@@ -155,7 +155,6 @@ extension TrainerCoordinator: ClientInfoVCDelegate {
             let savedTemplatesVC = UIStoryboard.trainer.SavedTemplatesList!
             savedTemplatesVC.delegate = self
             savedTemplatesVC.canAddNewTemplate = false
-            
             controller.navigationController?.pushViewController(savedTemplatesVC, animated: true)
             
         })).addAction(action: AlertAction(title: "Cancel", style: .cancel, handler: { _ in }))
@@ -271,7 +270,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         }
         
         let work = Workout()
-        if state == .customExercise{
+        if state == .customExercise {
             //TODO: Reimplament
             if let ex =  self.mainExercisesVC?.addExercisesVC?.exercise  {
                 if  ex.sets_count == nil {
@@ -279,17 +278,15 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
                 }
                 ex.sets = ex.sets.flatMap{ $0 }
                 
-                self.checkExerciseRequiredFields(ex, controller: controller)
-                
+                if self.checkExerciseRequiredFields(ex, controller: controller) {
+                    return
+                }
                 self.customExercise.append(ex)
                 
                 self.exercises += self.customExercise
                 
-                if self.createTemplate?.isEditTemplate ?? false {
-                    work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
-                }else {
-                    work.excersises = self.exercises
-                }
+                work.excersises = self.exercises + (self.createTemplate?.workoutNew?.excersises ?? [])
+                
                 self.customExercise = []
             }
         }else {
@@ -306,6 +303,9 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
         
         work.name = self.createTemplate?.workoutNew?.name
         work.isDone = self.createTemplate?.workoutNew?.isDone
+//        if let exerc = work.excersises {
+//            work.excersises = Array(Set(exerc))
+//        }
         self.createTemplate?.workoutNew = work
         self.exercises = []
         controller.navigationController?.popViewController(animated: true)
@@ -377,11 +377,12 @@ extension TrainerCoordinator: ExerciseDetailsVCDelegate {
 }
 
 extension TrainerCoordinator {
-    func checkExerciseRequiredFields(_ ex: ExcersiseData, controller: UIViewController) {
-        if (ex.name?.isEmpty ?? true) || ex.sets == nil || ex.rest == nil {
+    func checkExerciseRequiredFields(_ ex: ExcersiseData, controller: UIViewController) -> Bool {
+        if (ex.name?.isEmpty ?? true) || ex.sets == nil {
             self.showError(controller: controller)
-            return
+            return true
         }
+        return false
     }
 }
 

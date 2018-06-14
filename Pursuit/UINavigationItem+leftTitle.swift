@@ -31,7 +31,12 @@ extension UINavigationItem {
         self.leftBarButtonItems             = nilItems.flatMap{ $0 }
         
         leftItem.hp_label.text              = title
-        leftItem.hp_label.frame             = CGRect(origin: .zero, size: leftItem.hp_label.intrinsicContentSize)
+        var size = leftItem.hp_label.intrinsicContentSize
+        let limitSize = UIScreen.main.bounds.width - 90
+        if size.width > limitSize {
+           size.width = limitSize
+        }
+        leftItem.hp_label.frame             = CGRect(origin: .zero, size: size)
     }
     
     private func createLeftItem() -> UIBarButtonItem {

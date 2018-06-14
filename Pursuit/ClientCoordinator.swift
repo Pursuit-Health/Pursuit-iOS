@@ -40,6 +40,14 @@ class ClientCoordinator: Coordinator {
         }
     }
     
+    func start(from controller: ClientInfoVC, workout: Workout){
+        let training = UIStoryboard.client.Training!
+        training.delegate = self
+        training.workout = workout
+        controller.navigationController?.pushViewController(training, animated: true)
+        self.excersisesVC = training
+    }
+    
 }
 
 extension ClientCoordinator: ClientInfoVCDatasource {

@@ -103,6 +103,7 @@ class ChatVC: UIViewController {
                 cell.avatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""), placeholderImage: UIImage(named: "ic_username"))
             }
             cell.sendPhotoImageView.sd_setImage(with: URL(string: message?.photo ?? ""))
+            cell.timeLabel.text = createTimeString(timeInterval: (message?.created ?? 0))
         }
         
         private func fillSenderCell(cell: SenderMessageCell, message: Message?) {
@@ -380,8 +381,8 @@ class ChatVC: UIViewController {
             
             guard let photoUrl = url?.absoluteString else { return }
             
-            if let mesText = text{
-                self.sendMessageWith(mesText, photoURL: photoUrl)
+            if !(text?.isEmpty ?? false) {
+                self.sendMessageWith(text, photoURL: photoUrl)
             }else {
               self.sendMessageWith(photoURL: photoUrl)
             }
@@ -396,7 +397,12 @@ class ChatVC: UIViewController {
     
     func sendMessageWith(_ text: String?, photoURL: String?) {
         guard let messsage = text else { return }
-        if messsage.isEmpty && photoURL == nil || messsage.trimmingCharacters(in: .whitespaces).isEmpty{
+        if messsage.isEmpty && photoURL == nil || messsage.trimmingCharacters(in: .whitespaces).isEmpty {
+            return
+        }
+        
+        if messsage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            messageTextView.text = ""
             return
         }
         

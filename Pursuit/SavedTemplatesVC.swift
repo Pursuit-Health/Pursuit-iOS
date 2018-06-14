@@ -103,6 +103,8 @@ class SavedTemplatesVC: UIViewController {
         updateDataSource()
         
         configureNavigationItems()
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
     func updateDataSource() {

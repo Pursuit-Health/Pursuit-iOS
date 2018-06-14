@@ -29,10 +29,13 @@ class SavedTemplatesCoordinator: Coordinator {
     var isExerciseSelectedOnCategory: Bool = false
     
     func start(from controller: UIViewController?) {
+        
         let savedTemplates = UIStoryboard.trainer.SavedTemplatesList!
+        let nav = UINavigationController(rootViewController: savedTemplates)
         savedTemplates.delegate = self
         self.savedTemplates = savedTemplates
-        controller?.navigationController?.pushViewController(savedTemplates, animated: true)        
+        controller?.present(nav, animated: true, completion: nil)
+        //controller?.navigationController?.pushViewController(savedTemplates, animated: true)
     }
 }
 
@@ -65,7 +68,8 @@ extension SavedTemplatesCoordinator: SavedTemplatesVCDelegate {
     }
     
     func closeBarButtonPressed(on controller: SavedTemplatesVC) {
-        controller.navigationController?.popViewController(animated: true)
+        //controller.navigationController?.popViewController(animated: true)
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 

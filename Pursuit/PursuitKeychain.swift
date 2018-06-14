@@ -15,6 +15,7 @@ class PursuitKeychain {
     private struct Constants {
         struct Keys {
             static let token: String = "token"
+            static let firToken: String = "firToken"
         }
     }   
     
@@ -29,6 +30,16 @@ class PursuitKeychain {
         
         set(newValue) {
             self.service.setValue(value: newValue, forKey: Constants.Keys.token)
+        }
+    }
+    
+    var firToken: String? {
+        get {
+            return self.service.valueForKey(key: Constants.Keys.firToken)
+        }
+        
+        set(newValue) {
+            self.service.setValue(value: newValue, forKey: Constants.Keys.firToken)
         }
     }
 }
