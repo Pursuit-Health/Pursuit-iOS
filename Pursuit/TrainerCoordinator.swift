@@ -45,15 +45,6 @@ class TrainerCoordinator: Coordinator {
             controller.view.addSubview(trainerTabBar.view)
             controller.view.addConstraints(UIView.place(trainerTabBar.view, onOtherView: controller.view))
             trainerTabBar.didMove(toParentViewController: controller)
-            
-//            let clientsList = UIStoryboard.trainer.TrainerClients!
-//            clientsList.delegate = self
-//            controller.view.addSubview(clientsList.view)
-//            controller.view.addConstraints(UIView.place(clientsList.view, onOtherView: controller.view))
-//            clientsList.didMove(toParentViewController: controller)
-//            controller.addChildViewController(clientsList)
-//
-//            self.clientsListVC = clientsList
         }
     }
     

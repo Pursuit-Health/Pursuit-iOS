@@ -55,7 +55,7 @@ class ClientInfoVC: UIViewController {
                     self.profileImageView.sd_addActivityIndicator()
                     self.profileImageView.sd_setIndicatorStyle(.gray)
                     self.profileImageView.sd_setImage(with: URL(string: url.persuitImageUrl()),
-                                                      placeholderImage: UIImage(named: "user"), options: .avoidAutoSetImage)
+                                                      placeholderImage: UIImage(named: "user"))
                 }
             }
             self.navigationItem.leftTitle = client?.name ?? ""
@@ -187,7 +187,11 @@ extension ClientInfoVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //if workouts[indexPath.row].isDone ?? false { return }
         //if !(self.workouts[indexPath.row].isDone ?? false){
+        if User.shared.coordinator is ClientCoordinator {
+            User.shared.coordinator?.start(from: self, workout: self.workouts[indexPath.row])
+        }else {
             self.delegate?.selected(workout: self.workouts[indexPath.row], on: self, client: self.client as? Client)
+        }
         //}
     }
 }

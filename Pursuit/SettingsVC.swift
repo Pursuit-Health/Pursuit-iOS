@@ -97,9 +97,9 @@ class SettingsVC: UIViewController {
     
   fileprivate func uploadImage() {
         
-        guard let image = selectedImage else { return }
-        
-    guard let data = UIImagePNGRepresentation(image) as Data? else { return }
+    guard let image = selectedImage else { return }
+    
+    guard let data = image.compressTo(1000000) as Data? else { return }
         User.uploadAvatar(data: data) { error in
             if error == nil {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AvatarUpdated"), object: nil)

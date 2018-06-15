@@ -41,6 +41,11 @@ class ScheduleClientVC: UIViewController {
             self.endDateTextField.inputView = endDatePicker()
         }
     }
+    @IBOutlet weak var locationTextField: CustomTextField! {
+        didSet {
+            locationTextField.attributedPlaceholder = NSAttributedString(string: "Location", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+        }
+    }
     
     @IBOutlet weak var clientsCollectionView: UICollectionView! {
         didSet {
@@ -116,7 +121,7 @@ class ScheduleClientVC: UIViewController {
         //            return
         //        }
         
-        event.location = "SomeWhere"
+        event.location = self.locationTextField.text ?? ""
         event.startAt = self.startTime
         event.endAt = self.endTime
         event.date = date

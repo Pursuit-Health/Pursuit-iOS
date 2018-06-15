@@ -57,8 +57,9 @@ class ScheduleVC: UIViewController {
     
     @IBOutlet weak var calendarView: JTAppleCalendarView! {
         didSet{
-            self.calendarView.minimumInteritemSpacing   = 0
-            self.calendarView.minimumLineSpacing        = 0
+            self.calendarView.minimumInteritemSpacing   = 2
+            self.calendarView.minimumLineSpacing        = 5
+            calendarView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
             
             self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
             self.calendarView.scrollToDate(Date())
@@ -79,6 +80,7 @@ class ScheduleVC: UIViewController {
     var filteredEvents: [Event] = [] {
         didSet {
             self.collectionView?.reloadData()
+            self.calendarView?.reloadData()
         }
     }
     
@@ -281,7 +283,7 @@ private extension ScheduleVC {
         let start           = formatter.date(from: Constants.Dates.StartDate)!
         let end             = formatter.date(from: Constants.Dates.EndDate)!
         
-        let params          = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 6)
+        let params          = ConfigurationParameters(startDate: start, endDate: end, generateInDates: .off, generateOutDates: .tillEndOfRow)
         return params
     }
     

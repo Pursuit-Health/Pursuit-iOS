@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import KeyboardWrapper
 
 protocol SelectTrainerVCDelegate: class {
     func trainerSelectedWithId(trainer: Trainer)
@@ -64,10 +65,13 @@ class SelectTrainerVC: UIViewController {
             }
         }
     }
+    @IBOutlet var collectionViewBottomConstraint: NSLayoutConstraint!
     
     //MARK: Variables
     
     weak var delegate: SelectTrainerVCDelegate?
+    
+    var keyboardWrapper = KeyboardWrapper()
     
     var trainers: [Trainer] = []
     
@@ -91,6 +95,8 @@ class SelectTrainerVC: UIViewController {
         setUpBackgroundImage()
         
         loadTrainers()
+        
+        self.keyboardWrapper = KeyboardWrapper(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,6 +185,21 @@ extension SelectTrainerVC: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+}
+
+extension SelectTrainerVC: KeyboardWrapperDelegate {
+    func keyboardWrapper(_ wrapper: KeyboardWrapper, didChangeKeyboardInfo info: KeyboardInfo) {
+        
+        if info.state == .willShow || info.state == .visible {
+            collectionViewBottomConstraint.constant = info.endFrame.size.height
+        } else {
+            collectionViewBottomConstraint.constant = 0.0
+        }
+        
+        UIView.animate(withDuration: info.animationDuration, delay: 0.0, options: info.animationOptions, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }
 

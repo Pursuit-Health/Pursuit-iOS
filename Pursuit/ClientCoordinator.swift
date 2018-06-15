@@ -28,26 +28,26 @@ class ClientCoordinator: Coordinator {
             controller.view.addSubview(clientTabBar.view)
             controller.view.addConstraints(UIView.place(clientTabBar.view, onOtherView: controller.view))
             clientTabBar.didMove(toParentViewController: controller)
-//            let clientInfo = UIStoryboard.trainer.ClientInfo!
-//            clientInfo.delegate = self
-//            clientInfo.dataSource = self
-//            controller.view.addSubview(clientInfo.view)
-//            controller.view.addConstraints(UIView.place(clientInfo.view, onOtherView: controller.view))
-//            clientInfo.didMove(toParentViewController: controller)
-//            controller.addChildViewController(clientInfo)
-//
-//            self.infoVC = clientInfo
+            
+            ((clientTabBar.viewControllers?[1] as? UINavigationController)?.visibleViewController as? ClientInfoVC)?.delegate = self
         }
     }
     
     func start(from controller: ClientInfoVC, workout: Workout){
-        let training = UIStoryboard.client.Training!
-        training.delegate = self
-        training.workout = workout
-        controller.navigationController?.pushViewController(training, animated: true)
-        self.excersisesVC = training
+        
+        User.shared.updateDetailsWorkout(workout: workout) { (excercises, error) in
+            if let error = error {
+                let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                controller.present(alert, animated: true, completion: nil)
+            } else {
+                let training = UIStoryboard.client.Training!
+                training.delegate = self
+                training.workout = workout
+                controller.navigationController?.pushViewController(training, animated: true)
+                self.excersisesVC = training
+            }
+        }
     }
-    
 }
 
 extension ClientCoordinator: ClientInfoVCDatasource {

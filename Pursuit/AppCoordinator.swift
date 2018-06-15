@@ -53,11 +53,16 @@ class AppCoordinator: Coordinator {
     }
     
     class func showController(controller: UIViewController) {
-        let clientsList = UIStoryboard.trainer.TrainerClients!
-        controller.view.addSubview(clientsList.view)
-        controller.view.addConstraints(UIView.place(clientsList.view, onOtherView: controller.view))
-        clientsList.didMove(toParentViewController: controller)
-        controller.addChildViewController(clientsList)
+        guard let loginController = UIStoryboard.login.MainAuth else { return }
+        let controller = controller.navigationController
+        controller?.viewControllers.insert(loginController, at: 0)
+        
+        controller?.popToRootViewController(animated: true)
+//        let clientsList = UIStoryboard.trainer.TrainerClients!
+//        controller.view.addSubview(clientsList.view)
+//        controller.view.addConstraints(UIView.place(clientsList.view, onOtherView: controller.view))
+//        clientsList.didMove(toParentViewController: controller)
+//        controller.addChildViewController(clientsList)
     }
 }
 

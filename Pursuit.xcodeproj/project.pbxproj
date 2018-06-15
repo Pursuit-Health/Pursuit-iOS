@@ -101,6 +101,7 @@
 		783F80CD1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783F80CB1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift */; };
 		783F80CE1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783F80CC1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib */; };
 		783FBA6B1F8D223700BB26EC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783FBA6A1F8D223700BB26EC /* String.swift */; };
+		7841910D20D409DE00131B39 /* UIImage+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7841910C20D409DE00131B39 /* UIImage+Size.swift */; };
 		7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */; };
 		784419B11F7A2D12009CB350 /* AssignTemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */; };
 		784419B51F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */; };
@@ -375,6 +376,7 @@
 		783F80CB1FC075FD001FE169 /* ExercisesTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTypeTableViewCell.swift; sourceTree = "<group>"; };
 		783F80CC1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisesTypeTableViewCell.xib; sourceTree = "<group>"; };
 		783FBA6A1F8D223700BB26EC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		7841910C20D409DE00131B39 /* UIImage+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Size.swift"; sourceTree = "<group>"; };
 		7843FB691F7BAE59006A8A2D /* TokenRetrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenRetrier.swift; sourceTree = "<group>"; };
 		784419B01F7A2D12009CB350 /* AssignTemplateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignTemplateVC.swift; sourceTree = "<group>"; };
 		784419B31F7A7F36009CB350 /* ScheduleClientCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleClientCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1144,6 +1146,14 @@
 				783FBA6A1F8D223700BB26EC /* String.swift */,
 			);
 			name = String;
+			sourceTree = "<group>";
+		};
+		7841910B20D409C000131B39 /* UIImage+size */ = {
+			isa = PBXGroup;
+			children = (
+				7841910C20D409DE00131B39 /* UIImage+Size.swift */,
+			);
+			name = "UIImage+size";
 			sourceTree = "<group>";
 		};
 		7843FB681F7BAE3C006A8A2D /* TokenRetrier */ = {
@@ -1977,6 +1987,7 @@
 		84AB4D6B1F3281D400531740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7841910B20D409C000131B39 /* UIImage+size */,
 				783E316020C831BC00952790 /* UIImage+Color */,
 				78BAC2F520B5F5FF00C0EDD2 /* Date */,
 				78F6362E1FB99E74009EB48D /* UIApplication+StatusBar */,
@@ -2675,6 +2686,7 @@
 				78BAC2D020B4242D00C0EDD2 /* Set.swift in Sources */,
 				780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */,
 				78473BD01F742CEA0067DA1F /* SelectClientsVC.swift in Sources */,
+				7841910D20D409DE00131B39 /* UIImage+Size.swift in Sources */,
 				782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */,
 				78BAC2FB20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
