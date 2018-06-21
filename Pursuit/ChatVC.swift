@@ -590,9 +590,15 @@ extension ChatVC {
             metadata.contentType = "image/jpeg"
             
             let uploadTask = imagesReference.putData(imageData, metadata: metadata, completion: { (metadata, error) in
-                if let metadata = metadata {
+                if let metadata = metadata, let path = metadata.path {
+                    storageReference.child(path).downloadURL(completion: { (url, error) in
+                        if error == nil  {
+                            completionBlock(url, nil)
+                        }else {
+                            completionBlock(nil, error?.localizedDescription)
+                        }
+                    })
                     
-                    //completionBlock(metadata.downloadURL(), nil)
                 } else {
                     completionBlock(nil, error?.localizedDescription)
                 }

@@ -94,7 +94,7 @@ DEPENDENCIES:
   - HMSegmentedControl
   - HTTPStatusCodes (~> 3.1)
   - IQKeyboardManagerSwift (~> 5.0)
-  - JTAppleCalendar (~> 7.0)
+  - JTAppleCalendar (~> 7.1.5)
   - JTMaterialSwitch
   - KeyboardWrapper
   - KeychainAccess (~> 3.0)
@@ -158,6 +158,6 @@ SPEC CHECKSUMS:
   TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 2330d915fcd1b488f1257380836f6b5cd886399b
+PODFILE CHECKSUM: 798f72d752e086b2e53b05bf33312244a8f9eaa5
 
 COCOAPODS: 1.4.0

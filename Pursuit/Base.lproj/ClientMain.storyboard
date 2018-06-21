@@ -552,7 +552,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ksy-QN-538">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Ksy-QN-538">
                                 <rect key="frame" x="0.0" y="56" width="375" height="498"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbf-rK-OOY">
@@ -697,14 +697,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V02-N5-0nQ">
-                                                    <rect key="frame" x="2" y="0.0" width="101" height="101"/>
+                                                    <rect key="frame" x="4.5" y="2.5" width="96" height="96"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="V02-N5-0nQ" secondAttribute="height" multiplier="1:1" id="Hpt-AL-SWT"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yd-al-jTZ">
-                                                    <rect key="frame" x="2" y="0.0" width="101" height="101"/>
+                                                    <rect key="frame" x="4.5" y="2.5" width="96" height="96"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfx-lT-Jrf">
@@ -724,7 +724,7 @@
                                             <constraint firstItem="5yd-al-jTZ" firstAttribute="trailing" secondItem="V02-N5-0nQ" secondAttribute="trailing" id="e1b-ye-3lL"/>
                                             <constraint firstItem="lfx-lT-Jrf" firstAttribute="centerX" secondItem="aES-6I-UsN" secondAttribute="centerX" id="e7z-KV-gps"/>
                                             <constraint firstItem="5yd-al-jTZ" firstAttribute="leading" secondItem="V02-N5-0nQ" secondAttribute="leading" id="h2q-Ok-SOZ"/>
-                                            <constraint firstItem="V02-N5-0nQ" firstAttribute="height" secondItem="aES-6I-UsN" secondAttribute="height" id="rY2-HQ-e6o"/>
+                                            <constraint firstItem="V02-N5-0nQ" firstAttribute="height" secondItem="aES-6I-UsN" secondAttribute="height" multiplier="0.95" id="rY2-HQ-e6o"/>
                                             <constraint firstItem="5yd-al-jTZ" firstAttribute="top" secondItem="V02-N5-0nQ" secondAttribute="top" id="ygW-FW-E9F"/>
                                         </constraints>
                                         <connections>

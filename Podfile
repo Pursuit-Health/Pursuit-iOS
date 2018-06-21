@@ -16,7 +16,7 @@ target 'Pursuit' do
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'SVProgressHUD', '~> 2.2.2'
   pod 'pop', '~> 1.0'
-  pod 'JTAppleCalendar', '~> 7.0'
+  pod 'JTAppleCalendar', '~> 7.1.5'
   pod 'KeychainAccess', '~> 3.0'
   pod 'DeepLinkKit', '~> 1.4'
   pod 'RHDisplayLinkStepper', '~> 1.0'

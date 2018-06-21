@@ -118,6 +118,7 @@ class ScheduleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureSideMenuController()
     }
     
@@ -125,8 +126,6 @@ class ScheduleVC: UIViewController {
         super.viewWillAppear(animated)
         
         calendarViewVisibleDates()
-        
-        setUpBackgroundImage()
     
         configureNavigation()
         
@@ -235,7 +234,7 @@ extension ScheduleVC: UICollectionViewDataSource {
         let eventStart = hoursFormatter.string(from: start ?? Date())
         let eventEnd  = hoursFormatter.string(from: end ?? Date())
         cell.dateLabel.text         = eventStart + "-" + eventEnd
-        cell.eventTitle.text        = "Event Title"
+        cell.eventTitle.text        =  iventInfo.title ?? ""
         cell.clientsCountLabel.text = "\(iventInfo.clients?.count ?? 0)"
         cell.categoryView.backgroundColor = colorForRow(indexPath.row)
         cell.fillImages(clients: iventInfo.clients ?? [])

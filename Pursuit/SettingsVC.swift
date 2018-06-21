@@ -167,9 +167,7 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
             if self.revealViewController() != nil {
                 self.revealViewController().revealToggle(self)
             }
-            //(User.shared.coordinator as?TrainerCoordinator)?.clientsListVC?.showSavedTemplatesVC()
-//            (self.revealViewController().rearViewController as? ScheduleVC)?.showSavedTemplates()
-            
+
             let last = (self.revealViewController().frontViewController as? UINavigationController)?.viewControllers.last as? NavigatorVC
             let tabBarSelectedVC = last?.tabBarVC?.selectedViewController
             savedTemplatesCoordinator.start(from: tabBarSelectedVC)

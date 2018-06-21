@@ -154,10 +154,12 @@ class ScheduleClientVC: UIViewController {
         //            return
         //        }
         
-        event.location = self.locationTextField.text ?? ""
-        event.startAt = self.startTime
-        event.endAt = self.endTime
-        event.date = date
+        event.location  = self.locationTextField.text ?? ""
+        event.title     = self.eventTitleTextField.text
+        event.name      = event.title
+        event.startAt   = self.startTime
+        event.endAt     = self.endTime
+        event.date      = date
         event.clientsForUpload = clientIdies
         
         uploadEvent()

@@ -651,6 +651,7 @@ extension ExerciseDetailsVC: WeightedExerciseStateCellDelegate {
         .name(excersize: self.excersize),
         .weightedExerciseStateCell(delegate: self, exercise:self.excersize),
         .rest(excersize: self.excersize),
+        .sets(excersize: self.excersize),
         .notes(excersize: self.excersize, delegate: self),
         .description(excersize: self.excersize)]
         exerceiseTableView.reloadData()

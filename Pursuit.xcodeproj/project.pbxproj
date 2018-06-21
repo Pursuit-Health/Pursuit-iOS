@@ -2244,6 +2244,7 @@
 				5B1F83071E850E4100ABA24C /* Resources */,
 				61BBD286CB345A8E14EBD7FB /* [CP] Embed Pods Frameworks */,
 				2578E4D911B1AD5B820938B6 /* [CP] Copy Pods Resources */,
+				78417F3920DBA8B200CAE7FB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2521,6 +2522,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		78417F3920DBA8B200CAE7FB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 31007441d8eb6207ed689296f8b230fe6cefdd98 d60fb254c26f711e587925235a38cdcf3d6d587ffaa23cde64b496c513ef9a16";
 		};
 		E43F53E7F4A50ABC279F5282 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2884,6 +2898,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HEL7S68QC6;
 				INFOPLIST_FILE = Pursuit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
