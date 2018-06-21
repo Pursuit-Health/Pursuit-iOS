@@ -59,7 +59,7 @@ class ScheduleVC: UIViewController {
         didSet{
             self.calendarView.minimumInteritemSpacing   = 2
             self.calendarView.minimumLineSpacing        = 5
-            calendarView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            calendarView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
             self.calendarView.scrollToDate(Date())
@@ -75,14 +75,25 @@ class ScheduleVC: UIViewController {
     
     lazy var formatter       = DateFormatters.serverTimeFormatter
     
-    var events: [Event] = []
+    lazy var hoursFormatter  = DateFormatters.serverHoursFormatter
+    
+    var events: [Event] = [] {
+        didSet {
+            for event in self.events {
+                if let date = event.date {
+                    specialDates.append(date)
+                }
+            }
+        }
+    }
     
     var filteredEvents: [Event] = [] {
         didSet {
             self.collectionView?.reloadData()
-            self.calendarView?.reloadData()
         }
     }
+    
+    var specialDates: [String] = []
     
     var savedTemplatesCoordinator: SavedTemplatesCoordinator = SavedTemplatesCoordinator()
     
@@ -98,6 +109,10 @@ class ScheduleVC: UIViewController {
         }
     }
     
+    @IBAction func todayDateBarButtonPressed(_ sender: Any) {
+        self.calendarView.scrollToDate(Date())
+        self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+    }
     
     //MARK: Lifecycle
     
@@ -118,7 +133,6 @@ class ScheduleVC: UIViewController {
         configureTabBar()
         
         updateEvents()
-
     }
     
     //MARK: Override
@@ -161,6 +175,7 @@ class ScheduleVC: UIViewController {
         var changedDate = DateInRegion(absoluteDate: Date())
         let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "yyyy-MM-dd"
+        dateformatter.timeZone = TimeZone(identifier: "UTC")
         let startDate: String = dateformatter.string(from: changedDate.absoluteDate)
         changedDate = changedDate + 1.month
         let endDate: String = dateformatter.string(from: changedDate.absoluteDate)
@@ -169,7 +184,11 @@ class ScheduleVC: UIViewController {
             if error == nil {
                 if let events = events {
                     self.events = events
-                    self.filteredEvents = self.events.filter{ $0.date?.contains(self.formatter.string(from: Date())) ?? false }
+                    self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate:true , animateScroll: true, preferredScrollPosition: .centeredHorizontally, extraAddedOffset: 0, completionHandler: {
+                        self.calendarView.reloadData()
+                        self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+                        self.filteredEvents = self.events.filter{ $0.date?.contains(dateformatter.string(from: Date())) ?? false }
+                    })
                 }
             }
         })
@@ -206,8 +225,17 @@ extension ScheduleVC: UICollectionViewDataSource {
         
         let iventInfo = filteredEvents[indexPath.row]
         cell.descriptionLabel.text  = iventInfo.location
-        cell.dateLabel.text         = (iventInfo.startAt ?? "") + "-" + (iventInfo.endAt ?? "")
-        
+
+        hoursFormatter.dateFormat = "HH:mm"
+
+        let start = hoursFormatter.date(from: iventInfo.startAt ?? "")
+        let end = hoursFormatter.date(from: iventInfo.endAt ?? "")
+        hoursFormatter.dateFormat = "h:mm a"
+
+        let eventStart = hoursFormatter.string(from: start ?? Date())
+        let eventEnd  = hoursFormatter.string(from: end ?? Date())
+        cell.dateLabel.text         = eventStart + "-" + eventEnd
+        cell.eventTitle.text        = "Event Title"
         cell.clientsCountLabel.text = "\(iventInfo.clients?.count ?? 0)"
         cell.categoryView.backgroundColor = colorForRow(indexPath.row)
         cell.fillImages(clients: iventInfo.clients ?? [])
@@ -232,11 +260,9 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
         guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: indexPath) as? CalendarCell else { return JTAppleCell() }
         
         cell.dateLabel.text = cellState.text
-        let formatter       = DateFormatters.serverTimeFormatter
-        
         cellState.handleCellTextColor(cell: cell)
         cellState.handleCellSelection(cell: cell)
-        cellState.handleSpecialDates(cell: cell, specialDates: specialDates(), formatter: formatter)
+        cellState.handleSpecialDates(cell: cell, specialDates: specialDates)
         
         return cell
     }
@@ -247,17 +273,14 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         
     }
     
-    
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         
         guard let calCell = cell as? CalendarCell else { return }
         
         cellState.handleCellTextColor(cell: calCell)
         cellState.handleCellSelection(cell: calCell)
-        
-        
+        cellState.handleSpecialDates(cell: calCell, specialDates: specialDates)
         self.filteredEvents = self.events.filter{ $0.date?.contains(formatter.string(from: cellState.date)) ?? false }
-        self.collectionView.reloadData()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -266,12 +289,13 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         
         cellState.handleCellTextColor(cell: calCell)
         cellState.handleCellSelection(cell: calCell)
+        cellState.handleSpecialDates(cell: calCell, specialDates: specialDates)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         guard  let date = visibleDates.monthDates.first?.date else { return }
         let formatter = DateFormatters.monthYearFormat
-        
+        formatter.timeZone  = TimeZone(identifier: "UTC")
         self.navigationItem.leftTitle = formatter.string(from: date)
     }
 }
@@ -279,32 +303,14 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
 private extension ScheduleVC {
     
     func configurationParameters() -> ConfigurationParameters {
+        var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
         let formatter       = DateFormatters.projectFormatFormatter
+        formatter.timeZone  = TimeZone(identifier: "UTC")
         let start           = formatter.date(from: Constants.Dates.StartDate)!
         let end             = formatter.date(from: Constants.Dates.EndDate)!
         
-        let params          = ConfigurationParameters(startDate: start, endDate: end, generateInDates: .off, generateOutDates: .tillEndOfRow)
+        let params          = ConfigurationParameters(startDate: start, endDate: end, calendar: calendar, generateInDates: .off, generateOutDates: .tillEndOfRow)
         return params
-    }
-    
-    func specialDates() -> [String] {
-        var specialDates: [String] = []
-        for event in self.events {
-            if let date = event.date {
-                specialDates.append(date)
-            }
-        }
-        return specialDates
-    }
-    
-    func fromStringToDate(specialDates: [String]) -> [Date] {
-        let formatter       = DateFormatters.serverTimeFormatter
-        var dates: [Date] = []
-        for date in specialDates {
-            if let data = formatter.date(from: date) {
-                dates.append(data)
-            }
-        }
-        return dates
     }
 }

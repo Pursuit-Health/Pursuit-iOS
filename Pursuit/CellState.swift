@@ -21,10 +21,9 @@ extension CellState {
         }
     }
     
-    func handleSpecialDates(cell: CalendarCell, specialDates: [String], formatter: DateFormatter){
+    func handleSpecialDates(cell: CalendarCell, specialDates: [String]){
+        let formatter       = DateFormatters.serverTimeFormatter
         cell.isSpecialDate = specialDates.contains(formatter.string(from: self.date))
-        print(formatter.string(from: self.date))
-        print(cell.isSpecialDate)
     }
     
     func handleCellSelection(cell: CalendarCell) {
@@ -36,7 +35,12 @@ extension CellState {
             
             myCustomCell.bgView.backgroundColor         = UIColor.clear
             myCustomCell.bgView.layer.borderWidth       = 1.0
-            myCustomCell.bgView.layer.borderColor       = UIColor.cellSelection().cgColor
+        
+            if Calendar.current.isDateInToday(self.date) {
+                myCustomCell.bgView.layer.borderColor       = UIColor.currentDateCellSelectedColor().cgColor
+            }else {
+                myCustomCell.bgView.layer.borderColor       = UIColor.cellSelection().cgColor
+            }
         } else {
             myCustomCell.bgView.isHidden                = true
         }

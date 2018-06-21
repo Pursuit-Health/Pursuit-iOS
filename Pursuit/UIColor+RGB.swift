@@ -33,6 +33,10 @@ extension UIColor {
         return UIColor.init(red: 140.0/255.0, green: 136.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
     
+    class func currentDateCellSelectedColor() -> UIColor {
+        return UIColor.init(red: 48/255, green: 213/255, blue: 200/255, alpha: 1)
+    }
+    
     class func exerciseTypeRedColor() -> UIColor {
         return UIColor(red: 231/255, green: 66/255, blue: 105/255, alpha: 1.0)
     }

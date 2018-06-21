@@ -257,7 +257,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
             if exerc.sets_count == nil {
                 exerc.sets = []
             }
-            exerc.sets = exerc.sets.flatMap{ $0 }
+            exerc.sets = exerc.sets?.filter{ $0.weight_min != nil }
         }
         
         let work = Workout()

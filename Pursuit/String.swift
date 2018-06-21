@@ -17,4 +17,8 @@ extension String {
         let components = self.components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
         return components.filter { !$0.isEmpty }.joined(separator: " ")
     }
+    
+    func removeBackSlash() -> String? {
+        return self.replacingOccurrences(of: "\\n", with: "\n")
+    }
 }

@@ -12,6 +12,7 @@ import SDWebImage
 class ScheduleCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var eventTitle: UILabel!
     
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!

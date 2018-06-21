@@ -9,7 +9,7 @@ target 'Pursuit' do
   pod 'Crashlytics'
   pod 'HMSegmentedControl'
   pod 'ESTabBarController-swift'
-  pod 'SwipeCellKit', '~> 1.9.1'
+  pod 'SwipeCellKit'
   
   pod 'AlamofireObjectMapper', '~> 4.1'
   pod 'SDWebImage', '~> 4.2.2'
@@ -40,5 +40,14 @@ target 'Pursuit' do
   pod 'GrowingTextView', '~> 0.4.0'
   pod 'KeyboardWrapper'
   pod 'NSDate+TimeAgo', '~> 1.0'
+  pod 'TOCropViewController'
+  
+  post_install do |installer|
+      installer.pods_project.targets.each do |target|
+          target.build_configurations.each do |config|
+              config.build_settings['SWIFT_VERSION'] = '3.1'
+          end
+      end
+  end
    
 end

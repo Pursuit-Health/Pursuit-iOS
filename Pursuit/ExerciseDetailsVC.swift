@@ -296,7 +296,7 @@ class ExerciseDetailsVC: UIViewController {
                     completion(nil, text)
                 }
             }
-            if exersize.sets?.count ?? 0 > index {
+            if exersize.sets?.count ?? 0 < index {
                 return
             }
             if let min = exersize.sets?[index].weight_min {
@@ -331,7 +331,7 @@ class ExerciseDetailsVC: UIViewController {
                     completion(nil, text)
                 }
             }
-            if exersize.sets?.count ?? 0 > index {
+            if exersize.sets?.count ?? 0 < index {
                 return
             }
             if let min = exersize.sets?[index].reps_min {

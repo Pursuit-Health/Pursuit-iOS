@@ -63,7 +63,7 @@ class SettingsVC: UIViewController {
     //MARK: IBActions
     
     @IBAction func changeAvatarButtonPressed(_ sender: Any) {
-        self.showActionSheetForUploadingPhoto()
+        //self.showActionSheetForUploadingPhoto()
     }
     
     //MARK: Lifecycle
@@ -125,11 +125,11 @@ class SettingsVC: UIViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cameraSheet = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
-            self.showImagePickerControllerWithType(.camera)
+            //self.showImagePickerControllerWithType(.camera)
         })
         
         let librarySheet = UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
-            self.showImagePickerControllerWithType(.photoLibrary)
+            //self.showImagePickerControllerWithType(.photoLibrary)
         })
         
         let cancelSheet = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
@@ -225,7 +225,10 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
 
 extension SettingsVC: UserInfoTableViewCellDelegate {
     func userDidPressedChangePhoto(on cell: UserInfoTableViewCell) {
-        showActionSheetForUploadingPhoto()
+        
+        let cropper = ImagePickingCropVC()
+        cropper.initialise(controller: self, view: self.view)
+        cropper.delegate = self
     }
 }
 
@@ -241,24 +244,13 @@ extension SettingsVC: LogoutTableViewCellDelegate {
     }
 }
 
-extension SettingsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func showImagePickerControllerWithType(_ type: UIImagePickerControllerSourceType) {
-        let picker              = UIImagePickerController()
-        picker.delegate         = self
-        picker.allowsEditing    = true
-        picker.sourceType       = type
-        
-        present(picker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let chosenImage = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
-        self.selectedImage = chosenImage
+extension SettingsVC: ImagePickingCropVCDelegate {
+    func imagePicker(picker: ImagePickingCropVC, didSelectOriginalImage: UIImage, croppedImage: UIImage) {
+        self.selectedImage = croppedImage
         self.uploadImage()
-        picker.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+    func imagePickerCancel(picker: ImagePickingCropVC) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

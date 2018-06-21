@@ -85,7 +85,7 @@ class ChatVC: UIViewController {
         }
         
         private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message?) {
-            cell.messageLabel.text = message?.text ?? ""
+            cell.messageLabel.text = message?.text?.removeBackSlash() ?? ""
             cell.timeLabel.text = createTimeString(timeInterval: (message?.created ?? 0))
             cell.userAvatarImageView.sd_setImage(with: URL(string: message?.userPhoto ?? ""), placeholderImage: UIImage(named: "ic_username"))
         }
@@ -96,7 +96,7 @@ class ChatVC: UIViewController {
                 cell.talesView.isHidden = true
                 cell.bgView.isHidden = true 
             }
-            cell.messageLabe.text = message?.text
+            cell.messageLabe.text = message?.text?.removeBackSlash()
             if message?.isHideAvatar ?? false {
                 cell.avatarImageView.image = UIImage()
             }else {
@@ -107,12 +107,13 @@ class ChatVC: UIViewController {
         }
         
         private func fillSenderCell(cell: SenderMessageCell, message: Message?) {
-            cell.messageLabel.text = message?.text ?? ""
+            print(message?.text ?? "")
+            cell.messageLabel.text = message?.text?.removeBackSlash() ?? ""
             cell.createdAtLabel.text  = createTimeString(timeInterval: (message?.created ?? 0))
         }
         
         private func fillSenderWithImageCell(cell: SendeMessageWithImageCell, message: Message?) {
-            cell.messageLabel.text = message?.text
+            cell.messageLabel.text = message?.text?.removeBackSlash() ?? ""
             if message?.isHideMessageView ?? false {
               cell.messageView.isHidden = true
             }else {
@@ -127,7 +128,7 @@ class ChatVC: UIViewController {
         }
         
         private func fillSameFrontMessageWithText(cell: SameMessageTextCell, message: Message?) {
-            cell.textMessageLabel.text = message?.text ?? ""
+            cell.textMessageLabel.text = message?.text?.removeBackSlash() ?? ""
             cell.timeLabel.text =  createTimeString(timeInterval: (message?.created ?? 0))
         }
         
@@ -396,15 +397,17 @@ class ChatVC: UIViewController {
     //TODO: Reimplement using one function
     
     func sendMessageWith(_ text: String?, photoURL: String?) {
-        guard let messsage = text else { return }
+        guard var messsage = text else { return }
         if messsage.isEmpty && photoURL == nil || messsage.trimmingCharacters(in: .whitespaces).isEmpty {
             return
         }
-        
-        if messsage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+       
+        let checkNewLinesMessage = messsage
+        if checkNewLinesMessage.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             messageTextView.text = ""
             return
         }
+         messsage = messsage.replacingOccurrences(of: "\n", with: "\\n")
         
         var photoKey = String()
         var photoUrl = String()
@@ -588,7 +591,8 @@ extension ChatVC {
             
             let uploadTask = imagesReference.putData(imageData, metadata: metadata, completion: { (metadata, error) in
                 if let metadata = metadata {
-                    completionBlock(metadata.downloadURL(), nil)
+                    
+                    //completionBlock(metadata.downloadURL(), nil)
                 } else {
                     completionBlock(nil, error?.localizedDescription)
                 }

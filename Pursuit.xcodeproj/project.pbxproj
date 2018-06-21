@@ -33,6 +33,7 @@
 		780D8E961F44DAD90030A992 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780D8E951F44DAD90030A992 /* UINavigationBar.swift */; };
 		780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780ECFDA1F5878860009E6A6 /* UITextField.swift */; };
 		780ECFDE1F58C05B0009E6A6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780ECFDD1F58C05B0009E6A6 /* UILabel.swift */; };
+		780EFC5820D7E6F30061C734 /* ImagePickingCropVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EFC5720D7E6F30061C734 /* ImagePickingCropVC.swift */; };
 		781110531F65932700457E8B /* SelectTrainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110511F65932700457E8B /* SelectTrainer.swift */; };
 		781110541F65932700457E8B /* SelectTrainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781110521F65932700457E8B /* SelectTrainer.xib */; };
 		781110561F6672BD00457E8B /* Template+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781110551F6672BD00457E8B /* Template+API.swift */; };
@@ -307,6 +308,7 @@
 		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		780ECFDA1F5878860009E6A6 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		780ECFDD1F58C05B0009E6A6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		780EFC5720D7E6F30061C734 /* ImagePickingCropVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickingCropVC.swift; path = ../../../../../../Downloads/ImagePickingCropVC.swift; sourceTree = "<group>"; };
 		781110511F65932700457E8B /* SelectTrainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainer.swift; sourceTree = "<group>"; };
 		781110521F65932700457E8B /* SelectTrainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectTrainer.xib; sourceTree = "<group>"; };
 		781110551F6672BD00457E8B /* Template+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+API.swift"; sourceTree = "<group>"; };
@@ -752,6 +754,14 @@
 				780ECFDD1F58C05B0009E6A6 /* UILabel.swift */,
 			);
 			name = UILabel;
+			sourceTree = "<group>";
+		};
+		780EFC5620D7E6E20061C734 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				780EFC5720D7E6F30061C734 /* ImagePickingCropVC.swift */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		7813E8831FCC32FC00B9B42C /* NotesCell */ = {
@@ -2040,6 +2050,7 @@
 		84AB4D6F1F32821F00531740 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				780EFC5620D7E6E20061C734 /* ImagePicker */,
 				842CD37B1F8F622C00F756DC /* HideKeyboardManager */,
 				783A45701F8E6B960048A0F9 /* SWRewealViewController */,
 				78E4267E1F69B0DA00C12D94 /* UITextField+Effects */,
@@ -2464,9 +2475,9 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2501,9 +2512,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOCropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2584,6 +2595,7 @@
 				78BAC2ED20B59BBA00C0EDD2 /* SavedTemplatesObject+API.swift in Sources */,
 				787A99272019E20800E69B5F /* ExersiseData+API.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
+				780EFC5820D7E6F30061C734 /* ImagePickingCropVC.swift in Sources */,
 				782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */,
 				78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */,
 				7813E8861FCC332200B9B42C /* NotesCell.swift in Sources */,

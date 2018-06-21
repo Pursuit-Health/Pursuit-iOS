@@ -35,20 +35,14 @@
                                     <constraint firstAttribute="height" constant="25" id="zuE-gy-tLt"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11 am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PEU-6g-UJl">
-                                <rect key="frame" x="51" y="16" width="103" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="9HA-5Y-m4G"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11 am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEU-6g-UJl">
+                                <rect key="frame" x="51" y="19" width="103" height="19.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Training with Tom " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vme-ZR-Up5">
-                                <rect key="frame" x="18" y="56" width="129" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="Naj-N5-d1r"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Personal Training with Tom " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vme-ZR-Up5">
+                                <rect key="frame" x="18" y="74.5" width="136" height="41"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -99,9 +93,17 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6so-Ox-8OE">
+                                <rect key="frame" x="18" y="53" width="136" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4Lu-6L-X9G" firstAttribute="top" secondItem="vme-ZR-Up5" secondAttribute="bottom" constant="6.5" id="16m-9F-bza"/>
+                            <constraint firstItem="6so-Ox-8OE" firstAttribute="top" secondItem="PEU-6g-UJl" secondAttribute="bottom" constant="10" id="1RZ-3w-npv"/>
                             <constraint firstAttribute="trailing" secondItem="8v0-Rv-t8g" secondAttribute="trailing" constant="15" id="28L-MX-DNK"/>
                             <constraint firstAttribute="trailing" secondItem="PEU-6g-UJl" secondAttribute="trailing" constant="8" id="2Xb-rk-QhT"/>
                             <constraint firstAttribute="bottom" secondItem="8v0-Rv-t8g" secondAttribute="bottom" constant="15" id="5xW-Ts-0y0"/>
@@ -110,17 +112,19 @@
                             <constraint firstItem="ttf-8Q-Gr6" firstAttribute="leading" secondItem="mTE-Za-Mi3" secondAttribute="trailing" constant="16" id="GCW-34-i9C"/>
                             <constraint firstItem="8v0-Rv-t8g" firstAttribute="leading" secondItem="4ZJ-kG-BB3" secondAttribute="trailing" constant="10" id="HqI-yR-NCh"/>
                             <constraint firstAttribute="bottom" secondItem="4ZJ-kG-BB3" secondAttribute="bottom" constant="15" id="NAX-kU-vvk"/>
-                            <constraint firstItem="vme-ZR-Up5" firstAttribute="top" secondItem="PEU-6g-UJl" secondAttribute="bottom" constant="15" id="UuA-99-9Fe"/>
+                            <constraint firstItem="6so-Ox-8OE" firstAttribute="leading" secondItem="ttf-8Q-Gr6" secondAttribute="leading" id="PVY-Bm-vy7"/>
                             <constraint firstAttribute="bottom" secondItem="Mj3-Dy-fAD" secondAttribute="bottom" constant="15" id="bEC-h9-QMd"/>
-                            <constraint firstItem="vme-ZR-Up5" firstAttribute="leading" secondItem="mTE-Za-Mi3" secondAttribute="trailing" constant="16" id="gf5-Yq-Kdq"/>
+                            <constraint firstItem="6so-Ox-8OE" firstAttribute="trailing" secondItem="PEU-6g-UJl" secondAttribute="trailing" id="bdR-vL-iRg"/>
                             <constraint firstItem="ttf-8Q-Gr6" firstAttribute="top" secondItem="6OE-Qu-OIW" secondAttribute="top" constant="16" id="h6G-BZ-I8Q"/>
                             <constraint firstItem="mTE-Za-Mi3" firstAttribute="top" secondItem="6OE-Qu-OIW" secondAttribute="top" id="ivA-Se-EL0"/>
                             <constraint firstAttribute="bottom" secondItem="4Lu-6L-X9G" secondAttribute="bottom" constant="15" id="k8o-Yo-aaB"/>
+                            <constraint firstItem="vme-ZR-Up5" firstAttribute="trailing" secondItem="6so-Ox-8OE" secondAttribute="trailing" id="nT3-j2-BTO"/>
                             <constraint firstItem="mTE-Za-Mi3" firstAttribute="leading" secondItem="6OE-Qu-OIW" secondAttribute="leading" id="qJp-qZ-z1Q"/>
                             <constraint firstItem="PEU-6g-UJl" firstAttribute="centerY" secondItem="ttf-8Q-Gr6" secondAttribute="centerY" id="rko-xH-oZ5"/>
                             <constraint firstItem="4ZJ-kG-BB3" firstAttribute="leading" secondItem="4Lu-6L-X9G" secondAttribute="trailing" constant="10" id="rzQ-CU-pSF"/>
-                            <constraint firstAttribute="trailing" secondItem="vme-ZR-Up5" secondAttribute="trailing" constant="15" id="uX5-rD-335"/>
                             <constraint firstItem="4Lu-6L-X9G" firstAttribute="leading" secondItem="Mj3-Dy-fAD" secondAttribute="trailing" constant="10" id="wgS-xq-vVn"/>
+                            <constraint firstItem="vme-ZR-Up5" firstAttribute="leading" secondItem="6so-Ox-8OE" secondAttribute="leading" id="xdb-Wd-e4e"/>
+                            <constraint firstItem="vme-ZR-Up5" firstAttribute="top" secondItem="6so-Ox-8OE" secondAttribute="bottom" constant="0.5" id="ymg-Ee-POP"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -136,6 +140,7 @@
                 <outlet property="clientsCountLabel" destination="Mj3-Dy-fAD" id="qAl-ji-NgQ"/>
                 <outlet property="dateLabel" destination="PEU-6g-UJl" id="tcN-rx-a2V"/>
                 <outlet property="descriptionLabel" destination="vme-ZR-Up5" id="xJU-JE-wRS"/>
+                <outlet property="eventTitle" destination="6so-Ox-8OE" id="KAB-9m-ZxQ"/>
                 <outlet property="firstImageView" destination="4Lu-6L-X9G" id="1bU-Y8-sZx"/>
                 <outlet property="secondImageView" destination="4ZJ-kG-BB3" id="1bv-hX-G0l"/>
                 <outlet property="thirdImageView" destination="8v0-Rv-t8g" id="jX5-tC-4H3"/>

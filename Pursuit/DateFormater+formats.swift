@@ -13,6 +13,7 @@ struct DateFormatters {
     static let createEditFormatFormatter: DateFormatter = DateFormatters.dateFormatterWith("dd/MM/yyyy")
     static let fullFormat: DateFormatter                = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm:ss +zzzz")
     static let monthYearFormat: DateFormatter           = DateFormatters.dateFormatterWith("MMMM yyyy")
+    static let serverHoursFormatter: DateFormatter      = DateFormatters.dateFormatterWith("HH:mm")
     
     static func defaultFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
@@ -24,6 +25,7 @@ struct DateFormatters {
     static func dateFormatterWith(_ format: String) -> DateFormatter {
         let dateFormatter = DateFormatters.defaultFormatter()
         dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         return dateFormatter
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftDate
+import JTAppleCalendar
 
 //TODO: Same
 class ScheduleClientVC: UIViewController {
@@ -15,20 +16,35 @@ class ScheduleClientVC: UIViewController {
     //MARK: Constants
     
     struct Constants {
+        struct Dates {
+            static let StartDate    = "2017 01 01"
+            static let EndDate      = "2022 12 31"
+        }
+        
         struct Cell {
             var nibName: String
             var identifier: String
             
             static let client = Cell(nibName: "ScheduleClientCollectionViewCell", identifier: "ScheduleClientCollectionViewCellReuseID")
         }
+        struct CalendarCell {
+            let nibName: String
+            let identifier: String
+            
+            static let TemplateCalendar = Cell(nibName: "CreateTemplateCalendarCell", identifier: "CreateTemplateCalendarCellReuseID")
+        }
     }
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var dayOfMonthLabel  : UILabel!
-    @IBOutlet weak var dayOfWeakLabel   : UILabel!
-    @IBOutlet weak var monthYearLabel   : UILabel!
-    @IBOutlet weak var eventTitleTextField: UITextField!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
+    
+    @IBOutlet weak var eventTitleTextField: UITextField! {
+        didSet {
+            eventTitleTextField.attributedPlaceholder = NSAttributedString(string: "Event Title", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+        }
+    }
     
     @IBOutlet weak var startDateTextField: UITextField! {
         didSet {
@@ -53,6 +69,24 @@ class ScheduleClientVC: UIViewController {
             let nib         = UINib(nibName: cellData.nibName, bundle: .main)
             
             clientsCollectionView.register(nib, forCellWithReuseIdentifier: cellData.identifier)
+        }
+    }
+
+    @IBOutlet weak var calendarView: JTAppleCalendarView!{
+        didSet{
+            let cellData    = Constants.CalendarCell.TemplateCalendar
+            let nib         = UINib(nibName: cellData.nibName, bundle: .main)
+            
+            self.calendarView.register(nib, forCellWithReuseIdentifier: cellData.identifier)
+            
+            self.calendarView.minimumInteritemSpacing   = 0
+            self.calendarView.minimumLineSpacing        = 0
+            
+            self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
+            self.calendarView.scrollToDate(Date())
+            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: false)
+            let formatter       = DateFormatters.serverTimeFormatter
+            formatter.timeZone = TimeZone(identifier: "UTC")
         }
     }
     
@@ -82,12 +116,12 @@ class ScheduleClientVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func decreaseDateButtonPressed(_ sender: Any) {
-        decreaseDate(true)
+    @IBAction func nextMonthButtonPressed(_ sender: Any) {
+       nextMonth()
     }
     
-    @IBAction func encreaseDateButtonPressed(_ sender: Any) {
-        decreaseDate(false)
+    @IBAction func previousButtonPressed(_ sender: Any) {
+       previousMonth()
     }
     
     @IBAction func addClientButtonPressed(_ sender: Any) {
@@ -97,7 +131,7 @@ class ScheduleClientVC: UIViewController {
         
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
+
     //TODO: Use separated method
     @IBAction func saveScheduleButtonPressed(_ sender: Any) {
         var clientIdies: [Int] = []
@@ -110,10 +144,9 @@ class ScheduleClientVC: UIViewController {
         
         let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "hh:mm"
-        //let startTime: String = dateformatter.string(from: startDatePicker.date)
-        //let endTime: String = dateformatter.string(from: enadDatePicker.date)
-        
+
         dateformatter.dateFormat = "yyyy-MM-dd"
+        dateformatter.timeZone = TimeZone(identifier: "UTC")
         let date: String = dateformatter.string(from: changedDate.absoluteDate)
         
         //        if !self.compareDates(self.startTime, self.endTime) {
@@ -135,7 +168,6 @@ class ScheduleClientVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpBackgroundImage()
-        decreaseDate(nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,6 +176,20 @@ class ScheduleClientVC: UIViewController {
     }
     
     //MARK: Private
+    
+    private func nextMonth() {
+        changedDate = changedDate + 1.month
+        self.calendarView.scrollToDate(changedDate.absoluteDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
+            self.fillMonthYearLabelsWith(self.changedDate.absoluteDate)
+        }
+    }
+    
+    private func previousMonth() {
+        changedDate = changedDate - 1.month
+        self.calendarView.scrollToDate(changedDate.absoluteDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
+            self.fillMonthYearLabelsWith(self.changedDate.absoluteDate)
+        }
+    }
     
     private func startDatePicker() -> UIDatePicker {
         let startPicker = createDatePicker()
@@ -180,6 +226,7 @@ class ScheduleClientVC: UIViewController {
         let dateAsString = dateFormatter.string(from: date)
         
         dateFormatter.dateFormat = "HH:mm"
+
         let date24 = dateFormatter.string(from: date)
         if start {
             self.startTime = date24
@@ -212,28 +259,32 @@ class ScheduleClientVC: UIViewController {
     }
     
     //TODO: Make good solution
-    private func decreaseDate(_ decrease: Bool?) {
-        
-        if let decrease = decrease {
-            if decrease {
-                changedDate = changedDate + 1.day
-            }else {
-                changedDate = changedDate - 1.day
-            }
-        }
-        
-        let dateformatter = DateFormatters.serverTimeFormatter
-        dateformatter.dateFormat = "EEEE"
-        let dayOfWeak: String = dateformatter.string(from: changedDate.absoluteDate)
-        dateformatter.dateFormat = "MMMM yyyy"
-        let monthYear: String = dateformatter.string(from: changedDate.absoluteDate)
-        dateformatter.dateFormat = "dd"
-        let digitOfDay: String = dateformatter.string(from: changedDate.absoluteDate)
-        
-        self.dayOfWeakLabel.text    = dayOfWeak
-        self.dayOfMonthLabel.text   = digitOfDay
-        self.monthYearLabel.text    = monthYear
-    }
+//    private func decreaseDate(_ decrease: Bool?) {
+//
+//        if let decrease = decrease {
+//            if decrease {
+//                changedDate = changedDate + 1.day
+//            }else {
+//                changedDate = changedDate - 1.day
+//            }
+//        }
+//
+//        updateDateUI()
+//    }
+    
+//    private func updateDateUI() {
+//        let dateformatter = DateFormatters.serverTimeFormatter
+//        dateformatter.dateFormat = "EEEE"
+//        let dayOfWeak: String = dateformatter.string(from: changedDate.absoluteDate)
+//        dateformatter.dateFormat = "MMMM yyyy"
+//        let monthYear: String = dateformatter.string(from: changedDate.absoluteDate)
+//        dateformatter.dateFormat = "dd"
+//        let digitOfDay: String = dateformatter.string(from: changedDate.absoluteDate)
+//
+//        self.dayOfWeakLabel.text    = dayOfWeak
+//        self.dayOfMonthLabel.text   = digitOfDay
+//        self.monthYearLabel.text    = monthYear
+//    }
     
     func uploadEvent() {
         Event.createEvent(eventData: self.event) { (error) in
@@ -248,6 +299,16 @@ class ScheduleClientVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func fillMonthYearLabelsWith(_ date: Date) {
+        self.changedDate = DateInRegion(absoluteDate: date)
+        let formatter                   = DateFormatters.monthYearFormat
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let textToSee = formatter.string(from: date)
+        let subText = textToSee.components(separatedBy: " ")
+        self.monthLabel.text = subText[0]
+        self.yearLabel.text = subText[1]
     }
 }
 
@@ -297,5 +358,61 @@ extension ScheduleClientVC: SelectClientsVCDelegate {
         let set = Set(self.clients)
         self.clients = Array(set)
         self.clientsCollectionView.reloadData()
+    }
+}
+extension ScheduleClientVC: JTAppleCalendarViewDataSource {
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        
+        let formatter       = DateFormatters.serverTimeFormatter
+        formatter.timeZone  = TimeZone(identifier: "UTC")
+        guard let start = formatter.date(from: "2017-01-01"), let end = formatter.date(from: "2022-01-01") else { return ConfigurationParameters(startDate: Date(), endDate: Date()) }
+        let parameters = ConfigurationParameters(startDate: start, endDate: end, numberOfRows: 1, calendar: calendar, generateInDates: .forFirstMonthOnly, generateOutDates: .off)
+        
+        return parameters
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        
+        guard let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: Constants.CalendarCell.TemplateCalendar.identifier, for: indexPath) as? CreateTemplateCalendarCell else { return JTAppleCell() }
+        
+        cell.monthDayLabel.text = cellState.text
+        cell.weekDayLabel.text =  cellState.date.dayOfWeek()
+        
+        cellState.templateCalendarCellselected(cell: cell)
+        return cell
+    }
+}
+
+extension ScheduleClientVC: JTAppleCalendarViewDelegate {
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        cellState.templateCalendarCellselected(cell: cell as! CreateTemplateCalendarCell)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        guard let calCell = cell as? CreateTemplateCalendarCell else { return }
+        cellState.templateCalendarCellselected(cell: calCell)
+        
+        fillMonthYearLabelsWith(date)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        
+        guard let calCell = cell as? CreateTemplateCalendarCell else { return }
+        
+        cellState.templateCalendarCellselected(cell: calCell)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        for date in visibleDates.monthDates {
+            if (calendar.cellStatus(for: date.date)?.isSelected) ?? false {
+                fillMonthYearLabelsWith(date.date)
+                return
+            }
+        }
+        guard  let date = visibleDates.monthDates.first?.date else { return }
+        //self.chnagedDate = DateInRegion(absoluteDate: date)
+        self.fillMonthYearLabelsWith(date)
     }
 }
