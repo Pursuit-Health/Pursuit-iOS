@@ -39,6 +39,7 @@ class NavigatorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.setAppearence()
+        
         self.addController()
         
         self.revealViewController().delegate = self

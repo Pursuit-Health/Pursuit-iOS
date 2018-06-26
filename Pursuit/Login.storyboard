@@ -198,7 +198,7 @@
                         <outlet property="viewForPageController" destination="baT-US-LIk" id="tBz-hc-rby"/>
                         <segue destination="iE0-gJ-nPe" kind="show" identifier="ShowTrainerStoryboard" id="iSM-0s-8UD"/>
                         <segue destination="mnW-1v-Me5" kind="show" identifier="ShowClientStoryboard" id="CXU-oU-jRo"/>
-                        <segue destination="ZNp-Ay-8hF" kind="show" identifier="ShowSideMenu" id="Gmt-7x-2ju"/>
+                        <segue destination="ZNp-Ay-8hF" kind="show" identifier="ShowSideMenu" animates="NO" id="Gmt-7x-2ju"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7i-A3-5Sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -698,7 +698,7 @@
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="minFontSize">
                                         <real key="value" value="10"/>
@@ -781,7 +781,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="ForgotPassword"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Forgot Password"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="emailTextField" destination="oOq-ao-gkP" id="O5g-52-vyi"/>

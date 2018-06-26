@@ -58,7 +58,8 @@ class ScheduleVC: UIViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView! {
         didSet{
             self.calendarView.minimumInteritemSpacing   = 2
-            self.calendarView.minimumLineSpacing        = 5
+            self.calendarView.minimumLineSpacing        = 0
+            //self.calendarView.cellSize = (calendarView.frame.size.height / 5)
             calendarView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             
             self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
@@ -76,6 +77,8 @@ class ScheduleVC: UIViewController {
     lazy var formatter       = DateFormatters.serverTimeFormatter
     
     lazy var hoursFormatter  = DateFormatters.serverHoursFormatter
+    
+    lazy var monthYearFormatter = DateFormatters.monthYearFormat
     
     var events: [Event] = [] {
         didSet {
@@ -164,10 +167,13 @@ class ScheduleVC: UIViewController {
     private func calendarViewVisibleDates() {
         calendarView.visibleDates { (visibleDates) in
             if let date = visibleDates.monthDates.first?.date {
-                let formatter                   = DateFormatters.monthYearFormat
-                self.navigationItem.leftTitle   = formatter.string(from: date)
+               //self.updateLeftTitleWith(date)
             }
         }
+    }
+    
+    private func updateLeftTitleWith(_ date: Date) {
+        self.navigationItem.leftTitle   = self.monthYearFormatter.string(from: date)
     }
     
     private func updateEvents() {
@@ -187,6 +193,7 @@ class ScheduleVC: UIViewController {
                         self.calendarView.reloadData()
                         self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
                         self.filteredEvents = self.events.filter{ $0.date?.contains(dateformatter.string(from: Date())) ?? false }
+                        self.updateLeftTitleWith(Date())
                     })
                 }
             }
@@ -268,6 +275,7 @@ extension ScheduleVC: JTAppleCalendarViewDataSource {
 }
 
 extension ScheduleVC: JTAppleCalendarViewDelegate {
+
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         
     }
@@ -280,6 +288,7 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
         cellState.handleCellSelection(cell: calCell)
         cellState.handleSpecialDates(cell: calCell, specialDates: specialDates)
         self.filteredEvents = self.events.filter{ $0.date?.contains(formatter.string(from: cellState.date)) ?? false }
+        updateLeftTitleWith(date)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -293,9 +302,7 @@ extension ScheduleVC: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         guard  let date = visibleDates.monthDates.first?.date else { return }
-        let formatter = DateFormatters.monthYearFormat
-        formatter.timeZone  = TimeZone(identifier: "UTC")
-        self.navigationItem.leftTitle = formatter.string(from: date)
+        updateLeftTitleWith(date)
     }
 }
 
@@ -309,7 +316,7 @@ private extension ScheduleVC {
         let start           = formatter.date(from: Constants.Dates.StartDate)!
         let end             = formatter.date(from: Constants.Dates.EndDate)!
         
-        let params          = ConfigurationParameters(startDate: start, endDate: end, calendar: calendar, generateInDates: .off, generateOutDates: .tillEndOfRow)
+        let params          = ConfigurationParameters(startDate: start, endDate: end, calendar: calendar, generateInDates: .forAllMonths, generateOutDates: .tillEndOfRow)
         return params
     }
 }

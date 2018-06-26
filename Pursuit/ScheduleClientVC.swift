@@ -69,6 +69,7 @@ class ScheduleClientVC: UIViewController {
             let nib         = UINib(nibName: cellData.nibName, bundle: .main)
             
             clientsCollectionView.register(nib, forCellWithReuseIdentifier: cellData.identifier)
+            clientsCollectionView.ept.dataSource = self
         }
     }
 
@@ -156,7 +157,6 @@ class ScheduleClientVC: UIViewController {
         
         event.location  = self.locationTextField.text ?? ""
         event.title     = self.eventTitleTextField.text
-        event.name      = event.title
         event.startAt   = self.startTime
         event.endAt     = self.endTime
         event.date      = date
@@ -416,5 +416,23 @@ extension ScheduleClientVC: JTAppleCalendarViewDelegate {
         guard  let date = visibleDates.monthDates.first?.date else { return }
         //self.chnagedDate = DateInRegion(absoluteDate: date)
         self.fillMonthYearLabelsWith(date)
+    }
+}
+
+extension ScheduleClientVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return "Press the + to add clients"
+    }
+    
+    var emptyImageName: String {
+        return ""
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
     }
 }

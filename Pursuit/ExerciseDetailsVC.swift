@@ -296,7 +296,7 @@ class ExerciseDetailsVC: UIViewController {
                     completion(nil, text)
                 }
             }
-            if exersize.sets?.count ?? 0 < index {
+            if exersize.sets?.count ?? 0 < index || exersize.sets?.count == 0{
                 return
             }
             if let min = exersize.sets?[index].weight_min {
@@ -331,7 +331,7 @@ class ExerciseDetailsVC: UIViewController {
                     completion(nil, text)
                 }
             }
-            if exersize.sets?.count ?? 0 < index {
+            if exersize.sets?.count ?? 0 < index || exersize.sets?.count == 0 {
                 return
             }
             if let min = exersize.sets?[index].reps_min {
@@ -442,7 +442,7 @@ class ExerciseDetailsVC: UIViewController {
 //                return
 //            }
         }
-        
+        excersize.sets = excersize.sets?.filter{ $0.reps_min != nil }
         if excersize.sets_count == nil {
             excersize.sets = []
             exerc.sets = []
@@ -460,6 +460,7 @@ class ExerciseDetailsVC: UIViewController {
     }
     
     @IBAction func closeBarButtonPressed(_ sender: Any) {
+        excersize.sets = excersize.sets?.filter{ $0.reps_min != nil }
         popViewController()
     }
     
@@ -499,15 +500,15 @@ class ExerciseDetailsVC: UIViewController {
     }
     
     private func configureExercise() {
-        self.excersize.isWeighted = self.excersize.sets_count != nil
-        
-        if (excersize.sets_count ?? 0) == 0 || excersize.sets?.count  == 0 || excersize.sets?.count == nil || excersize.sets?.first?.reps_max == nil {
-            self.excersize.isStraitSets = true
-        }
-        
-        if !(excersize.isWeighted ?? false) {
-            self.excersize.isStraitSets = false
-        }
+//        self.excersize.isWeighted = self.excersize.sets_count != nil
+//
+//        if (excersize.sets_count ?? 0) == 0 || excersize.sets?.count  == 0 || excersize.sets?.count == nil || excersize.sets?.first?.reps_max == nil {
+//            self.excersize.isStraitSets = true
+//        }
+//
+//        if !(excersize.isWeighted ?? false) {
+//            self.excersize.isStraitSets = false
+//        }
     }
     
     private func showError() {
@@ -563,8 +564,12 @@ extension ExerciseDetailsVC: UITableViewDataSource {
                         self.excersize.sets?.append(SetsData())
                     }
                     let rep = Int(text1 ?? "")
-                    self.excersize.sets?.first?.reps_min = nil
+                    self.excersize.sets?.first?.reps_max = nil
                     self.excersize.sets?.first?.reps_min = rep
+                    if !(self.excersize.isWeighted ?? false) {
+                        self.excersize.sets?.first?.weight_max = nil
+                        self.excersize.sets?.first?.weight_min = Double(rep ?? 0)
+                    }
                 }
             case .weights:
                 self.excersize.weight = Int(text1 ?? "")
@@ -584,6 +589,10 @@ extension ExerciseDetailsVC: UITableViewDataSource {
             case .configureReps(let index, _):
                 if let text1 = text1 {
                     self.excersize.sets?[index].reps_min = Int(text1)
+                    if !(self.excersize.isWeighted ?? false) {
+                        self.excersize.sets?[index].weight_min = Double(text1)
+                        self.excersize.sets?[index].weight_max = Int(text1)
+                    }
                 }
                 if let text2 = text2 {
                     self.excersize.sets?[index].reps_max = Int(text2)
@@ -645,23 +654,43 @@ extension ExerciseDetailsVC: WeightedExerciseStateCellDelegate {
     }
     
     func unWeightedExerciseRecalculate() {
-        self.excersize.sets_count = nil
-        self.excersize.sets       = []
+//        self.excersize.sets_count = nil
+//        self.excersize.sets       = []
+//        cellsInfo = [.exerciseType(excersize: self.excersize, delegate: self),
+//        .name(excersize: self.excersize),
+//        .weightedExerciseStateCell(delegate: self, exercise:self.excersize),
+//        .rest(excersize: self.excersize),
+//        .sets(excersize: self.excersize),
+//        .notes(excersize: self.excersize, delegate: self),
+//        .description(excersize: self.excersize)]
+//        exerceiseTableView.reloadData()
+        
+        //self.excersize.sets_count = nil
+        //self.excersize.sets       = []
         cellsInfo = [.exerciseType(excersize: self.excersize, delegate: self),
-        .name(excersize: self.excersize),
-        .weightedExerciseStateCell(delegate: self, exercise:self.excersize),
-        .rest(excersize: self.excersize),
-        .sets(excersize: self.excersize),
-        .notes(excersize: self.excersize, delegate: self),
-        .description(excersize: self.excersize)]
+                     .name(excersize: self.excersize),
+                     .weightedExerciseStateCell(delegate: self, exercise:self.excersize),
+                     .sets(excersize: self.excersize),
+                     .straightExerciseStateCell(delegate: self, exercise: self.excersize)]
+        
+        if !(self.excersize.isStraitSets ?? false) {
+            let setsCount = self.excersize.sets_count ?? 1
+            for i in 0..<setsCount {
+                self.excersize.sets?.append(SetsData())
+                cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
+            }
+        }else {
+            cellsInfo.append(.reps(excersize: self.excersize))
+        }
+        
+        let sub :[CellType] = [.rest(excersize: self.excersize),
+                               .notes(excersize: self.excersize, delegate: self),
+                               .description(excersize: self.excersize)]
+        cellsInfo.append(contentsOf: sub)
         exerceiseTableView.reloadData()
     }
     
     func weightedExerciseRecalculate() {
-        if self.excersize.sets_count  == nil {
-            self.excersize.sets_count = 1
-            self.excersize.isStraitSets = false
-        }
         let setsCount = self.excersize.sets_count ?? 1
         cellsInfo = [.exerciseType(excersize: self.excersize, delegate: self),
                      .name(excersize: self.excersize),
@@ -669,10 +698,15 @@ extension ExerciseDetailsVC: WeightedExerciseStateCellDelegate {
                     .sets(excersize: self.excersize),
                     .straightExerciseStateCell(delegate: self, exercise: self.excersize)]
     
-        for i in 0..<setsCount {
-            self.excersize.sets?.append(SetsData())
-            cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
-            cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))
+        if !(self.excersize.isStraitSets ?? false) {
+            for i in 0..<setsCount {
+                self.excersize.sets?.append(SetsData())
+                cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
+                cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))
+            }
+        }else {
+            cellsInfo.append(.reps(excersize: self.excersize))
+            cellsInfo.append(.weights(excersize: self.excersize))
         }
         
         let sub :[CellType] = [.rest(excersize: self.excersize),
@@ -693,7 +727,9 @@ extension ExerciseDetailsVC: WeightedExerciseStateCellDelegate {
         for i in 0..<setsCount {
             self.excersize.sets?.append(SetsData())
             cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
-            cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))
+            if self.excersize.isWeighted ?? false {
+                cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))
+            }
         }
         
         let sub :[CellType] = [.rest(excersize: self.excersize),
@@ -715,17 +751,23 @@ extension ExerciseDetailsVC: StraightExerciseStateCellDelegate {
     }
     
     func straitSets() {
+
         self.excersize.sets = []
-        cellsInfo = [.exerciseType(excersize: self.excersize, delegate: self),
+        var sub: [CellType] = [.exerciseType(excersize: self.excersize, delegate: self),
                      .name(excersize: self.excersize),
                      .weightedExerciseStateCell(delegate: self, exercise:self.excersize),
                      .sets(excersize: self.excersize),
                      .straightExerciseStateCell(delegate: self, exercise: self.excersize),
-                     .reps(excersize: self.excersize),
-                     .weights(excersize: self.excersize),
-                     .rest(excersize: self.excersize),
-                     .notes(excersize: self.excersize, delegate: self),
-                     .description(excersize: self.excersize)]
+                     .reps(excersize: self.excersize)]
+        if excersize.isWeighted ?? false {
+            sub.append(.weights(excersize: self.excersize))
+        }
+        let subSub: [CellType] = [.rest(excersize: self.excersize),
+        .notes(excersize: self.excersize, delegate: self),
+        .description(excersize: self.excersize)]
+        
+        sub.append(contentsOf: subSub)
+        cellsInfo = sub
         self.exerceiseTableView?.reloadData()
     }
     
@@ -736,25 +778,16 @@ extension ExerciseDetailsVC: StraightExerciseStateCellDelegate {
                      .weightedExerciseStateCell(delegate: self, exercise:self.excersize),
                      .sets(excersize: self.excersize),
                      .straightExerciseStateCell(delegate: self, exercise: self.excersize)]
-
-        if !(self.excersize.isStraitSets ?? false) {
-
-            if (self.excersize.sets?.count ?? 0) > 0 && (self.excersize.sets?.first?.reps_max) == nil {
-                for i in 0..<setsCount {
-                    cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
-                    cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))
-                }
-            }else {
-                for i in 0..<setsCount {
-                    self.excersize.sets?.append(SetsData())
-                    cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
-                    cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))
-                }
+        
+        for i in 0..<setsCount {
+            self.excersize.sets?.append(SetsData())
+            cellsInfo.append(.configureReps(index: i, excersize: self.excersize))
+            if excersize.isWeighted ?? false {
+                cellsInfo.append(.configureWeights(index: i, excersize: self.excersize))
             }
         }
         let sub :[CellType] = [.rest(excersize: self.excersize),
-                               .notes(excersize: self.excersize, delegate: self),
-                               .description(excersize: self.excersize)]
+                               .notes(excersize: self.excersize, delegate: self)]
         cellsInfo.append(contentsOf: sub)
         exerceiseTableView.reloadData()
     }

@@ -14,7 +14,6 @@ class Event: Mappable {
     
     var location            : String?
     var title               : String?
-    var name                : String?
     var startAt             : String?
     var endAt               : String?
     var date                : String?
@@ -27,7 +26,6 @@ class Event: Mappable {
     func mapping(map: Map) {
         
         self.location       <- map["location"]
-        self.name           <- map["name"]
         self.title          <- map["title"]
         self.startAt        <- map["start_at"]
         self.endAt          <- map["end_at"]

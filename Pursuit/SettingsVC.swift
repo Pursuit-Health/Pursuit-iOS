@@ -76,6 +76,7 @@ class SettingsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.navigationBar.setAppearence()
     }
 
     fileprivate func logOut() {
@@ -89,10 +90,11 @@ class SettingsVC: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
         guard let loginController = UIStoryboard.login.MainAuth else { return }
-        let controller = self.navigationController
-        controller?.viewControllers.insert(loginController, at: 0)
+        //controller?.viewControllers.insert(loginController, at: 0)
         
-        controller?.popToRootViewController(animated: true)
+        self.navigationController?.setViewControllers([loginController], animated: true)
+        
+        //controller?.popToRootViewController(animated: true)
     }
     
   fileprivate func uploadImage() {

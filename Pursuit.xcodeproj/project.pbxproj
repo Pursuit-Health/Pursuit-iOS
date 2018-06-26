@@ -308,7 +308,7 @@
 		780D8E951F44DAD90030A992 /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		780ECFDA1F5878860009E6A6 /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		780ECFDD1F58C05B0009E6A6 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		780EFC5720D7E6F30061C734 /* ImagePickingCropVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickingCropVC.swift; path = ../../../../../../Downloads/ImagePickingCropVC.swift; sourceTree = "<group>"; };
+		780EFC5720D7E6F30061C734 /* ImagePickingCropVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickingCropVC.swift; sourceTree = "<group>"; };
 		781110511F65932700457E8B /* SelectTrainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainer.swift; sourceTree = "<group>"; };
 		781110521F65932700457E8B /* SelectTrainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectTrainer.xib; sourceTree = "<group>"; };
 		781110551F6672BD00457E8B /* Template+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Template+API.swift"; sourceTree = "<group>"; };

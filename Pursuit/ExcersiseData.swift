@@ -97,6 +97,8 @@ class ExcersiseData: Mappable, Equatable, Hashable {
         if self.sets == nil {
            self.sets           <- map["sets.data"]
         }
+        self.isStraitSets   <- map["is_straight"]
+        self.isWeighted     <- map["is_weighted"]
     
     }
     

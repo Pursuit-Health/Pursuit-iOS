@@ -38,14 +38,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ptZ-Pk-JQ8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E9a-XE-jiL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E9a-XE-jiL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="E9a-XE-jiL" secondAttribute="trailing" id="Oz7-in-ke2"/>
                                     <constraint firstItem="E9a-XE-jiL" firstAttribute="leading" secondItem="ptZ-Pk-JQ8" secondAttribute="leading" id="VNU-qP-5cp"/>
-                                    <constraint firstItem="E9a-XE-jiL" firstAttribute="centerY" secondItem="ptZ-Pk-JQ8" secondAttribute="centerY" id="jeV-wX-XID"/>
+                                    <constraint firstAttribute="bottom" secondItem="E9a-XE-jiL" secondAttribute="bottom" id="dmc-Pe-WUD"/>
+                                    <constraint firstItem="E9a-XE-jiL" firstAttribute="top" secondItem="ptZ-Pk-JQ8" secondAttribute="top" id="hac-at-r4s"/>
                                 </constraints>
                             </view>
                         </subviews>

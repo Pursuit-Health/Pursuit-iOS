@@ -173,7 +173,9 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         let work = workout
         
         work.excersises = self.createTemplate?.workoutNew?.excersises
-        
+        for ex in work.excersises ?? [] {
+            ex.sets = ex.sets?.filter{ $0.reps_min != nil }
+        }
         work.createWorkout(clientId: "\(self.selectedClient?.id ?? 0)") { (workout, error) in
             if error == nil {
                 self.exercises = []
@@ -190,6 +192,9 @@ extension TrainerCoordinator: CreateTemplateVCDelegate {
         let work = workout
         
         work.excersises = self.createTemplate?.workoutNew?.excersises
+        for ex in work.excersises ?? [] {
+            ex.sets = ex.sets?.filter{ $0.reps_min != nil }
+        }
         work.editWorkout(clientId: "\(self.selectedClient?.id ?? 0)", templateId: "\(self.selectedWorkout?.id ?? 0)") { (workout, error) in
             if let error = error  {
                 let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
@@ -267,7 +272,7 @@ extension TrainerCoordinator: MainExercisesVCDelegate,  MainExercisesVCDatasourc
                 if  ex.sets_count == nil {
                     ex.sets = []
                 }
-                ex.sets = ex.sets.flatMap{ $0 }
+                ex.sets = ex.sets?.filter{ $0.reps_min != nil }
                 
                 if self.checkExerciseRequiredFields(ex, controller: controller) {
                     return

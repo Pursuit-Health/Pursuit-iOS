@@ -176,9 +176,9 @@ extension ChatsListVC: UITableViewDataSource {
         cell.timeModifiedLabel.text = setDateFromTimeInterval((dialog.lastChange ?? 0)/1000)
         cell.unseenMessagesView.isHidden = !(dialog.unseenMessages ?? false)
         if let  image = dialog.userPhoto {
-            cell.userPhotoImageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named:"user"), options: .avoidAutoSetImage)
+            cell.userPhotoImageView.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named:"user"))
         }else {
-            cell.userPhotoImageView.image = UIImage(named: "photo-camera-2")
+            cell.userPhotoImageView.image = UIImage(named: "user")
         }
         return cell
     }

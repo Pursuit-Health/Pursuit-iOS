@@ -23,12 +23,21 @@ extension UIBarButtonItem {
                 titleLabel.bounds       = CGRect(x: 0, y: 0, width: 0, height: 20)
                 titleLabel.textColor    = .white
                 
+                titleLabel.bounds       = CGRect(x: 0, y: 0, width: 200, height: 40)
+
+                if #available(iOS 11.0, *) {
+                //Works for ios 11
                 let view = UIView()
                 view.addSubview(titleLabel)
                 view.addConstraints(UIView.place(titleLabel, onOtherView: view))
                 view.backgroundColor = .clear
                 view.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
                 self.customView         = view
+                } else {
+                    //Works for ios 10
+                    self.customView         = titleLabel
+                }
+                
                 self.hp_label           = titleLabel
                 
                 return titleLabel
