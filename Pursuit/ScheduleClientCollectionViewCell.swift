@@ -10,7 +10,12 @@ import UIKit
 
 class ScheduleClientCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var clientPhotoImageView: UIImageView!
-
+    @IBOutlet weak var clientName: UILabel! {
+        didSet {
+            clientName.adjustsFontSizeToFitWidth = true
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -43,6 +43,7 @@ class ScheduleClientVC: UIViewController {
     @IBOutlet weak var eventTitleTextField: UITextField! {
         didSet {
             eventTitleTextField.attributedPlaceholder = NSAttributedString(string: "Event Title", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            eventTitleTextField.delegate = self
         }
     }
     
@@ -60,6 +61,7 @@ class ScheduleClientVC: UIViewController {
     @IBOutlet weak var locationTextField: CustomTextField! {
         didSet {
             locationTextField.attributedPlaceholder = NSAttributedString(string: "Location", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            locationTextField.delegate = self
         }
     }
     
@@ -324,6 +326,11 @@ extension ScheduleClientVC: UITextFieldDelegate {
             }
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
 }
 
 extension ScheduleClientVC: UICollectionViewDataSource {
@@ -342,6 +349,7 @@ extension ScheduleClientVC: UICollectionViewDataSource {
         }else {
             cell.clientPhotoImageView.image = UIImage(named: "profile")
         }
+        cell.clientName.text = client.clientName
         return cell
     }
 }
