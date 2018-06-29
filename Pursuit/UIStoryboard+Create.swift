@@ -152,6 +152,10 @@ extension UIStoryboard {
         var ContainerChat: ContainerChatVC? {
             return self.instantiate(type: ContainerChatVC.self)
         }
+        
+        var ClientsRequests: ClientsRequestsVC? {
+            return self.instantiate(type: ClientsRequestsVC.self)
+        }
     }
     
     //MARK: ClientStoryboard

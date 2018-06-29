@@ -75,6 +75,13 @@
 		782E9EEC20AB77EC0034A51B /* ConfigureSetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9EEA20AB77EC0034A51B /* ConfigureSetsCell.xib */; };
 		782E9EF120AC1BBB0034A51B /* ExerciseStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E9EEF20AC1BBB0034A51B /* ExerciseStateCell.swift */; };
 		782E9EF220AC1BBB0034A51B /* ExerciseStateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 782E9EF020AC1BBB0034A51B /* ExerciseStateCell.xib */; };
+		7831452420E530E0006661A8 /* RequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7831452220E530E0006661A8 /* RequestsTableViewCell.swift */; };
+		7831452520E530E0006661A8 /* RequestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7831452320E530E0006661A8 /* RequestsTableViewCell.xib */; };
+		7831452820E535F6006661A8 /* ClientsRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7831452720E535F6006661A8 /* ClientsRequestsVC.swift */; };
+		7831452C20E537EC006661A8 /* ClientRequestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7831452A20E537EC006661A8 /* ClientRequestsTableViewCell.swift */; };
+		7831452D20E537EC006661A8 /* ClientRequestsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7831452B20E537EC006661A8 /* ClientRequestsTableViewCell.xib */; };
+		7831452F20E54F59006661A8 /* ClientsRequestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7831452E20E54F59006661A8 /* ClientsRequestCoordinator.swift */; };
+		7831453220E55DC6006661A8 /* PSSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7831453120E55DC6006661A8 /* PSSearchBar.swift */; };
 		7832AFE71F331CAB00BC8116 /* MainAuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */; };
 		7832AFE91F331D1D00BC8116 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFE81F331D1D00BC8116 /* SignUpVC.swift */; };
 		7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832AFEA1F331D2600BC8116 /* SignInVC.swift */; };
@@ -350,6 +357,13 @@
 		782E9EEA20AB77EC0034A51B /* ConfigureSetsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigureSetsCell.xib; sourceTree = "<group>"; };
 		782E9EEF20AC1BBB0034A51B /* ExerciseStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStateCell.swift; sourceTree = "<group>"; };
 		782E9EF020AC1BBB0034A51B /* ExerciseStateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExerciseStateCell.xib; sourceTree = "<group>"; };
+		7831452220E530E0006661A8 /* RequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsTableViewCell.swift; sourceTree = "<group>"; };
+		7831452320E530E0006661A8 /* RequestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestsTableViewCell.xib; sourceTree = "<group>"; };
+		7831452720E535F6006661A8 /* ClientsRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsRequestsVC.swift; sourceTree = "<group>"; };
+		7831452A20E537EC006661A8 /* ClientRequestsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRequestsTableViewCell.swift; sourceTree = "<group>"; };
+		7831452B20E537EC006661A8 /* ClientRequestsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientRequestsTableViewCell.xib; sourceTree = "<group>"; };
+		7831452E20E54F59006661A8 /* ClientsRequestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsRequestCoordinator.swift; sourceTree = "<group>"; };
+		7831453120E55DC6006661A8 /* PSSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSSearchBar.swift; sourceTree = "<group>"; };
 		7832AFE61F331CAB00BC8116 /* MainAuthVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAuthVC.swift; sourceTree = "<group>"; };
 		7832AFE81F331D1D00BC8116 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7832AFEA1F331D2600BC8116 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -790,6 +804,7 @@
 				78277D611FC8609A0064ABB8 /* TrainerCoordinator.swift */,
 				78277D631FC860AF0064ABB8 /* ClientCoordinator.swift */,
 				78BAC2FC20B6E15A00C0EDD2 /* SavedTemplatesCoordinator.swift */,
+				7831452E20E54F59006661A8 /* ClientsRequestCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -915,6 +930,8 @@
 				782E9C0820A9A60E0034A51B /* WeightsTableViewCell.xib */,
 				78BAC2D220B43ED100C0EDD2 /* TemplateSettingsCell.swift */,
 				78BAC2D320B43ED100C0EDD2 /* TemplateSettingsCell.xib */,
+				7831452220E530E0006661A8 /* RequestsTableViewCell.swift */,
+				7831452320E530E0006661A8 /* RequestsTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -964,6 +981,32 @@
 				78BAC2CD20AED40100C0EDD2 /* StraightExerciseStateCell.xib */,
 			);
 			name = ExerciseStateCell;
+			sourceTree = "<group>";
+		};
+		7831452620E535A6006661A8 /* ClientsRequestsVC */ = {
+			isa = PBXGroup;
+			children = (
+				7831452920E537BA006661A8 /* Cells */,
+				7831452720E535F6006661A8 /* ClientsRequestsVC.swift */,
+			);
+			name = ClientsRequestsVC;
+			sourceTree = "<group>";
+		};
+		7831452920E537BA006661A8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7831452A20E537EC006661A8 /* ClientRequestsTableViewCell.swift */,
+				7831452B20E537EC006661A8 /* ClientRequestsTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		7831453020E55D8D006661A8 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				7831453120E55DC6006661A8 /* PSSearchBar.swift */,
+			);
+			name = SearchBar;
 			sourceTree = "<group>";
 		};
 		7832B00C1F33AC6300BC8116 /* TabPageViewController */ = {
@@ -1825,6 +1868,7 @@
 		84AB4D531F327CFB00531740 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				7831453020E55D8D006661A8 /* SearchBar */,
 				78BAC2EE20B5BEDF00C0EDD2 /* PagingTableView */,
 				78BAC2D920B4ACBC00C0EDD2 /* Popups */,
 				78F4D765201F566D00E4CCA9 /* EmptyDataSet */,
@@ -1871,6 +1915,7 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7831452620E535A6006661A8 /* ClientsRequestsVC */,
 				78BB175720C01FFE006AB7C3 /* ChatVC */,
 				78BB174A20C01F9F006AB7C3 /* ChatListVC */,
 				78BAC2D620B466A100C0EDD2 /* SavedTemplates */,
@@ -2382,6 +2427,7 @@
 				5B1F83171E850E4100ABA24C /* LaunchScreen.storyboard in Resources */,
 				78CE34C51F38FDF2002BD31D /* TabCollectionCell.xib in Resources */,
 				842EBD201F3313E100A3169F /* ScheduleCell.xib in Resources */,
+				7831452520E530E0006661A8 /* RequestsTableViewCell.xib in Resources */,
 				78F6363B1FB9C7B6009EB48D /* ExerciseCell.xib in Resources */,
 				78BB178820C020EA006AB7C3 /* SameMessageImageCell.xib in Resources */,
 				78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */,
@@ -2403,6 +2449,7 @@
 				783F80C81FC07015001FE169 /* ExercisesTypeCollectionViewCell.xib in Resources */,
 				781110541F65932700457E8B /* SelectTrainer.xib in Resources */,
 				78BB178620C020EA006AB7C3 /* FrontSenderMessageCell.xib in Resources */,
+				7831452D20E537EC006661A8 /* ClientRequestsTableViewCell.xib in Resources */,
 				783F80CE1FC075FD001FE169 /* ExercisesTypeTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2580,6 +2627,7 @@
 				78BB175220C01FC5006AB7C3 /* ChatsListCell.swift in Sources */,
 				782E9EEB20AB77EC0034A51B /* ConfigureSetsCell.swift in Sources */,
 				78BB178C20C027F4006AB7C3 /* Dialog.swift in Sources */,
+				7831452420E530E0006661A8 /* RequestsTableViewCell.swift in Sources */,
 				78179B891F54982C00520D08 /* User+API.swift in Sources */,
 				78F636301FB99EAF009EB48D /* UIApplication+StatusBar.swift in Sources */,
 				783F80C21FC06D72001FE169 /* ExercisesTypeView.swift in Sources */,
@@ -2589,6 +2637,7 @@
 				78F6362C1FB60584009EB48D /* ExerciseCategoryCell.swift in Sources */,
 				780D601D1F5EAA6C002A7303 /* GuestDeepLinkService.swift in Sources */,
 				78BB175420C01FCE006AB7C3 /* ChatsListVC.swift in Sources */,
+				7831452C20E537EC006661A8 /* ClientRequestsTableViewCell.swift in Sources */,
 				84AB4D941F3287DD00531740 /* ServiceProtocol.swift in Sources */,
 				78E426801F69B0FE00C12D94 /* UITextField+Effects.swift in Sources */,
 				78F636361FB9C42D009EB48D /* ExercisesSearchVC.swift in Sources */,
@@ -2699,6 +2748,8 @@
 				783484331F71B62100C58191 /* Trainer+API.swift in Sources */,
 				78BB177820C020D6006AB7C3 /* SendeMessageWithImageCell.swift in Sources */,
 				5BE3A1C21EB318B7005B35CD /* ViewControllerExt.swift in Sources */,
+				7831452820E535F6006661A8 /* ClientsRequestsVC.swift in Sources */,
+				7831452F20E54F59006661A8 /* ClientsRequestCoordinator.swift in Sources */,
 				84AB4DA11F32899000531740 /* ErrorProtocol.swift in Sources */,
 				783E316220C831D300952790 /* UIImage+Color.swift in Sources */,
 				781110531F65932700457E8B /* SelectTrainer.swift in Sources */,
@@ -2715,6 +2766,7 @@
 				7841910D20D409DE00131B39 /* UIImage+Size.swift in Sources */,
 				782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */,
 				78BAC2FB20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift in Sources */,
+				7831453220E55DC6006661A8 /* PSSearchBar.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
 				78473BD41F742D7E0067DA1F /* SelectClientCell.swift in Sources */,
 				78BAC2F220B5CFA600C0EDD2 /* SavedTemplateVC.swift in Sources */,

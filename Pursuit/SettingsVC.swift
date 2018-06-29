@@ -16,24 +16,85 @@ protocol SettingsVCDelegate: class {
 
 class SettingsVC: UIViewController {
     
-    //MARK: Enums
-    
-    enum SettingsType: Int {
-        case profile    = 0
-        case weight     = 1
-        case template   = 2
-        case logout     = 3
+    enum CellType {
+        case profile(user: User?)
+        case weight(delegate: WeightsTableViewCellDelegate)
+        case template
+        case request
+        case logout(delegate: LogoutTableViewCellDelegate)
+        
+        var cellType: UITableViewCell.Type {
+            switch self {
+            case .profile:
+                return UserInfoTableViewCell.self
+            case .weight:
+                return WeightsTableViewCell.self
+            case .template:
+                return TemplateSettingsCell.self
+            case .request:
+                return RequestsTableViewCell.self
+            case .logout:
+                return LogoutTableViewCell.self
+            }
+        }
+        
+        func fillCell(cell: UITableViewCell) {
+            switch self {
+            case .profile(let user):
+                if let castedCell = cell as? UserInfoTableViewCell {
+                    fillUserInfoCell(castedCell, user: user)
+                }
+            case .weight(let delegate):
+                if let castedCell = cell as? WeightsTableViewCell {
+                    fillWeightCell(castedCell, delegate: delegate)
+                }
+            case .template:
+                if let castedCell = cell as? TemplateSettingsCell {
+                    fillTemplateSettingCell(castedCell)
+                }
+            case .request:
+                if let castedCell = cell as? RequestsTableViewCell {
+                    fillRequestCell(castedCell)
+                }
+            case.logout(let delegate):
+                if let castedCell = cell as? LogoutTableViewCell {
+                    fillLogoutCell(castedCell, delegate: delegate)
+                }
+            }
+        }
+        
+        private func fillUserInfoCell(_ cell: UserInfoTableViewCell, user: User?) {
+            if let user = user {
+                cell.configureWith(user: user)
+            }
+        }
+        
+        private func fillWeightCell(_ cell: WeightsTableViewCell, delegate: WeightsTableViewCellDelegate) {
+            cell.delegate = delegate
+        }
+        
+        private func fillLogoutCell(_ cell: LogoutTableViewCell, delegate: LogoutTableViewCellDelegate){
+            cell.delegate = delegate
+        }
+        
+        private func fillTemplateSettingCell(_ cell: TemplateSettingsCell){
+
+        }
+        
+        private func fillRequestCell(_ cell: RequestsTableViewCell) {
+
+        }
     }
     
     //MARK: Properties
     
     weak var delegate: SettingsVCDelegate?
     
-    var cells: [SettingsType] {
+     var cellsInfo: [CellType] {
         if self.isClient() {
-            return [.profile, .weight, .logout]
-        } else {
-            return [.profile, .weight, .template, .logout]
+            return [.profile(user: self.user), .weight(delegate: self), .logout(delegate: self)]
+        }else {
+            return [.profile(user: self.user), .weight(delegate: self), .template, .request, .logout(delegate: self)]
         }
     }
     
@@ -59,6 +120,8 @@ class SettingsVC: UIViewController {
     var selectedImage: UIImage?
     
     var savedTemplatesCoordinator: SavedTemplatesCoordinator = SavedTemplatesCoordinator()
+    
+    var clientsRequestCoordinator: ClientsRequestCoordinator = ClientsRequestCoordinator()
     
     //MARK: IBActions
     
@@ -123,109 +186,44 @@ class SettingsVC: UIViewController {
         self.user = User.shared
     }
     
-    fileprivate func showActionSheetForUploadingPhoto() {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let cameraSheet = UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
-            //self.showImagePickerControllerWithType(.camera)
-        })
-        
-        let librarySheet = UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
-            //self.showImagePickerControllerWithType(.photoLibrary)
-        })
-        
-        let cancelSheet = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            actionSheet.addAction(cameraSheet)
+    fileprivate func coordinateWith(_ coordinator: Coordinator) {
+        if self.revealViewController() != nil {
+            self.revealViewController().revealToggle(self)
         }
-        actionSheet.addAction(librarySheet)
-        actionSheet.addAction(cancelSheet)
         
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    
-    fileprivate func typeForIndex(_ index: Int) -> SettingsType {
-        if isClient() && index == 2 {
-            return .logout
-        }
-        return SettingsType(rawValue: index) ?? .profile
+        let last = (self.revealViewController().frontViewController as? UINavigationController)?.viewControllers.last as? NavigatorVC
+        let tabBarSelectedVC = last?.tabBarVC?.selectedViewController
+        coordinator.start(from: tabBarSelectedVC)
     }
 }
 
 extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cells.count
+        return self.cellsInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return buildTableView(tableView, indexPath: indexPath)
+        let cellInfo = cellsInfo[indexPath.row]
+         guard let cell = tableView.gc_dequeueReusableCell(type: cellInfo.cellType) else { return UITableViewCell() }
+        cellInfo.fillCell(cell: cell)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let type = SettingsType(rawValue: indexPath.row)
-        if type == .template && User.shared.coordinator is
-            TrainerCoordinator {
-            if self.revealViewController() != nil {
-                self.revealViewController().revealToggle(self)
-            }
-
-            let last = (self.revealViewController().frontViewController as? UINavigationController)?.viewControllers.last as? NavigatorVC
-            let tabBarSelectedVC = last?.tabBarVC?.selectedViewController
-            savedTemplatesCoordinator.start(from: tabBarSelectedVC)
-        }
-    }
-    
-    func buildTableView(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let settingsType = self.typeForIndex(indexPath.row)
-        var cell: UITableViewCell? = UITableViewCell()
-        switch settingsType {
-        case .profile:
-            if let castedCell = tableView.gc_dequeueReusableCell(type: UserInfoTableViewCell.self) {
-                castedCell.delegate = self
-                cell = fillUserInfoCell(castedCell)
-            }
-        case .weight:
-            if let castedCell = tableView.gc_dequeueReusableCell(type: WeightsTableViewCell.self) {
-                cell = fillWeightCell(castedCell)
-            }
-        case .logout:
-            if let castedCell = tableView.gc_dequeueReusableCell(type: LogoutTableViewCell.self) {
-                cell = fillLogoutCell(castedCell)
-            }
+        let cellInfo = cellsInfo[indexPath.row]
+        switch cellInfo {
         case .template:
-            if let castedCell = tableView.gc_dequeueReusableCell(type: TemplateSettingsCell.self) {
-                cell = fillTemplateSettingCell(castedCell)
-            }
+            coordinateWith(savedTemplatesCoordinator)
+        case .request:
+            coordinateWith(clientsRequestCoordinator)
+        default:
+            break
         }
-        return cell ?? UITableViewCell()
-    }
-    
-    func fillUserInfoCell(_ cell: UserInfoTableViewCell) -> UserInfoTableViewCell {
-        if let user = self.user {
-            cell.configureWith(user: user)
-        }
-        return cell
-    }
-    
-    func fillWeightCell(_ cell: WeightsTableViewCell) -> WeightsTableViewCell {
-        cell.delegate = self
-        return cell
-    }
-    
-    func fillLogoutCell(_ cell: LogoutTableViewCell) -> LogoutTableViewCell{
-        cell.delegate = self
-        return cell
-    }
-    
-    func fillTemplateSettingCell(_ cell: TemplateSettingsCell) -> TemplateSettingsCell {
-        return cell
     }
 }
 
 extension SettingsVC: UserInfoTableViewCellDelegate {
     func userDidPressedChangePhoto(on cell: UserInfoTableViewCell) {
-        
         let cropper = ImagePickingCropVC()
         cropper.initialise(controller: self, view: self.view)
         cropper.delegate = self
