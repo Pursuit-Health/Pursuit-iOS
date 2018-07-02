@@ -186,6 +186,12 @@ extension ClientsVC: UITableViewDataSource {
         //cell.delegate = self
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+        }
+    }
 }
 
 extension ClientsVC: UITableViewDelegate {

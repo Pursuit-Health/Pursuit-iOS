@@ -195,6 +195,8 @@
 		78BBA6851F4B63C00037E7DF /* UIBarButtonItem+label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */; };
 		78C6DAE32010EF4400A0BD41 /* ExercisePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */; };
 		78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */; };
+		78CABE1C20EA7DBF008449E6 /* TrainerCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CABE1B20EA7DBF008449E6 /* TrainerCodeView.xib */; };
+		78CABE1E20EA7DEB008449E6 /* TrainerCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CABE1D20EA7DEB008449E6 /* TrainerCodeView.swift */; };
 		78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34B81F38FDDE002BD31D /* TabPageOption.swift */; };
 		78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BA1F38FDF2002BD31D /* TabView.xib */; };
 		78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34BB1F38FDF2002BD31D /* TabView.swift */; };
@@ -479,6 +481,8 @@
 		78BBA6841F4B63C00037E7DF /* UIBarButtonItem+label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+label.swift"; sourceTree = "<group>"; };
 		78C6DAE12010EF4400A0BD41 /* ExercisePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePhotoCell.swift; sourceTree = "<group>"; };
 		78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisePhotoCell.xib; sourceTree = "<group>"; };
+		78CABE1B20EA7DBF008449E6 /* TrainerCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainerCodeView.xib; sourceTree = "<group>"; };
+		78CABE1D20EA7DEB008449E6 /* TrainerCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerCodeView.swift; sourceTree = "<group>"; };
 		78CE34B81F38FDDE002BD31D /* TabPageOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabPageOption.swift; path = Pursuit/TabPageOption.swift; sourceTree = SOURCE_ROOT; };
 		78CE34BA1F38FDF2002BD31D /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabView.xib; path = Pursuit/TabView.xib; sourceTree = SOURCE_ROOT; };
 		78CE34BB1F38FDF2002BD31D /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Pursuit/TabView.swift; sourceTree = SOURCE_ROOT; };
@@ -904,6 +908,7 @@
 		782E9BFB20A984C70034A51B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				78CABE1A20EA7D95008449E6 /* Views */,
 				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
 				782E9C0F20A9B09A0034A51B /* RoundedSegmentedControl */,
 				782E9BFD20A984E80034A51B /* Cells */,
@@ -1615,6 +1620,15 @@
 				78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */,
 			);
 			name = PhotoCell;
+			sourceTree = "<group>";
+		};
+		78CABE1A20EA7D95008449E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				78CABE1B20EA7DBF008449E6 /* TrainerCodeView.xib */,
+				78CABE1D20EA7DEB008449E6 /* TrainerCodeView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		78E4267E1F69B0DA00C12D94 /* UITextField+Effects */ = {
@@ -2411,6 +2425,7 @@
 				782E9EF220AC1BBB0034A51B /* ExerciseStateCell.xib in Resources */,
 				842EBD311F33176F00A3169F /* Assets.xcassets in Resources */,
 				783484241F71560600C58191 /* UserTypeView.xib in Resources */,
+				78CABE1C20EA7DBF008449E6 /* TrainerCodeView.xib in Resources */,
 				78BB178420C020EA006AB7C3 /* SameMessageTextCell.xib in Resources */,
 				78BB175120C01FC5006AB7C3 /* ChatsListCell.xib in Resources */,
 				78BAC2E120B55FEB00C0EDD2 /* SavedTemplateCell.xib in Resources */,
@@ -2669,6 +2684,7 @@
 				782B82FF1F71256D00A019AC /* SignUpDataCell.swift in Sources */,
 				78A422EB1F3CBF2000597913 /* ForgotPasswordViewController.swift in Sources */,
 				7845678F1FCD94D2007FE1B5 /* DescriptionCell.swift in Sources */,
+				78CABE1E20EA7DEB008449E6 /* TrainerCodeView.swift in Sources */,
 				782B83131F71278D00A019AC /* QuestionCell.swift in Sources */,
 				84AB4DA31F32899C00531740 /* PSError.swift in Sources */,
 				78BB176620C0201D006AB7C3 /* ProgressView.swift in Sources */,

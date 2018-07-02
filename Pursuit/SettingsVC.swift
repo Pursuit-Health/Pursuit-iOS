@@ -110,6 +110,16 @@ class SettingsVC: UIViewController {
             settingsTableView.estimatedRowHeight    = 100
         }
     }
+    @IBOutlet weak var trainerCodeContainerView: UIView! {
+        didSet {
+            if !self.isClient() {
+                let trainerCodeView = TrainerCodeView()
+                trainerCodeView.trainerCodeLabel.text = "Trainer code here".uppercased()
+                trainerCodeContainerView.addSubview(trainerCodeView)
+                trainerCodeContainerView.addConstraints(UIView.place(trainerCodeView, onOtherView: trainerCodeContainerView))
+            }
+        }
+    }
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
@@ -140,10 +150,9 @@ class SettingsVC: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.setAppearence()
-        
         self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        self.revealViewController().view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-    self.revealViewController().frontViewController.revealViewController().tapGestureRecognizer()
+        //self.revealViewController().view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        self.revealViewController().frontViewController.revealViewController().tapGestureRecognizer()
         self.revealViewController().frontViewController.view.isUserInteractionEnabled = false
     }
     

@@ -35,8 +35,11 @@ extension CellState {
             
             myCustomCell.bgView.backgroundColor         = UIColor.clear
             myCustomCell.bgView.layer.borderWidth       = 1.0
-        
-            if Calendar.current.isDateInToday(self.date) {
+            var calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+            if let timeZone = TimeZone(identifier: "UTC") {
+                calendar.timeZone = timeZone
+            }
+            if calendar.isDateInToday(self.date) {
                 myCustomCell.bgView.layer.borderColor       = UIColor.currentDateCellSelectedColor().cgColor
             }else {
                 myCustomCell.bgView.layer.borderColor       = UIColor.cellSelection().cgColor

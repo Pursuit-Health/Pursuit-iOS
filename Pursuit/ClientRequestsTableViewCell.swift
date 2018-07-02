@@ -2,14 +2,33 @@
 //  ClientRequestsTableViewCell.swift
 //  Pursuit
 //
-//  Created by ігор on 6/28/18.
+//  Created by Igor Makara on 6/28/18.
 //  Copyright © 2018 Pursuit Health Technologies. All rights reserved.
 //
 
 import UIKit
 
-class ClientRequestsTableViewCell: UITableViewCell {
+protocol ClientRequestsTableViewCellDelegate: class {
+    func acceptButtonPressed(on cell: ClientRequestsTableViewCell)
+    func denyButtonPressed(on cell: ClientRequestsTableViewCell)
+}
 
+class ClientRequestsTableViewCell: UITableViewCell {
+    
+    //MARK: Variables
+    
+    weak var delegate: ClientRequestsTableViewCellDelegate?
+    
+    //MARK: IBActions
+    
+    @IBAction func denyButtonPressed(_ sender: Any) {
+        delegate?.denyButtonPressed(on: self)
+    }
+    
+    @IBAction func acceptButtonPressed(_ sender: Any) {
+        delegate?.acceptButtonPressed(on: self)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
