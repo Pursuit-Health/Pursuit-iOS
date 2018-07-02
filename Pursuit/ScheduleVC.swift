@@ -121,8 +121,7 @@ class ScheduleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureSideMenuController()
+        //configureSideMenuController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,13 +154,6 @@ class ScheduleVC: UIViewController {
     
     private func configureTabBar() {
         self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    private func configureSideMenuController() {
-        if self.revealViewController() != nil {
-            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        }
     }
     
     private func calendarViewVisibleDates() {

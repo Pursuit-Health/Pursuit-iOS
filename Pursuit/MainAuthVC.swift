@@ -9,6 +9,7 @@
 import UIKit
 import KVNProgress
 import IQKeyboardManagerSwift
+import SVProgressHUD
 
 //IGOR: Check
 class MainAuthVC: UIViewController {
@@ -314,7 +315,6 @@ extension MainAuthVC: SignUpVCDelegate {
             self.showInvalidCodeAlert()
             return
         }
-        
         user.signUp(completion: { (user, error) in
             self.isRunning = false
             if let error = error {

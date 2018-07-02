@@ -91,10 +91,13 @@ class ChatsListVC: UIViewController {
         self.getDialogs()
 
         observeUnreadMessages()
+        
+        configureSideMenuController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let _ = self.chat {
             self.chat = nil
         }
@@ -105,7 +108,14 @@ class ChatsListVC: UIViewController {
         chatRefHandle = nil
     }
     
-    func getDialogs() {
+    private func configureSideMenuController() {
+        if self.revealViewController() != nil {
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
+    }
+    
+    private func getDialogs() {
         let queryRef = chatRef
         self.dialogs = []
         DispatchQueue.main.async {

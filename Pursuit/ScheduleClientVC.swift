@@ -9,6 +9,7 @@
 import UIKit
 import SwiftDate
 import JTAppleCalendar
+import IQKeyboardManagerSwift
 
 //TODO: Same
 class ScheduleClientVC: UIViewController {
@@ -172,6 +173,8 @@ class ScheduleClientVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpBackgroundImage()
+        
+        configureSideMenuController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,7 +182,18 @@ class ScheduleClientVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     //MARK: Private
+    
+    private func configureSideMenuController() {
+        if self.revealViewController() != nil {
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
+    }
     
     private func nextMonth() {
         changedDate = changedDate + 1.month

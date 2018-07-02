@@ -97,13 +97,15 @@ class ClientsVC: UIViewController {
         setUpBackgroundImage()
         
         navigationController?.navigationBar.setAppearence()
-
+        
+        configureSideMenuController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,8 +116,16 @@ class ClientsVC: UIViewController {
         return true
     }
     
+    
     func showSavedTemplatesVC() {
         self.savedTemplatesCoordinator.start(from: self)
+    }
+    
+    private func configureSideMenuController() {
+        if self.revealViewController() != nil {
+            view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
     }
     
     fileprivate func loadClients(){
@@ -173,7 +183,7 @@ extension ClientsVC: UITableViewDataSource {
         //changes cell text color
         cell.clientName.textColor = UIColor.white;
         
-        cell.delegate = self
+        //cell.delegate = self
         return cell
     }
 }
@@ -218,8 +228,6 @@ extension ClientsVC: SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         //let client = clientList[indexPath.row]
-        
-        return nil
         
         if orientation == .left {
             

@@ -140,8 +140,19 @@ class SettingsVC: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.setAppearence()
+        
+        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController().view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+    self.revealViewController().frontViewController.revealViewController().tapGestureRecognizer()
+        self.revealViewController().frontViewController.view.isUserInteractionEnabled = false
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.revealViewController().frontViewController.view.isUserInteractionEnabled = true
+    }
+    
     fileprivate func logOut() {
         //TODO: Move to user
         User.shared.token = nil

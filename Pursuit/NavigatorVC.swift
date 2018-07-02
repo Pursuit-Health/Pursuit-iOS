@@ -46,6 +46,11 @@ class NavigatorVC: UIViewController {
         
         self.setUpBackgroundImage()
         
+        if let sideMenu = self.revealViewController() {
+            view.addGestureRecognizer(sideMenu.panGestureRecognizer())
+            view.addGestureRecognizer(sideMenu.tapGestureRecognizer())
+        }
+        
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
             for view in window.subviews {
                 if view is TopStatusBarView {
