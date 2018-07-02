@@ -17,8 +17,16 @@ class SignInVC: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var emailTeaxtField      : AnimatedTextField!
-    @IBOutlet weak var passwordTextField    : AnimatedTextField!
+    @IBOutlet weak var emailTeaxtField      : AnimatedTextField! {
+        didSet {
+            emailTeaxtField.returnKeyType = .next
+        }
+    }
+    @IBOutlet weak var passwordTextField    : AnimatedTextField! {
+        didSet {
+            passwordTextField.returnKeyType = .done
+        }
+    }
     
     //MARK: Variables
     
@@ -35,13 +43,31 @@ class SignInVC: UIViewController {
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
         delegate?.forgotPasswordButtonPressed(on: self)
     }
+    
+    fileprivate func showAlert(_ title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func isValidFields(_ user: User) -> Bool {
+        let email     = user.email ?? ""
+        let password  = user.password ?? ""
+        if email.isEmpty || password.isEmpty {
+            return false
+        }
+        return true
+    }
 }
 
 extension SignInVC {
      func makeSignIn() {
-        user.email      = emailTeaxtField.text ?? ""
-        user.password   = passwordTextField.text ?? ""
-        self.delegate?.loginButtonPressed(on: self, with: self.user)
+        if isValidFields(self.user) {
+            self.delegate?.loginButtonPressed(on: self, with: self.user)
+        }else {
+            showAlert("Error", message: "Please fill the all fields.")
+        }
     }
 }
 
@@ -49,6 +75,12 @@ extension SignInVC {
 //MARK: UITextFieldDelegate
 extension SignInVC : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTeaxtField {
+            emailTeaxtField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }else if textField == passwordTextField {
+            makeSignIn()
+        }
         return true
     }
     
@@ -57,6 +89,10 @@ extension SignInVC : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        
+        if textField == emailTeaxtField {
+            user.email      = emailTeaxtField.text ?? ""
+        }else if textField == passwordTextField {
+            user.password   = passwordTextField.text ?? ""
+        }
     }
 }

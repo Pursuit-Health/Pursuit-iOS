@@ -13,6 +13,7 @@ import GrowingTextView
 import IQKeyboardManagerSwift
 import KeyboardWrapper
 import NSDate_TimeAgo
+import EmptyKit
 
 class ChatVC: UIViewController {
     
@@ -177,6 +178,7 @@ class ChatVC: UIViewController {
         didSet {
             self.messagesTableView.estimatedRowHeight = 100
             self.messagesTableView.rowHeight = UITableViewAutomaticDimension
+            self.messagesTableView.ept.dataSource = self
         }
     }
     
@@ -275,6 +277,7 @@ class ChatVC: UIViewController {
             let indexPath = IndexPath(row: self.cellsInfo.count - 1, section: 0)
             self.messagesTableView?.insertRows(at: [indexPath], with: .automatic)
             self.messagesTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            self.messagesTableView.ept.reloadData()
         }
     }
     
@@ -543,14 +546,14 @@ extension ChatVC: KeyboardWrapperDelegate {
         
         if info.state == .willShow || info.state == .visible {
             bottomConstraint.constant = info.endFrame.size.height - 60
-            if self.cellsInfo.count > 0 {
-            let indexPath = IndexPath(row: self.cellsInfo.count - 1, section: 0)
-            self.scrollToRowAt(at: indexPath)
-            }
         } else {
+            
             bottomConstraint.constant = 0.0
         }
-        
+        if self.cellsInfo.count > 0 {
+            let indexPath = IndexPath(row: self.cellsInfo.count - 1, section: 0)
+            self.scrollToRowAt(at: indexPath)
+        }
         UIView.animate(withDuration: info.animationDuration, delay: 0.0, options: info.animationOptions, animations: { () -> Void in
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -614,5 +617,23 @@ extension ChatVC {
         } else {
             completionBlock(nil, "Image couldn't be converted to Data.")
         }
+    }
+}
+
+extension ChatVC: PSEmptyDatasource {
+    var emptyTitle: String {
+        return "No Messages yet"
+    }
+    
+    var emptyImageName: String {
+        return ""
+    }
+    
+    var fontSize: CGFloat {
+        return 25.0
+    }
+    
+    var titleColor: UIColor {
+        return UIColor.lightGray
     }
 }

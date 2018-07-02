@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class ClientCell: SwipeTableViewCell {
+class ClientCell: UITableViewCell {
     
     @IBOutlet weak var clientImage: UIImageView!
     @IBOutlet weak var clientName: UILabel!

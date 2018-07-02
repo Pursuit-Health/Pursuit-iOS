@@ -64,16 +64,16 @@ class SignUpVC: UIViewController {
         }
     }
     
-    lazy var cellsInfo: [CellType] = [.question(delegate: self, isTrainer: true), .name, .email, .password, .code, .birthday, .signup(delegate: self)]
+    lazy var cellsInfo: [CellType] = [.question(delegate: self, isTrainer: true), .name(delegate: self), .email(delegate: self), .password(delegate: self), .code(delegate: self), .birthday(delegate: self), .signup(delegate: self)]
     
     //MARK: Nested
     
     enum CellType {
-        case name
-        case email
-        case password
-        case code
-        case birthday
+        case name(delegate: UITextFieldDelegate)
+        case email(delegate: UITextFieldDelegate)
+        case password(delegate: UITextFieldDelegate)
+        case code(delegate: UITextFieldDelegate)
+        case birthday(delegate: UITextFieldDelegate)
         case question(delegate: QuestionCellDelegate, isTrainer: Bool)
         case selectTrainer(trainerName: String?)
         case signup(delegate: SignUpButtonCellDelegate)
@@ -102,33 +102,33 @@ class SignUpVC: UIViewController {
         typealias TextFieldComletion = (_ text: String) -> Void
         func fillCell(cell: UITableViewCell, completion: @escaping TextFieldComletion) {
             switch self {
-            case .name:
+            case .name(let delegate):
                 if let castedCell = cell as? SignUpDataCell {
-                    fillNameCell(cell: castedCell, completion: { text in
+                    fillNameCell(cell: castedCell, delegate: delegate, completion: { text in
                         completion(text)
                     })
                 }
-            case .email:
+            case .email(let delegate):
                 if let castedCell = cell as? SignUpDataCell {
-                    fillEmailCell(cell: castedCell, completion: { text in
+                    fillEmailCell(cell: castedCell, delegate: delegate, completion: { text in
                         completion(text)
                     })
                 }
-            case .password:
+            case .password(let delegate):
                 if let castedCell = cell as? SignUpDataCell {
-                    fillPasswordCell(cell: castedCell, completion: { text in
+                    fillPasswordCell(cell: castedCell, delegate: delegate, completion: { text in
                         completion(text)
                     })
                 }
-            case .code:
+            case .code(let delegate):
                 if let castedCell = cell as? SignUpDataCell {
-                    fillCodeCell(cell: castedCell, complation: { text in
+                    fillCodeCell(cell: castedCell, delegate: delegate, complation: { text in
                         completion(text)
                     })
                 }
-            case .birthday:
+            case .birthday(let delegate):
                 if let castedCell = cell as? SignUpDataCell {
-                    fillBirthdayCell(cell: castedCell, completion: { text in
+                    fillBirthdayCell(cell: castedCell, delegate: delegate, completion: { text in
                         completion(text)
                     })
                 }
@@ -149,14 +149,18 @@ class SignUpVC: UIViewController {
             }
         }
         
-        private func fillNameCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
+        private func fillNameCell(cell: SignUpDataCell, delegate: UITextFieldDelegate, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Name"
+            cell.userDataTextField.delegate = delegate
+            cell.userDataTextField.tag = 0
             //TODO: this prt duplicates
             if cell.userDataTextField.text != "" {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
             cell.cellImageview.image            = UIImage(named: "ic_username")
+            cell.userDataTextField.keyboardType = .default
+            cell.userDataTextField.returnKeyType = .next
             cell.userDataTextField.bbb_reactFromCodeChange = false
             cell.userDataTextField.isSecureTextEntry    = false
             cell.userDataTextField.bbb_changedBlock = { (textfield) in
@@ -166,13 +170,16 @@ class SignUpVC: UIViewController {
             }
         }
         
-        private func fillEmailCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
+        private func fillEmailCell(cell: SignUpDataCell, delegate: UITextFieldDelegate, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Email"
+            cell.userDataTextField.delegate = delegate
+            cell.userDataTextField.tag = 1
             if cell.userDataTextField.text != "" {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
-            
+            cell.userDataTextField.keyboardType = .emailAddress
+            cell.userDataTextField.returnKeyType = .next
             cell.userDataTextField.bbb_reactFromCodeChange = false
             cell.userDataTextField.isSecureTextEntry    = false
             cell.cellImageview.image            = UIImage(named: "email")
@@ -183,13 +190,16 @@ class SignUpVC: UIViewController {
             }
         }
         
-        private func fillPasswordCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
+        private func fillPasswordCell(cell: SignUpDataCell, delegate: UITextFieldDelegate, completion: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Password"
+            cell.userDataTextField.delegate = delegate
+            cell.userDataTextField.tag = 2
             if cell.userDataTextField.text != "" {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
-            
+            cell.userDataTextField.keyboardType = .default
+            cell.userDataTextField.returnKeyType = .next
             cell.userDataTextField.bbb_reactFromCodeChange = false
             cell.userDataTextField.isSecureTextEntry    = true
             cell.cellImageview.image                    = UIImage(named: "ic_password")
@@ -200,33 +210,17 @@ class SignUpVC: UIViewController {
             }
         }
         
-        private func fillBirthdayCell(cell: SignUpDataCell, completion: @escaping TextFieldComletion) {
-            cell.userDataTextField.placeholder  = "Birthday"
-            if cell.userDataTextField.text != "" {
-                let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
-                cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
-            }
-            cell.cellImageview.image            = UIImage(named: "gift")
-            
-            //TODO: Reimplement
-            cell.userDataTextField.bbb_reactFromCodeChange = true
-            cell.userDataTextField.isSecureTextEntry    = false
-            cell.userDataTextField.inputView = cell.datePicker()
-            cell.userDataTextField.bbb_changedBlock = { (textfield) in
-                if let text = textfield.text {
-                    completion(text)
-                }
-            }
-        }
-        
-        private func fillCodeCell(cell: SignUpDataCell, complation: @escaping TextFieldComletion) {
+        private func fillCodeCell(cell: SignUpDataCell, delegate: UITextFieldDelegate, complation: @escaping TextFieldComletion) {
             cell.userDataTextField.placeholder  = "Code"
+            cell.userDataTextField.delegate = delegate
+            cell.userDataTextField.tag = 3
             if cell.userDataTextField.text != "" {
                 let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
                 cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
             }
             cell.cellImageview.image            = UIImage(named: "code")
-            
+            cell.userDataTextField.keyboardType = .default
+            cell.userDataTextField.returnKeyType = .next
             //TODO: Reimplement
             cell.userDataTextField.bbb_reactFromCodeChange = true
             cell.userDataTextField.isSecureTextEntry    = false
@@ -234,6 +228,28 @@ class SignUpVC: UIViewController {
             cell.userDataTextField.bbb_changedBlock = { (textfield) in
                 if let text = textfield.text {
                     complation(text)
+                }
+            }
+        }
+        
+        private func fillBirthdayCell(cell: SignUpDataCell, delegate: UITextFieldDelegate, completion: @escaping TextFieldComletion) {
+            cell.userDataTextField.placeholder  = "Birthday"
+            cell.userDataTextField.delegate = delegate
+            cell.userDataTextField.tag = 4
+            if cell.userDataTextField.text != "" {
+                let multiplier = cell.userDataTextField.minFontSize / cell.userDataTextField.maxFontSize
+                cell.userDataTextField.animatelabelfontQuick(from: 1, to: multiplier)
+            }
+            cell.cellImageview.image            = UIImage(named: "gift")
+            
+            //TODO: Reimplement
+            cell.userDataTextField.keyboardType = .default
+            cell.userDataTextField.bbb_reactFromCodeChange = true
+            cell.userDataTextField.isSecureTextEntry    = false
+            cell.userDataTextField.inputView = cell.datePicker()
+            cell.userDataTextField.bbb_changedBlock = { (textfield) in
+                if let text = textfield.text {
+                    completion(text)
                 }
             }
         }
@@ -270,6 +286,30 @@ class SignUpVC: UIViewController {
         let indexPath = IndexPath(row:1, section:0)
         self.cellsInfo.insert(.selectTrainer(trainerName: self.trainerData.name), at: 1)
         self.signUpTableView.insertRows(at: [indexPath], with: .fade)
+    }
+    
+    fileprivate func isValidFieldsFor(_ user: User) -> Bool {
+        if user.name?.isEmpty ?? true || user.email?.isEmpty ?? true || user.code?.isEmpty ?? true || user.birthday?.isEmpty ?? true || user.birthday?.isEmpty ?? true {
+            return false
+        }
+        return true
+    }
+    
+    fileprivate func showAlert(_ title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    fileprivate func signUp() {
+        if let user = self.user {
+            if isValidFieldsFor(user) {
+                self.delegate?.signUpButtonPressed(on: self, with: user)
+            }else {
+                showAlert(nil, message: "Please fill the all fields.")
+            }
+        }
     }
 }
 
@@ -341,9 +381,7 @@ extension SignUpVC: SignUpButtonCellDelegate {
     }
     
     func signUpButtonPressed(on cell: SignUpButtonCell) {
-        if let user = self.user {
-            self.delegate?.signUpButtonPressed(on: self, with: user)
-        }
+        signUp()
     }
 }
 
@@ -353,6 +391,23 @@ extension SignUpVC: QuestionCellDelegate {
             self.user = self.trainer
         } else {
             self.user = self.client
+        }
+    }
+}
+
+extension SignUpVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let tag = textField.tag
+        textField.resignFirstResponder()
+        let nextField = signUpTableView.viewWithTag(tag + 1)
+        nextField?.becomeFirstResponder()
+
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 4 {
+            signUp()
         }
     }
 }
