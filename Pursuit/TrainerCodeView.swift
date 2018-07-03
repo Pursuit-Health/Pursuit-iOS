@@ -10,6 +10,6 @@ import UIKit
 
 class TrainerCodeView: BBBXIBView {
 
-    @IBOutlet weak var trainerCodeLabel: UILabel!
+    @IBOutlet weak var trainerCodeLabel: CopybleLabel!
     
 }

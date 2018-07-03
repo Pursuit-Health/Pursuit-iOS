@@ -114,7 +114,7 @@ class SettingsVC: UIViewController {
         didSet {
             if !self.isClient() {
                 let trainerCodeView = TrainerCodeView()
-                trainerCodeView.trainerCodeLabel.text = "Trainer code here".uppercased()
+                trainerCodeView.trainerCodeLabel.text = "sdfjf54".uppercased()
                 trainerCodeContainerView.addSubview(trainerCodeView)
                 trainerCodeContainerView.addConstraints(UIView.place(trainerCodeView, onOtherView: trainerCodeContainerView))
             }

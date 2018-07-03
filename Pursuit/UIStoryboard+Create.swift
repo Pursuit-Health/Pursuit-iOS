@@ -156,6 +156,10 @@ extension UIStoryboard {
         var ClientsRequests: ClientsRequestsVC? {
             return self.instantiate(type: ClientsRequestsVC.self)
         }
+        
+        var SubscriptionPlans: SubscriptionPlansVC? {
+            return self.instantiate(type: SubscriptionPlansVC.self)
+        }
     }
     
     //MARK: ClientStoryboard

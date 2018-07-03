@@ -197,6 +197,9 @@
 		78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */; };
 		78CABE1C20EA7DBF008449E6 /* TrainerCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CABE1B20EA7DBF008449E6 /* TrainerCodeView.xib */; };
 		78CABE1E20EA7DEB008449E6 /* TrainerCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CABE1D20EA7DEB008449E6 /* TrainerCodeView.swift */; };
+		78CABE2120EB7152008449E6 /* SubscriptionPlansVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CABE2020EB7152008449E6 /* SubscriptionPlansVC.swift */; };
+		78CABE2420EB8D05008449E6 /* PaymentsTierSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CABE2320EB8D05008449E6 /* PaymentsTierSlider.swift */; };
+		78CABE2620EB9827008449E6 /* CopybleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CABE2520EB9827008449E6 /* CopybleLabel.swift */; };
 		78CE34B91F38FDDE002BD31D /* TabPageOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34B81F38FDDE002BD31D /* TabPageOption.swift */; };
 		78CE34C11F38FDF2002BD31D /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CE34BA1F38FDF2002BD31D /* TabView.xib */; };
 		78CE34C21F38FDF2002BD31D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE34BB1F38FDF2002BD31D /* TabView.swift */; };
@@ -483,6 +486,9 @@
 		78C6DAE22010EF4400A0BD41 /* ExercisePhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExercisePhotoCell.xib; sourceTree = "<group>"; };
 		78CABE1B20EA7DBF008449E6 /* TrainerCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainerCodeView.xib; sourceTree = "<group>"; };
 		78CABE1D20EA7DEB008449E6 /* TrainerCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerCodeView.swift; sourceTree = "<group>"; };
+		78CABE2020EB7152008449E6 /* SubscriptionPlansVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansVC.swift; sourceTree = "<group>"; };
+		78CABE2320EB8D05008449E6 /* PaymentsTierSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsTierSlider.swift; sourceTree = "<group>"; };
+		78CABE2520EB9827008449E6 /* CopybleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopybleLabel.swift; sourceTree = "<group>"; };
 		78CE34B81F38FDDE002BD31D /* TabPageOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabPageOption.swift; path = Pursuit/TabPageOption.swift; sourceTree = SOURCE_ROOT; };
 		78CE34BA1F38FDF2002BD31D /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TabView.xib; path = Pursuit/TabView.xib; sourceTree = SOURCE_ROOT; };
 		78CE34BB1F38FDF2002BD31D /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Pursuit/TabView.swift; sourceTree = SOURCE_ROOT; };
@@ -908,8 +914,8 @@
 		782E9BFB20A984C70034A51B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				78CABE1A20EA7D95008449E6 /* Views */,
 				783A45741F8E7A7C0048A0F9 /* SettingsVC.swift */,
+				78CABE1A20EA7D95008449E6 /* Views */,
 				782E9C0F20A9B09A0034A51B /* RoundedSegmentedControl */,
 				782E9BFD20A984E80034A51B /* Cells */,
 			);
@@ -1627,8 +1633,26 @@
 			children = (
 				78CABE1B20EA7DBF008449E6 /* TrainerCodeView.xib */,
 				78CABE1D20EA7DEB008449E6 /* TrainerCodeView.swift */,
+				78CABE2520EB9827008449E6 /* CopybleLabel.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		78CABE1F20EB6248008449E6 /* SubscriptionPlan */ = {
+			isa = PBXGroup;
+			children = (
+				78CABE2220EB8CDF008449E6 /* PaymentsTierSlider */,
+				78CABE2020EB7152008449E6 /* SubscriptionPlansVC.swift */,
+			);
+			name = SubscriptionPlan;
+			sourceTree = "<group>";
+		};
+		78CABE2220EB8CDF008449E6 /* PaymentsTierSlider */ = {
+			isa = PBXGroup;
+			children = (
+				78CABE2320EB8D05008449E6 /* PaymentsTierSlider.swift */,
+			);
+			path = PaymentsTierSlider;
 			sourceTree = "<group>";
 		};
 		78E4267E1F69B0DA00C12D94 /* UITextField+Effects */ = {
@@ -1929,6 +1953,7 @@
 		84AB4D591F327F6B00531740 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				78CABE1F20EB6248008449E6 /* SubscriptionPlan */,
 				7831452620E535A6006661A8 /* ClientsRequestsVC */,
 				78BB175720C01FFE006AB7C3 /* ChatVC */,
 				78BB174A20C01F9F006AB7C3 /* ChatListVC */,
@@ -2714,6 +2739,7 @@
 				780D601F1F5F1588002A7303 /* Storyboards.swift in Sources */,
 				780ECFDB1F5878860009E6A6 /* UITextField.swift in Sources */,
 				7804AF461F55FE7D00CE5780 /* CellState.swift in Sources */,
+				78CABE2120EB7152008449E6 /* SubscriptionPlansVC.swift in Sources */,
 				780D601B1F5EAA63002A7303 /* DeepLinkService.swift in Sources */,
 				78C6DAE32010EF4400A0BD41 /* ExercisePhotoCell.swift in Sources */,
 				78473BD81F745B7F0067DA1F /* AddExerceiseVC.swift in Sources */,
@@ -2781,6 +2807,7 @@
 				78473BD01F742CEA0067DA1F /* SelectClientsVC.swift in Sources */,
 				7841910D20D409DE00131B39 /* UIImage+Size.swift in Sources */,
 				782B82ED1F7044DA00A019AC /* Client+API.swift in Sources */,
+				78CABE2620EB9827008449E6 /* CopybleLabel.swift in Sources */,
 				78BAC2FB20B6C6C700C0EDD2 /* SavedTemplateModel+API.swift in Sources */,
 				7831453220E55DC6006661A8 /* PSSearchBar.swift in Sources */,
 				788EE8981F34DD5500DD8A98 /* TrainingVC.swift in Sources */,
@@ -2809,6 +2836,7 @@
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
 				78BB17B020C52210006AB7C3 /* MinMaxSetsCell.swift in Sources */,
 				782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */,
+				78CABE2420EB8D05008449E6 /* PaymentsTierSlider.swift in Sources */,
 				78277D5C1FC8552D0064ABB8 /* Coordinator.swift in Sources */,
 				782E9C1120A9B0D10034A51B /* RoundedSegmentedControl.swift in Sources */,
 				7843FB6A1F7BAE59006A8A2D /* TokenRetrier.swift in Sources */,
