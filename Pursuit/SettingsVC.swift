@@ -78,16 +78,24 @@ class SettingsVC: UIViewController {
         
         navigationController?.navigationBar.setAppearence()
         
-        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        self.revealViewController().view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-    self.revealViewController().frontViewController.revealViewController().tapGestureRecognizer()
-        self.revealViewController().frontViewController.view.isUserInteractionEnabled = false
+        configureRevealVC()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.revealViewController().frontViewController.view.isUserInteractionEnabled = true
+        if let sub = self.revealViewController().frontViewController.view.viewWithTag(100) {
+            sub.removeFromSuperview()
+        }
+    }
+    
+    private func configureRevealVC() {
+        let subView = UIView()
+        subView.frame = UIScreen.main.bounds
+        subView.tag = 100
+        subView.addGestureRecognizer(revealViewController().tapGestureRecognizer())
+        self.revealViewController().frontViewController.view.addSubview(subView)
+        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     fileprivate func logOut() {
