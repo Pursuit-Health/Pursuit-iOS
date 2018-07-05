@@ -513,6 +513,12 @@
                                 <action selector="menuButtonPressed:" destination="CnM-wx-Jhw" id="dOM-ay-AvK"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="payment_gear" id="dcw-mE-WA3">
+                            <color key="tintColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="editBarButtonPressed:" destination="CnM-wx-Jhw" id="u7g-cc-DxC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftTitle" value="Clients"/>
@@ -2630,6 +2636,7 @@ Every plan comes loaded with the same great features and no hidden fees or setup
         <image name="ic_plus" width="36" height="36"/>
         <image name="ic_pursuit" width="45" height="45"/>
         <image name="leftBack" width="9" height="17"/>
+        <image name="payment_gear" width="24" height="24"/>
         <image name="pluss" width="42" height="42"/>
         <image name="user" width="256" height="256"/>
         <image name="workout" width="400" height="254"/>

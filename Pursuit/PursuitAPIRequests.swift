@@ -14,6 +14,8 @@ extension PSAPI {
         case setPassword(parameters: Parameters)
         case getTrainers()
         
+        case getInvitationCode()
+        
         //MARK: Settings
         case changePassword(parameters: Parameters)
         case uploadAvatar()
@@ -56,6 +58,12 @@ extension PSAPI {
         
         case getFireBaseToken()
         
+        //Payments
+        
+        case acceptClient(clientId: String)
+        case rejectClient(clientId: String)
+        case getPengingClients()
+        
         //MARK: RequestConvertible
         
         var baseURLString: String {
@@ -64,7 +72,7 @@ extension PSAPI {
         
         var method: HTTPMethod {
             switch self {
-        case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises, .saveSavedTemplate:
+        case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises, .saveSavedTemplate, .acceptClient, .rejectClient:
                 return .post
             case .changePassword, .editTemplate, .editSavedTemplate:
                 return .put
@@ -156,7 +164,16 @@ extension PSAPI {
                 
             case .getFireBaseToken():
                 return "auth/firebase/token"
+            case .getInvitationCode():
+                return "trainer/clients/invitation-code"
+            case .acceptClient(let clientId):
+                return "trainer/clients/pending/\(clientId)/accept"
+            case .rejectClient(let clientId):
+                return "trainer/clients/pending/\(clientId)/reject"
+            case .getPengingClients():
+                return "trainer/clients/pending"
             }
+            
         }
         
         var headers: Headers? {
@@ -205,7 +222,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates, .getFireBaseToken:
+            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates, .getFireBaseToken, .getInvitationCode, .acceptClient, .rejectClient, .getPengingClients:
                 return "Bearer" + token
             default:
                 return ""

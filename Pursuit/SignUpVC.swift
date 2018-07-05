@@ -41,15 +41,13 @@ class SignUpVC: UIViewController {
             self.cellsInfo.remove(at: 0)
             self.cellsInfo.insert(.question(delegate: self, isTrainer: isTrainer), at: 0)
             
-            let indexPath = IndexPath(row:1, section:0)
+            let indexPath = IndexPath(row:4, section:0)
             //TODO: Also move to another method
-            if let _ = self.signUpTableView.cellForRow(at: indexPath) as? ChooseTrainerCell {
-                if isTrainer {
-                    deleteTrainerRow()
-                }
-            } else {
-                if !isTrainer {
-                    insertTrainerRow()
+            if let cell = self.signUpTableView.cellForRow(at: indexPath) as? SignUpDataCell {
+                if isTrainer && cell.userDataTextField.placeholder == "Code" {
+                    deleteCodeRow()
+                }else if !isTrainer && cell.userDataTextField.placeholder != "Code" {
+                    insertCodeRow()
                 }
             }
         }
@@ -57,14 +55,12 @@ class SignUpVC: UIViewController {
     
     var trainerData = Trainer() {
         didSet {
-            deleteTrainerRow()
-            //TODO: make method with trainer parameter
-            insertTrainerRow()
+
             self.client.id = trainerData.id
         }
     }
     
-    lazy var cellsInfo: [CellType] = [.question(delegate: self, isTrainer: true), .name(delegate: self), .email(delegate: self), .password(delegate: self), .code(delegate: self), .birthday(delegate: self), .signup(delegate: self)]
+    lazy var cellsInfo: [CellType] = [.question(delegate: self, isTrainer: true), .name(delegate: self), .email(delegate: self), .password(delegate: self), .birthday(delegate: self), .signup(delegate: self)]
     
     //MARK: Nested
     
@@ -275,16 +271,16 @@ class SignUpVC: UIViewController {
     
     //MARK: Private
     
-    fileprivate func deleteTrainerRow() {
-        let indexPath = IndexPath(row:1, section:0)
-        self.cellsInfo.remove(at: 1)
+    fileprivate func deleteCodeRow() {
+        let indexPath = IndexPath(row:4, section:0)
+        self.cellsInfo.remove(at: 4)
         self.signUpTableView.deleteRows(at: [indexPath], with: .fade)
     }
     
     //TODO: parameter trsineer
-    fileprivate func insertTrainerRow() {
-        let indexPath = IndexPath(row:1, section:0)
-        self.cellsInfo.insert(.selectTrainer(trainerName: self.trainerData.name), at: 1)
+    fileprivate func insertCodeRow() {
+        let indexPath = IndexPath(row: 4, section: 0)
+        self.cellsInfo.insert(.code(delegate: self), at: 4)
         self.signUpTableView.insertRows(at: [indexPath], with: .fade)
     }
     

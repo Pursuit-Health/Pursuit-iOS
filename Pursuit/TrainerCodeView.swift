@@ -9,7 +9,13 @@
 import UIKit
 
 class TrainerCodeView: BBBXIBView {
-
+    
+    var trainerCode: String? {
+        didSet {
+            trainerCodeLabel.text = (trainerCode ?? "").uppercased()
+        }
+    }
+    
     @IBOutlet weak var trainerCodeLabel: CopybleLabel!
     
 }

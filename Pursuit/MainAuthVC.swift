@@ -311,10 +311,10 @@ extension MainAuthVC: SignUpVCDelegate {
         }
         self.isRunning = true
         
-        if !(user.isValidCode() ?? false) {
-            self.showInvalidCodeAlert()
-            return
-        }
+//        if !(user.isValidCode() ?? false) {
+//            self.showInvalidCodeAlert()
+//            return
+//        }
         user.signUp(completion: { (user, error) in
             self.isRunning = false
             if let error = error {

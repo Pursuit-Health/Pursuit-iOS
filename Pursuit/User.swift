@@ -57,6 +57,9 @@ class User: Mappable {
     var avatar              : String?
     var signInName : String?
     
+    var invitation_code : String?
+    var pending_client_count : Int?
+    
     func mapping(map: Map) {
         self.name            <- map["user.data.name"]
         self.email           <- map["user.data.email"]
@@ -65,6 +68,10 @@ class User: Mappable {
         self.id              <- map["user.data.userable.data.id"]
         self.avatar          <- map["user.data.avatar"]
     }
+//    
+//    "invitation_code": "ZZX",
+//    "pending_client_count": 0,
+//    "user_type": "trainer"
     
     init() {}
     required init?(map: Map) {

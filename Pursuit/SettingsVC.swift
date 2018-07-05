@@ -20,7 +20,7 @@ class SettingsVC: UIViewController {
         case profile(user: User?)
         case weight(delegate: WeightsTableViewCellDelegate)
         case template
-        case request
+        case request(user: User?)
         case logout(delegate: LogoutTableViewCellDelegate)
         
         var cellType: UITableViewCell.Type {
@@ -52,9 +52,9 @@ class SettingsVC: UIViewController {
                 if let castedCell = cell as? TemplateSettingsCell {
                     fillTemplateSettingCell(castedCell)
                 }
-            case .request:
+            case .request(let user):
                 if let castedCell = cell as? RequestsTableViewCell {
-                    fillRequestCell(castedCell)
+                    fillRequestCell(castedCell, user: user)
                 }
             case.logout(let delegate):
                 if let castedCell = cell as? LogoutTableViewCell {
@@ -81,8 +81,12 @@ class SettingsVC: UIViewController {
 
         }
         
-        private func fillRequestCell(_ cell: RequestsTableViewCell) {
-
+        private func fillRequestCell(_ cell: RequestsTableViewCell, user: User?) {
+            if let count = user?.pending_client_count {
+                cell.requestsCount.text = "\(count)"
+            }else {
+                cell.requestsCount.text = ""
+            }
         }
     }
     
@@ -94,7 +98,7 @@ class SettingsVC: UIViewController {
         if self.isClient() {
             return [.profile(user: self.user), .weight(delegate: self), .logout(delegate: self)]
         }else {
-            return [.profile(user: self.user), .weight(delegate: self), .template, .request, .logout(delegate: self)]
+            return [.profile(user: self.user), .weight(delegate: self), .template, .request(user: self.user), .logout(delegate: self)]
         }
     }
     
@@ -110,20 +114,13 @@ class SettingsVC: UIViewController {
             settingsTableView.estimatedRowHeight    = 100
         }
     }
-    @IBOutlet weak var trainerCodeContainerView: UIView! {
-        didSet {
-            if !self.isClient() {
-                let trainerCodeView = TrainerCodeView()
-                trainerCodeView.trainerCodeLabel.text = "sdfjf54".uppercased()
-                trainerCodeContainerView.addSubview(trainerCodeView)
-                trainerCodeContainerView.addConstraints(UIView.place(trainerCodeView, onOtherView: trainerCodeContainerView))
-            }
-        }
-    }
+    @IBOutlet weak var trainerCodeContainerView: UIView!
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    var trainerCodeView: TrainerCodeView?
     
     var user: User?
     
@@ -143,6 +140,9 @@ class SettingsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setUpCodeView()
+        
         self.getUserInfo()
     }
     
@@ -160,6 +160,20 @@ class SettingsVC: UIViewController {
         super.viewWillDisappear(animated)
         
         self.revealViewController().frontViewController.view.isUserInteractionEnabled = true
+    }
+    
+    private func setUpCodeView() {
+        if !self.isClient() {
+            
+            let trainerView = TrainerCodeView()
+            trainerCodeView = trainerView
+            trainerCodeContainerView.addSubview(trainerView)
+            trainerCodeContainerView.addConstraints(UIView.place(trainerCodeView, onOtherView: trainerCodeContainerView))
+        }
+    }
+    
+    private func updateUIWith(user: User?) {
+        trainerCodeView?.trainerCode = user?.invitation_code ?? ""
     }
     
     fileprivate func logOut() {
@@ -204,6 +218,7 @@ class SettingsVC: UIViewController {
     
     func getUserInfo() {
         self.user = User.shared
+        updateUIWith(user: self.user)
     }
     
     fileprivate func coordinateWith(_ coordinator: Coordinator) {

@@ -18,6 +18,14 @@ extension Trainer {
     
     typealias GetTrainerCategories      = (_ workout: [Category]?, _ error: ErrorProtocol?) -> Void
     
+    typealias GetInvitationCode         = (_ code: String?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetPendingClientsCompletion = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
+    
+    typealias AcceptClientCompletion  = (_ error: ErrorProtocol?) -> Void
+    
+    typealias RejectClientCompletion  = (_ error: ErrorProtocol?) -> Void
+    
     //MARK: Public
     class func getTrainers(completion: @escaping GetTrainersCompletion) {
         let api = PSAPI()
@@ -36,5 +44,25 @@ extension Trainer {
         api.getCategories { (categories, error) in
             completion(categories, error)
         }
+    }
+    
+    class func getInvitationCode(completion: @escaping GetInvitationCode) {
+        let api = PSAPI()
+        api.getInvitationCode(completion: completion)
+    }
+    
+    class func acceptClient(clientId: String, completion: @escaping AcceptClientCompletion) {
+        let api = PSAPI()
+        api.acceptClient(clientId: clientId, completion: completion)
+    }
+    
+    class func rejectClient(clientId: String, completion: @escaping RejectClientCompletion) {
+        let api = PSAPI()
+        api.rejectClient(clientId: clientId, completion: completion)
+    }
+    
+    class func getPendingClients(completion: @escaping GetPendingClientsCompletion) {
+        let api = PSAPI()
+        api.getPendingClients(completion: completion)
     }
 }

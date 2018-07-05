@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class SubscriptionPlansVC: UIViewController {
     
@@ -82,6 +83,17 @@ class SubscriptionPlansVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpCodeImage()
+        
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = false
+    }
+    
+    private func setUpCodeImage() {
         if let image = UIImage(named: "gift")?.withRenderingMode(.alwaysTemplate) {
             giftImageView.image = image
             giftImageView.tintColor = UIColor.lightGray

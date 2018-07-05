@@ -84,6 +84,11 @@ class ClientsVC: UIViewController {
             self.revealViewController().revealToggle(self)
         }
     }
+    
+    @IBAction func editBarButtonPressed(_ sender: Any) {
+        clientsTable.isEditing = true
+    }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {

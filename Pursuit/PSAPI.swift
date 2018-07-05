@@ -242,12 +242,7 @@ class PSAPI: APIHandable {
     func getUserInfo(completion: @escaping GetUserInfoCompletion) -> DataRequest? {
         let request = Request.getUserInfo()
         
-        //TODO: remove copypaste
-        SVProgressHUD.show()
-        //TODO: WTF?
-        
         return self.perform(request)?.responseJSON { (response) in
-            SVProgressHUD.dismiss()
             var error: ErrorProtocol?
             var user: User?
             if let responseError = self.handle(response: response) {
@@ -255,14 +250,19 @@ class PSAPI: APIHandable {
             } else {
                 switch response.result {
                 case .success(let JSON):
-                    let userData = ((JSON as? [String : Any]))
-                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : String])
+                    let userData = ((JSON as? [String : Any])?["data"] as? [String : Any])
+                    let metaData = ((JSON as? [String : Any])?["meta"] as? [String : Any])
                     if let type = metaData?["user_type"], let userData = userData {
-                        let objectData = ["user" :userData]
-                        if type == "client" {
-                            user = Client(JSON: objectData)
+                        let objectData = ["data" : userData]
+                        let new = ["user" : objectData]
+                        if (type as? String) == "client" {
+                            user = Client(JSON: new)
                         } else {
-                            user = Trainer(JSON: objectData)
+                            user = Trainer(JSON: new)
+                            if let code = metaData?["invitation_code"], let count = metaData?["pending_client_count"] {
+                                user?.invitation_code = code as? String
+                                user?.pending_client_count = count as? Int
+                            }
                         }
                     }
                     
@@ -272,9 +272,8 @@ class PSAPI: APIHandable {
             }
             completion(user, error)
             }.responseString(completionHandler: { (response) in
-                print("")
+                
             })
-        
     }
     
     @discardableResult
@@ -605,6 +604,52 @@ class PSAPI: APIHandable {
             completionHandler(user, error)
         }
     }
+    
+    //MARK: Payments
+    
+    @discardableResult
+    func getInvitationCode(completion: @escaping GetInvitationCode) -> DataRequest? {
+       let request = Request.getInvitationCode()
+        return self.perform(request)?.responseJSON { (response) in
+            var error: ErrorProtocol?
+            var code: String?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            } else {
+                switch response.result {
+                case .success(let JSON):
+                code = ((JSON as? [String : Any])?["code"] as? String)
+                case .failure(let serverError):
+                    error = serverError.psError
+                }
+            }
+            completion(code, error)
+        }
+    }
+    
+    @discardableResult
+    func acceptClient(clientId: String, completion: @escaping AcceptClientCompletion) -> DataRequest? {
+        let request = Request.acceptClient(clientId: clientId)
+        return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func rejectClient(clientId: String, completion: @escaping RejectClientCompletion) -> DataRequest? {
+        let request = Request.rejectClient(clientId: clientId)
+        return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func getPendingClients(completion: @escaping GetPendingClientsCompletion) -> DataRequest? {
+        let request = Request.getPengingClients()
+        return self.perform(request)?.responseArray(keyPath: "data") { (response: DataResponse<[Client]>) in
+            var error: ErrorProtocol?
+            if let responseError = self.handle(response: response) {
+                error = responseError
+            }
+            completion(response.result.value, error)
+        }
+    }
 }
 
 extension PSAPI {
@@ -662,6 +707,7 @@ extension PSAPI {
     typealias GetClientTemplates        = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
     
      typealias GetClientsWorkoutDetails = (_ excercises: [ExcersiseData]?, _ error: ErrorProtocol?) -> Void
+    
     typealias SubmitExcersiseCompletion = (_ error: ErrorProtocol?) -> Void
     
     typealias GetDetailedTemplate       = (_ template: Workout?, _ error: ErrorProtocol?) -> Void
@@ -674,8 +720,18 @@ extension PSAPI {
     typealias GetSavedTemplatesCompletion = (_ savedTemplates: SavedTemplatesObject?, _ error: ErrorProtocol?) -> Void
     
     typealias SaveSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
+    
     typealias EditSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
+    
     typealias DeleteSavedTemplateCompletion = (_ error: ErrorProtocol?) -> Void
     
     typealias GetFireBaseTokenCompletion = (_ user: User?, _ error: ErrorProtocol?) -> Void
+    
+    typealias GetInvitationCode  = (_ code: String?, _ error: ErrorProtocol?) -> Void
+    
+    typealias AcceptClientCompletion  = (_ error: ErrorProtocol?) -> Void
+    
+    typealias RejectClientCompletion  = (_ error: ErrorProtocol?) -> Void
+    
+    typealias GetPendingClientsCompletion = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
 }

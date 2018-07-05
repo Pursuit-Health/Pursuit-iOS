@@ -15,6 +15,11 @@ protocol ClientRequestsTableViewCellDelegate: class {
 
 class ClientRequestsTableViewCell: UITableViewCell {
     
+    //MARK: IBOutlets
+    
+    @IBOutlet weak var clientNameLabel: UILabel!
+    @IBOutlet weak var clientImageView: UIImageView!
+    
     //MARK: Variables
     
     weak var delegate: ClientRequestsTableViewCellDelegate?

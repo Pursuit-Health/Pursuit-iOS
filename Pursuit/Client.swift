@@ -66,7 +66,7 @@ class Client: User, Equatable, Hashable {
     
     override func createSignUpParameters() -> [String : String] {
         var parameters = super.createSignUpParameters()
-        parameters["trainer_id"] = "\(self.id ?? 0)"
+        parameters["trainer_id"] = self.code ?? ""
         return parameters
     }
     
