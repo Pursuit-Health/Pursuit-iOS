@@ -126,6 +126,8 @@
 		78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
 		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
+		7865059520F34A7200B7531B /* PaymentStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865059420F34A7200B7531B /* PaymentStatusVC.swift */; };
+		7865059720F356FC00B7531B /* PSAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865059620F356FC00B7531B /* PSAlert.swift */; };
 		787A99272019E20800E69B5F /* ExersiseData+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A99262019E20800E69B5F /* ExersiseData+API.swift */; };
 		787A992D201A2FBD00E69B5F /* UFView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A992C201A2FBD00E69B5F /* UFView+Extension.swift */; };
 		787EA0811FCADCDF000138BD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EA0801FCADCDF000138BD /* Category.swift */; };
@@ -415,6 +417,8 @@
 		78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExerciseCell.xib; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
 		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
+		7865059420F34A7200B7531B /* PaymentStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusVC.swift; sourceTree = "<group>"; };
+		7865059620F356FC00B7531B /* PSAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAlert.swift; sourceTree = "<group>"; };
 		787A99262019E20800E69B5F /* ExersiseData+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExersiseData+API.swift"; sourceTree = "<group>"; };
 		787A992C201A2FBD00E69B5F /* UFView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UFView+Extension.swift"; sourceTree = "<group>"; };
 		787EA0801FCADCDF000138BD /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -1329,6 +1333,7 @@
 				788EE8971F34DD5500DD8A98 /* TrainingVC.swift */,
 				782E899A1F7911F5002AD54C /* ClientTemlatesVC.swift */,
 				782E899C1F792168002AD54C /* ClientTabBarVC.swift */,
+				7865059420F34A7200B7531B /* PaymentStatusVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1409,6 +1414,7 @@
 			isa = PBXGroup;
 			children = (
 				78BAC2DA20B4ACFD00C0EDD2 /* PSActionSheet.swift */,
+				7865059620F356FC00B7531B /* PSAlert.swift */,
 			);
 			name = Popups;
 			sourceTree = "<group>";
@@ -2784,6 +2790,7 @@
 				7832AFEB1F331D2600BC8116 /* SignInVC.swift in Sources */,
 				78F636251FB5FB32009EB48D /* MainExercisesVC.swift in Sources */,
 				782E9EF120AC1BBB0034A51B /* ExerciseStateCell.swift in Sources */,
+				7865059720F356FC00B7531B /* PSAlert.swift in Sources */,
 				780D26851F5C92D900FA1558 /* RegexExpression.swift in Sources */,
 				783A456C1F8E50580048A0F9 /* TokenAdapter.swift in Sources */,
 				783F80C01FC06CBB001FE169 /* ExerciseDetailsVC.swift in Sources */,
@@ -2835,6 +2842,7 @@
 				783E315F20C81CA400952790 /* UIColor+HEX.swift in Sources */,
 				78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */,
 				78BB17B020C52210006AB7C3 /* MinMaxSetsCell.swift in Sources */,
+				7865059520F34A7200B7531B /* PaymentStatusVC.swift in Sources */,
 				782E9C1420A9DFA90034A51B /* PSUserDefaults.swift in Sources */,
 				78CABE2420EB8D05008449E6 /* PaymentsTierSlider.swift in Sources */,
 				78277D5C1FC8552D0064ABB8 /* Coordinator.swift in Sources */,

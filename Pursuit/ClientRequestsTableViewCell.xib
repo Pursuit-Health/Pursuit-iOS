@@ -48,11 +48,11 @@
                         <rect key="frame" x="0.0" y="69" width="375" height="1"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_white" translatesAutoresizingMaskIntoConstraints="NO" id="kLW-Y8-OL1">
-                        <rect key="frame" x="335" y="24" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_white" translatesAutoresizingMaskIntoConstraints="NO" id="kLW-Y8-OL1">
+                        <rect key="frame" x="332.5" y="21.5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="OJV-Tu-W4T"/>
-                            <constraint firstAttribute="height" constant="20" id="xWd-tf-wPX"/>
+                            <constraint firstAttribute="width" constant="25" id="OJV-Tu-W4T"/>
+                            <constraint firstAttribute="height" constant="25" id="xWd-tf-wPX"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crp-Iu-ZmW">
@@ -72,11 +72,11 @@
                             <constraint firstAttribute="width" constant="1" id="VQX-e9-0rT"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payment_close" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-dn-xDP">
-                        <rect key="frame" x="274" y="25" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payment_close" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-dn-xDP">
+                        <rect key="frame" x="271.5" y="22.5" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="10e-xu-aE4"/>
-                            <constraint firstAttribute="height" constant="20" id="Nth-hx-Oay"/>
+                            <constraint firstAttribute="width" constant="25" id="10e-xu-aE4"/>
+                            <constraint firstAttribute="height" constant="25" id="Nth-hx-Oay"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-J7-Nr6">
@@ -122,7 +122,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="check_white" width="12" height="12"/>
-        <image name="payment_close" width="12" height="12"/>
+        <image name="check_white" width="46" height="33"/>
+        <image name="payment_close" width="38" height="37"/>
     </resources>
 </document>

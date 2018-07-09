@@ -123,7 +123,7 @@ class ClientInfoVC: UIViewController {
     //MARK: Private
     
     @objc func avatarUpdated(_ notification: Notification) {
-            self.updateInfo()
+        self.updateInfo()
     }
     
     func updateWorkouts() {

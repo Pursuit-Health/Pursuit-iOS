@@ -30,7 +30,7 @@ class NavigatorVC: UIViewController {
         }
     }
     
-     var tabBarVC: UITabBarController?
+    var tabBarVC: UITabBarController?
     
     @IBAction func menuBarButtonPressed(_ sender: Any) {
         self.menuButtonPressed()
@@ -40,17 +40,44 @@ class NavigatorVC: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.setAppearence()
         
-        self.addController()
+        self.navigate()
         
         self.revealViewController().delegate = self
         
         self.setUpBackgroundImage()
         
+        self.setupSideMenu()
+        
+        self.setupTopView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        
+    }
+    
+    //MARK: Private
+    
+    func coordinate() {
+        
+    }
+    
+    private func setupSideMenu() {
         if let sideMenu = self.revealViewController() {
             view.addGestureRecognizer(sideMenu.panGestureRecognizer())
             view.addGestureRecognizer(sideMenu.tapGestureRecognizer())
         }
-        
+    }
+    
+    private func addController(controller: UIViewController) {
+        self.addChildViewController(controller)
+        self.view.addSubview(controller.view)
+        self.view.addConstraints(UIView.place(controller.view, onOtherView: self.view))
+        controller.didMove(toParentViewController: self)
+    }
+    
+    private func setupTopView() {
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
             for view in window.subviews {
                 if view is TopStatusBarView {
@@ -60,44 +87,40 @@ class NavigatorVC: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-
+    private func isClientAllowed(completion: @escaping (ErrorProtocol?) -> ()){
+        Client.check { (error) in
+            completion(error)
+        }
     }
     
-    //MARK: Private
-    
-    func coordinate() {
-        
+    private func navigateTrainer() {
+        let trainerTabBar = UIStoryboard.trainer.TrainerTabBar!
+        self.tabBarVC = trainerTabBar
+        self.addController(controller: trainerTabBar)
     }
     
-    private func addController() {
+    private func navigateClient() {
+        let clientTabBar = UIStoryboard.client.ClientTabBar!
+        self.addController(controller: clientTabBar)
+        self.leftTitle = User.shared.name ?? ""
+    }
+    
+    private func navigate() {
         User.getUserInfo { (user, error) in
-            if error == nil {
-                if User.shared.coordinator is TrainerCoordinator {
-                    
-                    
-                    let trainerTabBar = UIStoryboard.trainer.TrainerTabBar!
-                    self.tabBarVC = trainerTabBar
-                    self.addChildViewController(trainerTabBar)
-                    self.view.addSubview(trainerTabBar.view)
-                    self.view.addConstraints(UIView.place(trainerTabBar.view, onOtherView: self.view))
-                    trainerTabBar.didMove(toParentViewController: self)
-                    //self.leftTitle = "Clients"
-                }else {
-                    let clientTabBar = UIStoryboard.client.ClientTabBar!
-                    
-                    self.addChildViewController(clientTabBar)
-                    self.view.addSubview(clientTabBar.view)
-                    self.view.addConstraints(UIView.place(clientTabBar.view, onOtherView: self.view))
-                    clientTabBar.didMove(toParentViewController: self)
-                    self.leftTitle = User.shared.name ?? ""
-                    //User.shared.coordinator?.start(from: self)
-                }
-                
+            if let _ = error {
+                AppCoordinator.shared.showController(controller: self)
             }else {
-                AppCoordinator.showController(controller: self)
+                if User.shared.coordinator is TrainerCoordinator {
+                    self.navigateTrainer()
+                }else {
+                    self.isClientAllowed(completion: { (clientError) in
+                        if let clientError = clientError {
+                            AppCoordinator.shared.start(from: self, with: clientError)
+                        }else {
+                            self.navigateClient()
+                        }
+                    })
+                }
             }
         }
     }

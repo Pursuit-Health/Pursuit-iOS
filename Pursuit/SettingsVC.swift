@@ -17,7 +17,7 @@ protocol SettingsVCDelegate: class {
 class SettingsVC: UIViewController {
     
     enum CellType {
-        case profile(user: User?)
+        case profile(user: User?, delegate: UserInfoTableViewCellDelegate)
         case weight(delegate: WeightsTableViewCellDelegate)
         case template
         case request(user: User?)
@@ -40,9 +40,9 @@ class SettingsVC: UIViewController {
         
         func fillCell(cell: UITableViewCell) {
             switch self {
-            case .profile(let user):
+            case .profile(let user, let delegate):
                 if let castedCell = cell as? UserInfoTableViewCell {
-                    fillUserInfoCell(castedCell, user: user)
+                    fillUserInfoCell(castedCell, user: user, delegate: delegate)
                 }
             case .weight(let delegate):
                 if let castedCell = cell as? WeightsTableViewCell {
@@ -63,9 +63,10 @@ class SettingsVC: UIViewController {
             }
         }
         
-        private func fillUserInfoCell(_ cell: UserInfoTableViewCell, user: User?) {
+        private func fillUserInfoCell(_ cell: UserInfoTableViewCell, user: User?, delegate: UserInfoTableViewCellDelegate) {
             if let user = user {
                 cell.configureWith(user: user)
+                cell.delegate = delegate
             }
         }
         
@@ -78,14 +79,16 @@ class SettingsVC: UIViewController {
         }
         
         private func fillTemplateSettingCell(_ cell: TemplateSettingsCell){
-
+            
         }
         
         private func fillRequestCell(_ cell: RequestsTableViewCell, user: User?) {
             if let count = user?.pending_client_count {
                 cell.requestsCount.text = "\(count)"
+                cell.bgCountView.isHidden = (count == 0)
             }else {
                 cell.requestsCount.text = ""
+                cell.bgCountView.isHidden = true
             }
         }
     }
@@ -96,9 +99,9 @@ class SettingsVC: UIViewController {
     
      var cellsInfo: [CellType] {
         if self.isClient() {
-            return [.profile(user: self.user), .weight(delegate: self), .logout(delegate: self)]
+            return [.profile(user: self.user, delegate: self), .weight(delegate: self), .logout(delegate: self)]
         }else {
-            return [.profile(user: self.user), .weight(delegate: self), .template, .request(user: self.user), .logout(delegate: self)]
+            return [.profile(user: self.user, delegate: self), .weight(delegate: self), .template, .request(user: self.user), .logout(delegate: self)]
         }
     }
     
@@ -130,36 +133,34 @@ class SettingsVC: UIViewController {
     
     var clientsRequestCoordinator: ClientsRequestCoordinator = ClientsRequestCoordinator()
     
-    //MARK: IBActions
-    
-    @IBAction func changeAvatarButtonPressed(_ sender: Any) {
-        //self.showActionSheetForUploadingPhoto()
-    }
-    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setUpCodeView()
-        
-        self.getUserInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.setAppearence()
-        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        //self.revealViewController().view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        self.revealViewController().frontViewController.revealViewController().tapGestureRecognizer()
-        self.revealViewController().frontViewController.view.isUserInteractionEnabled = false
+        
+        self.setupSideMenuGesture()
+        
+        self.getUserInfo()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.revealViewController().frontViewController.view.isUserInteractionEnabled = true
+    }
+    
+    private func setupSideMenuGesture() {
+        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController().frontViewController.revealViewController().tapGestureRecognizer()
+        self.revealViewController().frontViewController.view.isUserInteractionEnabled = false
     }
     
     private func setUpCodeView() {
@@ -174,6 +175,7 @@ class SettingsVC: UIViewController {
     
     private func updateUIWith(user: User?) {
         trainerCodeView?.trainerCode = user?.invitation_code ?? ""
+        reloadClientRequests()
     }
     
     fileprivate func logOut() {
@@ -187,11 +189,8 @@ class SettingsVC: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
         guard let loginController = UIStoryboard.login.MainAuth else { return }
-        //controller?.viewControllers.insert(loginController, at: 0)
         
         self.navigationController?.setViewControllers([loginController], animated: true)
-        
-        //controller?.popToRootViewController(animated: true)
     }
     
   fileprivate func uploadImage() {
@@ -202,14 +201,23 @@ class SettingsVC: UIViewController {
         User.uploadAvatar(data: data) { error in
             if error == nil {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AvatarUpdated"), object: nil)
-                self.reloadUserInfo()
+                self.reloadAvatar()
             }
         }
     }
     
-    private func reloadUserInfo() {
+    private func reloadAvatar() {
         let indexPath = IndexPath(row: 0, section: 0)
-        self.settingsTableView.reloadRows(at: [indexPath], with: .automatic)
+        reloadTableAt(indexPath)
+    }
+    
+    private func reloadClientRequests() {
+        let indexPath = IndexPath(row: 3, section: 0)
+         reloadTableAt(indexPath)
+    }
+    
+    private func reloadTableAt(_ indexPath: IndexPath) {
+        self.settingsTableView.reloadRows(at: [indexPath], with: .none)
     }
     
     private func isClient() -> Bool {
@@ -218,7 +226,16 @@ class SettingsVC: UIViewController {
     
     func getUserInfo() {
         self.user = User.shared
-        updateUIWith(user: self.user)
+        if !isClient() {
+            updateUserInfo()
+        }
+    }
+    
+    private func updateUserInfo() {
+        User.getUserInfo { (user, error) in
+            self.user = user
+            self.updateUIWith(user: user)
+        }
     }
     
     fileprivate func coordinateWith(_ coordinator: Coordinator) {

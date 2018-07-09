@@ -1067,14 +1067,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pd-t7-b1s">
-                                                    <rect key="frame" x="2" y="0.0" width="101" height="101"/>
+                                                    <rect key="frame" x="3" y="1" width="99" height="99"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3Pd-t7-b1s" secondAttribute="height" multiplier="1:1" id="g5o-fl-bXa"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ah6-5T-N04">
-                                                    <rect key="frame" x="2" y="0.0" width="101" height="101"/>
+                                                    <rect key="frame" x="3" y="1" width="99" height="99"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXz-Ib-IdS">
@@ -1091,7 +1091,7 @@
                                             <constraint firstItem="Ah6-5T-N04" firstAttribute="bottom" secondItem="3Pd-t7-b1s" secondAttribute="bottom" id="Fjl-5j-Fgx"/>
                                             <constraint firstItem="wXz-Ib-IdS" firstAttribute="centerY" secondItem="Bdy-bP-JM3" secondAttribute="centerY" id="L7d-2m-87R"/>
                                             <constraint firstItem="Ah6-5T-N04" firstAttribute="top" secondItem="3Pd-t7-b1s" secondAttribute="top" id="NJN-3L-KRO"/>
-                                            <constraint firstItem="3Pd-t7-b1s" firstAttribute="width" secondItem="Bdy-bP-JM3" secondAttribute="width" multiplier="0.96" id="UXj-Dt-oTf"/>
+                                            <constraint firstItem="3Pd-t7-b1s" firstAttribute="width" secondItem="Bdy-bP-JM3" secondAttribute="width" multiplier="0.94" id="UXj-Dt-oTf"/>
                                             <constraint firstItem="3Pd-t7-b1s" firstAttribute="centerY" secondItem="Bdy-bP-JM3" secondAttribute="centerY" id="VhM-Fw-Iaz"/>
                                             <constraint firstItem="Ah6-5T-N04" firstAttribute="trailing" secondItem="3Pd-t7-b1s" secondAttribute="trailing" id="huV-Hb-GUz"/>
                                             <constraint firstItem="Ah6-5T-N04" firstAttribute="leading" secondItem="3Pd-t7-b1s" secondAttribute="leading" id="iZj-Av-ee4"/>
@@ -2497,7 +2497,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMQ-d0-ngd">
                                 <rect key="frame" x="20" y="567" width="335" height="60"/>
-                                <color key="backgroundColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.21568627450980393" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2og-h9-rbN"/>
                                 </constraints>

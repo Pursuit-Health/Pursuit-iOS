@@ -71,6 +71,7 @@ class TrainerCoordinator: Coordinator {
 }
 
 extension TrainerCoordinator: ClientsVCDelegate {
+    
     func didSelect(client: Client, on controller: ClientsVC) {
         let clientInfo = UIStoryboard.trainer.ClientInfo!
         clientInfo.delegate = self

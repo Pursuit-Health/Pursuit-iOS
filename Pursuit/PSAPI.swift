@@ -42,6 +42,9 @@ class PSAPI: APIHandable {
         
         if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
             if let message = json?["message"] as? String {
+                if let code = json?["code"] as? Int {
+                    return PSError.error(description: message, statusCode: code)
+                }
                 return PSError.texted(text: message)
             }
         }
@@ -82,6 +85,7 @@ class PSAPI: APIHandable {
             var user: Trainer?
             if let responseError = self.handle(response: response) {
                 error = responseError
+                completion(nil, error)
             } else {
                 switch response.result {
                 case .success(let JSON):
@@ -129,6 +133,7 @@ class PSAPI: APIHandable {
             var user: Client?
             if let responseError = self.handle(response: response) {
                 error = responseError
+                completion(nil, error)
             } else {
                 switch response.result {
                 case .success(let JSON):
@@ -149,6 +154,7 @@ class PSAPI: APIHandable {
                     
                 case .failure(let serverError):
                     error = serverError.psError
+                    completion(nil, error)
                 }
             }
             if error == nil {
@@ -650,6 +656,24 @@ class PSAPI: APIHandable {
             completion(response.result.value, error)
         }
     }
+    
+    @discardableResult
+    func deleteClient(clientId: String, completion: @escaping DeleteClientCompletion) -> DataRequest? {
+        let request = Request.deleteClient(clientId: clientId)
+        return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func changeTrainer(trainerCode: String, completion: @escaping ChangeTrainerCompletion) -> DataRequest? {
+        let request = Request.changeTrainer(parameters: ["trainer_id" : trainerCode])
+        return self.simple(request: request, completion: completion)
+    }
+    
+    @discardableResult
+    func check(completion: @escaping CheckClientCompletion) -> DataRequest? {
+        let request = Request.check()
+        return self.simple(request: request, completion: completion)
+    }
 }
 
 extension PSAPI {
@@ -733,5 +757,11 @@ extension PSAPI {
     
     typealias RejectClientCompletion  = (_ error: ErrorProtocol?) -> Void
     
+    typealias DeleteClientCompletion  = (_ error: ErrorProtocol?) -> Void
+    
+    typealias ChangeTrainerCompletion  = (_ error: ErrorProtocol?) -> Void
+    
     typealias GetPendingClientsCompletion = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
+    typealias CheckClientCompletion = (_ error: ErrorProtocol?) -> Void
+    
 }

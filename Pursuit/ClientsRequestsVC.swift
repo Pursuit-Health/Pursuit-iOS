@@ -34,6 +34,15 @@ class ClientsRequestsVC: UIViewController {
                 
                 searchField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
                 
+                guard let UISearchBarBackground: AnyClass = NSClassFromString("UISearchBarBackground") else { return }
+                
+                for view in requestsSearchBar.subviews {
+                    for subview in view.subviews {
+                        if subview.isKind(of: UISearchBarBackground) {
+                            subview.alpha = 0
+                        }
+                    }
+                }
             }
         }
     }
@@ -73,13 +82,22 @@ class ClientsRequestsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        updateDatasource()
+
+        setupPullToRefresh()
+    }
+    
+    private func setupPullToRefresh() {
+        self.requestsTableView.addPullRefresh { [weak self] in
+            self?.updateDatasource()
+        }
+        self.requestsTableView.startPullRefresh()
     }
     
     func updateDatasource() {
         datasource?.loadClientsRequests(on: self, completion: { (clients) in
             self.clients = clients ?? []
             self.filteredClients = clients ?? []
+            self.requestsTableView.stopPullRefreshEver()
         })
     }
 }

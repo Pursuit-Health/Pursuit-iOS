@@ -172,6 +172,10 @@ extension UIStoryboard {
         var Training: TrainingVC? {
             return self.instantiate(type: TrainingVC.self)
         }
+        
+        var PaymentStatus: PaymentStatusVC? {
+            return self.instantiate(type: PaymentStatusVC.self)
+        }
     }
     
     //MARK: SideMenuStoryboard

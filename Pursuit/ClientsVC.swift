@@ -50,11 +50,6 @@ class ClientsVC: UIViewController {
     
     weak var delegate: ClientsVCDelegate?
     
-    var defaultOptions                          = SwipeTableOptions()
-    var isSwipeRightEnabled                     = true
-    var buttonDisplayMode: ButtonDisplayMode    = .titleAndImage
-    var buttonStyle: ButtonStyle                = .backgroundColor
-    
     var savedTemplatesCoordinator: SavedTemplatesCoordinator = SavedTemplatesCoordinator()
     
     
@@ -79,6 +74,12 @@ class ClientsVC: UIViewController {
         }
     }
     
+    private var isEditingTableView: Bool = false {
+        didSet {
+            clientsTable.isEditing = isEditingTableView
+        }
+    }
+    
     @IBAction func menuButtonPressed(_ sender: Any) {
         if self.revealViewController() != nil {
             self.revealViewController().revealToggle(self)
@@ -86,7 +87,7 @@ class ClientsVC: UIViewController {
     }
     
     @IBAction func editBarButtonPressed(_ sender: Any) {
-        clientsTable.isEditing = true
+        isEditingTableView = !isEditingTableView
     }
     
     //MARK: Lifecycle
@@ -94,10 +95,7 @@ class ClientsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.clientsTable.addPullRefresh { _ in
-            self.loadClients()
-        }
-        self.clientsTable.startPullRefresh()
+        addPullToRefresh()
         
         setUpBackgroundImage()
         
@@ -113,10 +111,6 @@ class ClientsVC: UIViewController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //self.performSegue(withIdentifier: "SelectClients", sender: self)
-    }
-    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -124,6 +118,13 @@ class ClientsVC: UIViewController {
     
     func showSavedTemplatesVC() {
         self.savedTemplatesCoordinator.start(from: self)
+    }
+    
+    private func addPullToRefresh() {
+        self.clientsTable.addPullRefresh { [weak self] in
+            self?.loadClients()
+        }
+        self.clientsTable.startPullRefresh()
     }
     
     private func configureSideMenuController() {
@@ -143,19 +144,36 @@ class ClientsVC: UIViewController {
         })
     }
     
-    //TABLEVIEW NOTIFCATIONS
-    
-    // MARK: - Actions
-    
-    @IBAction func moreTapped(_ sender: Any) {
-        let controller = UIAlertController(title: "Swipe Transition Style", message: nil, preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: "Chat", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
-        controller.addAction(UIAlertAction(title: "Share", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
-        controller.addAction(UIAlertAction(title: "Performance", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
-        controller.addAction(UIAlertAction(title: "Schedule", style: .default, handler: { _ in self.defaultOptions.transitionStyle = .border }))
+    fileprivate func confirmDeleteClientAt(_ index: Int) {
+        let alert = UIAlertController(title: "Delete Client", message: "Do you want to delete Client?", preferredStyle: .alert)
         
-        present(controller, animated: true, completion: nil)
-    }    
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            self.deleteClientAt(index)
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .destructive) { (action) in
+            
+        }
+        
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteClientAt(_ index: Int) {
+        if filteredClients.count < index {
+            return
+        }
+        let client = filteredClients[index]
+        Trainer.deleteClient(clientId: "\(client.id ?? 0)") { (error) in
+            if let error = error {
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                self.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
+                self.loadClients()
+            }
+        }
+    }
 }
 
 extension ClientsVC: UITableViewDataSource {
@@ -176,7 +194,7 @@ extension ClientsVC: UITableViewDataSource {
         
         let clientData = filteredClients[indexPath.row]
         if let url = clientData.clientAvatar {
-         cell.clientImage.sd_setImage(with: URL(string: url.persuitImageUrl()))            
+            cell.clientImage.sd_setImage(with: URL(string: url.persuitImageUrl()))            
         }else {
             cell.clientImage.image = UIImage(named: "user")
         }
@@ -194,16 +212,14 @@ extension ClientsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
+            confirmDeleteClientAt(indexPath.row)
         }
     }
 }
 
 extension ClientsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Start coordinator after selecting client
         User.shared.coordinator?.start(from: self, with: self.filteredClients[indexPath.row])
-        //self.delegate?.didSelect(client: self.filteredClients[indexPath.row], on: self)
     }
 }
 
@@ -221,179 +237,6 @@ extension ClientsVC: UISearchBarDelegate {
   
         searchBar.resignFirstResponder()
     }
-}
-
-
-
-extension ClientsVC: SwipeTableViewCellDelegate {
-    
-    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation){
-        
-        
-    }
-    
-    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?, for orientation: SwipeActionsOrientation){
-        
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        
-        //let client = clientList[indexPath.row]
-        
-        if orientation == .left {
-            
-            //DISPLAY OPTIONS UPON LEFT SWIPE
-            let chat = SwipeAction(style: .default, title: nil){ action, indexPath in
-                print("chat pressed")
-                //action for chat press
-            }
-            chat.hidesWhenSelected = true
-            chat.image = #imageLiteral(resourceName: "btnChat")
-            chat.backgroundColor = UIColor(red: (101/255.0), green: (99/255.0), blue: (164/255.0), alpha: 1.0)
-            //configure(action: chat, with: .chat)
-            
-            
-            let share = SwipeAction(style: .default, title: nil){ action, indexPath in
-                print("share pressed")
-                
-                guard let controller = self.assignTemplateVC else  { return }
-                
-                if let clientId = self.filteredClients[indexPath.row].id {
-                    controller.clientId = "\(clientId)"
-                }
-                //if let clientId == clients[indexPath.row]
-                
-                self.navigationController?.pushViewController(controller, animated: true)
-                
-                //action for share press
-            }
-            share.hidesWhenSelected = true
-            share.image = #imageLiteral(resourceName: "btnShare")
-            share.backgroundColor = UIColor(red: (80/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
-            //configure(action: share, with: .share)
-            
-            
-            let performance = SwipeAction(style: .default, title: nil) { action, indexPath in
-                print("performance pressed")
-                //action for preformance press
-            }
-            performance.hidesWhenSelected = true
-            performance.image = #imageLiteral(resourceName: "btnPerformance")
-            performance.backgroundColor = UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
-            //configure(action: performance, with: .performance)
-            
-            
-            let schedule = SwipeAction(style: .default, title: nil) { action, indexPath in
-                print("schedule pressed")
-                //action for schedule press
-                
-                guard let controller = self.clientScheduleVC else { return }
-                self.filteredClients[indexPath.row].isSelected = true
-                controller.clients = [self.filteredClients[indexPath.row]]
-                
-                self.navigationController?.pushViewController(controller, animated: true)
-            }
-            schedule.hidesWhenSelected = true
-            schedule.image = #imageLiteral(resourceName: "btnSchedule")
-            schedule.backgroundColor = UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
-            //configure(action: schedule, with: .schedule) //??
-            
-            //let closure: (UIAlertAction) -> Void = { _ in cell.hideSwipe(animated: true) }
-            
-            return [chat, share, performance, schedule]
-            
-        }else{
-            //nothing happens if swipe is left
-            return nil
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
-        
-        var options = SwipeTableOptions()
-        
-        options.transitionStyle = .border //or drag/reveal/border
-        options.expansionStyle = .none
-        options.buttonPadding = 0
-        
-        return options
-    }
-    
-    func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
-        
-        action.title = descriptor.title(forDisplayMode: buttonDisplayMode)
-        
-        action.image = descriptor.image(forStyle: buttonStyle, displayMode: buttonDisplayMode)
-        
-        switch buttonStyle {
-        case .backgroundColor:
-            action.backgroundColor = descriptor.color
-        case .circular:
-            action.backgroundColor = .clear
-            action.textColor = descriptor.color
-            action.font = .systemFont(ofSize: 13)
-            action.transitionDelegate = ScaleTransition.default
-        }
-        
-    }
-}
-
-
-class IndicatorView: UIView {
-    var color = UIColor.clear {
-        didSet { setNeedsDisplay() }
-    }
-    
-    override func draw(_ rect: CGRect) {
-        color.set()
-        UIBezierPath(ovalIn: rect).fill()
-    }
-}
-
-enum ActionDescriptor {
-    case chat, share, performance, schedule
-    
-    func title(forDisplayMode displayMode: ButtonDisplayMode) -> String? {
-        guard displayMode != .imageOnly else { return nil }
-        
-        switch self {
-        case .chat: return "Chat"
-        case .share: return "Share"
-        case .performance: return "Performance"
-        case .schedule: return "Schedule"
-        }
-    }
-    
-    func image(forStyle style: ButtonStyle, displayMode: ButtonDisplayMode) -> UIImage? {
-        guard displayMode != .titleOnly else { return nil }
-        
-        let name: String
-        switch self {
-        case .chat: name = "Chat"
-        case .share: name = "Share"
-        case .performance: name = "Performance"
-        case .schedule: name = "Schedule"
-        }
-        
-        return UIImage(named: style == .backgroundColor ? name : name + "-circle")
-    }
-    
-    var color: UIColor {
-        switch self {
-        case .chat: return UIColor(red: (101/255.0), green: (99/255.0), blue: (164/255.0), alpha: 1.0)
-        case .share: return UIColor(red: (80/255.0), green: (210/255.0), blue: (194/255.0), alpha: 1.0)
-        case .performance: return UIColor(red: (140/255.0), green: (136/255.0), blue: (255/255.0), alpha: 1.0)
-        case .schedule: return UIColor(red: (252/255.0), green: (55/255.0), blue: (104/255.0), alpha: 1.0)
-        }
-    }
-}
-enum ButtonDisplayMode {
-    case titleAndImage, titleOnly, imageOnly
-}
-
-enum ButtonStyle {
-    case backgroundColor, circular
 }
 
 extension ClientsVC: PSEmptyDatasource {

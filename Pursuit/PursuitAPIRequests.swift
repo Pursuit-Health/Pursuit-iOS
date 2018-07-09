@@ -56,6 +56,8 @@ extension PSAPI {
         
         case deleteSavedTemplate(templateId: String)
         
+        case deleteClient(clientId: String)
+        
         case getFireBaseToken()
         
         //Payments
@@ -63,6 +65,11 @@ extension PSAPI {
         case acceptClient(clientId: String)
         case rejectClient(clientId: String)
         case getPengingClients()
+        
+        case changeTrainer(parameters: Parameters)
+        
+        case check()
+        
         
         //MARK: RequestConvertible
         
@@ -72,11 +79,11 @@ extension PSAPI {
         
         var method: HTTPMethod {
             switch self {
-        case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises, .saveSavedTemplate, .acceptClient, .rejectClient:
+        case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises, .saveSavedTemplate, .acceptClient, .rejectClient, .changeTrainer:
                 return .post
             case .changePassword, .editTemplate, .editSavedTemplate:
                 return .put
-            case .deleteTemplate, .deleteTemplateExercise, .deleteSavedTemplate:
+            case .deleteTemplate, .deleteTemplateExercise, .deleteSavedTemplate, .deleteClient:
                 return .delete
             default:
                 return .get
@@ -172,6 +179,12 @@ extension PSAPI {
                 return "trainer/clients/pending/\(clientId)/reject"
             case .getPengingClients():
                 return "trainer/clients/pending"
+            case .deleteClient(let clientId):
+                return "trainer/clients/" + clientId
+            case .changeTrainer(_):
+                return "client/trainer/change"
+            case .check:
+                return "client/check"
             }
             
         }
@@ -208,7 +221,8 @@ extension PSAPI {
                  .assignTemplate(_ , _ , let parameters),
                  .searchExercises(let parameters),
                  .saveSavedTemplate(let parameters),
-                 .editSavedTemplate(_, let parameters):
+                 .editSavedTemplate(_, let parameters),
+                 .changeTrainer(let parameters):
                 return parameters
             default:
                 return nil
@@ -222,7 +236,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates, .getFireBaseToken, .getInvitationCode, .acceptClient, .rejectClient, .getPengingClients:
+            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates, .getFireBaseToken, .getInvitationCode, .acceptClient, .rejectClient, .getPengingClients, .deleteClient, .changeTrainer, .check:
                 return "Bearer" + token
             default:
                 return ""

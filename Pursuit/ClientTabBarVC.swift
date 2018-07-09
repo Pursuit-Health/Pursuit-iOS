@@ -29,7 +29,10 @@ extension ClientTabBarVC: ClientScheduleDataSource {
     
      func updateDataSource(_ schedule: ScheduleVC, _ startDate: String, endDate: String, complation: @escaping EventsCompletion) {
         Client.getClientEvents(startdDate: startDate, endDate: endDate) { (events, error) in
-            if error == nil {
+            if let error = error {
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                schedule.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
                 complation(events, error)
             }
         }
@@ -39,7 +42,10 @@ extension ClientTabBarVC: ClientScheduleDataSource {
 extension ClientTabBarVC: ClientInfoVCDatasource {
     func loadInfo(controller: ClientInfoVC, completion: @escaping (User, [Workout]?) -> Void) {
         Workout.getWorkouts { (workouts, error) in
-            if error == nil {
+            if let error = error {
+                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                controller.present(error.alert(action: action), animated: true, completion: nil)
+            }else {
                 if let work = workouts {
                     completion(User.shared, work)
                 }

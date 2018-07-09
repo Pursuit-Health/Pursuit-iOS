@@ -26,6 +26,8 @@ extension Trainer {
     
     typealias RejectClientCompletion  = (_ error: ErrorProtocol?) -> Void
     
+    typealias DeleteClientCompletion  = (_ error: ErrorProtocol?) -> Void
+    
     //MARK: Public
     class func getTrainers(completion: @escaping GetTrainersCompletion) {
         let api = PSAPI()
@@ -63,6 +65,13 @@ extension Trainer {
     
     class func getPendingClients(completion: @escaping GetPendingClientsCompletion) {
         let api = PSAPI()
+        api.showProgress = false
         api.getPendingClients(completion: completion)
+    }
+    
+    class func deleteClient(clientId: String, completion: @escaping DeleteClientCompletion) {
+        let api = PSAPI()
+        
+        api.deleteClient(clientId: clientId, completion: completion)
     }
 }

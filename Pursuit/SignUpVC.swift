@@ -285,7 +285,10 @@ class SignUpVC: UIViewController {
     }
     
     fileprivate func isValidFieldsFor(_ user: User) -> Bool {
-        if user.name?.isEmpty ?? true || user.email?.isEmpty ?? true || user.code?.isEmpty ?? true || user.birthday?.isEmpty ?? true || user.birthday?.isEmpty ?? true {
+        if user.name?.isEmpty ?? true || user.email?.isEmpty ?? true || user.birthday?.isEmpty ?? true || user.birthday?.isEmpty ?? true {
+            if user is Client && user.code?.isEmpty ?? true {
+                return false
+            }
             return false
         }
         return true

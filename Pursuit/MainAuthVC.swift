@@ -310,15 +310,11 @@ extension MainAuthVC: SignUpVCDelegate {
             return
         }
         self.isRunning = true
-        
-//        if !(user.isValidCode() ?? false) {
-//            self.showInvalidCodeAlert()
-//            return
-//        }
+
         user.signUp(completion: { (user, error) in
             self.isRunning = false
             if let error = error {
-                
+            
                 let action = UIAlertAction(title: "OK", style: .default, handler: nil)
                 self.present(error.alert(action: action), animated: true, completion: nil)
             }else {

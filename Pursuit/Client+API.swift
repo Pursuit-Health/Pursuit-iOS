@@ -19,13 +19,18 @@ extension Client {
     typealias AssignTemplateCompletion  = (_ error: ErrorProtocol?) -> Void
     
     typealias SubmitWorkOutCompletion  = (_ error: ErrorProtocol?) -> Void
+    
     typealias GetClientTemplates        = (_ workout: [Workout]?, _ error: ErrorProtocol?) -> Void
+    
+    typealias ChangeTrainerCompletion  = (_ error: ErrorProtocol?) -> Void
+    
+    typealias CheckClientCompletion = (_ error: ErrorProtocol?) -> Void
     
     //MARK: Public 
     
     class func getAllClients(completion: @escaping GetAllClientsComletion) {
         let api = PSAPI()
-        
+        api.showProgress = false
         api.getAllClients(completion: completion)
     }
     
@@ -45,6 +50,17 @@ extension Client {
         let api = PSAPI()
         
         api.submitWorkout(workoutId: workoutId, completion: completion)
+    }
+    
+    class func changeTrainer(trainerCode: String, completion: @escaping ChangeTrainerCompletion) {
+        let api = PSAPI()
+        
+        api.changeTrainer(trainerCode: trainerCode, completion: completion)
+    }
+    
+    class func check(completion: @escaping CheckClientCompletion) {
+        let api = PSAPI()
+        api.check(completion: completion)
     }
     
     //TODO: Maybe save it to clients property

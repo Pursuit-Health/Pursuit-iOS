@@ -59,6 +59,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgCountView" destination="Ga8-G3-M3b" id="OVO-zd-HbI"/>
                 <outlet property="requestsCount" destination="eR7-wB-PYm" id="ooZ-OC-6Jm"/>
             </connections>
         </tableViewCell>

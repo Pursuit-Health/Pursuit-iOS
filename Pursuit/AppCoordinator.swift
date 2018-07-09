@@ -22,8 +22,49 @@ class AppCoordinator: Coordinator {
         
     }
     
-    /// Window to manage
-    let window: UIWindow
+    //MARK: Enum
+    
+    enum AuthError: Int {
+        case none = 401
+        case pending = 10001
+        case rejected = 10002
+        case deleted = 10006
+        
+//        ublic const REQUEST_PENDING = 10001;
+//        public const REQUEST_REJECTED = 10002;
+//        public const PLAN_UPGRADE_NEEDED = 10003;
+//        public const SUBSCRIPTION_EXPIRED = 10004;
+//        public const ALREADY_ACCEPTED = 10005;
+//        public const REQUEST_DELETED = 10006;
+        
+        var message: String {
+            switch self {
+            case .none:
+                return ""
+            case .pending:
+                return "You are stil in review on Trainer"
+            case .rejected:
+                return "You request has been rejected."
+            case .deleted:
+                return "Trainer deleted you as a Client"
+            }
+        }
+        
+        var leftTitle: String {
+            switch self {
+            case .none:
+                return ""
+            case .pending:
+                return "Review"
+            case .rejected:
+                return "Rejected"
+            case .deleted:
+                return "Deleted"
+            }
+        }
+    }
+    
+    static public var shared = AppCoordinator()
     
     private lazy var navigationController: UINavigationController = {
         let navigationController = UINavigationController()
@@ -33,14 +74,11 @@ class AppCoordinator: Coordinator {
     
     // MARK: - Init
     
-    public init(window: UIWindow) {
-        self.window = window
-        //self.window.rootViewController = self.rootViewController
-        self.window.makeKeyAndVisible()
+     init() {
+
     }
     
     public func start() {
-        
         self.navigateControllers()
     }
     
@@ -52,7 +90,19 @@ class AppCoordinator: Coordinator {
         return User.shared.token != nil
     }
     
-    class func showController(controller: UIViewController) {
+    private func handle(error: ErrorProtocol, on controller: NavigatorVC) {
+        guard let appError = AuthError(rawValue: error.statusCode) else { return }
+        
+        guard let paystatusVC = UIStoryboard.client.PaymentStatus else { return }
+        let navigation = UINavigationController(rootViewController: paystatusVC)
+        paystatusVC.authError = appError
+        controller.addChildViewController(navigation)
+        controller.view.addSubview(navigation.view)
+        controller.view.addConstraints(UIView.place(navigation.view, onOtherView: controller.view))
+        navigation.didMove(toParentViewController: navigation)
+    }
+    
+     func showController(controller: UIViewController) {
         guard let loginController = UIStoryboard.login.MainAuth else { return }
         let controller = controller.navigationController
         controller?.viewControllers.insert(loginController, at: 0)
@@ -63,6 +113,11 @@ class AppCoordinator: Coordinator {
 //        controller.view.addConstraints(UIView.place(clientsList.view, onOtherView: controller.view))
 //        clientsList.didMove(toParentViewController: controller)
 //        controller.addChildViewController(clientsList)
+    }
+    
+    
+     func start(from: NavigatorVC, with error: ErrorProtocol) {
+        handle(error: error, on: from)
     }
 }
 
