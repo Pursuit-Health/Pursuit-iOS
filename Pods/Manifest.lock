@@ -74,6 +74,7 @@ PODS:
   - SimpleAlert (3.0.0)
   - SVProgressHUD (2.2.5)
   - SwiftDate (4.1.11)
+  - SwiftyStoreKit (0.13.2)
   - SwiftyTimer (2.0.0)
   - SwipeCellKit (2.4.2)
   - TOCropViewController (2.3.6)
@@ -110,6 +111,7 @@ DEPENDENCIES:
   - SimpleAlert
   - SVProgressHUD (~> 2.2.2)
   - SwiftDate (~> 4.1.11)
+  - SwiftyStoreKit
   - SwiftyTimer
   - SwipeCellKit
   - TOCropViewController
@@ -153,11 +155,12 @@ SPEC CHECKSUMS:
   SimpleAlert: 7265c3006749c680627545b61ac37d9ab1ab0be6
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftDate: ab63a5f0299dbb57fc088c1a2e5314b4bc9c90bb
+  SwiftyStoreKit: b7563505440a68c9d9fa70bc43d8a97015519409
   SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   SwipeCellKit: a01c587d6786f514a44eed54261e24eaa9fb4de6
   TOCropViewController: 6d972f2c609372312648f96758e13a7f689efbc0
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 798f72d752e086b2e53b05bf33312244a8f9eaa5
+PODFILE CHECKSUM: 5d9681b0814d8d1d1cf490420bd74906a3504b4a
 
 COCOAPODS: 1.4.0

@@ -8,6 +8,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import MBProgressHUD
+import StoreKit
 
 class SubscriptionPlansVC: UIViewController {
     
@@ -69,6 +71,9 @@ class SubscriptionPlansVC: UIViewController {
         }
     }
     
+    var produstIds: [String] = ["com.HealthPursuit.pro1", "com.HealthPursuit.pro2", "com.HealthPursuit.pro3", "com.HealthPursuit.pro4", "com.HealthPursuit.pro5"]
+    var products: [SKProduct] = []
+    
     //MARK: IBActions
     
     @IBAction func tierSliderValueChanged(_ sender: PaymentsTierSlider) {
@@ -76,7 +81,7 @@ class SubscriptionPlansVC: UIViewController {
     }
     
     @IBAction func subscribeButtonPressed(_ sender: Any) {
-       //subscribe
+        subscribe()
     }
     
     //MARK: Lifecycle
@@ -85,18 +90,109 @@ class SubscriptionPlansVC: UIViewController {
         super.viewDidLoad()
         setUpCodeImage()
         
-        IQKeyboardManager.sharedManager().enable = true
+        setType()
+        
+        enableKeyboardManager(true)
+        
+        requestproductInfo()
+        
+        subscribeForPaymentObserver()
+        
+        navigationController?.navigationBar.isHidden = true
     }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        IQKeyboardManager.sharedManager().enable = false
+         enableKeyboardManager(false)
     }
     
-    private func setUpCodeImage() {
+    private func enableKeyboardManager(_ enable: Bool) {
+        IQKeyboardManager.sharedManager().enable = enable
+    }
+    
+    fileprivate func showProgressHud() {
+        let window :UIWindow = UIApplication.shared.keyWindow!
+        MBProgressHUD.showAdded(to: window, animated: true)
+    }
+    
+    fileprivate func dismissProgressHud() {
+        let window :UIWindow = UIApplication.shared.keyWindow!
+        MBProgressHUD.hide(for: window, animated: true)
+    }
+    
+
+}
+
+private extension SubscriptionPlansVC {
+    func setUpCodeImage() {
         if let image = UIImage(named: "gift")?.withRenderingMode(.alwaysTemplate) {
             giftImageView.image = image
             giftImageView.tintColor = UIColor.lightGray
         }
+    }
+    
+    func setType() {
+        tierType = .one
+    }
+}
+
+private extension SubscriptionPlansVC {
+    
+    private func subscribeForPaymentObserver() {
+        SKPaymentQueue.default().add(self)
+    }
+    
+     func requestproductInfo() {
+        if SKPaymentQueue.canMakePayments() {
+            
+            showProgressHud()
+            let productRequest = SKProductsRequest(productIdentifiers: Set(produstIds))
+            productRequest.delegate = self
+            productRequest.start()
+        }
+    }
+    
+    private func subscribe() {
+        let selectedProduct = products[Int(tierSlider.value)]
+        let payment = SKPayment(product: selectedProduct)
+        makePaymentWith(payment: payment)
+    }
+    
+    func makePaymentWith(payment: SKPayment) {
+        SKPaymentQueue.default().add(payment)
+    }
+}
+
+extension SubscriptionPlansVC: SKProductsRequestDelegate {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        for product in  response.products {
+            product.isDownloadable
+            self.products.append(product as SKProduct)
+        }
+        dismissProgressHud()
+    }
+}
+
+extension SubscriptionPlansVC: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchased:
+                SKPaymentQueue.default().finishTransaction(transaction)
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
+            case .purchasing:
+                break
+            case .restored:
+                break
+            case .deferred:
+                break
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
     }
 }

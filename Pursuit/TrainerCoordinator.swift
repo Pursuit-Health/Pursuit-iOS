@@ -68,6 +68,17 @@ class TrainerCoordinator: Coordinator {
         controller.present(alert, animated: true, completion: nil)
     }
     
+    fileprivate func showPaymentRequiredAlert(on controller: UIViewController) {
+        let action = PSAlert(title: "Trial Expired", message: "Your trial has expired! Please register for one of our plans in order to continue using Pursuit Health with your clients.", style: .alert).addActionHandler(action: AlertAction(title: "Cancel", style: .default, handler: { _ in
+            
+            
+        })).addActionHandler(action: AlertAction(title: "View Plans", style: .default, handler: { _ in
+            let subscriptionPlans = UIStoryboard.trainer.SubscriptionPlans!
+            
+            controller.navigationController?.pushViewController(subscriptionPlans, animated: true)
+        }))
+        controller.present(action, animated: true, completion: nil)
+    }
 }
 
 extension TrainerCoordinator: ClientsVCDelegate {
@@ -93,9 +104,14 @@ extension TrainerCoordinator: ClientsVCDelegate {
 extension TrainerCoordinator: ClientInfoVCDatasource {
     func loadInfo(controller: ClientInfoVC, completion: @escaping (User, [Workout]?) -> Void) {
         self.selectedClient?.getTemplatesAsTrainer(completion: { (workouts, error) in
-            if error == nil {
+            if let error = error {
+                if error.statusCode == AppCoordinator.AuthError.paymentrequired.rawValue {
+                    self.showPaymentRequiredAlert(on: controller)
+                }
+            }else {
                 if let client = self.selectedClient, let work = workouts {
                     completion(client, work)
+                    //self.showPaymentRequiredAlert(on: controller)
                 }
             }
         })

@@ -22,27 +22,22 @@ class PSAlert: AlertController {
         }
     }
     
-    override func configureActionButton(_ button: UIButton, at style :AlertAction.Style) {
-        super.configureActionButton(button, at: style)
+    override func configureContentView(_ contentView: AlertContentView) {
+        super.configureContentView(contentView)
         
-        switch style {
-        case .ok:
-            button.titleLabel?.font = UIFont(name: "Avenir-Book", size: 19)
-            button.setTitleColor(UIColor.gray, for: UIControlState())
-        case .cancel:
-            button.backgroundColor = UIColor.darkGray
-            button.setTitleColor(UIColor.white, for: UIControlState())
-        case .default:
-            button.setTitleColor(UIColor.lightGray, for: UIControlState())
-        default:
-            break
-        }
+        contentView.messageLabel.font = UIFont(name: "Avenir-Book", size: 13)
+
+    }
+    
+    override func configureActionButton(_ button: UIButton, at style: AlertAction.Style) {
+        super.configureActionButton(button, at: style)
+            button.titleLabel?.font = UIFont(name: "Avenir-Book", size: 16)
     }
 }
 extension PSAlert {
     func addActionHandler(action: AlertAction) -> PSAlert {
         self.addAction(action)
-        action.button.titleLabel?.font = UIFont(name: "Avenir-Book", size: 19)
+        action.button.titleLabel?.font = UIFont(name: "Avenir-Book", size: 16)
         return self
     }
 }

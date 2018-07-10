@@ -128,6 +128,7 @@
 		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
 		7865059520F34A7200B7531B /* PaymentStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865059420F34A7200B7531B /* PaymentStatusVC.swift */; };
 		7865059720F356FC00B7531B /* PSAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865059620F356FC00B7531B /* PSAlert.swift */; };
+		7865059920F38B7F00B7531B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7865059820F38B7F00B7531B /* StoreKit.framework */; };
 		787A99272019E20800E69B5F /* ExersiseData+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A99262019E20800E69B5F /* ExersiseData+API.swift */; };
 		787A992D201A2FBD00E69B5F /* UFView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787A992C201A2FBD00E69B5F /* UFView+Extension.swift */; };
 		787EA0811FCADCDF000138BD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787EA0801FCADCDF000138BD /* Category.swift */; };
@@ -419,6 +420,7 @@
 		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
 		7865059420F34A7200B7531B /* PaymentStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusVC.swift; sourceTree = "<group>"; };
 		7865059620F356FC00B7531B /* PSAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAlert.swift; sourceTree = "<group>"; };
+		7865059820F38B7F00B7531B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		787A99262019E20800E69B5F /* ExersiseData+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExersiseData+API.swift"; sourceTree = "<group>"; };
 		787A992C201A2FBD00E69B5F /* UFView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UFView+Extension.swift"; sourceTree = "<group>"; };
 		787EA0801FCADCDF000138BD /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA24E7298AB16ECBCDA6225E /* Pods_Pursuit.framework in Frameworks */,
+				7865059920F38B7F00B7531B /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +600,7 @@
 		002ED0D60404940A40D38084 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7865059820F38B7F00B7531B /* StoreKit.framework */,
 				3AACA94D68877B10D1A45D54 /* Pods_Pursuit.framework */,
 			);
 			name = Frameworks;
@@ -1338,6 +1342,13 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		7865059A20F38BC400B7531B /* In-App Purchases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "In-App Purchases";
+			sourceTree = "<group>";
+		};
 		787EA07F1FCADC1C000138BD /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1912,6 +1923,7 @@
 		84AB4D531F327CFB00531740 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				7865059A20F38BC400B7531B /* In-App Purchases */,
 				7831453020E55D8D006661A8 /* SearchBar */,
 				78BAC2EE20B5BEDF00C0EDD2 /* PagingTableView */,
 				78BAC2D920B4ACBC00C0EDD2 /* Popups */,
@@ -2395,6 +2407,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HEL7S68QC6;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					5B1F831C1E850E4100ABA24C = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -2567,6 +2584,7 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SimpleAlert/SimpleAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework",
@@ -2604,6 +2622,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimpleAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOCropViewController.framework",

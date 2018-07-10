@@ -29,6 +29,7 @@ class AppCoordinator: Coordinator {
         case pending = 10001
         case rejected = 10002
         case deleted = 10006
+        case paymentrequired = 10003
         
 //        ublic const REQUEST_PENDING = 10001;
 //        public const REQUEST_REJECTED = 10002;
@@ -47,6 +48,8 @@ class AppCoordinator: Coordinator {
                 return "You request has been rejected."
             case .deleted:
                 return "Trainer deleted you as a Client"
+            case .paymentrequired:
+                return  ""
             }
         }
         
@@ -60,6 +63,8 @@ class AppCoordinator: Coordinator {
                 return "Rejected"
             case .deleted:
                 return "Deleted"
+            case .paymentrequired:
+                return ""
             }
         }
     }
