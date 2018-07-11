@@ -12,6 +12,7 @@ import SDWebImage
 import SVProgressHUD
 import EmptyKit
 import PullToRefreshSwift
+import SimpleAlert
 
 protocol ClientsVCDelegate: class {
     func didSelect(client: Client, on controller: ClientsVC)
@@ -108,7 +109,8 @@ class ClientsVC: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
-
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -134,12 +136,39 @@ class ClientsVC: UIViewController {
         }
     }
     
+    private func showPaymentRequiredAlert(on controller: UIViewController, with title: String) {
+        let action = PSAlert(title: "Payment", message: title, style: .alert).addActionHandler(action: AlertAction(title: "Cancel", style: .default, handler: { _ in
+            
+        })).addActionHandler(action: AlertAction(title: "View Plans", style: .default, handler: { _ in
+            let subscriptionPlans = UIStoryboard.trainer.SubscriptionPlans!
+            
+            controller.navigationController?.pushViewController(subscriptionPlans, animated: true)
+        }))
+        controller.present(action, animated: true, completion: nil)
+    }
+    
+    private func handleError(error: ErrorProtocol) {
+        if error.statusCode == AppCoordinator.AuthError.paymentrequired.rawValue || error.statusCode == AppCoordinator.AuthError.subscriptionExpired.rawValue {
+            let authError = AppCoordinator.AuthError(rawValue: error.statusCode) ?? .none
+            
+            self.showPaymentRequiredAlert(on: self, with: authError.leftTitle)
+        }else {
+            let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     fileprivate func loadClients(){
         Client.getAllClients(completion: { trainersInfo, error in
-            if let data = trainersInfo {
-                self.client             = data
-                self.filteredClients    = data
-                self.clientsTable.stopPullRefreshEver()
+            self.clientsTable.stopPullRefreshEver()
+            if let error = error {
+                self.handleError(error: error)
+            }else {
+                if let data = trainersInfo {
+                    self.client             = data
+                    self.filteredClients    = data
+                }
             }
         })
     }

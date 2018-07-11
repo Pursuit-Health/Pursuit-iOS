@@ -2546,7 +2546,7 @@ Every plan comes loaded with the same great features and no hidden fees or setup
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="3AS-KH-7gb"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JA-Ku-Mcn" customClass="PaymentsTierSlider" customModule="Pursuit" customModuleProvider="target">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="4" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JA-Ku-Mcn" customClass="PaymentsTierSlider" customModule="Pursuit" customModuleProvider="target">
                                 <rect key="frame" x="35.5" y="328.5" width="304" height="31"/>
                                 <color key="tintColor" red="0.59436430532861284" green="0.92577954793028328" blue="0.89611871368917939" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="minimumTrackTintColor" red="0.59607843137254901" green="0.92549019607843142" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
@@ -2609,6 +2609,7 @@ Every plan comes loaded with the same great features and no hidden fees or setup
                     <connections>
                         <outlet property="clientsCountLabel" destination="K2Q-ar-Ock" id="L0k-mR-jIr"/>
                         <outlet property="giftImageView" destination="Ani-Hm-QdJ" id="1dG-3g-ukl"/>
+                        <outlet property="promoCodeTextField" destination="KGI-e1-iwk" id="zJC-a8-cQP"/>
                         <outlet property="rateLabel" destination="oS7-4W-GDh" id="mdg-dc-0Kc"/>
                         <outlet property="tierLabel" destination="FWT-44-WFF" id="hgI-yu-Cwn"/>
                         <outlet property="tierSlider" destination="3JA-Ku-Mcn" id="opD-Km-TSi"/>

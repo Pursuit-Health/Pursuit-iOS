@@ -31,7 +31,8 @@ class ScheduleCell: UICollectionViewCell {
     
     //TODO: Find Grater solution/Use stackView instead
     func fillImages(clients: [Client]) {
-        
+        firstImageView.image = UIImage()
+        secondImageView.image = UIImage()
         if clients.count >= 3 {
             if let url = clients[0].clientAvatar {
                 firstImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))

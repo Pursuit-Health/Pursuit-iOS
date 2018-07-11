@@ -149,6 +149,8 @@ class ClientInfoVC: UIViewController {
     private func setUpNavigationBar() {
         self.navigationController?.navigationBar.setAppearence()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func subscribeForNotifications() {

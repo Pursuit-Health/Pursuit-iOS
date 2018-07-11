@@ -70,6 +70,8 @@ extension PSAPI {
         
         case check()
         
+        case subscribeTo(parameters: Parameters)
+        
         
         //MARK: RequestConvertible
         
@@ -79,7 +81,7 @@ extension PSAPI {
         
         var method: HTTPMethod {
             switch self {
-        case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises, .saveSavedTemplate, .acceptClient, .rejectClient, .changeTrainer:
+        case .registerClient, .registerTrainer, .login, .forgotPassword, .uploadAvatar, .setPassword, .createWorkout, .createEvent, .assignTemplate, .submitWorkout, .submitExcersise, .searchExercises, .saveSavedTemplate, .acceptClient, .rejectClient, .changeTrainer, .subscribeTo:
                 return .post
             case .changePassword, .editTemplate, .editSavedTemplate:
                 return .put
@@ -185,6 +187,8 @@ extension PSAPI {
                 return "client/trainer/change"
             case .check:
                 return "client/check"
+            case .subscribeTo(_):
+                return "trainer/payments/subscription"
             }
             
         }
@@ -222,7 +226,8 @@ extension PSAPI {
                  .searchExercises(let parameters),
                  .saveSavedTemplate(let parameters),
                  .editSavedTemplate(_, let parameters),
-                 .changeTrainer(let parameters):
+                 .changeTrainer(let parameters),
+                 .subscribeTo(let parameters):
                 return parameters
             default:
                 return nil
@@ -236,7 +241,7 @@ extension PSAPI {
             guard let token = User.shared.token else {return ""}
             
             switch self{
-            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates, .getFireBaseToken, .getInvitationCode, .acceptClient, .rejectClient, .getPengingClients, .deleteClient, .changeTrainer, .check:
+            case .changePassword, .uploadAvatar, .createWorkout, .deleteTemplate, .deleteTemplateExercise, . getAllTemplates, .editTemplate, .getTemplateWithExercise, .getAllClients, .getTrainerEvents, .getClientEvents, .createEvent, .refreshToken, .getWorkouts, .getWorkoutById, .assignTemplate, .submitWorkout, .getUserInfo, .getClientTemplates, .getDetailedTemplate, .getCategories, .getExercisesByCategoryId, .searchExercises, .getSavedTemlates, .getFireBaseToken, .getInvitationCode, .acceptClient, .rejectClient, .getPengingClients, .deleteClient, .changeTrainer, .check, .subscribeTo:
                 return "Bearer" + token
             default:
                 return ""

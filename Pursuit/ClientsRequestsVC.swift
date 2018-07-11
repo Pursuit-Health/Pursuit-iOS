@@ -75,7 +75,6 @@ class ClientsRequestsVC: UIViewController {
         setUpBackgroundImage()
         
        navigationController?.navigationBar.setAppearence()
-        
     }
     
     

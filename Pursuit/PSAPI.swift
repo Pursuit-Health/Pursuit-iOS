@@ -674,6 +674,13 @@ class PSAPI: APIHandable {
         let request = Request.check()
         return self.simple(request: request, completion: completion)
     }
+    
+    @discardableResult
+    func subscribeTo(type: String, valid_until: String, completion: @escaping SubscribeToCompletion) -> DataRequest? {
+        let request = Request.subscribeTo(parameters: ["sub_type": type,
+                                                       "sub_valid_until" : valid_until])
+        return self.simple(request: request, completion: completion)
+    }
 }
 
 extension PSAPI {
@@ -764,4 +771,5 @@ extension PSAPI {
     typealias GetPendingClientsCompletion = (_ client: [Client]?, _ error: ErrorProtocol?) -> Void
     typealias CheckClientCompletion = (_ error: ErrorProtocol?) -> Void
     
+    typealias SubscribeToCompletion = (_ error: ErrorProtocol?) -> Void
 }

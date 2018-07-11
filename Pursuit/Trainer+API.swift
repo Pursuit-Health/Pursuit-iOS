@@ -28,6 +28,8 @@ extension Trainer {
     
     typealias DeleteClientCompletion  = (_ error: ErrorProtocol?) -> Void
     
+    typealias SubscribeToCompletion = (_ error: ErrorProtocol?) -> Void
+    
     //MARK: Public
     class func getTrainers(completion: @escaping GetTrainersCompletion) {
         let api = PSAPI()
@@ -73,5 +75,10 @@ extension Trainer {
         let api = PSAPI()
         
         api.deleteClient(clientId: clientId, completion: completion)
+    }
+    
+    class func subscribeTo(type: String, valid_until: String, completion: @escaping  SubscribeToCompletion) {
+        let api = PSAPI()
+        api.subscribeTo(type: type, valid_until: valid_until, completion: completion)
     }
 }

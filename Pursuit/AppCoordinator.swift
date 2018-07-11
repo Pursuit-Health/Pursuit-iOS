@@ -30,6 +30,7 @@ class AppCoordinator: Coordinator {
         case rejected = 10002
         case deleted = 10006
         case paymentrequired = 10003
+        case subscriptionExpired = 10004
         
 //        ublic const REQUEST_PENDING = 10001;
 //        public const REQUEST_REJECTED = 10002;
@@ -49,7 +50,9 @@ class AppCoordinator: Coordinator {
             case .deleted:
                 return "Trainer deleted you as a Client"
             case .paymentrequired:
-                return  ""
+                return  "You have reached limit of clients"
+            case .subscriptionExpired:
+                return "Your subscription expired"
             }
         }
         
@@ -64,7 +67,9 @@ class AppCoordinator: Coordinator {
             case .deleted:
                 return "Deleted"
             case .paymentrequired:
-                return ""
+                return "Payment Required"
+            case .subscriptionExpired:
+                return "Subscription"
             }
         }
     }

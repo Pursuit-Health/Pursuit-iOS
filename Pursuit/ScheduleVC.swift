@@ -10,6 +10,7 @@ import UIKit
 import JTAppleCalendar
 import SDWebImage
 import SwiftDate
+import SimpleAlert
 
 typealias EventsCompletion = (_ event: [Event]?, _ error: ErrorProtocol?) -> Void
 
@@ -146,6 +147,7 @@ class ScheduleVC: UIViewController {
     
     private func configureNavigation() {
         navigationController?.navigationBar.setAppearence()
+        navigationController?.navigationBar.isHidden = false
         
         if User.shared.coordinator is ClientCoordinator {
             navigationItem.rightBarButtonItem = nil
@@ -164,6 +166,40 @@ class ScheduleVC: UIViewController {
         }
     }
     
+    private func showPaymentRequiredAlert(on controller: UIViewController, with title: String) {
+        let action = PSAlert(title: "Payment", message: title, style: .alert).addActionHandler(action: AlertAction(title: "Cancel", style: .default, handler: { _ in
+            
+            
+        })).addActionHandler(action: AlertAction(title: "View Plans", style: .default, handler: { _ in
+            let subscriptionPlans = UIStoryboard.trainer.SubscriptionPlans!
+            
+            controller.navigationController?.pushViewController(subscriptionPlans, animated: true)
+        }))
+        controller.present(action, animated: true, completion: nil)
+    }
+    
+    private func updateEvents(events: [Event], dateFormatter: DateFormatter) {
+        self.events = events
+        self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate:true , animateScroll: true, preferredScrollPosition: .centeredHorizontally, extraAddedOffset: 0, completionHandler: {
+            self.calendarView.reloadData()
+            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+            self.filteredEvents = self.events.filter{ $0.date?.contains(dateFormatter.string(from: Date())) ?? false }
+            self.updateLeftTitleWith(Date())
+        })
+    }
+    
+    private func handleError(error: ErrorProtocol) {
+        
+        if error.statusCode == AppCoordinator.AuthError.paymentrequired.rawValue || error.statusCode == AppCoordinator.AuthError.subscriptionExpired.rawValue {
+            let authError = AppCoordinator.AuthError(rawValue: error.statusCode) ?? .none
+            self.showPaymentRequiredAlert(on: self, with: authError.leftTitle)
+        }else {
+            let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     private func updateLeftTitleWith(_ date: Date) {
         self.navigationItem.leftTitle   = self.monthYearFormatter.string(from: date)
     }
@@ -178,16 +214,12 @@ class ScheduleVC: UIViewController {
         let endDate: String = dateformatter.string(from: changedDate.absoluteDate)
         
         self.datasource?.updateDataSource(self, startDate, endDate: endDate, complation: { (events, error) in
-            if error == nil {
+            if let error = error {
+                self.handleError(error: error)
+            }else {
                 if let events = events {
-                    self.events = events
-                    self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate:true , animateScroll: true, preferredScrollPosition: .centeredHorizontally, extraAddedOffset: 0, completionHandler: {
-                        self.calendarView.reloadData()
-                        self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
-                        self.filteredEvents = self.events.filter{ $0.date?.contains(dateformatter.string(from: Date())) ?? false }
-                        self.updateLeftTitleWith(Date())
-                    })
-                }
+                    self.updateEvents(events: events, dateFormatter: dateformatter)
+                }    
             }
         })
     }

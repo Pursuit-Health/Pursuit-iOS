@@ -105,7 +105,7 @@ extension TrainerCoordinator: ClientInfoVCDatasource {
     func loadInfo(controller: ClientInfoVC, completion: @escaping (User, [Workout]?) -> Void) {
         self.selectedClient?.getTemplatesAsTrainer(completion: { (workouts, error) in
             if let error = error {
-                if error.statusCode == AppCoordinator.AuthError.paymentrequired.rawValue {
+                if error.statusCode == AppCoordinator.AuthError.paymentrequired.rawValue || error.statusCode == AppCoordinator.AuthError.subscriptionExpired.rawValue{
                     self.showPaymentRequiredAlert(on: controller)
                 }
             }else {

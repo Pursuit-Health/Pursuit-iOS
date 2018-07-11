@@ -29,6 +29,8 @@ extension TrainerTabBarVC: ClientScheduleDataSource {
         Trainer.getTrainerEvents(startdDate: startDate, endDate: endDate) { (events, error) in
             if error == nil {
                 complation(events, error)
+            }else {
+                complation(nil, error)
             }
         }
     }

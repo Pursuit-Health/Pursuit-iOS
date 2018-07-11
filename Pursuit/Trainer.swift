@@ -7,6 +7,7 @@
 //
 
 import ObjectMapper
+import SwiftDate
 
 class Trainer: User {
     
@@ -44,6 +45,17 @@ class Trainer: User {
     override func signUp(completion: @escaping RegisterTrainerCompletion) {
         let api = PSAPI()
         
-        api.registerTrainer(personalData: self.createSignUpParameters(), completion: completion)
+        api.registerTrainer(personalData: self.createSignUpParameters(), completion: { (user, error) in
+            if error == nil {
+                let dateFormatter = DateFormatters.serverTimeFormatter
+                var date = DateInRegion(absoluteDate: Date())
+                date = date + 2.weeks
+                let converted = dateFormatter.string(from: date.absoluteDate)
+                Trainer.subscribeTo(type: "pro-5", valid_until: converted , completion: { (error) in
+                    
+                })
+            }
+            completion(user, error)
+        })
     }
 }
