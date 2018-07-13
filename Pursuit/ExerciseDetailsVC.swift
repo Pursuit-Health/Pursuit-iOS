@@ -787,7 +787,7 @@ extension ExerciseDetailsVC: StraightExerciseStateCellDelegate {
             }
         }
         let sub :[CellType] = [.rest(excersize: self.excersize),
-                               .notes(excersize: self.excersize, delegate: self)]
+                               .notes(excersize: self.excersize, delegate: self),.description(excersize: self.excersize)]
         cellsInfo.append(contentsOf: sub)
         exerceiseTableView.reloadData()
     }

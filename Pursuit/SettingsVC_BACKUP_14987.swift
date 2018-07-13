@@ -146,10 +146,13 @@ class SettingsVC: UIViewController {
         
         navigationController?.navigationBar.setAppearence()
         
+<<<<<<< HEAD
         self.setupSideMenuGesture()
         
         self.getUserInfo()
+=======
         configureRevealVC()
+>>>>>>> mvp_v2
     }
     
     override func viewWillDisappear(_ animated: Bool) {

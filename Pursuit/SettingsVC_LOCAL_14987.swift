@@ -149,24 +149,12 @@ class SettingsVC: UIViewController {
         self.setupSideMenuGesture()
         
         self.getUserInfo()
-        configureRevealVC()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if let sub = self.revealViewController().frontViewController.view.viewWithTag(100) {
-            sub.removeFromSuperview()
-        }
-    }
-    
-    private func configureRevealVC() {
-        let subView = UIView()
-        subView.frame = UIScreen.main.bounds
-        subView.tag = 100
-        subView.addGestureRecognizer(revealViewController().tapGestureRecognizer())
-        self.revealViewController().frontViewController.view.addSubview(subView)
-        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController().frontViewController.view.isUserInteractionEnabled = true
     }
     
     private func setupSideMenuGesture() {
