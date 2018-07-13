@@ -44,7 +44,7 @@ class AppCoordinator: Coordinator {
             case .none:
                 return ""
             case .pending:
-                return "You are stil in review on Trainer"
+                return "Waiting for Trainer Approval"
             case .rejected:
                 return "You request has been rejected."
             case .deleted:
@@ -52,7 +52,7 @@ class AppCoordinator: Coordinator {
             case .paymentrequired:
                 return  "You have reached limit of clients"
             case .subscriptionExpired:
-                return "Your subscription expired"
+                return "Your subscription has expired!.Please register for one of our plans in order to continue using Pursuit Health with your clients."
             }
         }
         
@@ -69,7 +69,7 @@ class AppCoordinator: Coordinator {
             case .paymentrequired:
                 return "Payment Required"
             case .subscriptionExpired:
-                return "Subscription"
+                return "Subscription Expired"
             }
         }
     }

@@ -2556,14 +2556,14 @@ Every plan comes loaded with the same great features and no hidden fees or setup
                                     <action selector="tierSliderValueChanged:" destination="1bV-3D-8Oa" eventType="valueChanged" id="jHf-MC-1jn"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS7-4W-GDh">
-                                <rect key="frame" x="147" y="368.5" width="81" height="45.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS7-4W-GDh">
+                                <rect key="frame" x="183" y="368.5" width="9.5" height="45.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2Q-ar-Ock">
-                                <rect key="frame" x="166" y="416" width="42" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2Q-ar-Ock">
+                                <rect key="frame" x="187" y="416" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2574,6 +2574,13 @@ Every plan comes loaded with the same great features and no hidden fees or setup
                                 <color key="textColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfW-TW-jyy">
+                                <rect key="frame" x="16" y="20" width="130" height="30"/>
+                                <state key="normal" title="Expire In 2 minutes"/>
+                                <connections>
+                                    <action selector="expireTest:" destination="1bV-3D-8Oa" eventType="touchUpInside" id="NGf-2Q-hKH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2582,6 +2589,7 @@ Every plan comes loaded with the same great features and no hidden fees or setup
                             <constraint firstItem="gXE-gY-sAt" firstAttribute="trailing" secondItem="4nf-Pe-LCA" secondAttribute="trailing" constant="30" id="4uw-R1-8Rj"/>
                             <constraint firstItem="KGI-e1-iwk" firstAttribute="trailing" secondItem="gMQ-d0-ngd" secondAttribute="trailing" id="4vO-Cm-sgK"/>
                             <constraint firstItem="FWT-44-WFF" firstAttribute="centerX" secondItem="3JA-Ku-Mcn" secondAttribute="centerX" id="5oX-TV-RvF"/>
+                            <constraint firstItem="gfW-TW-jyy" firstAttribute="top" secondItem="gXE-gY-sAt" secondAttribute="top" id="6Sh-gI-cUe"/>
                             <constraint firstItem="K2Q-ar-Ock" firstAttribute="centerX" secondItem="oS7-4W-GDh" secondAttribute="centerX" id="935-cL-NvK"/>
                             <constraint firstItem="gXE-gY-sAt" firstAttribute="trailing" secondItem="gMQ-d0-ngd" secondAttribute="trailing" constant="20" id="IzP-Yg-a7t"/>
                             <constraint firstItem="hfa-A9-aGd" firstAttribute="leading" secondItem="Ani-Hm-QdJ" secondAttribute="leading" id="Nk5-7i-Y8r"/>
@@ -2603,6 +2611,7 @@ Every plan comes loaded with the same great features and no hidden fees or setup
                             <constraint firstItem="Ani-Hm-QdJ" firstAttribute="leading" secondItem="gMQ-d0-ngd" secondAttribute="leading" id="r1f-64-xb2"/>
                             <constraint firstItem="3JA-Ku-Mcn" firstAttribute="top" secondItem="FWT-44-WFF" secondAttribute="bottom" constant="10" id="rZ7-36-fPV"/>
                             <constraint firstItem="3JA-Ku-Mcn" firstAttribute="centerY" secondItem="gXE-gY-sAt" secondAttribute="centerY" id="vSO-zU-0D3"/>
+                            <constraint firstItem="gfW-TW-jyy" firstAttribute="leading" secondItem="gXE-gY-sAt" secondAttribute="leading" constant="16" id="yzW-l0-JYC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gXE-gY-sAt"/>
                     </view>

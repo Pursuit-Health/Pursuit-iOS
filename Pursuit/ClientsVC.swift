@@ -136,8 +136,8 @@ class ClientsVC: UIViewController {
         }
     }
     
-    private func showPaymentRequiredAlert(on controller: UIViewController, with title: String) {
-        let action = PSAlert(title: "Payment", message: title, style: .alert).addActionHandler(action: AlertAction(title: "Cancel", style: .default, handler: { _ in
+    private func showPaymentRequiredAlert(on controller: UIViewController, with title: String, message: String) {
+        let action = PSAlert(title: title, message: title, style: .alert).addActionHandler(action: AlertAction(title: "Cancel", style: .default, handler: { _ in
             
         })).addActionHandler(action: AlertAction(title: "View Plans", style: .default, handler: { _ in
             let subscriptionPlans = UIStoryboard.trainer.SubscriptionPlans!
@@ -151,7 +151,7 @@ class ClientsVC: UIViewController {
         if error.statusCode == AppCoordinator.AuthError.paymentrequired.rawValue || error.statusCode == AppCoordinator.AuthError.subscriptionExpired.rawValue {
             let authError = AppCoordinator.AuthError(rawValue: error.statusCode) ?? .none
             
-            self.showPaymentRequiredAlert(on: self, with: authError.leftTitle)
+            self.showPaymentRequiredAlert(on: self, with: authError.leftTitle, message: authError.message)
         }else {
             let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: { (_) in
             }))

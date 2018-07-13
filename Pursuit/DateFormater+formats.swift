@@ -15,6 +15,8 @@ struct DateFormatters {
     static let monthYearFormat: DateFormatter           = DateFormatters.dateFormatterWith("MMMM yyyy")
     static let serverHoursFormatter: DateFormatter      = DateFormatters.dateFormatterWith("HH:mm")
     
+    static let ianPurchaseFormat: DateFormatter         = DateFormatters.dateFormatterWith("yyyy-MM-dd HH:mm:ss")
+    
     static func defaultFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = NSTimeZone.default

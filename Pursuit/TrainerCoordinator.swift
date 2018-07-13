@@ -111,7 +111,7 @@ extension TrainerCoordinator: ClientInfoVCDatasource {
             }else {
                 if let client = self.selectedClient, let work = workouts {
                     completion(client, work)
-                    //self.showPaymentRequiredAlert(on: controller)
+                   // self.showPaymentRequiredAlert(on: controller)
                 }
             }
         })

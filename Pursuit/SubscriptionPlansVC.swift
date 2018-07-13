@@ -12,6 +12,7 @@ import MBProgressHUD
 import SimpleAlert
 import SwiftyStoreKit
 import StoreKit
+import SwiftDate
 
 
 class SubscriptionPlansVC: UIViewController {
@@ -148,6 +149,14 @@ class SubscriptionPlansVC: UIViewController {
         subscribe()
     }
     
+    @IBAction func expireTest(_ sender: Any) {
+        let dateFormatter = DateFormatters.ianPurchaseFormat
+        var date = DateInRegion(absoluteDate: Date())
+        date = date + 2.minutes
+        let converted = dateFormatter.string(from: date.absoluteDate)
+        subscribeTo(type: tierType.serverSub, validUntil: converted)
+    }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -212,7 +221,7 @@ class SubscriptionPlansVC: UIViewController {
     
     fileprivate func subscribeTo(item: ReceiptItem?, expireDate: Date) {
         guard let item = item else { return }
-        let dateFormatter = DateFormatters.serverTimeFormatter
+        let dateFormatter = DateFormatters.ianPurchaseFormat
         
         let stringDate = dateFormatter.string(from: expireDate)
     

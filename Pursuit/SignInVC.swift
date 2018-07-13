@@ -79,6 +79,7 @@ extension SignInVC : UITextFieldDelegate {
             emailTeaxtField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         }else if textField == passwordTextField {
+            user.password   = passwordTextField.text ?? ""
             makeSignIn()
         }
         return true

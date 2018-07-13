@@ -35,6 +35,9 @@ class PaymentStatusVC: UIViewController {
     private func updateTitlelabel(_ title: String) {
         titleLabel.text = title
     }
+    private func updateMessagelabel(_ message: String) {
+        messageLabel.text = message
+    }
     
     private func changeTrainerWithNewCode(_ trainerCode: String) {
         Client.changeTrainer(trainerCode: trainerCode.uppercased()) { (error) in
@@ -42,7 +45,9 @@ class PaymentStatusVC: UIViewController {
                 let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }else {
+                self.leftTitle = "Trainer Changed"
                 self.updateTitlelabel("Trainer has been changed.")
+                self.updateMessagelabel("")
             }
         }
     }
