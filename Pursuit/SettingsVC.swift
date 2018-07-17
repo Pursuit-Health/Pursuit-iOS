@@ -146,9 +146,8 @@ class SettingsVC: UIViewController {
         
         navigationController?.navigationBar.setAppearence()
         
-        self.setupSideMenuGesture()
+        getUserInfo()
         
-        self.getUserInfo()
         configureRevealVC()
     }
     
@@ -166,13 +165,7 @@ class SettingsVC: UIViewController {
         subView.tag = 100
         subView.addGestureRecognizer(revealViewController().tapGestureRecognizer())
         self.revealViewController().frontViewController.view.addSubview(subView)
-        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    }
-    
-    private func setupSideMenuGesture() {
-        self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        self.revealViewController().frontViewController.revealViewController().tapGestureRecognizer()
-        self.revealViewController().frontViewController.view.isUserInteractionEnabled = false
+    self.revealViewController().view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
     
     private func setUpCodeView() {

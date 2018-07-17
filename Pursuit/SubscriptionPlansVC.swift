@@ -105,6 +105,31 @@ class SubscriptionPlansVC: UIViewController {
                 return "pro-50"
             }
         }
+        
+        var tier: Int {
+            switch self {
+            case .one:
+                return 1
+            case .two:
+                return 2
+            case .three:
+                return 3
+            case .four:
+                return 4
+            case .five:
+                return 5
+            case .oneD:
+                return 1
+            case .twoD:
+                return 2
+            case .threeD:
+                return 3
+            case .fourD:
+                return 4
+            case .fiveD:
+                return 5
+            }
+        }
     }
     
     //MARK: Constants
@@ -126,7 +151,7 @@ class SubscriptionPlansVC: UIViewController {
     
     var tierType: TierType = .one {
         didSet {
-            tierLabel.text         = "TIER \(tierType.rawValue + 1)"
+            tierLabel.text         = "TIER \(tierType.tier)"
             rateLabel.text         = tierType.rate
             clientsCountLabel.text = tierType.clients
             tierSlider.value       = Float(tierType.rawValue)
@@ -275,7 +300,7 @@ private extension SubscriptionPlansVC {
             self.dismissProgressHud()
             if case .success(let purchase) = result {
                 self.validateReceipt(productId: productId)
-            } else {
+            } else if case .error(let error) = result {
                 
             }
         }
@@ -313,14 +338,18 @@ private extension SubscriptionPlansVC {
             self.dismissProgressHud()
             switch result {
             case .success(let receipt):
+                
                 let productIds = Set(self.produstIds)
-                let purchaseResult = SwiftyStoreKit.verifySubscriptions(productIds: productIds, inReceipt: receipt)
+                let purchaseResult = SwiftyStoreKit.verifySubscriptions(ofType: .autoRenewable, productIds: productIds, inReceipt: receipt, validUntil: Date())
                 switch purchaseResult {
                 case .purchased(let expiryDate, let items):
                     if let item = items.first {
                         self.setTypeWith(item: item)
                     }
                 case .expired(let expiryDate, let items):
+                    if let item = items.first {
+                        self.setTypeWith(item: item)
+                    }
                     break
                 case .notPurchased:
                     break

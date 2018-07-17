@@ -52,7 +52,7 @@ class AppCoordinator: Coordinator {
             case .paymentrequired:
                 return  "You have reached limit of clients"
             case .subscriptionExpired:
-                return "Your subscription has expired!.Please register for one of our plans in order to continue using Pursuit Health with your clients."
+                return "Your subscription has expired! Please register for one of our plans in order to continue using Pursuit Health with your clients."
             }
         }
         

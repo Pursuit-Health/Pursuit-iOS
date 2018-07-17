@@ -267,6 +267,11 @@ class ExerciseDetailsVC: UIViewController {
             cell.nameLabel.text             = "Notes"
             cell.exerciseImageView.image    = imageFromName("notes")
             cell.delegate = delegate
+            if User.shared.coordinator is ClientCoordinator {
+                cell.notesTextView.isScrollEnabled = false
+            }else {
+                cell.notesTextView.isScrollEnabled = true
+            }
             if let note = notes {
                 cell.notesTextView.text = note
             }else {

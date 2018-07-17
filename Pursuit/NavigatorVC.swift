@@ -106,6 +106,9 @@ class NavigatorVC: UIViewController {
     }
     
     private func navigate() {
+        User.getFireBaseToken { (_, _) in
+            
+        }
         User.getUserInfo { (user, error) in
             if let _ = error {
                 AppCoordinator.shared.showController(controller: self)

@@ -345,7 +345,7 @@ static inline BOOL BBB_selector_belongsToProtocol(SEL selector, Protocol * proto
    forControlEvents:UIControlEventEditingChanged];
     [self addTarget:self
              action:@selector(BBB_textFieldDidEndEditing:)
-   forControlEvents:UIControlEventEditingChanged];
+   forControlEvents:UIControlEventEditingDidEnd];
     [self BBB_setDelegate: self];
 }
 

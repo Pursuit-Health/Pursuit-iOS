@@ -174,7 +174,7 @@ class ScheduleClientVC: UIViewController {
         super.viewDidLoad()
         setUpBackgroundImage()
         
-        configureSideMenuController()
+       IQKeyboardManager.sharedManager().enable = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
