@@ -28,58 +28,30 @@ class ScheduleCell: UICollectionViewCell {
         super.awakeFromNib()
         
     }
-    
-    //TODO: Find Grater solution/Use stackView instead
+
     func fillImages(clients: [Client]) {
-        firstImageView.image = UIImage()
-        secondImageView.image = UIImage()
-        if clients.count >= 3 {
-            if let url = clients[0].clientAvatar {
-                firstImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
-            }else {
-                firstImageView.image = UIImage(named: "profile")
-            }
+        for view in imagesStackView.subviews {
+            view.removeFromSuperview()
+        }
+        for (index, client) in clients.enumerated() {
             
-            if let url = clients[1].clientAvatar {
-                secondImageView.sd_setImage(with: URL(string:  url.persuitImageUrl()))
-            }else {
-                secondImageView.image = UIImage(named: "profile")
-            }
-            if let url = clients[2].clientAvatar {
-                thirdImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
-            }else {
-                thirdImageView.image = UIImage(named: "profile")
-            }
-            if clients.count == 3 {
+            if clients.count <= 3 {
                 clientsCountLabel.text = ""
             }else {
                 clientsCountLabel.text = "+" + "\(clients.count - 3)"
             }
             
-        }else if clients.count == 2 {
-            
-            if let url = clients[0].clientAvatar {
-                secondImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
-            }else {
-                secondImageView.image = UIImage(named: "profile")
-            }
-            if let url = clients[1].clientAvatar {
-                thirdImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
-            }else {
-                thirdImageView.image = UIImage(named: "profile")
+            if index > 2 {
+                return
             }
             
-            clientsCountLabel.text = ""
-        }else if clients.count == 1 {
-            
-            if let url = clients[0].clientAvatar {
-                thirdImageView.sd_setImage(with: URL(string: url.persuitImageUrl()))
-            }else {
-                thirdImageView.image = UIImage(named: "profile")
-            }
-            
-            clientsCountLabel.text = ""
+            let clientView = ClientView()
+            clientView.name = client.name
+            clientView.avatar = client.clientAvatar 
+            clientView.translatesAutoresizingMaskIntoConstraints = false
+            clientView.heightAnchor.constraint(equalToConstant: 45).isActive = true
+            clientView.widthAnchor.constraint(equalToConstant: 35).isActive = true
+            imagesStackView.addArrangedSubview(clientView)
         }
     }
-    
 }

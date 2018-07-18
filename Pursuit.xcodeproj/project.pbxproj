@@ -125,6 +125,8 @@
 		78473BDC1F745BB50067DA1F /* AddExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */; };
 		78473BDD1F745BB50067DA1F /* AddExerciseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */; };
 		7848B0331F5FD4AD00B32791 /* SelectTrainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */; };
+		784A4B2620FE81F9004E2DC9 /* ClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784A4B2520FE81F9004E2DC9 /* ClientView.swift */; };
+		784A4B2820FE8248004E2DC9 /* ClientView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784A4B2720FE8248004E2DC9 /* ClientView.xib */; };
 		785FF42B1FA1FFD200787CF4 /* UIStoryboard+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */; };
 		7865059520F34A7200B7531B /* PaymentStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865059420F34A7200B7531B /* PaymentStatusVC.swift */; };
 		7865059720F356FC00B7531B /* PSAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865059620F356FC00B7531B /* PSAlert.swift */; };
@@ -417,6 +419,8 @@
 		78473BDA1F745BB50067DA1F /* AddExerciseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddExerciseCell.swift; sourceTree = "<group>"; };
 		78473BDB1F745BB50067DA1F /* AddExerciseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddExerciseCell.xib; sourceTree = "<group>"; };
 		7848B0321F5FD4AD00B32791 /* SelectTrainerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTrainerVC.swift; sourceTree = "<group>"; };
+		784A4B2520FE81F9004E2DC9 /* ClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientView.swift; sourceTree = "<group>"; };
+		784A4B2720FE8248004E2DC9 /* ClientView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientView.xib; sourceTree = "<group>"; };
 		785FF42A1FA1FFD200787CF4 /* UIStoryboard+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Create.swift"; sourceTree = "<group>"; };
 		7865059420F34A7200B7531B /* PaymentStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusVC.swift; sourceTree = "<group>"; };
 		7865059620F356FC00B7531B /* PSAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSAlert.swift; sourceTree = "<group>"; };
@@ -1306,6 +1310,15 @@
 			name = AddExerciseCell;
 			sourceTree = "<group>";
 		};
+		784A4B2420FE81D0004E2DC9 /* ClientView */ = {
+			isa = PBXGroup;
+			children = (
+				784A4B2720FE8248004E2DC9 /* ClientView.xib */,
+				784A4B2520FE81F9004E2DC9 /* ClientView.swift */,
+			);
+			name = ClientView;
+			sourceTree = "<group>";
+		};
 		785FF4271FA1DFAA00787CF4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1800,6 +1813,7 @@
 		842EBD231F3313FB00A3169F /* ScheduleCell */ = {
 			isa = PBXGroup;
 			children = (
+				784A4B2420FE81D0004E2DC9 /* ClientView */,
 				842EBD1D1F3313E100A3169F /* ScheduleCell.swift */,
 				842EBD1E1F3313E100A3169F /* ScheduleCell.xib */,
 			);
@@ -2506,6 +2520,7 @@
 				78835C9B1F8B5D7500C28C76 /* BirthdayCell.xib in Resources */,
 				5BE0D0481EC588A000B11C50 /* TrainerMain.storyboard in Resources */,
 				78C6DAE42010EF4400A0BD41 /* ExercisePhotoCell.xib in Resources */,
+				784A4B2820FE8248004E2DC9 /* ClientView.xib in Resources */,
 				78E4438D1F40DFDF00525F7A /* ScheduleClienCell.xib in Resources */,
 				BBDA2B551ECE6EFA001FB6AD /* ClientCell.xib in Resources */,
 				78BB17BA20C52F7E006AB7C3 /* WeightsCell.xib in Resources */,
@@ -2722,6 +2737,7 @@
 				78BAC2E020B55FEB00C0EDD2 /* SavedTemplateCell.swift in Sources */,
 				78BAC2ED20B59BBA00C0EDD2 /* SavedTemplatesObject+API.swift in Sources */,
 				787A99272019E20800E69B5F /* ExersiseData+API.swift in Sources */,
+				784A4B2620FE81F9004E2DC9 /* ClientView.swift in Sources */,
 				84AB4D961F3287F400531740 /* AlamofireService.swift in Sources */,
 				780EFC5820D7E6F30061C734 /* ImagePickingCropVC.swift in Sources */,
 				782E89A01F792EB7002AD54C /* TrainerTabBarVC.swift in Sources */,
