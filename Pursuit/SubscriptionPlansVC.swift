@@ -179,7 +179,7 @@ class SubscriptionPlansVC: UIViewController {
         var date = DateInRegion(absoluteDate: Date())
         date = date + 2.minutes
         let converted = dateFormatter.string(from: date.absoluteDate)
-        subscribeTo(type: tierType.serverSub, validUntil: converted)
+        subscribeTo(type: "pro-50", validUntil: converted)
     }
     
     //MARK: Lifecycle
@@ -301,7 +301,7 @@ private extension SubscriptionPlansVC {
             if case .success(let purchase) = result {
                 self.validateReceipt(productId: productId)
             } else if case .error(let error) = result {
-                
+                self.validateReceipt(productId: productId)
             }
         }
     }

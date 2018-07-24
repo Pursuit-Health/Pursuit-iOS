@@ -65,7 +65,7 @@ class ScheduleVC: UIViewController {
             
             self.calendarView.scrollingMode             = .stopAtEachCalendarFrame
             self.calendarView.scrollToDate(Date())
-            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
+            self.calendarView.selectDates([Date()], triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: false)
         }
     }
     
@@ -83,6 +83,7 @@ class ScheduleVC: UIViewController {
     
     var events: [Event] = [] {
         didSet {
+            specialDates = []
             for event in self.events {
                 if let date = event.date {
                     specialDates.append(date)
@@ -179,6 +180,7 @@ class ScheduleVC: UIViewController {
     }
     
     private func updateEvents(events: [Event], dateFormatter: DateFormatter) {
+        self.filteredEvents = []
         self.events = events
         self.calendarView.scrollToDate(Date(), triggerScrollToDateDelegate:true , animateScroll: true, preferredScrollPosition: .centeredHorizontally, extraAddedOffset: 0, completionHandler: {
             self.calendarView.reloadData()

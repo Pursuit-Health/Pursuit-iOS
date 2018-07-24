@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>508957875064-3054bocj8cm72cdbtbb6prmb2jqmj5ef.apps.googleusercontent.com</string>
+	<string>376694877784-aoifm35pom9vpk15rkilrh3mrheakm74.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.508957875064-3054bocj8cm72cdbtbb6prmb2jqmj5ef</string>
+	<string>com.googleusercontent.apps.376694877784-aoifm35pom9vpk15rkilrh3mrheakm74</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD0_wS6kHTsAoru6vGeVAm8SRfc1CrfB7g</string>
+	<string>AIzaSyCBg-QdtxfpjNR6HYq0GjupQDYni3bCz2U</string>
 	<key>GCM_SENDER_ID</key>
-	<string>508957875064</string>
+	<string>376694877784</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.HealthPursuit</string>
 	<key>PROJECT_ID</key>
-	<string>pursuitchat-dev</string>
+	<string>pursuit-health</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pursuitchat-dev.appspot.com</string>
+	<string>pursuit-health.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:508957875064:ios:c452edc90da1d8b1</string>
+	<string>1:376694877784:ios:c452edc90da1d8b1</string>
 	<key>DATABASE_URL</key>
-	<string>https://pursuitchat-dev.firebaseio.com</string>
+	<string>https://pursuit-health.firebaseio.com</string>
 </dict>
 </plist>

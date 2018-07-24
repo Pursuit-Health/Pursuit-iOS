@@ -74,14 +74,17 @@ class ClientsRequestsVC: UIViewController {
         super.viewDidLoad()
         setUpBackgroundImage()
         
-       navigationController?.navigationBar.setAppearence()
+       //navigationController?.navigationBar.setAppearence()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        
+        self.navigationController?.navigationBar.isHidden = false
 
+        navigationController?.navigationBar.setAppearence()
+        leftTitle = "Client Requests"
         setupPullToRefresh()
     }
     

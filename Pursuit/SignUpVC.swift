@@ -339,8 +339,8 @@ extension SignUpVC: UITableViewDataSource {
                 self.client.email       = text
                 self.trainer.email      = text
             case .code:
-                self.client.code    = text
-                self.trainer.code   = text
+                self.client.code    = text.uppercased()
+                self.trainer.code   = text.uppercased()
             case .birthday:
                 
                 //TODO: Move date formatter to constants

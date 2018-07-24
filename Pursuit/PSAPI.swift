@@ -109,18 +109,7 @@ class PSAPI: APIHandable {
                     error = serverError.psError
                 }
             }
-            if error == nil {
-                self.timer = Timer.every(1.second) {
-                    User.getFireBaseToken(completionHandler: { (user, error) in
-                        if error == nil {
-                            self.timer?.invalidate()
-                            completion(user, error)
-                        }else {
-                            return
-                        }
-                    })
-                }
-            }
+             completion(user, error)
         }
     }
     
@@ -150,23 +139,12 @@ class PSAPI: APIHandable {
                             User.shared = user!
                         }
                         User.shared.token = token
+                        completion(user, error)
                     }
                     
                 case .failure(let serverError):
                     error = serverError.psError
                     completion(nil, error)
-                }
-            }
-            if error == nil {
-                self.timer = Timer.every(1.second) {
-                    User.getFireBaseToken(completionHandler: { (user, error) in
-                        if error == nil {
-                            self.timer?.invalidate()
-                            completion(user, error)
-                        }else {
-                            return
-                        }
-                    })
                 }
             }
         }

@@ -51,7 +51,7 @@ class Trainer: User {
                 var date = DateInRegion(absoluteDate: Date())
                 date = date + 2.weeks
                 let converted = dateFormatter.string(from: date.absoluteDate)
-                Trainer.subscribeTo(type: "pro-5", valid_until: converted , completion: { (error) in
+                Trainer.subscribeTo(type: "pro-5", valid_until: converted, completion: { (error) in
                     
                 })
             }
