@@ -91,28 +91,20 @@
                                 <rect key="frame" x="0.0" y="20" width="300" height="647"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wz7-hq-19t">
-                                        <rect key="frame" x="0.0" y="50" width="300" height="500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="647"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="rZh-Cb-TAh" id="bu8-O3-LF2"/>
                                             <outlet property="delegate" destination="rZh-Cb-TAh" id="3ST-fr-bCc"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9me-pw-jzF">
-                                        <rect key="frame" x="0.0" y="550" width="300" height="97"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="wz7-hq-19t" secondAttribute="trailing" id="467-3O-zgL"/>
-                                    <constraint firstItem="9me-pw-jzF" firstAttribute="top" secondItem="wz7-hq-19t" secondAttribute="bottom" id="4xn-4T-h9R"/>
-                                    <constraint firstAttribute="bottom" secondItem="9me-pw-jzF" secondAttribute="bottom" id="5Jr-uw-Xeq"/>
-                                    <constraint firstItem="wz7-hq-19t" firstAttribute="top" secondItem="hI1-nl-q3D" secondAttribute="top" constant="50" id="KiQ-25-5q2"/>
-                                    <constraint firstItem="9me-pw-jzF" firstAttribute="height" secondItem="hI1-nl-q3D" secondAttribute="height" multiplier="0.15" id="Tlz-uI-rcO"/>
+                                    <constraint firstAttribute="bottom" secondItem="wz7-hq-19t" secondAttribute="bottom" id="Af4-EV-2HU"/>
+                                    <constraint firstItem="wz7-hq-19t" firstAttribute="top" secondItem="hI1-nl-q3D" secondAttribute="top" id="KiQ-25-5q2"/>
                                     <constraint firstItem="wz7-hq-19t" firstAttribute="leading" secondItem="hI1-nl-q3D" secondAttribute="leading" id="YAa-tn-bHy"/>
-                                    <constraint firstItem="9me-pw-jzF" firstAttribute="leading" secondItem="hI1-nl-q3D" secondAttribute="leading" id="sz0-dp-AmV"/>
-                                    <constraint firstItem="9me-pw-jzF" firstAttribute="width" secondItem="hI1-nl-q3D" secondAttribute="width" id="wRh-FK-pjy"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -127,7 +119,6 @@
                     </view>
                     <connections>
                         <outlet property="settingsTableView" destination="wz7-hq-19t" id="yxm-BH-Zk5"/>
-                        <outlet property="trainerCodeContainerView" destination="9me-pw-jzF" id="eQM-xx-dLh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv0-UL-6dB" userLabel="First Responder" sceneMemberID="firstResponder"/>

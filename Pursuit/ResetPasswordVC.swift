@@ -12,8 +12,17 @@ class ResetPasswordVC: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet weak var oldPasswordTextField: UITextField!
-    @IBOutlet weak var newPasswordTextField: UITextField!
+    @IBOutlet weak var oldPasswordTextField: UITextField! {
+        didSet {
+            self.oldPasswordTextField.attributedPlaceholder = createPlaceHolder(text: "New Password")
+        }
+    }
+    
+    @IBOutlet weak var newPasswordTextField: UITextField! {
+        didSet {
+            self.newPasswordTextField.attributedPlaceholder = createPlaceHolder(text: "Confirm New Password")
+        }
+    }
     
     //MARK: Variables
     
@@ -42,7 +51,24 @@ class ResetPasswordVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setUpStatusBarView()
         //navigationController?.navigationBar.isHidden = false
+    }
+    
+    func createPlaceHolder(text: String) -> NSAttributedString {
+        return NSAttributedString(string: text, attributes:  [NSAttributedStringKey.font : UIFont(name: "Avenir-Book", size: 14.0)!, NSAttributedStringKey.foregroundColor : UIColor.white])
+    }
+    
+    fileprivate func setUpStatusBarView() {
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            for view in window.subviews {
+                if view is TopStatusBarView {
+                    view.removeFromSuperview()
+                }
+            }
+            app.setUpStatusBarAppearence()
+        }
     }
     
     private func checkEqualityOfPasswords() -> Bool {
@@ -54,7 +80,10 @@ private extension ResetPasswordVC {
     
     func setPassword() {
         setPassword { error in
-            if error == nil {
+            if let error = error {
+                let alert = error.alert(action: UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }else {
                  self.dismiss(animated: true, completion: nil)
             }
         }

@@ -79,7 +79,14 @@ extension User {
     
     class func getFireBaseToken(completionHandler: @escaping GetFireBaseTokenCompletion) {
         let api = PSAPI()
-        api.getFireBaseToken(completionHandler: completionHandler)
+        api.getFireBaseToken { (user, error) in
+            if let error = error {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    User.getFireBaseToken(completionHandler: { (_, _) in
+                        
+                    })
+                }
+            }
+        }
     }
-
  }

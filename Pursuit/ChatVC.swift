@@ -82,7 +82,6 @@ class ChatVC: UIViewController {
                     fillSameFrontMessageWithImage(cell: castedCell, message: message)
                 }
             }
-            
         }
         
         private func fillFrontSernderCell(cell: FrontSenderMessageCell, message: Message?) {
@@ -199,15 +198,21 @@ class ChatVC: UIViewController {
     //MARK: Sender References
     
     lazy var senderDialogRef: DatabaseReference = self.usersDialogsRef.child(self.senderId).child(self.dialog?.dialogId ?? " ")
-    lazy var senderMessageRef: DatabaseReference = self.senderDialogRef.child("messages")
     
-    lazy var sendTypingRef: DatabaseReference = self.receiverDialogRef.child("typingIndicator").child(self.senderId)
-    lazy var receiveTypingRef: DatabaseReference = self.senderDialogRef.child("typingIndicator")
+    lazy var senderMessageRef: DatabaseReference = Database.database().reference().child("dialog_messages").child(self.dialog?.dialogId ?? " ")
+    
+
+    lazy var sendTypingRef: DatabaseReference = Database.database().reference().child("typing_indicator").child(self.dialog?.dialogId ?? " ").child(self.senderId).child("is_typing")
+    
+    lazy var receiveTypingRef: DatabaseReference = Database.database().reference().child("typing_indicator").child(self.dialog?.dialogId ?? " ").child(self.receiverId)
+    
+    
+    
     
     //MARK: Receiver References
     
     lazy var receiverDialogRef: DatabaseReference = self.usersDialogsRef.child(self.receiverId).child((self.dialog?.dialogId ?? " "))
-    lazy var receiverMessageRef: DatabaseReference = self.receiverDialogRef.child("messages")
+    lazy var receiverMessageRef: DatabaseReference = self.receiverDialogRef.child("dialog_messages")
     
     var chatRef: DatabaseHandle?
     
@@ -420,6 +425,8 @@ class ChatVC: UIViewController {
         let otherUserRef = receiverMessageRef.childByAutoId()
         let ref = self.senderMessageRef.childByAutoId()
         var messageItem = [
+            "type" : "text",
+            "user_uid" : senderId,
             "text" : messsage.condensedWhitespace,
             "created_at": Date().timeIntervalSince1970 * 1000,
             "sender_id": self.senderId
@@ -456,6 +463,9 @@ class ChatVC: UIViewController {
         let otherUserRef = receiverMessageRef.childByAutoId()
         let ref = self.senderMessageRef.childByAutoId()
         var messageItem = [
+            "type" : "photo",
+            "user_uid" : senderId,
+
             "created_at": Date().timeIntervalSince1970 * 1000,
             "sender_id": self.senderId
             
@@ -474,7 +484,7 @@ class ChatVC: UIViewController {
         
         let receiverLastChange = receiverDialogRef.child("last_change")
         
-        let receiverUnseenMessages = receiverDialogRef.child("unseen")
+        let receiverUnseenMessages = receiverDialogRef.child("unseen_by_me")
         receiverUnseenMessages.setValue(true)
         
         receiverLastChange.setValue(Date().timeIntervalSince1970 * 1000)

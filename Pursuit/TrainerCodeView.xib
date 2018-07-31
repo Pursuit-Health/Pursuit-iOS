@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbl-6n-eDf">
-                    <rect key="frame" x="0.0" y="97.5" width="375" height="65"/>
+                    <rect key="frame" x="0.0" y="102.5" width="375" height="55"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trainer Code:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTz-4B-Afs">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="23.5"/>
@@ -29,8 +29,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux3-kE-R2k" customClass="CopybleLabel" customModule="Pursuit" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="33.5" width="375" height="31.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ux3-kE-R2k" customClass="CopybleLabel" customModule="Pursuit" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="23.5" width="375" height="31.5"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                             <color key="textColor" red="0.31372549020000001" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                         <constraint firstItem="ZTz-4B-Afs" firstAttribute="top" secondItem="bbl-6n-eDf" secondAttribute="top" id="Oku-74-r33"/>
                         <constraint firstAttribute="trailing" secondItem="Ux3-kE-R2k" secondAttribute="trailing" id="VFE-QF-TG3"/>
                         <constraint firstAttribute="trailing" secondItem="ZTz-4B-Afs" secondAttribute="trailing" id="WaA-Lx-BIX"/>
-                        <constraint firstItem="Ux3-kE-R2k" firstAttribute="top" secondItem="ZTz-4B-Afs" secondAttribute="bottom" constant="10" id="stH-TN-Xp7"/>
+                        <constraint firstItem="Ux3-kE-R2k" firstAttribute="top" secondItem="ZTz-4B-Afs" secondAttribute="bottom" id="stH-TN-Xp7"/>
                     </constraints>
                 </view>
             </subviews>

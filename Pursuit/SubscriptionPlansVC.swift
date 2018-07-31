@@ -193,7 +193,10 @@ class SubscriptionPlansVC: UIViewController {
         requestproductInfo()
         
         tierType = .one
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = true
     }
@@ -260,7 +263,7 @@ private extension SubscriptionPlansVC {
     func setUpCodeImage() {
         if let image = UIImage(named: "gift")?.withRenderingMode(.alwaysTemplate) {
             giftImageView.image = image
-            giftImageView.tintColor = UIColor.lightGray
+            giftImageView.tintColor = UIColor.darkGray
         }
     }
     

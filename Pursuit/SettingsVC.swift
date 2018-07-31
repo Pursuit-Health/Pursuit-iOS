@@ -119,10 +119,6 @@ class SettingsVC: UIViewController {
     }
     @IBOutlet weak var trainerCodeContainerView: UIView!
     
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var emailLabel: UILabel!
-    
     var trainerCodeView: TrainerCodeView?
     
     var user: User?
@@ -172,9 +168,12 @@ class SettingsVC: UIViewController {
         if !self.isClient() {
             
             let trainerView = TrainerCodeView()
+            let size = settingsTableView.bounds.size
+            trainerView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height*0.15)
             trainerCodeView = trainerView
-            trainerCodeContainerView.addSubview(trainerView)
-            trainerCodeContainerView.addConstraints(UIView.place(trainerCodeView, onOtherView: trainerCodeContainerView))
+            settingsTableView.tableFooterView = trainerView
+//            trainerCoeContainerView.addSubview(trainerView)
+//            trainerCodeContainerView.addConstraints(UIView.place(trainerCodeView, onOtherView: trainerCodeContainerView))
         }
     }
     

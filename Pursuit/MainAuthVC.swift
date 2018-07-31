@@ -190,9 +190,8 @@ class MainAuthVC: UIViewController {
     fileprivate func uploadImage() {
         
         guard let image = selectedImage else { return }
-        
-        let data = UIImagePNGRepresentation(image) as NSData?
-        User.uploadAvatar(data: data! as Data) { error in
+        guard let data = image.compressTo(1000000) as Data? else { return }
+        User.uploadAvatar(data: data) { error in
             if (error == nil) {
                 self.performSegue(withIdentifier: "ShowSideMenu", sender: self)
             }

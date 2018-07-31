@@ -88,8 +88,6 @@ class ChatsListVC: UIViewController {
         
         self.navigationController?.navigationBar.setAppearence()
 
-        self.getDialogs()
-
         observeUnreadMessages()
         
         configureSideMenuController()
@@ -101,6 +99,8 @@ class ChatsListVC: UIViewController {
         if let _ = self.chat {
             self.chat = nil
         }
+        
+        getDialogs()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -119,19 +119,22 @@ class ChatsListVC: UIViewController {
         let queryRef = chatRef
         self.dialogs = []
         DispatchQueue.main.async {
-             SVProgressHUD.show()
+            SVProgressHUD.show()
         }
-      queryRef.observe(.childAdded) { (snapshot) in
-         SVProgressHUD.dismiss()
-            let userSnap = snapshot as! DataSnapshot
+        queryRef.observe(.childAdded) { (snapshot) in
+            SVProgressHUD.dismiss()
+            let userSnap = snapshot
             let chatId = userSnap.key
-            let userDict = userSnap.value as! [String:AnyObject]
-            if let dialog = Dialog(JSON: userDict) {
-                dialog.dialogId = chatId
-                self.dialogs.append(dialog)
+            if let userDict = userSnap.value as? [String:AnyObject] {
+                if let dialog = Dialog(JSON: userDict) {
+                    dialog.dialogId = chatId
+                    if dialog.userUID != nil {
+                        self.dialogs.append(dialog)
+                    }
+                }
+                self.numberOfClientsLabel.text = self.isClientType() ? "TRAINER" : ("\(self.dialogs.count)" + " CLIENTS")
+                self.chatsTableView?.reloadData()
             }
-            self.numberOfClientsLabel.text = self.isClientType() ? "TRAINER" : ("\(self.dialogs.count)" + " CLIENTS")
-            self.chatsTableView?.reloadData()
         }
     }
     
@@ -140,9 +143,9 @@ class ChatsListVC: UIViewController {
         let unseenDialogsRef = chatRef
         unseenDialogsRef.observe(.childChanged) { (snapshot) in
 
-            let userSnap = snapshot as! DataSnapshot
+            let userSnap = snapshot
             let chatId = userSnap.key
-            let userDict = userSnap.value as! [String:AnyObject]
+            if let userDict = userSnap.value as? [String:AnyObject] {
             if let  dialog = Dialog(JSON: userDict) {
                 dialog.dialogId = chatId
                 for (index, dialg) in self.dialogs.enumerated() {
@@ -153,6 +156,7 @@ class ChatsListVC: UIViewController {
                         self.chatsTableView.reloadRows(at: [indexPath], with: .fade)
                     }
                 }
+            }
             }
         }
     }

@@ -207,6 +207,8 @@ class PSAPI: APIHandable {
                 error = responseError
             }
             completion(error)
+        }).responseString(completionHandler: { (string) in
+            
         })
     }
     

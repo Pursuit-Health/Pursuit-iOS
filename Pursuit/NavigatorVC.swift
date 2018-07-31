@@ -105,21 +105,27 @@ class NavigatorVC: UIViewController {
         self.leftTitle = User.shared.name ?? ""
     }
     
-    private func navigate() {
-        User.getFireBaseToken { (_, _) in
+    private func getFirebaseToken() {
+        User.getFireBaseToken { (_, error) in
             
         }
+    }
+    
+    private func navigate() {
+
         User.getUserInfo { (user, error) in
             if let _ = error {
                 AppCoordinator.shared.showController(controller: self)
             }else {
                 if User.shared.coordinator is TrainerCoordinator {
+                    self.getFirebaseToken()
                     self.navigateTrainer()
                 }else {
                     self.isClientAllowed(completion: { (clientError) in
                         if let clientError = clientError {
                             AppCoordinator.shared.start(from: self, with: clientError)
                         }else {
+                            self.getFirebaseToken()
                             self.navigateClient()
                         }
                     })

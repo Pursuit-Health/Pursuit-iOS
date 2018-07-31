@@ -13,7 +13,7 @@ struct PSURL {
 //    static let BaseURL = "https://pursuit.nerdzlab.com/v1/"
 //    static let BasePhotoURL = "https://pursuit.nerdzlab.com"
 //    #else
-    static let BaseURL = "http://ec2-18-188-227-60.us-east-2.compute.amazonaws.com/v1/"
+    static let BaseURL = "https://api.pursuithealthtech.com/v1/"
     static let BasePhotoURL = ""
 //    #endif
 }
