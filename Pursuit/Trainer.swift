@@ -49,7 +49,7 @@ class Trainer: User {
             if error == nil {
                 let dateFormatter = DateFormatters.serverTimeFormatter
                 var date = DateInRegion(absoluteDate: Date())
-                date = date + 2.weeks
+                date = date + 1.years
                 let converted = dateFormatter.string(from: date.absoluteDate)
                 Trainer.subscribeTo(type: "pro-5", valid_until: converted, completion: { (error) in
                     
