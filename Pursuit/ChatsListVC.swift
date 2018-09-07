@@ -11,7 +11,6 @@ import Firebase
 import FirebaseDatabase
 import SVProgressHUD
 import SDWebImage
-import PullToRefreshSwift
 
 class ChatsListVC: UIViewController {
     

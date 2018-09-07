@@ -164,8 +164,8 @@ class ChatVC: UIViewController {
         didSet {
             //messageTextView.maxLength = 140
             messageTextView.trimWhiteSpaceWhenEndEditing = false
-            messageTextView.placeHolder = "Your message"
-            messageTextView.placeHolderColor = UIColor.lightGray
+            messageTextView.placeholder = "Your message"
+            messageTextView.placeholderColor = UIColor.lightGray
             messageTextView.textColor = .white
             messageTextView.minHeight = 20.0
             messageTextView.maxHeight = 100.0

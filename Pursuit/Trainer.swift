@@ -48,9 +48,9 @@ class Trainer: User {
         api.registerTrainer(personalData: self.createSignUpParameters(), completion: { (user, error) in
             if error == nil {
                 let dateFormatter = DateFormatters.serverTimeFormatter
-                var date = DateInRegion(absoluteDate: Date())
+                var date = DateInRegion(Date())
                 date = date + 1.years
-                let converted = dateFormatter.string(from: date.absoluteDate)
+                let converted = dateFormatter.string(from: date.date)
                 Trainer.subscribeTo(type: "pro-5", valid_until: converted, completion: { (error) in
                     
                 })

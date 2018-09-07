@@ -11,7 +11,6 @@ import SwipeCellKit
 import SDWebImage
 import SVProgressHUD
 import EmptyKit
-import PullToRefreshSwift
 import SimpleAlert
 
 protocol ClientsVCDelegate: class {

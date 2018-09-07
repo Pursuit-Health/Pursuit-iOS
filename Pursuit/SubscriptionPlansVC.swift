@@ -176,9 +176,9 @@ class SubscriptionPlansVC: UIViewController {
     
     @IBAction func expireTest(_ sender: Any) {
         let dateFormatter = DateFormatters.ianPurchaseFormat
-        var date = DateInRegion(absoluteDate: Date())
+        var date = DateInRegion(Date())
         date = date + 2.minutes
-        let converted = dateFormatter.string(from: date.absoluteDate)
+        let converted = dateFormatter.string(from: date.date)
         subscribeTo(type: "pro-50", validUntil: converted)
     }
     

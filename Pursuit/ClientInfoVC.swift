@@ -11,7 +11,6 @@ import SDWebImage
 import MBProgressHUD
 import SwipeCellKit
 import EmptyKit
-import PullToRefreshSwift
 
 protocol ClientInfoVCDelegate: class {
     func selected(workout: Workout, on controller: ClientInfoVC, client: Client?)

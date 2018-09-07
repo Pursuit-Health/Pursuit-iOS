@@ -207,13 +207,13 @@ class ScheduleVC: UIViewController {
     }
     
     private func updateEvents() {
-        var changedDate = DateInRegion(absoluteDate: Date())
+        var changedDate = DateInRegion(Date())
         let dateformatter = DateFormatters.serverTimeFormatter
         dateformatter.dateFormat = "yyyy-MM-dd"
         dateformatter.timeZone = TimeZone(identifier: "UTC")
-        let startDate: String = dateformatter.string(from: changedDate.absoluteDate)
-        changedDate = changedDate + 1.month
-        let endDate: String = dateformatter.string(from: changedDate.absoluteDate)
+        let startDate: String = dateformatter.string(from: changedDate.date)
+        changedDate = changedDate + 1.months
+        let endDate: String = dateformatter.string(from: changedDate.date)
         
         self.datasource?.updateDataSource(self, startDate, endDate: endDate, complation: { (events, error) in
             if let error = error {

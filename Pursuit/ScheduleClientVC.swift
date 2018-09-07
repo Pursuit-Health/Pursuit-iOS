@@ -109,7 +109,7 @@ class ScheduleClientVC: UIViewController {
         return controller
     }()
     
-    var changedDate = DateInRegion(absoluteDate: Date())
+    var changedDate = DateInRegion(Date())
     
     var startTime: String = ""
     var endTime: String = ""
@@ -151,7 +151,7 @@ class ScheduleClientVC: UIViewController {
 
         dateformatter.dateFormat = "yyyy-MM-dd"
         dateformatter.timeZone = TimeZone(identifier: "UTC")
-        let date: String = dateformatter.string(from: changedDate.absoluteDate)
+        let date: String = dateformatter.string(from: changedDate.date)
         
         //        if !self.compareDates(self.startTime, self.endTime) {
         //            showAler()
@@ -196,16 +196,16 @@ class ScheduleClientVC: UIViewController {
     }
     
     private func nextMonth() {
-        changedDate = changedDate + 1.month
-        self.calendarView.scrollToDate(changedDate.absoluteDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
-            self.fillMonthYearLabelsWith(self.changedDate.absoluteDate)
+        changedDate = changedDate + 1.months
+        self.calendarView.scrollToDate(changedDate.date, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
+            self.fillMonthYearLabelsWith(self.changedDate.date)
         }
     }
     
     private func previousMonth() {
-        changedDate = changedDate - 1.month
-        self.calendarView.scrollToDate(changedDate.absoluteDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
-            self.fillMonthYearLabelsWith(self.changedDate.absoluteDate)
+        changedDate = changedDate - 1.months
+        self.calendarView.scrollToDate(changedDate.date, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
+            self.fillMonthYearLabelsWith(self.changedDate.date)
         }
     }
     
@@ -320,7 +320,7 @@ class ScheduleClientVC: UIViewController {
     }
     
     func fillMonthYearLabelsWith(_ date: Date) {
-        self.changedDate = DateInRegion(absoluteDate: date)
+        self.changedDate = DateInRegion(date)
         let formatter                   = DateFormatters.monthYearFormat
         formatter.timeZone = TimeZone(identifier: "UTC")
         let textToSee = formatter.string(from: date)

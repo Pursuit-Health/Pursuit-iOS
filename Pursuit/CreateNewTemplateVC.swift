@@ -57,8 +57,7 @@ class CreateNewTemplateVC: CreateTemplateVC {
     }
     
      var dateformatter = DateFormatters.serverTimeFormatter
-    
-     var chnagedDate = DateInRegion(absoluteDate: Date())
+     var chnagedDate = DateInRegion(Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,12 +98,12 @@ class CreateNewTemplateVC: CreateTemplateVC {
     private func decreaseDate(_ decrease: Bool?) {
         if let decrease = decrease {
             if decrease {
-                chnagedDate = chnagedDate - 1.month
+                chnagedDate = chnagedDate - 1.months
             }else {
-                chnagedDate = chnagedDate + 1.month
+                chnagedDate = chnagedDate + 1.months
             }
-            self.calendarView.scrollToDate(chnagedDate.absoluteDate, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
-                self.fillMonthYearLabelsWith(self.chnagedDate.absoluteDate)
+            self.calendarView.scrollToDate(chnagedDate.date, triggerScrollToDateDelegate: false, animateScroll: false, preferredScrollPosition: .left, extraAddedOffset: 0) {
+                self.fillMonthYearLabelsWith(self.chnagedDate.date)
             }
         }
     }
@@ -170,7 +169,7 @@ class CreateNewTemplateVC: CreateTemplateVC {
     }
     
     func fillMonthYearLabelsWith(_ date: Date) {
-        self.chnagedDate = DateInRegion(absoluteDate: date)
+        self.chnagedDate = DateInRegion(date)
         let formatter                   = DateFormatters.monthYearFormat
         formatter.timeZone = TimeZone(identifier: "UTC")
         let textToSee = formatter.string(from: date)

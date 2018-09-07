@@ -11,7 +11,7 @@ target 'Pursuit' do
   pod 'ESTabBarController-swift'
   pod 'SwipeCellKit'
   
-  pod 'AlamofireObjectMapper', '~> 4.1'
+  pod 'AlamofireObjectMapper'
   pod 'SDWebImage', '~> 4.2.2'
   pod 'TPKeyboardAvoiding', '~> 1.3'
   pod 'SVProgressHUD', '~> 2.2.2'
@@ -21,10 +21,9 @@ target 'Pursuit' do
   pod 'DeepLinkKit', '~> 1.4'
   pod 'RHDisplayLinkStepper', '~> 1.0'
   pod 'SHTextFieldBlocks', '~> 1.1'
-  pod 'SwiftDate', '~> 4.1.11 '
+  pod 'SwiftDate'
   pod 'HTTPStatusCodes', '~> 3.1'
   pod 'TPKeyboardAvoiding', '~> 1.3'
-  pod 'PIDatePicker', '~> 0.1'
   pod 'BlocksKit', '~> 2.2'
   pod 'IQKeyboardManagerSwift', '~> 5.0'
   pod 'MBProgressHUD', '~> 1.1'
@@ -32,12 +31,11 @@ target 'Pursuit' do
   pod 'JTMaterialSwitch'
   pod 'SwiftyTimer'
   pod 'SimpleAlert'
-  pod 'PullToRefreshSwift'
   
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-  pod 'GrowingTextView', '~> 0.4.0'
+  pod 'GrowingTextView'
   pod 'KeyboardWrapper'
   pod 'NSDate+TimeAgo', '~> 1.0'
   pod 'TOCropViewController'
@@ -47,7 +45,7 @@ target 'Pursuit' do
   post_install do |installer|
       installer.pods_project.targets.each do |target|
           target.build_configurations.each do |config|
-              config.build_settings['SWIFT_VERSION'] = '3.1'
+              config.build_settings['SWIFT_VERSION'] = '4.0'
           end
       end
   end
