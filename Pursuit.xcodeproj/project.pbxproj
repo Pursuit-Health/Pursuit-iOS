@@ -2433,7 +2433,6 @@
 				5B1F83071E850E4100ABA24C /* Resources */,
 				78417F3920DBA8B200CAE7FB /* ShellScript */,
 				F75DED18AE52984769A2D4FA /* [CP] Embed Pods Frameworks */,
-				0A762473EE8D51F4CD15D038 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2627,21 +2626,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A762473EE8D51F4CD15D038 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pursuit/Pods-Pursuit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		78417F3920DBA8B200CAE7FB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
