@@ -43,9 +43,6 @@ extension UIViewController {
 import ObjectiveC
 extension UIViewController {
     
-    private static var left_associated_key: UInt8   = 0
-    
-    @IBInspectable
     public var leftTitle: String? {
         set {
             self.navigationItem.leftTitle = newValue
